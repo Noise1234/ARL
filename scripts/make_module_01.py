@@ -1,0 +1,122 @@
+import json
+import os
+import re
+
+# Modules defining 1000 authentic Goethe B1 words with accurate modern Mongolian translations
+# Every noun has article + plural, verbs and adjectives are intermediate B1 level.
+# No A1 stopwords.
+
+DATA_DIR = "/root/arl/data"
+MODULES_DIR = os.path.join(DATA_DIR, "modules")
+os.makedirs(MODULES_DIR, exist_ok=True)
+
+# We will construct 10 modules of 100 words each = 1,000 B1 words.
+# Let's define the comprehensive curated database.
+
+modules_data = {}
+
+# MODULE 1: Beruf & Arbeitswelt (100 B1 words)
+modules_data["01_beruf_arbeit"] = [
+    ("die Bewerbung", "die", "-en", "noun", "өргөдөл, ажилд орох хүсэлт", "Ich habe meine Bewerbung gestern abgeschickt.", "Би ажилд орох өргөдлөө өчигдөр илгээсэн."),
+    ("das Vorstellungsgespräch", "das", "-e", "noun", "ажлын ярилцлага", "Das Vorstellungsgespräch verlief sehr positiv.", "Ажлын ярилцлага маш амжилттай болж өнгөрсөн."),
+    ("die Voraussetzung", "die", "-en", "noun", "шаардлага, урьдчилсан нөхцөл", "Gute Deutschkenntnisse sind eine wichtige Voraussetzung.", "Герман хэлний сайн мэдлэг бол чухал урьдчилсан нөхцөл юм."),
+    ("die Erfahrung", "die", "-en", "noun", "туршлага", "Sie bringt viel praktische Erfahrung mit.", "Тэр эмэгтэй практик арвин туршлагатай."),
+    ("die Kündigung", "die", "-en", "noun", "ажлаас халагдах/чөлөөлөгдөх мэдэгдэл", "Er reichte die Kündigung fristgerecht ein.", "Тэр ажлаас гарах өргөдлөө хугацаанд нь өгсөн."),
+    ("die Überstunde", "die", "-n", "noun", "илүү цаг", "Diesen Monat habe ich viele Überstunden gemacht.", "Энэ сард би олон илүү цаг ажилласан."),
+    ("die Fortbildung", "die", "-en", "noun", "мэргэжил дээшлүүлэлт", "Die Firma bietet regelmäßige Fortbildungen an.", "Тус компани тогтмол мэргэжил дээшлүүлэх сургалт санал болгодог."),
+    ("die Verantwortung", "die", "-en", "noun", "хариуцлага", "In dieser Position trage ich viel Verantwortung.", "Энэ албан тушаалд би их хариуцлага үүрдэг."),
+    ("die Gehaltserhöhung", "die", "-en", "noun", "цалингийн нэмэгдэл", "Er hat um eine Gehaltserhöhung gebeten.", "Тэр цалингаа нэмүүлэхийг хүссэн."),
+    ("die Anstellung", "die", "-en", "noun", "ажилд авах, томилгоо", "Sie freut sich über eine feste Anstellung.", "Тэр үндсэн ажилтнаар томилогдсондоо баяртай байна."),
+    ("die Bezahlung", "die", "-en", "noun", "хөлс, цалин хөлс", "Die Bezahlung entspricht dem Tarifvertrag.", "Цалин хөлс нь тарифын гэрээтэй нийцэж байгаа."),
+    ("die Frühschicht", "die", "-en", "noun", "өглөөний ээлж", "Morgen beginnt meine Frühschicht um sechs Uhr.", "Маргааш миний өглөөний ээлж зургаан цагт эхэлнэ."),
+    ("die Spätschicht", "die", "-en", "noun", "оройн ээлж", "In der Spätschicht arbeitet man bis Mitternacht.", "Оройн ээлжинд шөнө дунд хүртэл ажилладаг."),
+    ("die Teilzeitstelle", "die", "-n", "noun", "хагас цагийн ажил", "Sie sucht eine flexible Teilzeitstelle.", "Тэр уян хатан хагас цагийн ажил хайж байна."),
+    ("die Vollzeitstelle", "die", "-n", "noun", "бүтэн цагийн ажил", "Nach dem Studium fand er eine Vollzeitstelle.", "Сургуулиа төгсөөд тэр бүтэн цагийн ажилд орсон."),
+    ("die Stellenausschreibung", "die", "-en", "noun", "ажлын байрны зар", "Die Stellenausschreibung passte genau zu meinem Profil.", "Ажлын байрны зар миний намтарт яг таарч байлаа."),
+    ("die Probezeit", "die", "-en", "noun", "туршилтын хугацаа", "Die Probezeit beträgt meistens sechs Monate.", "Туршилтын хугацаа ихэвчлэн зургаан сар байдаг."),
+    ("die Gewerkschaft", "die", "-en", "noun", "үйлдвэрчний эвлэл", "Die Gewerkschaft verhandelt für bessere Löhne.", "Үйлдвэрчний эвлэл илүү сайн цалингийн төлөө хэлэлцээ хийдэг."),
+    ("die Betriebsratssitzung", "die", "-en", "noun", "үйлдвэрийн зөвлөлийн хурал", "Heute findet die monatliche Betriebsratssitzung statt.", "Өнөөдөр үйлдвэрийн зөвлөлийн сар тутмын хурал болно."),
+    ("die Arbeitserlaubnis", "die", "-se", "noun", "ажиллах зөвшөөрөл", "Ohne gültige Arbeitserlaubnis darf man nicht arbeiten.", "Хүчинтэй ажиллах зөвшөөрөлгүйгээр ажиллахыг хориглоно."),
+    ("der Arbeitgeber", "der", "-", "noun", "ажил олгогч", "Mein Arbeitgeber unterstützt flexible Arbeitszeiten.", "Миний ажил олгогч уян хатан ажлын цагийг дэмждэг."),
+    ("der Arbeitnehmer", "der", "-", "noun", "ажилтан, хөлсний ажилчин", "Der Vertrag schützt die Rechte aller Arbeitnehmer.", "Гэрээ нь бүх ажилтны эрхийг хамгаалдаг."),
+    ("der Vorgesetzte", "der", "-n", "noun", "удирдах ажилтан, дарга", "Ich habe das Anliegen mit meinem Vorgesetzten besprochen.", "Би асуудлаа шууд удирдах даргатайгаа ярилцсан."),
+    ("der Lebenslauf", "der", '-e', "noun", "намтар (CV)", "Der Lebenslauf sollte lückenlos und aktuell sein.", "Намтар нь завсаргүй, шинэчлэгдсэн байх ёстой."),
+    ("der Arbeitsvertrag", "der", '-e', "noun", "хөдөлмөрийн гэрээ", "Vor Arbeitsbeginn muss der Arbeitsvertrag unterschrieben werden.", "Ажиллаж эхлэхээс өмнө хөдөлмөрийн гэрээнд гарын үсэг зурах ёстой."),
+    ("der Feierabend", "der", "-e", "noun", "ажлын дараах амралт", "Ich wünsche dir einen schönen Feierabend!", "Ажлын дараа сайхан амраарай!"),
+    ("der Mindestlohn", "der", '-e', "noun", "хөдөлмөрийн хөлсний доод хэмжээ", "Der gesetzliche Mindestlohn wurde erhöht.", "Хуулиар тогтоосон хөдөлмөрийн хөлсний доод хэмжээг нэмэгдүүлсэн."),
+    ("der Kollege", "der", "-n", "noun", "ажлын хамтрагч (эрэгтэй)", "Mein neuer Kollege ist sehr hilfsbereit.", "Миний шинэ хамтрагч тусархаг зантай."),
+    ("der Berufseinstieg", "der", "-e", "noun", "ажлын гараа", "Der Berufseinstieg nach der Uni verlief reibungslos.", "Их сургуулийн дараах ажлын гараа саадгүй эхэлсэн."),
+    ("der Arbeitsmarkt", "der", '-e', "noun", "хөдөлмөрийн зах зээл", "Auf dem Arbeitsmarkt herrscht hoher Fachkräftemangel.", "Хөдөлмөрийн зах зээл дээр мэргэжилтнүүдийн хомсдол их байна."),
+    ("das Berufsfeld", "das", "-er", "noun", "мэргэжлийн салбар", "Das Berufsfeld der Informatik wächst rasant.", "Мэдээллийн технологийн мэргэжлийн салбар хурдацтай өсөж байна."),
+    ("das Anschreiben", "das", "-", "noun", "хавсаргах захидал (cover letter)", "Ein persönliches Anschreiben hebt die Bewerbung hervor.", "Хувийн хавсаргах захидал нь өргөдлийг илүү тодотгодог."),
+    ("das Gehalt", "das", '-er', "noun", "цалин", "Das Gehalt wird immer am Monatsende überwiesen.", "Цалинг сар бүрийн эцэст шилжүүлдэг."),
+    ("das Praktikum", "das", "Praktika", "noun", "дадлага ажил", "Im Sommer absolviert sie ein bezahltes Praktikum.", "Зун тэр төлбөртэй дадлага ажил хийнэ."),
+    ("das Zeugnis", "das", "-se", "noun", "ажлын тодорхойлолт, гэрчилгээ", "Das Arbeitszeugnis bescheinigt sehr gute Leistungen.", "Ажлын тодорхойлолт нь маш сайн гүйцэтгэлийг баталгаажуулсан."),
+    ("das Einkommen", "das", "-", "noun", "орлого", "Ein stabiles Einkommen ist für viele Familien lebenswichtig.", "Тогтвортой орлого нь олон гэр бүлийн хувьд чухал ач холбогдолтой."),
+    ("das Teammitglied", "das", "-er", "noun", "багийн гишүүн", "Jedes Teammitglied bringt wertvolle Ideen ein.", "Багийн гишүүн бүр үнэ цэнтэй санал санаачилга гаргадаг."),
+    ("das Fachwissen", "das", "-", "noun", "мэргэжлийн мэдлэг", "Für diese Aufgabe ist fundiertes Fachwissen erforderlich.", "Энэ даалгаврыг биелүүлэхэд гүнзгий мэргэжлийн мэдлэг шаардлагатай."),
+    ("das Vorbild", "das", "-er", "noun", "үлгэр дуурайл", "Der Abteilungsleiter ist für viele ein echtes Vorbild.", "Хэлтсийн дарга олон хүнд жинхэнэ үлгэр дуурайл болдог."),
+    ("das Berufsleben", "das", "-", "noun", "ажил мэргэжлийн амьдрал", "Der Übergang ins Berufsleben erfordert Disziplin.", "Ажил мэргэжлийн талбарт шилжихэд сахилга бат шаардагдана."),
+    ("beantragen", None, None, "verb", "өргөдөл гаргах, хүсэх", "Ich möchte Bildungsurlaub beantragen.", "Би сургалтын чөлөө хүсэх өргөдөл гаргамаар байна."),
+    ("einstellen", None, None, "verb", "ажилд авах", "Das Unternehmen möchte zehn Ingenieure einstellen.", "Тус компани арван инженер ажилд авахыг хүсэж байна."),
+    ("entlassen", None, None, "verb", "ажлаас халах", "Wegen der Krise musste die Fabrik Arbeiter entlassen.", "Хямралын улмаас үйлдвэр ажилчдаа халахаас өөр аргагүй болсон."),
+    ("kündigen", None, None, "verb", "ажлаас гарах, гэрээ цуцлах", "Er beschloss, seine Stelle zum Jahresende zu kündigen.", "Тэр жилийн эцэст ажлаасаа гарах шийдвэр гаргасан."),
+    ("verhandeln", None, None, "verb", "хэлэлцээ хийх", "Wir müssen noch über die Konditionen verhandeln.", "Бид нөхцөлүүдийн талаар хэлэлцээ хийх шаардлагатай байна."),
+    ("überstunden leisten", None, None, "verb", "илүү цаг ажиллах", "Letzte Woche mussten alle Überstunden leisten.", "Өнгөрсөн долоо хоногт бүгд илүү цагаар ажиллах хэрэгтэй болсон."),
+    ("befördern", None, None, "verb", "тушаал дэвшүүлэх", "Sie wurde zur Teamleiterin befördert.", "Тэр багийн ахлагч болж тушаал дэвшсэн."),
+    ("zusammenarbeiten", None, None, "verb", "хамтран ажиллах", "Beide Abteilungen arbeiten eng zusammen.", "Хоёр хэлтэс хоорондоо нягт хамтран ажилладаг."),
+    ("erledigen", None, None, "verb", "гүйцэтгэх, дуусгах", "Ich werde diese Aufgabe sofort erledigen.", "Би энэ даалгаврыг даруй гүйцэтгэх болно."),
+    ("vereinbaren", None, None, "verb", "тохиролцох, товлох", "Wir haben einen Termin für das Gespräch vereinbart.", "Бид ярилцлага хийх цагаа товлосон."),
+    ("übernehmen", None, None, "verb", "өөртөө авах, хариуцах", "Er wird ab nächsten Monat das neue Projekt übernehmen.", "Тэр ирэх сараас эхлэн шинэ төслийг хариуцан авна."),
+    ("einleiten", None, None, "verb", "эхлүүлэх, удирдах", "Wir müssen rechtzeitig Schritte einleiten.", "Бид цаг алдалгүй алхмуудыг эхлүүлэх ёстой."),
+    ("weiterbilden", None, None, "verb", "мэргэжил дээшлүүлэх", "Die Mitarbeiter bilden sich kontinuierlich weiter.", "Ажилтнууд тасралтгүй мэргэжлээ дээшлүүлдэг."),
+    ("vertreten", None, None, "verb", "төлөөлөх, орлох", "Wer vertritt den Chef während des Urlaubs?", "Амралтын үеэр даргыг хэн орлох вэ?"),
+    ("festlegen", None, None, "verb", "тогтоох, тодорхойлох", "Die Frist wurde verbindlich festgelegt.", "Эцсийн хугацааг заавал биелүүлэхээр тогтоосон."),
+    ("vorbereiten", None, None, "verb", "бэлтгэх", "Sie bereitet die Präsentation gründlich vor.", "Тэр танилцуулгаа маш сайн бэлтгэж байна."),
+    ("durchführen", None, None, "verb", "хэрэгжүүлэх, гүйцэтгэх", "Wir führen nächste Woche eine Schulung durch.", "Бид ирэх долоо хоногт сургалт явуулах болно."),
+    ("überzeugen", None, None, "verb", "ятгах, үнэмшүүлэх", "Er konnte den Kunden mit guten Argumenten überzeugen.", "Тэр оновчтой үндэслэлээр үйлчлүүлэгчийг үнэмшүүлж чадсан."),
+    ("mitteilen", None, None, "verb", "мэдэгдэх, дуулгах", "Bitte teilen Sie uns Ihre Entscheidung schriftlich mit.", "Шийдвэрээ бидэнд бичгээр мэдэгдэнэ үү."),
+    ("verschieben", None, None, "verb", "хойшлуулах", "Wir müssen die Besprechung auf Freitag verschieben.", "Бид уулзалтыг баасан гараг хүртэл хойшлуулах шаардлагатай."),
+    ("bewältigen", None, None, "verb", "давах, шийдвэрлэх", "Mit Teamarbeit lässt sich der Stress leichter bewältigen.", "Багийн ажлын тусламжтай стрессийг даван туулахад илүү хялбар байдаг."),
+    ("verbessern", None, None, "verb", "сайжруулах", "Das Training verbessert die Arbeitsabläufe spürbar.", "Сургалт нь ажлын урсгалыг мэдэгдэхүйц сайжруулдаг."),
+    ("eintragen", None, None, "verb", "бүртгэх, тэмдэглэх", "Trage bitte deine Urlaubszeiten in den Kalender ein.", "Амралтын өдрүүдээ хуанлидаа тэмдэглээрэй."),
+    ("anerkennen", None, None, "verb", "хүлээн зөвшөөрөх, үнэлэх", "Seine Leistung wurde vom gesamten Vorstand anerkannt.", "Түүний амжилтыг бүх удирдлагын зөвлөл өндрөөр үнэлсэн."),
+    ("abstimmen", None, None, "verb", "зохицуулах, санал хураах", "Wir müssen den Zeitplan genau aufeinander abstimmen.", "Бид хуваариа хоорондоо нягт зохицуулах ёстой."),
+    ("unterstützen", None, None, "verb", "дэмжих, туслах", "Die erfahrene Kollegin unterstützt die neuen Mitarbeiter.", "Туршлагатай хамтрагч шинэ ажилтнуудад тусалдаг."),
+    ("erreichen", None, None, "verb", "хүрэх, биелүүлэх", "Gemeinsam haben wir das Jahresziel erreicht.", "Бид хамтдаа жилийн зорилгодоо хүрсэн."),
+    ("planen", None, None, "verb", "төлөвлөх", "Wir planen eine Erweiterung unseres Teams.", "Бид багаа өргөтгөхөөр төлөвлөж байна."),
+    ("anpassen", None, None, "verb", "дасан зохицох, нийцүүлэх", "Die Strategie wurde den veränderten Bedingungen angepasst.", "Стратегийг өөрчлөгдсөн нөхцөл байдалд нийцүүлэн зассан."),
+    ("vermeiden", None, None, "verb", "зайлсхийх", "Durch gute Organisation lassen sich Missverständnisse vermeiden.", "Сайн зохион байгуулалтын ачаар үл ойлголцлоос зайлсхийх боломжтой."),
+    ("zuverlässig", None, None, "adjective", "найдвартай", "Sie ist eine absolut zuverlässige Mitarbeiterin.", "Тэр бол туйлын найдвартай ажилтан юм."),
+    ("engagiert", None, None, "adjective", "идэвх зүтгэлтэй, сэтгэлтэй", "Das engagierte Team fand schnell eine Lösung.", "Идэвх санаачилгатай баг шийдлийг хурдан олсон."),
+    ("belastbar", None, None, "adjective", "дарамт даах чадвартай", "In stressigen Phasen muss man belastbar sein.", "Стресстэй үед дарамт даах чадвартай байх ёстой."),
+    ("selbstständig", None, None, "adjective", "бие даасан", "Die Aufgabe erfordert selbstständiges Arbeiten.", "Энэ ажил бие даан ажиллахыг шаарддаг."),
+    ("pünktlich", None, None, "adjective", "цаг баримталдаг", "Pünktliches Erscheinen ist am Arbeitsplatz unerlässlich.", "Ажлын байран дээр цаг баримтлах нь маш чухал."),
+    ("zielorientiert", None, None, "adjective", "зорилгодоо чиглэсэн", "Er verfolgt eine zielorientierte Arbeitsweise.", "Тэрээр зорилгодоо чиглэсэн ажлын барил баримталдаг."),
+    ("kompetent", None, None, "adjective", "чадварлаг, мэдлэгтэй", "Frau Müller berät ihre Kunden äußerst kompetent.", "Хатагтай Мюллер үйлчлүүлэгчдэдээ тун чадварлаг зөвлөгөө өгдөг."),
+    ("flexibel", None, None, "adjective", "уян хатан", "Wir bieten flexible Arbeitszeiten für Eltern an.", "Бид эцэг эхчүүдэд зориулсан уян хатан ажлын цагийг санал болгодог."),
+    ("verantwortungsvoll", None, None, "adjective", "хариуцлагатай", "Sie übernimmt eine verantwortungsvolle Position.", "Тэр маш хариуцлагатай албан тушаал хашиж байгаа."),
+    ("fristgerecht", None, None, "adjective", "хугацаандаа, хугацаанд тохирсон", "Der Bericht wurde fristgerecht abgegeben.", "Тайланг тогтоосон хугацаанд нь хүлээлгэн өгсөн."),
+    ("unbefristet", None, None, "adjective", "хугацаагүй, байнгын", "Sie erhielt erfreulicherweise einen unbefristeten Vertrag.", "Тэр баяртайгаар хугацаагүй хөдөлмөрийн гэрээ хүлээн авсан."),
+    ("befristet", None, None, "adjective", "хугацаатай, түр зуурын", "Die Stelle ist zunächst auf zwei Jahre befristet.", "Энэ ажлын байр эхний ээлжинд хоёр жилийн хугацаатай."),
+    ("qualifiziert", None, None, "adjective", "мэргэшсэн, мэргэжлийн", "Das Unternehmen sucht dringend qualifizierte Fachkräfte.", "Тус компани мэргэшсэн мэргэжилтнүүдийг яаралтай хайж байна."),
+    ("anerkennenswert", None, None, "adjective", "сайшаалтай, үнэлүүштэй", "Sein Einsatz während des Projekts war wirklich anerkennenswert.", "Төслийн үеэр гаргасан түүний хүчин чармайлт үнэхээр сайшаалтай байлаа."),
+    ("gründlich", None, None, "adjective", "нягт нямбай, бүрэн", "Vor Vertragsunterzeichnung ist eine gründliche Prüfung nötig.", "Гэрээнд гарын үсэг зурахаас өмнө нягт нямбай шалгалт хэрэгтэй."),
+    ("ausführlich", None, None, "adjective", "дэлгэрэнгүй", "Im Vorstellungsgespräch gab er ausführliche Antworten.", "Ажлын ярилцлага дээр тэр дэлгэрэнгүй хариулт өгсөн."),
+    ("erfolgreich", None, None, "adjective", "амжилттай", "Das Projekt wurde überaus erfolgreich abgeschlossen.", "Төсөл туйлын амжилттай дууссан."),
+    ("überlastet", None, None, "adjective", "хэт ачаалалтай", "Viele Angestellte fühlen sich durch Deadlines überlastet.", "Олон ажилтан эцсийн хугацаанаас болж хэт ачаалалтай мэдэрдэг."),
+    ("gelegentlich", None, None, "adverb", "хааяа, заримдаа", "Gelegentlich arbeitet er aus dem Homeoffice.", "Тэрээр хааяа гэрээсээ ажилладаг."),
+    ("hauptberuflich", None, None, "adverb", "үндсэн мэргэжлээрээ", "Sie ist hauptberuflich als Übersetzerin tätig.", "Тэр үндсэн ажлаараа орчуулагчаар ажилладаг."),
+    ("nebenberuflich", None, None, "adverb", "хажуугаар нь, хавсран", "Er betreibt nebenberuflich einen kleinen Online-Shop.", "Тэр ажлынхаа хажуугаар жижиг онлайн дэлгүүр ажиллуулдаг."),
+    ("stufenweise", None, None, "adverb", "шат дараатайгаар", "Das Gehalt steigt stufenweise nach Dienstjahren.", "Цалин ажилласан жилээс хамааран шат дараатай өсдөг."),
+    ("voraussichtlich", None, None, "adverb", "урьдчилсан байдлаар, бараг л", "Die Stelle wird voraussichtlich im Mai besetzt.", "Энэ орон тоонд урьдчилсан байдлаар тавдугаар сард томилно."),
+    ("üblicherweise", None, None, "adverb", "ихэвчлэн, ердийн журмаар", "Üblicherweise gibt es eine Kernarbeitszeit von zehn bis vier.", "Ердийн журмаар аравгаас дөрвөн цагийн хооронд үндсэн ажлын цаг байдаг."),
+    ("nachhaltig", None, None, "adjective", "тогтвортой, урт хугацааны", "Wir setzen auf eine nachhaltige Personalentwicklung.", "Бид боловсон хүчний тогтвортой хөгжлийг эрхэмлэдэг."),
+    ("produktiv", None, None, "adjective", "үр бүтээлтэй", "Die Vormittage sind bei mir meistens am produktivsten.", "Өглөөний цагууд миний хувьд хамгийн үр бүтээлтэй байдаг."),
+    ("überwiegend", None, None, "adverb", "ихэнхдээ, гол төлөв", "Das Team besteht überwiegend aus jungen Entwicklern.", "Баг нь гол төлөв залуу хөгжүүлэгчдээс бүрддэг."),
+    ("vorübergehend", None, None, "adjective", "түр зуурын", "Er übernahm vorübergehend die Leitung des Projekts.", "Тэрээр түр зуур төслийн удирдлагыг хариуцан авсан."),
+    ("fortlaufend", None, None, "adjective", "тасралтгүй, үргэлжилсэн", "Die Dokumentation wird fortlaufend aktualisiert.", "Баримт бичиг тасралтгүй шинэчлэгддэг."),
+    ("reibungslos", None, None, "adjective", "саадгүй, жигд", "Der Wechsel in die neue Abteilung verlief völlig reibungslos.", "Шинэ хэлтэс рүү шилжих үйл явц ямар ч саадгүй болсон.")
+]
+
+print(f"Module 1 loaded: {len(modules_data['01_beruf_arbeit'])} words")
