@@ -1,0 +1,137 @@
+{
+  "sections": [
+    {
+      "id": "einleitung",
+      "name": "Einleitung (Opening / Presentation Intro)",
+      "description": "Formeln zur thematischen Einführung und Strukturierung einer Präsentation oder Diskussion.",
+      "items": [
+        {
+          "formula": "Das Thema meiner Präsentation lautet...",
+          "mn": "Миний илтгэлийн сэдэв бол...",
+          "en": "The topic of my presentation is...",
+          "de": "Das Thema meiner Präsentation lautet...",
+          "example": "Das Thema meiner heutigen Präsentation lautet 'Nachhaltigkeit im Alltag'."
+        },
+        {
+          "formula": "Ich möchte heute über folgendes Thema sprechen: ...",
+          "mn": "Би өнөөдөр дараах сэдвийн хүрээнд ярихыг хүсэж байна: ...",
+          "en": "Today I would like to talk about the following topic: ...",
+          "de": "Ich möchte heute über folgendes Thema sprechen: ...",
+          "example": "Ich möchte heute über folgendes Thema sprechen: Chancen der Digitalisierung."
+        },
+        {
+          "formula": "Mein Vortrag gliedert sich in folgende Teile: Zuerst..., danach..., schließlich...",
+          "mn": "Миний илтгэл дараах хэсгүүдээс бүрдэнэ: Нэгдүгээрт..., дараа нь..., төгсгөлд нь...",
+          "en": "My presentation is structured as follows: First..., then..., finally...",
+          "de": "Mein Vortrag gliedert sich in folgende Teile: ...",
+          "example": "Mein Vortrag gliedert sich in drei Teile: Zuerst nenne ich die Fakten, danach die Vor- und Nachteile."
+        }
+      ]
+    },
+    {
+      "id": "meinung",
+      "name": "Meinung äußern (Expressing Opinion)",
+      "description": "Formeln zum präzisen und differenzierten Darlegen des eigenen Standpunkts.",
+      "items": [
+        {
+          "formula": "Meiner Ansicht / Auffassung nach...",
+          "mn": "Миний бодлоор / үзэж байгаагаар...",
+          "en": "In my view / opinion...",
+          "de": "Meiner Ansicht / Auffassung nach...",
+          "example": "Meiner Ansicht nach sollte der öffentliche Nahverkehr kostenlos sein."
+        },
+        {
+          "formula": "Ich bin der festen Überzeugung, dass...",
+          "mn": "Би ... гэдэгт бат итгэлтэй байна.",
+          "en": "I am firmly convinced that...",
+          "de": "Ich bin der festen Überzeugung, dass...",
+          "example": "Ich bin der festen Überzeugung, dass Sprachkenntnisse Türen öffnen."
+        },
+        {
+          "formula": "Aus meiner persönlichen Perspektive lässt sich sagen, dass...",
+          "mn": "Миний хувийн байр сууринаас харвал ... гэж хэлж болно.",
+          "en": "From my personal perspective, one can say that...",
+          "de": "Aus meiner persönlichen Perspektive lässt sich sagen, dass...",
+          "example": "Aus meiner persönlichen Perspektive lässt sich sagen, dass Disziplin der Schlüssel ist."
+        }
+      ]
+    },
+    {
+      "id": "vor_nachteile",
+      "name": "Vor- und Nachteile abwägen (Pros & Cons)",
+      "description": "Formeln zum Gegenüberstellen von Argumenten.",
+      "items": [
+        {
+          "formula": "Ein wesentlicher Vorteil / Nachteil besteht darin, dass...",
+          "mn": "Гол давуу тал / сул тал нь ...-д оршиж байна.",
+          "en": "A significant advantage / disadvantage is that...",
+          "de": "Ein wesentlicher Vorteil / Nachteil besteht darin, dass...",
+          "example": "Ein wesentlicher Vorteil von Homeoffice besteht darin, dass man Zeit spart."
+        },
+        {
+          "formula": "Einerseits..., andererseits darf man nicht vergessen, dass...",
+          "mn": "Нэг талаас..., нөгөө талаас бид ...-ийг мартаж болохгүй.",
+          "en": "On the one hand..., on the other hand we must not forget that...",
+          "de": "Einerseits..., andererseits darf man nicht vergessen, dass...",
+          "example": "Einerseits bietet die Stadt viele Kulturangebote, andererseits sind die Mieten extrem hoch."
+        },
+        {
+          "formula": "Demgegenüber steht das Argument, dass...",
+          "mn": "Үүний эсрэг сөргүүлэн тавих нэгэн няцаалт бол...",
+          "en": "Countering this is the argument that...",
+          "de": "Demgegenüber steht das Argument, dass...",
+          "example": "Demgegenüber steht das Argument, dass die Kosten das Budget sprengen würden."
+        }
+      ]
+    },
+    {
+      "id": "beispiele",
+      "name": "Beispiele anführen (Giving Examples)",
+      "description": "Formeln zum Untermauern von Aussagen mit konkreten Beispielen.",
+      "items": [
+        {
+          "formula": "Als anschauliches Beispiel hierfür lässt sich anführen, dass...",
+          "mn": "Үүний тодорхой нэгэн жишээ болгон ... дурдаж болно.",
+          "en": "A clear example to illustrate this is...",
+          "de": "Als anschauliches Beispiel hierfür lässt sich anführen, dass...",
+          "example": "Als anschauliches Beispiel lässt sich anführen, wie die Mongolei Sonnenenergie nutzt."
+        },
+        {
+          "formula": "Dies möchte ich durch ein konkretes Beispiel verdeutlichen: ...",
+          "mn": "Би үүнийг бодит нэгэн жишээгээр тодруулахыг хүсэж байна: ...",
+          "en": "I would like to clarify this through a concrete example: ...",
+          "de": "Dies möchte ich durch ein konkretes Beispiel verdeutlichen: ...",
+          "example": "Dies möchte ich verdeutlichen: In vielen Schulen gibt es bereits Tablets."
+        }
+      ]
+    },
+    {
+      "id": "schluss",
+      "name": "Schluss & Zusammenfassung (Conclusion)",
+      "description": "Formeln zum prägnanten Abrunden und Fazit-Ziehen.",
+      "items": [
+        {
+          "formula": "Zusammenfassend lässt sich festhalten, dass...",
+          "mn": "Дүгнээд хэлэхэд ... гэдгийг онцолж болно.",
+          "en": "In summary, it can be stated that...",
+          "de": "Zusammenfassend lässt sich festhalten, dass...",
+          "example": "Zusammenfassend lässt sich festhalten, dass Bildung die wichtigste Investition bleibt."
+        },
+        {
+          "formula": "Abschließend möchte ich betonen, dass...",
+          "mn": "Төгсгөлд нь би ... гэдгийг онцлон тэмдэглэмээр байна.",
+          "en": "Finally, I would like to emphasize that...",
+          "de": "Abschließend möchte ich betonen, dass...",
+          "example": "Abschließend möchte ich betonen, dass Zusammenarbeit für alle Beteiligten nützlich ist."
+        },
+        {
+          "formula": "Ich bedanke mich herzlich für Ihre Aufmerksamkeit. Haben Sie noch Fragen?",
+          "mn": "Анхаарал тавьсанд маш их баярлалаа. Асуух асуулт байна уу?",
+          "en": "Thank you very much for your attention. Do you have any questions?",
+          "de": "Ich bedanke mich herzlich für Ihre Aufmerksamkeit. Haben Sie noch Fragen?",
+          "example": "Ich bedanke mich herzlich für Ihre Aufmerksamkeit und freue mich auf Ihre Fragen."
+        }
+      ]
+    }
+  ]
+}

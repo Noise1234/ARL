@@ -1,0 +1,62 @@
+[
+  {
+    "id": "en_imm_01",
+    "title": "BBC 6 Minute English",
+    "type": "podcast",
+    "level": "A2-B1",
+    "description": {
+      "mn": "BBC-ийн 6 минутын сонирхолтой сэдвүүд, түлхүүр үгсийн тайлбартай шилдэг богино подкаст.",
+      "en": "Flagship short-form podcast exploring everyday topics with key vocabulary explanations and full transcripts.",
+      "de": "Kompakter Bildungs-Podcast der BBC mit Fokus auf Vokabelaufbau und idiomatische Ausdrücke."
+    },
+    "note": "Dedicate 6 minutes every morning; review the 6 featured vocabulary items."
+  },
+  {
+    "id": "en_imm_02",
+    "title": "Luke's English Podcast",
+    "type": "podcast",
+    "level": "B1-B2",
+    "description": {
+      "mn": "Лондонгийн инээдмийн жүжигчин, англи хэлний багш Люкийн хөтөлдөг, байгалийн чөлөөтэй яриаг заадаг алдартай подкаст.",
+      "en": "Award-winning podcast hosted by a British teacher and comedian offering natural, engaging, long-form conversations.",
+      "de": "Prämierter Podcast mit natürlichem britischen Englisch, feinsinnigem Humor und Grammatikanalysen."
+    },
+    "note": "Listen to the natural cadence and rhythm of connected speech."
+  },
+  {
+    "id": "en_imm_03",
+    "title": "The Old Man and the Sea (Ernest Hemingway)",
+    "type": "book",
+    "level": "A2-B1",
+    "description": {
+      "mn": "Хэмингуэйн товч тодорхой, хүчирхэг богино өгүүлбэрээр бичсэн, анхан дунд шатныханд хамгийн их зөвлөдөг сонгодог зохиол.",
+      "en": "Nobel Prize-winning novella celebrated for Hemingway's spare, direct, rhythmic syntax.",
+      "de": "Nobelpreisgekrönte Novelle in schnörkelloser, klarer Sprache; perfekt für Lerner ab A2/B1."
+    },
+    "note": "Study how concise simple sentences build profound narrative tension."
+  },
+  {
+    "id": "en_imm_04",
+    "title": "1984 (George Orwell)",
+    "type": "book",
+    "level": "B1-B2",
+    "description": {
+      "mn": "Үгийн баялаг, улс төр нийгмийн дүн шинжилгээ, хэлний хүчийг харуулсан дэлхийн сонгодог бүтээл.",
+      "en": "Dystopian masterpiece written in clean, analytical English, essential for mastering political discourse.",
+      "de": "Dystopischer Klassiker in präziser Prosa; ideal zur Festigung von B2-Diskursstrukturen."
+    },
+    "note": "Pay attention to compound nouns, passive constructions, and Newspeak prefixes."
+  },
+  {
+    "id": "en_imm_05",
+    "title": "Planet Earth & Blue Planet (BBC)",
+    "type": "show",
+    "level": "B1-B2",
+    "description": {
+      "mn": "Дэвид Аттенборогийн гайхалтай тайлбартай, төгс дуудлага, дүрслэх чадварыг хөгжүүлэх шилдэг байгалийн баримтат цуврал.",
+      "en": "Legendary documentary series narrated by Sir David Attenborough featuring flawless enunciation and vivid vocabulary.",
+      "de": "Naturdokumentationen mit perfekter englischer Artikulation und reichem deskriptiven Wortschatz."
+    },
+    "note": "Focus on adjective-noun pairings and poetic descriptive phrasing."
+  }
+]

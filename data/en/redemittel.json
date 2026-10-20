@@ -1,0 +1,109 @@
+{
+  "sections": [
+    {
+      "id": "einleitung",
+      "name": "Introduction & Topic Statement",
+      "description": "Formulas to introduce and structure presentations and spoken arguments.",
+      "items": [
+        {
+          "formula": "Today, I would like to focus on...",
+          "mn": "Өнөөдөр би ... дээр анхаарлаа хандуулахыг хүсэж байна.",
+          "en": "Today, I would like to focus on...",
+          "de": "Heute möchte ich mich auf ... konzentrieren.",
+          "example": "Today, I would like to focus on sustainable urban development."
+        },
+        {
+          "formula": "The purpose of this presentation is to examine...",
+          "mn": "Энэхүү илтгэлийн зорилго нь ...-ийг судлан авч үзэх явдал юм.",
+          "en": "The purpose of this presentation is to examine...",
+          "de": "Der Zweck dieses Vortrags ist es, ... zu untersuchen.",
+          "example": "The purpose of this talk is to examine renewable energy transitions."
+        }
+      ]
+    },
+    {
+      "id": "meinung",
+      "name": "Expressing Opinion",
+      "description": "Formulas to state and substantiate viewpoints.",
+      "items": [
+        {
+          "formula": "From my point of view, it is crucial that...",
+          "mn": "Миний байр сууринаас үзэхэд ... нь нэн чухал юм.",
+          "en": "From my point of view, it is crucial that...",
+          "de": "Aus meiner Sicht ist es von entscheidender Bedeutung, dass...",
+          "example": "From my point of view, it is crucial that we invest in early education."
+        },
+        {
+          "formula": "I am strongly inclined to believe that...",
+          "mn": "Би ... гэдэгт ихээхэн итгэх хандлагатай байна.",
+          "en": "I am strongly inclined to believe that...",
+          "de": "Ich bin stark geneigt zu glauben, dass...",
+          "example": "I am strongly inclined to believe that regular practice yields mastery."
+        }
+      ]
+    },
+    {
+      "id": "vor_nachteile",
+      "name": "Weighing Pros & Cons",
+      "description": "Formulas to balance conflicting perspectives and advantages.",
+      "items": [
+        {
+          "formula": "While it is undeniably true that..., on the flip side...",
+          "mn": "... гэдэг нь маргаангүй үнэн хэдий ч, нөгөө талаас...",
+          "en": "While it is undeniably true that..., on the flip side...",
+          "de": "Während es unbestreitbar wahr ist, dass..., andererseits...",
+          "example": "While automation boosts productivity, on the flip side it creates workforce displacement."
+        },
+        {
+          "formula": "The main benefit lies in..., whereas the primary drawback is...",
+          "mn": "Гол ашиг тус нь ...-д орших бөгөөд гол дутагдал нь...",
+          "en": "The main benefit lies in..., whereas the primary drawback is...",
+          "de": "Der Hauptvorteil liegt in..., während der wesentliche Nachteil ... ist.",
+          "example": "The main benefit lies in speed, whereas the primary drawback is high initial cost."
+        }
+      ]
+    },
+    {
+      "id": "beispiele",
+      "name": "Illustrating with Examples",
+      "description": "Formulas to support arguments with authentic examples.",
+      "items": [
+        {
+          "formula": "To illustrate this point, consider the case of...",
+          "mn": "Энэ санааг тодруулахын тулд ...-ийн жишээг авч үзье.",
+          "en": "To illustrate this point, consider the case of...",
+          "de": "Um diesen Punkt zu veranschaulichen, betrachten wir den Fall von...",
+          "example": "To illustrate this point, consider the case of Scandinavian public education."
+        },
+        {
+          "formula": "A notable case in point is...",
+          "mn": "Үүний тод нэгэн жишээ бол...",
+          "en": "A notable case in point is...",
+          "de": "Ein bemerkenswertes Beispiel dafür ist...",
+          "example": "A notable case in point is the rapid expansion of solar power."
+        }
+      ]
+    },
+    {
+      "id": "schluss",
+      "name": "Concluding & Summarizing",
+      "description": "Formulas to close an argument with precision.",
+      "items": [
+        {
+          "formula": "Taking everything into account, we can draw the conclusion that...",
+          "mn": "Бүгдийг харгалзан үзээд бид ... гэсэн дүгнэлтэд хүрч чадна.",
+          "en": "Taking everything into account, we can draw the conclusion that...",
+          "de": "Alles in allem können wir den Schluss ziehen, dass...",
+          "example": "Taking everything into account, we can draw the conclusion that proactive planning is essential."
+        },
+        {
+          "formula": "Thank you for your time and consideration. I would be pleased to answer questions.",
+          "mn": "Цаг гарган анхаарсанд баярлалаа. Асуултуудад хариулахад таатай байх болно.",
+          "en": "Thank you for your time and consideration. I would be pleased to answer questions.",
+          "de": "Vielen Dank für Ihre Aufmerksamkeit. Ich beantworte gerne Ihre Fragen.",
+          "example": "Thank you for your attention. I am happy to open the floor to questions."
+        }
+      ]
+    }
+  ]
+}

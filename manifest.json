@@ -1,7 +1,7 @@
 {
-  "name": "ARL - B1 German Flashcards",
+  "name": "ARL - Minimal Language Mastery",
   "short_name": "ARL",
-  "description": "Ultra-minimalist Goethe B1 German-to-Mongolian vocabulary mastery PWA with active recall and daily retention gating.",
+  "description": "Ultra-minimalist active recall language learning PWA for German and English with deterministic SM-2 spaced repetition.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

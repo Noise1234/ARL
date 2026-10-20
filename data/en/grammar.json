@@ -1,0 +1,327 @@
+[
+  {
+    "folder_id": "folder_01",
+    "folder_name": "Folder 01: A1 - Foundations",
+    "level": "A1",
+    "topics": [
+      {
+        "id": "en_a1_present_simple_cont",
+        "title": "Present Simple vs Present Continuous",
+        "core_concept": {
+          "mn": "Present Simple нь тогтмол зуршил, баримтыг заадаг бол Present Continuous нь яг одоо ярьж байх агшинд болж буй түр зуурын үйлийг заана.",
+          "en": "Present Simple expresses habits, routines, and permanent truths. Present Continuous expresses temporary actions happening right now at the time of speaking.",
+          "de": "Present Simple drückt Gewohnheiten und Fakten aus. Present Continuous beschreibt Handlungen, die im Moment des Sprechens ablaufen."
+        },
+        "pattern": "Simple: Subject + V1(s/es) | Continuous: Subject + am/is/are + V-ing",
+        "examples": [
+          {
+            "target": "I usually drink tea, but today I am drinking coffee.",
+            "mn": "Би ихэвчлэн цай уудаг боловч өнөөдөр кофе ууж байна.",
+            "en": "I usually drink tea, but today I am drinking coffee."
+          }
+        ],
+        "common_trap": "Stative verbs (like, know, understand, believe, want) are not used in continuous forms: 'I understand' (NOT: 'I am understanding')."
+      },
+      {
+        "id": "en_a1_past_simple",
+        "title": "Past Simple (Regular & Irregular Verbs)",
+        "core_concept": {
+          "mn": "Өнгөрсөнд тодорхой цаг хугацаанд эхэлж дууссан үйлийг Past Simple-ээр илэрхийлнэ.",
+          "en": "Past Simple describes completed actions at a definite time in the past.",
+          "de": "Past Simple beschreibt abgeschlossene Handlungen zu einem bestimmten vergangenen Zeitpunkt."
+        },
+        "pattern": "Affirmative: Subject + V2 (-ed or irregular) | Negative: did not + V1 | Question: Did + Subject + V1?",
+        "examples": [
+          {
+            "target": "She went to London last summer.",
+            "mn": "Тэр өнгөрсөн зун Лондон руу явсан.",
+            "en": "She went to London last summer."
+          },
+          {
+            "target": "Did you see that documentary yesterday?",
+            "mn": "Та өчигдөр тэр баримтат киног үзсэн үү?",
+            "en": "Did you see that documentary yesterday?"
+          }
+        ],
+        "common_trap": "After 'did' or 'didn't', the main verb reverts to base form V1: 'Did you go?' (NOT: 'Did you went?')."
+      },
+      {
+        "id": "en_a1_articles",
+        "title": "Articles (a/an, the, zero article)",
+        "core_concept": {
+          "mn": "'a/an' нь ерөнхий, анх удаа дурдагдаж буй тоологдох ганц тооны нэр дээр; 'the' нь тодорхой, хоёр тал хоёулаа мэдэх зүйл дээр ашиглагдана.",
+          "en": "'A/an' is indefinite for singular countable nouns mentioned for the first time. 'The' is definite when both speaker and listener know which specific item is meant.",
+          "de": "'A/an' steht bei unbestimmten zählbaren Nomen im Singular. 'The' bezeichnet ein bestimmtes, bekanntes Nomen."
+        },
+        "pattern": "a + consonant sound | an + vowel sound | the + specific singular/plural | zero article + general plurals/uncountables",
+        "examples": [
+          {
+            "target": "I saw an elephant. The elephant was enormous.",
+            "mn": "Би нэг заан харсан. Тэр заан үнэхээр том байсан.",
+            "en": "I saw an elephant. The elephant was enormous."
+          }
+        ],
+        "common_trap": "Use 'an' before vowel sounds, not just letters: 'an hour' (h is silent), but 'a university' (starts with 'y' sound)."
+      }
+    ]
+  },
+  {
+    "folder_id": "folder_02",
+    "folder_name": "Folder 02: A2 - Core Structures",
+    "level": "A2",
+    "topics": [
+      {
+        "id": "en_a2_present_perfect",
+        "title": "Present Perfect Simple (Experience & Unfinished Time)",
+        "core_concept": {
+          "mn": "Өнгөрсөнд болсон боловч одоо үетэй шууд холбоотой, эсвэл амьдралын туршлагыг (ever/never/already/yet) илэрхийлнэ.",
+          "en": "Present Perfect connects past actions with the present: past experiences with no fixed time, or situations continuing up to now.",
+          "de": "Present Perfect verbindet Vergangenheit mit Gegenwart: Erfahrungen und noch andauernde Zeiträume."
+        },
+        "pattern": "Subject + have/has + Past Participle (V3)",
+        "examples": [
+          {
+            "target": "Have you ever visited Japan?",
+            "mn": "Та урьд нь Японд очиж үзсэн үү?",
+            "en": "Have you ever visited Japan?"
+          },
+          {
+            "target": "I have lived here for five years.",
+            "mn": "Би энд таван жил амьдарч байна.",
+            "en": "I have lived here for five years."
+          }
+        ],
+        "common_trap": "Never use specific past time words (yesterday, in 2020, two days ago) with Present Perfect. Use Past Simple instead."
+      },
+      {
+        "id": "en_a2_future_forms",
+        "title": "Future Forms (will vs going to vs Present Continuous)",
+        "core_concept": {
+          "mn": "'will' нь агшин зуурын шийдвэр, таамаглал; 'be going to' нь урьдчилан төлөвлөсөн санаа, баттай шинж тэмдэг; Present Continuous нь товлогдсон цаг товтой үйлийг заана.",
+          "en": "'Will' is for spontaneous decisions and predictions. 'Be going to' is for intentions and observable evidence. Present Continuous is for fixed scheduled arrangements.",
+          "de": "'Will' für spontane Entschlüsse. 'Be going to' für Pläne und evidente Vorzeichen. Present Continuous für feste Verabredungen."
+        },
+        "pattern": "will + V1 | am/is/are going to + V1 | am/is/are + V-ing",
+        "examples": [
+          {
+            "target": "Look at those dark clouds! It is going to rain.",
+            "mn": "Тэр хар үүлсийг хараач! Бороо орох гэж байна.",
+            "en": "Look at those dark clouds! It is going to rain."
+          },
+          {
+            "target": "I will carry that heavy bag for you.",
+            "mn": "Би тэр хүнд цүнхийг чинь өргөөд өгье.",
+            "en": "I will carry that heavy bag for you."
+          }
+        ],
+        "common_trap": "Do not use 'will' for plans made beforehand: 'I am going to visit my doctor tomorrow' (NOT: 'I will visit my doctor tomorrow')."
+      },
+      {
+        "id": "en_a2_modals_obligation",
+        "title": "Modals of Obligation & Ability (can, must, should, have to)",
+        "core_concept": {
+          "mn": "'must' нь дотоод чухал шаардлага, 'have to' нь гаднын дүрэм журам, 'should' нь зөвлөгөө, 'can/could' нь чадварыг заана.",
+          "en": "'Must' expresses strong internal necessity. 'Have to' expresses external rules/laws. 'Should' gives advice. 'Can' expresses ability or permission.",
+          "de": "'Must' drückt persönliche Notwendigkeit aus, 'have to' externe Regeln, 'should' Ratschläge, 'can' Fähigkeit."
+        },
+        "pattern": "Modal + Base Verb (V1) (no 'to', except 'have to')",
+        "examples": [
+          {
+            "target": "You should drink more water every day.",
+            "mn": "Та өдөр бүр илүү их ус ууж байх хэрэгтэй. (зөвлөгөө)",
+            "en": "You should drink more water every day."
+          },
+          {
+            "target": "In Britain, drivers have to drive on the left.",
+            "mn": "Их Британид жолооч нар зүүн гараа барьж явах ёстой.",
+            "en": "In Britain, drivers have to drive on the left."
+          }
+        ],
+        "common_trap": "'Must not' means prohibited (хориотой), whereas 'don't have to' means not necessary (албагүй, шаардлагагүй)."
+      }
+    ]
+  },
+  {
+    "folder_id": "folder_03",
+    "folder_name": "Folder 03: B1 - Intermediate Mastery",
+    "level": "B1",
+    "topics": [
+      {
+        "id": "en_b1_conditionals_012",
+        "title": "Conditionals (Zero, First & Second)",
+        "core_concept": {
+          "mn": "Zero нь шинжлэх ухааны баримт; 1st нь ирээдүйд бодитой биелэх магадлалтай нөхцөл; 2nd нь одоо болон ирээдүйд бодит бус, төсөөллийн нөхцөлийг заана.",
+          "en": "Zero: scientific truths. First: real future possibilities. Second: hypothetical, unreal present/future situations.",
+          "de": "Zero Conditional: Naturgesetze. 1st Conditional: realistische Zukunft. 2nd Conditional: hypothetische Gegenwart."
+        },
+        "pattern": "0: If + Present, Present | 1st: If + Present, will + V1 | 2nd: If + Past Simple, would + V1",
+        "examples": [
+          {
+            "target": "If it rains tomorrow, we will stay at home. (First Conditional)",
+            "mn": "Хэрэв маргааш бороо орвол бид гэртээ үлдэнэ.",
+            "en": "If it rains tomorrow, we will stay at home."
+          },
+          {
+            "target": "If I won the lottery, I would travel the world. (Second Conditional)",
+            "mn": "Би сугалаанд хожвол дэлхийгээр аялах байсан.",
+            "en": "If I won the lottery, I would travel the world."
+          }
+        ],
+        "common_trap": "Never put 'will' or 'would' in the 'if'-clause: 'If I study' (NOT: 'If I will study')."
+      },
+      {
+        "id": "en_b1_passive_voice",
+        "title": "Passive Voice (Present & Past Simple)",
+        "core_concept": {
+          "mn": "Үйлийн эзнээс илүү үйл явдал эсвэл үр дүн чухал үед үйлдүүлэгч хэвийг хэрэглэнэ.",
+          "en": "Passive Voice shifts focus to the recipient of the action or the result, rather than who performed it.",
+          "de": "Das Passiv hebt die Handlung oder das Ergebnis hervor, nicht den Ausführenden."
+        },
+        "pattern": "Subject + be (am/is/are/was/were) + Past Participle (V3) (+ by agent)",
+        "examples": [
+          {
+            "target": "This bridge was built in 1890.",
+            "mn": "Энэ гүүр 1890 онд баригдсан.",
+            "en": "This bridge was built in 1890."
+          },
+          {
+            "target": "Millions of emails are sent every minute.",
+            "mn": "Минут тутамд сая сая цахим шуудан илгээгддэг.",
+            "en": "Millions of emails are sent every minute."
+          }
+        ],
+        "common_trap": "Ensure the auxiliary 'be' agrees with the new subject in number and tense: 'The cars WERE made' (NOT: 'was made')."
+      },
+      {
+        "id": "en_b1_relative_clauses",
+        "title": "Defining Relative Clauses (who, which, that, where, whose)",
+        "core_concept": {
+          "mn": "Нэр үгийг тодорхойлж, хэн эсвэл аль зүйл болохыг ялган заахад шаардлагатай мэдээллийг өгдөг.",
+          "en": "Defining relative clauses give essential information about a noun. Without this clause, the sentence would be incomplete.",
+          "de": "Notwendige Relativsätze liefern unverzichtbare Identifikationsmerkmale und stehen im Englischen ohne Komma."
+        },
+        "pattern": "Noun + who (people) / which/that (things) / where (places) / whose (possession) + clause",
+        "examples": [
+          {
+            "target": "The woman who called you earlier is my manager.",
+            "mn": "Өмнө нь тань руу залгасан эмэгтэй бол манай менежер.",
+            "en": "The woman who called you earlier is my manager."
+          }
+        ],
+        "common_trap": "Do not put commas in defining relative clauses in English! Commas are only for non-defining clauses."
+      },
+      {
+        "id": "en_b1_modals_deduction",
+        "title": "Modals of Deduction (must, can't, might/may)",
+        "core_concept": {
+          "mn": "Одоо цаг дээр баримтад үндэслэн дүгнэлт гаргах: 100% баттай үнэн бол 'must', 100% боломжгүй бол 'can't', магадлалтай бол 'might/may'.",
+          "en": "Use 'must' when 99% sure something is true. Use 'can't' when 99% sure it is impossible. Use 'might/could' for possibilities.",
+          "de": "Schlussfolgerungen in der Gegenwart: 'must' (sicher ja), 'can't' (sicher nein), 'might' (vielleicht)."
+        },
+        "pattern": "Subject + must / can't / might + Base Verb (V1)",
+        "examples": [
+          {
+            "target": "He has been running for two hours; he must be exhausted.",
+            "mn": "Тэр хоёр цаг гүйсэн, маш их ядарсан байх ёстой.",
+            "en": "He has been running for two hours; he must be exhausted."
+          },
+          {
+            "target": "That cannot be true; it makes no sense.",
+            "mn": "Энэ үнэн байх ямар ч боломжгүй; огт утгагүй байна.",
+            "en": "That cannot be true; it makes no sense."
+          }
+        ],
+        "common_trap": "Never use 'must not' for impossibility! The opposite of 'must be' is 'can't be' (NOT: 'must not be')."
+      }
+    ]
+  },
+  {
+    "folder_id": "folder_04",
+    "folder_name": "Folder 04: B2 - Advanced Precision",
+    "level": "B2",
+    "topics": [
+      {
+        "id": "en_b2_third_mixed_conditionals",
+        "title": "Third & Mixed Conditionals",
+        "core_concept": {
+          "mn": "3-р нөхцөл нь өнгөрсөнд өөрчлөх боломжгүй харамслыг илэрхийлдэг бол Mixed Conditional нь өнгөрсөн үйл явдлын ОДОО үеийн үр дагаврыг холбодог.",
+          "en": "Third Conditional reflects on unreal pasts and regrets. Mixed Conditionals connect an unreal past cause with a present result.",
+          "de": "3rd Conditional drückt irreale Vergangenheit aus. Mixed Conditionals verknüpfen vergangene Ursachen mit gegenwärtigen Folgen."
+        },
+        "pattern": "3rd: If + Past Perfect, would have + V3 | Mixed: If + had + V3, would + V1 (now)",
+        "examples": [
+          {
+            "target": "If I had studied harder, I would have passed the exam.",
+            "mn": "Би илүү хичээж сурсан байсан бол шалгалтаа давах байсан.",
+            "en": "If I had studied harder, I would have passed the exam."
+          },
+          {
+            "target": "If she had taken that job last year, she would be living in Paris now.",
+            "mn": "Хэрэв тэр өнгөрсөн жил тэр ажлыг авсан байсан бол одоо Парист амьдарч байх байсан.",
+            "en": "If she had taken that job last year, she would be living in Paris now."
+          }
+        ],
+        "common_trap": "Do not say 'If I would have known'. The correct form is 'If I had known'."
+      },
+      {
+        "id": "en_b2_reported_speech",
+        "title": "Reported Speech & Tense Backshift",
+        "core_concept": {
+          "mn": "Бусдын хэлсэн үгийг дамжуулан ярихад өгүүлэгч үйл үг нь өнгөрсөн цагт байвал цагууд нэг алхам ухардаг (Backshift).",
+          "en": "When reporting statements with a past reporting verb (said, told), present tenses shift back to past tenses, pronouns adapt, and time markers adjust.",
+          "de": "In der indirekten Rede mit vergangenem Einleitungsverb verschieben sich die Zeiten um eine Stufe in die Vergangenheit."
+        },
+        "pattern": "Present Simple -> Past Simple | Present Continuous -> Past Continuous | Past Simple -> Past Perfect | will -> would",
+        "examples": [
+          {
+            "target": "Direct: 'I am working on the report.' -> Reported: She said that she was working on the report.",
+            "mn": "Шууд: 'Би тайлан дээр ажиллаж байна.' -> Дам: Тэр тайлан дээр ажиллаж байгаа гэж хэлсэн.",
+            "en": "She said that she was working on the report."
+          }
+        ],
+        "common_trap": "'Tell' requires a personal object: 'He told ME' (NOT: 'He told that'). 'Say' does not: 'He said that'."
+      },
+      {
+        "id": "en_b2_causative_passive",
+        "title": "Causative Passive (have/get something done)",
+        "core_concept": {
+          "mn": "Өөр хүнээр эсвэл үйлчилгээний байгууллагаар ямар нэг зүйлийг хийлгэхэд Causative бүтцийг хэрэглэнэ.",
+          "en": "The causative structure 'have/get something done' indicates arranging for someone else or a professional service to do something for you.",
+          "de": "Drückt aus, dass man eine Dienstleistung durch Dritte ausführen lässt."
+        },
+        "pattern": "Subject + have / get + object + Past Participle (V3)",
+        "examples": [
+          {
+            "target": "I had my car repaired yesterday at the garage.",
+            "mn": "Би өчигдөр засварын газарт машинаа засуулсан.",
+            "en": "I had my car repaired yesterday at the garage."
+          }
+        ],
+        "common_trap": "'I repaired my car' means you repaired it yourself with your own hands! If a mechanic did it, use 'I had my car repaired'."
+      },
+      {
+        "id": "en_b2_modals_past_deduction",
+        "title": "Modals of Past Deduction (must have, can't have, might have)",
+        "core_concept": {
+          "mn": "Өнгөрсөнд болж өнгөрсөн үйл явдлын тухай дүгнэлт гаргахад modal + have + V3 бүтцийг ашигладаг.",
+          "en": "Speculating or deducing about past events: 'must have + V3' (almost certain it happened), 'can't have + V3' (impossible that it happened).",
+          "de": "Schlussfolgerungen über vergangene Ereignisse: must have (gewiss geschehen), can't have (unmöglich geschehen)."
+        },
+        "pattern": "Subject + must / can't / might / could + have + Past Participle (V3)",
+        "examples": [
+          {
+            "target": "The streets are soaking wet; it must have rained overnight.",
+            "mn": "Гудамж шал нойтон байна; шөнө бороо орсон байх ёстой.",
+            "en": "The streets are soaking wet; it must have rained overnight."
+          },
+          {
+            "target": "He cannot have stolen the wallet; he was with me all evening.",
+            "mn": "Тэр түрийвчийг хулгайлсан байх ямар ч боломжгүй; тэр оройжин надтай хамт байсан.",
+            "en": "He cannot have stolen the wallet; he was with me all evening."
+          }
+        ],
+        "common_trap": "Do not confuse 'should have' (past duty not done) with 'must have' (past logical certainty)."
+      }
+    ]
+  }
+]

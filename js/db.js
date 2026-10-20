@@ -1,216 +1,243 @@
-// IndexedDB storage layer with localStorage fallback and export/import
-const DB_NAME = 'arl_db';
-const DB_VERSION = 1;
+/**
+ * ARL - Pure Persistence Layer
+ * IndexedDB storage with localStorage/in-memory fallback for SRS progress, settings, and backup management.
+ * Fully resilient against quota exceeded, private browsing security restrictions, and storage corruption.
+ */
+
+const DB_NAME = 'arl_v2_db';
+const DB_VERSION = 2;
 
 class ARLDatabase {
   constructor() {
     this.db = null;
     this.isReady = false;
+    this.memoryStore = {
+      progress: new Map(),
+      settings: new Map()
+    };
   }
 
   async init() {
     if (this.db) return this.db;
 
-    return new Promise((resolve, reject) => {
-      const request = indexedDB.open(DB_NAME, DB_VERSION);
-
-      request.onupgradeneeded = (event) => {
-        const db = event.target.result;
-
-        // Store for words (built-in B1 + custom user words)
-        if (!db.objectStoreNames.contains('words')) {
-          const wordStore = db.createObjectStore('words', { keyPath: 'id' });
-          wordStore.createIndex('pos', 'pos', { unique: false });
-          wordStore.createIndex('topic', 'topic', { unique: false });
-          wordStore.createIndex('isCustom', 'isCustom', { unique: false });
-        }
-
-        // Store for user progress & SRS state
-        if (!db.objectStoreNames.contains('progress')) {
-          const progressStore = db.createObjectStore('progress', { keyPath: 'wordId' });
-          progressStore.createIndex('status', 'status', { unique: false });
-          progressStore.createIndex('lastStudied', 'lastStudied', { unique: false });
-        }
-
-        // Store for user profile, streaks, and settings
-        if (!db.objectStoreNames.contains('stats')) {
-          db.createObjectStore('stats', { keyPath: 'key' });
-        }
-      };
-
-      request.onsuccess = (event) => {
-        this.db = event.target.result;
-        this.isReady = true;
-        resolve(this.db);
-      };
-
-      request.onerror = (event) => {
-        console.error('IndexedDB open error:', event.target.error);
-        reject(event.target.error);
-      };
-    });
-  }
-
-  // Populate words if empty
-  async seedWordsIfEmpty(wordsList) {
-    await this.init();
-    const count = await this.getWordsCount();
-    if (count === 0 && wordsList && wordsList.length > 0) {
-      const tx = this.db.transaction('words', 'readwrite');
-      const store = tx.objectStore('words');
-      for (const w of wordsList) {
-        store.put(w);
-      }
-      return new Promise((resolve, reject) => {
-        tx.oncomplete = () => resolve(true);
-        tx.onerror = () => reject(tx.error);
-      });
+    if (typeof indexedDB === 'undefined') {
+      this.isReady = true;
+      return null;
     }
-    return false;
-  }
 
-  async getWordsCount() {
-    await this.init();
     return new Promise((resolve) => {
-      const tx = this.db.transaction('words', 'readonly');
-      const req = tx.objectStore('words').count();
-      req.onsuccess = () => resolve(req.result);
-      req.onerror = () => resolve(0);
+      try {
+        const request = indexedDB.open(DB_NAME, DB_VERSION);
+
+        request.onupgradeneeded = (event) => {
+          try {
+            const db = event.target.result;
+            if (!db.objectStoreNames.contains('progress')) {
+              const progStore = db.createObjectStore('progress', { keyPath: 'wordId' });
+              progStore.createIndex('dueDate', 'dueDate', { unique: false });
+              progStore.createIndex('lastStudied', 'lastStudied', { unique: false });
+            }
+            if (!db.objectStoreNames.contains('settings')) {
+              db.createObjectStore('settings', { keyPath: 'key' });
+            }
+          } catch (upgradeErr) {
+            console.warn('IndexedDB upgrade failed:', upgradeErr);
+          }
+        };
+
+        request.onsuccess = (event) => {
+          this.db = event.target.result;
+          this.isReady = true;
+          resolve(this.db);
+        };
+
+        request.onerror = (event) => {
+          console.warn('IndexedDB unavailable, falling back to memory/localStorage:', event.target ? event.target.error : event);
+          this.isReady = true;
+          resolve(null);
+        };
+      } catch (openErr) {
+        console.warn('IndexedDB open threw error, falling back:', openErr);
+        this.isReady = true;
+        resolve(null);
+      }
     });
   }
 
-  async getAllWords() {
+  async getSetting(key, defaultValue = null) {
     await this.init();
-    return new Promise((resolve, reject) => {
-      const tx = this.db.transaction('words', 'readonly');
-      const req = tx.objectStore('words').getAll();
-      req.onsuccess = () => resolve(req.result || []);
-      req.onerror = () => reject(req.error);
+    if (!this.db) {
+      return this._getSettingFallback(key, defaultValue);
+    }
+
+    return new Promise((resolve) => {
+      try {
+        const tx = this.db.transaction('settings', 'readonly');
+        const req = tx.objectStore('settings').get(key);
+        req.onsuccess = () => resolve(req.result ? req.result.value : defaultValue);
+        req.onerror = () => resolve(this._getSettingFallback(key, defaultValue));
+      } catch (err) {
+        console.warn('IndexedDB error in getSetting, falling back:', err);
+        resolve(this._getSettingFallback(key, defaultValue));
+      }
     });
   }
 
-  async saveCustomWord(customWord) {
+  _getSettingFallback(key, defaultValue) {
+    if (typeof localStorage !== 'undefined') {
+      try {
+        const item = localStorage.getItem(`arl_setting_${key}`);
+        return item !== null ? JSON.parse(item) : defaultValue;
+      } catch (e) {}
+    }
+    return this.memoryStore.settings.has(key) ? this.memoryStore.settings.get(key) : defaultValue;
+  }
+
+  async setSetting(key, value) {
     await this.init();
-    const wordEntry = {
-      id: customWord.id || `custom_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
-      word: customWord.word.trim(),
-      article: customWord.article || null,
-      plural: customWord.plural || null,
-      display: customWord.display || customWord.word.trim(),
-      pos: customWord.pos || 'noun',
-      mn: customWord.mn.trim(),
-      example_de: customWord.example_de ? customWord.example_de.trim() : '',
-      example_mn: customWord.example_mn ? customWord.example_mn.trim() : '',
-      topic: customWord.topic || 'Custom',
-      level: 'B1+',
-      isCustom: true,
-      createdAt: Date.now()
-    };
+    if (!this.db) {
+      return this._setSettingFallback(key, value);
+    }
 
-    return new Promise((resolve, reject) => {
-      const tx = this.db.transaction('words', 'readwrite');
-      const req = tx.objectStore('words').put(wordEntry);
-      req.onsuccess = () => resolve(wordEntry);
-      req.onerror = () => reject(req.error);
+    return new Promise((resolve) => {
+      try {
+        const tx = this.db.transaction('settings', 'readwrite');
+        const req = tx.objectStore('settings').put({ key, value });
+        req.onsuccess = () => resolve(value);
+        req.onerror = () => resolve(this._setSettingFallback(key, value));
+      } catch (err) {
+        console.warn('IndexedDB error in setSetting, falling back:', err);
+        resolve(this._setSettingFallback(key, value));
+      }
     });
   }
 
-  // Progress Methods
+  _setSettingFallback(key, value) {
+    if (typeof localStorage !== 'undefined') {
+      try {
+        localStorage.setItem(`arl_setting_${key}`, JSON.stringify(value));
+      } catch (e) {}
+    }
+    this.memoryStore.settings.set(key, value);
+    return value;
+  }
+
   async getProgress(wordId) {
     await this.init();
+    if (!this.db) {
+      return this._getProgressFallback(wordId);
+    }
+
     return new Promise((resolve) => {
-      const tx = this.db.transaction('progress', 'readonly');
-      const req = tx.objectStore('progress').get(wordId);
-      req.onsuccess = () => resolve(req.result || null);
-      req.onerror = () => resolve(null);
+      try {
+        const tx = this.db.transaction('progress', 'readonly');
+        const req = tx.objectStore('progress').get(wordId);
+        req.onsuccess = () => resolve(req.result || null);
+        req.onerror = () => resolve(this._getProgressFallback(wordId));
+      } catch (err) {
+        console.warn('IndexedDB error in getProgress, falling back:', err);
+        resolve(this._getProgressFallback(wordId));
+      }
     });
+  }
+
+  _getProgressFallback(wordId) {
+    if (typeof localStorage !== 'undefined') {
+      try {
+        const item = localStorage.getItem(`arl_prog_${wordId}`);
+        return item ? JSON.parse(item) : null;
+      } catch (e) {}
+    }
+    return this.memoryStore.progress.get(wordId) || null;
+  }
+
+  async saveProgress(progressRecord) {
+    await this.init();
+    if (!progressRecord || !progressRecord.wordId) return null;
+
+    if (!this.db) {
+      return this._saveProgressFallback(progressRecord);
+    }
+
+    return new Promise((resolve) => {
+      try {
+        const tx = this.db.transaction('progress', 'readwrite');
+        const req = tx.objectStore('progress').put(progressRecord);
+        req.onsuccess = () => resolve(progressRecord);
+        req.onerror = () => resolve(this._saveProgressFallback(progressRecord));
+      } catch (err) {
+        console.warn('IndexedDB error in saveProgress, falling back:', err);
+        resolve(this._saveProgressFallback(progressRecord));
+      }
+    });
+  }
+
+  _saveProgressFallback(progressRecord) {
+    if (typeof localStorage !== 'undefined') {
+      try {
+        localStorage.setItem(`arl_prog_${progressRecord.wordId}`, JSON.stringify(progressRecord));
+      } catch (e) {}
+    }
+    this.memoryStore.progress.set(progressRecord.wordId, progressRecord);
+    return progressRecord;
   }
 
   async getAllProgress() {
     await this.init();
-    return new Promise((resolve, reject) => {
-      const tx = this.db.transaction('progress', 'readonly');
-      const req = tx.objectStore('progress').getAll();
-      req.onsuccess = () => resolve(req.result || []);
-      req.onerror = () => reject(req.error);
-    });
-  }
+    if (!this.db) {
+      return this._getAllProgressFallback();
+    }
 
-  async updateWordProgress(wordId, status) {
-    // status: 'memorized' | 'learning'
-    await this.init();
-    const existing = (await this.getProgress(wordId)) || {
-      wordId,
-      status: 'new',
-      timesMemorized: 0,
-      timesReviewed: 0,
-      history: []
-    };
-
-    const now = Date.now();
-    const updated = {
-      ...existing,
-      status: status,
-      lastStudied: now,
-      timesReviewed: (existing.timesReviewed || 0) + 1,
-      timesMemorized: status === 'memorized' ? (existing.timesMemorized || 0) + 1 : (existing.timesMemorized || 0),
-      history: [...(existing.history || []).slice(-20), { date: now, status }]
-    };
-
-    return new Promise((resolve, reject) => {
-      const tx = this.db.transaction('progress', 'readwrite');
-      const req = tx.objectStore('progress').put(updated);
-      req.onsuccess = () => resolve(updated);
-      req.onerror = () => reject(req.error);
-    });
-  }
-
-  // Stats & Streak Methods
-  async getStats() {
-    await this.init();
     return new Promise((resolve) => {
-      const tx = this.db.transaction('stats', 'readonly');
-      const req = tx.objectStore('stats').get('user_stats');
-      req.onsuccess = () => {
-        const stats = req.result ? req.result.data : null;
-        resolve(stats || {
-          streak: 0,
-          lastActiveDate: null,
-          lastRetentionCheckDate: null,
-          batchSize: 15,
-          totalReviews: 0
-        });
-      };
-      req.onerror = () => resolve({ streak: 0, lastActiveDate: null, batchSize: 15 });
+      try {
+        const tx = this.db.transaction('progress', 'readonly');
+        const req = tx.objectStore('progress').getAll();
+        req.onsuccess = () => resolve(req.result || []);
+        req.onerror = () => resolve(this._getAllProgressFallback());
+      } catch (err) {
+        console.warn('IndexedDB transaction error in getAllProgress:', err);
+        resolve(this._getAllProgressFallback());
+      }
     });
   }
 
-  async saveStats(statsData) {
-    await this.init();
-    return new Promise((resolve, reject) => {
-      const tx = this.db.transaction('stats', 'readwrite');
-      const req = tx.objectStore('stats').put({ key: 'user_stats', data: statsData });
-      req.onsuccess = () => resolve(statsData);
-      req.onerror = () => reject(req.error);
-    });
+  _getAllProgressFallback() {
+    if (typeof localStorage !== 'undefined') {
+      const results = [];
+      try {
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && k.startsWith('arl_prog_')) {
+            try {
+              results.push(JSON.parse(localStorage.getItem(k)));
+            } catch (e) {}
+          }
+        }
+      } catch (lsErr) {
+        console.warn('localStorage read error:', lsErr);
+      }
+      return results;
+    }
+    return Array.from(this.memoryStore.progress.values());
   }
 
-  // Backup Export & Import
   async exportBackup() {
     await this.init();
-    const words = await this.getAllWords();
-    const progress = await this.getAllProgress();
-    const stats = await this.getStats();
-
-    const customWords = words.filter(w => w.isCustom);
+    const progressList = await this.getAllProgress();
+    const targetLang = await this.getSetting('targetLang', 'de');
+    const interfaceLang = await this.getSetting('interfaceLang', 'mn');
+    const cefrLevel = await this.getSetting('cefrLevel', 'b1');
 
     const backup = {
       app: 'ARL',
-      version: 1,
+      version: 2,
       exportDate: new Date().toISOString(),
-      stats,
-      customWords,
-      progress
+      settings: {
+        targetLang,
+        interfaceLang,
+        cefrLevel
+      },
+      progress: progressList
     };
 
     return JSON.stringify(backup, null, 2);
@@ -218,40 +245,26 @@ class ARLDatabase {
 
   async importBackup(jsonString) {
     await this.init();
-    try {
-      const data = JSON.parse(jsonString);
-      if (data.app !== 'ARL') {
-        throw new Error('Ungültiges Backup-Format: Keine ARL-Sicherungsdatei.');
-      }
-
-      // Restore custom words
-      if (Array.isArray(data.customWords)) {
-        const txW = this.db.transaction('words', 'readwrite');
-        const sW = txW.objectStore('words');
-        for (const w of data.customWords) {
-          sW.put(w);
-        }
-      }
-
-      // Restore progress
-      if (Array.isArray(data.progress)) {
-        const txP = this.db.transaction('progress', 'readwrite');
-        const sP = txP.objectStore('progress');
-        for (const p of data.progress) {
-          sP.put(p);
-        }
-      }
-
-      // Restore stats
-      if (data.stats) {
-        await this.saveStats(data.stats);
-      }
-
-      return true;
-    } catch (e) {
-      console.error('Backup import error:', e);
-      throw e;
+    const data = JSON.parse(jsonString);
+    if (!data || data.app !== 'ARL') {
+      throw new Error('Invalid ARL backup format');
     }
+
+    if (data.settings) {
+      if (data.settings.targetLang) await this.setSetting('targetLang', data.settings.targetLang);
+      if (data.settings.interfaceLang) await this.setSetting('interfaceLang', data.settings.interfaceLang);
+      if (data.settings.cefrLevel) await this.setSetting('cefrLevel', data.settings.cefrLevel);
+    }
+
+    if (Array.isArray(data.progress)) {
+      for (const item of data.progress) {
+        if (item && item.wordId) {
+          await this.saveProgress(item);
+        }
+      }
+    }
+
+    return true;
   }
 }
 

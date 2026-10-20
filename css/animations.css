@@ -1,34 +1,24 @@
-/* ARL Animations & Transitions */
+/* ARL v2.0 Animations - Instant, Zero-Latency Transitions */
 
-@keyframes pulseGlow {
-  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); }
-  70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+/* Clean instant render with subtle entry */
+.active-flashcard,
+.grammar-topic-card,
+.settings-hud-card,
+.media-card-item {
+  animation: none;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Eliminate all flip transition delays */
+.active-flashcard.revealed-state {
+  transition: none;
 }
 
-.dashboard-container,
-.deck-wrapper,
-.quiz-wrapper,
-.batch-summary-card,
-.modal-card,
-.retention-card {
-  animation: fadeIn 0.22s ease-out;
-}
-
-/* Card Flipping Performance */
-.flashcard-inner {
-  will-change: transform;
-}
-
-/* Prevent text selection during swipe */
-.flashcard-card,
-.quiz-option-btn,
-.btn-action {
+/* User select prevention on interactive keyhints */
+.keyhint-btn,
+.hud-nav-item,
+.grammar-tab-btn,
+.filter-tab-btn,
+.lvl-choice-btn {
   user-select: none;
   -webkit-user-select: none;
 }

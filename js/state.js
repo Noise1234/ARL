@@ -1,211 +1,239 @@
-import { db } from './db.js';
+/**
+ * ARL - Global Application State Manager
+ * Coordinates dataset loading, pure SRS scheduling, queue management, and audio synthesis.
+ */
 
-class StateManager {
+import { db } from './db.js';
+import { scheduleCard, getQueueStats, isCardDue } from './srs.js';
+import { initI18n, setInterfaceLanguage, getInterfaceLanguage } from './i18n.js';
+import { normalizeNFC } from './unicode.js';
+
+class AppState {
   constructor() {
-    this.words = [];
-    this.wordsMap = new Map();
+    this.targetLang = 'de'; // 'de' | 'en'
+    this.interfaceLang = 'mn'; // 'mn' | 'en' | 'de'
+    this.cefrLevel = 'b1'; // 'a1' | 'a2' | 'b1' | 'b2'
+
+    this.cards = [];
+    this.cardsMap = new Map();
     this.progressMap = new Map();
-    this.stats = {
-      streak: 0,
-      lastActiveDate: null,
-      lastRetentionCheckDate: null,
-      batchSize: 15
-    };
+
+    this.studyQueue = [];
+    this.currentCardIndex = 0;
+    this.isCardRevealed = false;
+    this.showHint = false;
+    this.isGrading = false;
+
     this.listeners = new Set();
+    this.i18nLoaded = false;
   }
 
-  async loadInitialData() {
-    // 1. Fetch built-in words if empty
-    const count = await db.getWordsCount();
-    if (count === 0) {
+  async init() {
+    // 1. Load preferences
+    try {
+      this.targetLang = await db.getSetting('targetLang', 'de');
+      this.interfaceLang = await db.getSetting('interfaceLang', 'mn');
+      this.cefrLevel = await db.getSetting('cefrLevel', 'b1');
+    } catch (err) {
+      console.warn('Could not load settings from db:', err);
+    }
+
+    // 2. Load i18n dictionary
+    if (!this.i18nLoaded && typeof fetch !== 'undefined') {
       try {
-        const resp = await fetch('data/b1_words.json');
+        const resp = await fetch('data/i18n.json');
         if (resp.ok) {
-          const defaultWords = await resp.json();
-          await db.seedWordsIfEmpty(defaultWords);
+          const dict = await resp.json();
+          initI18n(dict, this.interfaceLang);
+          this.i18nLoaded = true;
         }
       } catch (err) {
-        console.warn('Could not fetch data/b1_words.json, will check local storage:', err);
+        console.warn('Failed to load data/i18n.json:', err);
       }
-    }
-
-    // 2. Load all words into memory
-    this.words = await db.getAllWords();
-    this.wordsMap.clear();
-    for (const w of this.words) {
-      this.wordsMap.set(w.id, w);
-    }
-
-    // 3. Load user progress
-    const progressList = await db.getAllProgress();
-    this.progressMap.clear();
-    for (const p of progressList) {
-      this.progressMap.set(p.wordId, p);
-    }
-
-    // 4. Load stats
-    this.stats = await db.getStats();
-    this.verifyStreak();
-
-    this.notify();
-  }
-
-  getTodayStr() {
-    const d = new Date();
-    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-  }
-
-  getYesterdayStr() {
-    const d = new Date();
-    d.setDate(d.getDate() - 1);
-    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-  }
-
-  verifyStreak() {
-    const today = this.getTodayStr();
-    const yesterday = this.getYesterdayStr();
-
-    if (!this.stats.lastActiveDate) {
-      this.stats.streak = 0;
-    } else if (this.stats.lastActiveDate !== today && this.stats.lastActiveDate !== yesterday) {
-      // Skipped at least one full day
-      this.stats.streak = 0;
-    }
-  }
-
-  async recordActivity() {
-    const today = this.getTodayStr();
-    const yesterday = this.getYesterdayStr();
-
-    if (this.stats.lastActiveDate === today) {
-      // Already active today, streak unchanged
-      return this.stats.streak;
-    }
-
-    if (this.stats.lastActiveDate === yesterday) {
-      this.stats.streak = (this.stats.streak || 0) + 1;
     } else {
-      this.stats.streak = 1;
+      setInterfaceLanguage(this.interfaceLang);
     }
 
-    this.stats.lastActiveDate = today;
-    await db.saveStats(this.stats);
-    this.notify();
-    return this.stats.streak;
-  }
-
-  async markRetentionCheckPassed() {
-    this.stats.lastRetentionCheckDate = this.getTodayStr();
-    await this.recordActivity();
-    await db.saveStats(this.stats);
-    this.notify();
-  }
-
-  isRetentionCheckDue() {
-    const today = this.getTodayStr();
-    if (this.stats.lastRetentionCheckDate === today) {
-      return false;
-    }
-    // Check if user has studied words on prior days or has any progress
-    const pastWords = this.getRetentionEligibleWords();
-    return pastWords.length >= 3;
-  }
-
-  getRetentionEligibleWords() {
-    const today = this.getTodayStr();
-    const eligible = [];
-
-    for (const [wordId, prog] of this.progressMap.entries()) {
-      if (prog.lastStudied) {
-        const studiedDate = new Date(prog.lastStudied);
-        const studiedDateStr = `${studiedDate.getFullYear()}-${String(studiedDate.getMonth() + 1).padStart(2, '0')}-${String(studiedDate.getDate()).padStart(2, '0')}`;
-        
-        // If studied on a previous day or memorized
-        if (studiedDateStr < today || prog.status === 'memorized') {
-          const word = this.wordsMap.get(wordId);
-          if (word) {
-            eligible.push({ word, prog });
+    // 3. Load progress records defensively
+    try {
+      const allProgress = await db.getAllProgress();
+      this.progressMap.clear();
+      if (Array.isArray(allProgress)) {
+        for (const p of allProgress) {
+          if (p && p.wordId) {
+            this.progressMap.set(p.wordId, p);
           }
         }
       }
+    } catch (err) {
+      console.warn('Could not load progress from db:', err);
     }
 
-    // Sort by most recently studied or prioritized
-    eligible.sort((a, b) => (b.prog.lastStudied || 0) - (a.prog.lastStudied || 0));
-    return eligible.map(e => e.word);
+    // 4. Load current dataset
+    await this.loadActiveDataset();
   }
 
-  // Get words for a new study batch
-  getBatchWords(size = null) {
-    const batchSize = size || this.stats.batchSize || 15;
-    const learningWords = [];
-    const newWords = [];
+  async loadActiveDataset() {
+    const filePath = `data/${this.targetLang}/vocab_${this.cefrLevel}.json`;
+    if (typeof fetch !== 'undefined') {
+      try {
+        const resp = await fetch(filePath);
+        if (resp.ok) {
+          const list = await resp.json();
+          this.setCards(list);
+          return;
+        }
+      } catch (err) {
+        console.warn(`Could not fetch ${filePath}:`, err);
+      }
+    }
+  }
 
-    for (const w of this.words) {
-      const prog = this.progressMap.get(w.id);
-      if (!prog || prog.status === 'new') {
-        newWords.push(w);
-      } else if (prog.status === 'learning') {
-        learningWords.push(w);
+  setCards(cardsList) {
+    this.cards = Array.isArray(cardsList) ? cardsList : [];
+    this.cardsMap.clear();
+    for (const c of this.cards) {
+      this.cardsMap.set(c.id, c);
+    }
+    this.buildStudyQueue();
+  }
+
+  buildStudyQueue() {
+    const now = Date.now();
+    const due = [];
+    const newCards = [];
+
+    for (const card of this.cards) {
+      const prog = this.progressMap.get(card.id);
+      if (!prog || !prog.lastStudied) {
+        newCards.push(card);
+      } else if (isCardDue(prog, now)) {
+        due.push(card);
       }
     }
 
-    // Prioritize words that are still in "learning" status, then fill with new words
-    const batch = [...learningWords.slice(0, batchSize)];
-    const needed = batchSize - batch.length;
-    if (needed > 0) {
-      batch.push(...newWords.slice(0, needed));
-    }
-
-    return batch;
-  }
-
-  // Get distractors for MCQ
-  getRandomDistractors(targetWord, count = 3) {
-    const samePos = this.words.filter(w => w.id !== targetWord.id && w.pos === targetWord.pos);
-    const pool = samePos.length >= count ? samePos : this.words.filter(w => w.id !== targetWord.id);
-    
-    // Shuffle pool
-    const shuffled = [...pool].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
-  }
-
-  // Update single word progress
-  async setWordStatus(wordId, status) {
-    const updated = await db.updateWordProgress(wordId, status);
-    this.progressMap.set(wordId, updated);
+    // Priority: due cards first, then new cards (up to 15 per session batch)
+    this.studyQueue = [...due, ...newCards.slice(0, 15)];
+    this.currentCardIndex = 0;
+    this.isCardRevealed = false;
+    this.showHint = false;
     this.notify();
   }
 
-  // Add custom word
-  async addCustomWord(customWordData) {
-    const saved = await db.saveCustomWord(customWordData);
-    this.words.unshift(saved);
-    this.wordsMap.set(saved.id, saved);
-    this.notify();
-    return saved;
+  getCurrentCard() {
+    if (this.currentCardIndex >= this.studyQueue.length) {
+      return null;
+    }
+    return this.studyQueue[this.currentCardIndex];
   }
 
-  // Progress overview metrics
-  getProgressStats() {
-    let memorized = 0;
-    let learning = 0;
-    for (const p of this.progressMap.values()) {
-      if (p.status === 'memorized') memorized++;
-      else if (p.status === 'learning') learning++;
-    }
-    const total = this.words.length;
-    const unstudied = Math.max(0, total - (memorized + learning));
-    const percent = total > 0 ? Math.round((memorized / total) * 100) : 0;
+  revealCard() {
+    this.isCardRevealed = true;
+    this.notify();
+  }
 
-    return {
-      total,
-      memorized,
-      learning,
-      unstudied,
-      percent,
-      streak: this.stats.streak || 0
-    };
+  toggleHint() {
+    this.showHint = !this.showHint;
+    this.notify();
+  }
+
+  async gradeCurrentCard(grade) {
+    if (this.isGrading) return;
+    this.isGrading = true;
+    try {
+      const card = this.getCurrentCard();
+      if (!card || !this.isCardRevealed) return;
+
+      // Defensive audio cancellation
+      this.stopAudio();
+
+      const existingProg = this.progressMap.get(card.id) || { wordId: card.id };
+      const updatedProg = scheduleCard(existingProg, grade, Date.now());
+
+      // Update in-memory map synchronously
+      this.progressMap.set(card.id, updatedProg);
+
+      // If graded 1 (Again), requeue to the end of current batch
+      if (grade === 1) {
+        this.studyQueue.push(card);
+      }
+
+      // Advance to next card synchronously BEFORE any async storage operation
+      this.currentCardIndex++;
+      this.isCardRevealed = false;
+      this.showHint = false;
+      this.notify();
+
+      // Persist in background asynchronously without blocking UI responsiveness
+      try {
+        await db.saveProgress(updatedProg);
+      } catch (err) {
+        console.warn('Failed to persist progress:', err);
+      }
+    } finally {
+      this.isGrading = false;
+    }
+  }
+
+  playAudio() {
+    const card = this.getCurrentCard();
+    if (!card || typeof window === 'undefined' || !window.speechSynthesis) return;
+
+    this.stopAudio();
+
+    const textToSpeak = card.word;
+    const utterance = new SpeechSynthesisUtterance(normalizeNFC(textToSpeak));
+    utterance.lang = this.targetLang === 'de' ? 'de-DE' : 'en-US';
+    utterance.rate = 0.92; // Slightly measured rate for maximum pedagogical clarity
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  stopAudio() {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+    }
+  }
+
+  getQueueStats() {
+    return getQueueStats(this.cards, this.progressMap, Date.now());
+  }
+
+  async setTargetLanguage(lang) {
+    if (['de', 'en'].includes(lang) && lang !== this.targetLang) {
+      this.targetLang = lang;
+      await db.setSetting('targetLang', lang);
+      await this.loadActiveDataset();
+    }
+  }
+
+  async toggleTargetLanguage() {
+    const nextLang = this.targetLang === 'de' ? 'en' : 'de';
+    await this.setTargetLanguage(nextLang);
+  }
+
+  async setInterfaceLanguage(lang) {
+    if (['mn', 'en', 'de'].includes(lang)) {
+      this.interfaceLang = lang;
+      setInterfaceLanguage(lang);
+      await db.setSetting('interfaceLang', lang);
+      this.notify();
+    }
+  }
+
+  async cycleInterfaceLanguage() {
+    const order = ['mn', 'en', 'de'];
+    const next = order[(order.indexOf(this.interfaceLang) + 1) % order.length];
+    await this.setInterfaceLanguage(next);
+  }
+
+  async setCefrLevel(lvl) {
+    const cleanLvl = String(lvl).toLowerCase();
+    if (['a1', 'a2', 'b1', 'b2'].includes(cleanLvl) && cleanLvl !== this.cefrLevel) {
+      this.cefrLevel = cleanLvl;
+      await db.setSetting('cefrLevel', cleanLvl);
+      await this.loadActiveDataset();
+    }
   }
 
   subscribe(listener) {
@@ -214,14 +242,14 @@ class StateManager {
   }
 
   notify() {
-    for (const listener of this.listeners) {
+    for (const fn of this.listeners) {
       try {
-        listener(this);
+        fn();
       } catch (err) {
-        console.error('State listener error:', err);
+        console.error('Error in state subscriber:', err);
       }
     }
   }
 }
 
-export const state = new StateManager();
+export const state = new AppState();

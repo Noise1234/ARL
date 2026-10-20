@@ -1,14 +1,21 @@
 {
   "name": "arl-pwa",
-  "version": "1.0.0",
-  "description": "ARL - Ultra-minimalist Goethe B1 German-to-Mongolian Flashcard Progressive Web App",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "ARL - Minimal Keyboard-First Language Learning PWA",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node test/run-tests.js",
-    "verify-dataset": "python3 scripts/compile_dataset.py"
+    "test": "node test/run-tests.js"
   },
-  "keywords": ["pwa", "german", "mongolian", "flashcards", "b1", "spaced-repetition"],
+  "keywords": [
+    "pwa",
+    "german",
+    "english",
+    "mongolian",
+    "flashcards",
+    "spaced-repetition"
+  ],
   "author": "ARL Team",
   "license": "MIT"
 }

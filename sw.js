@@ -1,4 +1,4 @@
-const CACHE_NAME = 'arl-cache-v1';
+const CACHE_NAME = 'arl-cache-v2';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -10,11 +10,31 @@ const ASSETS_TO_CACHE = [
   './js/app.js',
   './js/db.js',
   './js/state.js',
-  './js/deck.js',
-  './js/quiz.js',
-  './js/retention.js',
-  './js/manual-entry.js',
+  './js/srs.js',
+  './js/unicode.js',
+  './js/i18n.js',
+  './js/keyboard.js',
+  './js/views/hud.js',
+  './js/views/study.js',
+  './js/views/grammar.js',
+  './js/views/media.js',
+  './js/views/settings.js',
+  './data/i18n.json',
   './data/b1_words.json',
+  './data/de/vocab_a1.json',
+  './data/de/vocab_a2.json',
+  './data/de/vocab_b1.json',
+  './data/de/vocab_b2.json',
+  './data/de/grammar.json',
+  './data/de/redemittel.json',
+  './data/de/immersion.json',
+  './data/en/vocab_a1.json',
+  './data/en/vocab_a2.json',
+  './data/en/vocab_b1.json',
+  './data/en/vocab_b2.json',
+  './data/en/grammar.json',
+  './data/en/redemittel.json',
+  './data/en/immersion.json',
   './icons/icon.svg',
   './icons/icon-192.png',
   './icons/icon-512.png',
@@ -22,7 +42,6 @@ const ASSETS_TO_CACHE = [
   './icons/apple-touch-icon.png'
 ];
 
-// Install: Cache core assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -31,7 +50,6 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate: Cleanup old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -46,7 +64,6 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: Stale-while-revalidate with cache fallback
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
@@ -61,7 +78,6 @@ self.addEventListener('fetch', (event) => {
         }
         return networkResponse;
       }).catch(() => {
-        // Offline: Return cached response if available
         return cachedResponse;
       });
 
