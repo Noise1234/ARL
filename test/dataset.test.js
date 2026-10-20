@@ -75,12 +75,61 @@ export function runDatasetTests(it) {
     });
   }
 
+  it('data/de/vocab_b1.json verb forms, auxiliaries, and rektion comply with linguistic standards', () => {
+    const p = path.join(ROOT, 'data', 'de', 'vocab_b1.json');
+    const words = JSON.parse(fs.readFileSync(p, 'utf-8'));
+    const verbs = words.filter(w => w.pos === 'verb');
+    assert.strictEqual(verbs.length, 224, `Expected exactly 224 verbs in B1, got ${verbs.length}`);
+
+    const inseparablePrefixes = ['be', 'ent', 'emp', 'er', 'ver', 'zer'];
+    for (const v of verbs) {
+      const parts = v.forms.split('|').map(s => s.trim());
+      assert.strictEqual(parts.length, 4, `Verb ${v.word} must have 4 principal forms: ${v.forms}`);
+      const part2 = parts[3];
+
+      // No bogus ge- on -ieren verbs
+      if (v.word.endsWith('ieren')) {
+        assert(!part2.includes('ge'), `Verb in -ieren (${v.word}) must not take ge- in Partizip II: ${part2}`);
+      }
+
+      // No bogus ge- on inseparable prefixes
+      for (const pref of inseparablePrefixes) {
+        if (v.word.startsWith(pref)) {
+          assert(!part2.includes('ge' + v.word), `Inseparable verb (${v.word}) must not have bogus ge-: ${part2}`);
+          assert(!part2.match(/(?:hat|ist) ge/), `Inseparable verb (${v.word}) must not have ge- prefix: ${part2}`);
+        }
+      }
+    }
+
+    // Motion & state-change verbs have auxiliary ist
+    const motionVerbs = ['ankommen', 'abfahren', 'einsteigen', 'aussteigen', 'umsteigen', 'umziehen', 'einziehen', 'ausziehen', 'durchfallen', 'einbiegen'];
+    for (const mv of motionVerbs) {
+      const v = verbs.find(w => w.word === mv);
+      assert(v, `Missing motion verb ${mv}`);
+      assert(v.forms.includes('ist '), `Motion verb ${mv} must use auxiliary "ist": ${v.forms}`);
+    }
+
+    // Pure Dativ verbs require + Dativ
+    const dativVerbs = ['zustimmen', 'widersprechen', 'vorbeugen'];
+    for (const dv of dativVerbs) {
+      const v = verbs.find(w => w.word === dv);
+      assert(v, `Missing dativ verb ${dv}`);
+      assert(v.rektion.includes('Dativ'), `Verb ${dv} must govern Dativ: ${v.rektion}`);
+    }
+  });
+
   for (const lang of ['de', 'en']) {
     it(`data/${lang}/grammar.json has 4 folders and 4-part layout on every topic`, () => {
       const p = path.join(ROOT, 'data', lang, 'grammar.json');
       assert(fs.existsSync(p), `data/${lang}/grammar.json missing`);
       const folders = JSON.parse(fs.readFileSync(p, 'utf-8'));
       assert.strictEqual(folders.length, 4, `Expected exactly 4 folders in ${lang} grammar`);
+
+      if (lang === 'de') {
+        const folder3 = folders.find(f => f.folder_id === 'folder_03');
+        assert(folder3, 'Folder 03 missing in German grammar');
+        assert.strictEqual(folder3.topics.length, 22, `Expected all 22 topics in German B1 grammar, found ${folder3.topics.length}`);
+      }
 
       for (const folder of folders) {
         assert(folder.folder_id && folder.folder_name, 'Folder missing id or name');

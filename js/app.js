@@ -157,6 +157,16 @@ class ARLApp {
         state.playAudio();
       }
     });
+    keyboard.on('study_toggle_memorized', () => {
+      if (this.currentView === 'vocab') {
+        state.toggleReviewMode();
+      }
+    });
+    keyboard.on('study_reset_card', () => {
+      if (this.currentView === 'vocab') {
+        state.resetCurrentCard();
+      }
+    });
 
     // Settings Actions
     keyboard.on('close_settings', () => {
@@ -221,6 +231,16 @@ class ARLApp {
     keyboard.on('grammar_back_to_list', () => {
       if (this.currentView === 'grammar' && this.grammarView.activeTopic) {
         this.grammarView.backToList();
+      }
+    });
+    keyboard.on('grammar_focus_search', () => {
+      if (this.currentView === 'grammar' && !this.grammarView.activeTopic) {
+        this.grammarView.focusSearch();
+      }
+    });
+    keyboard.on('grammar_drill_topic', () => {
+      if (this.currentView === 'grammar') {
+        this.navigateTo('vocab');
       }
     });
 

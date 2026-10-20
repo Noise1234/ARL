@@ -81,6 +81,38 @@ class KeyboardRouter {
     }
   }
 
+  flashKeyVisual(key, code) {
+    if (typeof document === 'undefined') return;
+    const keyLower = (key || '').toLowerCase();
+    const selector = [
+      `[data-key="${keyLower}"]`,
+      `[data-key="${code}"]`,
+      keyLower === ' ' ? '#btn-reveal' : null,
+      keyLower === 'h' ? '#btn-hint' : null,
+      keyLower === '1' ? '#btn-grade-1' : null,
+      keyLower === '2' ? '#btn-grade-2' : null,
+      keyLower === '3' ? '#btn-grade-3' : null,
+      keyLower === '4' ? '#btn-grade-4' : null,
+      keyLower === 'a' ? '#btn-audio' : null,
+      keyLower === 'v' ? '#nav-btn-vocab' : null,
+      keyLower === 'g' ? '#nav-btn-grammar' : null,
+      keyLower === 'm' ? '#nav-btn-media' : null,
+      keyLower === 's' ? '#nav-btn-settings' : null,
+      keyLower === 'd' ? '#btn-drill-topic' : null
+    ].filter(Boolean).join(', ');
+
+    if (!selector) return;
+    try {
+      const el = document.querySelector(selector);
+      if (el) {
+        el.classList.add('key-pressed-active');
+        setTimeout(() => el.classList.remove('key-pressed-active'), 120);
+      }
+    } catch (e) {
+      // ignore
+    }
+  }
+
   onKeyDown(e) {
     // 1. Check if user is typing in an active text input or textarea
     const activeEl = document.activeElement;
@@ -102,6 +134,9 @@ class KeyboardRouter {
     const key = e.key;
     const code = e.code;
     const state = this.currentState;
+
+    // Trigger visual tactile feedback on physical key press
+    this.flashKeyVisual(key, code);
 
     // 2. Global View Navigation (V, G, M, S) available across all non-input views
     if (state !== KeyboardState.SETTINGS_OVERLAY) {
@@ -136,6 +171,12 @@ class KeyboardRouter {
         } else if (key === 'h' || key === 'H') {
           e.preventDefault();
           this.trigger('study_hint');
+        } else if ((key === 'r' || key === 'R') && !e.shiftKey) {
+          e.preventDefault();
+          this.trigger('study_toggle_memorized');
+        } else if ((key === 'R' || key === 'r') && e.shiftKey) {
+          e.preventDefault();
+          this.trigger('study_reset_card');
         }
         break;
 
@@ -155,6 +196,12 @@ class KeyboardRouter {
         } else if (key === 'a' || key === 'A') {
           e.preventDefault();
           this.trigger('study_audio');
+        } else if ((key === 'r' || key === 'R') && !e.shiftKey) {
+          e.preventDefault();
+          this.trigger('study_toggle_memorized');
+        } else if ((key === 'R' || key === 'r') && e.shiftKey) {
+          e.preventDefault();
+          this.trigger('study_reset_card');
         }
         break;
 
@@ -181,7 +228,7 @@ class KeyboardRouter {
         if (['1', '2', '3', '4'].includes(key)) {
           e.preventDefault();
           this.trigger('grammar_set_folder', parseInt(key, 10));
-        } else if (key === 'r' || key === 'R') {
+        } else if ((key === 'r' || key === 'R') && !e.shiftKey) {
           e.preventDefault();
           this.trigger('grammar_toggle_redemittel');
         } else if (key === 'ArrowDown' || key === 'j' || key === 'J') {
@@ -193,6 +240,9 @@ class KeyboardRouter {
         } else if (code === 'Enter') {
           e.preventDefault();
           this.trigger('grammar_open_topic');
+        } else if (key === '/') {
+          e.preventDefault();
+          this.trigger('grammar_focus_search');
         }
         break;
 
@@ -200,6 +250,9 @@ class KeyboardRouter {
         if (key === 'Escape' || key === 'Backspace') {
           e.preventDefault();
           this.trigger('grammar_back_to_list');
+        } else if (key === 'd' || key === 'D') {
+          e.preventDefault();
+          this.trigger('grammar_drill_topic');
         }
         break;
 

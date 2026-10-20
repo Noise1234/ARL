@@ -1,44 +1,35 @@
-# ARL — Minimalist B1 German-to-Mongolian PWA
+# ARL — Minimalist Keyboard-First Language Learning PWA & Android App
 
-**ARL** is an ultra-minimalist, distraction-free Progressive Web App (PWA) designed for deep focus and high-retention vocabulary mastery at the Goethe-Zertifikat B1 intermediate level.
+**ARL** is an ultra-minimalist, distraction-free Progressive Web App (PWA) and native Android application designed for deep focus, deterministic SM-2 spaced repetition, and comprehensive German & English grammar mastery across CEFR levels **A1, A2, B1, and B2**.
+
+[![Download Android APK](https://img.shields.io/badge/Download-Android%20APK%20(v2.0)-black?style=for-the-badge&logo=android)](dist/ARL-v2.0.apk)
+
+### 📥 Direct Downloads
+- **Android APK**: [Download ARL-v2.0.apk](dist/ARL-v2.0.apk) (1.9 MB, signed release)
+- **GitHub Releases**: [Latest Release v2.0.0](https://github.com/Noise1234/ARL/releases/latest)
 
 ---
 
 ## ✦ Key Features
 
-### 1. App Identity & Minimalist Aesthetic
-- **Minimalist Palette:** Pure OLED black (`#000000`), subtle charcoal card surfaces (`#121212`), crisp off-white typography, and minimal semantic feedback accents (muted emerald green for correct, soft coral red for incorrect).
-- **Brand Icon:** Geometric minimalist white globe centered on pure black background (`#000000`), provided as SVG, 192×192 PNG, 512×512 PNG, and maskable icons.
-- **Home Screen Installable:** Fully configured `manifest.json` and `sw.js` for 100% offline access.
+### 1. Comprehensive Level-Specific Grammar Engine (A1 – B2)
+- **A1 Foundations (9 Topics):** Hauptsatz & V2 rule, Nominativ/Akkusativ, Präsens conjugation, Modal verbs, W-Fragen & Ja/Nein-Inversion, Trennbare Verben, Possessivartikel, Negation (*nicht* vs *kein*), and Imperativ.
+- **A2 Core Structures (9 Topics):** Dativ case governance, Perfekt (*haben* vs *sein*), Präteritum, Wechselpräpositionen, Reflexive Verben, Komparativ & Superlativ, *weil* & *dass* subclauses, Double Object order, and fixed preposition rhythms.
+- **B1 Intermediate Mastery (22 Topics):** Vorgangspassiv, Konjunktiv II, Relativsätze, Infinitiv mit *zu*, *um...zu* vs *damit*, Position 0 vs 1 connectors, Adjektivdeklination Types 1–3, Prepositional verbs, Pronominaladverbien (*woran/daran*), and Doppelinfinitiv.
+- **B2 Advanced Precision (10 Topics):** Tekamolo word order, Zweiteilige Konnektoren, Nomen-Verb-Verbindungen with fixed prepositions, Zustandspassiv, Plusquamperfekt & Futur, Erweiterte Partizipialattribute (Partizip I & II), Konjunktiv I & Indirect Discourse, Passiversatzformen (*sich lassen*, *sein + zu*), and Subjektive Modalverben (Epistemic modality).
+- **Direct Rule-to-Drill Action:** Press <kbd>D</kbd> inside any grammar rule to instantly jump into active flashcards drilling that exact concept.
+- **Live Search Filter:** Press <kbd>/</kbd> to instantly search grammar rules, cases, and patterns.
 
-### 2. Comprehensive B1 Vocabulary (1,000 Verified Words)
-- **Official B1 Standard:** 1,000 authentic intermediate words organized across 10 modular thematic modules.
-- **Strict Exclusion Rule:** 0% basic A1 stopwords (*sein, haben, werden, ich, du, er, der, die, das*, etc.). Focus strictly on high-value intermediate vocabulary.
-- **Accurate Mongolian (Cyrillic Script):** Verified modern Mongolian translations with part-of-speech context.
-- **Articles & Plurals:** Every German noun includes its definite article (*der, die, das*) and plural form (e.g. *die Entscheidung, -en*).
-- **Bilingual Example Sentences:** Real-world B1 context sentence in German with Mongolian translation.
+### 2. Tactile Keyboard-First Study & SRS Flashcards
+- **Pure SM-2 Spaced Repetition:** Deterministic scheduling with interval progression, ease factors, and lapse tracking.
+- **Morphological Verb Grid:** On card reveal, verbs display a 4-part chip grid: Infinitiv, 3.P. Präsens, Präteritum, and Partizip II with auxiliary highlight (*hat* vs *ist*), plus case valency badges.
+- **Batch Progress Strip:** Tactile progress bar reflecting remaining cards in current study queue.
+- **Physical Keypress Feedback:** Interactive keycap indicators visibly depress with micro-animations when hardware keys are pressed.
+- **Surgical Momentum HUD:** Clean typographic ticker (`⚡ streak · response velocity`) with zero gamification bloat.
 
-### 3. Core Active Recall Learning Flows
-1. **Daily Opening Retention Gate (Yesterday's Words Check):**
-   - Automatically checks if words were studied on previous days.
-   - Launches a focused 5–10 word multiple-choice check before unlocking new words.
-2. **Tactile 3D Flashcard Memorization (Deutsch → Mongolisch):**
-   - Front: German word, article, plural, part-of-speech badge, and context sentence.
-   - Back: Modern Mongolian translation (Cyrillic) and translated sentence.
-   - Controls: Tap / Click / <kbd>Space</kbd> to flip, <kbd>1</kbd> / <kbd>←</kbd> for "Noch lernen", <kbd>2</kbd> / <kbd>→</kbd> for "Gemerkt".
-   - Touch & Swipe: Drag card to swipe left (learning) or right (memorized) with natural tilt physics.
-3. **Post-Study Reverse Exam (Mongolian → Deutsch):**
-   - Triggers immediately after completing a flashcard batch (or on demand).
-   - Prompt: 1 word in **Mongolian**.
-   - 4 Options: 1 correct German word + 3 smart distractors from the B1 database.
-   - Keyboard: Instant selection with number keys <kbd>1</kbd>, <kbd>2</kbd>, <kbd>3</kbd>, <kbd>4</kbd>.
-   - Instant visual feedback and auto-requeuing of missed words until 100% mastery.
-
-### 4. Gamification & User Features
-- **Daily Streak Counter:** Minimal header counter (`⚡ X Tage`), persisted in IndexedDB, incremented on daily completion.
-- **Manual In-App Word Entry:** Add custom words anytime with article, plural, POS, and Mongolian translation.
-- **Offline Storage & Backup:** Complete IndexedDB storage with JSON export and import capabilities.
-- **Vocabulary Explorer & Dictionary:** Instant search and filter across all 1,000 words.
+### 3. Native Android Container & Standalone PWA
+- **Android App:** Built via automated toolchain (AAPT, D8/R8, zipalign, apksigner) into a lean 1.9MB native APK.
+- **Offline PWA:** Fully cached with Service Worker for 100% offline functionality.
 
 ---
 

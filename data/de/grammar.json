@@ -95,6 +95,121 @@
           }
         ],
         "common_trap": "Өгүүлбэрийн төгсгөлд үндсэн үйл үг ЯМАГТ хувиралгүй хувилахгүй инфинитив (Infinitiv) хэлбэрээр байх ёстой: 'Ich kann Deutsch sprechen' (биш: 'Ich kann Deutsch spreche')."
+      },
+      {
+        "id": "de_a1_w_fragen_ja_nein",
+        "title": "W-Fragen & Ja/Nein-Fragen (Question Syntax & Inversion)",
+        "core_concept": {
+          "mn": "W-Fragen (Хэн, юу, хаана...): Асуух үг 1-р байранд, хувирсан үйл үг 2-р байранд байна. Ja/Nein-Fragen (Тийм/Үгүй асуулт): Хувирсан үйл үг ӨГҮҮЛБЭРИЙН ЭХЭНД (1-р байранд) орно.",
+          "en": "W-Questions place the question word in Position 1 and the conjugated verb strictly in Position 2. Yes/No Questions place the conjugated verb at the very beginning in Position 1.",
+          "de": "W-Fragen beginnen mit dem Fragewort (Position 1), gefolgt vom konjugierten Verb an Position 2. Ja/Nein-Fragen beginnen direkt mit dem finiten Verb an Position 1."
+        },
+        "pattern": "W-Frage: [W-Wort] + [Verb (Pos 2)] + [Subjekt] + ? | Ja/Nein: [Verb (Pos 1)] + [Subjekt] + [Ergänzung] + ?",
+        "examples": [
+          {
+            "target": "Wo wohnen Sie? — Ich wohne in Ulaanbaatar.",
+            "mn": "Та хаана амьдардаг вэ? — Би Улаанбаатарт амьдардаг.",
+            "en": "Where do you live? — I live in Ulaanbaatar."
+          },
+          {
+            "target": "Lernst du heute Deutsch? — Ja, ich lerne fleißig.",
+            "mn": "Чи өнөөдөр герман хэл сурч байгаа юу? — Тийм, би хичээнгүйлэн сурч байна.",
+            "en": "Are you learning German today? — Yes, I am diligently learning."
+          }
+        ],
+        "common_trap": "Ja/Nein асуултад үйл үг заавал 1-р байранд байна! Англи хэл шиг 'Do you...' гэх туслах үйл үг герман хэлэнд огт байхгүй."
+      },
+      {
+        "id": "de_a1_trennbare_verben",
+        "title": "Trennbare Verben (Separable Prefixes & Satzklammer)",
+        "core_concept": {
+          "mn": "Салдаг угтвар бүхий үйл үгс (ab-, an-, auf-, aus-, ein-, mit-, vor-, zu-): Гол өгүүлбэрт язгуур үйл үг 2-р байранд хувирч, салдаг угтвар нь өгүүлбэрийн ХАМГИЙН ТӨГСГӨЛД (Satzende) очно.",
+          "en": "Separable prefix verbs (ab-, an-, auf-, aus-, ein-, mit-, vor-, zu-) split in main clauses: the base verb conjugates in Position 2 while the separable prefix moves to the very end of the sentence.",
+          "de": "Trennbare Verben teilen sich im Hauptsatz: Das Stammverb wird an Position 2 konjugiert, die trennbare Vorsilbe wandert an das absolute Satzende (Satzklammer)."
+        },
+        "pattern": "[Subjekt/Pos 1] + [FINITES VERB (Pos 2)] + [Mittelfeld] + [TRENNBARE VORSILBE (Satzende)]",
+        "examples": [
+          {
+            "target": "Ich stehe jeden Morgen um sechs Uhr auf.",
+            "mn": "Би өглөө бүр зургаан цагт босдог.",
+            "en": "I get up every morning at six o'clock."
+          },
+          {
+            "target": "Der Zug kommt um 18:30 Uhr in Berlin an.",
+            "mn": "Галт тэрэг 18:30 цагт Берлинд ирнэ.",
+            "en": "The train arrives in Berlin at 18:30."
+          }
+        ],
+        "common_trap": "Салдаг угтварыг өгүүлбэрийн дунд үлдээж болохгүй! Тэр заавал өгүүлбэрийн төгсгөлийн цэгийн өмнө очих ёстой."
+      },
+      {
+        "id": "de_a1_possessivartikel",
+        "title": "Possessivartikel im Nominativ & Akkusativ (mein, dein, sein...)",
+        "core_concept": {
+          "mn": "Хамаатуулах төлөөний үгс (миний, чиний, түүний...): Нэрийн өмнө артикл шиг хувирна. Зөвхөн эр хүйс Akkusativ дээр '-en' төгсгөл авна (meinen, deinen, seinen).",
+          "en": "Possessive determiners (my, your, his, her, our, their) decline like indefinite articles. Only masculine accusative adds -en (meinen, deinen, seinen).",
+          "de": "Possessivartikel begleiten das Nomen wie unbestimmte Artikel. Im Akkusativ erhält nur die maskuline Form die Endung -en (meinen, deinen, seinen)."
+        },
+        "pattern": "Nom: mein / meine / mein | Akk: meinen / meine / mein / meine",
+        "examples": [
+          {
+            "target": "Das ist mein Vater und das ist meine Mutter.",
+            "mn": "Энэ бол миний аав, энэ бол миний ээж.",
+            "en": "This is my father and this is my mother."
+          },
+          {
+            "target": "Ich suche meinen Schlüssel und meine Tasche.",
+            "mn": "Би түлхүүрээ болон цүнхээ хайж байна.",
+            "en": "I am looking for my key and my bag."
+          }
+        ],
+        "common_trap": "Эр хүйс дээр заавал 'meinen' гэж төгсгөл залгана: 'Ich rufe meinen Bruder an' (биш: 'mein Bruder')."
+      },
+      {
+        "id": "de_a1_negation_nicht_kein",
+        "title": "Negation: nicht vs. kein (Sentence vs. Noun Negation)",
+        "core_concept": {
+          "mn": "Үгүйсгэл: Артиклгүй нэр үг эсвэл 'ein/eine'-тэй нэр үгийг 'kein/keine'-ээр үгүйсгэнэ. Харин тодорхой артиклтай нэр үг, үйл үг, тэмдэг нэр, өгүүлбэрийг бүхэлд нь 'nicht'-ээр үгүйсгэнэ.",
+          "en": "Use 'kein' to negate indefinite nouns (nouns with 'ein' or no article). Use 'nicht' to negate verbs, adjectives, adverbs, proper names, and definite nouns.",
+          "de": "Mit 'kein' negiert man Nomen mit unbestimmtem Artikel oder Nullartikel. Mit 'nicht' negiert man Verben, Adjektive, Pronomen, Eigennamen und Nomen mit bestimmtem Artikel."
+        },
+        "pattern": "Nomen (unbestimmt/Nullartikel): kein / keine / keinen | Verben/Adjektive/Satz: ... + nicht (bzw. nicht + Adjektiv)",
+        "examples": [
+          {
+            "target": "Ich habe kein Auto und keine Zeit.",
+            "mn": "Надад машин ч байхгүй, зав ч байхгүй.",
+            "en": "I have no car and no time."
+          },
+          {
+            "target": "Ich verstehe diesen Satz leider nicht.",
+            "mn": "Би энэ өгүүлбэрийг харамсалтай нь ойлгохгүй байна.",
+            "en": "Unfortunately I do not understand this sentence."
+          }
+        ],
+        "common_trap": "'Ich habe nicht Zeit' гэж хэлж болохгүй! Заавал 'Ich habe keine Zeit' гэж нэр үгийг 'kein'-ээр үгүйсгэнэ."
+      },
+      {
+        "id": "de_a1_imperativ",
+        "title": "Imperativ: Befehlsform (du, ihr, Sie)",
+        "core_concept": {
+          "mn": "Захирах хүсэх төлөв: du (чи), ihr (та нар), Sie (Та): 'du' дээр төгсгөлийн '-st' болон төлөөний үг 'du' хасагдана. Umlaut (a->ä) авагдахгүй! 'ihr' дээр зөвхөн 'ihr' хасагдана. 'Sie' дээр үйл үг + Sie гэж байр солигдоно.",
+          "en": "The Imperative expresses commands, requests, and instructions for 'du', 'ihr', and formal 'Sie'. For 'du', drop -st and pronoun, no umlaut. For 'ihr', drop pronoun. For 'Sie', invert verb + Sie.",
+          "de": "Der Imperativ formuliert Aufforderungen. Du-Form: Verbstamm ohne -st, Pronomen entfällt, kein Umlaut (fahr!). Ihr-Form: Verbform wie im Präsens, Pronomen entfällt (fahrt!). Sie-Form: Inversion (fahren Sie!)."
+        },
+        "pattern": "du: [Stamm (+e)]! | ihr: [Stamm + t]! | Sie: [Infinitiv + Sie]!",
+        "examples": [
+          {
+            "target": "Komm bitte pünktlich zum Unterricht!",
+            "mn": "Хичээлдээ цагтаа ирээрэй!",
+            "en": "Please come to class on time!"
+          },
+          {
+            "target": "Öffnen Sie bitte das Fenster!",
+            "mn": "Цонхоо онгойлгоно уу!",
+            "en": "Please open the window!"
+          }
+        ],
+        "common_trap": "'Fahren' үйл үг du дээр 'du fährst' болдог ч захирах төлөв дээр 'Fahr!' болно (Umlaut авахгүй: 'Fahr langsamer!'). Харин e->i хувиралт хадгалагдана: 'Lies!' (lesen)."
       }
     ]
   },
@@ -217,6 +332,98 @@
           }
         ],
         "common_trap": "'Ich wasche mich' (Akk), гэхдээ 'Ich wasche mir die Hände' (гам гараа угаах үед 'die Hände' нь Akkusativ болж, төлөөний үг нь Dativ 'mir' болдог)."
+      },
+      {
+        "id": "de_a2_komparativ_superlativ",
+        "title": "Komparativ & Superlativ (Adjective Comparison)",
+        "core_concept": {
+          "mn": "Харьцуулсан болон давуу зэрэг: Харьцуулахдаа тэмдэг нэрийн төгсгөлд '-er als' (жишээ нь: schneller als), давуу зэрэгт 'am ...-sten' (жишээ нь: am schnellsten) залгана. a, o, u эгшигтэй богино үгс Umlaut (ä, ö, ü) авна.",
+          "en": "Adjective comparison: Comparative uses '-er als' (faster than). Superlative uses 'am ...-sten' (the fastest). Short adjectives with a, o, u usually take an umlaut (ä, ö, ü).",
+          "de": "Komparativ bildet man mit Endung -er + 'als'. Superlativ mit 'am' + Endung -sten. Einsilbige Adjektive mit a, o, u erhalten meist einen Umlaut (alt -> älter -> am ältesten)."
+        },
+        "pattern": "Positiv: so [Adj] wie | Komparativ: [Adj + er] als | Superlativ: am [Adj + sten]",
+        "examples": [
+          {
+            "target": "Mein Bruder ist älter als ich, aber mein Vater ist am ältesten.",
+            "mn": "Миний ах надаас ахмад, гэхдээ манай аав хамгийн ахмад нь.",
+            "en": "My brother is older than me, but my father is the oldest."
+          },
+          {
+            "target": "Ich trinke gern Tee, aber Kaffee trinke ich lieber.",
+            "mn": "Би цай дуртай уудаг, гэхдээ кофег бүр илүү дуртай уудаг.",
+            "en": "I like drinking tea, but I prefer drinking coffee."
+          }
+        ],
+        "common_trap": "Харьцуулсан зэрэг дээр англи хэлний 'than'-ий оронд 'als' хэрэглэнэ ('schneller als ich', биш: 'wie ich'). Тэнцүү харьцуулалтад 'so ... wie' хэрэглэнэ."
+      },
+      {
+        "id": "de_a2_nebensatz_weil_dass",
+        "title": "Kausale & Objektsätze: weil & dass (Subordinating Conjunctions)",
+        "core_concept": {
+          "mn": "weil (учир нь) ба dass (гэж/гэдгийг) нь дагалдах өгүүлбэр (Nebensatz) үүсгэнэ. Дагалдах өгүүлбэрийн хувирсан үйл үг ХАМГИЙН ТӨГСГӨЛД (Verb-Ende) очно.",
+          "en": "'weil' (because) and 'dass' (that) are subordinating conjunctions triggering a subordinate clause: the conjugated verb is pushed to the very end of the clause.",
+          "de": "'weil' (Begründung) und 'dass' (Inhaltssatz) leiten Nebensätze ein: Das konjugierte Verb steht zwingend an der letzten Position des Nebensatzes."
+        },
+        "pattern": "[Hauptsatz: Pos 2 Verb], + weil/dass + [Subjekt] + [Ergänzungen] + [FINITES VERB (Satzende)].",
+        "examples": [
+          {
+            "target": "Er bleibt heute im Bett, weil er krank ist.",
+            "mn": "Тэр өнөөдөр орондоо хэвтэж байна, учир нь тэр өвчтэй байгаа.",
+            "en": "He stays in bed today because he is sick."
+          },
+          {
+            "target": "Ich weiß genau, dass du die Prüfung bestehst.",
+            "mn": "Чи шалгалтаа давах болно гэдгийг би гарцаагүй мэдэж байна.",
+            "en": "I know for sure that you will pass the exam."
+          }
+        ],
+        "common_trap": "'weil'-ийн дараа үйл үгийг 2-р байранд үлдээж болохгүй! Заавал төгсгөлд: 'weil er krank ist' (биш: 'weil er ist krank')."
+      },
+      {
+        "id": "de_a2_verben_dativ_akkusativ",
+        "title": "Verben mit Dativ- und Akkusativobjekt (Double Object Order)",
+        "core_concept": {
+          "mn": "Хоёр тусагдахуунтай үйл үгс (geben, schenken, zeigen, erklären, schicken...): Хэнд? (Dativ) Юуг? (Akkusativ). Хэрэв хоёулаа нэр үг бол: Dativ нь Akkusativ-ийн өмнө орно. Хэрэв нэг нь эсвэл хоёулаа төлөөний үг (Pronomen) бол: Төлөөний үг үргэлж урд орно (Akkusativ-Pronomen өмнө нь!).",
+          "en": "Verbs with two objects: Dative (indirect recipient) + Accusative (direct thing). Two nouns: Dative precedes Accusative. Two pronouns: Accusative pronoun strictly precedes Dative pronoun!",
+          "de": "Verben mit zwei Objekten: Dativ (Person) + Akkusativ (Sache). Zwei Nomen: Dativ vor Akkusativ (dem Mann das Buch). Zwei Pronomen: Akkusativ vor Dativ (es ihm)!"
+        },
+        "pattern": "Nomen: [Subjekt] + [Verb] + [DATIV-Nomen] + [AKKUSATIV-Nomen] | Pronomen: [Subjekt] + [Verb] + [AKK-Pronomen] + [DAT-Pronomen]",
+        "examples": [
+          {
+            "target": "Der Vater schenkt dem Sohn ein Fahrrad.",
+            "mn": "Эцэг нь хүүдээ унадаг дугуй бэлэглэж байна.",
+            "en": "The father gives a bicycle to his son."
+          },
+          {
+            "target": "Der Vater schenkt es ihm zum Geburtstag.",
+            "mn": "Эцэг нь түүний төрсөн өдрөөр үүнийг түүнд бэлэглэж байна.",
+            "en": "The father gives it to him for his birthday."
+          }
+        ],
+        "common_trap": "Төлөөний үг болсон үед байр солигддог: 'Er gibt es ihm' (биш: 'Er gibt ihm es')!"
+      },
+      {
+        "id": "de_a2_feste_praepositionen",
+        "title": "Feste Präpositionen mit Dativ & Akkusativ (Preposition Rhythms)",
+        "core_concept": {
+          "mn": "Заавал Dativ шаардах угтварууд: aus, bei, mit, nach, seit, von, zu (Цээжлэх үг: 'aus-bei-mit-nach-seit-von-zu'). Заавал Akkusativ шаардах угтварууд: bis, durch, für, gegen, ohne, um (Цээжлэх үг: 'bis-durch-für-gegen-ohne-um').",
+          "en": "Fixed Dative prepositions: aus, bei, mit, nach, seit, von, zu. Fixed Accusative prepositions: bis, durch, für, gegen, ohne, um. They always demand their respective case regardless of movement or location!",
+          "de": "Feste Dativ-Präpositionen: aus, bei, mit, nach, seit, von, zu, gegenüber. Feste Akkusativ-Präpositionen: bis, durch, für, gegen, ohne, um. Sie fordern ausnahmslos ihren festen Kasus."
+        },
+        "pattern": "Dativ: aus / bei / mit / nach / seit / von / zu + [DATIV] | Akkusativ: bis / durch / für / gegen / ohne / um + [AKKUSATIV]",
+        "examples": [
+          {
+            "target": "Ich fahre mit dem Bus zu meiner Arbeit.",
+            "mn": "Би автобусаар ажил руугаа явдаг.",
+            "en": "I travel by bus to my work."
+          },
+          {
+            "target": "Das Geschenk ist für meinen besten Freund.",
+            "mn": "Энэ бэлэг миний хамгийн сайн найзад зориулагдсан.",
+            "en": "The gift is for my best friend."
+          }
+        ],
+        "common_trap": "'mit', 'zu', 'von'-ий дараа хэзээ ч Akkusativ ирэхгүй, 'für', 'ohne', 'um'-ийн дараа хэзээ ч Dativ ирэхгүй!"
       }
     ]
   },
@@ -362,6 +569,464 @@
           }
         ],
         "common_trap": "Салдаг угтвартай үйл үгэнд (anfangen, aufstehen) 'zu' нь үгийн ДУНД орно: 'anzufangen', 'aufzustehen'."
+      },
+      {
+        "id": "de_b1_konnektoren_pos0",
+        "title": "Konjunktionen: Position 0 (aber, denn, und, sondern, oder)",
+        "core_concept": {
+          "de": "Die nebenordnenden Konjunktionen (ADUSO: aber, denn, und, sondern, oder) verbinden zwei Hauptsätze. Sie belegen die grammatische Position 0, verändern die Wortstellung nicht und verlangen das konjugierte Verb an Position 2. Sonder steht ausschließlich nach einer Verneinung (nicht/kein) und korrigiert eine Aussage.",
+          "en": "Coordinating conjunctions (ADUSO: aber, denn, und, sondern, oder) link two main clauses. They occupy grammatical Position 0, meaning they do not count toward word order. The subject takes Position 1 and the conjugated verb remains strictly at Position 2. Sondern is used exclusively after a negation (nicht/kein) to state a corrective alternative.",
+          "mn": "Зэрэгцсэн холбоосууд (ADUSO: aber, denn, und, sondern, oder) нь хоёр гол өгүүлбэрийг холбодог бөгөөд Тэг (0) байрлал-д тооцогдоно. Өөрөөр хэлбэл үгийн дараалалд нөлөөлөхгүй: холбоосын араас эзэн бие 1-р байранд, хувирсан үйл үг 2-р байрандаа хэвээр үлдэнэ. Sondern (харин) нь ЗӨВХӨН үгүйсгэлийн (nicht/kein) дараа залруулга болж орно."
+        },
+        "pattern": "[Hauptsatz 1], + [aber / denn / und / sondern / oder (Pos 0)] + Subjekt (Pos 1) + FINITES VERB (Pos 2) + ...",
+        "examples": [
+          {
+            "target": "Ich möchte heute Deutsch lernen, denn ich habe morgen eine wichtige Prüfung.",
+            "mn": "Би өнөөдөр герман хэл сурмаар байна, учир нь маргааш чухал шалгалттай.",
+            "en": "I would like to learn German today, for I have an important exam tomorrow."
+          },
+          {
+            "target": "Er kauft kein Auto, sondern er fährt jeden Tag mit dem Fahrrad.",
+            "mn": "Тэр машин худалдаж авахгүй, харин өдөр бүр дугуйгаар явдаг.",
+            "en": "He is not buying a car, but rather rides a bicycle every day."
+          },
+          {
+            "target": "Sie ist müde, aber sie beendet ihren Bericht noch heute Abend.",
+            "mn": "Тэр ядарсан боловч тайлангаа өнөө оройдоо багтаан дуусгана.",
+            "en": "She is tired, but she is finishing her report this evening."
+          }
+        ],
+        "common_trap": "Анхаарах алдаа: 1) Denn-ийн дараа үйл үгийг өгүүлбэрийн төгсгөлд тавьж БОЛОХГҮЙ (*...denn ich morgen eine Prüfung habe - БУРУУ!). 2) Aber болон Sondern-ийг хольж болохгүй. Урд талын өгүүлбэрт үгүйсгэл (nicht/kein) байвал харин гэдэг утгаар заавал sondern ашиглана (*Er lernt nicht Englisch, aber Deutsch - БУРУУ! ЗӨВ: ...sondern Deutsch)."
+      },
+      {
+        "id": "de_b1_konnektoren_pos1",
+        "title": "Konjunktionaladverbien: Position 1 Inversion (deshalb, trotzdem, sonst, jedoch)",
+        "core_concept": {
+          "de": "Konjunktionaladverbien (deshalb, deswegen, darum, trotzdem, sonst, jedoch) verbinden zwei Sätze logisch, besetzen aber vollwertig die grammatische Position 1 des zweiten Satzes. Daher erzwingen sie sofortige Inversion: Das finite Verb folgt unmittelbar an Position 2 vor dem Subjekt.",
+          "en": "Conjunctive adverbs (deshalb, deswegen, darum, trotzdem, sonst, jedoch) logically link clauses but count as Position 1 in the second clause. This forces immediate subject-verb inversion: the conjugated verb must immediately take Position 2 before the subject.",
+          "mn": "Холбоос дайвар үгс (deshalb, trotzdem, sonst, jedoch) нь хоёр өгүүлбэрийг учир шалтгаан, үр дагавраар холбодог бөгөөд 2 дахь өгүүлбэрийн 1-р байрыг (Position 1) шууд эзэлдэг. Иймээс өгүүлбэрийн байрлал урвуу эргэж (Inversion), хувирсан үйл үг 2-р байранд ЭЗЭН БИЕИЙНХЭЭ ӨМНӨ орно. Sonst нь эс бөгөөс / үгүй бол гэсэн нөхцөлт утгыг илэрхийлнэ."
+        },
+        "pattern": "[Satz 1]. / [Satz 1], + [deshalb / trotzdem / sonst / jedoch (Pos 1)] + FINITES VERB (Pos 2) + Subjekt (Pos 3) + ...",
+        "examples": [
+          {
+            "target": "Es regnet in Strömen, deshalb nehme ich einen Regenschirm mit.",
+            "mn": "Хувингаар цутгах мэт бороо орж байна, тийм учраас би шүхэр авч явна.",
+            "en": "It is raining cats and dogs; therefore, I am taking an umbrella with me."
+          },
+          {
+            "target": "Er war sehr krank; trotzdem ging er zur Arbeit.",
+            "mn": "Тэр маш хүнд өвчтэй байсан; тэгсэн хэдий ч ажилдаа явсан.",
+            "en": "He was very ill; nevertheless, he went to work."
+          },
+          {
+            "target": "Beeil dich, sonst verpassen wir den letzten Zug!",
+            "mn": "Яараарай, эс бөгөөс бид сүүлчийн галт тэрэгнээсээ хоцрох нь!",
+            "en": "Hurry up, otherwise we will miss the last train!"
+          }
+        ],
+        "common_trap": "Англи хэлний therefore I take... эсвэл монгол хэлний сэтгэлгээнээс болж deshalb ich nehme... гэж эзэн биеийг үйл үгийн урд тавьж БОЛОХГҮЙ! Заавал үйл үг 2-р байранд: deshalb NEHME ich..."
+      },
+      {
+        "id": "de_b1_subjunktionen_kausal_temporal",
+        "title": "Subjunktionen: Kausal & Temporal (weil, da, während, als vs. wenn)",
+        "core_concept": {
+          "de": "Unterordnende Konjunktionen leiten einen Nebensatz ein und verlagern das finite Verb ans absolute Satzende. Weil nennt einen neuen Grund; da wird bevorzugt, wenn der Grund dem Hörer bereits bekannt ist (oft vorangestellt). Als beschreibt ein einmaliges Ereignis in der Vergangenheit; wenn steht für Gegenwart, Zukunft oder wiederholte Handlungen (jedes Mal wenn). Während drückt Gleichzeitigkeit oder einen Gegensatz aus.",
+          "en": "Subordinating conjunctions introduce subordinate clauses and send the conjugated verb to the absolute end of the clause. Weil introduces a new reason; da introduces a known premise (often at sentence start). Als is strictly for a single, unique event or period in the past; wenn is for present, future, or repeatable past events (whenever). Während denotes simultaneity or contrast.",
+          "mn": "Угсруулах холбоосууд (Subjunktionen) нь туслах өгүүлбэрийг үүсгэж, хувирсан үйл үгийг ХАМГИЙН ТӨГСГӨЛД аваачдаг. Weil нь шинэ шалтгаан заана; Da нь сонсогчид аль хэдийн мэдэгдэж буй шалтгааныг эхэнд гаргахад хэрэглэгдэнэ. Als нь ЗӨВХӨН өнгөрсөнд нэг удаа болсон үйл явдалд (хүүхэд байхад, тэр өдөр ирэхэд) хэрэглэгддэг бол wenn нь одоо, ирээдүй, эсвэл өнгөрсөнд давтагдсан үйлдэлд (болгонд) хэрэглэгдэнэ."
+        },
+        "pattern": "Hauptsatz, + [weil / da / während / als / wenn] + Subjekt + ... + FINITES VERB AM ENDE. / [Da / Als / Wenn / Weil] + Subjekt + ... + VERB AM ENDE, + FINITES VERB (Pos 1 im HS) + Subjekt...",
+        "examples": [
+          {
+            "target": "Als ich zehn Jahre alt war, zogen meine Eltern nach Deutschland.",
+            "mn": "Намайг арван настай байхад эцэг эх маань Герман руу нүүсэн.",
+            "en": "When I was ten years old, my parents moved to Germany."
+          },
+          {
+            "target": "Immer wenn ich Zeit hatte, besuchte ich meine Großeltern auf dem Land.",
+            "mn": "Зав гарах болгондоо би хөдөө байдаг эмээ өвөө дээрээ очдог байсан.",
+            "en": "Whenever I had time, I visited my grandparents in the countryside."
+          },
+          {
+            "target": "Da das Wetter heute sonnig ist, gehen wir im Park spazieren.",
+            "mn": "Өнөөдөр цаг агаар нартай байгаа тул бид цэцэрлэгт хүрээлэнд зугаална.",
+            "en": "Since the weather is sunny today, we are going for a walk in the park."
+          },
+          {
+            "target": "Während sie für die Prüfung lernte, hörte ihr Bruder laute Musik.",
+            "mn": "Түүнийг шалгалтандаа бэлдэж байх хооронд ах нь чанга хөгжим сонсож байв.",
+            "en": "While she was studying for the exam, her brother was listening to loud music."
+          }
+        ],
+        "common_trap": "Өнгөрсөнд нэг удаа болсон үйл явдалд хэзээ ч wenn ашиглаж болохгүй! When I was young = Als ich jung war (хэзээ ч: Wenn ich jung war гэж болохгүй!). Хэрэв туслах өгүүлбэрээр эхэлбэл таслалын дараа шууд үйл үг орно (Verb-Verb холбоос: ...war, ZOGEN meine Eltern...)."
+      },
+      {
+        "id": "de_b1_matrix_denn_weil_deshalb",
+        "title": "Konnektoren-Vergleich: Cause & Effect (denn vs. weil vs. deshalb)",
+        "core_concept": {
+          "de": "Drei Wege, denselben Kausalzusammenhang auszudrücken, mit drei völlig unterschiedlichen Satzstrukturen: Denn (Pos 0: Hauptsatz + Hauptsatz), Weil (Nebensatz: Verb am Satzende), Deshalb / Deswegen / Darum (Pos 1: Hauptsatz mit Inversion).",
+          "en": "Three grammatical mechanisms express the exact same cause-and-effect relationship using three completely different syntactic patterns: Denn (Pos 0: main clause + main clause), Weil (subordinate clause: finite verb at the very end), and Deshalb (Pos 1: main clause with inversion).",
+          "mn": "Нэг ижил учир шалтгааны утгыг илэрхийлэхэд герман хэлний бүтцийн 3 өөр хөдөлгүүр ажилладаг: 1) Denn (0-р байрлал, бүтцийг өөрчлөхгүй: эзэн бие + үйл үг), 2) Weil (туслах өгүүлбэр: үйл үг өгүүлбэрийн төгсгөлд), 3) Deshalb (1-р байрлал: хувирсан үйл үг шууд дараа нь орж, эзэн бие ард нь гарна)."
+        },
+        "pattern": "[Wirkung], denn + Subjekt + FINITES VERB... (Pos 0) / [Wirkung], weil + Subjekt + ... + FINITES VERB (Verb-Ende) / [Ursache]. Deshalb + FINITES VERB + Subjekt... (Pos 1 Inversion)",
+        "examples": [
+          {
+            "target": "Ich bleibe zu Hause, denn ich bin krank.",
+            "mn": "Би гэртээ үлдэнэ, учир нь би өвчтэй байна.",
+            "en": "I am staying home, for I am sick."
+          },
+          {
+            "target": "Ich bleibe zu Hause, weil ich krank bin.",
+            "mn": "Би өвчтэй байгаа учраас гэртээ үлдэнэ.",
+            "en": "I am staying home because I am sick."
+          },
+          {
+            "target": "Ich bin krank. Deshalb bleibe ich zu Hause.",
+            "mn": "Би өвчтэй байна. Тийм учраас би гэртээ үлдэнэ.",
+            "en": "I am sick. Therefore, I am staying home."
+          }
+        ],
+        "common_trap": "Шалгалт дээр хамгийн их гаргадаг алдаа: Weil-ийн дараа үйл үгийг 2-р байранд үлдээх (*weil ich bin krank), эсвэл Deshalb-ийн дараа эзэн биеийг урд нь оруулах (*deshalb ich bleibe). Энэ гурван бүтэц тус бүрийн томьёог математик шиг цээжил!"
+      },
+      {
+        "id": "de_b1_adjektiv_typ1_bestimmt",
+        "title": "Adjektivdeklination Typ 1: Nach bestimmtem Artikel (der/die/das)",
+        "core_concept": {
+          "de": "Steht vor dem Adjektiv ein bestimmter Artikel (der, die, das) oder ein Artikelwort mit fester Endung (dieser, jener, jeder, welcher), trägt der Artikel bereits das grammatische Kasussignal. Das Adjektiv hat nur zwei Endungen: -e (Nominativ Singular m/f/n und Akkusativ Singular f/n) und -en (alle Dativ-, alle Genitiv-, alle Pluralformen sowie Akkusativ Maskulin). Merkregel: 5-mal -e, sonst immer -en.",
+          "en": "When preceded by a definite article (der, die, das) or definite determiner (dieser, jeder), the article already clearly shows gender and case. Therefore, the adjective needs only two possible endings: -e (Nominative Sg m/f/n and Accusative Sg f/n) and -en (all Dative, all Genitive, all Plurals, and Accusative Masculine). Mnemonic rule: 5 times -e, all others -en.",
+          "mn": "Төлөөний үг/тодорхой ялгац гишүүн (der, die, das, dieser, jeder) урд нь орсон үед ялгац гишүүн нь хүйс, тийн ялгалыг аль хэдийн тодорхой зааж өгсөн байдаг. Иймээс тэмдэг нэр ердөө ХОЁРХОН төгсгөл авдаг: -e болон -en. Дүрэм: Нэрлэхийн ганц тоо (эр, эм, саармаг) болон Заахын ганц тооны эм, саармаг дээр -e (нийт 5 тохиолдол), бусад БҮХ тохиолдолд (Датив бүх хүйс, Генитив бүх хүйс, Олон тоо бүгд, Заахын эр хүйс) -en авна."
+        },
+        "pattern": "Nom Sg: der neue Tisch (-e) | die neue Lampe (-e) | das neue Auto (-e) / Akk Sg: den neuen Tisch (-en) | die neue Lampe (-e) | das neue Auto (-e) / Dat Sg: dem neuen Tisch (-en) | der neuen Lampe (-en) | dem neuen Auto (-en) / Plural: die neuen Tische (-en)",
+        "examples": [
+          {
+            "target": "Der fleißige Student beantwortet die schwere Frage.",
+            "mn": "Хичээнгүй оюутан тэр хэцүү асуултад хариулж байна.",
+            "en": "The hardworking student answers the difficult question."
+          },
+          {
+            "target": "Wir haben mit dem erfahrenen Arzt gesprochen.",
+            "mn": "Бид туршлагатай эмчтэй ярилцсан.",
+            "en": "We spoke with the experienced doctor."
+          },
+          {
+            "target": "Er sucht den verlorenen Schlüssel im ganzen Haus.",
+            "mn": "Тэр гээсэн түлхүүрээ байшингаар дүүрэн хайж байна.",
+            "en": "He is looking for the lost key throughout the entire house."
+          }
+        ],
+        "common_trap": "Датив (dem, der, dem) болон Олон тоонд (die) тодорхой ялгац гишүүний ард орсон тэмдэг нэр ҮРГЭЛЖ -en авдаг гэдгийг мартдаг (*mit dem neuem Auto - БУРУУ! ЗӨВ: mit dem neuen Auto)."
+      },
+      {
+        "id": "de_b1_adjektiv_typ2_gemischt",
+        "title": "Adjektivdeklination Typ 2: Nach unbestimmtem / Possessiv-Artikel (ein, kein, mein)",
+        "core_concept": {
+          "de": "Nach unbestimmtem Artikel (ein, eine, ein), Negationsartikel (kein) und Possessivartikeln (mein, dein, sein...) muss das Adjektiv dort das Genus signalisieren, wo der Artikel keine Endung hat: Maskulin Nominativ (-er: ein alter Wagen) und Neutral Nominativ/Akkusativ (-es: ein neues Haus). Sobald der Artikel eine flektierte Endung besitzt (-en, -em, -er, -es), endet das Adjektiv auf -en.",
+          "en": "After indefinite articles (ein), negation (kein), and possessive determiners (mein, dein, etc.), the adjective must step in to signal the gender wherever the article lacks an ending: Masculine Nom (-er: ein guter Mann) and Neuter Nom/Acc (-es: ein neues Buch). Wherever the article shows a regular inflectional ending (-en, -em, -er), the adjective takes -en.",
+          "mn": "Тодорхойгүй ялгац гишүүн (ein), үгүйсгэл (kein) болон хамаатуулах төлөөний үгийн (mein, dein...) ард тэмдэг нэр нь ялгац гишүүний төгсгөлгүй үлдсэн газруудад хүйсийн тэмдгийг өөр дээрээ авдаг: Эр хүйс Нэрлэхийн тийн ялгалд -er (ein neuer Wagen), Саармаг хүйс Нэрлэх ба Заахын тийн ялгалд -es (ein schönes Haus). Харин ялгац гишүүн нь өөрөө төгсгөлтэй болсон бүх газарт тэмдэг нэр -en авна."
+        },
+        "pattern": "Nom: ein guter Mann (-er) | eine gute Frau (-e) | ein gutes Kind (-es) / Akk: einen guten Mann (-en) | eine gute Frau (-e) | ein gutes Kind (-es) / Dat: einem guten Mann (-en) | einer guten Frau (-en) | einem guten Kind (-en) / Plur: meine guten Freunde (-en)",
+        "examples": [
+          {
+            "target": "Mein alter Computer funktioniert leider nicht mehr richtig.",
+            "mn": "Миний хуучин компьютер харамсалтай нь олигтой ажиллахаа больсон.",
+            "en": "My old computer unfortunately no longer works properly."
+          },
+          {
+            "target": "Sie hat ein interessantes Angebot von einer deutschen Firma erhalten.",
+            "mn": "Тэрээр германы нэгэн компаниас сонирхолтой санал хүлээн авсан.",
+            "en": "She received an interesting offer from a German company."
+          },
+          {
+            "target": "Wir suchen eine erfahrene Lehrkraft für unsere Schule.",
+            "mn": "Бид сургуульдаа туршлагатай багш хайж байна.",
+            "en": "We are looking for an experienced teacher for our school."
+          }
+        ],
+        "common_trap": "Ein-ийн ард эр хүйс нэрлэхийн тийн ялгалд -e залгаж болохгүй (*ein gut Mann / *ein gute Mann - БУРУУ!). Эр хүйс дээр заавал ein gutER Mann, саармаг хүйс дээр ein neuES Auto болно."
+      },
+      {
+        "id": "de_b1_adjektiv_typ3_nullartikel",
+        "title": "Adjektivdeklination Typ 3: Ohne Artikel (Nullartikel - Starke Deklination)",
+        "core_concept": {
+          "de": "Steht kein Artikel vor dem Adjektiv (z.B. bei unzählbaren Stoffen, Lebensmitteln oder artikellosem Plural), muss das Adjektiv das grammatische Kasus- und Genussignal des bestimmten Artikels vollständig selbst tragen. Einzige Ausnahme: Genitiv Singular Maskulin und Neutral enden auf -en (nicht auf -es, da das Substantiv bereits das Genitiv-s trägt).",
+          "en": "When no article precedes the adjective (uncountable materials, food, beverage, abstract nouns, or bare plurals), the adjective must bear the full grammatical gender and case signals of the definite article. The only exception: Genitive Singular Masculine and Neuter take -en (not -es, because the noun already carries the -(e)s genitive suffix).",
+          "mn": "Тэмдэг нэрийн урд ямар ч ялгац гишүүн байхгүй үед (тоолэгддэггүй шингэн, хоол хүнс, олон тооны нэр үгс) тэмдэг нэр нь der, die, das-ийн төгсгөлийг БҮРЭН өөр дээрээ авна. Ганц онцгой тохиолдол: Эр болон Саармаг хүйсийн харьяалахын тийн ялгалд (Genitiv) нэр үг нь өөрөө -(e)s авдаг тул давхардуулахгүйн тулд тэмдэг нэр нь -es биш, харин -en авна (kalten Wassers)."
+        },
+        "pattern": "Nom: frischer Kaffee (-er) | kalte Milch (-e) | frisches Brot (-es) / Akk: frischen Kaffee (-en) | kalte Milch (-e) | frisches Brot (-es) / Dat: frischem Kaffee (-em) | kalter Milch (-er) | frischem Brot (-em) / Gen: frischen Kaffees (-en!)",
+        "examples": [
+          {
+            "target": "Deutsches Bier und französischer Käse sind weltberühmt.",
+            "mn": "Герман шар айраг, франц бяслаг дэлхийд алдартай.",
+            "en": "German beer and French cheese are world-famous."
+          },
+          {
+            "target": "Mit großem Interesse habe ich Ihre Anzeige in der Zeitung gelesen.",
+            "mn": "Би сонин дээрх танай зарыг маш их сонирхон уншлаа.",
+            "en": "With great interest, I read your advertisement in the newspaper."
+          },
+          {
+            "target": "Trotz starken Regens gingen die Kinder nach draußen.",
+            "mn": "Ширүүн бороо орж байсан хэдий ч хүүхдүүд гадагшаа гарсан.",
+            "en": "Despite heavy rain, the children went outside."
+          }
+        ],
+        "common_trap": "Датив ганц тооны эр ба саармаг дээр dem-ийн -em төгсгөлийг авах ёстойг мартаж -en гэж бичдэг (*mit großEN Interesse - БУРУУ! ЗӨВ: mit großEM Interesse)."
+      },
+      {
+        "id": "de_b1_verben_praep_akkusativ",
+        "title": "Verben mit festen Präpositionen: Akkusativ (warten auf, sich erinnern an, sich freuen)",
+        "core_concept": {
+          "de": "Viele deutsche Verben verlangen eine feste Präposition mit obligatorischem Akkusativ. Die Präposition darf nicht wörtlich aus anderen Sprachen übersetzt werden, sondern bildet eine idiomatische Einheit mit dem Verb. Sich freuen auf bezieht sich auf die Zukunft; sich freuen über auf die Gegenwart oder Vergangenheit.",
+          "en": "Many German verbs require a fixed preposition governing the Accusative case. These prepositions cannot be translated literally from other languages; they form an inseparable semantic unit. Sich freuen auf looks forward to a future event; sich freuen über expresses pleasure about a present or past circumstance.",
+          "mn": "Германы олон үйл үгс араасаа заавал тодорхой угтвар үг (Präposition) болон Заахын тийн ялгал (Akkusativ) шаарддаг. Эдгээр угтвар үгсийг англи эсвэл монгол хэлнээс шууд орчуулж болохгүй, тухайн үйл үгтэйгээ салшгүй нэгдэл болж цээжлэгддэг. Жишээ нь: sich freuen auf + Akk нь ирээдүйд болох зүйлийг тэсэн ядан хүлээх; sich freuen über + Akk нь одоо/өнгөрсөнд болсон зүйлд баярлахыг заана."
+        },
+        "pattern": "Subjekt + Verb + [auf / an / über / für / um] + AKKUSATIV-OBJEKT (warten auf, denken an, sich erinnern an, sich freuen auf/über, sich interessieren für, bitten um, sich ärgern über, hoffen auf)",
+        "examples": [
+          {
+            "target": "Ich warte seit einer halben Stunde auf den nächsten Bus.",
+            "mn": "Би дараагийн автобусыг хагас цагийн турш хүлээж байна.",
+            "en": "I have been waiting for the next bus for half an hour."
+          },
+          {
+            "target": "Wir freuen uns schon sehr auf den gemeinsamen Urlaub im Sommer.",
+            "mn": "Бид зуны хамтын амралтаа одооноос маш их тэсэн ядан хүлээж байна.",
+            "en": "We are already looking forward very much to our joint vacation in summer."
+          },
+          {
+            "target": "Er erinnert sich noch genau an seinen ersten Schultag.",
+            "mn": "Тэр сургуульд орсон анхны өдрөө одоо ч маш тод санадаг.",
+            "en": "He still remembers his first day of school clearly."
+          }
+        ],
+        "common_trap": "Warten auf гэдэг үйл үгийн араас für ашиглаж англи хэлний wait for-той андуурч БОЛОХГҮЙ (*Ich warte für dich - БУРУУ! ЗӨВ: Ich warte auf dich). Bitten нь um + Akk авдаг: Ich bitte um Hilfe."
+      },
+      {
+        "id": "de_b1_verben_praep_dativ",
+        "title": "Verben mit festen Präpositionen: Dativ (teilnehmen an, abhängen von, gehören zu)",
+        "core_concept": {
+          "de": "Zahlreiche Verben binden ihre Ergänzung fest über Präpositionen mit Dativ (an, von, zu, mit, bei, nach). Sie antworten auf die Frage Mit wem / Woran / Wovon?.",
+          "en": "A large set of core verbs bind their objects via fixed prepositions requiring the Dative case (an, von, zu, mit, bei, nach). They answer the questions Mit wem? / Woran? / Wovon?.",
+          "mn": "Олон чухал үйл үгс заавал Датив тийн ялгал шаарддаг угтвар үгстэй (an, von, zu, mit, bei, nach) хоршиж хэрэглэгддэг. Асуулт нь: Хэнтэй? / Юунаас? / Юунд? (Mit wem? / Wovon? / Woran?)."
+        },
+        "pattern": "Subjekt + Verb + [an / von / zu / mit / bei] + DATIV-OBJEKT (teilnehmen an, abhängen von, gehören zu, sich beschäftigen mit, träumen von, gratulieren zu, passen zu, einladen zu)",
+        "examples": [
+          {
+            "target": "Nächste Woche nehme ich an einem internationalen Seminar teil.",
+            "mn": "Ирэх долоо хоногт би олон улсын семинарт оролцоно.",
+            "en": "Next week I am participating in an international seminar."
+          },
+          {
+            "target": "Der Erfolg der Verhandlung hängt von vielen Faktoren ab.",
+            "mn": "Хэлэлцээрийн амжилт олон хүчин зүйлээс шалтгаална.",
+            "en": "The success of the negotiation depends on many factors."
+          },
+          {
+            "target": "Ich gratuliere dir von ganzem Herzen zu deiner bestandenen Prüfung!",
+            "mn": "Шалгалтаа амжилттай давсанд чинь чин сэтгэлээсээ баяр хүргэе!",
+            "en": "I congratulate you with all my heart on passing your exam!"
+          }
+        ],
+        "common_trap": "Teilnehmen нь in биш an + Dativ авдаг (*teilnehmen im Seminar - БУРУУ! ЗӨВ: am Seminar). Gratulieren нь zu + Dativ авдаг: Ich gratuliere dir ZUM Geburtstag (für биш!)."
+      },
+      {
+        "id": "de_b1_pronominaladverbien",
+        "title": "Pronominaladverbien & Fragewörter: Wo(r)- & Da(r)- vs. Präposition + Pronomen",
+        "core_concept": {
+          "de": "Bei Verben mit Präpositionen entscheidet der Bezug: Bei Personen nutzt man die Präposition direkt mit einem Fragewort oder Personalpronomen (Auf wen? / Auf ihn. Mit wem? / Mit ihr.). Bei Sachen oder Sachverhalten verschmelzen Fragewort und Pronomen zu Pronominaladverbien: wo(r)- für Fragen (Worauf? Wovon?) und da(r)- für Aussagen (Darauf, davon). Beginnt die Präposition mit einem Vokal, wird ein Einschub-r eingefügt (da-r-auf, wo-r-an).",
+          "en": "When questioning or referencing prepositional objects, German strictly differentiates persons from things: For persons, use the preposition + pronoun directly (Auf wen? / Auf ihn). For things or abstract actions, combine with wo(r)- for questions (Worauf?) and da(r)- for references (Darauf). If the preposition starts with a vowel, an epenthetic -r- is inserted (da-r-an, wo-r-über).",
+          "mn": "Угтвар үгтэй үйл үгэнд хүний тухай ярьж байна уу, эд зүйл/үзэгдлийн тухай ярьж байна уу гэдгээс шалтгаалан хоёр өөр дүрэм үйлчилнэ: 1) Хүн дээр угтвар үгийг шууд хэрэглэнэ (Auf wen? / Auf ihn). 2) Эд зүйл, хийсвэр ойлголт дээр Wo(r)- асуултад (Worauf? Womit?), харин Da(r)- хариултад (Darauf, damit) залгагдана. Хэрэв угтвар үг эгшгээр эхэлбэл дунд нь r авиа нэмэгдэнэ (da-r-auf, wo-r-an)."
+        },
+        "pattern": "Personen: [Präposition] + wen/wem? -> [Präposition] + ihn/sie/ihm/ihr / Sachen: Wo(r) + [Präposition]? -> Da(r) + [Präposition] (Einschub-r: worauf, daran)",
+        "examples": [
+          {
+            "target": "Auf wen wartest du? – Ich warte auf meine Kollegin.",
+            "mn": "Чи хэнийг хүлээж байгаа юм бэ? – Би хамтран ажиллагч бүсгүйгээ хүлээж байна.",
+            "en": "Whom are you waiting for? – I am waiting for my colleague."
+          },
+          {
+            "target": "Worauf wartest du? – Ich warte auf den Bus. / Ich warte darauf.",
+            "mn": "Чи юу хүлээж байгаа юм бэ? – Би автобус хүлээж байна. / Би түүнийг хүлээж байна.",
+            "en": "What are you waiting for? – I am waiting for the bus. / I am waiting for it."
+          },
+          {
+            "target": "Woran denkst du gerade? – Ich denke daran, wie schön der Urlaub war.",
+            "mn": "Чи яг одоо юу бодож байна вэ? – Амралт ямар гоё байсан тухай бодож байна.",
+            "en": "What are you thinking about right now? – I am thinking about how wonderful the vacation was."
+          }
+        ],
+        "common_trap": "Хүний тухай асуухдаа хэзээ ч worauf/womit гэж болохгүй! Who are you waiting for? = Auf wen wartest du? (биш: *Worauf wartest du?). Мөн эд зүйл дээр für was гэж ярих нь ярианы бүдүүлэг алдаа бөгөөд зөв хэлбэр нь Wofür юм."
+      },
+      {
+        "id": "de_b1_verben_reiner_dativ",
+        "title": "Reine Dativ-Verben: Verben mit obligatorischem Dativobjekt",
+        "core_concept": {
+          "de": "Eine definierte Gruppe hochfrequenter Verben regiert ausschließlich den Dativ (ohne Präposition). Im Englischen oder Mongolischen entsprechen diese Verben oft transitiven Verben mit Akkusativobjekt, weshalb sie zu den häufigsten Fehlerquellen zählen.",
+          "en": "A specific group of essential German verbs strictly governs the Dative case as their sole object. Many of these correspond to direct transitive verbs in English or Mongolian (e.g. to help someone = helfen + Dat), making them a frequent source of errors.",
+          "mn": "Зарим өндөр давтамжтай үйл үгс араасаа заавал өгөх оршихын тийн ялгал (Dativ) шаарддаг. Англи эсвэл монгол хэлэнд туслах, баярлах гэдэг үг шууд заахын тийн ялгал (хэнийг? юуг?) авдаг бол герман хэлэнд ЗААВАЛ Датив (хэнд? юунд?) авна."
+        },
+        "pattern": "Subjekt + FINITES VERB + DATIV-OBJEKT (helfen, danken, gehören, gefallen, schmecken, passen, vertrauen, zustimmen, widersprechen, fehlen)",
+        "examples": [
+          {
+            "target": "Kannst du mir bitte bei dieser schweren Aufgabe helfen?",
+            "mn": "Чи надад энэ хүнд даалгавар дээр тусалж чадах уу?",
+            "en": "Can you please help me with this difficult task?"
+          },
+          {
+            "target": "Ich stimme dem Vorschlag des Direktors vollkommen zu.",
+            "mn": "Би захирлын саналыг бүрэн дүүрэн дэмжиж байна.",
+            "en": "I completely agree with the director’s proposal."
+          },
+          {
+            "target": "Der Zeuge widersprach den Aussagen der Angeklagten.",
+            "mn": "Гэрч шүүгдэгчийн мэдүүлгийг эрс үгүйсгэж сөргөлдөв.",
+            "en": "The witness contradicted the statements of the accused."
+          }
+        ],
+        "common_trap": "Англи хэлний help me гэдгээс шууд хуулбарлан Hilf mich гэж хэлж БОЛОХГҮЙ! Заавал Hilf MIR (Dativ). Мөн zustimmen болон widersprechen нь Akkusativ биш заавал Dativ авна (*Ich stimme dich zu - БУРУУ! ЗӨВ: Ich stimme DIR zu)."
+      },
+      {
+        "id": "de_b1_wechselpraep_positionsverben",
+        "title": "Wechselpräpositionen & Positionsverben: Akkusativ (Wohin?) vs. Dativ (Wo?)",
+        "core_concept": {
+          "de": "Die 9 Wechselpräpositionen (an, auf, hinter, in, neben, über, unter, vor, zwischen) fordern den Akkusativ bei Richtungsangabe (Wohin?) und den Dativ bei Ortsangabe (Wo?). Sie korrespondieren exakt mit zwei Verbgruppen: Den transitiven, schwachen Handlungsverben (stellen, legen, setzen, hängen -> Wohin? + Akk) und den intransitiven, starken Positionsverben (stehen, liegen, sitzen, hängen -> Wo? + Dat).",
+          "en": "The 9 two-way prepositions govern Accusative for directional movement (Wohin?) and Dative for static location (Wo?). They map strictly to two verb families: transitive action verbs (stellen, legen, setzen, hängen + Akk) and intransitive state verbs (stehen, liegen, sitzen, hängen + Dat).",
+          "mn": "Байрлал заах 9 угтвар үг (an, auf, hinter, in, neben, über, unter, vor, zwischen) нь чиглэсэн хөдөлгөөн заавал (Хаашаа? - Wohin?) Akkusativ, харин тогтсон байрлал заавал (Хаана? - Wo?) Dativ авдаг. Эдгээр нь герман хэлний үйл үгийн хосуудтай шууд харгалздаг: Үйлдлийн үйл үгс (stellen, legen, setzen -> Akkusativ) ба Байрлалын үйл үгс (stehen, liegen, sitzen -> Dativ)."
+        },
+        "pattern": "AKKUSATIV (Wohin? - Aktion): Subjekt + [legen / stellen / setzen / hängen] + Akk + Präp + AKKUSATIV / DATIV (Wo? - Zustand): Subjekt + [liegen / stehen / sitzen / hängen] + Präp + DATIV",
+        "examples": [
+          {
+            "target": "Ich lege das Buch auf den Tisch. – Jetzt liegt das Buch auf dem Tisch.",
+            "mn": "Би номыг ширээн дээр тавьж байна (хэвтүүлж). – Одоо ном ширээн дээр хэвтэж байна.",
+            "en": "I lay the book on the table. – Now the book is lying on the table."
+          },
+          {
+            "target": "Er stellt die Tasse in den Schrank. – Die Tasse steht im Schrank.",
+            "mn": "Тэр аягыг шүүгээ рүү хийж байна (босгож). – Аяга шүүгээн дотор байна.",
+            "en": "He puts the cup into the cupboard. – The cup is standing in the cupboard."
+          },
+          {
+            "target": "Sie setzt das Kind auf den Stuhl. – Das Kind sitzt auf dem Stuhl.",
+            "mn": "Тэр хүүхдийг сандал дээр суулгаж байна. – Хүүхэд сандал дээр сууж байна.",
+            "en": "She seats the child on the chair. – The child is sitting on the chair."
+          }
+        ],
+        "common_trap": "Legen (Akkusativ) болон Liegen (Dativ)-ийг хольж болохгүй! Das Buch legt auf dem Tisch гэж ярьж БОЛОХГҮЙ, ном өөрөө хэвтэж байгаа тул liegt auf dem Tisch болно."
+      },
+      {
+        "id": "de_b1_reflexiv_akk_dat",
+        "title": "Reflexive Verben: Akkusativ- vs. Dativ-Reflexivpronomen",
+        "core_concept": {
+          "de": "Reflexivpronomen unterscheiden sich nur in der 1. und 2. Person Singular (mich/mir, dich/dir). Ist die reflexive Handlung das alleinige Objekt des Verbs, steht das Reflexivpronomen im Akkusativ (Ich wasche mich). Tritt jedoch ein eigenständiges Akkusativobjekt hinzu, weicht das Reflexivpronomen in den Dativ aus (Ich wasche mir die Hände).",
+          "en": "Reflexive pronouns differ between Accusative and Dative only in the 1st and 2nd person singular (mich vs. mir, dich vs. dir). When the reflexive action is the direct object, use the Accusative (Ich wasche mich). However, if an explicit direct object is already present, the reflexive pronoun shifts to the Dative (Ich wasche mir die Hände).",
+          "mn": "Тусах төлөөний үг (Reflexivpronomen) нь зөвхөн 1 ба 2-р биеийн ганц тоон дээр ялгаатай хэлбэртэй байдаг (mich/mir, dich/dir). Хэрэв өгүүлбэрт өөр шууд тусагдахуун (Akkusativ) байхгүй бол тусах төлөөний үг нь Akkusativ (mich/dich) байна. Харин өгүүлбэрт нэрлэсэн шууд тусагдахуун орж ирвэл тусах төлөөний үг нь Датив (mir/dir) болж шилжинэ."
+        },
+        "pattern": "Kein weiteres Objekt -> AKKUSATIV: Subjekt + Verb + mich / dich / sich / uns / euch / sich / Mit Akkusativobjekt -> DATIV: Subjekt + Verb + mir / dir / sich / uns / euch / sich + AKKUSATIVOBJEKT",
+        "examples": [
+          {
+            "target": "Ich wasche mich jeden Morgen kalt.",
+            "mn": "Би өглөө бүр хүйтэн усаар биеэ угаадаг.",
+            "en": "I wash myself with cold water every morning."
+          },
+          {
+            "target": "Ich wasche mir vor dem Essen gründlich die Hände.",
+            "mn": "Би хоол идэхийнхээ өмнө гараа маш сайн угаадаг.",
+            "en": "I wash my hands thoroughly before eating."
+          },
+          {
+            "target": "Hast du dir schon einen neuen Mantel gekauft?",
+            "mn": "Чи өөртөө шинэ пальто худалдаж авч амжсан уу?",
+            "en": "Have you already bought yourself a new coat?"
+          },
+          {
+            "target": "Ich kann mir diese komplizierte Grammatikregel einfach nicht merken.",
+            "mn": "Би энэ түвэгтэй дүрмийг ерөөсөө цээжилж тогтоож чадахгүй байна.",
+            "en": "I simply cannot memorize this complicated grammar rule."
+          }
+        ],
+        "common_trap": "Би шүдээ угааж байна гэхэд Ich putze mich die Zähne гэж хэлж БОЛОХГҮЙ! Учир нь die Zähne нь Akkusativ тул төлөөний үг нь Dativ болж Ich putze MIR die Zähne болно."
+      },
+      {
+        "id": "de_b1_um_zu_vs_damit",
+        "title": "Infinitiv mit um...zu vs. damit: Finale Absichten & Subjektidentität",
+        "core_concept": {
+          "de": "Sowohl um...zu als auch damit drücken eine Absicht oder ein Ziel aus (Wozu?). Die Infinitivkonstruktion um...zu darf NUR verwendet werden, wenn das Subjekt des Hauptsatzes mit dem gedachten Subjekt des Infinitivsatzes identisch ist (Subjektidentität). Sind die Subjekte verschieden, ist damit obligatorisch. Bei Subjektidentität ist beides möglich, um...zu gilt jedoch als eleganter und prägnanter.",
+          "en": "Both um...zu and damit express purpose or goal (In order to / So that). The infinitive construction um...zu can ONLY be used when the subject of the main clause is identical to the implied subject of the infinitive clause. If the subjects are different, damit is strictly mandatory. If the subjects are identical, both can be used, but um...zu is preferred.",
+          "mn": "Зорилго илэрхийлэхэд (Ямар зорилгоор? - Wozu?) um...zu (тулд) болон damit (тулд / -ын тулд) хоёрыг хэрэглэнэ. Um...zu бүтцийг ЗӨВХӨН хоёр өгүүлбэрийн эзэн бие НЭГ ХҮН (Subjektidentität) байх үед л ашиглаж болно. Харин хоёр өгүүлбэрийн эзэн бие ӨӨР ХҮМҮҮС байвал ЗААВАЛ damit-ийг хэрэглэнэ."
+        },
+        "pattern": "Gleiches Subjekt: Subjekt + Verb..., um + ... + (trennbare: ...-zu-...) + INFINITIV. / Verschiedene Subjekte: Subjekt 1 + Verb..., damit + Subjekt 2 + ... + FINITES VERB AM ENDE.",
+        "examples": [
+          {
+            "target": "Ich lerne täglich Deutsch, um in Deutschland Medizin zu studieren.",
+            "mn": "Би Германд анагаахаар суралцахын тулд өдөр бүр герман хэл сурч байна.",
+            "en": "I study German daily in order to study medicine in Germany."
+          },
+          {
+            "target": "Der Vater arbeitet Überstunden, damit seine Kinder eine gute Ausbildung bekommen.",
+            "mn": "Эцэг нь хүүхдүүддээ сайн боловсрол олгохын тулд илүү цагаар ажилладаг.",
+            "en": "The father works overtime so that his children receive a good education."
+          },
+          {
+            "target": "Er beeilt sich, um den Bus nicht zu verpassen.",
+            "mn": "Тэр автобуснаасаа хоцрохгүйн тулд яарч байна.",
+            "en": "He is hurrying in order not to miss the bus."
+          }
+        ],
+        "common_trap": "Эзэн бие нь өөр байгаа үед um...zu ашиглаж БОЛОХГҮЙ (*Ich arbeite viel, um mein Sohn studieren kann - ИХ ТОМ АЛДАА!). Эзэн бие өөр бол заавал damit: ...damit mein Sohn studieren kann."
+      },
+      {
+        "id": "de_b1_ohne_anstatt_zu",
+        "title": "Infinitivkonstruktionen: ohne...zu & anstatt...zu",
+        "core_concept": {
+          "de": "Ohne...zu drückt das Fehlen einer erwarteten Begleithandlung aus (ohne dass etwas geschieht). Anstatt...zu (oder statt...zu) drückt eine verworfene Alternative aus (anstelle einer Handlung). Beide verlangen Subjektidentität mit dem Hauptsatz. Bei unterschiedlichen Subjekten müssen die Konjunktionen ohne dass bzw. anstatt dass mit finitem Verb am Ende verwendet werden.",
+          "en": "Ohne...zu expresses the absence of an expected accompanying action (without doing something). Anstatt...zu expresses a replaced alternative (instead of doing something). Both require identical subjects. If subjects differ, use ohne dass or anstatt dass with the conjugated verb at the end.",
+          "mn": "Ohne...zu нь хүлээгдэж байсан үйлдлийг хийлгүйгээр өнгөрөхийг илэрхийлнэ (тэгэлгүйгээр, үйлдэлгүйгээр). Anstatt...zu нь хийх ёстой байсан үйлдлийнхээ оронд өөр зүйл хийхийг заана (тэгэхийн оронд). Хоёулаа эзэн бие ижил байхыг шаардана. Хэрэв эзэн бие өөр байвал ohne dass болон anstatt dass гэж туслах өгүүлбэр болгоно."
+        },
+        "pattern": "Hauptsatz, + [ohne / anstatt] + Ergänzungen + zu + INFINITIV.",
+        "examples": [
+          {
+            "target": "Er verließ das Büro, ohne sich von seinen Kollegen zu verabschieden.",
+            "mn": "Тэр хамт ажиллагсадтайгаа салах ёс хийлгүйгээр оффисоос гарч одов.",
+            "en": "He left the office without saying goodbye to his colleagues."
+          },
+          {
+            "target": "Anstatt sich auf die Prüfung vorzubereiten, spielte er den ganzen Tag Videospiele.",
+            "mn": "Шалгалтандаа бэлдэхийн оронд тэр өдөржин видео тоглоом тоглосон.",
+            "en": "Instead of preparing for the exam, he played video games all day."
+          },
+          {
+            "target": "Sie ging an ihm vorbei, ohne ihn zu bemerken.",
+            "mn": "Тэр эмэгтэй түүний хажуугаар анзааралгүй зөрөөд өнгөрөв.",
+            "en": "She walked past him without noticing him."
+          }
+        ],
+        "common_trap": "Салдаг угтвартай үйл үгэнд zu нь үгийн дунд ордог: ohne aufZUstehen (биш: *zu aufstehen)."
+      },
+      {
+        "id": "de_b1_modalverben_syntax_perfekt",
+        "title": "Modalverben im Nebensatz & Perfekt mit Doppelinfinitiv (Ersatzinfinitiv)",
+        "core_concept": {
+          "de": "Im Nebensatz steht das konjugierte Modalverb im Präsens und Präteritum am absoluten Satzende hinter dem Vollverb im Infinitiv. Im Perfekt bildet das Modalverb mit einem Vollverb den sogenannten Ersatzinfinitiv (Doppelinfinitiv: Vollverb-Infinitiv + Modalverb-Infinitiv). Im Hauptsatz steht das Hilfsverb haben an Position 2. Im Nebensatz rutscht das Hilfsverb hat AUSNAHMSWEISE VOR den Doppelinfinitiv!",
+          "en": "In a subordinate clause in Präsens/Präteritum, the conjugated modal verb stands at the absolute end after the infinitive full verb. In the Perfekt tense, when combined with a full verb, modal verbs trigger the Ersatzinfinitiv (double infinitive: full verb infinitive + modal verb infinitive). In the main clause, haben takes Position 2. In subordinate clauses, hat exceptionally moves BEFORE the double infinitive!",
+          "mn": "Туслах өгүүлбэрт (Nebensatz) байдлын үйл үг нь одоо ба өнгөрсөн цаг дээр өгүүлбэрийн хамгийн сүүлд үндсэн үйл үгийнхээ (Infinitiv) ард ордог. Харин Perfekt цаг дээр байдлын үйл үг нь Partizip II биш давхар инфинитив (Doppelinfinitiv / Ersatzinfinitiv) болдог: hat arbeiten müssen. Туслах өгүүлбэрт hat нь онцгой дүрмээр давхар инфинитивийнхээ ӨМНӨ ордог!"
+        },
+        "pattern": "Präsens Nebensatz: ..., weil er heute lange arbeiten MUSS. / Präteritum Nebensatz: ..., weil er gestern lange arbeiten MUSSTE. / Perfekt Hauptsatz: Er hat gestern nicht kommen KÖNNEN. / Perfekt Nebensatz: ..., weil er gestern HAT nicht kommen KÖNNEN.",
+        "examples": [
+          {
+            "target": "Ich konnte nicht anrufen, weil ich bis spät in die Nacht arbeiten musste.",
+            "mn": "Би шөнө орой болтол ажиллах шаардлагатай байсан учраас залгаж чадаагүй.",
+            "en": "I could not call because I had to work until late into the night."
+          },
+          {
+            "target": "Er bedauert sehr, dass er den Termin nicht hat verschieben können.",
+            "mn": "Тэр товолсон цагаа хойшлуулж чадаагүйдээ маш их харамсаж байна.",
+            "en": "He very much regrets that he was not able to postpone the appointment."
+          },
+          {
+            "target": "Wir haben das neue Auto leider sofort reparieren lassen müssen.",
+            "mn": "Бид шинэ машинаа харамсалтай нь шууд засуулахаас өөр аргагүй болсон.",
+            "en": "Unfortunately, we had to have the new car repaired immediately."
+          }
+        ],
+        "common_trap": "Perfekt цаг дээр туслах өгүүлбэрт hat-ийг хамгийн төгсгөлд тавьж БОЛОХГҮЙ (*...kommen können hat - БУРУУ!). Давхар инфинитив байгаа үед hat нь ямагт давхар инфинитивийн өмнө орно: ...dass er nicht HAT kommen können."
       }
     ]
   },
@@ -479,6 +1144,121 @@
           }
         ],
         "common_trap": "'Nachdem' холбоос орсон өгүүлбэрт цагийн уялдах хууль үйлчилнэ: Nachdem + Plusquamperfekt, Hauptsatz + Präteritum."
+      },
+      {
+        "id": "de_b2_partizipialattribute",
+        "title": "Partizip I & II als Adjektive und Erweiterte Partizipien",
+        "core_concept": {
+          "mn": "Тэмдэг нэрийн үүрэгтэй нөхцөл үйл үгс: Partizip I (Infinitiv + -d + төгсгөл) нь идэвхтэй бөгөөд зэрэг явагдаж буй үйлийг заана (das weinende Kind = das Kind, das weint). Partizip II нь идэвхгүй эсвэл өнгөрсөн үйлийг заана (das reparierte Auto = das Auto, das repariert wurde). Өргөтгөсөн нөхцөлт бүтэц (Erweitertes Partizip) нь артикл ба нэр үгийн дунд бүтэн өгүүлбэрийн хэмжээний дэлгэрэнгүй мэдээллийг оруулдаг.",
+          "en": "Participle attributes: Participle I (Infinitiv + -d + adjective ending) expresses active, simultaneous action. Participle II expresses passive or completed action. Extended participial phrases place extensive attributes directly between the article and the noun.",
+          "de": "Partizipien als Adjektive: Partizip I (Infinitiv + -d + Adjektivendung) drückt aktive Gleichzeitigkeit aus. Partizip II drückt passive Vorzeitigkeit/Zustand aus. Erweiterte Partizipialattribute umklammern Angaben zwischen Artikel und Nomen."
+        },
+        "pattern": "Artikel + [Erweiterte Angaben / Adverbiale] + [Partizip I/II mit Adjektivendung] + Nomen",
+        "examples": [
+          {
+            "target": "Die gestern von der Regierung beschlossenen Sparmaßnahmen treten in Kraft.",
+            "mn": "Өчигдөр засгийн газраас шийдвэрлэсэн хэмнэлтийн арга хэмжээнүүд хэрэгжиж эхэлж байна.",
+            "en": "The austerity measures decided by the government yesterday are taking effect."
+          },
+          {
+            "target": "Der seit vielen Jahren in Berlin lebende Schriftsteller veröffentlicht einen neuen Roman.",
+            "mn": "Олон жилийн турш Берлинд амьдарч буй зохиолч шинэ роман хэвлүүлж байна.",
+            "en": "The writer living in Berlin for many years is publishing a new novel."
+          }
+        ],
+        "common_trap": "Уншиж ойлгохдоо эхлээд Артикл ба түүний төгсгөлийн Нэр үгийг холбож унших ёстой! Голд нь орсон үгс бол нөхцөлт үйл үгийн дэлгэрүүлэгч гишүүд юм."
+      },
+      {
+        "id": "de_b2_konjunktiv1",
+        "title": "Konjunktiv I & Indirekte Rede (Indirect Discourse in Journalism)",
+        "core_concept": {
+          "mn": "Konjunktiv I (Шууд бус ишлэл): Хөндлөнгийн хүний хэлсэн үг, мэдэгдэл, мэдээг төвийг сахисан байдлаар дамжуулахад ашиглана. Язгуур + e, est, e, en, et, en. Хэрэв Konjunktiv I нь Indikativ (энгийн хэлбэр)-тэйгээ давхардвал оронд нь Konjunktiv II (эсвэл würde + Infinitiv) хэрэглэнэ.",
+          "en": "Konjunktiv I is strictly used in formal journalism and reports for indirect speech (distancing the speaker from the claim). Formed with present stem + subjunctive endings. If the form matches the indicative, substitute with Konjunktiv II.",
+          "de": "Der Konjunktiv I dient der distanzierten Wiedergabe von Äußerungen Dritter (indirekte Rede). Bildung: Präsensstamm + -e/-est/-e/-en/-et/-en. Bei Formengleichheit mit dem Indikativ wird auf den Konjunktiv II ausgewichen."
+        },
+        "pattern": "Er sagte / Sie erklärte, [dass] ... + [Konjunktiv I Verb] (bzw. Konjunktiv II bei Formengleichheit)",
+        "examples": [
+          {
+            "target": "Der Minister erklärte, die Steuern seien in diesem Jahr nicht erhöht worden.",
+            "mn": "Сайд мэдэгдэхдээ, энэ жил татварыг нэмээгүй гэж хэлсэн.",
+            "en": "The minister explained that taxes had not been increased this year."
+          },
+          {
+            "target": "Die Zeugin behauptet, sie habe den Täter genau gesehen.",
+            "mn": "Гэрч этгээд мэдэгдэхдээ, тэрээр гэмт хэрэгтнийг яг таг харсан гэж батлав.",
+            "en": "The witness claims she saw the perpetrator clearly."
+          }
+        ],
+        "common_trap": "3-р биеийн ганц тоонд sei / habe / gehe хэлбэрүүд голчлон хэрэглэгддэг. 'Er hat gesagt, dass er krank ist' нь албан бус; B2 түвшинд 'er sei krank' гэж бичнэ."
+      },
+      {
+        "id": "de_b2_passiversatzformen",
+        "title": "Passiversatzformen & Alternativen (sich lassen, sein zu, -bar/-lich)",
+        "core_concept": {
+          "mn": "Идэвхгүй төлөвийг орлох өөр бүтцүүд: 1) sich lassen + Infinitiv (= können + Passiv: Das Problem lässt sich lösen = Das Problem kann gelöst werden). 2) sein + zu + Infinitiv (= müssen/können + Passiv: Die Aufgabe ist zu erledigen). 3) -bar, -lich дагавартай тэмдэг нэрс (machbar, lösbar, leserlich).",
+          "en": "Passive alternatives: 1) 'sich lassen + infinitive' (= can be done). 2) 'sein + zu + infinitive' (= must/can be done). 3) Adjectives with '-bar' or '-lich' (= feasible, readable).",
+          "de": "Passiversatzformen drücken Passivbedeutungen ohne 'werden' aus: 1) 'sich lassen + Infinitiv' (Möglichkeit: lässt sich machen). 2) 'sein + zu + Infinitiv' (Notwendigkeit/Möglichkeit: ist zu tun). 3) Adjektive auf -bar/-lich (machbar = kann gemacht werden)."
+        },
+        "pattern": "Möglichkeit: [Subjekt] + lässt sich + [Infinitiv] | Notwendigkeit: [Subjekt] + ist + zu + [Infinitiv]",
+        "examples": [
+          {
+            "target": "Diese schwierige Frage lässt sich nicht so einfach beantworten.",
+            "mn": "Энэ хүнд асуултыг тийм ч амархан хариулах боломжгүй юм.",
+            "en": "This difficult question cannot be answered that easily."
+          },
+          {
+            "target": "Die Berichte sind bis nächsten Montag beim Direktor einzureichen.",
+            "mn": "Тайлангуудыг ирэх даваа гараг гэхэд захиралд өгч тушаах ёстой.",
+            "en": "The reports are to be submitted to the director by next Monday."
+          }
+        ],
+        "common_trap": "'sein + zu + Infinitiv' бүтэц нь хам сэдвээсээ хамаарч 'шаардлага' (müssen) эсвэл 'боломж' (können)-ийг заана. Төлөвлөгөө, заавар дээр 'müssen'-ийг илэрхийлнэ."
+      },
+      {
+        "id": "de_b2_subjektive_modalverben",
+        "title": "Subjektive Bedeutung der Modalverben (Degrees of Certainty & Rumor)",
+        "core_concept": {
+          "mn": "Байдлын үйл үгсийн субьектив утга: Үйл явдалд хэр итгэлтэй байгааг илэрхийлнэ. müssen = бараг 100% гарцаагүй (Er muss zu Hause sein). dürfte = 75% өндөр магадлалтай (Er dürfte gleich ankommen). könnte = 50% магадлалтай (Das könnte stimmen). sollen = бусдын яриа/цуурхал (Er soll Millionär sein = Man sagt, er sei Millionär). wollen = тухайн хүний өөрийнх нь баталгаа/үнэмшилгүй яриа (Er will alles allein gemacht haben = Er behauptet, er habe...).",
+          "en": "Subjective use of modal verbs indicates degrees of certainty or attribution: 'müssen' (99% certainty), 'dürfte' (75% probability), 'könnte' (50% possibility), 'sollen' (hearsay/rumor: it is said), 'wollen' (unverified subjective claim: he claims that).",
+          "de": "Subjektive Modalverben drücken Vermutungen oder Distanzierung aus: müssen (fast sicher), dürfte (sehr wahrscheinlich), könnte (möglich), sollen (Gerücht/Fremdbehauptung), wollen (eigene ungeprüfte Behauptung des Subjekts)."
+        },
+        "pattern": "Vermutung: [Subjekt] + [Modalverb (dürfte/muss/könnte)] + [Infinitiv I oder Perfekt-Infinitiv: Partizip II + haben/sein]",
+        "examples": [
+          {
+            "target": "Der Zug dürfte in wenigen Minuten einfahren.",
+            "mn": "Галт тэрэг хэдхэн минутын дараа орж ирэх магадлал маш өндөр байна.",
+            "en": "The train is very likely to arrive in a few minutes."
+          },
+          {
+            "target": "Er will den berühmten Schauspieler persönlich kennen.",
+            "mn": "Тэрээр алдартай жүжигчнийг биечлэн мэддэг гэж өөрөө яриад байгаа (батлагдаагүй).",
+            "en": "He claims to know the famous actor personally."
+          }
+        ],
+        "common_trap": "'Er soll krank sein' гэдэг нь 'Тэр өвчтэй байх ёстой' гэсэн утга биш, харин 'Хүмүүсийн ярьж байгаагаар тэр өвчтэй байгаа гэнэ' гэсэн утгатай!"
+      },
+      {
+        "id": "de_b2_nvv_praepositionen",
+        "title": "Nomen-Verb-Verbindungen mit festen Präpositionen (NVV Valency)",
+        "core_concept": {
+          "mn": "Угтварт нэр үг-үйл үгийн холбоосууд (Funktionsverbgefüge): Нэр үг нь өөртөө тохирох угтвар ба тийн ялгалыг удирдана. Жишээ нь: in Anspruch nehmen (+ Akk), zur Verfügung stehen (+ Dat) / stellen (+ Akk), Kritik üben an (+ Dat), Rücksicht nehmen auf (+ Akk), in Frage kommen.",
+          "en": "Noun-verb collocations with fixed prepositions: The prepositional noun phrase governs a specific case: 'in Anspruch nehmen (+ Akk)', 'Kritik üben an (+ Dat)', 'Rücksicht nehmen auf (+ Akk)', 'zur Verfügung stehen (+ Dat)'.",
+          "de": "Nomen-Verb-Verbindungen mit Präpositionalgruppe verlangen feste Kasus: 'Kritik üben an + Dat' (= kritisieren), 'Rücksicht nehmen auf + Akk' (= berücksichtigen), 'zur Verfügung stehen + Dat'."
+        },
+        "pattern": "[Subjekt] + [Präpositionalphrase mit festem Kasus] + [Funktionsverb]",
+        "examples": [
+          {
+            "target": "Die Bürger üben scharfe Kritik an den neuen Verkehrsregeln.",
+            "mn": "Иргэд шинэ замын хөдөлгөөний дүрмийг хурцаар шүүмжилж байна.",
+            "en": "The citizens express sharp criticism of the new traffic regulations."
+          },
+          {
+            "target": "Wir müssen unbedingt Rücksicht auf die älteren Mitmenschen nehmen.",
+            "mn": "Бид ахмад настнуудаа заавал анхаарч харгалзан үзэх ёстой.",
+            "en": "We must strictly show consideration for elderly fellow citizens."
+          }
+        ],
+        "common_trap": "'Kritik üben über' гэж хэлж болохгүй! Заавал 'Kritik üben an + Dativ' гэж угтвар, тийн ялгал яг таг холбогдоно."
       }
     ]
   }

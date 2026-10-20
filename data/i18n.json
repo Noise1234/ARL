@@ -40,7 +40,10 @@
     "filter_podcasts": "Подкаст",
     "filter_shows": "Цуврал / Видео",
     "backup_success": "Нөөц амжилттай татагдлаа",
-    "restore_success": "Өгөгдөл амжилттай сэргэлээ"
+    "restore_success": "Өгөгдөл амжилттай сэргэлээ",
+    "learned": "тогтоосон",
+    "reset_card": "Цэвэрлэх [Shift+R]",
+    "review_memorized": "Тогтоосон үгсийг давтах"
   },
   "en": {
     "hud_vocab": "[V] Vocab",
@@ -83,7 +86,10 @@
     "filter_podcasts": "Podcasts",
     "filter_shows": "Shows / Videos",
     "backup_success": "Backup exported successfully",
-    "restore_success": "Backup restored successfully"
+    "restore_success": "Backup restored successfully",
+    "learned": "learned",
+    "reset_card": "Reset [Shift+R]",
+    "review_memorized": "Review Memorized"
   },
   "de": {
     "hud_vocab": "[V] Vokabeln",
@@ -126,6 +132,9 @@
     "filter_podcasts": "Podcasts",
     "filter_shows": "Serien / Filme",
     "backup_success": "Backup erfolgreich exportiert",
-    "restore_success": "Backup erfolgreich wiederhergestellt"
+    "restore_success": "Backup erfolgreich wiederhergestellt",
+    "learned": "gelernt",
+    "reset_card": "Zurücksetzen [Shift+R]",
+    "review_memorized": "Gemerkte wiederholen"
   }
 }

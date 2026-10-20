@@ -92,7 +92,42 @@ export function scheduleCard(card, grade, now = Date.now()) {
     lapses: newLapses,
     dueDate: newDueDate,
     lastStudied: safeNow,
-    lastGrade: safeGrade
+    lastGrade: safeGrade,
+    status: (newReps >= 1 && newInterval >= 2) ? 'memorized' : 'learning'
+  };
+}
+
+/**
+ * Checks if a card is considered memorized / learned.
+ * @param {Object} progress Progress record
+ * @returns {boolean}
+ */
+export function isCardMemorized(progress) {
+  return Boolean(
+    progress &&
+    progress.lastStudied &&
+    ((progress.reps >= 1 && progress.interval >= 2) || progress.status === 'memorized')
+  );
+}
+
+/**
+ * Resets a card to a clean, active learning state (pure deterministic function).
+ * @param {Object} existingProgress Existing card progress
+ * @param {number} [now=Date.now()] Reference timestamp
+ * @returns {Object} Fresh progress record
+ */
+export function resetCardSRS(existingProgress, now = Date.now()) {
+  const safeNow = (Number.isFinite(now) && now > 0) ? now : Date.now();
+  return {
+    ...(existingProgress || {}),
+    reps: 0,
+    interval: 1,
+    easeFactor: DEFAULT_EASE_FACTOR,
+    lapses: 0,
+    dueDate: safeNow,
+    lastStudied: null,
+    lastGrade: null,
+    status: 'new'
   };
 }
 
@@ -113,19 +148,23 @@ export function isCardDue(progress, now = Date.now()) {
 }
 
 /**
- * Calculates due, new, and total counts for a card dataset.
+ * Calculates due, new, memorized, and total counts for a card dataset.
  * @param {Array<Object>} cards All vocabulary cards
  * @param {Map<string, Object>} progressMap Map of card ID to progress record
  * @param {number} [now=Date.now()] Reference timestamp
- * @returns {{ dueCount: number, newCount: number, totalCount: number }}
+ * @returns {{ dueCount: number, newCount: number, memorizedCount: number, totalCount: number }}
  */
 export function getQueueStats(cards, progressMap, now = Date.now()) {
-  if (!Array.isArray(cards)) return { dueCount: 0, newCount: 0, totalCount: 0 };
+  if (!Array.isArray(cards)) return { dueCount: 0, newCount: 0, memorizedCount: 0, totalCount: 0 };
   let dueCount = 0;
   let newCount = 0;
+  let memorizedCount = 0;
 
   for (const card of cards) {
     const prog = progressMap ? progressMap.get(card.id) : null;
+    if (isCardMemorized(prog)) {
+      memorizedCount++;
+    }
     if (!prog || !prog.lastStudied) {
       newCount++;
     } else if (isCardDue(prog, now)) {
@@ -136,6 +175,7 @@ export function getQueueStats(cards, progressMap, now = Date.now()) {
   return {
     dueCount,
     newCount,
+    memorizedCount,
     totalCount: cards.length
   };
 }

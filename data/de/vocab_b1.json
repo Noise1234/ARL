@@ -870,7 +870,7 @@
     "lang": "de",
     "forms": "weiterbilden | bildet weiter | bildete weiter | hat weitergebildet",
     "rektion": "sich in + Dativ",
-    "prompt_front": "sich weiterbilden _____ [Dat]",
+    "prompt_front": "weiterbilden _____ [Dat]",
     "revealed_back": "weiterbilden sich in + Dativ (weiterbilden | bildet weiter | bildete weiter | hat weitergebildet)"
   },
   {
@@ -1012,10 +1012,10 @@
     "topic": "Beruf & Arbeit",
     "level": "B1",
     "lang": "de",
-    "forms": "bewältigen | bewältigt | bewältigte | hat gebewältigt",
+    "forms": "bewältigen | bewältigt | bewältigte | hat bewältigt",
     "rektion": "+ Akkusativ",
     "prompt_front": "bewältigen + _____",
-    "revealed_back": "bewältigen + Akkusativ (bewältigen | bewältigt | bewältigte | hat gebewältigt)"
+    "revealed_back": "bewältigen + Akkusativ (bewältigen | bewältigt | bewältigte | hat bewältigt)"
   },
   {
     "id": "b1_0062",
@@ -1030,10 +1030,10 @@
     "topic": "Beruf & Arbeit",
     "level": "B1",
     "lang": "de",
-    "forms": "verbessern | verbessert | verbesserte | hat geverbessert",
+    "forms": "verbessern | verbessert | verbesserte | hat verbessert",
     "rektion": "+ Akkusativ",
     "prompt_front": "verbessern + _____",
-    "revealed_back": "verbessern + Akkusativ (verbessern | verbessert | verbesserte | hat geverbessert)"
+    "revealed_back": "verbessern + Akkusativ (verbessern | verbessert | verbesserte | hat verbessert)"
   },
   {
     "id": "b1_0063",
@@ -1048,10 +1048,10 @@
     "topic": "Beruf & Arbeit",
     "level": "B1",
     "lang": "de",
-    "forms": "eintragen | eintragt | eintragte | hat geeintragt",
+    "forms": "eintragen | trägt ein | trug ein | hat eingetragen",
     "rektion": "+ Akkusativ",
     "prompt_front": "eintragen + _____",
-    "revealed_back": "eintragen + Akkusativ (eintragen | eintragt | eintragte | hat geeintragt)"
+    "revealed_back": "eintragen + Akkusativ (eintragen | trägt ein | trug ein | hat eingetragen)"
   },
   {
     "id": "b1_0064",
@@ -1066,10 +1066,10 @@
     "topic": "Beruf & Arbeit",
     "level": "B1",
     "lang": "de",
-    "forms": "anerkennen | anerkennt | anerkennte | hat geanerkennt",
+    "forms": "anerkennen | erkennt an | erkannte an | hat anerkannt",
     "rektion": "+ Akkusativ",
     "prompt_front": "anerkennen + _____",
-    "revealed_back": "anerkennen + Akkusativ (anerkennen | anerkennt | anerkennte | hat geanerkennt)"
+    "revealed_back": "anerkennen + Akkusativ (anerkennen | erkennt an | erkannte an | hat anerkannt)"
   },
   {
     "id": "b1_0065",
@@ -1102,10 +1102,10 @@
     "topic": "Beruf & Arbeit",
     "level": "B1",
     "lang": "de",
-    "forms": "unterstützen | unterstützt | unterstützte | hat geunterstützt",
+    "forms": "unterstützen | unterstützt | unterstützte | hat unterstützt",
     "rektion": "+ Akkusativ",
     "prompt_front": "unterstützen + _____",
-    "revealed_back": "unterstützen + Akkusativ (unterstützen | unterstützt | unterstützte | hat geunterstützt)"
+    "revealed_back": "unterstützen + Akkusativ (unterstützen | unterstützt | unterstützte | hat unterstützt)"
   },
   {
     "id": "b1_0067",
@@ -1120,10 +1120,10 @@
     "topic": "Beruf & Arbeit",
     "level": "B1",
     "lang": "de",
-    "forms": "erreichen | erreicht | erreichte | hat geerreicht",
+    "forms": "erreichen | erreicht | erreichte | hat erreicht",
     "rektion": "+ Akkusativ",
     "prompt_front": "erreichen + _____",
-    "revealed_back": "erreichen + Akkusativ (erreichen | erreicht | erreichte | hat geerreicht)"
+    "revealed_back": "erreichen + Akkusativ (erreichen | erreicht | erreichte | hat erreicht)"
   },
   {
     "id": "b1_0068",
@@ -1156,10 +1156,10 @@
     "topic": "Beruf & Arbeit",
     "level": "B1",
     "lang": "de",
-    "forms": "anpassen | anpasst | anpasste | hat geanpasst",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "anpassen + _____",
-    "revealed_back": "anpassen + Akkusativ (anpassen | anpasst | anpasste | hat geanpasst)"
+    "forms": "anpassen | passt an | passte an | hat angepasst",
+    "rektion": "an + Akkusativ",
+    "prompt_front": "anpassen _____ [Akk]",
+    "revealed_back": "anpassen an + Akkusativ (anpassen | passt an | passte an | hat angepasst)"
   },
   {
     "id": "b1_0070",
@@ -1174,10 +1174,10 @@
     "topic": "Beruf & Arbeit",
     "level": "B1",
     "lang": "de",
-    "forms": "vermeiden | vermeidt | vermeidte | hat gevermeidt",
+    "forms": "vermeiden | vermeidet | vermied | hat vermieden",
     "rektion": "+ Akkusativ",
     "prompt_front": "vermeiden + _____",
-    "revealed_back": "vermeiden + Akkusativ (vermeiden | vermeidt | vermeidte | hat gevermeidt)"
+    "revealed_back": "vermeiden + Akkusativ (vermeiden | vermeidet | vermied | hat vermieden)"
   },
   {
     "id": "b1_0071",
@@ -2312,10 +2312,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "beschließen | beschließt | beschließte | hat gebeschließt",
+    "forms": "beschließen | beschließt | beschloss | hat beschlossen",
     "rektion": "+ Akkusativ",
     "prompt_front": "beschließen + _____",
-    "revealed_back": "beschließen + Akkusativ (beschließen | beschließt | beschließte | hat gebeschließt)"
+    "revealed_back": "beschließen + Akkusativ (beschließen | beschließt | beschloss | hat beschlossen)"
   },
   {
     "id": "b1_0142",
@@ -2330,10 +2330,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "verabschieden | verabschiedt | verabschiedte | hat geverabschiedt",
+    "forms": "verabschieden | verabschiedet | verabschiedete | hat verabschiedet",
     "rektion": "+ Akkusativ",
     "prompt_front": "verabschieden + _____",
-    "revealed_back": "verabschieden + Akkusativ (verabschieden | verabschiedt | verabschiedte | hat geverabschiedt)"
+    "revealed_back": "verabschieden + Akkusativ (verabschieden | verabschiedet | verabschiedete | hat verabschiedet)"
   },
   {
     "id": "b1_0143",
@@ -2348,10 +2348,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "genehmigen | genehmigt | genehmigte | hat gegenehmigt",
+    "forms": "genehmigen | genehmigt | genehmigte | hat genehmigt",
     "rektion": "+ Akkusativ",
     "prompt_front": "genehmigen + _____",
-    "revealed_back": "genehmigen + Akkusativ (genehmigen | genehmigt | genehmigte | hat gegenehmigt)"
+    "revealed_back": "genehmigen + Akkusativ (genehmigen | genehmigt | genehmigte | hat genehmigt)"
   },
   {
     "id": "b1_0144",
@@ -2366,10 +2366,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "ablehnen | ablehnt | ablehnte | hat geablehnt",
+    "forms": "ablehnen | lehnt ab | lehnte ab | hat abgelehnt",
     "rektion": "+ Akkusativ",
     "prompt_front": "ablehnen + _____",
-    "revealed_back": "ablehnen + Akkusativ (ablehnen | ablehnt | ablehnte | hat geablehnt)"
+    "revealed_back": "ablehnen + Akkusativ (ablehnen | lehnt ab | lehnte ab | hat abgelehnt)"
   },
   {
     "id": "b1_0145",
@@ -2420,10 +2420,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "vorlegen | vorlegt | vorlegte | hat gevorlegt",
+    "forms": "vorlegen | legt vor | legte vor | hat vorgelegt",
     "rektion": "+ Akkusativ",
     "prompt_front": "vorlegen + _____",
-    "revealed_back": "vorlegen + Akkusativ (vorlegen | vorlegt | vorlegte | hat gevorlegt)"
+    "revealed_back": "vorlegen + Akkusativ (vorlegen | legt vor | legte vor | hat vorgelegt)"
   },
   {
     "id": "b1_0148",
@@ -2438,10 +2438,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "begründen | begründt | begründte | hat gebegründt",
+    "forms": "begründen | begründet | begründete | hat begründet",
     "rektion": "+ Akkusativ",
     "prompt_front": "begründen + _____",
-    "revealed_back": "begründen + Akkusativ (begründen | begründt | begründte | hat gebegründt)"
+    "revealed_back": "begründen + Akkusativ (begründen | begründet | begründete | hat begründet)"
   },
   {
     "id": "b1_0149",
@@ -2456,10 +2456,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "verurteilen | verurteilt | verurteilte | hat geverurteilt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "verurteilen + _____",
-    "revealed_back": "verurteilen + Akkusativ (verurteilen | verurteilt | verurteilte | hat geverurteilt)"
+    "forms": "verurteilen | verurteilt | verurteilte | hat verurteilt",
+    "rektion": "zu + Dativ / + Akkusativ",
+    "prompt_front": "verurteilen _____ [Dat/Akk]",
+    "revealed_back": "verurteilen zu + Dativ / + Akkusativ (verurteilen | verurteilt | verurteilte | hat verurteilt)"
   },
   {
     "id": "b1_0150",
@@ -2490,10 +2490,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "verstoßen | verstoßt | verstoßte | hat geverstoßt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "verstoßen + _____",
-    "revealed_back": "verstoßen + Akkusativ (verstoßen | verstoßt | verstoßte | hat geverstoßt)"
+    "forms": "verstoßen | verstößt | verstieß | hat verstoßen",
+    "rektion": "gegen + Akkusativ",
+    "prompt_front": "verstoßen _____ [Akk]",
+    "revealed_back": "verstoßen gegen + Akkusativ (verstoßen | verstößt | verstieß | hat verstoßen)"
   },
   {
     "id": "b1_0152",
@@ -2508,10 +2508,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "ermitteln | ermittelt | ermittelte | hat geermittelt",
+    "forms": "ermitteln | ermittelt | ermittelte | hat ermittelt",
     "rektion": "+ Akkusativ",
     "prompt_front": "ermitteln + _____",
-    "revealed_back": "ermitteln + Akkusativ (ermitteln | ermittelt | ermittelte | hat geermittelt)"
+    "revealed_back": "ermitteln + Akkusativ (ermitteln | ermittelt | ermittelte | hat ermittelt)"
   },
   {
     "id": "b1_0153",
@@ -2526,10 +2526,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "beteiligen | beteiligt | beteiligte | hat gebeteiligt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "beteiligen + _____",
-    "revealed_back": "beteiligen + Akkusativ (beteiligen | beteiligt | beteiligte | hat gebeteiligt)"
+    "forms": "beteiligen | beteiligt | beteiligte | hat beteiligt",
+    "rektion": "an + Dativ",
+    "prompt_front": "beteiligen _____ [Dat]",
+    "revealed_back": "beteiligen an + Dativ (beteiligen | beteiligt | beteiligte | hat beteiligt)"
   },
   {
     "id": "b1_0154",
@@ -2560,10 +2560,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "nachweisen | nachweist | nachweiste | hat genachweist",
+    "forms": "nachweisen | weist nach | wies nach | hat nachgewiesen",
     "rektion": "+ Akkusativ",
     "prompt_front": "nachweisen + _____",
-    "revealed_back": "nachweisen + Akkusativ (nachweisen | nachweist | nachweiste | hat genachweist)"
+    "revealed_back": "nachweisen + Akkusativ (nachweisen | weist nach | wies nach | hat nachgewiesen)"
   },
   {
     "id": "b1_0156",
@@ -2578,10 +2578,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "beeinflussen | beeinflusst | beeinflusste | hat gebeeinflusst",
+    "forms": "beeinflussen | beeinflusst | beeinflusste | hat beeinflusst",
     "rektion": "+ Akkusativ",
     "prompt_front": "beeinflussen + _____",
-    "revealed_back": "beeinflussen + Akkusativ (beeinflussen | beeinflusst | beeinflusste | hat gebeeinflusst)"
+    "revealed_back": "beeinflussen + Akkusativ (beeinflussen | beeinflusst | beeinflusste | hat beeinflusst)"
   },
   {
     "id": "b1_0157",
@@ -2596,10 +2596,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "verhindern | verhindert | verhinderte | hat geverhindert",
+    "forms": "verhindern | verhindert | verhinderte | hat verhindert",
     "rektion": "+ Akkusativ",
     "prompt_front": "verhindern + _____",
-    "revealed_back": "verhindern + Akkusativ (verhindern | verhindert | verhinderte | hat geverhindert)"
+    "revealed_back": "verhindern + Akkusativ (verhindern | verhindert | verhinderte | hat verhindert)"
   },
   {
     "id": "b1_0158",
@@ -2614,10 +2614,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "gelten | geltt | geltte | hat gegeltt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "gelten + _____",
-    "revealed_back": "gelten + Akkusativ (gelten | geltt | geltte | hat gegeltt)"
+    "forms": "gelten | gilt | galt | hat gegolten",
+    "rektion": "für + Akkusativ",
+    "prompt_front": "gelten _____ [Akk]",
+    "revealed_back": "gelten für + Akkusativ (gelten | gilt | galt | hat gegolten)"
   },
   {
     "id": "b1_0159",
@@ -2632,10 +2632,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "beachten | beachtt | beachtte | hat gebeachtt",
+    "forms": "beachten | beachtet | beachtete | hat beachtet",
     "rektion": "+ Akkusativ",
     "prompt_front": "beachten + _____",
-    "revealed_back": "beachten + Akkusativ (beachten | beachtt | beachtte | hat gebeachtt)"
+    "revealed_back": "beachten + Akkusativ (beachten | beachtet | beachtete | hat beachtet)"
   },
   {
     "id": "b1_0160",
@@ -2650,10 +2650,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "zulassen | zulasst | zulasste | hat gezulasst",
+    "forms": "zulassen | lässt zu | ließ zu | hat zugelassen",
     "rektion": "+ Akkusativ",
     "prompt_front": "zulassen + _____",
-    "revealed_back": "zulassen + Akkusativ (zulassen | zulasst | zulasste | hat gezulasst)"
+    "revealed_back": "zulassen + Akkusativ (zulassen | lässt zu | ließ zu | hat zugelassen)"
   },
   {
     "id": "b1_0161",
@@ -2668,10 +2668,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "durchsetzen | durchsetzt | durchsetzte | hat gedurchsetzt",
+    "forms": "durchsetzen | setzt durch | setzte durch | hat durchgesetzt",
     "rektion": "+ Akkusativ",
     "prompt_front": "durchsetzen + _____",
-    "revealed_back": "durchsetzen + Akkusativ (durchsetzen | durchsetzt | durchsetzte | hat gedurchsetzt)"
+    "revealed_back": "durchsetzen + Akkusativ (durchsetzen | setzt durch | setzte durch | hat durchgesetzt)"
   },
   {
     "id": "b1_0162",
@@ -2686,10 +2686,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "widersprechen | widersprecht | widersprechte | hat gewidersprecht",
-    "rektion": "+ Akkusativ",
+    "forms": "widersprechen | widerspricht | widersprach | hat widersprochen",
+    "rektion": "+ Dativ",
     "prompt_front": "widersprechen + _____",
-    "revealed_back": "widersprechen + Akkusativ (widersprechen | widersprecht | widersprechte | hat gewidersprecht)"
+    "revealed_back": "widersprechen + Dativ (widersprechen | widerspricht | widersprach | hat widersprochen)"
   },
   {
     "id": "b1_0163",
@@ -2704,10 +2704,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "bezeugen | bezeugt | bezeugte | hat gebezeugt",
+    "forms": "bezeugen | bezeugt | bezeugte | hat bezeugt",
     "rektion": "+ Akkusativ",
     "prompt_front": "bezeugen + _____",
-    "revealed_back": "bezeugen + Akkusativ (bezeugen | bezeugt | bezeugte | hat gebezeugt)"
+    "revealed_back": "bezeugen + Akkusativ (bezeugen | bezeugt | bezeugte | hat bezeugt)"
   },
   {
     "id": "b1_0164",
@@ -2722,10 +2722,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "anklagen | anklagt | anklagte | hat geanklagt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "anklagen + _____",
-    "revealed_back": "anklagen + Akkusativ (anklagen | anklagt | anklagte | hat geanklagt)"
+    "forms": "anklagen | klagt an | klagte an | hat angeklagt",
+    "rektion": "wegen + Genitiv / + Akkusativ",
+    "prompt_front": "anklagen _____ [Akk]",
+    "revealed_back": "anklagen wegen + Genitiv / + Akkusativ (anklagen | klagt an | klagte an | hat angeklagt)"
   },
   {
     "id": "b1_0165",
@@ -2740,10 +2740,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "beraten | beratt | beratte | hat geberatt",
+    "forms": "beraten | berät | beriet | hat beraten",
     "rektion": "+ Akkusativ",
     "prompt_front": "beraten + _____",
-    "revealed_back": "beraten + Akkusativ (beraten | beratt | beratte | hat geberatt)"
+    "revealed_back": "beraten + Akkusativ (beraten | berät | beriet | hat beraten)"
   },
   {
     "id": "b1_0166",
@@ -2758,10 +2758,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "festnehmen | festnehmt | festnehmte | hat gefestnehmt",
+    "forms": "festnehmen | nimmt fest | nahm fest | hat festgenommen",
     "rektion": "+ Akkusativ",
     "prompt_front": "festnehmen + _____",
-    "revealed_back": "festnehmen + Akkusativ (festnehmen | festnehmt | festnehmte | hat gefestnehmt)"
+    "revealed_back": "festnehmen + Akkusativ (festnehmen | nimmt fest | nahm fest | hat festgenommen)"
   },
   {
     "id": "b1_0167",
@@ -2776,10 +2776,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "unterzeichnen | unterzeichnt | unterzeichnte | hat geunterzeichnt",
+    "forms": "unterzeichnen | unterzeichnet | unterzeichnete | hat unterzeichnet",
     "rektion": "+ Akkusativ",
     "prompt_front": "unterzeichnen + _____",
-    "revealed_back": "unterzeichnen + Akkusativ (unterzeichnen | unterzeichnt | unterzeichnte | hat geunterzeichnt)"
+    "revealed_back": "unterzeichnen + Akkusativ (unterzeichnen | unterzeichnet | unterzeichnete | hat unterzeichnet)"
   },
   {
     "id": "b1_0168",
@@ -2794,10 +2794,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "beglaubigen | beglaubigt | beglaubigte | hat gebeglaubigt",
+    "forms": "beglaubigen | beglaubigt | beglaubigte | hat beglaubigt",
     "rektion": "+ Akkusativ",
     "prompt_front": "beglaubigen + _____",
-    "revealed_back": "beglaubigen + Akkusativ (beglaubigen | beglaubigt | beglaubigte | hat gebeglaubigt)"
+    "revealed_back": "beglaubigen + Akkusativ (beglaubigen | beglaubigt | beglaubigte | hat beglaubigt)"
   },
   {
     "id": "b1_0169",
@@ -2812,10 +2812,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "verzichten | verzichtt | verzichtte | hat geverzichtt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "verzichten + _____",
-    "revealed_back": "verzichten + Akkusativ (verzichten | verzichtt | verzichtte | hat geverzichtt)"
+    "forms": "verzichten | verzichtet | verzichtete | hat verzichtet",
+    "rektion": "auf + Akkusativ",
+    "prompt_front": "verzichten _____ [Akk]",
+    "revealed_back": "verzichten auf + Akkusativ (verzichten | verzichtet | verzichtete | hat verzichtet)"
   },
   {
     "id": "b1_0170",
@@ -2830,10 +2830,10 @@
     "topic": "Gesellschaft & Recht",
     "level": "B1",
     "lang": "de",
-    "forms": "gewährleisten | gewährleistt | gewährleistte | hat gegewährleistt",
+    "forms": "gewährleisten | gewährleistet | gewährleistete | hat gewährleistet",
     "rektion": "+ Akkusativ",
     "prompt_front": "gewährleisten + _____",
-    "revealed_back": "gewährleisten + Akkusativ (gewährleisten | gewährleistt | gewährleistte | hat gegewährleistt)"
+    "revealed_back": "gewährleisten + Akkusativ (gewährleisten | gewährleistet | gewährleistete | hat gewährleistet)"
   },
   {
     "id": "b1_0171",
@@ -3968,10 +3968,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "überweisen | überweist | überweiste | hat geüberweist",
+    "forms": "überweisen | überweist | überwies | hat überwiesen",
     "rektion": "+ Akkusativ",
     "prompt_front": "überweisen + _____",
-    "revealed_back": "überweisen + Akkusativ (überweisen | überweist | überweiste | hat geüberweist)"
+    "revealed_back": "überweisen + Akkusativ (überweisen | überweist | überwies | hat überwiesen)"
   },
   {
     "id": "b1_0242",
@@ -4004,10 +4004,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "abheben | abhebt | abhebte | hat geabhebt",
+    "forms": "abheben | hebt ab | hob ab | hat abgehoben",
     "rektion": "+ Akkusativ",
     "prompt_front": "abheben + _____",
-    "revealed_back": "abheben + Akkusativ (abheben | abhebt | abhebte | hat geabhebt)"
+    "revealed_back": "abheben + Akkusativ (abheben | hebt ab | hob ab | hat abgehoben)"
   },
   {
     "id": "b1_0244",
@@ -4022,10 +4022,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "einzahlen | einzahlt | einzahlte | hat geeinzahlt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "einzahlen + _____",
-    "revealed_back": "einzahlen + Akkusativ (einzahlen | einzahlt | einzahlte | hat geeinzahlt)"
+    "forms": "einzahlen | zahlt ein | zahlte ein | hat eingezahlt",
+    "rektion": "auf + Akkusativ / + Akkusativ",
+    "prompt_front": "einzahlen _____ [Akk]",
+    "revealed_back": "einzahlen auf + Akkusativ / + Akkusativ (einzahlen | zahlt ein | zahlte ein | hat eingezahlt)"
   },
   {
     "id": "b1_0245",
@@ -4040,10 +4040,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "verbrauchen | verbraucht | verbrauchte | hat geverbraucht",
+    "forms": "verbrauchen | verbraucht | verbrauchte | hat verbraucht",
     "rektion": "+ Akkusativ",
     "prompt_front": "verbrauchen + _____",
-    "revealed_back": "verbrauchen + Akkusativ (verbrauchen | verbraucht | verbrauchte | hat geverbraucht)"
+    "revealed_back": "verbrauchen + Akkusativ (verbrauchen | verbraucht | verbrauchte | hat verbraucht)"
   },
   {
     "id": "b1_0246",
@@ -4074,10 +4074,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "ausgeben | ausgebt | ausgebte | hat geausgebt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "ausgeben + _____",
-    "revealed_back": "ausgeben + Akkusativ (ausgeben | ausgebt | ausgebte | hat geausgebt)"
+    "forms": "ausgeben | gibt aus | gab aus | hat ausgegeben",
+    "rektion": "für + Akkusativ",
+    "prompt_front": "ausgeben _____ [Akk]",
+    "revealed_back": "ausgeben für + Akkusativ (ausgeben | gibt aus | gab aus | hat ausgegeben)"
   },
   {
     "id": "b1_0248",
@@ -4092,10 +4092,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "einnehmen | einnehmt | einnehmte | hat geeinnehmt",
+    "forms": "einnehmen | nimmt ein | nahm ein | hat eingenommen",
     "rektion": "+ Akkusativ",
     "prompt_front": "einnehmen + _____",
-    "revealed_back": "einnehmen + Akkusativ (einnehmen | einnehmt | einnehmte | hat geeinnehmt)"
+    "revealed_back": "einnehmen + Akkusativ (einnehmen | nimmt ein | nahm ein | hat eingenommen)"
   },
   {
     "id": "b1_0249",
@@ -4126,10 +4126,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "reklamieren | reklamiert | reklamierte | hat gereklamiert",
+    "forms": "reklamieren | reklamiert | reklamierte | hat reklamiert",
     "rektion": "+ Akkusativ",
     "prompt_front": "reklamieren + _____",
-    "revealed_back": "reklamieren + Akkusativ (reklamieren | reklamiert | reklamierte | hat gereklamiert)"
+    "revealed_back": "reklamieren + Akkusativ (reklamieren | reklamiert | reklamierte | hat reklamiert)"
   },
   {
     "id": "b1_0251",
@@ -4144,10 +4144,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "investieren | investiert | investierte | hat geinvestiert",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "investieren + _____",
-    "revealed_back": "investieren + Akkusativ (investieren | investiert | investierte | hat geinvestiert)"
+    "forms": "investieren | investiert | investierte | hat investiert",
+    "rektion": "in + Akkusativ",
+    "prompt_front": "investieren _____ [Akk]",
+    "revealed_back": "investieren in + Akkusativ (investieren | investiert | investierte | hat investiert)"
   },
   {
     "id": "b1_0252",
@@ -4162,10 +4162,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "finanzieren | finanziert | finanzierte | hat gefinanziert",
+    "forms": "finanzieren | finanziert | finanzierte | hat finanziert",
     "rektion": "+ Akkusativ",
     "prompt_front": "finanzieren + _____",
-    "revealed_back": "finanzieren + Akkusativ (finanzieren | finanziert | finanzierte | hat gefinanziert)"
+    "revealed_back": "finanzieren + Akkusativ (finanzieren | finanziert | finanzierte | hat finanziert)"
   },
   {
     "id": "b1_0253",
@@ -4198,10 +4198,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "erstatten | erstattt | erstattte | hat geerstattt",
+    "forms": "erstatten | erstattet | erstattete | hat erstattet",
     "rektion": "+ Akkusativ",
     "prompt_front": "erstatten + _____",
-    "revealed_back": "erstatten + Akkusativ (erstatten | erstattt | erstattte | hat geerstattt)"
+    "revealed_back": "erstatten + Akkusativ (erstatten | erstattet | erstattete | hat erstattet)"
   },
   {
     "id": "b1_0255",
@@ -4216,10 +4216,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "bestellen | bestellt | bestellte | hat gebestellt",
+    "forms": "bestellen | bestellt | bestellte | hat bestellt",
     "rektion": "+ Akkusativ",
     "prompt_front": "bestellen + _____",
-    "revealed_back": "bestellen + Akkusativ (bestellen | bestellt | bestellte | hat gebestellt)"
+    "revealed_back": "bestellen + Akkusativ (bestellen | bestellt | bestellte | hat bestellt)"
   },
   {
     "id": "b1_0256",
@@ -4252,10 +4252,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "anbieten | anbiett | anbiette | hat geanbiett",
-    "rektion": "+ Akkusativ",
+    "forms": "anbieten | bietet an | bot an | hat angeboten",
+    "rektion": "+ Dativ + Akkusativ",
     "prompt_front": "anbieten + _____",
-    "revealed_back": "anbieten + Akkusativ (anbieten | anbiett | anbiette | hat geanbiett)"
+    "revealed_back": "anbieten + Dativ + Akkusativ (anbieten | bietet an | bot an | hat angeboten)"
   },
   {
     "id": "b1_0258",
@@ -4306,10 +4306,10 @@
     "topic": "Wirtschaft & Finanzen",
     "level": "B1",
     "lang": "de",
-    "forms": "haften | haftt | haftte | hat gehaftt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "haften + _____",
-    "revealed_back": "haften + Akkusativ (haften | haftt | haftte | hat gehaftt)"
+    "forms": "haften | haftet | haftete | hat gehaftet",
+    "rektion": "für + Akkusativ",
+    "prompt_front": "haften _____ [Akk]",
+    "revealed_back": "haften für + Akkusativ (haften | haftet | haftete | hat gehaftet)"
   },
   {
     "id": "b1_0261",
@@ -5604,10 +5604,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "recyceln | recycelt | recycelte | hat gerecycelt",
+    "forms": "recyceln | recycelt | recycelte | hat recycelt",
     "rektion": "+ Akkusativ",
     "prompt_front": "recyceln + _____",
-    "revealed_back": "recyceln + Akkusativ (recyceln | recycelt | recycelte | hat gerecycelt)"
+    "revealed_back": "recyceln + Akkusativ (recyceln | recycelt | recycelte | hat recycelt)"
   },
   {
     "id": "b1_0342",
@@ -5622,10 +5622,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "verschmutzen | verschmutzt | verschmutzte | hat geverschmutzt",
+    "forms": "verschmutzen | verschmutzt | verschmutzte | hat verschmutzt",
     "rektion": "+ Akkusativ",
     "prompt_front": "verschmutzen + _____",
-    "revealed_back": "verschmutzen + Akkusativ (verschmutzen | verschmutzt | verschmutzte | hat geverschmutzt)"
+    "revealed_back": "verschmutzen + Akkusativ (verschmutzen | verschmutzt | verschmutzte | hat verschmutzt)"
   },
   {
     "id": "b1_0343",
@@ -5641,9 +5641,9 @@
     "level": "B1",
     "lang": "de",
     "forms": "schützen | schützt | schützte | hat geschützt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "schützen + _____",
-    "revealed_back": "schützen + Akkusativ (schützen | schützt | schützte | hat geschützt)"
+    "rektion": "vor + Dativ",
+    "prompt_front": "schützen _____ [Dat]",
+    "revealed_back": "schützen vor + Dativ (schützen | schützt | schützte | hat geschützt)"
   },
   {
     "id": "b1_0344",
@@ -5690,10 +5690,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "zerstören | zerstört | zerstörte | hat gezerstört",
+    "forms": "zerstören | zerstört | zerstörte | hat zerstört",
     "rektion": "+ Akkusativ",
     "prompt_front": "zerstören + _____",
-    "revealed_back": "zerstören + Akkusativ (zerstören | zerstört | zerstörte | hat gezerstört)"
+    "revealed_back": "zerstören + Akkusativ (zerstören | zerstört | zerstörte | hat zerstört)"
   },
   {
     "id": "b1_0347",
@@ -5708,10 +5708,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "bedrohen | bedroht | bedrohte | hat gebedroht",
+    "forms": "bedrohen | bedroht | bedrohte | hat bedroht",
     "rektion": "+ Akkusativ",
     "prompt_front": "bedrohen + _____",
-    "revealed_back": "bedrohen + Akkusativ (bedrohen | bedroht | bedrohte | hat gebedroht)"
+    "revealed_back": "bedrohen + Akkusativ (bedrohen | bedroht | bedrohte | hat bedroht)"
   },
   {
     "id": "b1_0348",
@@ -5726,10 +5726,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "erzeugen | erzeugt | erzeugte | hat geerzeugt",
+    "forms": "erzeugen | erzeugt | erzeugte | hat erzeugt",
     "rektion": "+ Akkusativ",
     "prompt_front": "erzeugen + _____",
-    "revealed_back": "erzeugen + Akkusativ (erzeugen | erzeugt | erzeugte | hat geerzeugt)"
+    "revealed_back": "erzeugen + Akkusativ (erzeugen | erzeugt | erzeugte | hat erzeugt)"
   },
   {
     "id": "b1_0349",
@@ -5744,10 +5744,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "belasten | belastt | belastte | hat gebelastt",
+    "forms": "belasten | belastet | belastete | hat belastet",
     "rektion": "+ Akkusativ",
     "prompt_front": "belasten + _____",
-    "revealed_back": "belasten + Akkusativ (belasten | belastt | belastte | hat gebelastt)"
+    "revealed_back": "belasten + Akkusativ (belasten | belastet | belastete | hat belastet)"
   },
   {
     "id": "b1_0350",
@@ -5762,10 +5762,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "überleben | überlebt | überlebte | hat geüberlebt",
+    "forms": "überleben | überlebt | überlebte | hat überlebt",
     "rektion": "+ Akkusativ",
     "prompt_front": "überleben + _____",
-    "revealed_back": "überleben + Akkusativ (überleben | überlebt | überlebte | hat geüberlebt)"
+    "revealed_back": "überleben + Akkusativ (überleben | überlebt | überlebte | hat überlebt)"
   },
   {
     "id": "b1_0351",
@@ -5780,10 +5780,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "reduzieren | reduziert | reduzierte | hat gereduziert",
+    "forms": "reduzieren | reduziert | reduzierte | hat reduziert",
     "rektion": "+ Akkusativ",
     "prompt_front": "reduzieren + _____",
-    "revealed_back": "reduzieren + Akkusativ (reduzieren | reduziert | reduzierte | hat gereduziert)"
+    "revealed_back": "reduzieren + Akkusativ (reduzieren | reduziert | reduzierte | hat reduziert)"
   },
   {
     "id": "b1_0352",
@@ -5798,10 +5798,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "entsorgen | entsorgt | entsorgte | hat geentsorgt",
+    "forms": "entsorgen | entsorgt | entsorgte | hat entsorgt",
     "rektion": "+ Akkusativ",
     "prompt_front": "entsorgen + _____",
-    "revealed_back": "entsorgen + Akkusativ (entsorgen | entsorgt | entsorgte | hat geentsorgt)"
+    "revealed_back": "entsorgen + Akkusativ (entsorgen | entsorgt | entsorgte | hat entsorgt)"
   },
   {
     "id": "b1_0353",
@@ -5834,10 +5834,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "austrocknen | austrocknt | austrocknte | hat geaustrocknt",
+    "forms": "austrocknen | trocknet aus | trocknete aus | ist ausgetrocknet",
     "rektion": "+ Akkusativ",
     "prompt_front": "austrocknen + _____",
-    "revealed_back": "austrocknen + Akkusativ (austrocknen | austrocknt | austrocknte | hat geaustrocknt)"
+    "revealed_back": "austrocknen + Akkusativ (austrocknen | trocknet aus | trocknete aus | ist ausgetrocknet)"
   },
   {
     "id": "b1_0355",
@@ -5852,10 +5852,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "schmelzen | schmelzt | schmelzte | hat geschmelzt",
+    "forms": "schmelzen | schmilzt | schmolz | ist geschmolzen",
     "rektion": "+ Akkusativ",
     "prompt_front": "schmelzen + _____",
-    "revealed_back": "schmelzen + Akkusativ (schmelzen | schmelzt | schmelzte | hat geschmelzt)"
+    "revealed_back": "schmelzen + Akkusativ (schmelzen | schmilzt | schmolz | ist geschmolzen)"
   },
   {
     "id": "b1_0356",
@@ -5886,10 +5886,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "abnehmen | abnehmt | abnehmte | hat geabnehmt",
+    "forms": "abnehmen | nimmt ab | nahm ab | hat abgenommen",
     "rektion": "+ Akkusativ",
     "prompt_front": "abnehmen + _____",
-    "revealed_back": "abnehmen + Akkusativ (abnehmen | abnehmt | abnehmte | hat geabnehmt)"
+    "revealed_back": "abnehmen + Akkusativ (abnehmen | nimmt ab | nahm ab | hat abgenommen)"
   },
   {
     "id": "b1_0358",
@@ -5904,10 +5904,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "zunehmen | zunehmt | zunehmte | hat gezunehmt",
+    "forms": "zunehmen | nimmt zu | nahm zu | hat zugenommen",
     "rektion": "+ Akkusativ",
     "prompt_front": "zunehmen + _____",
-    "revealed_back": "zunehmen + Akkusativ (zunehmen | zunehmt | zunehmte | hat gezunehmt)"
+    "revealed_back": "zunehmen + Akkusativ (zunehmen | nimmt zu | nahm zu | hat zugenommen)"
   },
   {
     "id": "b1_0359",
@@ -5922,10 +5922,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "umsteigen | umsteigt | umsteigte | hat geumsteigt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "umsteigen + _____",
-    "revealed_back": "umsteigen + Akkusativ (umsteigen | umsteigt | umsteigte | hat geumsteigt)"
+    "forms": "umsteigen | steigt um | stieg um | ist umgestiegen",
+    "rektion": "in + Akkusativ",
+    "prompt_front": "umsteigen _____ [Akk]",
+    "revealed_back": "umsteigen in + Akkusativ (umsteigen | steigt um | stieg um | ist umgestiegen)"
   },
   {
     "id": "b1_0360",
@@ -5940,10 +5940,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "erhalten | erhaltt | erhaltte | hat geerhaltt",
+    "forms": "erhalten | erhält | erhielt | hat erhalten",
     "rektion": "+ Akkusativ",
     "prompt_front": "erhalten + _____",
-    "revealed_back": "erhalten + Akkusativ (erhalten | erhaltt | erhaltte | hat geerhaltt)"
+    "revealed_back": "erhalten + Akkusativ (erhalten | erhält | erhielt | hat erhalten)"
   },
   {
     "id": "b1_0361",
@@ -7238,10 +7238,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "untersuchen | untersucht | untersuchte | hat geuntersucht",
+    "forms": "untersuchen | untersucht | untersuchte | hat untersucht",
     "rektion": "+ Akkusativ",
     "prompt_front": "untersuchen + _____",
-    "revealed_back": "untersuchen + Akkusativ (untersuchen | untersucht | untersuchte | hat geuntersucht)"
+    "revealed_back": "untersuchen + Akkusativ (untersuchen | untersucht | untersuchte | hat untersucht)"
   },
   {
     "id": "b1_0442",
@@ -7256,10 +7256,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "krankschreiben | krankschreibt | krankschreibte | hat gekrankschreibt",
+    "forms": "krankschreiben | schreibt krank | schrieb krank | hat krankgeschrieben",
     "rektion": "+ Akkusativ",
     "prompt_front": "krankschreiben + _____",
-    "revealed_back": "krankschreiben + Akkusativ (krankschreiben | krankschreibt | krankschreibte | hat gekrankschreibt)"
+    "revealed_back": "krankschreiben + Akkusativ (krankschreiben | schreibt krank | schrieb krank | hat krankgeschrieben)"
   },
   {
     "id": "b1_0443",
@@ -7306,10 +7306,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "erholen | erholt | erholte | hat geerholt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "erholen + _____",
-    "revealed_back": "erholen + Akkusativ (erholen | erholt | erholte | hat geerholt)"
+    "forms": "erholen | erholt | erholte | hat erholt",
+    "rektion": "sich von + Dativ",
+    "prompt_front": "erholen _____ [Dat]",
+    "revealed_back": "erholen sich von + Dativ (erholen | erholt | erholte | hat erholt)"
   },
   {
     "id": "b1_0446",
@@ -7324,10 +7324,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "vorbeugen | vorbeugt | vorbeugte | hat gevorbeugt",
-    "rektion": "+ Akkusativ",
+    "forms": "vorbeugen | beugt vor | beugte vor | hat vorgebeugt",
+    "rektion": "+ Dativ",
     "prompt_front": "vorbeugen + _____",
-    "revealed_back": "vorbeugen + Akkusativ (vorbeugen | vorbeugt | vorbeugte | hat gevorbeugt)"
+    "revealed_back": "vorbeugen + Dativ (vorbeugen | beugt vor | beugte vor | hat vorgebeugt)"
   },
   {
     "id": "b1_0447",
@@ -7342,10 +7342,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "behandeln | behandelt | behandelte | hat gebehandelt",
+    "forms": "behandeln | behandelt | behandelte | hat behandelt",
     "rektion": "+ Akkusativ",
     "prompt_front": "behandeln + _____",
-    "revealed_back": "behandeln + Akkusativ (behandeln | behandelt | behandelte | hat gebehandelt)"
+    "revealed_back": "behandeln + Akkusativ (behandeln | behandelt | behandelte | hat behandelt)"
   },
   {
     "id": "b1_0448",
@@ -7360,10 +7360,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "verletzen | verletzt | verletzte | hat geverletzt",
+    "forms": "verletzen | verletzt | verletzte | hat verletzt",
     "rektion": "+ Akkusativ",
     "prompt_front": "verletzen + _____",
-    "revealed_back": "verletzen + Akkusativ (verletzen | verletzt | verletzte | hat geverletzt)"
+    "revealed_back": "verletzen + Akkusativ (verletzen | verletzt | verletzte | hat verletzt)"
   },
   {
     "id": "b1_0449",
@@ -7378,10 +7378,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "verbinden | verbindt | verbindte | hat geverbindt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "verbinden + _____",
-    "revealed_back": "verbinden + Akkusativ (verbinden | verbindt | verbindte | hat geverbindt)"
+    "forms": "verbinden | verbindet | verband | hat verbunden",
+    "rektion": "mit + Dativ",
+    "prompt_front": "verbinden _____ [Dat]",
+    "revealed_back": "verbinden mit + Dativ (verbinden | verbindet | verband | hat verbunden)"
   },
   {
     "id": "b1_0450",
@@ -7396,10 +7396,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "übergeben | übergebt | übergebte | hat geübergebt",
-    "rektion": "+ Akkusativ",
+    "forms": "übergeben | übergibt | übergab | hat übergeben",
+    "rektion": "+ Dativ + Akkusativ",
     "prompt_front": "übergeben + _____",
-    "revealed_back": "übergeben + Akkusativ (übergeben | übergebt | übergebte | hat geübergebt)"
+    "revealed_back": "übergeben + Dativ + Akkusativ (übergeben | übergibt | übergab | hat übergeben)"
   },
   {
     "id": "b1_0451",
@@ -7432,10 +7432,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "verschreiben | verschreibt | verschreibte | hat geverschreibt",
-    "rektion": "+ Akkusativ",
+    "forms": "verschreiben | verschreibt | verschrieb | hat verschrieben",
+    "rektion": "+ Dativ + Akkusativ",
     "prompt_front": "verschreiben + _____",
-    "revealed_back": "verschreiben + Akkusativ (verschreiben | verschreibt | verschreibte | hat geverschreibt)"
+    "revealed_back": "verschreiben + Dativ + Akkusativ (verschreiben | verschreibt | verschrieb | hat verschrieben)"
   },
   {
     "id": "b1_0453",
@@ -7451,9 +7451,9 @@
     "level": "B1",
     "lang": "de",
     "forms": "impfen | impft | impfte | hat geimpft",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "impfen + _____",
-    "revealed_back": "impfen + Akkusativ (impfen | impft | impfte | hat geimpft)"
+    "rektion": "gegen + Akkusativ",
+    "prompt_front": "impfen _____ [Akk]",
+    "revealed_back": "impfen gegen + Akkusativ (impfen | impft | impfte | hat geimpft)"
   },
   {
     "id": "b1_0454",
@@ -7468,10 +7468,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "bluten | blutt | blutte | hat geblutt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "bluten + _____",
-    "revealed_back": "bluten + Akkusativ (bluten | blutt | blutte | hat geblutt)"
+    "forms": "bluten | blutet | blutete | hat geblutet",
+    "rektion": "aus + Dativ",
+    "prompt_front": "bluten _____ [Dat]",
+    "revealed_back": "bluten aus + Dativ (bluten | blutet | blutete | hat geblutet)"
   },
   {
     "id": "b1_0455",
@@ -7534,10 +7534,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "erkranken | erkrankt | erkrankte | hat geerkrankt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "erkranken + _____",
-    "revealed_back": "erkranken + Akkusativ (erkranken | erkrankt | erkrankte | hat geerkrankt)"
+    "forms": "erkranken | erkrankt | erkrankte | ist erkrankt",
+    "rektion": "an + Dativ",
+    "prompt_front": "erkranken _____ [Dat]",
+    "revealed_back": "erkranken an + Dativ (erkranken | erkrankt | erkrankte | ist erkrankt)"
   },
   {
     "id": "b1_0459",
@@ -7552,10 +7552,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "genesen | genest | geneste | hat gegenest",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "genesen + _____",
-    "revealed_back": "genesen + Akkusativ (genesen | genest | geneste | hat gegenest)"
+    "forms": "genesen | genest | genas | ist genesen",
+    "rektion": "von + Dativ",
+    "prompt_front": "genesen _____ [Dat]",
+    "revealed_back": "genesen von + Dativ (genesen | genest | genas | ist genesen)"
   },
   {
     "id": "b1_0460",
@@ -8868,10 +8868,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "studieren | studiert | studierte | hat gestudiert",
+    "forms": "studieren | studiert | studierte | hat studiert",
     "rektion": "+ Akkusativ",
     "prompt_front": "studieren + _____",
-    "revealed_back": "studieren + Akkusativ (studieren | studiert | studierte | hat gestudiert)"
+    "revealed_back": "studieren + Akkusativ (studieren | studiert | studierte | hat studiert)"
   },
   {
     "id": "b1_0542",
@@ -8886,10 +8886,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "unterrichten | unterrichtt | unterrichtte | hat geunterrichtt",
+    "forms": "unterrichten | unterrichtet | unterrichtete | hat unterrichtet",
     "rektion": "+ Akkusativ",
     "prompt_front": "unterrichten + _____",
-    "revealed_back": "unterrichten + Akkusativ (unterrichten | unterrichtt | unterrichtte | hat geunterrichtt)"
+    "revealed_back": "unterrichten + Akkusativ (unterrichten | unterrichtet | unterrichtete | hat unterrichtet)"
   },
   {
     "id": "b1_0543",
@@ -8905,9 +8905,9 @@
     "level": "B1",
     "lang": "de",
     "forms": "forschen | forscht | forschte | hat geforscht",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "forschen + _____",
-    "revealed_back": "forschen + Akkusativ (forschen | forscht | forschte | hat geforscht)"
+    "rektion": "nach + Dativ / über + Akkusativ",
+    "prompt_front": "forschen _____ [Dat/Akk]",
+    "revealed_back": "forschen nach + Dativ / über + Akkusativ (forschen | forscht | forschte | hat geforscht)"
   },
   {
     "id": "b1_0544",
@@ -8922,10 +8922,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "erwerben | erwerbt | erwerbte | hat geerwerbt",
+    "forms": "erwerben | erwirbt | erwarb | hat erworben",
     "rektion": "+ Akkusativ",
     "prompt_front": "erwerben + _____",
-    "revealed_back": "erwerben + Akkusativ (erwerben | erwerbt | erwerbte | hat geerwerbt)"
+    "revealed_back": "erwerben + Akkusativ (erwerben | erwirbt | erwarb | hat erworben)"
   },
   {
     "id": "b1_0545",
@@ -8940,10 +8940,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "wiederholen | wiederholt | wiederholte | hat gewiederholt",
+    "forms": "wiederholen | wiederholt | wiederholte | hat wiederholt",
     "rektion": "+ Akkusativ",
     "prompt_front": "wiederholen + _____",
-    "revealed_back": "wiederholen + Akkusativ (wiederholen | wiederholt | wiederholte | hat gewiederholt)"
+    "revealed_back": "wiederholen + Akkusativ (wiederholen | wiederholt | wiederholte | hat wiederholt)"
   },
   {
     "id": "b1_0546",
@@ -8958,10 +8958,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "bestehen | besteht | bestehte | hat gebesteht",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "bestehen + _____",
-    "revealed_back": "bestehen + Akkusativ (bestehen | besteht | bestehte | hat gebesteht)"
+    "forms": "bestehen | besteht | bestand | hat bestanden",
+    "rektion": "aus + Dativ / auf + Akkusativ / + Akkusativ",
+    "prompt_front": "bestehen _____ [Dat/Akk]",
+    "revealed_back": "bestehen aus + Dativ / auf + Akkusativ / + Akkusativ (bestehen | besteht | bestand | hat bestanden)"
   },
   {
     "id": "b1_0547",
@@ -8976,10 +8976,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "durchfallen | durchfallt | durchfallte | hat gedurchfallt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "durchfallen + _____",
-    "revealed_back": "durchfallen + Akkusativ (durchfallen | durchfallt | durchfallte | hat gedurchfallt)"
+    "forms": "durchfallen | fällt durch | fiel durch | ist durchgefallen",
+    "rektion": "in + Dativ",
+    "prompt_front": "durchfallen _____ [Dat]",
+    "revealed_back": "durchfallen in + Dativ (durchfallen | fällt durch | fiel durch | ist durchgefallen)"
   },
   {
     "id": "b1_0548",
@@ -8994,10 +8994,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "begreifen | begreift | begreifte | hat gebegreift",
+    "forms": "begreifen | begreift | begriff | hat begriffen",
     "rektion": "+ Akkusativ",
     "prompt_front": "begreifen + _____",
-    "revealed_back": "begreifen + Akkusativ (begreifen | begreift | begreifte | hat gebegreift)"
+    "revealed_back": "begreifen + Akkusativ (begreifen | begreift | begriff | hat begriffen)"
   },
   {
     "id": "b1_0549",
@@ -9012,10 +9012,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "belegen | belegt | belegte | hat gebelegt",
+    "forms": "belegen | belegt | belegte | hat belegt",
     "rektion": "+ Akkusativ",
     "prompt_front": "belegen + _____",
-    "revealed_back": "belegen + Akkusativ (belegen | belegt | belegte | hat gebelegt)"
+    "revealed_back": "belegen + Akkusativ (belegen | belegt | belegte | hat belegt)"
   },
   {
     "id": "b1_0550",
@@ -9030,10 +9030,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "übersetzen | übersetzt | übersetzte | hat geübersetzt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "übersetzen + _____",
-    "revealed_back": "übersetzen + Akkusativ (übersetzen | übersetzt | übersetzte | hat geübersetzt)"
+    "forms": "übersetzen | übersetzt | übersetzte | hat übersetzt",
+    "rektion": "in + Akkusativ / aus + Dativ",
+    "prompt_front": "übersetzen _____ [Dat/Akk]",
+    "revealed_back": "übersetzen in + Akkusativ / aus + Dativ (übersetzen | übersetzt | übersetzte | hat übersetzt)"
   },
   {
     "id": "b1_0551",
@@ -9048,10 +9048,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "erläutern | erläutert | erläuterte | hat geerläutert",
+    "forms": "erläutern | erläutert | erläuterte | hat erläutert",
     "rektion": "+ Akkusativ",
     "prompt_front": "erläutern + _____",
-    "revealed_back": "erläutern + Akkusativ (erläutern | erläutert | erläuterte | hat geerläutert)"
+    "revealed_back": "erläutern + Akkusativ (erläutern | erläutert | erläuterte | hat erläutert)"
   },
   {
     "id": "b1_0552",
@@ -9066,10 +9066,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "analysieren | analysiert | analysierte | hat geanalysiert",
+    "forms": "analysieren | analysiert | analysierte | hat analysiert",
     "rektion": "+ Akkusativ",
     "prompt_front": "analysieren + _____",
-    "revealed_back": "analysieren + Akkusativ (analysieren | analysiert | analysierte | hat geanalysiert)"
+    "revealed_back": "analysieren + Akkusativ (analysieren | analysiert | analysierte | hat analysiert)"
   },
   {
     "id": "b1_0553",
@@ -9084,10 +9084,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "zusammenfassen | zusammenfasst | zusammenfasste | hat gezusammenfasst",
+    "forms": "zusammenfassen | fasst zusammen | fasste zusammen | hat zusammengefasst",
     "rektion": "+ Akkusativ",
     "prompt_front": "zusammenfassen + _____",
-    "revealed_back": "zusammenfassen + Akkusativ (zusammenfassen | zusammenfasst | zusammenfasste | hat gezusammenfasst)"
+    "revealed_back": "zusammenfassen + Akkusativ (zusammenfassen | fasst zusammen | fasste zusammen | hat zusammengefasst)"
   },
   {
     "id": "b1_0554",
@@ -9102,10 +9102,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "vergleichen | vergleicht | vergleichte | hat gevergleicht",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "vergleichen + _____",
-    "revealed_back": "vergleichen + Akkusativ (vergleichen | vergleicht | vergleichte | hat gevergleicht)"
+    "forms": "vergleichen | vergleicht | verglich | hat verglichen",
+    "rektion": "mit + Dativ",
+    "prompt_front": "vergleichen _____ [Dat]",
+    "revealed_back": "vergleichen mit + Dativ (vergleichen | vergleicht | verglich | hat verglichen)"
   },
   {
     "id": "b1_0555",
@@ -9120,10 +9120,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "feststellen | feststellt | feststellte | hat gefeststellt",
+    "forms": "feststellen | stellt fest | stellte fest | hat festgestellt",
     "rektion": "+ Akkusativ",
     "prompt_front": "feststellen + _____",
-    "revealed_back": "feststellen + Akkusativ (feststellen | feststellt | feststellte | hat gefeststellt)"
+    "revealed_back": "feststellen + Akkusativ (feststellen | stellt fest | stellte fest | hat festgestellt)"
   },
   {
     "id": "b1_0556",
@@ -9138,10 +9138,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "verfassen | verfasst | verfasste | hat geverfasst",
+    "forms": "verfassen | verfasst | verfasste | hat verfasst",
     "rektion": "+ Akkusativ",
     "prompt_front": "verfassen + _____",
-    "revealed_back": "verfassen + Akkusativ (verfassen | verfasst | verfasste | hat geverfasst)"
+    "revealed_back": "verfassen + Akkusativ (verfassen | verfasst | verfasste | hat verfasst)"
   },
   {
     "id": "b1_0557",
@@ -9156,10 +9156,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "anwenden | anwendt | anwendte | hat geanwendt",
+    "forms": "anwenden | wendet an | wandte an | hat angewandt",
     "rektion": "+ Akkusativ",
     "prompt_front": "anwenden + _____",
-    "revealed_back": "anwenden + Akkusativ (anwenden | anwendt | anwendte | hat geanwendt)"
+    "revealed_back": "anwenden + Akkusativ (anwenden | wendet an | wandte an | hat angewandt)"
   },
   {
     "id": "b1_0558",
@@ -9174,10 +9174,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "nachschlagen | nachschlagt | nachschlagte | hat genachschlagt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "nachschlagen + _____",
-    "revealed_back": "nachschlagen + Akkusativ (nachschlagen | nachschlagt | nachschlagte | hat genachschlagt)"
+    "forms": "nachschlagen | schlägt nach | schlug nach | hat nachgeschlagen",
+    "rektion": "in + Dativ / + Akkusativ",
+    "prompt_front": "nachschlagen _____ [Dat/Akk]",
+    "revealed_back": "nachschlagen in + Dativ / + Akkusativ (nachschlagen | schlägt nach | schlug nach | hat nachgeschlagen)"
   },
   {
     "id": "b1_0559",
@@ -9192,10 +9192,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "beurteilen | beurteilt | beurteilte | hat gebeurteilt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "beurteilen + _____",
-    "revealed_back": "beurteilen + Akkusativ (beurteilen | beurteilt | beurteilte | hat gebeurteilt)"
+    "forms": "beurteilen | beurteilt | beurteilte | hat beurteilt",
+    "rektion": "nach + Dativ / + Akkusativ",
+    "prompt_front": "beurteilen _____ [Dat/Akk]",
+    "revealed_back": "beurteilen nach + Dativ / + Akkusativ (beurteilen | beurteilt | beurteilte | hat beurteilt)"
   },
   {
     "id": "b1_0560",
@@ -9210,10 +9210,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "definieren | definiert | definierte | hat gedefiniert",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "definieren + _____",
-    "revealed_back": "definieren + Akkusativ (definieren | definiert | definierte | hat gedefiniert)"
+    "forms": "definieren | definiert | definierte | hat definiert",
+    "rektion": "als + Akkusativ / + Akkusativ",
+    "prompt_front": "definieren _____ [Akk]",
+    "revealed_back": "definieren als + Akkusativ / + Akkusativ (definieren | definiert | definierte | hat definiert)"
   },
   {
     "id": "b1_0561",
@@ -9388,10 +9388,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "erforschen | erforscht | erforschte | hat geerforscht",
+    "forms": "erforschen | erforscht | erforschte | hat erforscht",
     "rektion": "+ Akkusativ",
     "prompt_front": "erforschen + _____",
-    "revealed_back": "erforschen + Akkusativ (erforschen | erforscht | erforschte | hat geerforscht)"
+    "revealed_back": "erforschen + Akkusativ (erforschen | erforscht | erforschte | hat erforscht)"
   },
   {
     "id": "b1_0572",
@@ -9406,10 +9406,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "publizieren | publiziert | publizierte | hat gepubliziert",
+    "forms": "publizieren | publiziert | publizierte | hat publiziert",
     "rektion": "+ Akkusativ",
     "prompt_front": "publizieren + _____",
-    "revealed_back": "publizieren + Akkusativ (publizieren | publiziert | publizierte | hat gepubliziert)"
+    "revealed_back": "publizieren + Akkusativ (publizieren | publiziert | publizierte | hat publiziert)"
   },
   {
     "id": "b1_0573",
@@ -9424,10 +9424,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "befragen | befragt | befragte | hat gebefragt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "befragen + _____",
-    "revealed_back": "befragen + Akkusativ (befragen | befragt | befragte | hat gebefragt)"
+    "forms": "befragen | befragt | befragte | hat befragt",
+    "rektion": "zu + Dativ / + Akkusativ",
+    "prompt_front": "befragen _____ [Dat/Akk]",
+    "revealed_back": "befragen zu + Dativ / + Akkusativ (befragen | befragt | befragte | hat befragt)"
   },
   {
     "id": "b1_0574",
@@ -9442,10 +9442,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "korrigieren | korrigiert | korrigierte | hat gekorrigiert",
+    "forms": "korrigieren | korrigiert | korrigierte | hat korrigiert",
     "rektion": "+ Akkusativ",
     "prompt_front": "korrigieren + _____",
-    "revealed_back": "korrigieren + Akkusativ (korrigieren | korrigiert | korrigierte | hat gekorrigiert)"
+    "revealed_back": "korrigieren + Akkusativ (korrigieren | korrigiert | korrigierte | hat korrigiert)"
   },
   {
     "id": "b1_0575",
@@ -9540,10 +9540,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "einprägen | einprägt | einprägte | hat geeinprägt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "einprägen + _____",
-    "revealed_back": "einprägen + Akkusativ (einprägen | einprägt | einprägte | hat geeinprägt)"
+    "forms": "einprägen | prägt ein | prägte ein | hat eingeprägt",
+    "rektion": "sich + Dativ + Akkusativ",
+    "prompt_front": "einprägen _____ [Dat/Akk]",
+    "revealed_back": "einprägen sich + Dativ + Akkusativ (einprägen | prägt ein | prägte ein | hat eingeprägt)"
   },
   {
     "id": "b1_0581",
@@ -9574,10 +9574,10 @@
     "topic": "Diskurs & Logik",
     "level": "B1",
     "lang": "de",
-    "forms": "überwinden | überwindt | überwindte | hat geüberwindt",
+    "forms": "überwinden | überwindet | überwand | hat überwunden",
     "rektion": "+ Akkusativ",
     "prompt_front": "überwinden + _____",
-    "revealed_back": "überwinden + Akkusativ (überwinden | überwindt | überwindte | hat geüberwindt)"
+    "revealed_back": "überwinden + Akkusativ (überwinden | überwindet | überwand | hat überwunden)"
   },
   {
     "id": "b1_0583",
@@ -9592,10 +9592,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "ermöglichen | ermöglicht | ermöglichte | hat geermöglicht",
-    "rektion": "+ Akkusativ",
+    "forms": "ermöglichen | ermöglicht | ermöglichte | hat ermöglicht",
+    "rektion": "+ Dativ + Akkusativ",
     "prompt_front": "ermöglichen + _____",
-    "revealed_back": "ermöglichen + Akkusativ (ermöglichen | ermöglicht | ermöglichte | hat geermöglicht)"
+    "revealed_back": "ermöglichen + Dativ + Akkusativ (ermöglichen | ermöglicht | ermöglichte | hat ermöglicht)"
   },
   {
     "id": "b1_0584",
@@ -9610,10 +9610,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "einschätzen | einschätzt | einschätzte | hat geeinschätzt",
+    "forms": "einschätzen | schätzt ein | schätzte ein | hat eingeschätzt",
     "rektion": "+ Akkusativ",
     "prompt_front": "einschätzen + _____",
-    "revealed_back": "einschätzen + Akkusativ (einschätzen | einschätzt | einschätzte | hat geeinschätzt)"
+    "revealed_back": "einschätzen + Akkusativ (einschätzen | schätzt ein | schätzte ein | hat eingeschätzt)"
   },
   {
     "id": "b1_0585",
@@ -9660,10 +9660,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "formulieren | formuliert | formulierte | hat geformuliert",
+    "forms": "formulieren | formuliert | formulierte | hat formuliert",
     "rektion": "+ Akkusativ",
     "prompt_front": "formulieren + _____",
-    "revealed_back": "formulieren + Akkusativ (formulieren | formuliert | formulierte | hat geformuliert)"
+    "revealed_back": "formulieren + Akkusativ (formulieren | formuliert | formulierte | hat formuliert)"
   },
   {
     "id": "b1_0588",
@@ -9678,10 +9678,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "auswählen | auswählt | auswählte | hat geauswählt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "auswählen + _____",
-    "revealed_back": "auswählen + Akkusativ (auswählen | auswählt | auswählte | hat geauswählt)"
+    "forms": "auswählen | wählt aus | wählte aus | hat ausgewählt",
+    "rektion": "aus + Dativ / + Akkusativ",
+    "prompt_front": "auswählen _____ [Dat/Akk]",
+    "revealed_back": "auswählen aus + Dativ / + Akkusativ (auswählen | wählt aus | wählte aus | hat ausgewählt)"
   },
   {
     "id": "b1_0589",
@@ -9696,10 +9696,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "zitieren | zitiert | zitierte | hat gezitiert",
+    "forms": "zitieren | zitiert | zitierte | hat zitiert",
     "rektion": "+ Akkusativ",
     "prompt_front": "zitieren + _____",
-    "revealed_back": "zitieren + Akkusativ (zitieren | zitiert | zitierte | hat gezitiert)"
+    "revealed_back": "zitieren + Akkusativ (zitieren | zitiert | zitierte | hat zitiert)"
   },
   {
     "id": "b1_0590",
@@ -9714,10 +9714,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "empfehlen | empfehlt | empfehlte | hat geempfehlt",
-    "rektion": "+ Akkusativ",
+    "forms": "empfehlen | empfiehlt | empfahl | hat empfohlen",
+    "rektion": "+ Dativ + Akkusativ",
     "prompt_front": "empfehlen + _____",
-    "revealed_back": "empfehlen + Akkusativ (empfehlen | empfehlt | empfehlte | hat geempfehlt)"
+    "revealed_back": "empfehlen + Dativ + Akkusativ (empfehlen | empfiehlt | empfahl | hat empfohlen)"
   },
   {
     "id": "b1_0591",
@@ -10340,10 +10340,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "nachdenken | nachdenkt | nachdenkte | hat genachdenkt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "nachdenken + _____",
-    "revealed_back": "nachdenken + Akkusativ (nachdenken | nachdenkt | nachdenkte | hat genachdenkt)"
+    "forms": "nachdenken | denkt nach | dachte nach | hat nachgedacht",
+    "rektion": "über + Akkusativ",
+    "prompt_front": "nachdenken _____ [Akk]",
+    "revealed_back": "nachdenken über + Akkusativ (nachdenken | denkt nach | dachte nach | hat nachgedacht)"
   },
   {
     "id": "b1_0630",
@@ -10534,10 +10534,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "herunterladen | herunterladt | herunterladte | hat geherunterladt",
+    "forms": "herunterladen | lädt herunter | lud herunter | hat heruntergeladen",
     "rektion": "+ Akkusativ",
     "prompt_front": "herunterladen + _____",
-    "revealed_back": "herunterladen + Akkusativ (herunterladen | herunterladt | herunterladte | hat geherunterladt)"
+    "revealed_back": "herunterladen + Akkusativ (herunterladen | lädt herunter | lud herunter | hat heruntergeladen)"
   },
   {
     "id": "b1_0642",
@@ -10552,10 +10552,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "hochladen | hochladt | hochladte | hat gehochladt",
+    "forms": "hochladen | lädt hoch | lud hoch | hat hochgeladen",
     "rektion": "+ Akkusativ",
     "prompt_front": "hochladen + _____",
-    "revealed_back": "hochladen + Akkusativ (hochladen | hochladt | hochladte | hat gehochladt)"
+    "revealed_back": "hochladen + Akkusativ (hochladen | lädt hoch | lud hoch | hat hochgeladen)"
   },
   {
     "id": "b1_0643",
@@ -10606,10 +10606,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "installieren | installiert | installierte | hat geinstalliert",
+    "forms": "installieren | installiert | installierte | hat installiert",
     "rektion": "+ Akkusativ",
     "prompt_front": "installieren + _____",
-    "revealed_back": "installieren + Akkusativ (installieren | installiert | installierte | hat geinstalliert)"
+    "revealed_back": "installieren + Akkusativ (installieren | installiert | installierte | hat installiert)"
   },
   {
     "id": "b1_0646",
@@ -10661,9 +10661,9 @@
     "level": "B1",
     "lang": "de",
     "forms": "tippen | tippt | tippte | hat getippt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "tippen + _____",
-    "revealed_back": "tippen + Akkusativ (tippen | tippt | tippte | hat getippt)"
+    "rektion": "auf + Akkusativ / + Akkusativ",
+    "prompt_front": "tippen _____ [Akk]",
+    "revealed_back": "tippen auf + Akkusativ / + Akkusativ (tippen | tippt | tippte | hat getippt)"
   },
   {
     "id": "b1_0649",
@@ -10678,10 +10678,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "recherchieren | recherchiert | recherchierte | hat gerecherchiert",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "recherchieren + _____",
-    "revealed_back": "recherchieren + Akkusativ (recherchieren | recherchiert | recherchierte | hat gerecherchiert)"
+    "forms": "recherchieren | recherchiert | recherchierte | hat recherchiert",
+    "rektion": "über + Akkusativ / + Akkusativ",
+    "prompt_front": "recherchieren _____ [Akk]",
+    "revealed_back": "recherchieren über + Akkusativ / + Akkusativ (recherchieren | recherchiert | recherchierte | hat recherchiert)"
   },
   {
     "id": "b1_0650",
@@ -10696,10 +10696,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "herausgeben | herausgebt | herausgebte | hat geherausgebt",
+    "forms": "herausgeben | gibt heraus | gab heraus | hat herausgegeben",
     "rektion": "+ Akkusativ",
     "prompt_front": "herausgeben + _____",
-    "revealed_back": "herausgeben + Akkusativ (herausgeben | herausgebt | herausgebte | hat geherausgebt)"
+    "revealed_back": "herausgeben + Akkusativ (herausgeben | gibt heraus | gab heraus | hat herausgegeben)"
   },
   {
     "id": "b1_0651",
@@ -10714,10 +10714,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "weiterleiten | weiterleitt | weiterleitte | hat geweiterleitt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "weiterleiten + _____",
-    "revealed_back": "weiterleiten + Akkusativ (weiterleiten | weiterleitt | weiterleitte | hat geweiterleitt)"
+    "forms": "weiterleiten | leitet weiter | leitete weiter | hat weitergeleitet",
+    "rektion": "an + Akkusativ",
+    "prompt_front": "weiterleiten _____ [Akk]",
+    "revealed_back": "weiterleiten an + Akkusativ (weiterleiten | leitet weiter | leitete weiter | hat weitergeleitet)"
   },
   {
     "id": "b1_0652",
@@ -10732,10 +10732,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "beantworten | beantwortt | beantwortte | hat gebeantwortt",
+    "forms": "beantworten | beantwortet | beantwortete | hat beantwortet",
     "rektion": "+ Akkusativ",
     "prompt_front": "beantworten + _____",
-    "revealed_back": "beantworten + Akkusativ (beantworten | beantwortt | beantwortte | hat gebeantwortt)"
+    "revealed_back": "beantworten + Akkusativ (beantworten | beantwortet | beantwortete | hat beantwortet)"
   },
   {
     "id": "b1_0653",
@@ -10750,10 +10750,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "abonnieren | abonniert | abonnierte | hat geabonniert",
+    "forms": "abonnieren | abonniert | abonnierte | hat abonniert",
     "rektion": "+ Akkusativ",
     "prompt_front": "abonnieren + _____",
-    "revealed_back": "abonnieren + Akkusativ (abonnieren | abonniert | abonnierte | hat geabonniert)"
+    "revealed_back": "abonnieren + Akkusativ (abonnieren | abonniert | abonnierte | hat abonniert)"
   },
   {
     "id": "b1_0654",
@@ -10768,10 +10768,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "anschließen | anschließt | anschließte | hat geanschließt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "anschließen + _____",
-    "revealed_back": "anschließen + Akkusativ (anschließen | anschließt | anschließte | hat geanschließt)"
+    "forms": "anschließen | schließt an | schloss an | hat angeschlossen",
+    "rektion": "an + Akkusativ",
+    "prompt_front": "anschließen _____ [Akk]",
+    "revealed_back": "anschließen an + Akkusativ (anschließen | schließt an | schloss an | hat angeschlossen)"
   },
   {
     "id": "b1_0655",
@@ -10786,10 +10786,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "ausschalten | ausschaltt | ausschaltte | hat geausschaltt",
+    "forms": "ausschalten | schaltet aus | schaltete aus | hat ausgeschaltet",
     "rektion": "+ Akkusativ",
     "prompt_front": "ausschalten + _____",
-    "revealed_back": "ausschalten + Akkusativ (ausschalten | ausschaltt | ausschaltte | hat geausschaltt)"
+    "revealed_back": "ausschalten + Akkusativ (ausschalten | schaltet aus | schaltete aus | hat ausgeschaltet)"
   },
   {
     "id": "b1_0656",
@@ -10804,10 +10804,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "einschalten | einschaltt | einschaltte | hat geeinschaltt",
+    "forms": "einschalten | schaltet ein | schaltete ein | hat eingeschaltet",
     "rektion": "+ Akkusativ",
     "prompt_front": "einschalten + _____",
-    "revealed_back": "einschalten + Akkusativ (einschalten | einschaltt | einschaltte | hat geeinschaltt)"
+    "revealed_back": "einschalten + Akkusativ (einschalten | schaltet ein | schaltete ein | hat eingeschaltet)"
   },
   {
     "id": "b1_0657",
@@ -10822,10 +10822,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "synchronisieren | synchronisiert | synchronisierte | hat gesynchronisiert",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "synchronisieren + _____",
-    "revealed_back": "synchronisieren + Akkusativ (synchronisieren | synchronisiert | synchronisierte | hat gesynchronisiert)"
+    "forms": "synchronisieren | synchronisiert | synchronisierte | hat synchronisiert",
+    "rektion": "mit + Dativ",
+    "prompt_front": "synchronisieren _____ [Dat]",
+    "revealed_back": "synchronisieren mit + Dativ (synchronisieren | synchronisiert | synchronisierte | hat synchronisiert)"
   },
   {
     "id": "b1_0658",
@@ -10840,10 +10840,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "konfigurieren | konfiguriert | konfigurierte | hat gekonfiguriert",
+    "forms": "konfigurieren | konfiguriert | konfigurierte | hat konfiguriert",
     "rektion": "+ Akkusativ",
     "prompt_front": "konfigurieren + _____",
-    "revealed_back": "konfigurieren + Akkusativ (konfigurieren | konfiguriert | konfigurierte | hat gekonfiguriert)"
+    "revealed_back": "konfigurieren + Akkusativ (konfigurieren | konfiguriert | konfigurierte | hat konfiguriert)"
   },
   {
     "id": "b1_0659",
@@ -10859,9 +10859,9 @@
     "level": "B1",
     "lang": "de",
     "forms": "teilen | teilt | teilte | hat geteilt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "teilen + _____",
-    "revealed_back": "teilen + Akkusativ (teilen | teilt | teilte | hat geteilt)"
+    "rektion": "mit + Dativ / + Akkusativ",
+    "prompt_front": "teilen _____ [Dat/Akk]",
+    "revealed_back": "teilen mit + Dativ / + Akkusativ (teilen | teilt | teilte | hat geteilt)"
   },
   {
     "id": "b1_0660",
@@ -10876,10 +10876,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "kopieren | kopiert | kopierte | hat gekopiert",
+    "forms": "kopieren | kopiert | kopierte | hat kopiert",
     "rektion": "+ Akkusativ",
     "prompt_front": "kopieren + _____",
-    "revealed_back": "kopieren + Akkusativ (kopieren | kopiert | kopierte | hat gekopiert)"
+    "revealed_back": "kopieren + Akkusativ (kopieren | kopiert | kopierte | hat kopiert)"
   },
   {
     "id": "b1_0661",
@@ -10942,10 +10942,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "funktionieren | funktioniert | funktionierte | hat gefunktioniert",
+    "forms": "funktionieren | funktioniert | funktionierte | hat funktioniert",
     "rektion": "+ Akkusativ",
     "prompt_front": "funktionieren + _____",
-    "revealed_back": "funktionieren + Akkusativ (funktionieren | funktioniert | funktionierte | hat gefunktioniert)"
+    "revealed_back": "funktionieren + Akkusativ (funktionieren | funktioniert | funktionierte | hat funktioniert)"
   },
   {
     "id": "b1_0665",
@@ -11024,10 +11024,10 @@
     "topic": "Alltag & Kultur",
     "level": "B1",
     "lang": "de",
-    "forms": "entdecken | entdeckt | entdeckte | hat geentdeckt",
+    "forms": "entdecken | entdeckt | entdeckte | hat entdeckt",
     "rektion": "+ Akkusativ",
     "prompt_front": "entdecken + _____",
-    "revealed_back": "entdecken + Akkusativ (entdecken | entdeckt | entdeckte | hat geentdeckt)"
+    "revealed_back": "entdecken + Akkusativ (entdecken | entdeckt | entdeckte | hat entdeckt)"
   },
   {
     "id": "b1_0670",
@@ -11250,10 +11250,10 @@
     "topic": "Diskurs & Logik",
     "level": "B1",
     "lang": "de",
-    "forms": "berücksichtigen | berücksichtigt | berücksichtigte | hat geberücksichtigt",
+    "forms": "berücksichtigen | berücksichtigt | berücksichtigte | hat berücksichtigt",
     "rektion": "+ Akkusativ",
     "prompt_front": "berücksichtigen + _____",
-    "revealed_back": "berücksichtigen + Akkusativ (berücksichtigen | berücksichtigt | berücksichtigte | hat geberücksichtigt)"
+    "revealed_back": "berücksichtigen + Akkusativ (berücksichtigen | berücksichtigt | berücksichtigte | hat berücksichtigt)"
   },
   {
     "id": "b1_0684",
@@ -11316,10 +11316,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "beibehalten | beibehaltt | beibehaltte | hat gebeibehaltt",
+    "forms": "beibehalten | behält bei | behielt bei | hat beibehalten",
     "rektion": "+ Akkusativ",
     "prompt_front": "beibehalten + _____",
-    "revealed_back": "beibehalten + Akkusativ (beibehalten | beibehaltt | beibehaltte | hat gebeibehaltt)"
+    "revealed_back": "beibehalten + Akkusativ (beibehalten | behält bei | behielt bei | hat beibehalten)"
   },
   {
     "id": "b1_0688",
@@ -11334,10 +11334,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "verursachen | verursacht | verursachte | hat geverursacht",
+    "forms": "verursachen | verursacht | verursachte | hat verursacht",
     "rektion": "+ Akkusativ",
     "prompt_front": "verursachen + _____",
-    "revealed_back": "verursachen + Akkusativ (verursachen | verursacht | verursachte | hat geverursacht)"
+    "revealed_back": "verursachen + Akkusativ (verursachen | verursacht | verursachte | hat verursacht)"
   },
   {
     "id": "b1_0689",
@@ -11368,10 +11368,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "archivieren | archiviert | archivierte | hat gearchiviert",
+    "forms": "archivieren | archiviert | archivierte | hat archiviert",
     "rektion": "+ Akkusativ",
     "prompt_front": "archivieren + _____",
-    "revealed_back": "archivieren + Akkusativ (archivieren | archiviert | archivierte | hat gearchiviert)"
+    "revealed_back": "archivieren + Akkusativ (archivieren | archiviert | archivierte | hat archiviert)"
   },
   {
     "id": "b1_0691",
@@ -11482,10 +11482,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "beschädigen | beschädigt | beschädigte | hat gebeschädigt",
+    "forms": "beschädigen | beschädigt | beschädigte | hat beschädigt",
     "rektion": "+ Akkusativ",
     "prompt_front": "beschädigen + _____",
-    "revealed_back": "beschädigen + Akkusativ (beschädigen | beschädigt | beschädigte | hat gebeschädigt)"
+    "revealed_back": "beschädigen + Akkusativ (beschädigen | beschädigt | beschädigte | hat beschädigt)"
   },
   {
     "id": "b1_0698",
@@ -11740,10 +11740,10 @@
     "topic": "Medien & Technologie",
     "level": "B1",
     "lang": "de",
-    "forms": "unterbrechen | unterbrecht | unterbrechte | hat geunterbrecht",
+    "forms": "unterbrechen | unterbricht | unterbrach | hat unterbrochen",
     "rektion": "+ Akkusativ",
     "prompt_front": "unterbrechen + _____",
-    "revealed_back": "unterbrechen + Akkusativ (unterbrechen | unterbrecht | unterbrechte | hat geunterbrecht)"
+    "revealed_back": "unterbrechen + Akkusativ (unterbrechen | unterbricht | unterbrach | hat unterbrochen)"
   },
   {
     "id": "b1_0714",
@@ -12190,10 +12190,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "umziehen | umzieht | umziehte | hat geumzieht",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "umziehen + _____",
-    "revealed_back": "umziehen + Akkusativ (umziehen | umzieht | umziehte | hat geumzieht)"
+    "forms": "umziehen | zieht um | zog um | ist umgezogen",
+    "rektion": "nach + Dativ / in + Akkusativ",
+    "prompt_front": "umziehen _____ [Dat/Akk]",
+    "revealed_back": "umziehen nach + Dativ / in + Akkusativ (umziehen | zieht um | zog um | ist umgezogen)"
   },
   {
     "id": "b1_0742",
@@ -12208,10 +12208,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "einziehen | einzieht | einziehte | hat geeinzieht",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "einziehen + _____",
-    "revealed_back": "einziehen + Akkusativ (einziehen | einzieht | einziehte | hat geeinzieht)"
+    "forms": "einziehen | zieht ein | zog ein | ist eingezogen",
+    "rektion": "in + Akkusativ",
+    "prompt_front": "einziehen _____ [Akk]",
+    "revealed_back": "einziehen in + Akkusativ (einziehen | zieht ein | zog ein | ist eingezogen)"
   },
   {
     "id": "b1_0743",
@@ -12226,10 +12226,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "ausziehen | auszieht | ausziehte | hat geauszieht",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "ausziehen + _____",
-    "revealed_back": "ausziehen + Akkusativ (ausziehen | auszieht | ausziehte | hat geauszieht)"
+    "forms": "ausziehen | zieht aus | zog aus | ist ausgezogen",
+    "rektion": "aus + Dativ",
+    "prompt_front": "ausziehen _____ [Dat]",
+    "revealed_back": "ausziehen aus + Dativ (ausziehen | zieht aus | zog aus | ist ausgezogen)"
   },
   {
     "id": "b1_0744",
@@ -12244,10 +12244,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "pendeln | pendelt | pendelte | hat gependelt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "pendeln + _____",
-    "revealed_back": "pendeln + Akkusativ (pendeln | pendelt | pendelte | hat gependelt)"
+    "forms": "pendeln | pendelt | pendelte | ist gependelt",
+    "rektion": "zwischen + Dativ",
+    "prompt_front": "pendeln _____ [Dat]",
+    "revealed_back": "pendeln zwischen + Dativ (pendeln | pendelt | pendelte | ist gependelt)"
   },
   {
     "id": "b1_0745",
@@ -12262,10 +12262,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "einsteigen | einsteigt | einsteigte | hat geeinsteigt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "einsteigen + _____",
-    "revealed_back": "einsteigen + Akkusativ (einsteigen | einsteigt | einsteigte | hat geeinsteigt)"
+    "forms": "einsteigen | steigt ein | stieg ein | ist eingestiegen",
+    "rektion": "in + Akkusativ",
+    "prompt_front": "einsteigen _____ [Akk]",
+    "revealed_back": "einsteigen in + Akkusativ (einsteigen | steigt ein | stieg ein | ist eingestiegen)"
   },
   {
     "id": "b1_0746",
@@ -12280,10 +12280,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "aussteigen | aussteigt | aussteigte | hat geaussteigt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "aussteigen + _____",
-    "revealed_back": "aussteigen + Akkusativ (aussteigen | aussteigt | aussteigte | hat geaussteigt)"
+    "forms": "aussteigen | steigt aus | stieg aus | ist ausgestiegen",
+    "rektion": "aus + Dativ",
+    "prompt_front": "aussteigen _____ [Dat]",
+    "revealed_back": "aussteigen aus + Dativ (aussteigen | steigt aus | stieg aus | ist ausgestiegen)"
   },
   {
     "id": "b1_0747",
@@ -12298,10 +12298,10 @@
     "topic": "Umwelt & Nachhaltigkeit",
     "level": "B1",
     "lang": "de",
-    "forms": "ersetzen | ersetzt | ersetzte | hat geersetzt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "ersetzen + _____",
-    "revealed_back": "ersetzen + Akkusativ (ersetzen | ersetzt | ersetzte | hat geersetzt)"
+    "forms": "ersetzen | ersetzt | ersetzte | hat ersetzt",
+    "rektion": "durch + Akkusativ",
+    "prompt_front": "ersetzen _____ [Akk]",
+    "revealed_back": "ersetzen durch + Akkusativ (ersetzen | ersetzt | ersetzte | hat ersetzt)"
   },
   {
     "id": "b1_0748",
@@ -12316,10 +12316,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "verpassen | verpasst | verpasste | hat geverpasst",
+    "forms": "verpassen | verpasst | verpasste | hat verpasst",
     "rektion": "+ Akkusativ",
     "prompt_front": "verpassen + _____",
-    "revealed_back": "verpassen + Akkusativ (verpassen | verpasst | verpasste | hat geverpasst)"
+    "revealed_back": "verpassen + Akkusativ (verpassen | verpasst | verpasste | hat verpasst)"
   },
   {
     "id": "b1_0749",
@@ -12334,10 +12334,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "abfahren | abfahrt | abfahrte | hat geabfahrt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "abfahren + _____",
-    "revealed_back": "abfahren + Akkusativ (abfahren | abfahrt | abfahrte | hat geabfahrt)"
+    "forms": "abfahren | fährt ab | fuhr ab | ist abgefahren",
+    "rektion": "von/nach + Dativ",
+    "prompt_front": "abfahren _____ [Dat]",
+    "revealed_back": "abfahren von/nach + Dativ (abfahren | fährt ab | fuhr ab | ist abgefahren)"
   },
   {
     "id": "b1_0750",
@@ -12352,10 +12352,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "ankommen | ankommt | ankommte | hat geankommt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "ankommen + _____",
-    "revealed_back": "ankommen + Akkusativ (ankommen | ankommt | ankommte | hat geankommt)"
+    "forms": "ankommen | kommt an | kam an | ist angekommen",
+    "rektion": "in/an + Dativ",
+    "prompt_front": "ankommen _____ [Dat]",
+    "revealed_back": "ankommen in/an + Dativ (ankommen | kommt an | kam an | ist angekommen)"
   },
   {
     "id": "b1_0751",
@@ -12370,10 +12370,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "renovieren | renoviert | renovierte | hat gerenoviert",
+    "forms": "renovieren | renoviert | renovierte | hat renoviert",
     "rektion": "+ Akkusativ",
     "prompt_front": "renovieren + _____",
-    "revealed_back": "renovieren + Akkusativ (renovieren | renoviert | renovierte | hat gerenoviert)"
+    "revealed_back": "renovieren + Akkusativ (renovieren | renoviert | renovierte | hat renoviert)"
   },
   {
     "id": "b1_0752",
@@ -12388,10 +12388,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "streichen | streicht | streichte | hat gestreicht",
+    "forms": "streichen | streicht | strich | hat gestrichen",
     "rektion": "+ Akkusativ",
     "prompt_front": "streichen + _____",
-    "revealed_back": "streichen + Akkusativ (streichen | streicht | streichte | hat gestreicht)"
+    "revealed_back": "streichen + Akkusativ (streichen | streicht | strich | hat gestrichen)"
   },
   {
     "id": "b1_0753",
@@ -12406,10 +12406,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "verwirklichen | verwirklicht | verwirklichte | hat geverwirklicht",
+    "forms": "verwirklichen | verwirklicht | verwirklichte | hat verwirklicht",
     "rektion": "+ Akkusativ",
     "prompt_front": "verwirklichen + _____",
-    "revealed_back": "verwirklichen + Akkusativ (verwirklichen | verwirklicht | verwirklichte | hat geverwirklicht)"
+    "revealed_back": "verwirklichen + Akkusativ (verwirklichen | verwirklicht | verwirklichte | hat verwirklicht)"
   },
   {
     "id": "b1_0754",
@@ -12424,10 +12424,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "besichtigen | besichtigt | besichtigte | hat gebesichtigt",
+    "forms": "besichtigen | besichtigt | besichtigte | hat besichtigt",
     "rektion": "+ Akkusativ",
     "prompt_front": "besichtigen + _____",
-    "revealed_back": "besichtigen + Akkusativ (besichtigen | besichtigt | besichtigte | hat gebesichtigt)"
+    "revealed_back": "besichtigen + Akkusativ (besichtigen | besichtigt | besichtigte | hat besichtigt)"
   },
   {
     "id": "b1_0755",
@@ -12442,10 +12442,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "überqueren | überquert | überquerte | hat geüberquert",
+    "forms": "überqueren | überquert | überquerte | hat überquert",
     "rektion": "+ Akkusativ",
     "prompt_front": "überqueren + _____",
-    "revealed_back": "überqueren + Akkusativ (überqueren | überquert | überquerte | hat geüberquert)"
+    "revealed_back": "überqueren + Akkusativ (überqueren | überquert | überquerte | hat überquert)"
   },
   {
     "id": "b1_0756",
@@ -12461,9 +12461,9 @@
     "level": "B1",
     "lang": "de",
     "forms": "parken | parkt | parkte | hat geparkt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "parken + _____",
-    "revealed_back": "parken + Akkusativ (parken | parkt | parkte | hat geparkt)"
+    "rektion": "in/auf + Dativ / + Akkusativ",
+    "prompt_front": "parken _____ [Dat/Akk]",
+    "revealed_back": "parken in/auf + Dativ / + Akkusativ (parken | parkt | parkte | hat geparkt)"
   },
   {
     "id": "b1_0757",
@@ -12496,10 +12496,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "abholen | abholt | abholte | hat geabholt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "abholen + _____",
-    "revealed_back": "abholen + Akkusativ (abholen | abholt | abholte | hat geabholt)"
+    "forms": "abholen | holt ab | holte ab | hat abgeholt",
+    "rektion": "von + Dativ / + Akkusativ",
+    "prompt_front": "abholen _____ [Dat/Akk]",
+    "revealed_back": "abholen von + Dativ / + Akkusativ (abholen | holt ab | holte ab | hat abgeholt)"
   },
   {
     "id": "b1_0759",
@@ -12514,10 +12514,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "mitnehmen | mitnehmt | mitnehmte | hat gemitnehmt",
+    "forms": "mitnehmen | nimmt mit | nahm mit | hat mitgenommen",
     "rektion": "+ Akkusativ",
     "prompt_front": "mitnehmen + _____",
-    "revealed_back": "mitnehmen + Akkusativ (mitnehmen | mitnehmt | mitnehmte | hat gemitnehmt)"
+    "revealed_back": "mitnehmen + Akkusativ (mitnehmen | nimmt mit | nahm mit | hat mitgenommen)"
   },
   {
     "id": "b1_0760",
@@ -12532,10 +12532,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "beheizen | beheizt | beheizte | hat gebeheizt",
+    "forms": "beheizen | beheizt | beheizte | hat beheizt",
     "rektion": "+ Akkusativ",
     "prompt_front": "beheizen + _____",
-    "revealed_back": "beheizen + Akkusativ (beheizen | beheizt | beheizte | hat gebeheizt)"
+    "revealed_back": "beheizen + Akkusativ (beheizen | beheizt | beheizte | hat beheizt)"
   },
   {
     "id": "b1_0761",
@@ -12742,10 +12742,10 @@
     "topic": "Bildung & Wissenschaft",
     "level": "B1",
     "lang": "de",
-    "forms": "ausdrücken | ausdrückt | ausdrückte | hat geausdrückt",
+    "forms": "ausdrücken | drückt aus | drückte aus | hat ausgedrückt",
     "rektion": "+ Akkusativ",
     "prompt_front": "ausdrücken + _____",
-    "revealed_back": "ausdrücken + Akkusativ (ausdrücken | ausdrückt | ausdrückte | hat geausdrückt)"
+    "revealed_back": "ausdrücken + Akkusativ (ausdrücken | drückt aus | drückte aus | hat ausgedrückt)"
   },
   {
     "id": "b1_0774",
@@ -12840,10 +12840,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "entlasten | entlastt | entlastte | hat geentlastt",
+    "forms": "entlasten | entlastet | entlastete | hat entlastet",
     "rektion": "+ Akkusativ",
     "prompt_front": "entlasten + _____",
-    "revealed_back": "entlasten + Akkusativ (entlasten | entlastt | entlastte | hat geentlastt)"
+    "revealed_back": "entlasten + Akkusativ (entlasten | entlastet | entlastete | hat entlastet)"
   },
   {
     "id": "b1_0780",
@@ -12858,10 +12858,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "beseitigen | beseitigt | beseitigte | hat gebeseitigt",
+    "forms": "beseitigen | beseitigt | beseitigte | hat beseitigt",
     "rektion": "+ Akkusativ",
     "prompt_front": "beseitigen + _____",
-    "revealed_back": "beseitigen + Akkusativ (beseitigen | beseitigt | beseitigte | hat gebeseitigt)"
+    "revealed_back": "beseitigen + Akkusativ (beseitigen | beseitigt | beseitigte | hat beseitigt)"
   },
   {
     "id": "b1_0781",
@@ -12924,10 +12924,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "erkunden | erkundt | erkundte | hat geerkundt",
+    "forms": "erkunden | erkundet | erkundete | hat erkundet",
     "rektion": "+ Akkusativ",
     "prompt_front": "erkunden + _____",
-    "revealed_back": "erkunden + Akkusativ (erkunden | erkundt | erkundte | hat geerkundt)"
+    "revealed_back": "erkunden + Akkusativ (erkunden | erkundet | erkundete | hat erkundet)"
   },
   {
     "id": "b1_0785",
@@ -12942,10 +12942,10 @@
     "topic": "Gesundheit & Ernährung",
     "level": "B1",
     "lang": "de",
-    "forms": "beweisen | beweist | beweiste | hat gebeweist",
+    "forms": "beweisen | beweist | bewies | hat bewiesen",
     "rektion": "+ Akkusativ",
     "prompt_front": "beweisen + _____",
-    "revealed_back": "beweisen + Akkusativ (beweisen | beweist | beweiste | hat gebeweist)"
+    "revealed_back": "beweisen + Akkusativ (beweisen | beweist | bewies | hat bewiesen)"
   },
   {
     "id": "b1_0786",
@@ -12960,10 +12960,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "beschleunigen | beschleunigt | beschleunigte | hat gebeschleunigt",
+    "forms": "beschleunigen | beschleunigt | beschleunigte | hat beschleunigt",
     "rektion": "+ Akkusativ",
     "prompt_front": "beschleunigen + _____",
-    "revealed_back": "beschleunigen + Akkusativ (beschleunigen | beschleunigt | beschleunigte | hat gebeschleunigt)"
+    "revealed_back": "beschleunigen + Akkusativ (beschleunigen | beschleunigt | beschleunigte | hat beschleunigt)"
   },
   {
     "id": "b1_0787",
@@ -12978,10 +12978,10 @@
     "topic": "Diskurs & Logik",
     "level": "B1",
     "lang": "de",
-    "forms": "gestalten | gestaltt | gestaltte | hat gegestaltt",
+    "forms": "gestalten | gestaltet | gestaltete | hat gestaltet",
     "rektion": "+ Akkusativ",
     "prompt_front": "gestalten + _____",
-    "revealed_back": "gestalten + Akkusativ (gestalten | gestaltt | gestaltte | hat gegestaltt)"
+    "revealed_back": "gestalten + Akkusativ (gestalten | gestaltet | gestaltete | hat gestaltet)"
   },
   {
     "id": "b1_0788",
@@ -12996,10 +12996,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "transportieren | transportiert | transportierte | hat getransportiert",
+    "forms": "transportieren | transportiert | transportierte | hat transportiert",
     "rektion": "+ Akkusativ",
     "prompt_front": "transportieren + _____",
-    "revealed_back": "transportieren + Akkusativ (transportieren | transportiert | transportierte | hat getransportiert)"
+    "revealed_back": "transportieren + Akkusativ (transportieren | transportiert | transportierte | hat transportiert)"
   },
   {
     "id": "b1_0789",
@@ -13030,10 +13030,10 @@
     "topic": "Wohnen & Mobilität",
     "level": "B1",
     "lang": "de",
-    "forms": "einbiegen | einbiegt | einbiegte | hat geeinbiegt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "einbiegen + _____",
-    "revealed_back": "einbiegen + Akkusativ (einbiegen | einbiegt | einbiegte | hat geeinbiegt)"
+    "forms": "einbiegen | biegt ein | bog ein | ist eingebogen",
+    "rektion": "in + Akkusativ",
+    "prompt_front": "einbiegen _____ [Akk]",
+    "revealed_back": "einbiegen in + Akkusativ (einbiegen | biegt ein | bog ein | ist eingebogen)"
   },
   {
     "id": "b1_0791",
@@ -13918,10 +13918,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "respektieren | respektiert | respektierte | hat gerespektiert",
+    "forms": "respektieren | respektiert | respektierte | hat respektiert",
     "rektion": "+ Akkusativ",
     "prompt_front": "respektieren + _____",
-    "revealed_back": "respektieren + Akkusativ (respektieren | respektiert | respektierte | hat gerespektiert)"
+    "revealed_back": "respektieren + Akkusativ (respektieren | respektiert | respektierte | hat respektiert)"
   },
   {
     "id": "b1_0846",
@@ -13936,10 +13936,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "verzeihen | verzeiht | verzeihte | hat geverzeiht",
-    "rektion": "+ Akkusativ",
+    "forms": "verzeihen | verzeiht | verzieh | hat verziehen",
+    "rektion": "+ Dativ + Akkusativ",
     "prompt_front": "verzeihen + _____",
-    "revealed_back": "verzeihen + Akkusativ (verzeihen | verzeiht | verzeihte | hat geverzeiht)"
+    "revealed_back": "verzeihen + Dativ + Akkusativ (verzeihen | verzeiht | verzieh | hat verziehen)"
   },
   {
     "id": "b1_0847",
@@ -13954,10 +13954,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "trösten | tröstt | tröstte | hat getröstt",
+    "forms": "trösten | tröstet | tröstete | hat getröstet",
     "rektion": "+ Akkusativ",
     "prompt_front": "trösten + _____",
-    "revealed_back": "trösten + Akkusativ (trösten | tröstt | tröstte | hat getröstt)"
+    "revealed_back": "trösten + Akkusativ (trösten | tröstet | tröstete | hat getröstet)"
   },
   {
     "id": "b1_0848",
@@ -13988,10 +13988,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "begeistern | begeistert | begeisterte | hat gebegeistert",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "begeistern + _____",
-    "revealed_back": "begeistern + Akkusativ (begeistern | begeistert | begeisterte | hat gebegeistert)"
+    "forms": "begeistern | begeistert | begeisterte | hat begeistert",
+    "rektion": "für + Akkusativ",
+    "prompt_front": "begeistern _____ [Akk]",
+    "revealed_back": "begeistern für + Akkusativ (begeistern | begeistert | begeisterte | hat begeistert)"
   },
   {
     "id": "b1_0850",
@@ -14006,10 +14006,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "enttäuschen | enttäuscht | enttäuschte | hat geenttäuscht",
+    "forms": "enttäuschen | enttäuscht | enttäuschte | hat enttäuscht",
     "rektion": "+ Akkusativ",
     "prompt_front": "enttäuschen + _____",
-    "revealed_back": "enttäuschen + Akkusativ (enttäuschen | enttäuscht | enttäuschte | hat geenttäuscht)"
+    "revealed_back": "enttäuschen + Akkusativ (enttäuschen | enttäuscht | enttäuschte | hat enttäuscht)"
   },
   {
     "id": "b1_0851",
@@ -14024,10 +14024,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "beruhigen | beruhigt | beruhigte | hat geberuhigt",
+    "forms": "beruhigen | beruhigt | beruhigte | hat beruhigt",
     "rektion": "+ Akkusativ",
     "prompt_front": "beruhigen + _____",
-    "revealed_back": "beruhigen + Akkusativ (beruhigen | beruhigt | beruhigte | hat geberuhigt)"
+    "revealed_back": "beruhigen + Akkusativ (beruhigen | beruhigt | beruhigte | hat beruhigt)"
   },
   {
     "id": "b1_0852",
@@ -14042,10 +14042,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "aufregen | aufregt | aufregte | hat geaufregt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "aufregen + _____",
-    "revealed_back": "aufregen + Akkusativ (aufregen | aufregt | aufregte | hat geaufregt)"
+    "forms": "aufregen | regt auf | regte auf | hat aufgeregt",
+    "rektion": "über + Akkusativ",
+    "prompt_front": "aufregen _____ [Akk]",
+    "revealed_back": "aufregen über + Akkusativ (aufregen | regt auf | regte auf | hat aufgeregt)"
   },
   {
     "id": "b1_0853",
@@ -14060,10 +14060,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "streiten | streitt | streitte | hat gestreitt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "streiten + _____",
-    "revealed_back": "streiten + Akkusativ (streiten | streitt | streitte | hat gestreitt)"
+    "forms": "streiten | streitet | stritt | hat gestritten",
+    "rektion": "über + Akkusativ / mit + Dativ",
+    "prompt_front": "streiten _____ [Dat/Akk]",
+    "revealed_back": "streiten über + Akkusativ / mit + Dativ (streiten | streitet | stritt | hat gestritten)"
   },
   {
     "id": "b1_0854",
@@ -14078,10 +14078,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "vertragen | vertragt | vertragte | hat gevertragt",
+    "forms": "vertragen | verträgt | vertrug | hat vertragen",
     "rektion": "+ Akkusativ",
     "prompt_front": "vertragen + _____",
-    "revealed_back": "vertragen + Akkusativ (vertragen | vertragt | vertragte | hat gevertragt)"
+    "revealed_back": "vertragen + Akkusativ (vertragen | verträgt | vertrug | hat vertragen)"
   },
   {
     "id": "b1_0855",
@@ -14096,10 +14096,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "beneiden | beneidt | beneidte | hat gebeneidt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "beneiden + _____",
-    "revealed_back": "beneiden + Akkusativ (beneiden | beneidt | beneidte | hat gebeneidt)"
+    "forms": "beneiden | beneidet | beneidete | hat beneidet",
+    "rektion": "um + Akkusativ",
+    "prompt_front": "beneiden _____ [Akk]",
+    "revealed_back": "beneiden um + Akkusativ (beneiden | beneidet | beneidete | hat beneidet)"
   },
   {
     "id": "b1_0856",
@@ -14114,10 +14114,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "bedauern | bedauert | bedauerte | hat gebedauert",
+    "forms": "bedauern | bedauert | bedauerte | hat bedauert",
     "rektion": "+ Akkusativ",
     "prompt_front": "bedauern + _____",
-    "revealed_back": "bedauern + Akkusativ (bedauern | bedauert | bedauerte | hat gebedauert)"
+    "revealed_back": "bedauern + Akkusativ (bedauern | bedauert | bedauerte | hat bedauert)"
   },
   {
     "id": "b1_0857",
@@ -14132,10 +14132,10 @@
     "topic": "Gefühle & Beziehungen",
     "level": "B1",
     "lang": "de",
-    "forms": "vermissen | vermisst | vermisste | hat gevermisst",
+    "forms": "vermissen | vermisst | vermisste | hat vermisst",
     "rektion": "+ Akkusativ",
     "prompt_front": "vermissen + _____",
-    "revealed_back": "vermissen + Akkusativ (vermissen | vermisst | vermisste | hat gevermisst)"
+    "revealed_back": "vermissen + Akkusativ (vermissen | vermisst | vermisste | hat vermisst)"
   },
   {
     "id": "b1_0858",
@@ -14169,9 +14169,9 @@
     "level": "B1",
     "lang": "de",
     "forms": "zögern | zögert | zögerte | hat gezögert",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "zögern + _____",
-    "revealed_back": "zögern + Akkusativ (zögern | zögert | zögerte | hat gezögert)"
+    "rektion": "mit + Dativ",
+    "prompt_front": "zögern _____ [Dat]",
+    "revealed_back": "zögern mit + Dativ (zögern | zögert | zögerte | hat gezögert)"
   },
   {
     "id": "b1_0860",
@@ -15804,10 +15804,10 @@
     "topic": "Diskurs & Logik",
     "level": "B1",
     "lang": "de",
-    "forms": "schließen | schließt | schließte | hat geschließt",
+    "forms": "schließen | schließt | schloss | hat geschlossen",
     "rektion": "+ Akkusativ",
     "prompt_front": "schließen + _____",
-    "revealed_back": "schließen + Akkusativ (schließen | schließt | schließte | hat geschließt)"
+    "revealed_back": "schließen + Akkusativ (schließen | schließt | schloss | hat geschlossen)"
   },
   {
     "id": "b1_0962",
@@ -15822,10 +15822,10 @@
     "topic": "Diskurs & Logik",
     "level": "B1",
     "lang": "de",
-    "forms": "widerlegen | widerlegt | widerlegte | hat gewiderlegt",
+    "forms": "widerlegen | widerlegt | widerlegte | hat widerlegt",
     "rektion": "+ Akkusativ",
     "prompt_front": "widerlegen + _____",
-    "revealed_back": "widerlegen + Akkusativ (widerlegen | widerlegt | widerlegte | hat gewiderlegt)"
+    "revealed_back": "widerlegen + Akkusativ (widerlegen | widerlegt | widerlegte | hat widerlegt)"
   },
   {
     "id": "b1_0963",
@@ -15874,10 +15874,10 @@
     "topic": "Diskurs & Logik",
     "level": "B1",
     "lang": "de",
-    "forms": "hervorheben | hervorhebt | hervorhebte | hat gehervorhebt",
+    "forms": "hervorheben | hebt hervor | hob hervor | hat hervorgehoben",
     "rektion": "+ Akkusativ",
     "prompt_front": "hervorheben + _____",
-    "revealed_back": "hervorheben + Akkusativ (hervorheben | hervorhebt | hervorhebte | hat gehervorhebt)"
+    "revealed_back": "hervorheben + Akkusativ (hervorheben | hebt hervor | hob hervor | hat hervorgehoben)"
   },
   {
     "id": "b1_0966",
@@ -15892,10 +15892,10 @@
     "topic": "Diskurs & Logik",
     "level": "B1",
     "lang": "de",
-    "forms": "verdeutlichen | verdeutlicht | verdeutlichte | hat geverdeutlicht",
+    "forms": "verdeutlichen | verdeutlicht | verdeutlichte | hat verdeutlicht",
     "rektion": "+ Akkusativ",
     "prompt_front": "verdeutlichen + _____",
-    "revealed_back": "verdeutlichen + Akkusativ (verdeutlichen | verdeutlicht | verdeutlichte | hat geverdeutlicht)"
+    "revealed_back": "verdeutlichen + Akkusativ (verdeutlichen | verdeutlicht | verdeutlichte | hat verdeutlicht)"
   },
   {
     "id": "b1_0967",
@@ -15910,10 +15910,10 @@
     "topic": "Diskurs & Logik",
     "level": "B1",
     "lang": "de",
-    "forms": "verallgemeinern | verallgemeinert | verallgemeinerte | hat geverallgemeinert",
+    "forms": "verallgemeinern | verallgemeinert | verallgemeinerte | hat verallgemeinert",
     "rektion": "+ Akkusativ",
     "prompt_front": "verallgemeinern + _____",
-    "revealed_back": "verallgemeinern + Akkusativ (verallgemeinern | verallgemeinert | verallgemeinerte | hat geverallgemeinert)"
+    "revealed_back": "verallgemeinern + Akkusativ (verallgemeinern | verallgemeinert | verallgemeinerte | hat verallgemeinert)"
   },
   {
     "id": "b1_0968",
@@ -15928,10 +15928,10 @@
     "topic": "Diskurs & Logik",
     "level": "B1",
     "lang": "de",
-    "forms": "unterscheiden | unterscheidt | unterscheidte | hat geunterscheidt",
-    "rektion": "+ Akkusativ",
-    "prompt_front": "unterscheiden + _____",
-    "revealed_back": "unterscheiden + Akkusativ (unterscheiden | unterscheidt | unterscheidte | hat geunterscheidt)"
+    "forms": "unterscheiden | unterscheidet | unterschied | hat unterschieden",
+    "rektion": "zwischen + Dativ",
+    "prompt_front": "unterscheiden _____ [Dat]",
+    "revealed_back": "unterscheiden zwischen + Dativ (unterscheiden | unterscheidet | unterschied | hat unterschieden)"
   },
   {
     "id": "b1_0969",
@@ -15962,10 +15962,10 @@
     "topic": "Diskurs & Logik",
     "level": "B1",
     "lang": "de",
-    "forms": "zustimmen | zustimmt | zustimmte | hat gezustimmt",
-    "rektion": "+ Akkusativ",
+    "forms": "zustimmen | stimmt zu | stimmte zu | hat zugestimmt",
+    "rektion": "+ Dativ",
     "prompt_front": "zustimmen + _____",
-    "revealed_back": "zustimmen + Akkusativ (zustimmen | zustimmt | zustimmte | hat gezustimmt)"
+    "revealed_back": "zustimmen + Dativ (zustimmen | stimmt zu | stimmte zu | hat zugestimmt)"
   },
   {
     "id": "b1_0971",

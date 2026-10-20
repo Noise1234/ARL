@@ -4,7 +4,7 @@
  */
 
 import { db } from './db.js';
-import { scheduleCard, getQueueStats, isCardDue } from './srs.js';
+import { scheduleCard, getQueueStats, isCardDue, isCardMemorized, resetCardSRS } from './srs.js';
 import { initI18n, setInterfaceLanguage, getInterfaceLanguage } from './i18n.js';
 import { normalizeNFC } from './unicode.js';
 
@@ -13,6 +13,7 @@ class AppState {
     this.targetLang = 'de'; // 'de' | 'en'
     this.interfaceLang = 'mn'; // 'mn' | 'en' | 'de'
     this.cefrLevel = 'b1'; // 'a1' | 'a2' | 'b1' | 'b2'
+    this.reviewMode = 'active'; // 'active' | 'memorized'
 
     this.cards = [];
     this.cardsMap = new Map();
@@ -23,6 +24,12 @@ class AppState {
     this.isCardRevealed = false;
     this.showHint = false;
     this.isGrading = false;
+
+    // Session momentum & velocity tracking
+    this.sessionStreak = 0;
+    this.sessionReviewedCount = 0;
+    this.totalResponseTimeMs = 0;
+    this.cardStartTime = Date.now();
 
     this.listeners = new Set();
     this.i18nLoaded = false;
@@ -95,10 +102,15 @@ class AppState {
     for (const c of this.cards) {
       this.cardsMap.set(c.id, c);
     }
-    this.buildStudyQueue();
+    if (this.reviewMode === 'memorized') {
+      this.buildMemorizedQueue();
+    } else {
+      this.buildStudyQueue();
+    }
   }
 
   buildStudyQueue() {
+    this.reviewMode = 'active';
     const now = Date.now();
     const due = [];
     const newCards = [];
@@ -118,6 +130,92 @@ class AppState {
     this.isCardRevealed = false;
     this.showHint = false;
     this.notify();
+  }
+
+  buildMemorizedQueue() {
+    this.reviewMode = 'memorized';
+    const memorized = [];
+    for (const card of this.cards) {
+      const prog = this.progressMap.get(card.id);
+      if (isCardMemorized(prog)) {
+        memorized.push(card);
+      }
+    }
+
+    // Sort oldest studied first (smallest lastStudied timestamp first)
+    memorized.sort((a, b) => {
+      const progA = this.progressMap.get(a.id);
+      const progB = this.progressMap.get(b.id);
+      return (progA?.lastStudied || 0) - (progB?.lastStudied || 0);
+    });
+
+    this.studyQueue = memorized;
+    this.currentCardIndex = 0;
+    this.isCardRevealed = false;
+    this.showHint = false;
+    this.notify();
+  }
+
+  toggleReviewMode() {
+    if (this.reviewMode === 'active') {
+      this.buildMemorizedQueue();
+    } else {
+      this.buildStudyQueue();
+    }
+  }
+
+  async resetCurrentCard() {
+    if (this.isGrading) return;
+    this.isGrading = true;
+    try {
+      const card = this.getCurrentCard();
+      if (!card) return;
+
+      this.stopAudio();
+
+      const existingProg = this.progressMap.get(card.id) || { wordId: card.id };
+      const resetProg = resetCardSRS(existingProg, Date.now());
+
+      // Update in-memory map synchronously
+      this.progressMap.set(card.id, resetProg);
+
+      // Advance to next card synchronously
+      this.currentCardIndex++;
+      this.isCardRevealed = false;
+      this.showHint = false;
+      this.notify();
+
+      // Persist in background asynchronously without blocking UI
+      try {
+        await db.saveProgress(resetProg);
+      } catch (err) {
+        console.warn('Failed to persist reset progress:', err);
+      }
+    } finally {
+      this.isGrading = false;
+    }
+  }
+
+  async resetMemorizedCards() {
+    const now = Date.now();
+    const updates = [];
+    for (const card of this.cards) {
+      const prog = this.progressMap.get(card.id);
+      if (isCardMemorized(prog)) {
+        const resetProg = resetCardSRS(prog, now);
+        this.progressMap.set(card.id, resetProg);
+        updates.push(resetProg);
+      }
+    }
+    this.reviewMode = 'active';
+    this.buildStudyQueue();
+    for (const p of updates) {
+      try {
+        await db.saveProgress(p);
+      } catch (err) {
+        console.warn('Failed to persist reset card:', err);
+      }
+    }
   }
 
   getCurrentCard() {
@@ -153,6 +251,18 @@ class AppState {
       // Update in-memory map synchronously
       this.progressMap.set(card.id, updatedProg);
 
+      // Session momentum calculations
+      const now = Date.now();
+      const elapsed = Math.max(200, now - (this.cardStartTime || now));
+      this.totalResponseTimeMs += elapsed;
+      this.sessionReviewedCount++;
+      if (grade >= 3) {
+        this.sessionStreak++;
+      } else {
+        this.sessionStreak = 0;
+      }
+      this.cardStartTime = Date.now();
+
       // If graded 1 (Again), requeue to the end of current batch
       if (grade === 1) {
         this.studyQueue.push(card);
@@ -177,19 +287,30 @@ class AppState {
 
   playAudio() {
     const card = this.getCurrentCard();
-    if (!card || typeof window === 'undefined' || !window.speechSynthesis) return;
+    if (!card) return;
 
     this.stopAudio();
 
-    const textToSpeak = card.word;
-    const utterance = new SpeechSynthesisUtterance(normalizeNFC(textToSpeak));
-    utterance.lang = this.targetLang === 'de' ? 'de-DE' : 'en-US';
-    utterance.rate = 0.92; // Slightly measured rate for maximum pedagogical clarity
+    const textToSpeak = normalizeNFC(card.word);
+    const lang = this.targetLang === 'de' ? 'de-DE' : 'en-US';
 
-    window.speechSynthesis.speak(utterance);
+    if (typeof window !== 'undefined' && window.AndroidBridge && typeof window.AndroidBridge.speak === 'function') {
+      window.AndroidBridge.speak(textToSpeak, lang);
+      return;
+    }
+
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+      utterance.lang = lang;
+      utterance.rate = 0.92; // Slightly measured rate for maximum pedagogical clarity
+      window.speechSynthesis.speak(utterance);
+    }
   }
 
   stopAudio() {
+    if (typeof window !== 'undefined' && window.AndroidBridge && typeof window.AndroidBridge.stopAudio === 'function') {
+      window.AndroidBridge.stopAudio();
+    }
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       window.speechSynthesis.cancel();
     }
@@ -197,6 +318,17 @@ class AppState {
 
   getQueueStats() {
     return getQueueStats(this.cards, this.progressMap, Date.now());
+  }
+
+  getSessionStats() {
+    const avgSec = this.sessionReviewedCount > 0
+      ? (this.totalResponseTimeMs / this.sessionReviewedCount / 1000).toFixed(1)
+      : '0.0';
+    return {
+      streak: this.sessionStreak,
+      reviewed: this.sessionReviewedCount,
+      avgSpeed: avgSec
+    };
   }
 
   async setTargetLanguage(lang) {
