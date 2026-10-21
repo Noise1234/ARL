@@ -1,4 +1,4 @@
-const CACHE_NAME = 'arl-cache-v2';
+const CACHE_NAME = 'arl-cache-v2.1';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -14,6 +14,10 @@ const ASSETS_TO_CACHE = [
   './js/unicode.js',
   './js/i18n.js',
   './js/keyboard.js',
+  './js/gamification.js',
+  './js/hints.js',
+  './js/gemini.js',
+  './js/grammar-fallback.js',
   './js/views/hud.js',
   './js/views/study.js',
   './js/views/grammar.js',

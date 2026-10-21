@@ -1,7 +1,7 @@
 /**
- * ARL - Single-Line Minimal Top HUD View
- * Strictly renders: [DE·B1]  14 due · 6 new · 120 learned  ⚡ 12 streak · 4.2s   [V]ocab [G]rammar [M]edia [S]ettings
- * Zero bloat, tactile feedback, keyboard-driven navigation.
+ * ARL - Single-Line Top HUD View with Integrated EXP & Level Progress
+ * Strictly renders: [DE·B1] 14 due · 6 new  Lv.3 [====--] ⚡ 1.5x  [V]ocab [G]rammar [M]edia [S]ettings
+ * Floating EXP badges container, tactile feedback, keyboard-driven navigation.
  */
 
 import { state } from '../state.js';
@@ -21,7 +21,8 @@ export class TopHudView {
 
   render() {
     const stats = state.getQueueStats();
-    const session = state.getSessionStats ? state.getSessionStats() : { streak: 0, avgSpeed: '0.0' };
+    const session = state.getSessionStats ? state.getSessionStats() : { streak: 0, avgSpeed: '0.0', multiplier: 1 };
+    const levelStats = state.getLevelStats ? state.getLevelStats() : { level: 1, totalExp: 0, progressPct: 0 };
     const tag = `[${state.targetLang.toUpperCase()}·${state.cefrLevel.toUpperCase()}]`;
 
     const countsContent = state.reviewMode === 'memorized'
@@ -42,12 +43,18 @@ export class TopHudView {
         </div>
 
         <div class="hud-center">
-          <span class="hud-momentum-badge" title="Session Streak & Velocity">
-            <span class="momentum-flash">⚡</span>
-            <span class="momentum-val">${session.streak} streak</span>
-            <span class="hud-count-sep">·</span>
-            <span class="momentum-speed">${session.avgSpeed}s avg</span>
-          </span>
+          <!-- Level & EXP Progress Track -->
+          <div class="hud-exp-badge" title="Level ${levelStats.level}: ${levelStats.expInCurrentLevel || 0}/${levelStats.expNeededForNext || 100} EXP (${levelStats.totalExp} Total)">
+            <span class="hud-level-pill">Lv.${levelStats.level}</span>
+            <div class="hud-exp-track">
+              <div class="hud-exp-fill" style="width: ${levelStats.progressPct || 0}%"></div>
+            </div>
+            ${session.multiplier > 1 ? `
+              <span class="hud-multiplier-pill" title="${session.streak} Streak: ${session.multiplier}x EXP Multiplier">⚡${session.multiplier}x</span>
+            ` : (session.streak > 0 ? `
+              <span class="hud-streak-pill" title="${session.streak} Streak">⚡${session.streak}</span>
+            ` : '')}
+          </div>
         </div>
 
         <nav class="hud-nav" aria-label="Main Navigation">
@@ -65,6 +72,9 @@ export class TopHudView {
           </button>
         </nav>
       </div>
+
+      <!-- Container for Floating EXP Particles -->
+      <div id="exp-floating-container" class="exp-floating-container" aria-hidden="true"></div>
     `;
 
     // Bind click events

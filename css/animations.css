@@ -1,24 +1,73 @@
-/* ARL v2.0 Animations - Instant, Zero-Latency Transitions */
+/* ARL v2.1 Animations & Dopamine Reward Micro-Interactions */
 
-/* Clean instant render with subtle entry */
-.active-flashcard,
-.grammar-topic-card,
-.settings-hud-card,
-.media-card-item {
-  animation: none;
-}
-
-/* Eliminate all flip transition delays */
-.active-flashcard.revealed-state {
-  transition: none;
-}
-
-/* User select prevention on interactive keyhints */
+/* User select prevention on interactive keyhints and buttons */
 .keyhint-btn,
 .hud-nav-item,
 .grammar-tab-btn,
 .filter-tab-btn,
-.lvl-choice-btn {
+.lvl-choice-btn,
+.char-chip-btn,
+.touch-target {
   user-select: none;
   -webkit-user-select: none;
+}
+
+/* Smooth Progress Bar Transitions */
+.card-progress-fill,
+.hud-exp-fill {
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 1. Floating +EXP Badges */
+.exp-floating-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.floating-exp-badge {
+  position: fixed;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #18181b;
+  border: 1px solid var(--border-focus);
+  color: #fafafa;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  animation: floatUpAndFade 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.floating-exp-badge.bonus-highlight {
+  border-color: #22c55e;
+  color: #22c55e;
+  background-color: #0f1f14;
+}
+
+@keyframes floatUpAndFade {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-38px) scale(0.96);
+  }
 }

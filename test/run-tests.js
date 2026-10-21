@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url';
 import { runUnicodeTests } from './unicode.test.js';
 import { runSrsTests } from './srs.test.js';
 import { runDatasetTests } from './dataset.test.js';
+import { runUpgradeTests } from './upgrade.test.js';
+import { runViewTests } from './views.test.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -251,6 +253,12 @@ async function main() {
     const p = await db.getProgress('non_existent');
     assert.strictEqual(p, null);
   });
+
+  // 7. System Upgrade Suite (Gamification, 3-Stage Hints, Grammar Sandbox, Gemini Client)
+  await runUpgradeTests(it);
+
+  // 8. View Component Mounting & Structural Integrity
+  await runViewTests(it);
 
   console.log('\n----------------------------------------------------');
   console.log(`TEST RESULTS: ${passedTests} passed, ${failedTests} failed.`);

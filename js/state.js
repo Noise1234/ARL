@@ -1,12 +1,23 @@
 /**
  * ARL - Global Application State Manager
- * Coordinates dataset loading, pure SRS scheduling, queue management, and audio synthesis.
+ * Coordinates dataset loading, pure SRS scheduling, Dopamine EXP progression,
+ * progressive 3-stage hints, and audio synthesis.
  */
 
 import { db } from './db.js';
 import { scheduleCard, getQueueStats, isCardDue, isCardMemorized, resetCardSRS } from './srs.js';
 import { initI18n, setInterfaceLanguage, getInterfaceLanguage } from './i18n.js';
 import { normalizeNFC } from './unicode.js';
+import {
+  safeAddExp,
+  getLevelProgress,
+  getStreakMultiplier,
+  calculateAwardedExp,
+  showFloatingExp,
+  EXP_FLASHCARD_BASE
+} from './gamification.js';
+import { getCardHint } from './hints.js';
+import { GeminiClient } from './gemini.js';
 
 class AppState {
   constructor() {
@@ -22,8 +33,13 @@ class AppState {
     this.studyQueue = [];
     this.currentCardIndex = 0;
     this.isCardRevealed = false;
-    this.showHint = false;
+    this.hintStage = 0; // 0: hidden, 1: gender/class, 2: valency/forms, 3: cloze context
     this.isGrading = false;
+    this.isEvaluating = false;
+
+    // Dopamine EXP System
+    this.totalExp = 0;
+    this.level = 1;
 
     // Session momentum & velocity tracking
     this.sessionStreak = 0;
@@ -35,12 +51,26 @@ class AppState {
     this.i18nLoaded = false;
   }
 
+  // Backward compatibility getter for legacy widgets
+  get stats() {
+    return {
+      streak: this.sessionStreak,
+      exp: this.totalExp,
+      level: this.level
+    };
+  }
+
   async init() {
-    // 1. Load preferences
+    // 1. Load preferences and EXP
     try {
       this.targetLang = await db.getSetting('targetLang', 'de');
       this.interfaceLang = await db.getSetting('interfaceLang', 'mn');
       this.cefrLevel = await db.getSetting('cefrLevel', 'b1');
+      const savedExp = await db.getSetting('totalExp', 0);
+      this.totalExp = (typeof savedExp === 'number' && Number.isFinite(savedExp) && savedExp >= 0)
+        ? Math.floor(savedExp)
+        : 0;
+      this.level = getLevelProgress(this.totalExp).level;
     } catch (err) {
       console.warn('Could not load settings from db:', err);
     }
@@ -128,7 +158,7 @@ class AppState {
     this.studyQueue = [...due, ...newCards.slice(0, 15)];
     this.currentCardIndex = 0;
     this.isCardRevealed = false;
-    this.showHint = false;
+    this.hintStage = 0;
     this.notify();
   }
 
@@ -142,7 +172,7 @@ class AppState {
       }
     }
 
-    // Sort oldest studied first (smallest lastStudied timestamp first)
+    // Sort oldest studied first
     memorized.sort((a, b) => {
       const progA = this.progressMap.get(a.id);
       const progB = this.progressMap.get(b.id);
@@ -152,7 +182,7 @@ class AppState {
     this.studyQueue = memorized;
     this.currentCardIndex = 0;
     this.isCardRevealed = false;
-    this.showHint = false;
+    this.hintStage = 0;
     this.notify();
   }
 
@@ -176,16 +206,12 @@ class AppState {
       const existingProg = this.progressMap.get(card.id) || { wordId: card.id };
       const resetProg = resetCardSRS(existingProg, Date.now());
 
-      // Update in-memory map synchronously
       this.progressMap.set(card.id, resetProg);
-
-      // Advance to next card synchronously
       this.currentCardIndex++;
       this.isCardRevealed = false;
-      this.showHint = false;
+      this.hintStage = 0;
       this.notify();
 
-      // Persist in background asynchronously without blocking UI
       try {
         await db.saveProgress(resetProg);
       } catch (err) {
@@ -231,7 +257,43 @@ class AppState {
   }
 
   toggleHint() {
-    this.showHint = !this.showHint;
+    // Cycles 0 (off) -> 1 -> 2 -> 3 -> 0
+    this.hintStage = (this.hintStage + 1) % 4;
+    this.notify();
+  }
+
+  getCurrentHint() {
+    const card = this.getCurrentCard();
+    if (!card || this.hintStage === 0) return null;
+    return getCardHint(card, this.hintStage, this.targetLang);
+  }
+
+  // Dopamine EXP Addition
+  addExp(amount, options = {}) {
+    const safeAmount = (typeof amount === 'number' && Number.isFinite(amount) && amount > 0)
+      ? Math.floor(amount)
+      : 0;
+    if (safeAmount <= 0) return;
+
+    const oldLevel = this.level;
+    this.totalExp = safeAddExp(this.totalExp, safeAmount);
+
+    const progress = getLevelProgress(this.totalExp);
+    this.level = progress.level;
+
+    // Trigger visual floating dopamine badge
+    showFloatingExp(safeAmount, options);
+
+    // Check level up: non-blocking micro-feedback
+    if (this.level > oldLevel) {
+      showFloatingExp(0, { label: `LEVEL ${this.level}!`, bonus: true });
+    }
+
+    // Persist EXP asynchronously
+    db.setSetting('totalExp', this.totalExp).catch(err => {
+      console.warn('Could not persist totalExp:', err);
+    });
+
     this.notify();
   }
 
@@ -242,13 +304,11 @@ class AppState {
       const card = this.getCurrentCard();
       if (!card || !this.isCardRevealed) return;
 
-      // Defensive audio cancellation
       this.stopAudio();
 
       const existingProg = this.progressMap.get(card.id) || { wordId: card.id };
       const updatedProg = scheduleCard(existingProg, grade, Date.now());
 
-      // Update in-memory map synchronously
       this.progressMap.set(card.id, updatedProg);
 
       // Session momentum calculations
@@ -256,6 +316,7 @@ class AppState {
       const elapsed = Math.max(200, now - (this.cardStartTime || now));
       this.totalResponseTimeMs += elapsed;
       this.sessionReviewedCount++;
+
       if (grade >= 3) {
         this.sessionStreak++;
       } else {
@@ -263,18 +324,24 @@ class AppState {
       }
       this.cardStartTime = Date.now();
 
+      // Dopamine EXP award
+      const basePoints = EXP_FLASHCARD_BASE[grade] || 15;
+      const multiplier = getStreakMultiplier(this.sessionStreak);
+      const earnedExp = calculateAwardedExp(basePoints, this.sessionStreak);
+      const multiplierLabel = multiplier > 1 ? `${multiplier}x Streak` : '';
+      this.addExp(earnedExp, { label: multiplierLabel, bonus: grade >= 3 });
+
       // If graded 1 (Again), requeue to the end of current batch
       if (grade === 1) {
         this.studyQueue.push(card);
       }
 
-      // Advance to next card synchronously BEFORE any async storage operation
+      // Advance to next card
       this.currentCardIndex++;
       this.isCardRevealed = false;
-      this.showHint = false;
+      this.hintStage = 0;
       this.notify();
 
-      // Persist in background asynchronously without blocking UI responsiveness
       try {
         await db.saveProgress(updatedProg);
       } catch (err) {
@@ -282,6 +349,25 @@ class AppState {
       }
     } finally {
       this.isGrading = false;
+    }
+  }
+
+  // Interactive Sentence Evaluation (Rule 4)
+  async evaluateGrammarSentence(userSentence, targetTopic = '') {
+    if (this.isEvaluating) return null;
+    this.isEvaluating = true;
+    try {
+      const result = await GeminiClient.evaluateSentence(userSentence, targetTopic, this.targetLang);
+
+      // Award EXP based on result
+      if (result && result.expBonus > 0) {
+        const bonusLabel = result.verdict === 'Perfect!' ? 'Grammar Master' : 'Practice';
+        this.addExp(result.expBonus, { label: bonusLabel, bonus: result.verdict === 'Perfect!' });
+      }
+
+      return result;
+    } finally {
+      this.isEvaluating = false;
     }
   }
 
@@ -302,7 +388,7 @@ class AppState {
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
       utterance.lang = lang;
-      utterance.rate = 0.92; // Slightly measured rate for maximum pedagogical clarity
+      utterance.rate = 0.92;
       window.speechSynthesis.speak(utterance);
     }
   }
@@ -327,8 +413,33 @@ class AppState {
     return {
       streak: this.sessionStreak,
       reviewed: this.sessionReviewedCount,
-      avgSpeed: avgSec
+      avgSpeed: avgSec,
+      multiplier: getStreakMultiplier(this.sessionStreak)
     };
+  }
+
+  getLevelStats() {
+    return getLevelProgress(this.totalExp);
+  }
+
+  // Legacy Guard Methods for Retention / Quiz
+  isRetentionCheckDue() {
+    return false;
+  }
+
+  getRetentionEligibleWords() {
+    return [];
+  }
+
+  getRandomDistractors(targetWord, count = 3) {
+    const distractors = [];
+    for (const c of this.cards) {
+      if (c.word !== targetWord && !distractors.includes(c.word)) {
+        distractors.push(c.word);
+        if (distractors.length >= count) break;
+      }
+    }
+    return distractors;
   }
 
   async setTargetLanguage(lang) {

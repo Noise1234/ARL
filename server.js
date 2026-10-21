@@ -16,13 +16,16 @@ const MIME_TYPES = {
   '.json': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
-  '.ico': 'image/x-icon'
+  '.ico': 'image/x-icon',
+  '.apk': 'application/vnd.android.package-archive'
 };
 
 const server = http.createServer((req, res) => {
   let cleanUrl = req.url.split('?')[0];
   if (cleanUrl === '/' || cleanUrl === '') {
     cleanUrl = '/index.html';
+  } else if (cleanUrl === '/download' || cleanUrl === '/apk' || cleanUrl === '/download/apk') {
+    cleanUrl = '/dist/ARL-v2.0.apk';
   }
 
   const filePath = path.join(ROOT, cleanUrl);
@@ -44,16 +47,22 @@ const server = http.createServer((req, res) => {
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
-    res.writeHead(200, {
+    const headers = {
       'Content-Type': contentType,
       'Cache-Control': 'no-cache',
       'Service-Worker-Allowed': '/'
-    });
+    };
 
+    if (ext === '.apk') {
+      headers['Content-Disposition'] = 'attachment; filename="ARL-v2.0.apk"';
+    }
+
+    res.writeHead(200, headers);
     fs.createReadStream(filePath).pipe(res);
   });
 });
 
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`ARL PWA Server running at http://localhost:${PORT}`);
+  console.log(`Direct APK download at http://localhost:${PORT}/apk`);
 });
