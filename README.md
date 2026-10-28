@@ -23,9 +23,14 @@
 ### 2. Tactile Keyboard-First Study & SRS Flashcards
 - **Pure SM-2 Spaced Repetition:** Deterministic scheduling with interval progression, ease factors, and lapse tracking.
 - **Morphological Verb Grid:** On card reveal, verbs display a 4-part chip grid: Infinitiv, 3.P. Präsens, Präteritum, and Partizip II with auxiliary highlight (*hat* vs *ist*), plus case valency badges.
-- **Batch Progress Strip:** Tactile progress bar reflecting remaining cards in current study queue.
-- **Physical Keypress Feedback:** Interactive keycap indicators visibly depress with micro-animations when hardware keys are pressed.
-- **Surgical Momentum HUD:** Clean typographic ticker (`⚡ streak · response velocity`) with zero gamification bloat.
+- **Massive Vocabulary Library (6,106 verified items):** Comprehensive coverage across A1, A2, B1, and B2 in both German (**3,046 words**) and English (**3,060 words**) with Cyrillic Mongolian translations and contextual cloze masking.
+- **Dedicated Memory & Imprint Studio ([M]emorize):** Active visual encoding matrix with 3D card flips, real-time retention rate analytics (% memorized), and 1-click Fast Imprint (+15 EXP).
+- **Speed Imprint Sprint Mode:** Automated high-velocity flashcard imprinting with native speech audio pronunciation, 3.5s countdown timer, and streak multipliers.
+- **Active Recall Quiz Mode ([Q]uiz):** Fast 4-option multiple-choice drill with keyboard bindings <kbd>1</kbd>–<kbd>4</kbd>, tactile color feedback, and Dopamine EXP rewards.
+- **Searchable Vocabulary Lexicon ([L]exicon):** Full dictionary browser with live fuzzy search, POS filtering (Nouns, Verbs, Adjectives), SRS mastery indicators, and inline pronunciation.
+- **Custom Word Creation:** Learners can add custom vocabulary anytime with automatic cloze masking and IndexedDB persistence.
+- **Tactile Web Audio Feedback:** 100% offline synthesized mechanical clicks, card flips, and success chords.
+- **Quick CEFR Level Switcher:** Instant 1-click level switching right in the Top HUD.
 
 ### 3. Native Android Container & Standalone PWA
 - **Android App:** Built via automated toolchain (AAPT, D8/R8, zipalign, apksigner) into a lean 1.9MB native APK.
@@ -35,15 +40,19 @@
 
 ## ⌨ Keyboard Navigation Reference
 
-| Key | Flashcard Mode | Reverse Exam / Retention Mode |
+| Key | Global Navigation | Active Mode Action |
 |---|---|---|
-| <kbd>Space</kbd> | Karte umdrehen (3D-Flip) | — |
-| <kbd>1</kbd> | Noch lernen (↺) | Option 1 auswählen |
-| <kbd>2</kbd> | Gemerkt (✓) | Option 2 auswählen |
-| <kbd>3</kbd> | — | Option 3 auswählen |
-| <kbd>4</kbd> | — | Option 4 auswählen |
-| <kbd>←</kbd> | Noch lernen | — |
-| <kbd>→</kbd> | Gemerkt | — |
+| <kbd>V</kbd> | [V] Vocab (Flashcards) | Study & SRS review |
+| <kbd>M</kbd> | [M] Memorize Studio | Visual Matrix & Retention Gauge |
+| <kbd>Q</kbd> | [Q] Quiz Mode | Active Recall 4-option MCQs |
+| <kbd>L</kbd> | [L] Lexicon Browser | Word search & POS filters |
+| <kbd>G</kbd> | [G] Grammar Library | Rules & Interactive Sandbox |
+| <kbd>I</kbd> | [I] Immersion Media | Curated reading & listening |
+| <kbd>S</kbd> | [S] Settings / Sprint | Toggle settings or launch Sprint |
+| <kbd>Space</kbd> | — | Flip card / Pause sprint / Reveal |
+| <kbd>1</kbd>–<kbd>4</kbd> | — | SRS grading (1-4) or Quiz options |
+| <kbd>Enter</kbd> | — | Reveal card or Mark Memorized (+15 EXP) |
+| <kbd>?</kbd> | Help Cheat Sheet | Toggle keyboard reference |
 
 ---
 

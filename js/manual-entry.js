@@ -1,4 +1,13 @@
+/**
+ * ARL - Manual Custom Word Entry Modal
+ * Allows autonomous learners to insert custom vocabulary items.
+ * Generates appropriate Cloze masking, principal verb tags, and persists to IndexedDB.
+ */
+
 import { state } from './state.js';
+import { t } from './i18n.js';
+import { sound } from './sound.js';
+import { normalizeNFC } from './unicode.js';
 
 export class ManualWordEntryModal {
   constructor(containerEl, onSaveCallback) {
@@ -15,126 +24,167 @@ export class ManualWordEntryModal {
   }
 
   render() {
+    const isDe = state.targetLang === 'de';
+    const targetLangLabel = isDe ? 'German' : 'English';
+
     this.container.innerHTML = `
-      <div class="modal-backdrop">
-        <div class="modal-card">
-          <div class="modal-header">
-            <h3 class="modal-title">Eigene Vokabel hinzufügen</h3>
-            <button class="btn-icon btn-close-modal">✕</button>
+      <div class="settings-modal-backdrop" id="modal-word-backdrop">
+        <div class="settings-hud-card manual-word-modal" role="dialog" aria-modal="true" aria-label="Add Word">
+          
+          <div class="settings-hud-header">
+            <div class="help-title-group">
+              <span class="settings-hud-title">${t('add_custom_word')}</span>
+              <span class="help-subtitle">${targetLangLabel} · Level ${state.cefrLevel.toUpperCase()}</span>
+            </div>
+            <button class="settings-close-btn touch-target" id="btn-close-word-modal" title="Close [Esc]">
+              <span class="micro-bracket">[Esc]</span> ✕
+            </button>
           </div>
 
           <form id="custom-word-form" class="modal-form">
             <div class="form-row">
               <div class="form-group flex-1">
-                <label for="word-pos">Wortart</label>
-                <select id="word-pos" class="form-input">
-                  <option value="noun">Nomen (Substantiv)</option>
-                  <option value="verb">Verb (Tätigkeitswort)</option>
-                  <option value="adjective">Adjektiv (Eigenschaftswort)</option>
-                  <option value="adverb">Adverb (Umstandswort)</option>
-                  <option value="connector">Konnektor (Bindewort)</option>
+                <label for="word-pos">Part of Speech</label>
+                <select id="word-pos" class="form-select">
+                  <option value="noun">Noun</option>
+                  <option value="verb">Verb</option>
+                  <option value="adjective">Adjective</option>
+                  <option value="adverb">Adverb</option>
                 </select>
               </div>
 
-              <div class="form-group flex-1" id="article-group">
-                <label for="word-article">Artikel</label>
-                <select id="word-article" class="form-input">
-                  <option value="der">der (maskulin)</option>
-                  <option value="die">die (feminin)</option>
-                  <option value="das">das (neutral)</option>
-                </select>
-              </div>
+              ${isDe ? `
+                <div class="form-group flex-1" id="article-group">
+                  <label for="word-article">Article</label>
+                  <select id="word-article" class="form-select">
+                    <option value="der">der (masculine)</option>
+                    <option value="die">die (feminine)</option>
+                    <option value="das">das (neuter)</option>
+                  </select>
+                </div>
+              ` : ''}
             </div>
 
             <div class="form-row">
               <div class="form-group flex-2">
-                <label for="word-de">Deutsches Wort *</label>
-                <input type="text" id="word-de" class="form-input" placeholder="z. B. Entscheidung oder verhandeln" required autocomplete="off" />
+                <label for="word-target">Word (${targetLangLabel}) *</label>
+                <input type="text" id="word-target" class="form-input" placeholder="${isDe ? 'e.g. Entscheidung' : 'e.g. decision'}" required autocomplete="off" />
               </div>
 
-              <div class="form-group flex-1" id="plural-group">
-                <label for="word-plural">Pluralform</label>
-                <input type="text" id="word-plural" class="form-input" placeholder="-en, -e, -" autocomplete="off" />
-              </div>
+              ${isDe ? `
+                <div class="form-group flex-1" id="plural-group">
+                  <label for="word-plural">Plural Form</label>
+                  <input type="text" id="word-plural" class="form-input" placeholder="-en, -e, -er, -" autocomplete="off" />
+                </div>
+              ` : ''}
+            </div>
+
+            <div class="form-group" id="verb-forms-group" style="display: none;">
+              <label for="word-forms">Principal Forms (optional)</label>
+              <input type="text" id="word-forms" class="form-input" placeholder="${isDe ? 'Infinitiv | 3.P. | Präteritum | Partizip II' : 'V1 | V2 | V3'}" autocomplete="off" />
             </div>
 
             <div class="form-group">
-              <label for="word-mn">Mongolische Übersetzung (Kyrillisch) *</label>
-              <input type="text" id="word-mn" class="form-input" placeholder="Жишээ: шийдвэр, тохиролцох" required autocomplete="off" />
+              <label for="word-mn">Mongolian Translation (Cyrillic) *</label>
+              <input type="text" id="word-mn" class="form-input" placeholder="Жишээ: шийдвэр, сонголт" required autocomplete="off" />
             </div>
 
             <div class="form-group">
-              <label for="word-ex-de">Deutscher Beispielsatz (optional)</label>
-              <input type="text" id="word-ex-de" class="form-input" placeholder="z. B. Das war eine gute Entscheidung." autocomplete="off" />
+              <label for="word-ex-target">Example Sentence (${targetLangLabel})</label>
+              <input type="text" id="word-ex-target" class="form-input" placeholder="${isDe ? 'z. B. Das war eine gute Entscheidung.' : 'e.g. That was a wise decision.'}" autocomplete="off" />
             </div>
 
             <div class="form-group">
-              <label for="word-ex-mn">Mongolische Satzübersetzung (optional)</label>
+              <label for="word-ex-mn">Mongolian Example Translation</label>
               <input type="text" id="word-ex-mn" class="form-input" placeholder="Жишээ: Энэ бол зөв шийдвэр байсан." autocomplete="off" />
             </div>
 
-            <div class="form-actions">
-              <button type="button" class="btn btn-secondary btn-cancel">Abbrechen</button>
-              <button type="submit" class="btn btn-primary btn-save-word">Vokabel speichern</button>
+            <div class="form-actions-row">
+              <button type="button" class="keyhint-btn touch-target" id="btn-cancel-word">Cancel</button>
+              <button type="submit" class="keyhint-btn keyhint-primary touch-target" id="btn-save-word">Save Word</button>
             </div>
           </form>
+
         </div>
       </div>
     `;
 
-    // Dynamic visibility for article & plural based on POS
+    // Dynamic visibility
     const posSelect = this.container.querySelector('#word-pos');
     const articleGroup = this.container.querySelector('#article-group');
     const pluralGroup = this.container.querySelector('#plural-group');
+    const verbFormsGroup = this.container.querySelector('#verb-forms-group');
 
-    const updatePosFields = () => {
-      const isNoun = posSelect.value === 'noun';
-      articleGroup.style.display = isNoun ? 'block' : 'none';
-      pluralGroup.style.display = isNoun ? 'block' : 'none';
+    const updateVisibility = () => {
+      const pos = posSelect.value;
+      if (articleGroup) articleGroup.style.display = pos === 'noun' ? 'block' : 'none';
+      if (pluralGroup) pluralGroup.style.display = pos === 'noun' ? 'block' : 'none';
+      if (verbFormsGroup) verbFormsGroup.style.display = pos === 'verb' ? 'block' : 'none';
     };
-    posSelect.addEventListener('change', updatePosFields);
-    updatePosFields();
+    posSelect.addEventListener('change', updateVisibility);
+    updateVisibility();
 
-    // Close handlers
-    this.container.querySelector('.btn-close-modal').addEventListener('click', () => this.hide());
-    this.container.querySelector('.btn-cancel').addEventListener('click', () => this.hide());
-    this.container.querySelector('.modal-backdrop').addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) this.hide();
+    // Close
+    this.container.querySelector('#btn-close-word-modal')?.addEventListener('click', () => this.hide());
+    this.container.querySelector('#btn-cancel-word')?.addEventListener('click', () => this.hide());
+    this.container.querySelector('#modal-word-backdrop')?.addEventListener('click', (e) => {
+      if (e.target.id === 'modal-word-backdrop') this.hide();
     });
 
-    // Submit handler
+    // Submit
     const form = this.container.querySelector('#custom-word-form');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const pos = posSelect.value;
-      const word = this.container.querySelector('#word-de').value.trim();
-      const article = pos === 'noun' ? this.container.querySelector('#word-article').value : null;
-      const plural = pos === 'noun' ? (this.container.querySelector('#word-plural').value.trim() || '-') : null;
-      const mn = this.container.querySelector('#word-mn').value.trim();
-      const exDe = this.container.querySelector('#word-ex-de').value.trim();
-      const exMn = this.container.querySelector('#word-ex-mn').value.trim();
+      const word = normalizeNFC(this.container.querySelector('#word-target').value.trim());
+      const mn = normalizeNFC(this.container.querySelector('#word-mn').value.trim());
+      const article = (isDe && pos === 'noun') ? this.container.querySelector('#word-article').value : null;
+      const plural = (isDe && pos === 'noun') ? normalizeNFC(this.container.querySelector('#word-plural')?.value.trim() || '-') : null;
+      const forms = normalizeNFC(this.container.querySelector('#word-forms')?.value.trim() || null);
+      const exTarget = normalizeNFC(this.container.querySelector('#word-ex-target').value.trim());
+      const exMn = normalizeNFC(this.container.querySelector('#word-ex-mn').value.trim());
 
-      if (!word || !mn) {
-        alert('Bitte gib mindestens das deutsche Wort und die mongolische Übersetzung an.');
-        return;
+      if (!word || !mn) return;
+
+      let promptFront = word;
+      let revealedBack = word;
+
+      if (pos === 'noun' && isDe && article) {
+        promptFront = `_____ ${word}, -? [N]`;
+        revealedBack = `${article} ${word}, ${plural}`;
+      } else if (pos === 'verb' && forms) {
+        promptFront = `${word} [V]`;
+        revealedBack = forms;
       }
 
-      const display = pos === 'noun' && article ? `${article} ${word}, ${plural}` : word;
+      const display = (pos === 'noun' && isDe && article) ? `${article} ${word}, ${plural}` : word;
 
-      const newWord = await state.addCustomWord({
+      const newEntry = {
         word,
         article,
         plural,
         display,
         pos,
+        forms,
+        rektion: null,
+        prompt_front: promptFront,
+        revealed_back: revealedBack,
         mn,
-        example_de: exDe,
+        en: !isDe ? word : '',
+        de: isDe ? word : '',
+        example_de: isDe ? exTarget : '',
+        example_en: !isDe ? exTarget : '',
         example_mn: exMn,
-        topic: 'Eigene Wörter'
-      });
+        topic: 'Custom Words'
+      };
 
+      await state.addCustomWord(newEntry);
+      sound.playSuccess();
       this.hide();
-      if (this.onSave) this.onSave(newWord);
+
+      if (typeof this.onSave === 'function') {
+        this.onSave(newEntry);
+      }
     });
   }
 }

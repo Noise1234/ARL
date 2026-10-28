@@ -1,25 +1,37 @@
 /**
  * ARL - Application Bootstrap & Orchestrator
- * Connects pure state, keyboard FSM, and minimal views.
+ * Connects pure state, keyboard FSM, and tactile views.
  */
 
 import { state } from './state.js';
 import { keyboard, KeyboardState } from './keyboard.js';
 import { TopHudView } from './views/hud.js';
 import { StudyView } from './views/study.js';
+import { MemorizeView } from './views/memorize.js';
+import { QuizView } from './views/quiz.js';
+import { LexiconView } from './views/lexicon.js';
 import { GrammarView } from './views/grammar.js';
 import { MediaView } from './views/media.js';
 import { SettingsModalView } from './views/settings.js';
+import { HelpModalView } from './views/help.js';
+import { ManualWordEntryModal } from './manual-entry.js';
 
 class ARLApp {
   constructor() {
-    this.currentView = 'vocab'; // 'vocab' | 'grammar' | 'media'
+    this.currentView = 'vocab'; // 'vocab' | 'memorize' | 'quiz' | 'lexicon' | 'grammar' | 'media'
     this.isSettingsOpen = false;
+    this.isHelpOpen = false;
+
     this.hudView = null;
     this.studyView = null;
+    this.memorizeView = null;
+    this.quizView = null;
+    this.lexiconView = null;
     this.grammarView = null;
     this.mediaView = null;
     this.settingsView = null;
+    this.helpView = null;
+    this.manualEntryModal = null;
   }
 
   async init() {
@@ -42,14 +54,28 @@ class ARLApp {
     const hudMount = document.getElementById('hud-mount');
     const mainMount = document.getElementById('main-mount');
     const settingsMount = document.getElementById('settings-mount');
+    const modalMount = document.getElementById('modal-mount');
 
     this.hudView = new TopHudView(hudMount, (viewName) => this.navigateTo(viewName));
     this.studyView = new StudyView(mainMount);
+    this.memorizeView = new MemorizeView(mainMount, (viewName) => this.navigateTo(viewName));
+    this.quizView = new QuizView(mainMount, (viewName) => this.navigateTo(viewName));
+    this.lexiconView = new LexiconView(
+      mainMount,
+      (viewName) => this.navigateTo(viewName),
+      () => this.openAddWordModal()
+    );
     this.grammarView = new GrammarView(mainMount, (viewName) => this.navigateTo(viewName));
     this.mediaView = new MediaView(mainMount, (viewName) => this.navigateTo(viewName));
     this.settingsView = new SettingsModalView(settingsMount, () => {
       this.isSettingsOpen = false;
       this.hudView.setActiveView(this.currentView);
+      this.renderCurrentView();
+    });
+    this.helpView = new HelpModalView(modalMount, () => {
+      this.isHelpOpen = false;
+    });
+    this.manualEntryModal = new ManualWordEntryModal(modalMount, () => {
       this.renderCurrentView();
     });
 
@@ -78,6 +104,7 @@ class ARLApp {
       <header id="hud-mount" class="hud-container"></header>
       <main id="main-mount" class="main-container" role="main"></main>
       <div id="settings-mount"></div>
+      <div id="modal-mount"></div>
     `;
   }
 
@@ -87,9 +114,16 @@ class ARLApp {
       this.toggleSettings();
       return;
     }
+    if (viewName === 'help') {
+      this.toggleHelp();
+      return;
+    }
 
     if (this.isSettingsOpen) {
       this.settingsView.close();
+    }
+    if (this.isHelpOpen) {
+      this.helpView.close();
     }
 
     this.currentView = viewName;
@@ -101,6 +135,15 @@ class ARLApp {
     switch (this.currentView) {
       case 'vocab':
         this.studyView.render();
+        break;
+      case 'memorize':
+        this.memorizeView.render();
+        break;
+      case 'quiz':
+        this.quizView.render();
+        break;
+      case 'lexicon':
+        this.lexiconView.render();
         break;
       case 'grammar':
         await this.grammarView.loadData();
@@ -124,12 +167,30 @@ class ARLApp {
     }
   }
 
+  toggleHelp() {
+    if (this.isHelpOpen) {
+      this.helpView.close();
+    } else {
+      this.isHelpOpen = true;
+      this.helpView.show();
+    }
+  }
+
+  openAddWordModal() {
+    this.manualEntryModal.show();
+  }
+
   setupKeyboardActions() {
     // Global Navigation
     keyboard.on('nav_vocab', () => this.navigateTo('vocab'));
+    keyboard.on('nav_memorize', () => this.navigateTo('memorize'));
+    keyboard.on('nav_quiz', () => this.navigateTo('quiz'));
+    keyboard.on('nav_lexicon', () => this.navigateTo('lexicon'));
     keyboard.on('nav_grammar', () => this.navigateTo('grammar'));
     keyboard.on('nav_media', () => this.navigateTo('media'));
     keyboard.on('toggle_settings', () => this.toggleSettings());
+    keyboard.on('toggle_help', () => this.toggleHelp());
+    keyboard.on('add_word', () => this.openAddWordModal());
 
     // Study View Actions
     keyboard.on('study_reveal', () => {
@@ -172,6 +233,9 @@ class ARLApp {
     keyboard.on('close_settings', () => {
       if (this.isSettingsOpen) {
         this.settingsView.close();
+      }
+      if (this.isHelpOpen) {
+        this.helpView.close();
       }
     });
     keyboard.on('settings_toggle_lang', async () => {

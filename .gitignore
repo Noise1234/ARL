@@ -7,3 +7,6 @@ android/bin/
 android/gen/
 android/assets/
 android/res/mipmap-*
+
+__pycache__/
+*.pyc

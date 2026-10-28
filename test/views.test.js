@@ -4,6 +4,10 @@ import { StudyView } from '../js/views/study.js';
 import { GrammarView } from '../js/views/grammar.js';
 import { TopHudView } from '../js/views/hud.js';
 import { SettingsModalView } from '../js/views/settings.js';
+import { QuizView } from '../js/views/quiz.js';
+import { LexiconView } from '../js/views/lexicon.js';
+import { HelpModalView } from '../js/views/help.js';
+import { MemorizeView } from '../js/views/memorize.js';
 
 // Minimal mock DOM for Node.js test environment
 class MockElement {
@@ -16,6 +20,12 @@ class MockElement {
     this.style = {};
     this.value = '';
     this.className = '';
+    this.dataset = {};
+    this.classList = {
+      add: () => {},
+      remove: () => {},
+      contains: () => false
+    };
   }
 
   getAttribute(name) { return this._attributes[name] || null; }
@@ -144,5 +154,86 @@ export function runViewTests(it) {
     assert(container.innerHTML.includes('settings-gemini-key-input'), 'Settings must include key input field');
     assert(container.innerHTML.includes('btn-save-gemini-key'), 'Settings must include save button');
     assert(container.innerHTML.includes('gemini-note-text'), 'Settings must explain local storage privacy');
+  });
+
+  it('TopHudView renders navigation items for Quiz and Lexicon', () => {
+    const container = new MockElement('header');
+    const hud = new TopHudView(container, () => {});
+    hud.render();
+    assert(container.innerHTML.includes('nav-btn-memorize'), 'HUD must include Memorize button');
+    assert(container.innerHTML.includes('nav-btn-quiz'), 'HUD must include Quiz button');
+    assert(container.innerHTML.includes('nav-btn-lexicon'), 'HUD must include Lexicon button');
+    assert(container.innerHTML.includes('hud-tag-btn'), 'HUD must include Level tag button');
+  });
+
+  it('QuizView renders interactive prompt card and options grid', () => {
+    const container = new MockElement('main');
+    const quiz = new QuizView(container, () => {});
+    state.cards = [
+      { id: 'q1', word: 'Haus', pos: 'noun', article: 'das', plural: '-¨er', mn: 'байшин' },
+      { id: 'q2', word: 'Buch', pos: 'noun', article: 'das', plural: '-¨er', mn: 'ном' }
+    ];
+    quiz.start(2);
+    assert(container.innerHTML.includes('quiz-container'), 'Quiz must render quiz-container');
+    assert(container.innerHTML.includes('quiz-prompt-card'), 'Quiz must render prompt card');
+    assert(container.innerHTML.includes('quiz-options-grid'), 'Quiz must render options grid');
+    assert(container.innerHTML.includes('quiz-opt-btn'), 'Quiz must render option buttons');
+    quiz.destroy();
+  });
+
+  it('LexiconView renders search bar and part-of-speech filter controls', () => {
+    const container = new MockElement('main');
+    const lexicon = new LexiconView(container, () => {}, () => {});
+    state.cards = [
+      { id: 'l1', word: 'Haus', pos: 'noun', article: 'das', plural: '-¨er', mn: 'байшин' }
+    ];
+    lexicon.render();
+    assert(container.innerHTML.includes('lexicon-search-bar'), 'Lexicon must render search bar');
+    assert(container.innerHTML.includes('lexicon-filters-row'), 'Lexicon must render filters row');
+    assert(container.innerHTML.includes('filter-chip'), 'Lexicon must render filter chips');
+    assert(container.innerHTML.includes('btn-lexicon-add-word'), 'Lexicon must render add custom word button');
+  });
+
+  it('HelpModalView renders keyboard navigation reference cheat sheet', () => {
+    const container = new MockElement('div');
+    const help = new HelpModalView(container, () => {});
+    help.render();
+    assert(container.innerHTML.includes('help-modal-card'), 'Help modal must render help-modal-card');
+    assert(container.innerHTML.includes('help-section'), 'Help modal must render help sections');
+    assert(container.innerHTML.includes('shortcut-row'), 'Help modal must render shortcut rows');
+  });
+
+  it('MemorizeView renders Visual Memory Matrix, Retention Gauge, and Speed Imprint Sprint', () => {
+    const container = new MockElement('main');
+    const memorize = new MemorizeView(container, () => {});
+
+    state.cards = [
+      { id: 'm1', word: 'Gedächtnis', pos: 'noun', article: 'das', plural: '-se', mn: 'санах ой', reps: 3, interval: 21 },
+      { id: 'm2', word: 'Aufmerksamkeit', pos: 'noun', article: 'die', plural: '-en', mn: 'анхаарал', reps: 1, interval: 2 },
+      { id: 'm3', word: 'einprägen', pos: 'verb', forms: 'prägt ein | prägte ein | hat eingeprägt', mn: 'тогтоох', reps: 0 }
+    ];
+
+    // 1. Matrix View rendering
+    memorize.render();
+    assert(container.innerHTML.includes('memorize-dashboard'), 'Memorize view must include dashboard');
+    assert(container.innerHTML.includes('retention-metric'), 'Memorize view must render retention metric');
+    assert(container.innerHTML.includes('retention-fill'), 'Memorize view must render retention fill');
+    assert(container.innerHTML.includes('memory-matrix-grid'), 'Memorize view must render matrix grid');
+    assert(container.innerHTML.includes('memory-card-tile'), 'Memorize view must render card tiles');
+    assert(container.innerHTML.includes('btn-start-sprint'), 'Memorize view must render Speed Sprint button');
+
+    // 2. Sprint Mode transition
+    memorize.startSprint();
+    assert(memorize.isSprintMode === true, 'Sprint mode should be active');
+    assert(container.innerHTML.includes('sprint-container'), 'Sprint must render sprint-container');
+    assert(container.innerHTML.includes('sprint-focus-card'), 'Sprint must render focus card');
+    assert(container.innerHTML.includes('sprint-timer-track'), 'Sprint must render timer track');
+    assert(container.innerHTML.includes('sprint-memorize-cta'), 'Sprint must render memorize CTA');
+
+    // 3. Exit Sprint
+    memorize.exitSprint();
+    assert(memorize.isSprintMode === false, 'Sprint mode should be exited');
+    assert(container.innerHTML.includes('memory-matrix-grid'), 'Must return to matrix grid on sprint exit');
+    memorize.destroy();
   });
 }

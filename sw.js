@@ -1,4 +1,4 @@
-const CACHE_NAME = 'arl-cache-v2.1';
+const CACHE_NAME = 'arl-cache-v2.2';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -18,11 +18,17 @@ const ASSETS_TO_CACHE = [
   './js/hints.js',
   './js/gemini.js',
   './js/grammar-fallback.js',
+  './js/sound.js',
+  './js/manual-entry.js',
   './js/views/hud.js',
   './js/views/study.js',
+  './js/views/memorize.js',
+  './js/views/quiz.js',
+  './js/views/lexicon.js',
   './js/views/grammar.js',
   './js/views/media.js',
   './js/views/settings.js',
+  './js/views/help.js',
   './data/i18n.json',
   './data/b1_words.json',
   './data/de/vocab_a1.json',

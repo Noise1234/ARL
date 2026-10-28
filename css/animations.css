@@ -71,3 +71,28 @@
     transform: translateY(-38px) scale(0.96);
   }
 }
+
+
+/* Physical Key Depression Micro-Interaction */
+.key-pressed-active {
+  transform: translateY(2px) scale(0.97) !important;
+  border-color: #fafafa !important;
+  background-color: #27272a !important;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.25) !important;
+  transition: all 0.05s ease !important;
+}
+
+/* 3D Card Hover & Flip Micro-Interaction */
+.active-flashcard {
+  perspective: 1000px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s ease;
+}
+
+.active-flashcard:hover {
+  border-color: #3f3f46;
+}
+
+/* Tactile button clicks */
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}

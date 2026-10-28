@@ -92,6 +92,23 @@ export class SettingsModalView {
               </div>
             </div>
 
+            <!-- Tactile Sounds & Audio Speed -->
+            <div class="settings-row">
+              <span class="settings-label">${t('sound_effects')}</span>
+              <button class="settings-action-btn touch-target" id="btn-toggle-sound">
+                <span class="settings-value">${state.soundEnabled ? '✓ Enabled' : '✕ Disabled'}</span>
+              </button>
+            </div>
+
+            <div class="settings-row">
+              <span class="settings-label">${t('speech_rate')}</span>
+              <div class="level-btn-group">
+                <button class="speed-choice-btn touch-target ${state.speechRate <= 0.85 ? 'active' : ''}" data-rate="0.8">0.8x</button>
+                <button class="speed-choice-btn touch-target ${state.speechRate > 0.85 && state.speechRate < 1.1 ? 'active' : ''}" data-rate="1.0">1.0x</button>
+                <button class="speed-choice-btn touch-target ${state.speechRate >= 1.1 ? 'active' : ''}" data-rate="1.2">1.2x</button>
+              </div>
+            </div>
+
             <!-- Free Gemini 2.5 Flash API Configuration -->
             <div class="settings-row settings-gemini-row">
               <div class="gemini-header-row">
@@ -195,6 +212,23 @@ export class SettingsModalView {
         const lvl = btn.getAttribute('data-lvl');
         await state.setCefrLevel(lvl);
         this.render();
+      });
+    });
+
+    // Sound toggle
+    this.overlay.querySelector('#btn-toggle-sound')?.addEventListener('click', async () => {
+      await state.setSoundEnabled(!state.soundEnabled);
+      this.render();
+    });
+
+    // Speed buttons
+    this.overlay.querySelectorAll('.speed-choice-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const rate = parseFloat(btn.dataset.rate);
+        if (!isNaN(rate)) {
+          await state.setSpeechRate(rate);
+          this.render();
+        }
       });
     });
 

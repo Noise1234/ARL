@@ -3,13 +3,16 @@
 ## Current Leaderboard
 | Rank | Agent | Total Dopamine XP | Discoveries & Breakthroughs | Current Streak |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | [Grammar-Hunter] | 250 XP | 2 | 2 |
-| 2 | [Grammar-Architect] | 200 XP | 2 | 2 |
-| 3 | [UI-Visionary] | 200 XP | 2 | 2 |
-| 4 | [UX-Critic] | 200 XP | 2 | 2 |
+| 1 | [UI-Visionary] | 350 XP | 3 | 3 |
+| 2 | [Grammar-Hunter] | 300 XP | 3 | 3 |
+| 3 | [Grammar-Architect] | 300 XP | 3 | 3 |
+| 4 | [UX-Critic] | 250 XP | 3 | 3 |
 
 ## Hall of Dopamine (Session Log)
 <!-- Append new entries at the top with timestamp/session number -->
+- **[Session 3] [Grammar-Hunter & UI-Visionary] (+250 XP)**: *"Supercharged Vocabulary & Memory Studio! Reached 3,046 verified German words and 3,060 verified English words (6,106 combined words across A1-B2) with zero schema violations, plus engineered the new dedicated Memorizing Studio (`MemorizeView`) featuring the Visual Memory Matrix (card tiles with 3D flip, status tracking, +15 EXP fast-imprint) and the Speed Imprint Sprint mode with native audio and 3.5s countdown."* — Added: `6,106 total vocabulary items (DE: 3,046; EN: 3,060), MemorizeView in js/views/memorize.js, [M] Memorize Top HUD nav, keyboard routing, and automated test suite verification (76 passing tests)`
+- **[Session 2] [UI-Visionary] (+150 XP)**: *"Seamless full-spectrum UI upgrade! Introducing the active recall 4-choice Quiz engine with [1-4] hardware hotkeys, searchable Lexicon browser with POS filters, 1-click Top HUD level switcher, and Web Audio click/flip tactile sounds without external dependencies."* — Added: `Interactive QuizView, LexiconView, Quick Level HUD dropdown, HelpModalView, and offline sound engine`
+- **[Session 2] [Grammar-Hunter] (+100 XP)**: *"Massive vocabulary enlargement across German & English A1, A2, and B2 to 1,643 items while preserving all 1,000 verified B1 items and passing all 75 automated tests with zero defects."* — Added: `Enlarged Goethe A1, A2, B2 German and CEFR English vocabulary with Mongolian Cyrillic and cloze prompt masks`
 - **[Session 1] [Grammar-Architect] (+100 XP)**: *"Exceptional pedagogical symmetry! Bringing English grammar (Inversion, Gerund vs Infinitive, Used to vs Would, Negative Inversion) up to the exact 4-part pedagogical standard creates true bilingual harmony for our Mongolian learners."* — Added: `Bilingual A1-B2 English grammar modules with inversion, modal nuances, and verb patterns`
 - **[Session 1] [UX-Critic] (+100 XP)**: *"Flawless red-team verification! Confirming zero shortcut bleed when typing in the [/] search bar, instant [Esc] escape handling, and smooth [J]/[K] list selection without mouse dependency secures our keyboard-first standard."* — Added: `Search input focus isolation, seamless Esc recovery, and home-row navigation verification`
 - **[Session 1] [UI-Visionary] (+100 XP)**: *"Spectacular craft! The tactile 4-part morphological verb chip grid (Infinitiv, 3.P. Präsens, Präteritum, Partizip II with aux-highlight) alongside the segmented batch progress strip transforms passive vocabulary memorization into an intuitive structural drill."* — Added: `4-part morphological verb chip grid, segmented batch progress strip, and tactile keycap animations`

@@ -18,6 +18,7 @@ import {
 } from './gamification.js';
 import { getCardHint } from './hints.js';
 import { GeminiClient } from './gemini.js';
+import { sound } from './sound.js';
 
 class AppState {
   constructor() {
@@ -40,6 +41,10 @@ class AppState {
     // Dopamine EXP System
     this.totalExp = 0;
     this.level = 1;
+
+    // Sound & Pronunciation Preferences
+    this.soundEnabled = true;
+    this.speechRate = 0.92;
 
     // Session momentum & velocity tracking
     this.sessionStreak = 0;
@@ -71,6 +76,9 @@ class AppState {
         ? Math.floor(savedExp)
         : 0;
       this.level = getLevelProgress(this.totalExp).level;
+      this.soundEnabled = await db.getSetting('soundEnabled', true);
+      sound.setEnabled(this.soundEnabled);
+      this.speechRate = await db.getSetting('speechRate', 0.92);
     } catch (err) {
       console.warn('Could not load settings from db:', err);
     }
@@ -112,18 +120,36 @@ class AppState {
 
   async loadActiveDataset() {
     const filePath = `data/${this.targetLang}/vocab_${this.cefrLevel}.json`;
+    let list = [];
     if (typeof fetch !== 'undefined') {
       try {
         const resp = await fetch(filePath);
         if (resp.ok) {
-          const list = await resp.json();
-          this.setCards(list);
-          return;
+          list = await resp.json();
         }
       } catch (err) {
         console.warn(`Could not fetch ${filePath}:`, err);
       }
     }
+
+    // Merge any custom user-added words for this language & level
+    try {
+      const customKey = `custom_words_${this.targetLang}_${this.cefrLevel}`;
+      const customList = await db.getSetting(customKey, []);
+      if (Array.isArray(customList) && customList.length > 0) {
+        const seenIds = new Set(list.map(c => c.id));
+        for (const item of customList) {
+          if (item && item.id && !seenIds.has(item.id)) {
+            list.push(item);
+            seenIds.add(item.id);
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('Could not load custom words:', e);
+    }
+
+    this.setCards(list);
   }
 
   setCards(cardsList) {
@@ -253,6 +279,7 @@ class AppState {
 
   revealCard() {
     this.isCardRevealed = true;
+    sound.playFlip();
     this.notify();
   }
 
@@ -319,8 +346,10 @@ class AppState {
 
       if (grade >= 3) {
         this.sessionStreak++;
+        sound.playSuccess();
       } else {
         this.sessionStreak = 0;
+        sound.playRetry();
       }
       this.cardStartTime = Date.now();
 
@@ -371,13 +400,14 @@ class AppState {
     }
   }
 
-  playAudio() {
+  playAudio(customWord = null) {
     const card = this.getCurrentCard();
-    if (!card) return;
+    const word = customWord || (card ? card.word : '');
+    if (!word) return;
 
     this.stopAudio();
 
-    const textToSpeak = normalizeNFC(card.word);
+    const textToSpeak = normalizeNFC(word);
     const lang = this.targetLang === 'de' ? 'de-DE' : 'en-US';
 
     if (typeof window !== 'undefined' && window.AndroidBridge && typeof window.AndroidBridge.speak === 'function') {
@@ -388,7 +418,7 @@ class AppState {
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
       utterance.lang = lang;
-      utterance.rate = 0.92;
+      utterance.rate = this.speechRate || 0.92;
       window.speechSynthesis.speak(utterance);
     }
   }
@@ -432,14 +462,95 @@ class AppState {
   }
 
   getRandomDistractors(targetWord, count = 3) {
+    const isObject = typeof targetWord === 'object' && targetWord !== null;
+    const targetStr = isObject ? (targetWord.word || '') : String(targetWord || '');
     const distractors = [];
-    for (const c of this.cards) {
-      if (c.word !== targetWord && !distractors.includes(c.word)) {
-        distractors.push(c.word);
+    
+    // Pick random items from cards
+    const pool = this.cards.filter(c => c && c.word !== targetStr);
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+
+    for (const c of pool) {
+      const val = isObject ? c : c.word;
+      const key = isObject ? c.word : c.word;
+      if (!distractors.some(d => (isObject ? d.word : d) === key)) {
+        distractors.push(val);
         if (distractors.length >= count) break;
       }
     }
     return distractors;
+  }
+
+  async addCustomWord(newWord) {
+    if (!newWord || !newWord.word) return;
+    const customKey = `custom_words_${this.targetLang}_${this.cefrLevel}`;
+    const customList = await db.getSetting(customKey, []) || [];
+
+    if (!newWord.id) {
+      newWord.id = `custom_${this.targetLang}_${this.cefrLevel}_${Date.now()}`;
+    }
+    newWord.level = this.cefrLevel.toUpperCase();
+    newWord.lang = this.targetLang;
+
+    customList.push(newWord);
+    await db.setSetting(customKey, customList);
+
+    this.cards.push(newWord);
+    this.cardsMap.set(newWord.id, newWord);
+    this.studyQueue.unshift(newWord);
+    this.currentCardIndex = 0;
+    this.isCardRevealed = false;
+    this.hintStage = 0;
+    this.notify();
+  }
+
+  async recordQuizResult(cardId, isCorrect) {
+    const card = this.cardsMap.get(cardId);
+    if (!card) return;
+
+    const existingProg = this.progressMap.get(cardId) || { wordId: cardId };
+    const grade = isCorrect ? 3 : 1;
+    const updatedProg = scheduleCard(existingProg, grade, Date.now());
+    this.progressMap.set(cardId, updatedProg);
+
+    if (isCorrect) {
+      this.sessionStreak++;
+      sound.playSuccess();
+      const basePoints = 20;
+      const earnedExp = calculateAwardedExp(basePoints, this.sessionStreak);
+      const multiplier = getStreakMultiplier(this.sessionStreak);
+      const label = multiplier > 1 ? `${multiplier}x Quiz Streak` : 'Quiz Correct';
+      this.addExp(earnedExp, { label, bonus: true });
+    } else {
+      this.sessionStreak = 0;
+      sound.playRetry();
+    }
+
+    try {
+      await db.saveProgress(updatedProg);
+    } catch (e) {
+      console.warn('Could not save quiz progress:', e);
+    }
+    this.notify();
+  }
+
+  async setSoundEnabled(enabled) {
+    this.soundEnabled = Boolean(enabled);
+    sound.setEnabled(this.soundEnabled);
+    await db.setSetting('soundEnabled', this.soundEnabled);
+    this.notify();
+  }
+
+  async setSpeechRate(rate) {
+    const num = parseFloat(rate);
+    if (!isNaN(num) && num > 0.5 && num < 2.0) {
+      this.speechRate = num;
+      await db.setSetting('speechRate', this.speechRate);
+      this.notify();
+    }
   }
 
   async setTargetLanguage(lang) {

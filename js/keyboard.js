@@ -95,9 +95,14 @@ class KeyboardRouter {
       keyLower === '4' ? '#btn-grade-4' : null,
       keyLower === 'a' ? '#btn-audio' : null,
       keyLower === 'v' ? '#nav-btn-vocab' : null,
+      keyLower === 'q' ? '#nav-btn-quiz' : null,
+      keyLower === 'l' ? '#nav-btn-lexicon' : null,
       keyLower === 'g' ? '#nav-btn-grammar' : null,
-      keyLower === 'm' ? '#nav-btn-media' : null,
+      keyLower === 'm' ? '#nav-btn-memorize' : null,
+      keyLower === 'i' ? '#nav-btn-media' : null,
       keyLower === 's' ? '#nav-btn-settings' : null,
+      keyLower === '?' ? '#nav-btn-help' : null,
+      keyLower === 'n' ? '#btn-lexicon-add-word' : null,
       keyLower === 'd' ? '#btn-drill-topic' : null
     ].filter(Boolean).join(', ');
 
@@ -145,6 +150,16 @@ class KeyboardRouter {
         this.trigger('nav_vocab');
         return;
       }
+      if (key === 'q' || key === 'Q') {
+        e.preventDefault();
+        this.trigger('nav_quiz');
+        return;
+      }
+      if (key === 'l' || key === 'L') {
+        e.preventDefault();
+        this.trigger('nav_lexicon');
+        return;
+      }
       if (key === 'g' || key === 'G') {
         e.preventDefault();
         this.trigger('nav_grammar');
@@ -152,12 +167,27 @@ class KeyboardRouter {
       }
       if (key === 'm' || key === 'M') {
         e.preventDefault();
+        this.trigger('nav_memorize');
+        return;
+      }
+      if (key === 'i' || key === 'I') {
+        e.preventDefault();
         this.trigger('nav_media');
         return;
       }
       if (key === 's' || key === 'S') {
         e.preventDefault();
         this.trigger('toggle_settings');
+        return;
+      }
+      if (key === '?') {
+        e.preventDefault();
+        this.trigger('toggle_help');
+        return;
+      }
+      if (key === 'n' || key === 'N') {
+        e.preventDefault();
+        this.trigger('add_word');
         return;
       }
     }
