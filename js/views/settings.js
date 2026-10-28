@@ -38,6 +38,59 @@ export class SettingsModalView {
     URL.revokeObjectURL(url);
   }
 
+  async copyBackupToClipboard(btnEl) {
+    try {
+      const jsonStr = await db.exportBackup();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(jsonStr);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = jsonStr;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+      if (btnEl) {
+        const orig = btnEl.innerHTML;
+        btnEl.innerHTML = '✓ Copied!';
+        setTimeout(() => { btnEl.innerHTML = orig; }, 2000);
+      }
+    } catch (err) {
+      console.error('Clipboard copy error:', err);
+      alert('Could not copy to clipboard: ' + err.message);
+    }
+  }
+
+  async pasteBackupFromClipboard() {
+    try {
+      let text = '';
+      if (navigator.clipboard && navigator.clipboard.readText) {
+        try {
+          text = await navigator.clipboard.readText();
+        } catch (e) {
+          text = '';
+        }
+      }
+      if (!text || !text.trim().startsWith('{')) {
+        text = prompt('Paste your ARL backup JSON here:');
+      }
+      if (!text || !text.trim()) return;
+      const success = await db.importBackup(text.trim());
+      if (success) {
+        alert('Progress & settings restored successfully!');
+        window.location.reload();
+      } else {
+        alert('Invalid backup data format.');
+      }
+    } catch (err) {
+      console.error('Import error:', err);
+      alert('Failed to restore backup: ' + (err.message || 'Invalid JSON'));
+    }
+  }
+
   triggerImport() {
     const fileInput = this.overlay.querySelector('#settings-backup-input');
     if (fileInput) fileInput.click();
@@ -148,24 +201,30 @@ export class SettingsModalView {
 
             <!-- Android Native APK Download -->
             <div class="settings-row settings-apk-row">
-              <span class="settings-label">Android Native App (v2.0)</span>
+              <span class="settings-label">Android Native App (v2.0.6)</span>
               <div class="apk-download-group">
                 <a href="/apk" class="settings-action-btn touch-target btn-download-apk" download="ARL-v2.0.apk" style="text-decoration:none; text-align:center;">
-                  <span class="micro-bracket">[APK]</span> Download Android APK (1.9MB)
+                  <span class="micro-bracket">[APK]</span> Download Android APK v2.0.6 (~2.1MB)
                 </a>
               </div>
             </div>
 
-            <!-- Backup & Restore -->
+            <!-- Backup & Progress Safeguard -->
             <div class="settings-row settings-backup-row">
-              <span class="settings-label">Backup & Progress</span>
-              <div class="backup-btn-group">
-                <button class="settings-action-btn touch-target" id="btn-export-backup">
-                  <span class="micro-bracket">[E]</span> ${t('export_backup')}
+              <span class="settings-label">Backup & Progress Safeguard</span>
+              <div class="backup-btn-group" style="display:flex; flex-wrap:wrap; gap:6px;">
+                <button class="settings-action-btn touch-target" id="btn-export-backup" title="Export file">
+                  <span class="micro-bracket">[E]</span> Export File
+                </button>
+                <button class="settings-action-btn touch-target" id="btn-copy-backup" title="Copy JSON to clipboard">
+                  📋 Copy JSON
                 </button>
                 <input type="file" id="settings-backup-input" accept=".json" style="display:none;" />
-                <button class="settings-action-btn touch-target" id="btn-import-backup">
-                  ${t('import_backup')}
+                <button class="settings-action-btn touch-target" id="btn-import-backup" title="Import from file">
+                  📂 Import File
+                </button>
+                <button class="settings-action-btn touch-target" id="btn-paste-backup" title="Paste JSON from clipboard">
+                  📥 Paste JSON
                 </button>
               </div>
             </div>
@@ -254,14 +313,23 @@ export class SettingsModalView {
     });
 
     // Backup Export
-    this.overlay.querySelector('#btn-export-backup').addEventListener('click', () => {
+    this.overlay.querySelector('#btn-export-backup')?.addEventListener('click', () => {
       this.exportBackup();
+    });
+
+    const copyBtn = this.overlay.querySelector('#btn-copy-backup');
+    copyBtn?.addEventListener('click', () => {
+      this.copyBackupToClipboard(copyBtn);
     });
 
     // Backup Import
     const fileInput = this.overlay.querySelector('#settings-backup-input');
-    this.overlay.querySelector('#btn-import-backup').addEventListener('click', () => {
-      fileInput.click();
+    this.overlay.querySelector('#btn-import-backup')?.addEventListener('click', () => {
+      fileInput?.click();
+    });
+
+    this.overlay.querySelector('#btn-paste-backup')?.addEventListener('click', () => {
+      this.pasteBackupFromClipboard();
     });
 
     fileInput.addEventListener('change', async (e) => {

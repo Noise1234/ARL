@@ -1,6 +1,6 @@
 {
   "name": "arl-pwa",
-  "version": "2.0.0",
+  "version": "2.0.6",
   "type": "module",
   "description": "ARL - Minimal Keyboard-First Language Learning PWA",
   "main": "server.js",

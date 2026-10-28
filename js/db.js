@@ -227,6 +227,25 @@ class ARLDatabase {
     const targetLang = await this.getSetting('targetLang', 'de');
     const interfaceLang = await this.getSetting('interfaceLang', 'mn');
     const cefrLevel = await this.getSetting('cefrLevel', 'b1');
+    const totalExp = await this.getSetting('totalExp', 0);
+    const soundEnabled = await this.getSetting('soundEnabled', true);
+    const speechRate = await this.getSetting('speechRate', 1.0);
+    const streak = await this.getSetting('streak', 0);
+
+    // Collect all related localStorage items as safeguard
+    const localStorageData = {};
+    if (typeof localStorage !== 'undefined') {
+      try {
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && (k.startsWith('arl_') || k.startsWith('arl:'))) {
+            localStorageData[k] = localStorage.getItem(k);
+          }
+        }
+      } catch (e) {
+        console.warn('localStorage export read warning:', e);
+      }
+    }
 
     const backup = {
       app: 'ARL',
@@ -235,9 +254,14 @@ class ARLDatabase {
       settings: {
         targetLang,
         interfaceLang,
-        cefrLevel
+        cefrLevel,
+        totalExp,
+        soundEnabled,
+        speechRate,
+        streak
       },
-      progress: progressList
+      progress: progressList,
+      localStorage: localStorageData
     };
 
     return JSON.stringify(backup, null, 2);
@@ -245,7 +269,7 @@ class ARLDatabase {
 
   async importBackup(jsonString) {
     await this.init();
-    const data = JSON.parse(jsonString);
+    const data = typeof jsonString === 'string' ? JSON.parse(jsonString) : jsonString;
     if (!data || data.app !== 'ARL') {
       throw new Error('Invalid ARL backup format');
     }
@@ -254,6 +278,22 @@ class ARLDatabase {
       if (data.settings.targetLang) await this.setSetting('targetLang', data.settings.targetLang);
       if (data.settings.interfaceLang) await this.setSetting('interfaceLang', data.settings.interfaceLang);
       if (data.settings.cefrLevel) await this.setSetting('cefrLevel', data.settings.cefrLevel);
+      if (typeof data.settings.totalExp === 'number') await this.setSetting('totalExp', data.settings.totalExp);
+      if (typeof data.settings.soundEnabled === 'boolean') await this.setSetting('soundEnabled', data.settings.soundEnabled);
+      if (typeof data.settings.speechRate === 'number') await this.setSetting('speechRate', data.settings.speechRate);
+      if (typeof data.settings.streak === 'number') await this.setSetting('streak', data.settings.streak);
+    }
+
+    if (data.localStorage && typeof localStorage !== 'undefined') {
+      try {
+        for (const [k, v] of Object.entries(data.localStorage)) {
+          if (k.startsWith('arl_') || k.startsWith('arl:')) {
+            localStorage.setItem(k, v);
+          }
+        }
+      } catch (e) {
+        console.warn('localStorage import write warning:', e);
+      }
     }
 
     if (Array.isArray(data.progress)) {
