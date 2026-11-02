@@ -31,12 +31,12 @@ export class TopHudView {
     const cefrLevels = ['a1', 'a2', 'b1', 'b2'];
 
     const countsContent = state.reviewMode === 'memorized'
-      ? `<span class="hud-count-due" id="hud-toggle-mem" role="button" tabindex="0" style="cursor:pointer" title="Keyboard: R">[MEM] ${stats.memorizedCount} ${t('learned')} [R]</span>`
-      : `<span class="hud-count-due">${stats.dueCount} ${t('due')}</span>
+      ? `<span class="hud-count-due" id="hud-toggle-mem" role="button" tabindex="0" style="cursor:pointer" title="Keyboard: R">[MEM] <span class="hud-count-num">${stats.memorizedCount}</span> <span class="hud-count-label">${t('learned')}</span> [R]</span>`
+      : `<span class="hud-count-due"><span class="hud-count-num">${stats.dueCount}</span> <span class="hud-count-label">${t('due')}</span></span>
          <span class="hud-count-sep">·</span>
-         <span class="hud-count-new">${stats.newCount} ${t('new')}</span>
+         <span class="hud-count-new"><span class="hud-count-num">${stats.newCount}</span> <span class="hud-count-label">${t('new')}</span></span>
          <span class="hud-count-sep">·</span>
-         <span class="hud-count-new" id="hud-toggle-mem" role="button" tabindex="0" style="cursor:pointer" title="Keyboard: R">${stats.memorizedCount} ${t('learned')}</span>`;
+         <span class="hud-count-new" id="hud-toggle-mem" role="button" tabindex="0" style="cursor:pointer" title="Keyboard: R"><span class="hud-count-num">${stats.memorizedCount}</span> <span class="hud-count-label">${t('learned')}</span></span>`;
 
     this.container.innerHTML = `
       <div class="top-hud-bar">

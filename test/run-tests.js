@@ -9,6 +9,7 @@ import { runDatasetTests } from './dataset.test.js';
 import { runUpgradeTests } from './upgrade.test.js';
 import { runViewTests } from './views.test.js';
 import { runMajorUpgradeTests } from './major-upgrade.test.js';
+import { runResponsiveThemeTests } from './responsive-theme.test.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -263,6 +264,9 @@ async function main() {
 
   // 9. Major Feature Upgrade Suite (20-Sentence Drills, Diff Highlighting, Smart Notes, PiP, 3000 Words)
   await runMajorUpgradeTests(it);
+
+  // 10. Responsive Layouts & Semantic Theme Tokens (Bugs 1 & 2 Fixes)
+  await runResponsiveThemeTests(it);
 
   console.log('\n----------------------------------------------------');
   console.log(`TEST RESULTS: ${passedTests} passed, ${failedTests} failed.`);
