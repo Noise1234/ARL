@@ -10,6 +10,7 @@ import { runUpgradeTests } from './upgrade.test.js';
 import { runViewTests } from './views.test.js';
 import { runMajorUpgradeTests } from './major-upgrade.test.js';
 import { runResponsiveThemeTests } from './responsive-theme.test.js';
+import { runMobileAuditTests } from './mobile-audit.test.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -267,6 +268,9 @@ async function main() {
 
   // 10. Responsive Layouts & Semantic Theme Tokens (Bugs 1 & 2 Fixes)
   await runResponsiveThemeTests(it);
+
+  // 11. Mobile QA Critic: Typographic Navigation, 100% Mobile Retention & Cloud Sync Audit
+  await runMobileAuditTests(it);
 
   console.log('\n----------------------------------------------------');
   console.log(`TEST RESULTS: ${passedTests} passed, ${failedTests} failed.`);

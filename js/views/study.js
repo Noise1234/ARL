@@ -7,6 +7,7 @@
 import { state } from '../state.js';
 import { t } from '../i18n.js';
 import { keyboard, KeyboardState } from '../keyboard.js';
+import { gistSync } from '../sync.js';
 
 export class StudyView {
   constructor(containerEl) {
@@ -45,7 +46,7 @@ export class StudyView {
 
           <div class="empty-exp-summary">
             <div class="exp-summary-pill">
-              <span class="exp-sum-icon">⚡</span>
+              <span class="exp-sum-icon">[EXP]</span>
               <span class="exp-sum-val">Level ${levelStats.level}</span>
               <span class="exp-sum-sep">·</span>
               <span class="exp-sum-val">${levelStats.totalExp} EXP</span>
@@ -137,7 +138,7 @@ export class StudyView {
           <div class="card-controls-panel">
             <!-- Telemetry Strip -->
             <div class="card-telemetry-strip">
-              <span class="telemetry-item"><span class="telemetry-icon">⚡</span> ${session.streak} streak</span>
+              <span class="telemetry-item"><span class="telemetry-icon">[STK]</span> ${session.streak} streak</span>
               <span class="telemetry-item">${session.avgSpeed}s avg</span>
             </div>
 
@@ -274,7 +275,7 @@ export class StudyView {
           <div class="card-controls-panel">
             <!-- Telemetry & Streak -->
             <div class="card-telemetry-strip">
-              <span class="telemetry-item"><span class="telemetry-icon">⚡</span> ${session.streak} streak</span>
+              <span class="telemetry-item"><span class="telemetry-icon">[STK]</span> ${session.streak} streak</span>
               <span class="telemetry-item">${session.avgSpeed}s avg</span>
               <button class="keyhint-btn btn-mini-audio" id="btn-audio" data-key="a" title="Keyboard: A">
                 <span class="micro-bracket">[A]</span> ${t('audio')}
@@ -314,10 +315,10 @@ export class StudyView {
     `;
 
     // Click Handlers
-    this.container.querySelector('#btn-grade-1')?.addEventListener('click', () => state.gradeCurrentCard(1));
-    this.container.querySelector('#btn-grade-2')?.addEventListener('click', () => state.gradeCurrentCard(2));
-    this.container.querySelector('#btn-grade-3')?.addEventListener('click', () => state.gradeCurrentCard(3));
-    this.container.querySelector('#btn-grade-4')?.addEventListener('click', () => state.gradeCurrentCard(4));
+    this.container.querySelector('#btn-grade-1')?.addEventListener('click', () => { state.gradeCurrentCard(1); gistSync.scheduleAutoPush(); });
+    this.container.querySelector('#btn-grade-2')?.addEventListener('click', () => { state.gradeCurrentCard(2); gistSync.scheduleAutoPush(); });
+    this.container.querySelector('#btn-grade-3')?.addEventListener('click', () => { state.gradeCurrentCard(3); gistSync.scheduleAutoPush(); });
+    this.container.querySelector('#btn-grade-4')?.addEventListener('click', () => { state.gradeCurrentCard(4); gistSync.scheduleAutoPush(); });
     this.container.querySelector('#btn-audio')?.addEventListener('click', () => state.playAudio());
     this.container.querySelector('#btn-reset-card')?.addEventListener('click', () => state.resetCurrentCard());
   }

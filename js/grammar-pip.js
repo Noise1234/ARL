@@ -215,21 +215,21 @@ export class GrammarPip {
             <!-- Pattern -->
             ${topic.pattern ? `
               <div class="pip-section">
-                <div class="pip-section-title">📐 Satzbau / Pattern:</div>
+                <div class="pip-section-title"><span class="micro-bracket">[Pattern]</span> Satzbau / Structure:</div>
                 <div class="pip-pattern-box"><code>${topic.pattern}</code></div>
               </div>
             ` : ''}
 
             <!-- Core Concept -->
             <div class="pip-section">
-              <div class="pip-section-title">💡 Үндсэн дүрэм:</div>
+              <div class="pip-section-title"><span class="micro-bracket">[Rule]</span> Үндсэн дүрэм:</div>
               <div class="pip-concept-box">${coreConceptText}</div>
             </div>
 
             <!-- Common Trap -->
             ${topic.common_trap ? `
               <div class="pip-section pip-trap-section">
-                <div class="pip-section-title">⚠️ Анхаарах алдаа:</div>
+                <div class="pip-section-title"><span class="micro-bracket">[Trap]</span> Анхаарах алдаа:</div>
                 <div class="pip-trap-box">${topic.common_trap}</div>
               </div>
             ` : ''}
@@ -237,7 +237,7 @@ export class GrammarPip {
             <!-- Examples -->
             ${topic.examples && topic.examples.length > 0 ? `
               <div class="pip-section">
-                <div class="pip-section-title">📚 Жишээ өгүүлбэрүүд:</div>
+                <div class="pip-section-title"><span class="micro-bracket">[Examples]</span> Жишээ өгүүлбэрүүд:</div>
                 <div class="pip-examples-list">
                   ${topic.examples.map(ex => `
                     <div class="pip-example-item">

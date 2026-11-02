@@ -17,6 +17,7 @@ import { SettingsModalView } from './views/settings.js';
 import { HelpModalView } from './views/help.js';
 import { ManualWordEntryModal } from './manual-entry.js';
 import { grammarPip } from './grammar-pip.js';
+import { gistSync } from './sync.js';
 
 class ARLApp {
   constructor() {
@@ -126,6 +127,9 @@ class ARLApp {
     // 9. Initial render
     this.hudView.render();
     this.renderCurrentView();
+
+    // 10. Startup Auto-Sync with GitHub Gist
+    gistSync.autoPull();
   }
 
   renderLayout() {
@@ -260,6 +264,7 @@ class ARLApp {
     keyboard.on('study_grade', (grade) => {
       if (this.currentView === 'vocab' && state.isCardRevealed) {
         state.gradeCurrentCard(grade);
+        gistSync.scheduleAutoPush();
       }
     });
     keyboard.on('study_audio', () => {

@@ -239,6 +239,7 @@ class ARLDatabase {
         for (let i = 0; i < localStorage.length; i++) {
           const k = localStorage.key(i);
           if (k && (k.startsWith('arl_') || k.startsWith('arl:'))) {
+            if (k === 'arl_gh_token' || k === 'arl_gemini_api_key') continue;
             localStorageData[k] = localStorage.getItem(k);
           }
         }

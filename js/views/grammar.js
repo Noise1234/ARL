@@ -160,7 +160,7 @@ export class GrammarView {
 
           <!-- Quick PiP Launch Button -->
           <button class="btn-pip-quick-launch" id="btn-global-pip-toggle" title="Toggle Floating Grammar PiP Reference">
-            📖 Floating PiP
+            [P] Floating PiP
           </button>
         </div>
 
@@ -204,7 +204,7 @@ export class GrammarView {
                   </div>
                 </div>
                 <div class="topic-item-right">
-                  <span class="drill-count-badge">🎯 ${drillCount} Drills</span>
+                  <span class="drill-count-badge">[${drillCount} Drills]</span>
                   <span class="topic-arrow">→</span>
                 </div>
               </div>
@@ -297,7 +297,7 @@ export class GrammarView {
             </button>
           </div>
           <button class="btn-pip-quick-launch" id="btn-global-pip-toggle">
-            📖 Floating PiP
+            [P] Floating PiP
           </button>
         </div>
 
@@ -442,7 +442,7 @@ export class GrammarView {
 
           <div class="topic-header-actions-group">
             <button class="keyhint-btn btn-pin-pip touch-target" id="btn-pin-topic-pip" title="Open this rule in floating PiP reference">
-              📖 Pin to Floating PiP
+              [P] Pin to PiP
             </button>
             <button class="keyhint-btn btn-drill-rule touch-target" id="btn-drill-topic" data-key="d" title="Practice flashcards for this topic [D]">
               <span class="micro-bracket">[D]</span> Flashcards
@@ -562,7 +562,7 @@ export class GrammarView {
                 ${currentDrill.woerterbuch && currentDrill.woerterbuch.length > 0 ? `
                   <div class="drill-woerterbuch-box">
                     <div class="woerterbuch-header">
-                      <span class="woerterbuch-icon">📖</span>
+                      <span class="woerterbuch-icon">[WB]</span>
                       <span class="woerterbuch-title">Wörterbuch (Required Words):</span>
                     </div>
                     <div class="woerterbuch-chips-list">
@@ -634,9 +634,9 @@ export class GrammarView {
                       </span>
                       <span class="feedback-exp-pill">+${drillFeedback.expBonus || 15} EXP Awarded</span>
                       ${drillFeedback.apiStatus && drillFeedback.apiStatus.startsWith('ai-fallback') ? `
-                        <span class="api-status-pill pill-local" title="${drillFeedback.errorMessage || ''}">⚡ Local Checker</span>
+                        <span class="api-status-pill pill-local" title="${drillFeedback.errorMessage || ''}">[Local Checker]</span>
                       ` : `
-                        <span class="api-status-pill pill-online">⚡ Gemini 2.5 Flash</span>
+                        <span class="api-status-pill pill-online">[Gemini 2.5 Flash]</span>
                       `}
                     </div>
 
@@ -666,9 +666,9 @@ export class GrammarView {
                 ${isAnswerRevealed ? `
                   <div class="drill-revealed-answer-card">
                     <div class="answer-card-header">
-                      <span class="answer-badge">✓ Correct Target Construction</span>
+                      <span class="answer-badge">[✓] Correct Target Construction</span>
                       <button class="drill-audio-btn touch-target" id="btn-drill-audio" data-target="${currentDrill.target}" title="Listen to pronunciation">
-                        🔊 Listen
+                        [Audio] Listen
                       </button>
                     </div>
 
@@ -684,7 +684,7 @@ export class GrammarView {
                         <strong>Утгачилсан орчуулга:</strong> ${currentDrill.natural_mn}
                       </div>
                       <div class="answer-line breakdown-line">
-                        <strong>💡 Дүрмийн тайлбар:</strong> ${currentDrill.rule_breakdown}
+                        <strong>[Тайлбар] Дүрмийн тайлбар:</strong> ${currentDrill.rule_breakdown}
                       </div>
                     </div>
                   </div>
@@ -697,13 +697,13 @@ export class GrammarView {
             <section class="grammar-sandbox-card">
               <div class="sandbox-header-row">
                 <div class="sandbox-title-wrap">
-                  <span class="sandbox-icon">✍</span>
+                  <span class="sandbox-icon">[Sandbox]</span>
                   <h3 class="sandbox-title">Free Sentence Production</h3>
                 </div>
                 <div class="sandbox-ai-indicator">
                   ${hasKey
-                    ? '<span class="ai-badge ai-online" title="Gemini 2.5 Flash Connected">⚡ Gemini 2.5 Flash</span>'
-                    : '<span class="ai-badge ai-local" title="Deterministic local validator active.">⚙ Local Checker</span>'
+                    ? '<span class="ai-badge ai-online" title="Gemini 2.5 Flash Connected">[Gemini 2.5 Flash]</span>'
+                    : '<span class="ai-badge ai-local" title="Deterministic local validator active.">[Local Checker]</span>'
                   }
                 </div>
               </div>

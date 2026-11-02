@@ -115,7 +115,7 @@ export class MemorizeView {
 
           <div class="memorize-header-actions">
             <button class="memorize-sprint-btn" id="btn-start-sprint" title="Keyboard: S">
-              <span class="sprint-icon">⚡</span>
+              <span class="sprint-icon">[M]</span>
               <span class="sprint-text">${t('speed_imprint') || 'Speed Imprint Sprint'} [S]</span>
             </button>
           </div>

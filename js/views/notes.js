@@ -9,6 +9,7 @@ import { state } from '../state.js';
 import { sound } from '../sound.js';
 import { GeminiClient } from '../gemini.js';
 import { grammarPip } from '../grammar-pip.js';
+import { gistSync } from '../sync.js';
 
 const STORAGE_KEY = 'arl_smart_notes';
 
@@ -57,6 +58,7 @@ export class NotesView {
   saveNotes() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.notes));
+      gistSync.scheduleAutoPush();
     } catch (e) {
       console.warn('Failed to save notes:', e);
     }
@@ -126,7 +128,7 @@ export class NotesView {
         <!-- Sidebar: Notes list -->
         <aside class="notes-sidebar">
           <div class="notes-sidebar-header">
-            <h3 class="notes-sidebar-title">📝 Smart Notes</h3>
+            <h3 class="notes-sidebar-title">[N] Smart Notes</h3>
             <button class="notes-new-btn touch-target" id="btn-create-note" title="Create a new note">
               + New Note
             </button>
@@ -144,7 +146,7 @@ export class NotesView {
 
           <div class="notes-sidebar-footer">
             <button class="notes-pip-toggle-btn touch-target" id="btn-toggle-grammar-pip">
-              📖 Open Grammar PiP
+              [P] Open Grammar PiP
             </button>
           </div>
         </aside>
@@ -161,9 +163,9 @@ export class NotesView {
               placeholder="Note title..."
             />
             <div class="notes-status-group">
-              <span class="notes-save-status" id="notes-save-status">✓ Saved</span>
+              <span class="notes-save-status" id="notes-save-status">[✓] Saved</span>
               <button class="btn-pip-quick-launch" id="btn-launch-pip-editor" title="Open Grammar Reference PiP">
-                📖 Grammar PiP
+                [P] Grammar PiP
               </button>
             </div>
           </div>
@@ -198,13 +200,13 @@ export class NotesView {
             <div id="notes-selection-toolbar" class="notes-selection-toolbar" style="display: none;">
               <span class="sel-label">Selected:</span>
               <button class="sel-action-btn sel-btn-explain" id="btn-sel-explain" title="Ask AI to explain this grammar concept">
-                ⚡ Ask AI Explanation
+                [AI] Ask Explanation
               </button>
               <button class="sel-action-btn sel-btn-check" id="btn-sel-check" title="Check this sentence for grammar & word-order errors">
-                ✍ Check Sentence
+                [Check] Check Sentence
               </button>
               <button class="sel-action-btn sel-btn-pip" id="btn-sel-pip" title="Open matching rule in Grammar PiP">
-                📖 Open in PiP
+                [P] Open in PiP
               </button>
             </div>
           </div>

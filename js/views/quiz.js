@@ -253,7 +253,7 @@ export class QuizView {
               <span class="metric-label">EXP Earned</span>
             </div>
             <div class="summary-metric-pill">
-              <span class="metric-val">⚡ ${session.streak}</span>
+              <span class="metric-val">[STK] ${session.streak}</span>
               <span class="metric-label">Streak</span>
             </div>
           </div>

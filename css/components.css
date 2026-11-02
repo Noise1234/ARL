@@ -1192,17 +1192,18 @@
 }
 
 .settings-hud-card {
-  width: 100%;
-  max-width: 500px;
-  max-height: calc(100vh - 32px);
+  width: min(92vw, 540px);
+  max-width: 540px;
+  max-height: 85dvh;
   overflow-y: auto;
+  box-sizing: border-box;
   background-color: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
   margin: auto;
 }
@@ -1528,15 +1529,18 @@
   }
   .mobile-bottom-nav {
     height: 40px;
+    padding: 0 2px;
   }
   .mobile-nav-tab {
-    gap: 1px;
+    gap: 0px;
+    padding: 2px 1px;
+    min-width: 34px;
   }
-  .tab-icon {
-    font-size: 0.95rem;
+  .tab-key {
+    font-size: 0.70rem;
   }
   .tab-label {
-    font-size: 0.58rem;
+    font-size: 0.52rem;
   }
   .main-container {
     align-items: center;
@@ -2264,8 +2268,11 @@
    10. KEYBOARD SHORTCUTS CHEAT SHEET MODAL
    ======================================================== */
 .help-modal-card {
-  width: 100%;
+  width: min(92vw, 680px);
   max-width: 680px;
+  max-height: 85dvh;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .help-title-group {
@@ -4354,7 +4361,7 @@
 @media (max-width: 960px) {
   /* Reserve space for bottom navigation */
   #app {
-    padding-bottom: 62px;
+    padding-bottom: 58px;
   }
 
   .mobile-bottom-nav {
@@ -4363,13 +4370,22 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 56px;
+    height: 52px;
     background: var(--bg-surface);
     border-top: 1px solid var(--border-subtle);
     z-index: 850;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 4px;
+    box-sizing: border-box;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .mobile-bottom-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .mobile-nav-tab {
@@ -4377,34 +4393,54 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2px;
-    flex: 1;
+    gap: 1px;
+    flex: 1 1 0px;
+    min-width: 38px;
     height: 100%;
+    padding: 3px 1px;
     color: var(--text-dim);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: color var(--transition-fast);
+    user-select: none;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+    box-sizing: border-box;
   }
 
   .mobile-nav-tab.active {
     color: var(--text-primary);
+    background: var(--bg-elevated);
+    border-color: var(--border-subtle);
   }
 
-  .mobile-nav-tab.active .tab-icon {
-    transform: scale(1.1);
+  .tab-key {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-muted);
+    letter-spacing: -0.02em;
   }
 
-  .tab-icon {
-    font-size: 1.15rem;
-    transition: transform var(--transition-fast);
+  .mobile-nav-tab.active .tab-key {
+    color: var(--text-primary);
+    font-weight: 800;
   }
 
   .tab-label {
     font-family: var(--font-sans);
-    font-size: 0.65rem;
+    font-size: 0.60rem;
     font-weight: 600;
+    line-height: 1.1;
+    color: var(--text-dim);
   }
 
-  /* Hide top text view navigation buttons; keep utility buttons (Theme, Settings, Help) */
+  .mobile-nav-tab.active .tab-label {
+    color: var(--text-primary);
+  }
+
+  /* Hide top text view navigation buttons; keep utility buttons (Theme, Settings, Help, Sync) */
   #nav-btn-vocab,
   #nav-btn-memorize,
   #nav-btn-quiz,
@@ -4418,15 +4454,18 @@
 
   .hud-nav {
     display: flex;
-    gap: 4px;
+    align-items: center;
+    gap: 3px;
     flex-shrink: 0;
   }
 
+  #hud-sync-status,
   #nav-btn-theme,
   #nav-btn-settings,
   #nav-btn-help {
-    display: inline-flex;
-    padding: 4px 6px;
+    display: inline-flex !important;
+    padding: 3px 5px !important;
+    font-size: 0.8rem;
   }
 
   /* Notes Workspace Stacked on Mobile */
@@ -4451,15 +4490,26 @@
   }
 }
 
-/* On mobile portrait <= 640px: hide keyboard cheat sheet [?], keep theme toggle and Settings gear ⚙️ visible */
+/* On mobile portrait <= 640px: NEVER hide utility buttons! Keep Sync, Theme, Settings, Help visible */
 @media (max-width: 640px) {
-  #nav-btn-help {
-    display: none !important;
+  .hud-nav {
+    display: flex !important;
+    gap: 2px;
+    flex-shrink: 0;
   }
-  #nav-btn-settings {
+
+  #hud-sync-status,
+  #nav-btn-theme,
+  #nav-btn-settings,
+  #nav-btn-help {
     display: inline-flex !important;
-    padding: 2px 6px !important;
-    font-size: 0.95rem;
+    padding: 2px 4px !important;
+    font-size: 0.76rem;
+  }
+
+  .hud-tag {
+    padding: 2px 5px;
+    font-size: 0.75rem;
   }
 }
 
@@ -4487,3 +4537,141 @@
     padding: 20px;
   }
 }
+
+/* ========================================================
+   12. GITHUB GIST CLOUD SYNC STYLES
+   ======================================================== */
+.settings-sync-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.sync-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.sync-status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.tag-connected {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: #22c55e;
+}
+
+.tag-syncing {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #3b82f6;
+}
+
+.tag-error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+}
+
+.tag-fallback {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
+}
+
+.sync-inputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sync-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sync-label-small {
+  font-family: var(--font-mono);
+  font-size: 0.70rem;
+  color: var(--text-muted);
+}
+
+.sync-input-wrapper {
+  display: flex;
+  gap: 6px;
+}
+
+.sync-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.btn-connect-sync {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  font-weight: 600;
+}
+
+.btn-connect-sync:hover:not(:disabled) {
+  border-color: var(--border-focus);
+}
+
+.btn-push-sync,
+.btn-pull-sync {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.btn-push-sync:hover:not(:disabled),
+.btn-pull-sync:hover:not(:disabled) {
+  color: var(--text-primary);
+  border-color: var(--border-focus);
+}
+
+.sync-notice-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.notice-ok {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+}
+
+.notice-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.sync-note-text {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  line-height: 1.35;
+}
+
+.hud-sync-btn {
+  font-family: var(--font-mono);
+  cursor: pointer;
+}
+

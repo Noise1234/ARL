@@ -1,7 +1,8 @@
 /**
  * ARL - Settings Modal HUD
  * Language selection, CEFR levels, Backup/Restore,
- * and Gemini Free Tier API Key configuration with secure localStorage persistence.
+ * Gemini Free Tier API Key configuration, and GitHub Gist Cloud Sync.
+ * Typographic minimalist terminal aesthetic with zero OS emojis.
  */
 
 import { state } from '../state.js';
@@ -9,12 +10,16 @@ import { db } from '../db.js';
 import { t } from '../i18n.js';
 import { keyboard, KeyboardState } from '../keyboard.js';
 import { GeminiClient } from '../gemini.js';
+import { gistSync } from '../sync.js';
 
 export class SettingsModalView {
   constructor(overlayEl, onCloseCallback) {
     this.overlay = overlayEl;
     this.onClose = onCloseCallback;
     this.showApiKey = false;
+    this.showGhToken = false;
+    this.syncNotice = '';
+    this.isSyncOperating = false;
   }
 
   show() {
@@ -55,7 +60,7 @@ export class SettingsModalView {
       }
       if (btnEl) {
         const orig = btnEl.innerHTML;
-        btnEl.innerHTML = '✓ Copied!';
+        btnEl.innerHTML = '[OK] Copied!';
         setTimeout(() => { btnEl.innerHTML = orig; }, 2000);
       }
     } catch (err) {
@@ -103,6 +108,29 @@ export class SettingsModalView {
     const currentKey = GeminiClient.getApiKey();
     const hasKey = Boolean(currentKey.trim());
 
+    // Gist Cloud Sync State
+    const ghToken = gistSync.getToken();
+    const gistId = gistSync.getGistId();
+    const lastSync = gistSync.getLastSync();
+    const syncStatus = gistSync.getStatus();
+
+    let syncBadgeText = '[Not Connected]';
+    let syncBadgeClass = 'tag-fallback';
+    if (syncStatus.status === 'syncing') {
+      syncBadgeText = '[Syncing...]';
+      syncBadgeClass = 'tag-syncing';
+    } else if (gistSync.isConnected()) {
+      syncBadgeText = `[Connected: ${gistId.slice(0, 7)}]`;
+      syncBadgeClass = 'tag-connected';
+    } else if (syncStatus.status === 'error') {
+      syncBadgeText = '[Sync Error]';
+      syncBadgeClass = 'tag-error';
+    }
+
+    const lastSyncFormatted = lastSync
+      ? `Last synced: ${new Date(lastSync).toLocaleTimeString()} (${new Date(lastSync).toLocaleDateString()})`
+      : 'Never synced';
+
     this.overlay.innerHTML = `
       <div class="settings-modal-backdrop" id="settings-backdrop">
         <div class="settings-hud-card" role="dialog" aria-modal="true" aria-label="Settings HUD">
@@ -149,7 +177,7 @@ export class SettingsModalView {
             <div class="settings-row">
               <span class="settings-label">${t('sound_effects')}</span>
               <button class="settings-action-btn touch-target" id="btn-toggle-sound">
-                <span class="settings-value">${state.soundEnabled ? '✓ Enabled' : '✕ Disabled'}</span>
+                <span class="settings-value">${state.soundEnabled ? '[✓] Enabled' : '[✕] Disabled'}</span>
               </button>
             </div>
 
@@ -162,12 +190,82 @@ export class SettingsModalView {
               </div>
             </div>
 
+            <!-- GitHub Gist Cloud Sync -->
+            <div class="settings-row settings-sync-row">
+              <div class="sync-header-row">
+                <span class="settings-label">GitHub Gist Cloud Sync</span>
+                <span class="sync-status-badge ${syncBadgeClass}" id="settings-sync-status-badge">
+                  ${syncBadgeText}
+                </span>
+              </div>
+
+              <div class="sync-inputs-container">
+                <div class="sync-input-field">
+                  <div class="sync-label-small">GitHub Personal Access Token (scope: gist)</div>
+                  <div class="sync-input-wrapper">
+                    <input
+                      type="${this.showGhToken ? 'text' : 'password'}"
+                      id="settings-gh-token"
+                      class="settings-text-input"
+                      placeholder="Paste GitHub Token (ghp_...)"
+                      value="${ghToken}"
+                      autocomplete="off"
+                      spellcheck="false"
+                    />
+                    <button type="button" class="btn-api-toggle" id="btn-toggle-gh-token" title="Show/Hide Token">
+                      ${this.showGhToken ? 'Hide' : 'Show'}
+                    </button>
+                  </div>
+                </div>
+
+                <div class="sync-input-field">
+                  <div class="sync-label-small">Gist ID (Auto-discovered or manual)</div>
+                  <input
+                    type="text"
+                    id="settings-gist-id"
+                    class="settings-text-input"
+                    placeholder="Auto-populated upon connect..."
+                    value="${gistId}"
+                    autocomplete="off"
+                    spellcheck="false"
+                  />
+                </div>
+
+                <div class="sync-actions-row">
+                  <button type="button" class="settings-action-btn btn-connect-sync touch-target" id="btn-sync-connect" ${this.isSyncOperating ? 'disabled' : ''}>
+                    <span class="micro-bracket">[SYNC]</span> Connect & Auto-Sync
+                  </button>
+                  <button type="button" class="settings-action-btn btn-push-sync touch-target" id="btn-sync-push" ${(!gistId || this.isSyncOperating) ? 'disabled' : ''}>
+                    <span class="micro-bracket">[Push]</span> Upload Local
+                  </button>
+                  <button type="button" class="settings-action-btn btn-pull-sync touch-target" id="btn-sync-pull" ${(!gistId || this.isSyncOperating) ? 'disabled' : ''}>
+                    <span class="micro-bracket">[Pull]</span> Download Remote
+                  </button>
+                  ${(ghToken || gistId) ? `
+                    <button type="button" class="btn-clear-key touch-target" id="btn-sync-disconnect" title="Disconnect and clear token">
+                      Disconnect
+                    </button>
+                  ` : ''}
+                </div>
+              </div>
+
+              ${this.syncNotice ? `
+                <div class="sync-notice-text ${this.syncNotice.startsWith('Error') ? 'notice-error' : 'notice-ok'}">
+                  ${this.syncNotice}
+                </div>
+              ` : ''}
+
+              <div class="sync-note-text">
+                ${lastSyncFormatted}. Token is saved locally in <code>localStorage</code> only and is strictly excluded from backups and sync payloads.
+              </div>
+            </div>
+
             <!-- Free Gemini 2.5 Flash API Configuration -->
             <div class="settings-row settings-gemini-row">
               <div class="gemini-header-row">
                 <span class="settings-label">Gemini AI Key (Free Tier)</span>
                 <span class="gemini-status-tag ${hasKey ? 'tag-connected' : 'tag-fallback'}">
-                  ${hasKey ? '⚡ Gemini 2.5 Flash Active' : '⚙ Local Fallback Active'}
+                  ${hasKey ? '[Gemini 2.5 Flash Active]' : '[Local Fallback Active]'}
                 </span>
               </div>
 
@@ -217,14 +315,14 @@ export class SettingsModalView {
                   <span class="micro-bracket">[E]</span> Export File
                 </button>
                 <button class="settings-action-btn touch-target" id="btn-copy-backup" title="Copy JSON to clipboard">
-                  📋 Copy JSON
+                  <span class="micro-bracket">[Copy]</span> Copy JSON
                 </button>
                 <input type="file" id="settings-backup-input" accept=".json" style="display:none;" />
                 <button class="settings-action-btn touch-target" id="btn-import-backup" title="Import from file">
-                  📂 Import File
+                  <span class="micro-bracket">[Import]</span> Import File
                 </button>
                 <button class="settings-action-btn touch-target" id="btn-paste-backup" title="Paste JSON from clipboard">
-                  📥 Paste JSON
+                  <span class="micro-bracket">[Paste]</span> Paste JSON
                 </button>
               </div>
             </div>
@@ -289,6 +387,83 @@ export class SettingsModalView {
           this.render();
         }
       });
+    });
+
+    // Toggle GitHub token visibility
+    this.overlay.querySelector('#btn-toggle-gh-token')?.addEventListener('click', () => {
+      this.showGhToken = !this.showGhToken;
+      this.render();
+    });
+
+    // Connect & Auto-Sync
+    this.overlay.querySelector('#btn-sync-connect')?.addEventListener('click', async () => {
+      const tokenInput = this.overlay.querySelector('#settings-gh-token');
+      const gistInput = this.overlay.querySelector('#settings-gist-id');
+      const token = tokenInput ? tokenInput.value.trim() : '';
+      const manualId = gistInput ? gistInput.value.trim() : '';
+
+      if (!token) {
+        this.syncNotice = 'Error: Please enter a GitHub token.';
+        this.render();
+        return;
+      }
+
+      this.isSyncOperating = true;
+      this.syncNotice = 'Connecting to GitHub...';
+      this.render();
+
+      try {
+        const res = await gistSync.connect(token, manualId || null);
+        this.syncNotice = res.created
+          ? `Created new private Gist (${res.gistId}) and synced initial data!`
+          : `Connected to Gist (${res.gistId}) and synced remote progress!`;
+      } catch (err) {
+        this.syncNotice = `Error: ${err.message}`;
+      } finally {
+        this.isSyncOperating = false;
+        this.render();
+      }
+    });
+
+    // Push local data
+    this.overlay.querySelector('#btn-sync-push')?.addEventListener('click', async () => {
+      this.isSyncOperating = true;
+      this.syncNotice = 'Uploading local data to Gist...';
+      this.render();
+
+      try {
+        await gistSync.push();
+        this.syncNotice = 'Local progress uploaded successfully to Gist!';
+      } catch (err) {
+        this.syncNotice = `Error: ${err.message}`;
+      } finally {
+        this.isSyncOperating = false;
+        this.render();
+      }
+    });
+
+    // Pull remote data
+    this.overlay.querySelector('#btn-sync-pull')?.addEventListener('click', async () => {
+      this.isSyncOperating = true;
+      this.syncNotice = 'Downloading remote data from Gist...';
+      this.render();
+
+      try {
+        await gistSync.pull();
+        this.syncNotice = 'Remote progress pulled and restored successfully!';
+      } catch (err) {
+        this.syncNotice = `Error: ${err.message}`;
+      } finally {
+        this.isSyncOperating = false;
+        this.render();
+      }
+    });
+
+    // Disconnect sync
+    this.overlay.querySelector('#btn-sync-disconnect')?.addEventListener('click', () => {
+      gistSync.disconnect();
+      this.syncNotice = 'Disconnected from Gist cloud sync.';
+      this.render();
     });
 
     // Gemini API key visibility toggle

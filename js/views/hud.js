@@ -1,13 +1,15 @@
 /**
  * ARL - Single-Line Top HUD View with Integrated EXP & Level Progress
- * Renders: [DE·B1] (quick-level selector) | counts | Level & EXP progress | Nav items [V] [M] [Q] [L] [G] [N] [I] [S] [P] [?]
- * Theme Switcher (Dark / Light mode) and Mobile Bottom Navigation.
+ * Renders: [DE·B1] (quick-level selector) | counts | Level & EXP progress | Nav items [V] [M] [Q] [L] [G] [N] [I] [P] [SYNC] [T] [S] [?]
+ * Typographic Terminal Aesthetic: ZERO OS emojis in header and bottom control bars.
+ * Mobile Bottom Navigation covers 100% of app features (all 8 modules).
  */
 
 import { state } from '../state.js';
 import { t } from '../i18n.js';
 import { sound } from '../sound.js';
 import { grammarPip } from '../grammar-pip.js';
+import { gistSync } from '../sync.js';
 
 export class TopHudView {
   constructor(containerEl, onNavigate, onToggleTheme) {
@@ -16,6 +18,14 @@ export class TopHudView {
     this.onToggleTheme = onToggleTheme;
     this.currentView = 'vocab';
     this.isLevelDropdownOpen = false;
+
+    // Subscribe to Gist sync events to update sync indicator in real-time
+    this.unsubscribeSync = gistSync.subscribe(() => {
+      const syncBtn = this.container.querySelector('#hud-sync-status .hud-key');
+      if (syncBtn) {
+        syncBtn.textContent = gistSync.getShortStatusLabel();
+      }
+    });
   }
 
   setActiveView(view) {
@@ -29,6 +39,7 @@ export class TopHudView {
     const levelStats = state.getLevelStats ? state.getLevelStats() : { level: 1, totalExp: 0, progressPct: 0 };
     const tag = `[${state.targetLang.toUpperCase()}·${state.cefrLevel.toUpperCase()}]`;
     const cefrLevels = ['a1', 'a2', 'b1', 'b2'];
+    const syncLabel = gistSync.getShortStatusLabel();
 
     const countsContent = state.reviewMode === 'memorized'
       ? `<span class="hud-count-due" id="hud-toggle-mem" role="button" tabindex="0" style="cursor:pointer" title="Keyboard: R">[MEM] <span class="hud-count-num">${stats.memorizedCount}</span> <span class="hud-count-label">${t('learned')}</span> [R]</span>`
@@ -50,7 +61,7 @@ export class TopHudView {
                     ${lvl.toUpperCase()}
                   </button>
                 `).join('')}
-                <button class="quick-lvl-chip" id="quick-lvl-settings" title="Settings">⚙️</button>
+                <button class="quick-lvl-chip" id="quick-lvl-settings" title="Settings">[S]</button>
               </div>
             ` : ''}
           </div>
@@ -68,9 +79,9 @@ export class TopHudView {
               <div class="hud-exp-fill" style="width: ${levelStats.progressPct || 0}%"></div>
             </div>
             ${session.multiplier > 1 ? `
-              <span class="hud-multiplier-pill" title="${session.streak} Streak: ${session.multiplier}x EXP Multiplier">⚡${session.multiplier}x</span>
+              <span class="hud-multiplier-pill" title="${session.streak} Streak: ${session.multiplier}x EXP Multiplier">[${session.multiplier}x]</span>
             ` : (session.streak > 0 ? `
-              <span class="hud-streak-pill" title="${session.streak} Streak">⚡${session.streak}</span>
+              <span class="hud-streak-pill" title="${session.streak} Streak">[${session.streak}]</span>
             ` : '')}
           </div>
         </div>
@@ -80,7 +91,7 @@ export class TopHudView {
             <span class="hud-key">[V]</span><span class="hud-label">${t('hud_vocab') ? t('hud_vocab').replace(/\[V\]\s*/, '') : 'Vocab'}</span>
           </button>
           <button class="hud-nav-item ${this.currentView === 'memorize' ? 'active' : ''}" id="nav-btn-memorize" data-key="m" title="Keyboard: M">
-            <span class="hud-key">[M]</span><span class="hud-label">${t('hud_memorize') ? t('hud_memorize').replace(/\[M\]\s*/, '') : 'Memorize'}</span>
+            <span class="hud-key">[M]</span><span class="hud-label">${t('hud_memorize') ? t('hud_memorize').replace(/\[M\]\s*/, '') : 'Sprint'}</span>
           </button>
           <button class="hud-nav-item ${this.currentView === 'quiz' ? 'active' : ''}" id="nav-btn-quiz" data-key="q" title="Keyboard: Q">
             <span class="hud-key">[Q]</span><span class="hud-label">${t('hud_quiz') ? t('hud_quiz').replace(/\[Q\]\s*/, '') : 'Quiz'}</span>
@@ -100,11 +111,14 @@ export class TopHudView {
           <button class="hud-nav-item" id="nav-btn-pip" data-key="p" title="Toggle Floating Grammar PiP [P]">
             <span class="hud-key">[P]</span><span class="hud-label">PiP</span>
           </button>
-          <button class="hud-nav-item hud-theme-btn" id="nav-btn-theme" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
-            <span class="hud-key">🌓</span>
+          <button class="hud-nav-item hud-sync-btn" id="hud-sync-status" title="GitHub Gist Cloud Sync">
+            <span class="hud-key">${syncLabel}</span>
+          </button>
+          <button class="hud-nav-item hud-theme-btn" id="nav-btn-theme" title="Toggle Theme [T]" aria-label="Toggle Theme">
+            <span class="hud-key">[T]</span>
           </button>
           <button class="hud-nav-item hud-settings-btn ${this.currentView === 'settings' ? 'active' : ''}" id="nav-btn-settings" data-key="s" title="Settings (Keyboard: S)" aria-label="Settings">
-            <span class="hud-key">⚙️</span><span class="hud-label">${t('hud_settings') ? t('hud_settings').replace(/\[S\]\s*/, '') : 'Settings'}</span>
+            <span class="hud-key">[S]</span><span class="hud-label">${t('hud_settings') ? t('hud_settings').replace(/\[S\]\s*/, '') : 'Settings'}</span>
           </button>
           <button class="hud-nav-item hud-help-btn" id="nav-btn-help" data-key="?" title="Keyboard: ?">
             <span class="hud-key">[?]</span>
@@ -115,31 +129,39 @@ export class TopHudView {
       <!-- Container for Floating EXP Particles -->
       <div id="exp-floating-container" class="exp-floating-container" aria-hidden="true"></div>
 
-      <!-- Mobile Bottom Navigation Bar (Hidden on desktop, active on mobile portrait) -->
+      <!-- Mobile Bottom Navigation Bar: Full 8-Module Typographic Coverage -->
       <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
         <button class="mobile-nav-tab ${this.currentView === 'vocab' ? 'active' : ''}" data-target="vocab">
-          <span class="tab-icon">🗂</span>
+          <span class="tab-key">[V]</span>
           <span class="tab-label">Vocab</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'memorize' ? 'active' : ''}" data-target="memorize">
-          <span class="tab-icon">⚡</span>
+          <span class="tab-key">[M]</span>
           <span class="tab-label">Sprint</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'quiz' ? 'active' : ''}" data-target="quiz">
-          <span class="tab-icon">🎯</span>
+          <span class="tab-key">[Q]</span>
           <span class="tab-label">Quiz</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'lexicon' ? 'active' : ''}" data-target="lexicon">
-          <span class="tab-icon">📚</span>
+          <span class="tab-key">[L]</span>
           <span class="tab-label">Lexicon</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'grammar' ? 'active' : ''}" data-target="grammar">
-          <span class="tab-icon">📐</span>
+          <span class="tab-key">[G]</span>
           <span class="tab-label">Grammar</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'notes' ? 'active' : ''}" data-target="notes">
-          <span class="tab-icon">📝</span>
+          <span class="tab-key">[N]</span>
           <span class="tab-label">Notes</span>
+        </button>
+        <button class="mobile-nav-tab ${this.currentView === 'media' ? 'active' : ''}" data-target="media">
+          <span class="tab-key">[I]</span>
+          <span class="tab-label">Media</span>
+        </button>
+        <button class="mobile-nav-tab ${this.currentView === 'pip' ? 'active' : ''}" data-target="pip">
+          <span class="tab-key">[P]</span>
+          <span class="tab-label">PiP</span>
         </button>
       </nav>
     `;
@@ -201,6 +223,22 @@ export class TopHudView {
       setTimeout(() => document.addEventListener('click', closePopup), 10);
     }
 
+    // Sync button in header: click to open settings or sync
+    this.container.querySelector('#hud-sync-status')?.addEventListener('click', async (e) => {
+      sound.playClick();
+      if (!gistSync.isConnected() || e.shiftKey) {
+        if (typeof this.onNavigate === 'function') {
+          this.onNavigate('settings');
+        }
+      } else {
+        try {
+          await gistSync.push();
+        } catch (err) {
+          console.warn('Manual sync error:', err);
+        }
+      }
+    });
+
     // Theme Switcher Button
     this.container.querySelector('#nav-btn-theme')?.addEventListener('click', () => {
       sound.playClick();
@@ -209,13 +247,13 @@ export class TopHudView {
       }
     });
 
-    // PiP Button
+    // PiP Button in header
     this.container.querySelector('#nav-btn-pip')?.addEventListener('click', () => {
       sound.playClick();
       grammarPip.toggle();
     });
 
-    // Navigation buttons
+    // Navigation buttons in header
     const navActions = [
       ['#nav-btn-vocab', 'vocab'],
       ['#nav-btn-memorize', 'memorize'],
@@ -237,12 +275,14 @@ export class TopHudView {
       });
     });
 
-    // Mobile Bottom Navigation Tabs
+    // Mobile Bottom Navigation Tabs (all 8 items)
     this.container.querySelectorAll('.mobile-nav-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         sound.playClick();
         const target = tab.getAttribute('data-target');
-        if (target && typeof this.onNavigate === 'function') {
+        if (target === 'pip') {
+          grammarPip.toggle();
+        } else if (target && typeof this.onNavigate === 'function') {
           this.onNavigate(target);
         }
       });
