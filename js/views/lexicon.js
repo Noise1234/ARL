@@ -1,8 +1,8 @@
 /**
  * ARL - Vocabulary Lexicon & Word Library View
  * Instant fuzzy search across target language, Mongolian definitions, and examples.
- * Filter by POS (nouns, verbs, adjectives), mastery state, audio playback,
- * and custom word creation modal.
+ * Filter by Level (All, A1, A2, B1, B2), POS (nouns, verbs, adjectives), mastery state,
+ * 50-word pagination, audio playback, and custom word creation modal.
  */
 
 import { state } from '../state.js';
@@ -18,10 +18,23 @@ export class LexiconView {
     this.searchQuery = '';
     this.posFilter = 'all'; // 'all' | 'noun' | 'verb' | 'adjective'
     this.statusFilter = 'all'; // 'all' | 'due' | 'new' | 'memorized'
+    this.levelFilter = 'all'; // 'all' | 'a1' | 'a2' | 'b1' | 'b2'
+    this.currentPage = 1;
+    this.pageSize = 50;
   }
 
   getFilteredCards() {
     let list = state.cards;
+
+    // Filter by CEFR Level
+    if (this.levelFilter !== 'all') {
+      const targetLvl = this.levelFilter.toLowerCase();
+      list = list.filter(c => {
+        if (c.level && c.level.toLowerCase() === targetLvl) return true;
+        if (c.id && c.id.toLowerCase().startsWith(targetLvl)) return true;
+        return false;
+      });
+    }
 
     // Filter by POS
     if (this.posFilter !== 'all') {
@@ -62,10 +75,43 @@ export class LexiconView {
     return list;
   }
 
+  setLevelFilter(lvl) {
+    this.levelFilter = lvl;
+    this.currentPage = 1;
+    this.render();
+  }
+
+  goToPage(page) {
+    const filtered = this.getFilteredCards();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / this.pageSize));
+    const target = Math.max(1, Math.min(page, totalPages));
+    this.currentPage = target;
+    this.render();
+    if (typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  nextPage() {
+    this.goToPage(this.currentPage + 1);
+  }
+
+  prevPage() {
+    this.goToPage(this.currentPage - 1);
+  }
+
   render() {
     const tag = `[${state.targetLang.toUpperCase()}·${state.cefrLevel.toUpperCase()}]`;
     const filtered = this.getFilteredCards();
     const totalCount = state.cards.length;
+
+    // Pagination calculations
+    const totalPages = Math.max(1, Math.ceil(filtered.length / this.pageSize));
+    if (this.currentPage > totalPages) {
+      this.currentPage = totalPages;
+    }
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const pagedItems = filtered.slice(startIndex, startIndex + this.pageSize);
 
     this.container.innerHTML = `
       <div class="lexicon-wrapper">
@@ -75,13 +121,13 @@ export class LexiconView {
           <div class="lexicon-title-row">
             <div class="lexicon-heading-group">
               <span class="hud-tag">${tag}</span>
-              <h2 class="lexicon-title">${t('lexicon_title')}</h2>
+              <h2 class="lexicon-title">${t('lexicon_title') || 'Lexicon'}</h2>
               <span class="lexicon-count-badge">${filtered.length} / ${totalCount} words</span>
             </div>
 
             <div class="lexicon-action-btns">
               <button class="keyhint-btn keyhint-primary touch-target" id="btn-lexicon-add-word">
-                <span class="micro-bracket">[+]</span> ${t('add_custom_word')}
+                <span class="micro-bracket">[+]</span> ${t('add_custom_word') || 'Add Word'}
               </button>
             </div>
           </div>
@@ -102,8 +148,19 @@ export class LexiconView {
             ` : ''}
           </div>
 
-          <!-- Filters Row -->
+          <!-- Filters Row: CEFR Levels + POS + SRS -->
           <div class="lexicon-filters-row">
+            <!-- CEFR Level Filters -->
+            <div class="filter-chip-group">
+              <span class="filter-label">Level:</span>
+              <button class="filter-chip ${this.levelFilter === 'all' ? 'active' : ''}" data-lvl="all">All</button>
+              <button class="filter-chip ${this.levelFilter === 'a1' ? 'active' : ''}" data-lvl="a1">A1</button>
+              <button class="filter-chip ${this.levelFilter === 'a2' ? 'active' : ''}" data-lvl="a2">A2</button>
+              <button class="filter-chip ${this.levelFilter === 'b1' ? 'active' : ''}" data-lvl="b1">B1</button>
+              <button class="filter-chip ${this.levelFilter === 'b2' ? 'active' : ''}" data-lvl="b2">B2</button>
+            </div>
+
+            <!-- POS Filters -->
             <div class="filter-chip-group">
               <span class="filter-label">POS:</span>
               <button class="filter-chip ${this.posFilter === 'all' ? 'active' : ''}" data-pos="all">All</button>
@@ -112,6 +169,7 @@ export class LexiconView {
               <button class="filter-chip ${this.posFilter === 'adjective' ? 'active' : ''}" data-pos="adjective">Adjectives</button>
             </div>
 
+            <!-- Status Filters -->
             <div class="filter-chip-group">
               <span class="filter-label">SRS:</span>
               <button class="filter-chip ${this.statusFilter === 'all' ? 'active' : ''}" data-status="all">All</button>
@@ -120,16 +178,30 @@ export class LexiconView {
               <button class="filter-chip ${this.statusFilter === 'memorized' ? 'active' : ''}" data-status="memorized">Learned</button>
             </div>
           </div>
+
+          <!-- Pagination Bar -->
+          <div class="lexicon-pagination-bar">
+            <button class="page-nav-btn touch-target" id="btn-page-prev" ${this.currentPage <= 1 ? 'disabled' : ''}>
+              ← Previous
+            </button>
+            <span class="page-indicator">
+              Page <strong>${this.currentPage}</strong> of <strong>${totalPages}</strong>
+              <span class="page-range">(${startIndex + 1}–${Math.min(startIndex + this.pageSize, filtered.length)} of ${filtered.length})</span>
+            </span>
+            <button class="page-nav-btn touch-target" id="btn-page-next" ${this.currentPage >= totalPages ? 'disabled' : ''}>
+              Next →
+            </button>
+          </div>
         </div>
 
-        <!-- Words Grid / List -->
+        <!-- Words Grid / List (50 items per page) -->
         <div class="lexicon-grid">
-          ${filtered.length === 0 ? `
+          ${pagedItems.length === 0 ? `
             <div class="lexicon-empty-state">
               <div class="empty-icon">∅</div>
               <div class="empty-text">No vocabulary matches your search criteria.</div>
             </div>
-          ` : filtered.map(card => {
+          ` : pagedItems.map(card => {
             const prog = state.progressMap.get(card.id);
             let srsBadge = '<span class="status-pill pill-new">New</span>';
             if (prog && prog.lastStudied) {
@@ -149,10 +221,13 @@ export class LexiconView {
               chip = `<span class="pos-chip chip-adj">${card.pos}</span>`;
             }
 
+            const levelBadge = card.level ? `<span class="card-level-chip">${card.level.toUpperCase()}</span>` : '';
+
             return `
               <div class="lexicon-item-card" data-id="${card.id}">
                 <div class="item-card-header">
                   <div class="item-word-group">
+                    ${levelBadge}
                     ${chip}
                     <span class="item-word-text">${card.word}</span>
                     ${card.plural ? `<span class="item-plural">(${card.plural})</span>` : ''}
@@ -194,6 +269,21 @@ export class LexiconView {
           }).join('')}
         </div>
 
+        <!-- Bottom Pagination Bar -->
+        ${totalPages > 1 ? `
+          <div class="lexicon-pagination-bottom">
+            <button class="page-nav-btn touch-target" id="btn-page-prev-bottom" ${this.currentPage <= 1 ? 'disabled' : ''}>
+              ← Previous
+            </button>
+            <span class="page-indicator">
+              Page <strong>${this.currentPage}</strong> of <strong>${totalPages}</strong>
+            </span>
+            <button class="page-nav-btn touch-target" id="btn-page-next-bottom" ${this.currentPage >= totalPages ? 'disabled' : ''}>
+              Next →
+            </button>
+          </div>
+        ` : ''}
+
       </div>
     `;
 
@@ -202,8 +292,8 @@ export class LexiconView {
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         this.searchQuery = e.target.value;
+        this.currentPage = 1;
         this.render();
-        // Re-focus and put cursor at the end
         const newIn = this.container.querySelector('#lexicon-search-input');
         if (newIn) {
           newIn.focus();
@@ -215,13 +305,26 @@ export class LexiconView {
     // Clear search
     this.container.querySelector('#btn-clear-search')?.addEventListener('click', () => {
       this.searchQuery = '';
+      this.currentPage = 1;
       this.render();
+    });
+
+    // Level Filters
+    this.container.querySelectorAll('.filter-chip[data-lvl]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        sound.playClick();
+        this.levelFilter = chip.dataset.lvl;
+        this.currentPage = 1;
+        this.render();
+      });
     });
 
     // POS Filters
     this.container.querySelectorAll('.filter-chip[data-pos]').forEach(chip => {
       chip.addEventListener('click', () => {
+        sound.playClick();
         this.posFilter = chip.dataset.pos;
+        this.currentPage = 1;
         this.render();
       });
     });
@@ -229,9 +332,29 @@ export class LexiconView {
     // Status Filters
     this.container.querySelectorAll('.filter-chip[data-status]').forEach(chip => {
       chip.addEventListener('click', () => {
+        sound.playClick();
         this.statusFilter = chip.dataset.status;
+        this.currentPage = 1;
         this.render();
       });
+    });
+
+    // Pagination handlers
+    this.container.querySelector('#btn-page-prev')?.addEventListener('click', () => {
+      sound.playClick();
+      this.prevPage();
+    });
+    this.container.querySelector('#btn-page-next')?.addEventListener('click', () => {
+      sound.playClick();
+      this.nextPage();
+    });
+    this.container.querySelector('#btn-page-prev-bottom')?.addEventListener('click', () => {
+      sound.playClick();
+      this.prevPage();
+    });
+    this.container.querySelector('#btn-page-next-bottom')?.addEventListener('click', () => {
+      sound.playClick();
+      this.nextPage();
     });
 
     // Audio Playback

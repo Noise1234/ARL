@@ -187,6 +187,16 @@ class KeyboardRouter {
       }
       if (key === 'n' || key === 'N') {
         e.preventDefault();
+        this.trigger('nav_notes');
+        return;
+      }
+      if (key === 'p' || key === 'P') {
+        e.preventDefault();
+        this.trigger('toggle_pip');
+        return;
+      }
+      if (key === '+' || key === '=') {
+        e.preventDefault();
         this.trigger('add_word');
         return;
       }

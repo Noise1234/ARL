@@ -4,6 +4,8 @@
  * when offline or when no Gemini API key is configured.
  */
 
+import { renderColorCodedDiff } from './diff.js';
+
 export function evaluateRuleFallback(input, targetTopic = '', targetLang = 'de') {
   const text = String(input ?? '').trim();
   if (!text) {
@@ -12,15 +14,19 @@ export function evaluateRuleFallback(input, targetTopic = '', targetLang = 'de')
       correctedSentence: '',
       why: 'Input is empty. Please write a sentence using the grammar rule.',
       naturalAlternative: '',
-      expBonus: 0
+      expBonus: 0,
+      diffHtml: '<span class="diff-error">Empty input</span>'
     };
   }
 
-  if (targetLang === 'de') {
-    return evaluateGermanSentence(text, targetTopic);
-  }
+  const res = targetLang === 'de'
+    ? evaluateGermanSentence(text, targetTopic)
+    : evaluateEnglishSentence(text, targetTopic);
 
-  return evaluateEnglishSentence(text, targetTopic);
+  if (!res.diffHtml) {
+    res.diffHtml = renderColorCodedDiff(text, res.correctedSentence, { why: res.why });
+  }
+  return res;
 }
 
 function evaluateGermanSentence(text, topic) {

@@ -11,16 +11,19 @@ import { MemorizeView } from './views/memorize.js';
 import { QuizView } from './views/quiz.js';
 import { LexiconView } from './views/lexicon.js';
 import { GrammarView } from './views/grammar.js';
+import { NotesView } from './views/notes.js';
 import { MediaView } from './views/media.js';
 import { SettingsModalView } from './views/settings.js';
 import { HelpModalView } from './views/help.js';
 import { ManualWordEntryModal } from './manual-entry.js';
+import { grammarPip } from './grammar-pip.js';
 
 class ARLApp {
   constructor() {
-    this.currentView = 'vocab'; // 'vocab' | 'memorize' | 'quiz' | 'lexicon' | 'grammar' | 'media'
+    this.currentView = 'vocab'; // 'vocab' | 'memorize' | 'quiz' | 'lexicon' | 'grammar' | 'notes' | 'media'
     this.isSettingsOpen = false;
     this.isHelpOpen = false;
+    this.theme = 'dark';
 
     this.hudView = null;
     this.studyView = null;
@@ -28,6 +31,7 @@ class ARLApp {
     this.quizView = null;
     this.lexiconView = null;
     this.grammarView = null;
+    this.notesView = null;
     this.mediaView = null;
     this.settingsView = null;
     this.helpView = null;
@@ -44,19 +48,33 @@ class ARLApp {
       });
     }
 
-    // 2. Initialize application state
+    // 2. Theme Initialization
+    try {
+      this.theme = localStorage.getItem('arl_theme') || 'dark';
+    } catch (e) {
+      this.theme = 'dark';
+    }
+    if (typeof document !== 'undefined' && document.documentElement) {
+      document.documentElement.setAttribute('data-theme', this.theme);
+    }
+
+    // 3. Initialize application state
     await state.init();
 
-    // 3. Mount layout containers
+    // 4. Mount layout containers
     this.renderLayout();
 
-    // 4. Instantiate Views
+    // 5. Instantiate Views
     const hudMount = document.getElementById('hud-mount');
     const mainMount = document.getElementById('main-mount');
     const settingsMount = document.getElementById('settings-mount');
     const modalMount = document.getElementById('modal-mount');
 
-    this.hudView = new TopHudView(hudMount, (viewName) => this.navigateTo(viewName));
+    this.hudView = new TopHudView(
+      hudMount,
+      (viewName) => this.navigateTo(viewName),
+      () => this.toggleTheme()
+    );
     this.studyView = new StudyView(mainMount);
     this.memorizeView = new MemorizeView(mainMount, (viewName) => this.navigateTo(viewName));
     this.quizView = new QuizView(mainMount, (viewName) => this.navigateTo(viewName));
@@ -66,6 +84,7 @@ class ARLApp {
       () => this.openAddWordModal()
     );
     this.grammarView = new GrammarView(mainMount, (viewName) => this.navigateTo(viewName));
+    this.notesView = new NotesView(mainMount, (viewName) => this.navigateTo(viewName));
     this.mediaView = new MediaView(mainMount, (viewName) => this.navigateTo(viewName));
     this.settingsView = new SettingsModalView(settingsMount, () => {
       this.isSettingsOpen = false;
@@ -79,21 +98,32 @@ class ARLApp {
       this.renderCurrentView();
     });
 
-    // 5. Connect Keyboard Router Actions
+    // 6. Mount Floating Grammar PiP Singleton
+    grammarPip.mount();
+
+    // 7. Connect Keyboard Router Actions
     this.setupKeyboardActions();
     keyboard.init();
 
-    // 6. Subscribe to State Changes
+    // 8. Subscribe to State Changes (Safe for in-progress grammar drills & notes)
     state.subscribe(() => {
       this.hudView.render();
-      if (!this.isSettingsOpen) {
-        this.renderCurrentView();
-      } else {
+      if (this.isSettingsOpen) {
         this.settingsView.render();
+        return;
       }
+      // If user is inside an active grammar topic drill or sandbox, do not reload/wipe the view!
+      if (this.currentView === 'grammar' && this.grammarView.activeTopic) {
+        return;
+      }
+      // If user is typing in notes, do not re-render notes on background EXP
+      if (this.currentView === 'notes') {
+        return;
+      }
+      this.renderCurrentView();
     });
 
-    // 7. Initial render
+    // 9. Initial render
     this.hudView.render();
     this.renderCurrentView();
   }
@@ -106,6 +136,17 @@ class ARLApp {
       <div id="settings-mount"></div>
       <div id="modal-mount"></div>
     `;
+  }
+
+  toggleTheme() {
+    this.theme = this.theme === 'light' ? 'dark' : 'light';
+    try {
+      localStorage.setItem('arl_theme', this.theme);
+    } catch (e) {}
+    if (typeof document !== 'undefined' && document.documentElement) {
+      document.documentElement.setAttribute('data-theme', this.theme);
+    }
+    this.hudView.render();
   }
 
   navigateTo(viewName) {
@@ -146,8 +187,14 @@ class ARLApp {
         this.lexiconView.render();
         break;
       case 'grammar':
-        await this.grammarView.loadData();
+        // Only load data if not loaded or if language changed
+        if (this.grammarView.folders.length === 0 || this.grammarView.loadedLang !== state.targetLang) {
+          await this.grammarView.loadData();
+        }
         this.grammarView.render();
+        break;
+      case 'notes':
+        this.notesView.render();
         break;
       case 'media':
         await this.mediaView.loadData();
@@ -187,7 +234,9 @@ class ARLApp {
     keyboard.on('nav_quiz', () => this.navigateTo('quiz'));
     keyboard.on('nav_lexicon', () => this.navigateTo('lexicon'));
     keyboard.on('nav_grammar', () => this.navigateTo('grammar'));
+    keyboard.on('nav_notes', () => this.navigateTo('notes'));
     keyboard.on('nav_media', () => this.navigateTo('media'));
+    keyboard.on('toggle_pip', () => grammarPip.toggle());
     keyboard.on('toggle_settings', () => this.toggleSettings());
     keyboard.on('toggle_help', () => this.toggleHelp());
     keyboard.on('add_word', () => this.openAddWordModal());
@@ -294,7 +343,8 @@ class ARLApp {
     });
     keyboard.on('grammar_back_to_list', () => {
       if (this.currentView === 'grammar' && this.grammarView.activeTopic) {
-        this.grammarView.backToList();
+        this.grammarView.activeTopic = null;
+        this.grammarView.render();
       }
     });
     keyboard.on('grammar_focus_search', () => {
@@ -324,7 +374,9 @@ class ARLApp {
 }
 
 // Bootstrap
-window.addEventListener('DOMContentLoaded', () => {
-  const app = new ARLApp();
-  app.init();
-});
+if (typeof window !== 'undefined') {
+  window.addEventListener('DOMContentLoaded', () => {
+    const app = new ARLApp();
+    app.init();
+  });
+}

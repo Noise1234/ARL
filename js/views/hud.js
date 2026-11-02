@@ -1,17 +1,19 @@
 /**
  * ARL - Single-Line Top HUD View with Integrated EXP & Level Progress
- * Renders: [DE·B1] (quick-level selector) | counts | Level & EXP progress | Nav items [V] [Q] [L] [G] [M] [S] [?]
- * Floating EXP badges container, tactile feedback, keyboard-driven navigation.
+ * Renders: [DE·B1] (quick-level selector) | counts | Level & EXP progress | Nav items [V] [M] [Q] [L] [G] [N] [I] [S] [P] [?]
+ * Theme Switcher (Dark / Light mode) and Mobile Bottom Navigation.
  */
 
 import { state } from '../state.js';
 import { t } from '../i18n.js';
 import { sound } from '../sound.js';
+import { grammarPip } from '../grammar-pip.js';
 
 export class TopHudView {
-  constructor(containerEl, onNavigate) {
+  constructor(containerEl, onNavigate, onToggleTheme) {
     this.container = containerEl;
     this.onNavigate = onNavigate;
+    this.onToggleTheme = onToggleTheme;
     this.currentView = 'vocab';
     this.isLevelDropdownOpen = false;
   }
@@ -74,7 +76,7 @@ export class TopHudView {
 
         <nav class="hud-nav" aria-label="Main Navigation">
           <button class="hud-nav-item ${this.currentView === 'vocab' ? 'active' : ''}" id="nav-btn-vocab" data-key="v" title="Keyboard: V">
-            <span class="hud-key">[V]</span><span class="hud-label">${t('hud_vocab').replace(/\[V\]\s*/, '')}</span>
+            <span class="hud-key">[V]</span><span class="hud-label">${t('hud_vocab') ? t('hud_vocab').replace(/\[V\]\s*/, '') : 'Vocab'}</span>
           </button>
           <button class="hud-nav-item ${this.currentView === 'memorize' ? 'active' : ''}" id="nav-btn-memorize" data-key="m" title="Keyboard: M">
             <span class="hud-key">[M]</span><span class="hud-label">${t('hud_memorize') ? t('hud_memorize').replace(/\[M\]\s*/, '') : 'Memorize'}</span>
@@ -86,13 +88,22 @@ export class TopHudView {
             <span class="hud-key">[L]</span><span class="hud-label">${t('hud_lexicon') ? t('hud_lexicon').replace(/\[L\]\s*/, '') : 'Lexicon'}</span>
           </button>
           <button class="hud-nav-item ${this.currentView === 'grammar' ? 'active' : ''}" id="nav-btn-grammar" data-key="g" title="Keyboard: G">
-            <span class="hud-key">[G]</span><span class="hud-label">${t('hud_grammar').replace(/\[G\]\s*/, '')}</span>
+            <span class="hud-key">[G]</span><span class="hud-label">${t('hud_grammar') ? t('hud_grammar').replace(/\[G\]\s*/, '') : 'Grammar'}</span>
+          </button>
+          <button class="hud-nav-item ${this.currentView === 'notes' ? 'active' : ''}" id="nav-btn-notes" data-key="n" title="Keyboard: N">
+            <span class="hud-key">[N]</span><span class="hud-label">Notes</span>
           </button>
           <button class="hud-nav-item ${this.currentView === 'media' ? 'active' : ''}" id="nav-btn-media" data-key="i" title="Keyboard: I">
-            <span class="hud-key">[I]</span><span class="hud-label">${t('hud_media').replace(/\[[MI]\]\s*/, '')}</span>
+            <span class="hud-key">[I]</span><span class="hud-label">${t('hud_media') ? t('hud_media').replace(/\[[MI]\]\s*/, '') : 'Media'}</span>
+          </button>
+          <button class="hud-nav-item" id="nav-btn-pip" data-key="p" title="Toggle Floating Grammar PiP [P]">
+            <span class="hud-key">[P]</span><span class="hud-label">PiP</span>
+          </button>
+          <button class="hud-nav-item hud-theme-btn" id="nav-btn-theme" title="Toggle Dark/Light Mode">
+            <span class="hud-key">🌓</span>
           </button>
           <button class="hud-nav-item ${this.currentView === 'settings' ? 'active' : ''}" id="nav-btn-settings" data-key="s" title="Keyboard: S">
-            <span class="hud-key">[S]</span><span class="hud-label">${t('hud_settings').replace(/\[S\]\s*/, '')}</span>
+            <span class="hud-key">[S]</span><span class="hud-label">${t('hud_settings') ? t('hud_settings').replace(/\[S\]\s*/, '') : 'Settings'}</span>
           </button>
           <button class="hud-nav-item hud-help-btn" id="nav-btn-help" data-key="?" title="Keyboard: ?">
             <span class="hud-key">[?]</span>
@@ -102,6 +113,34 @@ export class TopHudView {
 
       <!-- Container for Floating EXP Particles -->
       <div id="exp-floating-container" class="exp-floating-container" aria-hidden="true"></div>
+
+      <!-- Mobile Bottom Navigation Bar (Hidden on desktop, active on mobile portrait) -->
+      <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
+        <button class="mobile-nav-tab ${this.currentView === 'vocab' ? 'active' : ''}" data-target="vocab">
+          <span class="tab-icon">🗂</span>
+          <span class="tab-label">Vocab</span>
+        </button>
+        <button class="mobile-nav-tab ${this.currentView === 'memorize' ? 'active' : ''}" data-target="memorize">
+          <span class="tab-icon">⚡</span>
+          <span class="tab-label">Sprint</span>
+        </button>
+        <button class="mobile-nav-tab ${this.currentView === 'quiz' ? 'active' : ''}" data-target="quiz">
+          <span class="tab-icon">🎯</span>
+          <span class="tab-label">Quiz</span>
+        </button>
+        <button class="mobile-nav-tab ${this.currentView === 'lexicon' ? 'active' : ''}" data-target="lexicon">
+          <span class="tab-icon">📚</span>
+          <span class="tab-label">Lexicon</span>
+        </button>
+        <button class="mobile-nav-tab ${this.currentView === 'grammar' ? 'active' : ''}" data-target="grammar">
+          <span class="tab-icon">📐</span>
+          <span class="tab-label">Grammar</span>
+        </button>
+        <button class="mobile-nav-tab ${this.currentView === 'notes' ? 'active' : ''}" data-target="notes">
+          <span class="tab-icon">📝</span>
+          <span class="tab-label">Notes</span>
+        </button>
+      </nav>
     `;
 
     // Bind events
@@ -124,7 +163,7 @@ export class TopHudView {
       this.render();
     });
 
-    // Quick Level selector chips
+    // Quick level dropdown items
     this.container.querySelectorAll('.quick-lvl-chip').forEach(chip => {
       chip.addEventListener('click', async (e) => {
         e.stopPropagation();
@@ -150,6 +189,20 @@ export class TopHudView {
       setTimeout(() => document.addEventListener('click', closePopup), 10);
     }
 
+    // Theme Switcher Button
+    this.container.querySelector('#nav-btn-theme')?.addEventListener('click', () => {
+      sound.playClick();
+      if (typeof this.onToggleTheme === 'function') {
+        this.onToggleTheme();
+      }
+    });
+
+    // PiP Button
+    this.container.querySelector('#nav-btn-pip')?.addEventListener('click', () => {
+      sound.playClick();
+      grammarPip.toggle();
+    });
+
     // Navigation buttons
     const navActions = [
       ['#nav-btn-vocab', 'vocab'],
@@ -157,6 +210,7 @@ export class TopHudView {
       ['#nav-btn-quiz', 'quiz'],
       ['#nav-btn-lexicon', 'lexicon'],
       ['#nav-btn-grammar', 'grammar'],
+      ['#nav-btn-notes', 'notes'],
       ['#nav-btn-media', 'media'],
       ['#nav-btn-settings', 'settings'],
       ['#nav-btn-help', 'help']
@@ -166,6 +220,17 @@ export class TopHudView {
       this.container.querySelector(sel)?.addEventListener('click', () => {
         sound.playClick();
         if (typeof this.onNavigate === 'function') {
+          this.onNavigate(target);
+        }
+      });
+    });
+
+    // Mobile Bottom Navigation Tabs
+    this.container.querySelectorAll('.mobile-nav-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        sound.playClick();
+        const target = tab.getAttribute('data-target');
+        if (target && typeof this.onNavigate === 'function') {
           this.onNavigate(target);
         }
       });
