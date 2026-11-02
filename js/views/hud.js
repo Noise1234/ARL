@@ -50,6 +50,7 @@ export class TopHudView {
                     ${lvl.toUpperCase()}
                   </button>
                 `).join('')}
+                <button class="quick-lvl-chip" id="quick-lvl-settings" title="Settings">⚙️</button>
               </div>
             ` : ''}
           </div>
@@ -99,11 +100,11 @@ export class TopHudView {
           <button class="hud-nav-item" id="nav-btn-pip" data-key="p" title="Toggle Floating Grammar PiP [P]">
             <span class="hud-key">[P]</span><span class="hud-label">PiP</span>
           </button>
-          <button class="hud-nav-item hud-theme-btn" id="nav-btn-theme" title="Toggle Dark/Light Mode">
+          <button class="hud-nav-item hud-theme-btn" id="nav-btn-theme" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
             <span class="hud-key">🌓</span>
           </button>
-          <button class="hud-nav-item ${this.currentView === 'settings' ? 'active' : ''}" id="nav-btn-settings" data-key="s" title="Keyboard: S">
-            <span class="hud-key">[S]</span><span class="hud-label">${t('hud_settings') ? t('hud_settings').replace(/\[S\]\s*/, '') : 'Settings'}</span>
+          <button class="hud-nav-item hud-settings-btn ${this.currentView === 'settings' ? 'active' : ''}" id="nav-btn-settings" data-key="s" title="Settings (Keyboard: S)" aria-label="Settings">
+            <span class="hud-key">⚙️</span><span class="hud-label">${t('hud_settings') ? t('hud_settings').replace(/\[S\]\s*/, '') : 'Settings'}</span>
           </button>
           <button class="hud-nav-item hud-help-btn" id="nav-btn-help" data-key="?" title="Keyboard: ?">
             <span class="hud-key">[?]</span>
@@ -175,6 +176,17 @@ export class TopHudView {
           this.render();
         }
       });
+    });
+
+    // Quick level settings shortcut
+    this.container.querySelector('#quick-lvl-settings')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sound.playClick();
+      this.isLevelDropdownOpen = false;
+      this.render();
+      if (typeof this.onNavigate === 'function') {
+        this.onNavigate('settings');
+      }
     });
 
     // Close dropdown on outside click

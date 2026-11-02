@@ -83,4 +83,11 @@ export async function runResponsiveThemeTests(it) {
     assert(componentsCss.includes('@media (orientation: landscape) and (max-height: 500px) and (max-width: 960px)'), 'Landscape short media query must exist');
     assert(componentsCss.includes('padding-bottom: 44px;'), 'Landscape layout must reserve compact bottom padding');
   });
+
+  await it('Mobile Settings Access: Settings gear icon ⚙️ is visible on phone viewports', () => {
+    assert(hudJs.includes('id="nav-btn-settings"'), 'nav-btn-settings must exist in hud.js');
+    assert(hudJs.includes('⚙️'), 'hud.js must render ⚙️ gear icon');
+    assert(hudJs.includes('id="quick-lvl-settings"'), 'quick-lvl-settings shortcut must exist in level dropdown');
+    assert(componentsCss.includes('#nav-btn-settings {'), 'components.css must configure nav-btn-settings for mobile');
+  });
 }

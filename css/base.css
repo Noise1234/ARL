@@ -167,7 +167,8 @@ button:focus-visible {
 .hud-streak-pill,
 .hud-multiplier-pill,
 .emoji-icon,
-.hud-theme-btn {
+.hud-theme-btn,
+.hud-settings-btn {
   filter: none !important;
   -webkit-filter: none !important;
 }
