@@ -25,7 +25,9 @@ const server = http.createServer((req, res) => {
   if (cleanUrl === '/' || cleanUrl === '') {
     cleanUrl = '/index.html';
   } else if (cleanUrl === '/download' || cleanUrl === '/apk' || cleanUrl === '/download/apk') {
-    cleanUrl = '/dist/ARL-v2.0.apk';
+    cleanUrl = fs.existsSync(path.join(ROOT, 'dist/ARL-v2.2.0.apk'))
+      ? '/dist/ARL-v2.2.0.apk'
+      : '/dist/ARL-v2.0.apk';
   }
 
   const filePath = path.join(ROOT, cleanUrl);
@@ -54,7 +56,8 @@ const server = http.createServer((req, res) => {
     };
 
     if (ext === '.apk') {
-      headers['Content-Disposition'] = 'attachment; filename="ARL-v2.0.apk"';
+      const filename = path.basename(filePath);
+      headers['Content-Disposition'] = `attachment; filename="${filename}"`;
     }
 
     res.writeHead(200, headers);

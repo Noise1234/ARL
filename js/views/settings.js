@@ -201,10 +201,10 @@ export class SettingsModalView {
 
             <!-- Android Native APK Download -->
             <div class="settings-row settings-apk-row">
-              <span class="settings-label">Android Native App (v2.0.6)</span>
+              <span class="settings-label">Android Native App (v2.2.0)</span>
               <div class="apk-download-group">
-                <a href="/apk" class="settings-action-btn touch-target btn-download-apk" download="ARL-v2.0.apk" style="text-decoration:none; text-align:center;">
-                  <span class="micro-bracket">[APK]</span> Download Android APK v2.0.6 (~2.1MB)
+                <a href="/apk" class="settings-action-btn touch-target btn-download-apk" download="ARL-v2.2.0.apk" style="text-decoration:none; text-align:center;">
+                  <span class="micro-bracket">[APK]</span> Download Android APK v2.2.0 (Latest Release)
                 </a>
               </div>
             </div>
