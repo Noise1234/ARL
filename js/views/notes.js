@@ -145,6 +145,10 @@ export class NotesView {
           </div>
 
           <div class="notes-sidebar-footer">
+            <button class="notes-import-btn touch-target" id="btn-import-note" title="Import note JSON or text file">
+              [+] Import Note
+            </button>
+            <input type="file" id="notes-file-import-input" accept=".json,.txt,.md" style="display: none;" />
             <button class="notes-pip-toggle-btn touch-target" id="btn-toggle-grammar-pip">
               [P] Open Grammar PiP
             </button>
@@ -164,6 +168,9 @@ export class NotesView {
             />
             <div class="notes-status-group">
               <span class="notes-save-status" id="notes-save-status">[✓] Saved</span>
+              <button class="btn-pip-quick-launch" id="btn-export-note" title="Export current note as JSON">
+                [↓] Export
+              </button>
               <button class="btn-pip-quick-launch" id="btn-launch-pip-editor" title="Open Grammar Reference PiP">
                 [P] Grammar PiP
               </button>
@@ -297,6 +304,86 @@ export class NotesView {
     };
     this.container.querySelector('#btn-toggle-grammar-pip')?.addEventListener('click', togglePip);
     this.container.querySelector('#btn-launch-pip-editor')?.addEventListener('click', togglePip);
+
+    // Import note file (.json / .txt / .md)
+    const importBtn = this.container.querySelector('#btn-import-note');
+    const importInput = this.container.querySelector('#notes-file-import-input');
+    if (importBtn && importInput) {
+      importBtn.addEventListener('click', () => {
+        sound.playClick();
+        importInput.value = '';
+        importInput.click();
+      });
+
+      importInput.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          try {
+            const raw = evt.target.result;
+            let importedNotes = [];
+            const trimmed = (raw || '').trim();
+            if (trimmed.startsWith('[') || trimmed.startsWith('{')) {
+              const parsed = JSON.parse(trimmed);
+              if (Array.isArray(parsed)) {
+                importedNotes = parsed.filter(n => n && typeof n.content === 'string');
+              } else if (parsed.localStorage && parsed.localStorage.arl_smart_notes) {
+                const inner = JSON.parse(parsed.localStorage.arl_smart_notes);
+                if (Array.isArray(inner)) importedNotes = inner;
+              } else if (parsed.content) {
+                importedNotes = [parsed];
+              }
+            } else {
+              // Plain text or markdown
+              importedNotes = [{
+                id: 'note_' + Date.now(),
+                title: file.name.replace(/\.[^/.]+$/, ''),
+                content: trimmed,
+                updatedAt: Date.now()
+              }];
+            }
+
+            if (importedNotes.length > 0) {
+              for (const note of importedNotes.reverse()) {
+                const cleanNote = {
+                  id: note.id || ('note_' + Date.now() + Math.random().toString(36).substr(2, 4)),
+                  title: note.title || 'Imported Note',
+                  content: note.content || '',
+                  updatedAt: note.updatedAt || Date.now()
+                };
+                if (this.notes.some(n => n.id === cleanNote.id)) {
+                  cleanNote.id = 'note_' + Date.now() + Math.random().toString(36).substr(2, 4);
+                }
+                this.notes.unshift(cleanNote);
+              }
+              this.activeNoteId = this.notes[0].id;
+              this.saveNotes();
+              this.render();
+            }
+          } catch (err) {
+            console.error('Note file import error:', err);
+          }
+        };
+        reader.readAsText(file);
+      });
+    }
+
+    // Export current note
+    this.container.querySelector('#btn-export-note')?.addEventListener('click', () => {
+      sound.playClick();
+      const current = this.getActiveNote();
+      if (!current) return;
+      const exportData = [current];
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `arl_note_${(current.title || 'study_note').replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
 
     // Title input
     const titleInput = this.container.querySelector('#note-title-input');
