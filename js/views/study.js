@@ -8,6 +8,7 @@ import { state } from '../state.js';
 import { t } from '../i18n.js';
 import { keyboard, KeyboardState } from '../keyboard.js';
 import { gistSync } from '../sync.js';
+import { telemetry } from '../telemetry.js';
 
 export class StudyView {
   constructor(containerEl) {
@@ -89,6 +90,7 @@ export class StudyView {
     const progressPct = totalInBatch > 0 ? Math.round(((currentIdx - 1) / totalInBatch) * 100) : 0;
     const session = state.getSessionStats();
     const levelStats = state.getLevelStats();
+    const memCounts = telemetry.getMemorizedCounts(state.cards, state.progressMap);
 
     // Highlight cloze blanks in prompt
     const promptText = (card.prompt_front || card.word).replace(
@@ -98,6 +100,14 @@ export class StudyView {
 
     this.container.innerHTML = `
       <div class="study-card-wrapper study-landscape-split">
+        <!-- 4-Card Words Memorized Counter Grid (Week / Month / Season / Year) -->
+        <div class="memorized-grid-4 vocab-overview-grid" title="Words Memorized Counter Grid">
+          <div class="mem-stat-card"><span class="mem-stat-label">WEEK</span><span class="mem-stat-val text-blue">${memCounts.week}</span></div>
+          <div class="mem-stat-card"><span class="mem-stat-label">MONTH</span><span class="mem-stat-val text-emerald">${memCounts.month}</span></div>
+          <div class="mem-stat-card"><span class="mem-stat-label">SEASON</span><span class="mem-stat-val text-amber">${memCounts.season}</span></div>
+          <div class="mem-stat-card"><span class="mem-stat-label">YEAR</span><span class="mem-stat-val text-purple">${memCounts.year}</span></div>
+        </div>
+
         <!-- Main Flashcard with Embedded Centered Progress Meter -->
         <div class="active-flashcard unrevealed-flashcard" id="active-card-element">
           
@@ -176,6 +186,7 @@ export class StudyView {
     const progressPct = totalInBatch > 0 ? Math.round((currentIdx / totalInBatch) * 100) : 0;
     const session = state.getSessionStats();
     const levelStats = state.getLevelStats();
+    const memCounts = telemetry.getMemorizedCounts(state.cards, state.progressMap);
 
     // Sentence example with target highlight
     let exampleTarget = '';
@@ -225,6 +236,14 @@ export class StudyView {
 
     this.container.innerHTML = `
       <div class="study-card-wrapper study-landscape-split">
+        <!-- 4-Card Words Memorized Counter Grid (Week / Month / Season / Year) -->
+        <div class="memorized-grid-4 vocab-overview-grid" title="Words Memorized Counter Grid">
+          <div class="mem-stat-card"><span class="mem-stat-label">WEEK</span><span class="mem-stat-val text-blue">${memCounts.week}</span></div>
+          <div class="mem-stat-card"><span class="mem-stat-label">MONTH</span><span class="mem-stat-val text-emerald">${memCounts.month}</span></div>
+          <div class="mem-stat-card"><span class="mem-stat-label">SEASON</span><span class="mem-stat-val text-amber">${memCounts.season}</span></div>
+          <div class="mem-stat-card"><span class="mem-stat-label">YEAR</span><span class="mem-stat-val text-purple">${memCounts.year}</span></div>
+        </div>
+
         <!-- Main Flashcard with Embedded Centered Progress Meter -->
         <div class="active-flashcard revealed-state" id="active-card-element">
           

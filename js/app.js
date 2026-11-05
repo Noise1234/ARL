@@ -18,12 +18,16 @@ import { HelpModalView } from './views/help.js';
 import { ManualWordEntryModal } from './manual-entry.js';
 import { grammarPip } from './grammar-pip.js';
 import { gistSync } from './sync.js';
+import { telemetry } from './telemetry.js';
+import { StatsView } from './views/stats.js';
+import { SyncModalView } from './views/sync-modal.js';
 
 class ARLApp {
   constructor() {
-    this.currentView = 'vocab'; // 'vocab' | 'memorize' | 'quiz' | 'lexicon' | 'grammar' | 'notes' | 'media'
+    this.currentView = 'vocab'; // 'vocab' | 'memorize' | 'quiz' | 'lexicon' | 'grammar' | 'notes' | 'media' | 'stats'
     this.isSettingsOpen = false;
     this.isHelpOpen = false;
+    this.isSyncModalOpen = false;
     this.theme = 'dark';
 
     this.hudView = null;
@@ -34,8 +38,10 @@ class ARLApp {
     this.grammarView = null;
     this.notesView = null;
     this.mediaView = null;
+    this.statsView = null;
     this.settingsView = null;
     this.helpView = null;
+    this.syncModal = null;
     this.manualEntryModal = null;
   }
 
@@ -59,8 +65,9 @@ class ARLApp {
       document.documentElement.setAttribute('data-theme', this.theme);
     }
 
-    // 3. Initialize application state
+    // 3. Initialize application state and telemetry
     await state.init();
+    await telemetry.init();
 
     // 4. Mount layout containers
     this.renderLayout();
@@ -87,6 +94,7 @@ class ARLApp {
     this.grammarView = new GrammarView(mainMount, (viewName) => this.navigateTo(viewName));
     this.notesView = new NotesView(mainMount, (viewName) => this.navigateTo(viewName));
     this.mediaView = new MediaView(mainMount, (viewName) => this.navigateTo(viewName));
+    this.statsView = new StatsView(mainMount, (viewName) => this.navigateTo(viewName));
     this.settingsView = new SettingsModalView(settingsMount, () => {
       this.isSettingsOpen = false;
       this.hudView.setActiveView(this.currentView);
@@ -94,6 +102,9 @@ class ARLApp {
     });
     this.helpView = new HelpModalView(modalMount, () => {
       this.isHelpOpen = false;
+    });
+    this.syncModal = new SyncModalView(modalMount, () => {
+      this.isSyncModalOpen = false;
     });
     this.manualEntryModal = new ManualWordEntryModal(modalMount, () => {
       this.renderCurrentView();
@@ -163,12 +174,19 @@ class ARLApp {
       this.toggleHelp();
       return;
     }
+    if (viewName === 'sync' || viewName === 'sync-modal') {
+      this.openSyncModal();
+      return;
+    }
 
     if (this.isSettingsOpen) {
       this.settingsView.close();
     }
     if (this.isHelpOpen) {
       this.helpView.close();
+    }
+    if (this.isSyncModalOpen) {
+      this.syncModal.hide();
     }
 
     this.currentView = viewName;
@@ -177,6 +195,8 @@ class ARLApp {
   }
 
   async renderCurrentView() {
+    telemetry.setActiveSection(this.currentView === 'memorize' ? 'sprint' : this.currentView);
+
     switch (this.currentView) {
       case 'vocab':
         this.studyView.render();
@@ -204,7 +224,16 @@ class ARLApp {
         await this.mediaView.loadData();
         this.mediaView.render();
         break;
+      case 'stats':
+        this.statsView.render();
+        break;
     }
+  }
+
+  openSyncModal() {
+    state.stopAudio();
+    this.isSyncModalOpen = true;
+    this.syncModal.show();
   }
 
   toggleSettings() {
@@ -240,6 +269,8 @@ class ARLApp {
     keyboard.on('nav_grammar', () => this.navigateTo('grammar'));
     keyboard.on('nav_notes', () => this.navigateTo('notes'));
     keyboard.on('nav_media', () => this.navigateTo('media'));
+    keyboard.on('nav_stats', () => this.navigateTo('stats'));
+    keyboard.on('toggle_sync', () => this.openSyncModal());
     keyboard.on('toggle_pip', () => grammarPip.toggle());
     keyboard.on('toggle_settings', () => this.toggleSettings());
     keyboard.on('toggle_help', () => this.toggleHelp());

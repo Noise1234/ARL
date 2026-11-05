@@ -88,19 +88,21 @@ export class MediaView {
         <div class="media-cards-list">
           ${filtered.length === 0 ? `
             <div class="empty-state">No media recommendations matching selected filters.</div>
-          ` : filtered.map(item => {
+          ` : filtered.map((item, idx) => {
             const desc = item.description[uiLang] || item.description.en || item.description.de || '';
             return `
-              <div class="media-card-item">
-                <div class="media-card-header">
-                  <span class="media-type-badge">${item.type.toUpperCase()}</span>
-                  <span class="media-level-badge">${item.level}</span>
-                  <h3 class="media-card-title">${item.title}</h3>
+              <div class="arl-card media-card-item">
+                <div class="arl-card-header">
+                  <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 6px;">
+                    <span class="arl-card-num-badge">${String(idx + 1).padStart(2, '0')}. ${item.type.toUpperCase()}</span>
+                    <span class="media-level-badge" style="background:#1e293b; color:#cbd5e1; border:1px solid #334155; padding:2px 8px; border-radius:6px; font-size:0.75rem; font-family:'JetBrains Mono', monospace;">${item.level}</span>
+                  </div>
+                  <h3 class="arl-card-title">${item.title}</h3>
                 </div>
-                <p class="media-card-desc">${desc}</p>
+                <p class="media-card-desc" style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.5; margin: 8px 0;">${desc}</p>
                 ${item.note ? `
-                  <div class="media-card-note">
-                    <span class="note-label">Immersion Tip:</span> ${item.note}
+                  <div class="arl-card-formula" style="border-left-color: #10b981; color: #a7f3d0; margin-top: 10px;">
+                    <strong style="color: #6ee7b7;">Immersion Tip:</strong> ${item.note}
                   </div>
                 ` : ''}
               </div>

@@ -10,6 +10,7 @@ import { t } from '../i18n.js';
 import { sound } from '../sound.js';
 import { grammarPip } from '../grammar-pip.js';
 import { gistSync } from '../sync.js';
+import { telemetry } from '../telemetry.js';
 
 export class TopHudView {
   constructor(containerEl, onNavigate, onToggleTheme) {
@@ -24,6 +25,14 @@ export class TopHudView {
       const syncBtn = this.container.querySelector('#hud-sync-status .hud-key');
       if (syncBtn) {
         syncBtn.textContent = gistSync.getShortStatusLabel();
+      }
+    });
+
+    // Subscribe to telemetry heartbeat to update live study timer
+    this.unsubscribeTelemetry = telemetry.subscribe(() => {
+      const timerEl = this.container.querySelector('#hud-live-timer');
+      if (timerEl) {
+        timerEl.textContent = telemetry.formatSessionTime();
       }
     });
   }
@@ -72,6 +81,7 @@ export class TopHudView {
         </div>
 
         <div class="hud-center">
+          <span class="hud-live-timer-badge" id="hud-live-timer" title="Active Study Time">${telemetry.formatSessionTime()}</span>
           <!-- Level & EXP Progress Track -->
           <div class="hud-exp-badge" title="Level ${levelStats.level}: ${levelStats.expInCurrentLevel || 0}/${levelStats.expNeededForNext || 100} EXP (${levelStats.totalExp} Total)">
             <span class="hud-level-pill">Lv.${levelStats.level}</span>
@@ -108,6 +118,9 @@ export class TopHudView {
           <button class="hud-nav-item ${this.currentView === 'media' ? 'active' : ''}" id="nav-btn-media" data-key="i" title="Keyboard: I">
             <span class="hud-key">[I]</span><span class="hud-label">${t('hud_media') ? t('hud_media').replace(/\[[MI]\]\s*/, '') : 'Media'}</span>
           </button>
+          <button class="hud-nav-item ${this.currentView === 'stats' ? 'active' : ''}" id="nav-btn-stats" data-key="x" title="Telemetry & Visual Analytics [Stats]">
+            <span class="hud-key">[X]</span><span class="hud-label">Stats</span>
+          </button>
           <button class="hud-nav-item" id="nav-btn-pip" data-key="p" title="Toggle Floating Grammar PiP [P]">
             <span class="hud-key">[P]</span><span class="hud-label">PiP</span>
           </button>
@@ -129,7 +142,7 @@ export class TopHudView {
       <!-- Container for Floating EXP Particles -->
       <div id="exp-floating-container" class="exp-floating-container" aria-hidden="true"></div>
 
-      <!-- Mobile Bottom Navigation Bar: Full 8-Module Typographic Coverage -->
+      <!-- Mobile Bottom Navigation Bar: Full Typographic Coverage -->
       <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
         <button class="mobile-nav-tab ${this.currentView === 'vocab' ? 'active' : ''}" data-target="vocab">
           <span class="tab-key">[V]</span>
@@ -158,6 +171,10 @@ export class TopHudView {
         <button class="mobile-nav-tab ${this.currentView === 'media' ? 'active' : ''}" data-target="media">
           <span class="tab-key">[I]</span>
           <span class="tab-label">Media</span>
+        </button>
+        <button class="mobile-nav-tab ${this.currentView === 'stats' ? 'active' : ''}" data-target="stats">
+          <span class="tab-key">[X]</span>
+          <span class="tab-label">Stats</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'pip' ? 'active' : ''}" data-target="pip">
           <span class="tab-key">[P]</span>
@@ -223,19 +240,11 @@ export class TopHudView {
       setTimeout(() => document.addEventListener('click', closePopup), 10);
     }
 
-    // Sync button in header: click to open settings or sync
-    this.container.querySelector('#hud-sync-status')?.addEventListener('click', async (e) => {
+    // Sync button in header: click to open interactive Sync Diagnostics modal
+    this.container.querySelector('#hud-sync-status')?.addEventListener('click', (e) => {
       sound.playClick();
-      if (!gistSync.isConnected() || e.shiftKey) {
-        if (typeof this.onNavigate === 'function') {
-          this.onNavigate('settings');
-        }
-      } else {
-        try {
-          await gistSync.push();
-        } catch (err) {
-          console.warn('Manual sync error:', err);
-        }
+      if (typeof this.onNavigate === 'function') {
+        this.onNavigate('sync');
       }
     });
 
@@ -262,6 +271,7 @@ export class TopHudView {
       ['#nav-btn-grammar', 'grammar'],
       ['#nav-btn-notes', 'notes'],
       ['#nav-btn-media', 'media'],
+      ['#nav-btn-stats', 'stats'],
       ['#nav-btn-settings', 'settings'],
       ['#nav-btn-help', 'help']
     ];

@@ -1,0 +1,2187 @@
+{
+  "expenditure": [
+    "The finance ministry announced a reduction in overall government expenditure.",
+    "Сангийн яам засгийн газрын нийт зардлыг бууруулахаа мэдэгдэв.",
+    "Das Finanzministerium kündigte eine Senkung der gesamten Staatsausgaben an."
+  ],
+  "volatility": [
+    "Geopolitical tensions triggered extreme price volatility across global commodity markets.",
+    "Геополитикийн хурцадмал байдал нь түүхий эдийн зах зээл дээр үнийн огцом хэлбэлзлийг үүсгэв.",
+    "Geopolitische Spannungen lösten extreme Preisvolatilität auf den Rohstoffmärkten aus."
+  ],
+  "cartel": [
+    "Antitrust regulators dismantled an international shipping cartel for fixing container rates.",
+    "Шударга өрсөлдөөний газар тээврийн үнийг тохиролцсон олон улсын картель, хуйвалдааныг таслан зогсоов.",
+    "Die Kartellbehörden zerschlugen ein Schifffahrtskartell wegen illegaler Preisabsprachen."
+  ],
+  "appreciation": [
+    "Low interest rates fueled the steady capital appreciation of commercial urban real estate.",
+    "Зээлийн бага хүү нь хотын арилжааны үл хөдлөх хөрөнгийн үнэ цэнийн өсөлтийг өдөөжээ.",
+    "Niedrige Zinsen trieben den stetigen Wertzuwachs von Gewerbeimmobilien an."
+  ],
+  "subsidy": [
+    "The agricultural cooperative received a generous government subsidy to purchase tractors.",
+    "Хөдөө аж ахуйн хоршоо трактор худалдан авахад зориулж улсаас татаас авчээ.",
+    "Die landwirtschaftliche Genossenschaft erhielt eine staatliche Subvention für Traktoren."
+  ],
+  "tariff": [
+    "The trade ministry imposed a fifteen percent protective import tariff on imported steel.",
+    "Худалдааны яам импортын ганд арван таван хувийн гаалийн татвар ногдуулсан.",
+    "Das Handelsministerium erhob einen Schutzzoll von fünfzehn Prozent auf Stahl."
+  ],
+  "remittance": [
+    "Overseas workers sent crucial financial remittance back to support their rural families.",
+    "Гадаадад ажиллаж буй иргэд ар гэрийнхэндээ зориулж чухал мөнгөн гуйвуулга, илгээмж илгээв.",
+    "Gastarbeiter sandten wichtige finanzielle Rücküberweisungen an ihre Familien in der Heimat."
+  ],
+  "procurement": [
+    "The hospital standardized its medical equipment procurement process to reduce overhead.",
+    "Эмнэлэг зардлыг бууруулахын тулд эмнэлгийн тоног төхөөрөмж худалдан авах ажиллагааг стандартчилсан.",
+    "Das Krankenhaus standardisierte seinen Beschaffungsprozess für medizinische Geräte."
+  ],
+  "benchmark": [
+    "The index serves as an industry benchmark for evaluating sustainable investment funds.",
+    "Уг индекс нь тогтвортой хөрөнгө оруулалтын сангуудыг үнэлэх салбарын жишиг үзүүлэлт болдог.",
+    "Der Index dient als Branchen-Benchmark für die Bewertung nachhaltiger Fonds."
+  ],
+  "tribunal": [
+    "An independent international tribunal adjudicated the territorial maritime boundary dispute.",
+    "Олон улсын хараат бус тусгай шүүх далайн хилийн маргааныг шийдвэрлэн шүүжээ.",
+    "Ein internationales Schiedsgericht entschied über den maritimen Grenzstreit."
+  ],
+  "decree": [
+    "The sovereign issued a royal decree declaring the coastal wetland a protected reserve.",
+    "Төрийн тэргүүн далайн эргийн намгархаг газрыг тусгай хамгаалалттай бүс болгох зарлиг гаргав.",
+    "Der Herrscher erließ ein Dekret, das das Feuchtgebiet zum Schutzgebiet erklärte."
+  ],
+  "jurisdiction": [
+    "Federal courts have exclusive constitutional jurisdiction over interstate commerce lawsuits.",
+    "Холбооны шүүх муж хоорондын худалдааны маргааныг хянан шийдвэрлэх харьяалалтай байдаг.",
+    "Bundesgerichte haben ausschließliche Zuständigkeit für zwischenstaatliche Handelsklagen."
+  ],
+  "breach": [
+    "Failing to deliver cargo on the agreed deadline constituted a material breach of contract.",
+    "Ачааг тохиролцсон хугацаанд хүлээлгэн өгөөгүй нь гэрээний ноцтой зөрчил болсон.",
+    "Die Nichtlieferung der Fracht stellte einen wesentlichen Vertragsbruch dar."
+  ],
+  "compensation": [
+    "The airline provided full financial compensation to passengers whose flights were canceled.",
+    "Агаарын тээврийн компани нислэг нь цуцлагдсан зорчигчдод нөхөн төлбөрийг бүрэн олгосон.",
+    "Die Fluggesellschaft leistete finanzielle Entschädigung für die gestrichenen Flüge."
+  ],
+  "liability": [
+    "Limited liability structures shield business owners from personal bankruptcy risks.",
+    "Хариуцлага хязгаарлагдмал бүтэц нь бизнес эрхлэгчдийг хувийн дампуурлын эрсдэлээс хамгаалдаг.",
+    "Haftungsbeschränkungen schützen Unternehmensinhaber vor persönlicher Insolvenz."
+  ],
+  "indemnity": [
+    "The insurance policy included an indemnity clause covering potential property damages.",
+    "Даатгалын гэрээнд учирч болзошгүй эд хөрөнгийн хохирлыг нөхөн барагдуулах баталгаа багтжээ.",
+    "Die Police enthielt eine Freistellungsklausel für potenzielle Sachschäden."
+  ],
+  "grievance": [
+    "Employees formally submitted an official grievance regarding unsafe laboratory ventilation.",
+    "Ажилтнууд лабораторийн агааржуулалт хангалтгүй байгаа талаар албан ёсны гомдол гаргав.",
+    "Die Angestellten reichten eine formelle Beschwerde über unzureichende Belüftung ein."
+  ],
+  "infringement": [
+    "The tech company sued its competitor for blatant patent infringement.",
+    "Технологийн компани өрсөлдөгчөө патентын эрхийг зөрчсөн хэмээн шүүхэд өгчээ.",
+    "Das Technologieunternehmen verklagte seinen Konkurrenten wegen Patentverletzung."
+  ],
+  "phenomenon": [
+    "The northern lights are an awe-inspiring astronomical phenomenon caused by solar winds.",
+    "Туйлын туяа нь нарны салхинаас үүдэлтэй байгалийн гайхамшигт үзэгдэл юм.",
+    "Das Polarlicht ist ein beeindruckendes astronomisches Phänomen der Sonnenwinde."
+  ],
+  "dichotomy": [
+    "The essay explores the philosophical dichotomy between determinism and free will.",
+    "Уг эссэ нь детерминизм болон хүний чөлөөт хүсэл зоригийн хоорондох туйлшралыг судалдаг.",
+    "Der Aufsatz untersucht die philosophische Dichotomie zwischen Determinismus und freiem Willen."
+  ],
+  "fallacy": [
+    "Relying on an ad hominem attack is a well-known logical fallacy in debate.",
+    "Хүний хувийн чанар луу дайрах нь мэтгэлцээнд түгээмэл гардаг логикийн төөрөгдөл юм.",
+    "Ein persönlicher Angriff ist ein wohlbekannter logischer Fehlschluss in Debatten."
+  ],
+  "consensus": [
+    "Scientists reached an overwhelming global consensus regarding human-driven climate change.",
+    "Эрдэмтэд хүний үйл ажиллагаанаас үүдэлтэй уур амьсгалын өөрчлөлтийн талаар нийтлэг ойлголцолд хүрсэн.",
+    "Wissenschaftler erzielten einen weltweiten Konsens über den Klimawandel."
+  ],
+  "implication": [
+    "The unexpected discovery has profound theoretical implications for modern quantum physics.",
+    "Уг гэнэтийн нээлт нь орчин үеийн квант физикт онолын гүн гүнзгий үр дагавартай юм.",
+    "Die Entdeckung hat weitreichende Implikationen für die moderne Quantenphysik."
+  ],
+  "anomaly": [
+    "The astronomer detected a gravitational anomaly near the orbit of the outer planet.",
+    "Одон орон судлаач гаднах гаригийн тойрог замын ойролцоо таталцлын хэвийн бус үзэгдэл илрүүлэв.",
+    "Der Astronom entdeckte eine Gravitationsanomalie nahe der Umlaufbahn des Planeten."
+  ],
+  "propensity": [
+    "Certain individuals possess a biological propensity toward risk-taking behavior.",
+    "Зарим хүмүүс эрсдэл гаргах төрөлх хандлага, зан чанартай байдаг.",
+    "Einige Individuen besitzen eine biologische Neigung zu risikofreudigem Verhalten."
+  ],
+  "catalyst": [
+    "The new railway line served as an economic catalyst for regional development.",
+    "Шинэ төмөр замын шугам нь бүс нутгийн эдийн засгийн хөгжлийг хурдасгуур түлхэц болжээ.",
+    "Die neue Bahnlinie diente als Katalysator für die regionale Wirtschaftsentwicklung."
+  ],
+  "criterion": [
+    "Academic merit was the sole decisive criterion used to award research grants.",
+    "Судалгааны тэтгэлэг олгоход эрдэм шинжилгээний амжилт нь цорын ганц шийдвэрлэх шалгуур байв.",
+    "Akademische Leistung war das einzige entscheidende Kriterium für die Vergabe."
+  ],
+  "constraint": [
+    "Budget constraints forced the engineers to scale down the proposed skyscraper design.",
+    "Төсвийн хязгаарлалт нь инженерүүдэд өндөр барилгын анхны төслийг жижигрүүлэх шаардлага үүсгэв.",
+    "Budgetbeschränkungen zwangen die Ingenieure, den Wolkenkratzerentwurf zu verkleinern."
+  ],
+  "coherence": [
+    "Her eloquent speech possessed a rare logical clarity and internal narrative coherence.",
+    "Түүний цэцэн үг нь логик тодорхой байдал, дотоод авцалдаа уялдаагаараа онцгой байлаа.",
+    "Ihre Rede besaß eine seltene logische Klarheit und innere Kohärenz."
+  ],
+  "rationale": [
+    "The central bank published the economic rationale behind raising interest rates.",
+    "Төв банк бодлогын хүүг өсгөх болсон эдийн засгийн үндэслэл, учир шалтгаанаа нийтлэв.",
+    "Die Zentralbank veröffentlichte die ökonomische Begründung für die Zinserhöhung."
+  ],
+  "rhetoric": [
+    "Voters grew weary of empty political rhetoric devoid of actionable solutions.",
+    "Сонгогчид бодит шийдэлгүй хоосон улс төрийн цэцэрхэл, уран үгнээс залхаж эхэлсэн.",
+    "Die Wähler wurden der leeren politischen Rhetorik ohne echte Lösungen überdrüssig."
+  ],
+  "introspection": [
+    "Solitary nature walks encourage honest personal introspection and quiet mindfulness.",
+    "Байгальд ганцаар алхах нь хүний өөрийгөө эргэцүүлэх, дотоод сэтгэлээ шинжихэд тустай.",
+    "Einsame Spaziergänge in der Natur fördern ehrliche Selbstbeobachtung und Achtsamkeit."
+  ],
+  "apprehension": [
+    "She felt a wave of cold apprehension before entering the high-stakes courtroom.",
+    "Тэрээр шийдвэрлэх шүүх хуралдааны танхимд орохын өмнө айдас түгшүүрийг мэдэрсэн.",
+    "Sie empfand ein beklemmendes Gefühl der Besorgnis vor dem Betreten des Gerichtssaals."
+  ],
+  "aversion": [
+    "He has had a lifelong physical aversion to reptiles and enclosed spaces.",
+    "Тэрээр насан туршдаа мөлхөгч амьтад болон битүү орон зайд хүчтэй дургүйцэл, жигшил тээж ирсэн.",
+    "Er hegte eine lebenslange Abneigung gegen Reptilien und enge Räume."
+  ],
+  "compulsion": [
+    "She felt an overwhelming psychological compulsion to double-check every door lock.",
+    "Тэр хаалганы цоож бүрийг дахин дахин шалгах сэтгэл зүйн албадмал хүсэлд автдаг байв.",
+    "Sie verspürte einen überwältigenden Zwang, jedes Türschloss mehrfach zu überprüfen."
+  ],
+  "bias": [
+    "Scientists must be mindful of confirmation bias when interpreting experimental results.",
+    "Эрдэмтэд туршилтын үр дүнг тайлбарлахдаа өөрийн үзэл бодлоор тал засах хандлагаас сэрэмжлэх ёстой.",
+    "Wissenschaftler müssen bei der Interpretation von Daten auf Bestätigungsfehler achten."
+  ],
+  "resilience": [
+    "Emotional resilience enables individuals to recover from sudden setbacks and loss.",
+    "Сэтгэл санааны хатуужил, тэсвэр хатуужил нь хүнд гэнэтийн бэрхшээл, гарзыг даван туулах боломж олгодог.",
+    "Emotionale Resilienz ermöglicht es Menschen, sich von Rückschlägen zu erholen."
+  ],
+  "aloofness": [
+    "His perceived aristocratic aloofness made it difficult for colleagues to connect with him.",
+    "Түүний бусдаас хөндий хүйтэн, ихэрхүү байдал нь хамт олонтойгоо ойлголцоход саад болдог байв.",
+    "Seine scheinbare Distanziertheit erschwerte es Kollegen, Nähe zu ihm aufzubauen."
+  ],
+  "idiosyncrasy": [
+    "Typing exclusively with two fingers was a harmless personal idiosyncrasy of the author.",
+    "Зөвхөн хоёр хуруугаараа шивэх нь зохиолчийн гэм хоргүй өвөрмөц хувийн зуршил байв.",
+    "Das Tippen mit zwei Fingern war eine harmlose Eigenart des Autors."
+  ],
+  "cognitive dissonance": [
+    "Smokers often experience cognitive dissonance when reading health warnings on cigarette packs.",
+    "Тамхичид хайрцаг дээрх анхааруулгыг уншихдаа сэтгэл зүйн зөрчилдөөнийг мэдэрдэг.",
+    "Raucher erleben oft kognitive Dissonanz, wenn sie Warnhinweise auf Packungen lesen."
+  ],
+  "conformity": [
+    "Social pressure in corporate offices can sometimes enforce unhealthy peer conformity.",
+    "Албан газрын дарамт нь заримдаа бусдыг даган дуурайх хандлагыг хүчээр тулгадаг.",
+    "Sozialer Druck kann manchmal zu ungesunder Anpassung und Konformität führen."
+  ],
+  "ambivalence": [
+    "She felt deep emotional ambivalence about moving abroad and leaving her hometown.",
+    "Тэрээр төрөлх хотоо орхин хилийн чанадад амьдрах тал дээр сэтгэлийн хоёрдмол байдалтай байв.",
+    "Sie empfand tiefe Ambivalenz gegenüber dem Umzug ins Ausland und dem Abschied."
+  ],
+  "detachment": [
+    "A surgeon must maintain calm professional detachment while performing delicate operations.",
+    "Мэс засалч нарийн хагалгаа хийхдээ сэтгэл хөдлөлөө барьж, тайван хүлээцтэй байх ёстой.",
+    "Ein Chirurg muss während heikler Operationen professionelle Distanz wahren."
+  ],
+  "composure": [
+    "The pilot maintained complete composure during severe mid-flight engine turbulence.",
+    "Нислэгийн үеэр хөдөлгүүр доголдох үед нисгэгч биеэ бүрэн барьж, тайван байдлаа хадгалсан.",
+    "Der Pilot behielt während schwerer Turbulenzen die volle Fassung."
+  ],
+  "inhibitions": [
+    "Dancing freely helped her shed her inhibitions and enjoy the celebration.",
+    "Чөлөөтэй бүжиглэх нь түүнд дотоод биеэ барилт, сэтгэл зүйн хоригоо тайлж, баярыг тааламжтай өнгөрүүлэхэд тусалсан.",
+    "Freies Tanzen half ihr, ihre Hemmungen abzubauen und das Fest zu genießen."
+  ],
+  "narcissism": [
+    "Extreme interpersonal narcissism prevents individuals from experiencing genuine empathy.",
+    "Хэт өөрийгөө дөвийлгөх үзэл буюу нарциссизм нь бусдыг ойлгож хайрлахад саад болдог.",
+    "Extremer Narzissmus hindert Menschen daran, echte Empathie für andere zu empfinden."
+  ],
+  "hypocrisy": [
+    "Demanding honesty while constantly lying is an undeniable example of moral hypocrisy.",
+    "Үргэлж худал ярьдаг атлаа бусдаас үнэнч байхыг шаардах нь ёс суртахууны хоёр нүүр гаргалт юм.",
+    "Ehrlichkeit zu verlangen, während man lügt, ist ein klares Beispiel für Heuchelei."
+  ],
+  "integrity": [
+    "The research scientist defended her data with uncompromising intellectual integrity.",
+    "Судлаач эрдэмтэн өөрийн судалгааны өгөгдлийг ёс зүйн өндөр зарчимч чанараараа хамгаалсан.",
+    "Die Wissenschaftlerin verteidigte ihre Daten mit kompromissloser Integrität."
+  ],
+  "biotechnology": [
+    "Agricultural biotechnology develops drought-resistant grain varieties to feed growing populations.",
+    "Хөдөө аж ахуйн биотехнологи нь хүн амыг тэжээхийн тулд ганд тэсвэртэй үр тариа гаргаж авдаг.",
+    "Die Biotechnologie entwickelt dürreresistente Nutzpflanzen für die Weltbevölkerung."
+  ],
+  "nanotechnology": [
+    "Medical nanotechnology delivers cancer drugs directly to microscopic tumors.",
+    "Анагаах ухааны нанотехнологи нь хавдрын эмийг бичил эсүүдэд шууд хүргэдэг.",
+    "Die Nanotechnologie transportiert Medikamente direkt zu mikroskopischen Tumorzellen."
+  ],
+  "quantum": [
+    "Subatomic particles exhibit discrete quantum energy states when confined.",
+    "Эгэл биетүүд хязгаарлагдмал орон зайд салангид квант энергийн төлөвт оршдог.",
+    "Subatomare Teilchen weisen diskrete Quantenzustände auf, wenn sie gebunden sind."
+  ],
+  "oscillation": [
+    "The pendulum demonstrated continuous harmonic oscillation back and forth across the center.",
+    "Дүүжин төвийнхөө нааш цааш тасралтгүй гармоник хэлбэлзэл хөдөлгөөнийг үзүүлэв.",
+    "Das Pendel zeigte eine kontinuierliche harmonische Schwingung um den Mittelpunkt."
+  ],
+  "conductivity": [
+    "Copper wire is widely utilized in home electrical wiring due to its superior electrical conductivity.",
+    "Зэс утас нь цахилгаан дамжуулах чадвар өндөртэй тул гэр ахуйн цахилгааны монтажид өргөн хэрэглэгддэг.",
+    "Kupfer wird wegen seiner hervorragenden elektrischen Leitfähigkeit verwendet."
+  ],
+  "friction": [
+    "Lubricating the engine bearings dramatically minimizes mechanical friction and wear.",
+    "Хөдөлгүүрийн холхивчийг тослох нь механик үрэлт болон элэгдлийг эрс багасгадаг.",
+    "Das Schmieren der Motorlager minimiert mechanische Reibung und Verschleiß drastisch."
+  ],
+  "thermodynamics": [
+    "The second law of thermodynamics dictates that isolated systems naturally increase in entropy.",
+    "Термодинамикийн хоёрдугаар хуулиар битүү системийн эмх замбараагүй байдал аяндаа өсдөг.",
+    "Der zweite Hauptsatz der Thermodynamik besagt, dass die Entropie stets zunimmt."
+  ],
+  "neural network": [
+    "The artificial neural network learned to recognize handwritten digits with high precision.",
+    "Хиймэл мэдрэлийн сүлжээ нь гараар бичсэн цифрүүдийг өндөр нарийвчлалтай таньж сурчээ.",
+    "Das künstliche neuronale Netz lernte, handgeschriebene Ziffern präzise zu erkennen."
+  ],
+  "cryptography": [
+    "Public-key cryptography protects sensitive banking transactions across the internet.",
+    "Нээлттэй түлхүүрийн криптограф нь интернетээр хийгдэх банкны нууц гүйлгээг хамгаалдаг.",
+    "Asymmetrische Kryptografie schützt vertrauliche Banktransaktionen im Internet."
+  ],
+  "telecommunication": [
+    "Modern fiber-optic networks revolutionized global voice and data telecommunication.",
+    "Орчин үеийн шилэн кабелийн сүлжээ нь дэлхийн дуут болон өгөгдлийн харилцаа холбоог шинэчилсэн.",
+    "Moderne Glasfasernetze revolutionierten die globale Telekommunikation grundlegend."
+  ],
+  "mutation": [
+    "A spontaneous genetic mutation rendered the bacterium resistant to penicillin antibiotics.",
+    "Гэнэтийн генийн мутаци нь нянг пенициллиний антибиотикт тэсвэртэй болгосон байна.",
+    "Eine spontane genetische Mutation machte das Bakterium resistent gegen Penicillin."
+  ],
+  "parameter": [
+    "Engineers adjusted the temperature parameter to optimize polymer synthesis yields.",
+    "Инженерүүд полимер нийлэгжүүлэлтийн гарцыг нэмэгдүүлэхийн тулд температурын үзүүлэлтийг тохируулав.",
+    "Die Ingenieure passten den Temperaturparameter an, um die Synthese zu optimieren."
+  ],
+  "simulation": [
+    "Pilots practice emergency landings inside a realistic three-dimensional flight simulation.",
+    "Нисгэгчид бодит орчинтой ижил гурван хэмжээст нислэгийн симуляци дотор ослын буулт хийж дадлагаждаг.",
+    "Piloten üben Notlandungen in einer realistischen Flugsimulation."
+  ],
+  "optimization": [
+    "Algorithmic route optimization cut delivery truck fuel consumption by twelve percent.",
+    "Хүргэлтийн маршрутыг оновчлох алгоритм нь ачааны машины шатахууны зардлыг арван хоёр хувиар хэмнэсэн.",
+    "Algorithmische Routenoptimierung senkte den Treibstoffverbrauch um zwölf Prozent."
+  ],
+  "acidification": [
+    "Rising atmospheric carbon dioxide drives catastrophic ocean acidification, harming fragile coral reefs.",
+    "Агаар дахь нүүрстөрөгчийн давхар исэл ихэссэнээр далайн усны хүчиллэгжилт нэмэгдэж, шүрэн хаданд заналхийлж байна.",
+    "Steigendes Kohlendioxid treibt die Ozeanversauerung voran und schädigt Korallenriffe."
+  ],
+  "stewardship": [
+    "Responsible forestry stewardship ensures that timber harvesting does not destroy native ecosystems.",
+    "Хариуцлагатай ой хамгааллын менежмент нь мод бэлтгэл унаган экосистемийг сүйтгэхгүй байхыг баталгаажуулдаг.",
+    "Verantwortungsvolle Waldbewirtschaftung schützt einheimische Ökosysteme vor Zerstörung."
+  ],
+  "particulate": [
+    "Wearing filtration masks protects city residents against hazardous diesel particulate matter.",
+    "Шүүлтүүртэй амны хаалт зүүх нь хотын оршин суугчдыг дизелийн хорт нарийн тоосонцроос хамгаалдаг.",
+    "Das Tragen von Masken schützt Bürger vor gefährlichen Dieselpartikeln in der Luft."
+  ],
+  "degradation": [
+    "Overgrazing causes severe soil degradation across fragile semi-arid grassland regions.",
+    "Хэт их мал бэлчээрлүүлэх нь хуурай бүсийн хөрсийг доройтолд оруулдаг.",
+    "Überweidung verursacht schwere Bodendegradation in anfälligen Graslandregionen."
+  ],
+  "troposphere": [
+    "Virtually all daily weather phenomena and cloud formations occur inside the planetary troposphere.",
+    "Өдөр тутмын цаг агаарын бүх үзэгдэл дэлхийн агаар мандлын доод давхарга буюу тропосферт явагддаг.",
+    "Fast alle Wetterphänomene und Wolkenbildungen finden in der Troposphäre statt."
+  ],
+  "reservoir": [
+    "The city constructed a deep concrete reservoir to store drinking water during summer droughts.",
+    "Хотын захиргаа зуны ган гачгийн үед ундны усаар хангахын тулд гүн усан санг барьжээ.",
+    "Die Stadt baute ein Betonreservoir, um Trinkwasser bei Dürre zu speichern."
+  ],
+  "watershed": [
+    "Protecting the mountain watershed prevents agricultural runoff from polluting the river basin.",
+    "Уулын ус хагалбарын бүсийг хамгаалах нь голын сав газрыг хөдөө аж ахуйн бохирдлоос хамгаалдаг.",
+    "Der Schutz des Wassereinzugsgebiets verhindert die Verschmutzung des Flussbeckens."
+  ],
+  "predominantly": [
+    "The local manufacturing economy is predominantly driven by small automotive subcontractors.",
+    "Орон нутгийн үйлдвэрлэлийн эдийн засаг гол төлөв, давамгайлан авто машины жижиг туслан гүйцэтгэгчдээс бүрддэг.",
+    "Die lokale Wirtschaft wird überwiegend von kleinen Autozulieferern getragen."
+  ],
+  "inadvertently": [
+    "He inadvertently deleted the uncommitted source code files while cleaning his directory.",
+    "Тэрээр хавтсаа цэвэрлэж байхдаа санамсаргүйгээр эх кодоо устгачихсан байв.",
+    "Er löschte versehentlich die ungespeicherten Quellcodedateien beim Aufräumen."
+  ],
+  "inherently": [
+    "Deep-sea cave exploration is an inherently dangerous endeavor requiring rigorous training.",
+    "Далайн гүний агуй судлал нь өөрөө аяндаа, төрөлхийн аюултай тул нарийн сургуулилалт шаарддаг.",
+    "Tiefsee-Höhlentauchen ist ein von Natur aus gefährliches Unterfangen."
+  ],
+  "invariably": [
+    "Whenever interest rates drop, home mortgage applications invariably surge across the country.",
+    "Зээлийн хүү буурах бүрд улс даяар орон сууцны зээлийн хүсэлт гарцаагүй, үргэлж эрс өсдөг.",
+    "Immer wenn die Zinsen fallen, steigen Hypothekenanträge ausnahmslos sprunghaft an."
+  ],
+  "ostensibly": [
+    "The foreign delegation visited the tech summit ostensibly to promote bilateral trade agreements.",
+    "Гадаадын төлөөлөгчид гаднаа худалдааны гэрээг дэмжих зорилготойгоор технологийн хуралд иржээ.",
+    "Die Delegation besuchte den Gipfel vordergründig zur Förderung von Handelsabkommen."
+  ],
+  "paradoxically": [
+    "Paradoxically, taking frequent short mental breaks increased the engineers' overall programming output.",
+    "Хэрэг дээрээ парадокс мэтээр богино завсарлага тогтмол авах нь инженерүүдийн бүтээмжийг нэмэгдүүлжээ.",
+    "Paradoxerweise erhöhten kurze mentale Pausen die Gesamtproduktivität der Entwickler."
+  ],
+  "conceivably": [
+    "With accelerated quantum breakthroughs, room-temperature superconductors could conceivably emerge soon.",
+    "Хурдацтай хөгжлийн ачаар өрөөний температурт ажиллах хэт дамжуулагч удахгүй гарч ирэх бүрэн боломжтой.",
+    "Mit Quantendurchbrüchen könnten Supraleiter denkbar bald Realität werden."
+  ],
+  "unequivocally": [
+    "The supreme court unequivocally rejected the illegal attempt to delay municipal voting.",
+    "Дээд шүүх орон нутгийн сонгуулийг хойшлуулах хууль бус оролдлогыг эргэлзээгүйгээр, шууд няцаав.",
+    "Das oberste Gericht wies den Versuch, die Kommunalwahl zu verschieben, unmissverständlich zurück."
+  ],
+  "profoundly": [
+    "Reading philosophical classics during her youth profoundly influenced her worldview.",
+    "Залуу насандаа гүн ухааны сонгодог зохиолуудыг уншсан нь түүний ертөнцийг үзэх үзэлд гүн гүнзгий нөлөөлжээ.",
+    "Das Lesen philosophischer Klassiker beeinflusste ihr Weltbild zutiefst."
+  ],
+  "rigorously": [
+    "The medical clinical trial was rigorously monitored by an independent review board.",
+    "Эмнэлзүйн туршилтыг хөндлөнгийн хяналтын зөвлөл маш хатуу, нарийн чанд шалгаж байв.",
+    "Die klinische Studie wurde von einer unabhängigen Kommission rigoros überwacht."
+  ],
+  "fundamentally": [
+    "The introduction of generative artificial intelligence fundamentally alters software development.",
+    "Үүсгэгч хиймэл оюун ухаан нэвтэрсэн нь програм хангамж хөгжүүлэлтийн суурийг үндсээр нь өөрчилж байна.",
+    "Die Einführung generativer KI verändert die Softwareentwicklung von Grund auf."
+  ],
+  "substantially": [
+    "Switching to renewable geothermal heating substantially lowered winter utility bills.",
+    "Сэргээгдэх геотермаль халаалтад шилжсэнээр өвлийн хэрэглээний зардлыг мэдэгдэхүйц, үлэмж хэмжээгээр бууруулсан.",
+    "Der Wechsel zu Geothermie senkte die Heizkosten im Winter beträchtlich."
+  ],
+  "inevitably": [
+    "Ignoring routine vehicle maintenance will inevitably lead to costly engine failure.",
+    "Тээврийн хэрэгслийн засвар үйлчилгээг орхигдуулах нь гарцаагүй үнэтэй эвдрэлд хүргэнэ.",
+    "Das Ignorieren von Wartungen führt unweigerlich zu teuren Motorschäden."
+  ],
+  "conversely": [
+    "High inflation depresses consumer spending; conversely, stable prices restore shopping confidence.",
+    "Өндөр инфляци хэрэглээг бууруулдаг; эсрэгээрээ, тогтвортой үнэ нь худалдан авалтын итгэлийг сэргээдэг.",
+    "Hohe Inflation dämpft Konsumausgaben; umgekehrt stärken stabile Preise das Vertrauen."
+  ],
+  "respectively": [
+    "Anna and Marcus placed first and third in the national mathematics Olympiad, respectively.",
+    "Анна болон Маркус нар улсын математикийн олимпиадад харгалзан нэг болон гуравдугаар байр эзэлжээ.",
+    "Anna und Marcus belegten bei der Mathematik-Olympiade den ersten bzw. dritten Platz."
+  ],
+  "intrinsically": [
+    "Human rights advocates argue that human dignity is intrinsically valuable and non-negotiable.",
+    "Хүний эрхийн тэмцэгчид хүний нэр төр нь угаас, төрөлхөөсөө үнэ цэнтэй бөгөөд тохиролцох боломжгүй гэж үздэг.",
+    "Bürgerrechtler argumentieren, dass die Menschenwürde intrinsisch wertvoll ist."
+  ],
+  "overtly": [
+    "The lobbyist overtly campaigned against the proposed environmental carbon taxation bill.",
+    "Лоббич ногоон татварын хуулийн төслийн эсрэг ил тод, нээлттэй сурталчилгаа явуулсан.",
+    "Der Lobbyist machte ganz offen Stimmung gegen das geplante CO2-Steuergesetz."
+  ],
+  "marginally": [
+    "Operating profits improved only marginally compared to the previous financial quarter.",
+    "Үйл ажиллагааны ашиг өмнөх улиралтай харьцуулахад ялимгүй, үл ялиг л сайжирсан байв.",
+    "Die Betriebsgewinne verbesserten sich im Vergleich zum Vorquartal nur marginal."
+  ],
+  "seemingly": [
+    "The seemingly minor arithmetic error caused the spacecraft to deviate off course.",
+    "Анзаарагдамгүй шахам жижиг тооцооны алдаа нь сансрын хөлгийг чиглэлээсээ хазайхад хүргэв.",
+    "Der scheinbar unbedeutende Rechenfehler brachte das Raumschiff vom Kurs ab."
+  ],
+  "presumably": [
+    "The museum artifacts were presumably stolen during the confusion of the blackout.",
+    "Музейн үзмэрүүдийг цахилгаан тасарсан үймээн самууны үеэр хулгайлсан бололтой гэж таамаглаж байна.",
+    "Die Museumsartefakte wurden vermutlich während des Stromausfalls gestohlen."
+  ],
+  "ultimately": [
+    "After months of intense negotiations, the two trading blocs ultimately reached an accord.",
+    "Олон сарын турш хэлэлцээ хийсний эцэст худалдааны хоёр бүлэглэл эцсийн дүндээ тохиролцоонд хүрэв.",
+    "Nach monatelangen Verhandlungen erzielten beide Handelsblöcke letztlich eine Einigung."
+  ],
+  "mutually": [
+    "The partner nations agreed to establish a mutually beneficial clean energy initiative.",
+    "Түнш улсууд харилцан ашигтай, хоёр талын эрх ашигт нийцсэн цэвэр эрчим хүчний санаачилгыг эхлүүлэв.",
+    "Die Partnerländer vereinbarten eine für beide Seiten vorteilhafte Energieinitiative."
+  ],
+  "remarkably": [
+    "The historic stone arch bridge remained remarkably intact after the severe flood.",
+    "Түүхэн чулуун нуман гүүр хүчтэй үерийн дараа ч гайхмаар бүрэн бүтэн үлдэж чаджээ.",
+    "Die historische Steinbogenbrücke blieb nach der Flut bemerkenswert intakt."
+  ],
+  "notably": [
+    "Several prominent scholars, notably the university provost, attended the conference.",
+    "Хэд хэдэн нэр хүндтэй эрдэмтэд, ялангуяа, тухайлбал их сургуулийн захирал уг хуралд оролцов.",
+    "Mehrere prominente Wissenschaftler, insbesondere der Kanzler, nahmen teil."
+  ],
+  "essentially": [
+    "Despite cosmetic design updates, the vehicle engine remains essentially unchanged.",
+    "Өнгөн заслын өөрчлөлтийг эс тооцвол машины хөдөлгүүр нь үндсэндээ өөрчлөгдөөгүй хэвээр байна.",
+    "Trotz optischer Überarbeitungen blieb der Motor des Fahrzeugs im Wesentlichen unverändert."
+  ],
+  "immensely": [
+    "Her generous financial sponsorship contributed immensely to the research laboratory.",
+    "Түүний өгөөмөр санхүүгийн дэмжлэг нь судалгааны лабораторийн ажилд асар их хувь нэмэр оруулсан.",
+    "Ihr großzügiges Sponsoring trug immens zum Erfolg des Forschungslabors bei."
+  ],
+  "exceedingly": [
+    "The technical documentation was written in an exceedingly dense and obscure academic prose.",
+    "Техникийн баримт бичгийг туйлын, хэтэрхий ойлгомжгүй, хүнд хэллэгээр бичсэн байв.",
+    "Die Dokumentation war in einer außerordentlich dichten Fachsprache verfasst."
+  ],
+  "virtually": [
+    "Thanks to digital archiving, virtually all public library records are searchable online.",
+    "Тоон архивын ачаар нийтийн номын сангийн бараг бүх бүртгэлийг онлайнаар хайх боломжтой болсон.",
+    "Dank digitaler Archivierung sind praktisch alle Bibliotheksbestände online durchsuchbar."
+  ],
+  "diversity": [
+    "The company values cultural diversity and actively recruits multilingual international talent.",
+    "Тус компани соёлын олон янз байдлыг эрхэмлэдэг бөгөөд олон хэлтэй мэргэжилтнүүдийг ажилд авдаг.",
+    "Das Unternehmen schätzt Vielfalt und rekrutiert internationale Fachkräfte."
+  ],
+  "integration": [
+    "Language courses accelerate the social integration of immigrant families into schools.",
+    "Хэлний сургалтууд цагаач гэр бүлүүдийг нийгэмд нэгдэж, дасан зохицох үйл явцыг түргэтгэдэг.",
+    "Sprachkurse beschleunigen die soziale Integration von Zuwandererfamilien in Schulen."
+  ],
+  "social mobility": [
+    "Access to free higher education enhances economic meritocracy and social mobility.",
+    "Үнэ төлбөргүй дээд боловсрол эзэмших боломж нь нийгмийн давхарга хоорондын шилжилт хөдөлгөөнийг дэмждэг.",
+    "Der freie Zugang zu Hochschulen fördert Leistungsgerechtigkeit und soziale Mobilität."
+  ],
+  "activism": [
+    "Youth climate activism pushed municipal councils to expand bike infrastructure.",
+    "Залуусын уур амьсгалын төлөөх нийгмийн идэвх нь хотын захиргааг дугуйн замыг нэмэгдүүлэхэд хүргэв.",
+    "Der Klimaaktivismus der Jugend veranlasste Kommunen, Radwege auszubauen."
+  ],
+  "volunteering": [
+    "Community volunteering at the food bank provides vital support to vulnerable neighbors.",
+    "Хүнсний агуулахад сайн дураар ажиллах нь эмзэг бүлгийн иргэдэд амин чухал дэмжлэг болдог.",
+    "Freiwilligenarbeit bei der Tafel bietet Bedürftigen lebenswichtige Hilfe."
+  ],
+  "point of view": [
+    "The historical essay analyzes the colonial era from an indigenous point of view.",
+    "Түүхийн эссэ нь колоничлолын үеийг уугуул иргэдийн өнцөг, байр сууринаас шинжлэн үздэг.",
+    "Der historische Aufsatz analysiert die Kolonialzeit aus indigener Sichtweise."
+  ],
+  "matter of fact": [
+    "She stated the grim financial forecast as a plain, unemotional matter of fact.",
+    "Тэрээр санхүүгийн бараан төлөвийг ямар ч сэтгэл хөдлөлгүй бодит үнэн гэдгээр нь хэлэв.",
+    "Sie schilderte die ernste Finanzprognose als nüchterne Tatsache."
+  ],
+  "rule of thumb": [
+    "A reliable rule of thumb in finance is to maintain six months of living expenses in reserve.",
+    "Санхүүгийн нийтлэг жишиг дүрэм бол зургаан сарын амьжиргааны зардлыг хадгаламжиндаа нөөцлөх явдал юм.",
+    "Eine bewährte Daumenregel im Finanzbereich ist die Rücklage von sechs Monatsausgaben."
+  ],
+  "food for thought": [
+    "The keynote speaker offered insightful food for thought regarding the ethical future of cloning.",
+    "Илтгэгч хүнийг хувилах ёс зүйн ирээдүйн талаар гүн бодууштай зүйлийг хөндөн ярилаа.",
+    "Der Hauptredner lieferte nachdenkenswerte Denkanstöße zur Ethik des Klonens."
+  ],
+  "pros and cons": [
+    "The committee weighed the pros and cons before deciding to build the offshore wind farm.",
+    "Хороо далайн салхин цахилгаан станц барих шийдвэр гаргахаасаа өмнө сайн болон муу талуудыг тунгаав.",
+    "Der Ausschuss wog das Für und Wider des Offshore-Windparks sorgfältig ab."
+  ],
+  "peace of mind": [
+    "Comprehensive travel insurance gave the mountaineers peace of mind during the trek.",
+    "Аяллын цогц даатгал нь уулчдад аяллын туршид сэтгэлийн амар амгаланг бэлэглэсэн юм.",
+    "Eine umfassende Reiseversicherung schenkte den Bergsteigern innere Ruhe."
+  ],
+  "sense of humor": [
+    "His self-deprecating sense of humor helped diffuse tension during stressful negotiations.",
+    "Түүний өөрийгөө шоглох хошин мэдрэмж нь хурцадмал хэлэлцээний үеийн уур амьсгалыг зөөллөсөн.",
+    "Sein selbstironischer Sinn für Humor half, Spannungen bei Verhandlungen abzubauen."
+  ],
+  "leap of faith": [
+    "Quitting her corporate job to start a bakery was a daring leap of faith.",
+    "Талх нарийн боовны газар нээхийн тулд ажлаасаа гарсан нь түүний хувьд эрсдэлтэй, итгэл дээр тулгуурласан зоригтой алхам байв.",
+    "Die Kündigung für eine eigene Bäckerei war ein mutiger Vertrauensvorschuss."
+  ],
+  "stone's throw": [
+    "The sandy beach is just a stone's throw from our coastal vacation apartment.",
+    "Элсэрхэг далайн эрэг манай амралтын байрнаас чулуу шидэхийн төдий л ойрхон зайд оршдог.",
+    "Der Sandstrand ist nur einen Katzensprung von unserer Ferienwohnung entfernt."
+  ],
+  "last resort": [
+    "Surgical intervention should be considered a last resort when non-invasive therapies fail.",
+    "Мэс засал нь эмийн эмчилгээ үр дүнгүй болсон үед л хамгийн эцсийн арга хэмжээ байх ёстой.",
+    "Ein chirurgischer Eingriff sollte nur das letzte Mittel sein, wenn Therapien versagen."
+  ],
+  "stepping stone": [
+    "Her entry-level position proved to be a valuable stepping stone toward executive management.",
+    "Түүний анхан шатны ажил нь удирдах албан тушаалд хүрэх үнэ цэнтэй шат дамжлага болж өгчээ.",
+    "Ihre Einstiegsposition erwies sich als Sprungbrett ins Management."
+  ],
+  "middle ground": [
+    "The dispute mediator urged both labor unions to find fair middle ground regarding hours.",
+    "Маргааны зуучлагч ажлын цагийн хуваарийн талаар дундын тохиролцоо, буулт олохыг талуудад уриалав.",
+    "Der Schlichter forderte beide Seiten auf, einen fairen Mittelweg zu finden."
+  ],
+  "silver lining": [
+    "Losing the match had a silver lining because it exposed critical tactical weaknesses.",
+    "Тоглолтод хожигдсон нь тактикийн сул талуудыг илрүүлсэн сайн талтай, өөдрөг гэрэлтэй байв.",
+    "Die Niederlage hatte einen Silberstreif, da sie taktische Schwächen aufdeckte."
+  ],
+  "common sense": [
+    "Wearing a bicycle helmet in heavy traffic is simple common sense.",
+    "Хөдөлгөөн ихтэй замд дугуйн хамгаалалтын малгай өмсөх нь энгийн эрүүл ухаан юм.",
+    "Das Tragen eines Fahrradhelms im dichten Verkehr gebietet der gesunde Menschenverstand."
+  ],
+  "free will": [
+    "Philosophers debate whether determinism negates the existence of moral free will.",
+    "Детерминизм нь хүний ёс суртахууны чөлөөт хүсэл зоригийг үгүйсгэдэг эсэхийг гүн ухаантнууд маргадаг.",
+    "Philosophen debattieren, ob der Determinismus den freien Willen ausschließt."
+  ],
+  "gut feeling": [
+    "Trusting her experienced gut feeling, the venture capitalist declined the risky investment.",
+    "Төрөлх зөн совиндоо итгэн хөрөнгө оруулагч эрсдэлтэй төсөлд хөрөнгө оруулахаас татгалзжээ.",
+    "Ihrem Bauchgefühl vertrauend, lehnte die Investorin die riskante Anlage ab."
+  ],
+  "wake-up call": [
+    "The near-miss traffic accident served as a sobering wake-up call to drive more defensively.",
+    "Бараг л осол болох шахсан явдал нь болгоомжтой жолоодох сэрэмжлүүлэг, сэрээх дохио болсон юм.",
+    "Der Beinaheunfall diente als ernüchternder Weckruf für vorsichtigeres Fahren."
+  ],
+  "vicious circle": [
+    "Poverty and poor health often create a self-perpetuating vicious circle for rural families.",
+    "Ядуурал болон эрүүл мэндийн доройтол нь хөдөөгийн өрхүүдэд мухар эргүүлэг, чөтгөрийн тойрог үүсгэдэг.",
+    "Armut und Krankheit bilden für ländliche Familien oft einen Teufelskreis."
+  ],
+  "plausibility": [
+    "Peer reviewers questioned the scientific plausibility of the miraculous energy claims.",
+    "Шүүмжлэгчид эрчим хүчний гайхамшигт нээлтийн шинжлэх ухааны үнэмшилтэй, бодитой байдалд эргэлзэв.",
+    "Fachkollegen bezweifelten die Plausibilität der Behauptungen über neue Energiequellen."
+  ],
+  "feasibility": [
+    "The engineering firm conducted an exhaustive feasibility study before drilling the undersea tunnel.",
+    "Инженерийн компани далайн доорх хонгил ухахаасаа өмнө хэрэгжих боломж, ТЭЗҮ-г нарийвчлан судалжээ.",
+    "Das Ingenieurbüro führte eine Machbarkeitsstudie vor dem Tunnelbau durch."
+  ],
+  "reliability": [
+    "German railway systems were historically celebrated for their punctuality and technical reliability.",
+    "Германы төмөр замын систем нь цаг баримтлал, техникийн найдвартай ажиллагаагаараа алдартай байв.",
+    "Deutsche Bahnsysteme waren für ihre Pünktlichkeit und Zuverlässigkeit berühmt."
+  ],
+  "versatility": [
+    "Graphene is celebrated in modern engineering for its incredible structural versatility.",
+    "Графеныг орчин үеийн инженерийн салбарт бүтэц, хэрэглээний олон талт чанараар нь үнэлдэг.",
+    "Graphen wird für seine unglaubliche Vielseitigkeit in der Technik gefeiert."
+  ],
+  "proficiency": [
+    "Passing the C1 examination demonstrates advanced oral and written linguistic proficiency.",
+    "C1 шалгалт давах нь аман болон бичгийн хэлний өндөр түвшний чадварыг батлан харуулдаг.",
+    "Das Bestehen der C1-Prüfung belegt fortgeschrittene Sprachkompetenz."
+  ],
+  "competence": [
+    "Board members evaluated the new chief executive officer's strategic financial competence.",
+    "Удирдах зөвлөлийн гишүүд шинэ гүйцэтгэх захирлын стратегийн санхүүгийн ур чадварыг үнэлэв.",
+    "Die Vorstandsmitglieder bewerteten die strategische Finanzkompetenz des CEO."
+  ],
+  "aptitude": [
+    "Early diagnostic tests revealed the student's exceptional natural aptitude for mathematical topology.",
+    "Оношилгооны сорил нь сурагчийн математикийн топологийн чиглэлээрх төрөлх авьяас чадварыг илрүүлжээ.",
+    "Tests zeigten die außergewöhnliche Begabung des Schülers für Topologie."
+  ],
+  "dexterity": [
+    "A skilled watchmaker requires steady hands and exceptional fine manual dexterity.",
+    "Чадварлаг цагчин хүнд гар чичрэхгүй байх болон гарын нарийн ур дүй, уран хөдөлгөөн шаардагддаг.",
+    "Ein geschickter Uhrmacher benötigt ruhige Hände und große Fingerfertigkeit."
+  ],
+  "ingenuity": [
+    "The stranded explorers used their mechanical ingenuity to repair the broken water pump.",
+    "Хаягдсан аялагчид эвдэрсэн усны насосыг засахын тулд өөрсдийн сэргэлэн ухаан, овсгоог ашиглав.",
+    "Die gestrandeten Forscher reparierten die Wasserpumpe mit mechanischem Erfindungsgeist."
+  ],
+  "lucidity": [
+    "Even at an advanced age, the philosopher retained remarkable mental lucidity and humor.",
+    "Нас өндөр болсон ч гүн ухаантан ухааны саруул тунгалаг байдал, хошин шогийн мэдрэмжээ хадгалсан байв.",
+    "Selbst im hohen Alter bewahrte der Philosoph eine bemerkenswerte geistige Klarheit."
+  ],
+  "brevity": [
+    "Because the board agenda was packed, the director emphasized brevity during presentations.",
+    "Удирдах зөвлөлийн төлөвлөгөө шахуу байсан тул захирал илтгэлийг товч бөгөөд тодорхой байхыг чухалчлав.",
+    "Weil die Agenda voll war, legte die Direktorin Wert auf Kürze bei Präsentationen."
+  ],
+  "agility": [
+    "The startup survived economic disruption due to its rapid decision-making and operational agility.",
+    "Стартап компани шийдвэрээ хурдан гаргадаг авхаалж самбаа, уян хатан байдлынхаа ачаар хямралыг давжээ.",
+    "Das Startup überstand den Wandel dank schneller Entscheidungen und Agilität."
+  ],
+  "vigilance": [
+    "Security teams maintained constant digital vigilance against automated distributed denial-of-service attacks.",
+    "Аюулгүй байдлын баг сүлжээний халдлагын эсрэг цахим сонор сэрэмжийг байнга өндөр түвшинд байлгасан.",
+    "Die Sicherheitsteams wahrten ständige Wachsamkeit gegenüber Cyberangriffen."
+  ],
+  "diligence": [
+    "Academic success is achieved through steady daily diligence rather than last-minute cramming.",
+    "Сурлагын амжилт нь шалгалтын өмнөх шахалтаар биш, өдөр тутмын тууштай хичээл зүтгэлээр ирдэг.",
+    "Studienerfolg wird durch Fleiß und Beständigkeit statt durch Last-Minute-Lernen erreicht."
+  ],
+  "downpour": [
+    "A sudden summer downpour flooded the cobblestone streets within minutes.",
+    "Зуны гэнэтийн ширүүн аадар бороо хэдхэн минутын дотор чулуун гудамжийг усанд автуулжээ.",
+    "Ein plötzlicher Wolkenbruch überflutete die Kopfsteinpflasterstraßen im Nu."
+  ],
+  "heatwave": [
+    "The prolonged continental heatwave broke historical temperature records across southern Europe.",
+    "Тивийн удаан үргэлжилсэн хэт халалт, халууны давалгаа Европын өмнөд хэсгийн бүх дээд амжилтыг эвдэв.",
+    "Die lang anhaltende Hitzewelle brach historische Rekorde in Südeuropa."
+  ],
+  "whirlwind": [
+    "A dusty desert whirlwind spun loose sand high into the scorching afternoon sky.",
+    "Цөлийн хуй салхи хуурай элсийг төөнөсөн үд дундын тэнгэр рүү өндөрт эргэлдүүлэн хөөргөв.",
+    "Ein Wirbelsturm wirbelte losen Wüstensand hoch in den heißen Nachmittagshimmel."
+  ],
+  "dewdrop": [
+    "A glistening morning dewdrop clung delicately to the spiderweb among the roses.",
+    "Өглөөний гялалзсан шүүдрийн дусал сарнайн бутан дундах аалзны торонд нарийхан тогтсон байв.",
+    "Ein glitzernder Tautropfen hing zart am Spinnennetz zwischen den Rosen."
+  ],
+  "pebble": [
+    "She skipped a smooth grey pebble across the tranquil surface of the lake.",
+    "Тэрээр нуурын нам гүм мандал дээгүүр мөлгөр саарал хайрга чулууг чадамгай шидэв.",
+    "Sie ließ einen glatten Kieselstein geschickt über die ruhige Seeoberfläche hüpfen."
+  ],
+  "boulder": [
+    "A massive granite boulder rolled down the mountainside and blocked the highway.",
+    "Уулын хажуугаас асар том боржин бул чулуу өнхрөн бууж хурдны замыг хаажээ.",
+    "Ein massiver Felsbrocken rollte den Hang hinab und blockierte die Autobahn."
+  ],
+  "rapids": [
+    "Rafters gripped their paddles tightly as their inflatable raft entered the foaming river rapids.",
+    "Хийлдэг завьтай аялагчид голын цагаан хөөсөрсөн боргио, ширүүн урсгал руу орохдоо сэлүүрээ чанга атгав.",
+    "Die Rafter hielten ihre Paddel fest, als das Boot in die schäumenden Stromschnellen geriet."
+  ],
+  "oasis": [
+    "The weary desert caravan rested beneath date palms at the verdant desert oasis.",
+    "Цөлийн ядарсан жингийн цуваа баянбүрдийн ногоон дал модны сүүдэрт амарч авав.",
+    "Die Wüstenkarawane ruhte unter Dattelpalmen an der grünen Oase."
+  ],
+  "mirage": [
+    "Shimmering heat rising from asphalt created the optical illusion of a water mirage.",
+    "Асфальтан замаас төөнөх халуун нь холоос ус мэт харагдах оптик зэрэглээг үүсгэжээ.",
+    "Flimmernde Hitze über dem Asphalt erzeugte die Illusion einer Fata Morgana."
+  ],
+  "wilderness": [
+    "Surviving in the subarctic wilderness demands advanced survival and navigation competencies.",
+    "Арктик орчмын онгон зэрлэг байгальд амьд гарахын тулд амьдрах чадвар, зүг чигээ олох чадвар шаардлагатай.",
+    "Das Überleben in der Wildnis erfordert fortgeschrittene Navigationsfähigkeiten."
+  ],
+  "sanctuary": [
+    "The wetland reserve serves as a tranquil migratory sanctuary for endangered white cranes.",
+    "Намгархаг газрын дархан цаазат газар нь ховордсон цагаан тогорууны аюулгүй тайван хоргодох газар болдог.",
+    "Das Feuchtgebiet dient als geschütztes Refugium für Zugvögel."
+  ],
+  "brainstorming": [
+    "The product design team conducted a lively morning brainstorming session to invent new features.",
+    "Бүтээгдэхүүний дизайны баг шинэ боломжуудыг нээхийн тулд өглөөний эрч хүчтэй тархины довтолгоо хийв.",
+    "Das Team führte ein lebhaftes Brainstorming durch, um neue Funktionen zu entwickeln."
+  ],
+  "milestone": [
+    "Securing international patent approval was a pivotal milestone in the company's growth.",
+    "Олон улсын патентын зөвшөөрөл авсан нь компанийн хөгжлийн түүхэн дэх чухал үе шат, тэмдэглэлт үйл явдал байв.",
+    "Die internationale Patenterteilung war ein entscheidender Meilenstein."
+  ],
+  "bottleneck": [
+    "Limited processing capacity at the packing plant created an operational shipping bottleneck.",
+    "Сав баглаа боодлын үйлдвэрийн хязгаарлагдмал хүчин чадал нь тээвэрлэлтийн саад тотгор, гацааг үүсгэсэн.",
+    "Begrenzte Kapazitäten schufen einen operativen Engpass im Versand."
+  ],
+  "turnover": [
+    "Retail companies suffer high recruitment expenses when experiencing chronic staff turnover.",
+    "Худалдааны байгууллагууд ажиллах хүчний эргэц, шилжилт их байх үед ажилд авах зардалд их алддаг.",
+    "Unternehmen leiden unter hohen Kosten bei ständiger Mitarbeiterfluktuation."
+  ],
+  "incentive": [
+    "The manufacturing plant introduced a quarterly financial bonus incentive for exceptional safety.",
+    "Үйлдвэр аюулгүй ажиллагааг сайн хангасан ажилтнуудад улирлын санхүүгийн урамшуулал олгодог болов.",
+    "Das Werk führte einen finanziellen Bonus als Leistungsanreiz für Sicherheit ein."
+  ],
+  "feedback": [
+    "Constructive critical feedback helped the author refine the pacing of her suspense novel.",
+    "Бүтээлч шүүмж, санал хүсэлт нь зохиолчид триллер романыхаа үйл явдлын хурдыг тааруулахад тусалсан.",
+    "Konstruktives Feedback half der Autorin, das Tempo ihres Romans zu verbessern."
+  ],
+  "mentorship": [
+    "Junior associates thrive when guided by experienced senior colleagues through structured mentorship.",
+    "Залуу ажилтнууд туршлагатай ахмад мэргэжилтнүүдийн дэмжлэг, менторшипийн дор хурдан өсөж хөгждөг.",
+    "Nachwuchskräfte profitieren enorm von strukturierter Betreuung und Mentoring."
+  ],
+  "onboarding": [
+    "The tech company redesigned its digital employee onboarding to be fully remote-friendly.",
+    "Технологийн компани шинэ ажилтныг чиглүүлэх хөтөлбөрөө зайнаас ажиллахад бүрэн нийцүүлэн шинэчлэв.",
+    "Das Unternehmen gestaltete das Onboarding für neue Mitarbeiter vollständig digital."
+  ],
+  "retention": [
+    "Offering clear career pathways and competitive wages significantly boosts employee retention.",
+    "Тодорхой карьерын өсөлт болон өрсөлдөхүйц цалин амлах нь ажилтнаа тогтоон барих явдлыг нэмэгдүүлдэг.",
+    "Klare Karrierewege und gute Gehälter steigern die Mitarbeiterbindung deutlich."
+  ],
+  "productivity": [
+    "Adopting asynchronous communication tools enhanced the engineering department's daily productivity.",
+    "Асинхрон харилцааны хэрэгслүүдийг нэвтрүүлсэн нь инженерийн хэлтсийн өдөр тутмын бүтээмжийг нэмэгдүүлжээ.",
+    "Asynchrone Tools steigerten die tägliche Produktivität der Abteilung."
+  ],
+  "appliance": [
+    "Energy-efficient kitchen appliance models reduce residential monthly electrical utility bills.",
+    "Эрчим хүчний хэмнэлттэй гэр ахуйн цахилгаан хэрэгсэл нь өрхийн сарын цахилгааны төлбөрийг бууруулдаг.",
+    "Energieeffiziente Haushaltsgeräte senken die monatlichen Stromkosten spürbar."
+  ],
+  "fixture": [
+    "Plumbers installed a sleek brushed-nickel plumbing fixture in the modern guest bathroom.",
+    "Сантехникчид зочны угаалгын өрөөнд гоёмсог төмөр усны цорго, тоноглолыг суурилуулав.",
+    "Installateure bauten eine moderne Armatur im Gästebadezimmer ein."
+  ],
+  "mortgage payment": [
+    "Setting up automated banking transfers ensures you never miss a monthly mortgage payment.",
+    "Автомат гүйлгээ тохируулах нь сар бүрийн орон сууцны зээлийн төлбөрөө хоцроохгүй байх баталгаа болдог.",
+    "Daueraufträge stellen sicher, dass keine monatliche Hypothekenrate versäumt wird."
+  ],
+  "convenience store": [
+    "The neighborhood convenience store is open twenty-four hours a day for emergency groceries.",
+    "Хорооллын жижиг хүнсний дэлгүүр нь шаардлагатай хүнсийг авахад зориулан 24 цагаар ажилладаг.",
+    "Der kleine Nachbarschaftsladen ist rund um die Uhr für Einkäufe geöffnet."
+  ],
+  "power bank": [
+    "Pack a high-capacity portable power bank so your smartphone does not run out of battery.",
+    "Ухаалаг утасны цэнэг дуусахаас сэргийлж өндөр багтаамжтай зөөврийн цэнэглэгч авч яваарай.",
+    "Packen Sie eine Powerbank ein, damit dem Smartphone unterwegs nicht der Strom ausgeht."
+  ],
+  "headset": [
+    "The remote customer support representative wore a noise-canceling wireless headset.",
+    "Харилцагчийн үйлчилгээний ажилтан дуу чимээ тусгаарлагчтай утасгүй чихэвч зүүж ажилладаг байв.",
+    "Der Kundendienstmitarbeiter trug ein kabelloses Headset mit Rauschunterdrückung."
+  ],
+  "flash drive": [
+    "She stored the encrypted research dataset on a high-speed miniature USB flash drive.",
+    "Тэрээр шифрлэсэн судалгааны өгөгдлийг өндөр хурдны жижиг флаш диск дээр хадгалсан байв.",
+    "Sie speicherte den verschlüsselten Datensatz auf einem USB-Stick."
+  ],
+  "touchscreen": [
+    "Modern automobile dashboards feature a responsive anti-glare capacitive touchscreen.",
+    "Орчин үеийн автомашины хянах самбар нь гэрлийн ойлтоос хамгаалагдсан мэдрэгчтэй дэлгэцтэй байдаг.",
+    "Moderne Armaturenbretter verfügen über einen entspiegelten Touchscreen."
+  ],
+  "wireless router": [
+    "Place your dual-band wireless router in a central room for optimal Wi-Fi signal coverage.",
+    "Wi-Fi сүлжээний хамрах хүрээг сайжруулахын тулд утасгүй чиглүүлэгчээ байрны голд байрлуулаарай.",
+    "Platzieren Sie den WLAN-Router zentral, um eine optimale Signalabdeckung zu erzielen."
+  ],
+  "ethernet cable": [
+    "A shielded ethernet cable provides lower latency and more stable connection than Wi-Fi.",
+    "Бүрээстэй интернетийн утас буюу сүлжээний кабель нь утасгүй сүлжээнээс илүү тогтвортой холболт өгдөг.",
+    "Ein geschirmtes Ethernetkabel bietet eine stabilere Verbindung als WLAN."
+  ],
+  "adapter": [
+    "Remember to carry a universal travel plug adapter when traveling across continental Europe.",
+    "Европын орнуудаар аялахдаа олон улсын залгуурын адаптер авч явахаа бүү мартаарай.",
+    "Denken Sie daran, auf Europareisen einen universellen Steckdosenadapter mitzuführen."
+  ],
+  "surge protector": [
+    "Plug your sensitive computer hardware into a heavy-duty electrical surge protector.",
+    "Мэдрэмтгий компьютерийн тоног төхөөрөмжөө хүчдэл тогтворжуулагчтай олон залгуурт залгаарай.",
+    "Schließen Sie empfindliche Hardware an eine Steckdosenleiste mit Überspannungsschutz an."
+  ],
+  "printer cartridge": [
+    "Replace the exhausted black ink printer cartridge to eliminate faded lines on documents.",
+    "Баримт бичгийн хэвлэл бүдэг гарахаас сэргийлж дууссан хар хорны хайрцгийг шинээр солино уу.",
+    "Ersetzen Sie die leere Druckerpatrone, um blasse Textzeilen zu vermeiden."
+  ],
+  "mindset": [
+    "Cultivating a growth mindset empowers learners to view difficult mistakes as educational opportunities.",
+    "Өсөлтийн сэтгэлгээг төлөвшүүлэх нь алдааг суралцах боломж гэж харах боломжийг олгодог.",
+    "Eine wachstumsorientierte Denkweise hilft, Fehler als Lernchancen zu begreifen."
+  ],
+  "wellbeing": [
+    "Workplace ergonomic programs improve employees' physical and psychological wellbeing.",
+    "Ажлын байрны эргономикийн хөтөлбөрүүд нь ажилтнуудын бие болон сэтгэл зүйн сайн сайхан байдлыг дээшлүүлдэг.",
+    "Ergonomieprogramme am Arbeitsplatz verbessern das physische Wohlbefinden."
+  ],
+  "mindfulness": [
+    "Practicing daily guided mindfulness meditation reduces elevated cortisol and blood pressure.",
+    "Өдөр тутмын ухамсарт бясалгалаар хичээллэх нь стрессийн гормон болон цусны даралтыг бууруулдаг.",
+    "Tägliche Achtsamkeitsmeditation senkt erhöhte Cortisolspiegel wirksam."
+  ],
+  "burnout": [
+    "Chronic workplace overwork without adequate vacation often leads to severe psychological burnout.",
+    "Амралтгүйгээр хэт их ажиллах нь сэтгэл зүй болон бие махбодын туйлдал, ядралд хүргэдэг.",
+    "Chronische Überarbeitung ohne Urlaub führt oft zu schwerem Burnout."
+  ],
+  "optimism": [
+    "Her unwavering realistic optimism inspired the rescue team during the difficult blizzard.",
+    "Түүний бодитой өөдрөг үзэл нь цасан шуурганы үеэр аврах багийнханд итгэл найдвар төрүүлж байлаа.",
+    "Ihr unerschütterlicher Optimismus inspirierte das Rettungsteam im Schneesturm."
+  ],
+  "pessimism": [
+    "Constant cynicism and defeatist pessimism can paralyze constructive public policy debate.",
+    "Байнга үгүйсгэх гутранги үзэл нь олон нийтийн бодлогын бүтээлч хэлэлцүүлгийг мухардалд оруулдаг.",
+    "Ständiger Pessimismus kann konstruktive politische Debatten lähmen."
+  ],
+  "serenity": [
+    "The remote alpine monastery offered a profound spiritual atmosphere of quiet serenity.",
+    "Алслагдсан уулын сүм хийд нь амар амгалан, тайван байдлын гүн уур амьсгалыг бэлэглэдэг байв.",
+    "Das abgelegene Kloster bot eine Atmosphäre von tiefer innerer Gelassenheit."
+  ],
+  "contentment": [
+    "Living a simple, purposeful life surrounded by nature brought him lasting inner contentment.",
+    "Байгалийн дунд энгийн бөгөөд утга учиртай амьдрах нь түүнд сэтгэлийн гүн ханамжийг авчирсан.",
+    "Ein einfaches Leben in der Natur brachte ihm dauerhafte Zufriedenheit."
+  ],
+  "paradigm shift": [
+    "The development of the transistor marked an epochal paradigm shift in electronics.",
+    "Транзисторыг бүтээсэн нь электроникийн салбарт сэтгэлгээний болон үзэл баримтлалын эрс шинэчлэлтийг авчирсан.",
+    "Die Entwicklung des Transistors markierte einen Paradigmenwechsel in der Elektronik."
+  ],
+  "peer review": [
+    "All scientific research submissions must undergo rigorous blind peer review prior to publication.",
+    "Шинжлэх ухааны бүх судалгааны бүтээл хэвлэгдэхээсээ өмнө хөндлөнгийн мэргэжилтнүүдийн хатуу хяналтыг давдаг.",
+    "Alle wissenschaftlichen Einreichungen durchlaufen vor Veröffentlichung ein Peer-Review."
+  ],
+  "methodology": [
+    "The clinical sociology thesis outlines its quantitative survey methodology in chapter three.",
+    "Социологийн судалгааны ажил гуравдугаар бүлэгтээ тоон судалгааны арга зүйгээ тодорхойлсон байдаг.",
+    "Die Arbeit skizziert ihre quantitative Forschungsmethodik im dritten Kapitel."
+  ],
+  "bibliography": [
+    "Academic writing requires an alphabetical bibliography citing all referenced scholarly sources.",
+    "Эрдэм шинжилгээний ажил нь иш татсан ном зүй, ном зохиолын жагсаалтыг цагаан толгойн дарааллаар шаарддаг.",
+    "Wissenschaftliche Arbeiten erfordern eine alphabetische Bibliografie aller Quellen."
+  ],
+  "monograph": [
+    "The university press published an authoritative scholarly monograph on Ottoman trade routes.",
+    "Их сургуулийн хэвлэлийн газар Османы эзэнт гүрний худалдааны замын тухай судалгааны нэгэн сэдэвт зохиолыг нийтлэв.",
+    "Der Universitätsverlag veröffentlichte eine Monografie über osmanische Handelsrouten."
+  ],
+  "symposium": [
+    "Immunologists from thirty countries attended the annual cancer immunotherapy symposium.",
+    "Гучин орны дархлаа судлаачид хавдрын дархлаа эмчилгээний эрдэм шинжилгээний симпозиумд оролцов.",
+    "Immunologen aus dreißig Ländern nahmen am jährlichen Fachsymposium teil."
+  ],
+  "colloquium": [
+    "Graduate researchers debated linguistic syntax during the weekly departmental colloquium.",
+    "Магистрантууд тэнхимийн долоо хоног тутмын эрдэм шинжилгээний хэлэлцүүлэг дээр хэл шинжлэлийн бүтцийг мэтгэлцэв.",
+    "Nachwuchsforscher debattierten beim wöchentlichen Kolloquium über Syntax."
+  ],
+  "antithesis": [
+    "His selfish cruelty was the complete moral antithesis of his mother's saintly kindness.",
+    "Түүний аминчхан харгис зан нь эхийнх нь ариун сайхан нинжин сэтгэлийн шууд эсрэг тэсрэг зүйл байв.",
+    "Seine Grausamkeit war die moralische Antithese zur Güte seiner Mutter."
+  ],
+  "hermeneutics": [
+    "Biblical hermeneutics studies how ancient religious texts should be interpreted in modern times.",
+    "Шашны судрын тайлбарлал буюу герменевтик нь эртний судруудыг орчин үед хэрхэн тайлбарлахыг судалдаг.",
+    "Die Hermeneutik untersucht, wie historische Texte sachgerecht interpretiert werden."
+  ],
+  "taxonomy": [
+    "Linnaean taxonomy classifies organisms hierarchically into kingdoms, phyla, and species.",
+    "Линнейн ангилал зүй буюу таксономи нь амьд биетийг аймаг, хүрээ, төрөл зүйлээр нь эрэмбэлэн ангилдаг.",
+    "Die biologische Taxonomie ordnet Organismen hierarchisch in Reiche und Arten ein."
+  ],
+  "correlation": [
+    "Epidemiologists identified a strong positive correlation between smoking and lung cancer.",
+    "Тархвар судлаачид тамхи таталт болон уушгины хорт хавдрын хооронд хүчтэй хамаарал байгааг тогтоожээ.",
+    "Epidemiologen stellten eine Korrelation zwischen Rauchen und Lungenkrebs fest."
+  ],
+  "causation": [
+    "Statistical correlation does not automatically prove direct physical causation.",
+    "Статистикийн хамаарал нь шууд шалтгаан үр дагаврыг автоматаар нотолдоггүй.",
+    "Eine statistische Korrelation beweist nicht automatisch einen Kausalzusammenhang."
+  ],
+  "variable": [
+    "The laboratory controlled for ambient room humidity as an independent experimental variable.",
+    "Лаборатори өрөөний чийгшлийг туршилтын бие даасан хувьсах хэмжигдэхүүн болгон хянаж байв.",
+    "Das Labor kontrollierte die Luftfeuchtigkeit als unabhängige Variable."
+  ],
+  "melancholy": [
+    "Listening to cello sonatas on rainy afternoons fills her with a gentle, reflective melancholy.",
+    "Бороотой өдөр хийл хөгжмийн аялгуу сонсох нь түүнийг гуниг гуниглалын аядуу мэдрэмжээр дүүргэдэг.",
+    "Das Cello-Konzert erfüllte sie an Regentagen mit einer sanften Melancholie."
+  ],
+  "nostalgia": [
+    "Flipping through black-and-white family photograph albums evokes warm childhood nostalgia.",
+    "Гэр бүлийн хар цагаан зургийн цомгийг эргүүлэх нь бага насны дурсамж сэтгэлийг бадраадаг.",
+    "Das Betrachten alter Familienfotos weckte warme Nostalgie nach der Kindheit."
+  ],
+  "euphoria": [
+    "Supporters erupted into wild euphoria when the winning goal was scored in stoppage time.",
+    "Шүүгчийн мэдлийн цагт хожлын гоол ороход хөгжөөн дэмжигчид баяр хөөрийн дээд оргилд умбав.",
+    "Die Fans gerieten in Euphorie, als das Siegtor in der Nachspielzeit fiel."
+  ],
+  "dysphoria": [
+    "Clinical dysphoria involves a persistent, distressing state of emotional dissatisfaction and unease.",
+    "Сэтгэл санааны тайван бус таагүй байдал нь сэтгэлийн дарамт, тааламжгүй мэдрэмжийг илэрхийлдэг.",
+    "Klinische Dysphorie beschreibt einen anhaltenden Zustand quälender Unruhe."
+  ],
+  "trepidation": [
+    "Novice scuba divers approached the dark underwater cave opening with considerable trepidation.",
+    "Шинэхэн шумбагчид усан доорх харанхуй агуйн ам руу ихээхэн болгоомжлол, түгшүүртэйгээр ойртов.",
+    "Die Tauchanfänger näherten sich der dunklen Unterwasserhöhle mit Beklemmung."
+  ],
+  "nonchalance": [
+    "He shrugged off the severe reprimand from his boss with irritating nonchalance.",
+    "Тэрээр даргынхаа ширүүн шүүмжлэлийг хэнэггүй тоомсоргүй зангаараа тоохгүй өнгөрөөв.",
+    "Er tat den Tadel seines Chefs mit irritierender Nonchalance ab."
+  ],
+  "paranoia": [
+    "Severe sleep deprivation can induce irrational delusions of conspiracy and paranoia.",
+    "Нойрны хэт дутагдал нь хүнд хардалт, хуурмаг хий үзэгдлийг үүсгэж болзошгүй.",
+    "Schwerer Schlafmangel kann Verfolgungswahn und Paranoia hervorrufen."
+  ],
+  "neurosis": [
+    "Freudian psychoanalysis examined obsessive neurosis through subconscious childhood memories.",
+    "Фрейдийн сэтгэц засал нь сэтгэл түгших эмгэг, неврозыг далд ухамсрын дурсамжаар дамжуулан судалдаг байв.",
+    "Die Psychoanalyse untersuchte Zwangsneurosen anhand unbewusster Erinnerungen."
+  ],
+  "archetype": [
+    "The wise old mentor is a ubiquitous literary archetype found in folk myths across cultures.",
+    "Цэцэн мэргэн хөгшин зөвлөх нь олон соёлын үлгэр домогт түгээмэл гардаг анхдагч хэв шинж, архетип юм.",
+    "Der weise Mentor ist ein archetypisches Motiv in Mythen vieler Kulturen."
+  ],
+  "catharsis": [
+    "Weeping at the tragic opera finale provided an overwhelming emotional catharsis for audiences.",
+    "Эмгэнэлт дуурийн төгсгөлд уйлах нь үзэгчдэд сэтгэлийн гүн цэвэршилт, катарсисыг бэлэглэсэн.",
+    "Das Weinen beim tragischen Finale bot den Zuschauern eine emotionale Katharsis."
+  ],
+  "sublimation": [
+    "Artistic creation is considered a healthy psychological sublimation of aggressive instincts.",
+    "Урлагийн бүтээл туурвих нь түрэмгий зан чанарыг нийгэмд тустай бүтээлч байдлаар хувиргах эрүүл арга юм.",
+    "Künstlerisches Schaffen gilt als gesunde Sublimierung innerer Impulse."
+  ],
+  "dissociation": [
+    "Trauma survivors may experience psychological dissociation from reality during acute panic episodes.",
+    "Гэмтэл бэртэл амссан хүмүүс цочролын үед бодит байдлаас сэтгэл зүйн хувьд тасрах үзэгдлийг мэдэрдэг.",
+    "Traumatisierte Patienten erleben bei Panikattacken oft psychische Dissoziation."
+  ],
+  "trauma": [
+    "Cognitive behavioral therapy assists patients in processing lingering childhood trauma.",
+    "Танин мэдэхүйн зан үйлийн сэтгэл засал нь бага насны сэтгэлийн шарх, гэмтлийг даван туулахад тусалдаг.",
+    "Verhaltenstherapie hilft Patienten, emotionale Traumata aufzuarbeiten."
+  ],
+  "equanimity": [
+    "Stoic philosophers cultivated unconditional equanimity in the face of unpredictable fortune.",
+    "Стоик гүн ухаантнууд хувь тавилангийн ямар ч эргэлтийн өмнө сэтгэлийн төлөв түвшин, тайван байдлаа хадгалдаг байв.",
+    "Stoische Philosophen bewahrten stets unerschütterlichen Gleichmut."
+  ],
+  "vulnerability": [
+    "Showing genuine emotional vulnerability allows deeper intimate connection between partners.",
+    "Сэтгэл хөдлөлийн эмзэг байдлаа нээлттэй харуулах нь хосуудын хооронд илүү дотно итгэлийг төрүүлдэг.",
+    "Verletzlichkeit zu zeigen ermöglicht eine tiefere emotionale Bindung."
+  ],
+  "cognitive bias": [
+    "Confirmation of preconceived notions is an everyday cognitive bias that distorts objective truth.",
+    "Урьдчилсан төсөөллөө бататгах нь бодит үнэнийг гажуудуулдаг танин мэдэхүйн гажуудал юм.",
+    "Bestätigungstendenzen sind kognitive Verzerrungen, die Urteile trüben."
+  ],
+  "zenith": [
+    "The Roman Empire reached the absolute zenith of its territorial expansion under Trajan.",
+    "Ромын эзэнт гүрэн Траян хааны үед газар нутгийнхаа тэлэлтийн дээд оргилд хүрсэн байна.",
+    "Das Römische Reich erreichte unter Trajan den Zenit seiner Expansion."
+  ],
+  "nadir": [
+    "Losing his life savings in the fraudulent scheme marked the lowest nadir of his career.",
+    "Залилангийн улмаас бүх хадгаламжаа алдсан нь түүний ажил амьдралын хамгийн доод цэг, уналт байв.",
+    "Der Verlust seiner Ersparnisse markierte den absoluten Tiefpunkt seines Lebens."
+  ],
+  "panacea": [
+    "Technological automation is beneficial, but it is not a magical panacea for societal ills.",
+    "Технологийн автоматжуулалт ашигтай хэдий ч нийгмийн бүх асуудлыг анагаах шидэт эм, эмчилгээ биш юм.",
+    "Technologische Automatisierung ist kein universelles Allheilmittel."
+  ],
+  "epoch": [
+    "The dawn of commercial steam power inaugurated a transformative industrial epoch.",
+    "Уурын хөдөлгүүр нэвтэрсэн нь үйлдвэржилтийн цоо шинэ эрин үе, эрин цагийг эхлүүлсэн.",
+    "Die Dampfkraft läutete eine transformative industrielle Epoche ein."
+  ],
+  "pinnacle": [
+    "Earning an Olympic gold medal was the undisputed pinnacle of her athletic career.",
+    "Олимпын алтан медаль хүртсэн нь түүний тамирчны замналын хамгийн дээд оргил амжилт байлаа.",
+    "Die olympische Goldmedaille war der unbestrittene Höhepunkt ihrer Karriere."
+  ],
+  "prerequisite": [
+    "Completing introductory linear algebra is a mandatory prerequisite for advanced machine learning.",
+    "Шугаман алгебрын анхан шатны мэдлэг нь хиймэл оюуны гүнзгий сургалтын заавал үзэх урьдчилсан нөхцөл юм.",
+    "Lineare Algebra ist eine zwingende Voraussetzung für Machine Learning."
+  ],
+  "epiphany": [
+    "While taking a solitary forest hike, she had a creative epiphany that solved the mathematical proof.",
+    "Ойд ганцаар алхаж явахдаа тэрээр математикийн баталгааг тайлах гэнэтийн ухаарал, нээлтийг олжээ.",
+    "Beim Waldspaziergang hatte sie eine plötzliche Eingebung zur Lösung des Beweises."
+  ],
+  "quandary": [
+    "The diplomatic negotiator faced a serious ethical quandary between national duty and moral conscience.",
+    "Дипломатч улсын үүрэг болон хувийн ёс зүйн ухамсрын хооронд хүнд хэцүү мухардмал байдалд оржээ.",
+    "Der Diplomat stand vor einem moralischen Dilemma zwischen Pflicht und Gewissen."
+  ],
+  "surfeit": [
+    "The lavish wedding banquet offered an embarrassing surfeit of exotic delicacies and wines.",
+    "Тансаг хуримын найр дээр хачин чамин идээ зоог хэт их, халиа илүүдэлтэй байв.",
+    "Das Festmahl bot einen Überfluss an erlesenen Delikatessen und Weinen."
+  ],
+  "plethora": [
+    "Modern internet platforms provide a dizzying plethora of information on every subject.",
+    "Орчин үеийн интернет нь сэдэв бүрээр маш арвин, тоолж баршгүй их мэдээллийг өгдөг.",
+    "Das Internet bietet eine Fülle von Informationen zu jedem erdenklichen Thema."
+  ],
+  "scarcity": [
+    "Prolonged regional drought led to acute drinking water scarcity across the valleys.",
+    "Удаан хугацааны ган гачиг нь хөндийн даяар ундны усны хомсдол үүсгэсэн байна.",
+    "Die Dürre führte zu einer akuten Trinkwasserknappheit im Tal."
+  ],
+  "onomatopoeia": [
+    "Words like 'buzz', 'hiss', and 'clang' are textbook examples of sensory onomatopoeia.",
+    "Шуугих, шуухинах, жингэнэх зэрэг дуу авиаг дуурайсан үгс нь авиа дуурайх ур маягийн жишээ юм.",
+    "Wörter wie 'Zischen' oder 'Klatschen' sind Beispiele für Onomatopoesie."
+  ],
+  "oxymoron": [
+    "The literary phrase 'deafening silence' is an expressive, unforgettable poetic oxymoron.",
+    "'Дүлийрэм нам гүм' гэдэг хэллэг нь хоорондоо харшилдсан хоёр ойлголтыг нэгтгэсэн оксиморон юм.",
+    "Der Ausdruck 'beredtes Schweigen' ist ein klassisches Oxymoron."
+  ],
+  "euphemism": [
+    "Saying someone 'passed away' instead of 'died' is a gentle cultural euphemism.",
+    "'Нас барлаа' гэхийн оронд 'тэнгэрт дэвшлээ' гэж хэлэх нь соёлын эелдэг цээрлэх хэллэг буюу эвфемизм юм.",
+    "Das Wort 'entschlafen' ist ein milder Euphemismus für 'sterben'."
+  ],
+  "idiom": [
+    "The phrase 'spill the beans' is an English idiom meaning to reveal a secret prematurely.",
+    "'Нууцаа задруулах' гэдэг англи хэлц үг нь үнэнийг санамсаргүй хэлчих гэсэн утгыг илэрхийлдэг.",
+    "Die Redewendung 'die Katze aus dem Sack lassen' bedeutet, ein Geheimnis zu lüften."
+  ],
+  "syntax": [
+    "Understanding programming syntax is crucial for writing clean code.",
+    "Програмчлалын өгүүлбэр зүй, синтаксыг ойлгох нь цэвэр код бичихэд чухал ач холбогдолтой.",
+    "Das Verständnis der Programmiersyntax ist entscheidend für das Schreiben sauberen Codes."
+  ],
+  "semantics": [
+    "The debate stalled because the two diplomats disagreed on the semantics of the treaty.",
+    "Хоёр дипломатч гэрээний утга зүйн нарийн ялгаан дээр санал нийлээгүй тул хэлэлцүүлэг гацав.",
+    "Die Debatte stockte, weil sich die beiden Diplomaten über die Semantik des Vertrags uneins waren."
+  ],
+  "phonetics": [
+    "Phonetics helps language learners master accurate pronunciation of foreign vowel sounds.",
+    "Авиа зүй нь гадаад хэл суралцагчдад эгшиг авиаг үнэн зөв дуудаж сурахад тусалдаг.",
+    "Die Phonetik hilft Sprachlernern, die genaue Aussprache fremder Vokale zu meistern."
+  ],
+  "morphology": [
+    "Comparative morphology studies how prefixes and suffixes alter the grammatical roles of words.",
+    "Харьцуулсан бүтэц зүй нь угтвар болон дагавар үгс үгийн дүрмийн үүргийг хэрхэн өөрчилдгийг судалдаг.",
+    "Die vergleichende Morphologie untersucht, wie Präfixe und Suffixe die grammatikalische Rolle von Wörtern verändern."
+  ],
+  "etymology": [
+    "Tracing the Latin etymology of the word reveals how its modern meaning evolved over centuries.",
+    "Энэхүү үгийн латин язгуур, гарлыг судлах нь түүний орчин үеийн утга хэрхэн бүрэлдсэнийг тодруулдаг.",
+    "Die Rückverfolgung der lateinischen Etymologie des Wortes zeigt, wie sich seine moderne Bedeutung entwickelte."
+  ],
+  "jargon": [
+    "The doctor avoided medical jargon when explaining the test results to the worried patient.",
+    "Эмч шинжилгээний хариуг түгшсэн өвчтөнд тайлбарлахдаа мэргэжлийн ярвигтай нэр томьёо ашиглахаас зайлсхийв.",
+    "Der Arzt vermied medizinischen Jargon, als er dem besorgten Patienten die Testergebnisse erklärte."
+  ],
+  "vernacular": [
+    "Mark Twain captured the authentic local vernacular of nineteenth-century Mississippi River towns.",
+    "Марк Твен арван есдүгээр зууны Миссисипи мөрний эргийн хотуудын нутгийн аялгууг бодитой дүрсэлсэн.",
+    "Mark Twain fing die authentische lokale Mundart der Städte am Mississippi des 19. Jahrhunderts ein."
+  ],
+  "colloquialism": [
+    "While common in casual texting, this colloquialism is inappropriate for an academic essay.",
+    "Энгийн мессежинд түгээмэл хэрэглэгддэг ч энэ ярианы хэллэг нь эрдэм шинжилгээний эссэд тохиромжгүй.",
+    "Obwohl in Textnachrichten üblich, ist diese Umgangssprache für eine akademische Arbeit ungeeignet."
+  ],
+  "soliloquy": [
+    "Hamlet delivers a famous dramatic soliloquy contemplating life, death, and human morality.",
+    "Хамлет амьдрал, үхэл хийгээд хүний ёс суртахууны талаар эргэцүүлсэн алдарт монолог хэлдэг.",
+    "Hamlet hält einen berühmten dramatischen Monolog, in dem er über Leben, Tod und Moral nachdenkt."
+  ],
+  "allusion": [
+    "The poet made a subtle mythological allusion to the fall of Icarus in his final stanza.",
+    "Яруу найрагч эцсийн бадагтаа Икарын уналтын домгийг битүү ёгтлон дурдсан байв.",
+    "Der Dichter machte in seiner letzten Strophe eine subtile mythologische Anspielung auf den Fall des Ikarus."
+  ],
+  "personification": [
+    "The author used vivid personification, describing the cold autumn wind as whispering ancient secrets.",
+    "Зохиолч намрын хүйтэн салхийг эртний нууцыг шивнэж буйгаар дүрслэн, хүншүүлэлтийн уран аргыг чадварлаг ашиглажээ.",
+    "Der Autor nutzte lebhafte Personifikation und beschrieb den kalten Herbstwind als Flüstern alter Geheimnisse."
+  ],
+  "symbolism": [
+    "The persistent raven perched above the door carries heavy literary symbolism of grief and madness.",
+    "Хаалган дээр суугаа хар хэрээ нь уй гашуу, галзуурлын гүн гүнзгий уран зохиолын бэлгэдлийг агуулдаг.",
+    "Der beharrliche Rabe über der Tür trägt eine schwere literarische Symbolik von Trauer und Wahnsinn."
+  ],
+  "juxtaposition": [
+    "The photographer created dramatic contrast through the juxtaposition of extreme wealth and poverty.",
+    "Гэрэл зурагчин баян тансаг байдал болон туйлын ядуурлыг зэрэгцүүлэн тавьснаар хурц тодотгол үүсгэжээ.",
+    "Der Fotograf schuf dramatische Kontraste durch das Nebeneinanderstellen von extremem Reichtum und Armut."
+  ],
+  "deregulation": [
+    "Financial deregulation allowed commercial banks to invest customer deposits in higher-risk assets.",
+    "Санхүүгийн зохицуулалтыг сулруулсан нь арилжааны банкуудад хадгаламжийг өндөр эрсдэлтэй хөрөнгөд оруулах боломж олгосон.",
+    "Die finanzielle Deregulierung ermöglichte es Geschäftsbanken, Kundeneinlagen in risikoreichere Anlagen zu investieren."
+  ],
+  "privatization": [
+    "The government pursued the privatization of state-owned telecommunications to encourage competition.",
+    "Засгийн газар зах зээлийн өрсөлдөөнийг дэмжихийн тулд төрийн өмчит харилцаа холбооны салбарыг хувьчилсан.",
+    "Die Regierung trieb die Privatisierung staatlicher Telekommunikationsunternehmen voran, um den Wettbewerb zu fördern."
+  ],
+  "nationalization": [
+    "Following the revolution, the new regime ordered the immediate nationalization of foreign oil fields.",
+    "Хувьсгалын дараа шинэ засаг гадаадын газрын тосны ордуудыг төрийн мэдэлд шилжүүлэх тушаал буулгав.",
+    "Nach der Revolution ordnete das neue Regime die sofortige Verstaatlichung ausländischer Ölfelder an."
+  ],
+  "protectionism": [
+    "Economic protectionism harms global supply chains by imposing heavy tariffs on foreign imports.",
+    "Протекционизм буюу дотоодын зах зээлээ хамгаалах бодлого нь гадаад импортод өндөр татвар ногдуулан нийлүүлэлтийн сүлжээг гэмтээдэг.",
+    "Wirtschaftlicher Protektionismus schadet globalen Lieferketten durch hohe Zölle auf ausländische Importe."
+  ],
+  "trade balance": [
+    "A sustained trade balance surplus strengthened the purchasing power of the national currency.",
+    "Гадаад худалдааны тэнцлийн тогтвортой ашиг нь үндэсний мөнгөн тэмдэгтийн худалдан авах чадварыг бэхжүүлжээ.",
+    "Ein anhaltender Handelsbilanzüberschuss stärkte die Kaufkraft der nationalen Währung."
+  ],
+  "trade deficit": [
+    "Importing more luxury goods than exporting manufactured products widened the nation's trade deficit.",
+    "Үйлдвэрлэсэн бүтээгдэхүүнээс илүү тансаг хэрэглээний бараа импортолсон нь худалдааны алдагдлыг нэмэгдүүлэв.",
+    "Mehr Luxusgüter zu importieren als Fertigwaren zu exportieren vergrößerte das Handelsdefizit der Nation."
+  ],
+  "foreign reserve": [
+    "The central bank used its foreign reserve assets to defend the exchange rate against market speculation.",
+    "Төв банк ханшийг зах зээлийн савлагаанаас хамгаалахын тулд гадаад валютын албан нөөцөө ашиглав.",
+    "Die Zentralbank nutzte ihre Devisenreserven, um den Wechselkurs gegen Marktspekulationen zu verteidigen."
+  ],
+  "venture": [
+    "Launching a clean energy startup is a high-risk venture that requires substantial capital.",
+    "Цэвэр эрчим хүчний гарааны бизнес эхлүүлэх нь ихээхэн хэмжээний хөрөнгө шаардсан эрсдэлтэй шинэ бизнес юм.",
+    "Die Gründung eines Startups für saubere Energie ist ein risikoreiches Wagnis, das beträchtliches Kapital erfordert."
+  ],
+  "asset": [
+    "Liquid real estate and government bonds represent the most secure asset classes in the portfolio.",
+    "Хөрвөх чадвартай үл хөдлөх хөрөнгө болон засгийн газрын бонд нь багцын хамгийн найдвартай хөрөнгөд тооцогддог.",
+    "Liquide Immobilien und Staatsanleihen stellen die sichersten Anlageklassen im Portfolio dar."
+  ],
+  "desalination": [
+    "Arid coastal regions rely increasingly on solar-powered thermal desalination for drinking water.",
+    "Хуурай бүс нутгууд ундны усны хэрэгцээгээ нарны эрчим хүчээр ажилладаг далайн ус цэнгэгжүүлэх байгууламжаас хангадаг.",
+    "Trockene Küstenregionen verlassen sich zunehmend auf solarbetriebene Entsalzung für ihr Trinkwasser."
+  ],
+  "carbon footprint": [
+    "Commuting by public transit rather than driving significantly reduces an individual's carbon footprint.",
+    "Хувийн машингүй нийтийн тээврээр зорчих нь хүний хувийн нүүрстөрөгчийн мөрийг эрс бууруулдаг.",
+    "Die Nutzung öffentlicher Verkehrsmittel anstelle des Autos reduziert den individuellen CO2-Fußabdruck erheblich."
+  ],
+  "biohazard": [
+    "The laboratory technician sealed the contaminated petri dishes inside a marked biohazard container.",
+    "Лабораторийн ажилтан бохирдсон шилэн савнуудыг биологийн аюултай хог хаягдлын тусгай саванд битүүмжлэн хийв.",
+    "Der Labortechniker versiegelte die kontaminierten Petrischalen in einem gekennzeichneten Biohazard-Behälter."
+  ],
+  "electromagnetism": [
+    "Maxwell formulated the fundamental mathematical laws uniting electricity and magnetism into electromagnetism.",
+    "Максвелл цахилгаан ба соронзон орныг цахилгаан соронзон чанарт нэгтгэсэн физикийн үндсэн тэгшитгэлүүдийг боловсруулжээ.",
+    "Maxwell formulierte die grundlegenden Gesetze, die Elektrizität und Magnetismus zum Elektromagnetismus vereinten."
+  ],
+  "spectroscopy": [
+    "Astronomers used infrared spectroscopy to determine the chemical composition of the distant comet.",
+    "Одон орон судлаачид алсын сүүлт одны химийн найрлагыг тогтоохын тулд хэт улаан туяаны спектроскопийн аргыг ашигласан.",
+    "Astronomen nutzten die Infrarotspektroskopie, um die chemische Zusammensetzung des fernen Kometen zu bestimmen."
+  ],
+  "particle physics": [
+    "Research in particle physics explores subatomic interactions inside high-energy particle colliders.",
+    "Эгэл бөөмийн физикийн судалгаа нь өндөр энергийн хурдасгуур доторх бөөмсийн харилцан үйлчлэлийг судалдаг.",
+    "Die Teilchenphysik erforscht subatomare Wechselwirkungen in Hochenergie-Teilchenbeschleunigern."
+  ],
+  "relativity": [
+    "Einstein's general theory of relativity explains gravity as the curvature of four-dimensional spacetime.",
+    "Эйнштейний харьцангуйн ерөнхий онол нь татах хүчийг дөрвөн хэмжээст орон зай-цаг хугацааны муруйлт гэж тайлбарладаг.",
+    "Einsteins allgemeine Relativitätstheorie erklärt die Gravitation als Krümmung der vierdimensionalen Raumzeit."
+  ],
+  "astrophysics": [
+    "Graduate programs in astrophysics investigate stellar nucleosynthesis and the cosmic expansion rate.",
+    "Астрофизикийн магистрын хөтөлбөр нь оддын цөмийн нэгдэл болон орчлон ертөнцийн тэлэлтийн хурдыг судалдаг.",
+    "Studiengänge in Astrophysik untersuchen die stellare Nukleosynthese und die kosmische Expansionsrate."
+  ],
+  "biochemistry": [
+    "Advances in biochemistry shed light on enzyme kinetics and metabolic pathways within living cells.",
+    "Биохимийн дэвшил нь амьд эс дэх ферментийн кинетик ба бодисын солилцооны замуудыг тодорхой болгож байна.",
+    "Fortschritte in der Biochemie erhellen Enzymkinetik und Stoffwechselwege in lebenden Zellen."
+  ],
+  "microbiology": [
+    "Clinical microbiology identifies pathogenic bacterial strains to prescribe targeted antibiotic treatments.",
+    "Эмнэлзүйн микробиологи нь эмчилгээнд тохирох антибиотикийг сонгохын тулд өвчин үүсгэгч нянгийн омгийг тодорхойлдог.",
+    "Die klinische Mikrobiologie identifiziert pathogene Bakterienstämme für gezielte Antibiotikatherapien."
+  ],
+  "judiciary": [
+    "An independent judiciary guarantees that every citizen receives an impartial legal trial.",
+    "Хараат бус шүүх засаглал нь иргэн бүр шударга, алагчлалгүй шүүх хуралдаанаар эрхээ хамгаалуулах баталгааг хангадаг.",
+    "Eine unabhängige Justiz garantiert, dass jeder Bürger ein unparteiisches Gerichtsverfahren erhält."
+  ],
+  "legislature": [
+    "The national legislature debated the new healthcare bill late into the evening before voting.",
+    "Улсын хууль тогтоох байгууллага санал хураахын өмнө эрүүл мэндийн шинэ хуулийн төслийг үдэш болтол хэлэлцэв.",
+    "Die nationale Legislative debattierte bis spät in den Abend über das neue Gesundheitsgesetz vor der Abstimmung."
+  ],
+  "executive branch": [
+    "The executive branch enforces federal laws passed by parliament through specialized government agencies.",
+    "Гүйцэтгэх засаглал нь парламентаас баталсан хуулиудыг засгийн газрын тусгай агентлагуудаар дамжуулан хэрэгжүүлдэг.",
+    "Die Exekutive setzt vom Parlament verabschiedete Gesetze durch spezialisierte Behörden durch."
+  ],
+  "separation of powers": [
+    "The constitutional separation of powers prevents any single governmental department from monopolizing authority.",
+    "Засаглал хуваарилах зарчим нь аль нэг төрийн байгууллага эрх мэдлийг ганцаар монополчлон авахаас сэргийлдэг.",
+    "Die verfassungsmäßige Gewaltenteilung verhindert, dass eine einzelne Regierungsabteilung die Macht monopolisiert."
+  ],
+  "checks and balances": [
+    "A robust system of checks and balances allows the courts to review presidential decrees.",
+    "Хяналт-тэнцвэрийн тогтолцоо нь ерөнхийлөгчийн зарлигийг шүүх хянан үзэх эрх зүйн боломжийг олгодог.",
+    "Ein solides System gegenseitiger Kontrolle erlaubt es den Gerichten, Präsidialdekrete zu überprüfen."
+  ],
+  "constitutionalism": [
+    "Democratic constitutionalism mandates that political leaders remain strictly accountable to written law.",
+    "Ардчилсан үндсэн хуульт ёс нь улс төрийн удирдагчдыг бичигдсэн хуулийн өмнө хатуу хариуцлага хүлээхийг шаарддаг.",
+    "Demokratischer Konstitutionalismus verlangt, dass politische Führungskräfte dem geschriebenen Recht unterstehen."
+  ],
+  "civil liberties": [
+    "Freedom of speech, association, and peaceful assembly form the backbone of fundamental civil liberties.",
+    "Үзэл бодлоо илэрхийлэх, эвлэлдэн нэгдэх, тайван жагсах эрх чөлөө нь иргэний үндсэн эрх чөлөөний үндэс суурь юм.",
+    "Meinungsfreiheit, Vereinigungsfreiheit und friedliche Versammlungsfreiheit bilden das Rückgrat der Bürgerrechte."
+  ],
+  "habeas corpus": [
+    "The writ of habeas corpus prevents the state from detaining individuals indefinitely without criminal charges.",
+    "Хабеас корпус буюу шүүхээр хянуулах эрх нь төр иргэнийг эрүүгийн ял тулгалгүйгээр үндэслэлгүйгээр хорихоос хамгаалдаг.",
+    "Die Habeas-Corpus-Akte verhindert, dass der Staat Personen ohne Anklage unbegrenzt festhält."
+  ],
+  "statute": [
+    "The revised criminal statute clearly defines penalties for modern unauthorized cyber intrusions.",
+    "Шинэчлэгдсэн эрүүгийн хуулийн заалт нь цахим халдлага, хууль бус нэвтрэлтийн шийтгэлийг тодорхой зааж өгчээ.",
+    "Das überarbeitete Strafgesetz definiert Strafen für moderne unbefugte Cyber-Eingriffe eindeutig."
+  ],
+  "filibuster": [
+    "The opposition senator launched an eight-hour filibuster to delay the controversial budget vote.",
+    "Сөрөг хүчний сенатч маргаантай төсвийн санал хураалтыг хойшлуулахын тулд найман цагийн турш үг хэлэн саатуулах тактик хэрэглэв.",
+    "Der Oppositionssenator hielt eine achtstündige Dauerrede, um die umstrittene Haushaltsabstimmung zu verzögern."
+  ],
+  "impeachment": [
+    "The assembly initiated formal impeachment proceedings against the high-ranking official accused of corruption.",
+    "Парламент авлигын хэрэгт холбогдсон өндөр албан тушаалтныг албан тушаалаас нь огцруулах импичментийн ажиллагааг эхлүүлэв.",
+    "Das Parlament leitete ein formelles Amtsenthebungsverfahren gegen den der Korruption beschuldigten Beamten ein."
+  ],
+  "clemency": [
+    "The president granted executive clemency to elderly prisoners who showed genuine rehabilitation.",
+    "Ерөнхийлөгч засарч хүмүүжсэнээ харуулсан өндөр настай хоригдлуудад өршөөл үзүүлж, ялыг хөнгөлөв.",
+    "Der Präsident gewährte älteren Häftlingen, die echte Besserung zeigten, Begnadigung."
+  ],
+  "plea bargain": [
+    "The defendant agreed to a plea bargain, pleading guilty to a lesser charge in exchange for a lighter sentence.",
+    "Шүүгдэгч хөнгөн ял авахын тулд ялын тохиролцоо хийж, хөнгөн зүйл ангиар гэм буруугаа хүлээн зөвшөөрөв.",
+    "Der Angeklagte willigte in eine Vereinbarung ein und bekannte sich schuldig gegen eine mildere Strafe."
+  ],
+  "acquittal": [
+    "Due to a complete lack of verifiable evidence, the jury reached an unexpected unanimous acquittal.",
+    "Баталгаатай нотлох баримт дутагдсаны улмаас тангарагтны шүүх санал нэгтэйгээр цагаатгах шийдвэр гаргав.",
+    "Aufgrund fehlender Beweise fällte die Jury einen überraschenden einstimmigen Freispruch."
+  ],
+  "injunction": [
+    "The supreme court issued a preliminary injunction halting the planned logging in the protected forest.",
+    "Дээд шүүхээс дархан цаазат ойд төлөвлөсөн мод бэлтгэлийг нэн даруй зогсоох урьдчилсан хориг захирамж гаргалаа.",
+    "Das oberste Gericht erließ eine einstweilige Verfügung, die das Abholzen im Naturschutzgebiet stoppte."
+  ],
+  "restitution": [
+    "As part of the criminal sentencing, the embezzler was ordered to pay full financial restitution to victims.",
+    "Эрүүгийн ялын хүрээнд мөнгө завшсан этгээдэд хохирогчдын хохирлыг бүрэн барагдуулах санхүүгийн төлбөр оногдуулсан.",
+    "Als Teil des Urteils wurde der Veruntreuer zur vollständigen finanziellen Entschädigung der Opfer verurteilt."
+  ],
+  "machine learning": [
+    "Engineers train machine learning models on millions of labeled images to recognize pedestrians.",
+    "Инженерүүд явган зорчигчийг танихын тулд сая сая хаягласан зураг дээр машин сургалтын загварыг сургадаг.",
+    "Ingenieure trainieren Machine-Learning-Modelle an Millionen Bildern, um Fußgänger zuverlässig zu erkennen."
+  ],
+  "deep learning": [
+    "Deep learning neural networks achieve state-of-the-art accuracy in real-time natural language translation.",
+    "Гүн сургалтын мэдрэлийн сүлжээ нь байгалийн хэлийг бодит цагт орчуулахад өндөр нарийвчлалд хүрсэн.",
+    "Neuronale Netze des Deep Learnings erzielen Spitzenwerte bei der Echtzeit-Übersetzung natürlicher Sprache."
+  ],
+  "blockchain": [
+    "A decentralized blockchain ensures transaction history cannot be altered or deleted by a single authority.",
+    "Төвлөрсөн бус блокчейн технологи нь гүйлгээний түүхийг аль нэг этгээд өөрчлөх буюу устгахаас сэргийлдэг.",
+    "Eine dezentrale Blockchain stellt sicher, dass Transaktionsdaten nicht nachträglich manipuliert werden."
+  ],
+  "distributed ledger": [
+    "Participating nodes synchronize records across the distributed ledger without needing a central server.",
+    "Оролцогч зангилаанууд төв сервергүйгээр тархмал бүртгэлийн дэвтэр дээр бүртгэлүүдийг синхрончилдог.",
+    "Teilnehmende Knoten synchronisieren Einträge über das Distributed Ledger ohne zentralen Server."
+  ],
+  "quantum computing": [
+    "Quantum computing exploits superposition and entanglement to solve intractable cryptographic puzzles.",
+    "Квант тооцоолол нь шийдвэрлэхэд бэрх нууцлалын даалгавруудыг бодохын тулд суперпозици болон квант орооцолдоог ашигладаг.",
+    "Quantencomputing nutzt Superposition und Verschränkung, um komplexe kryptografische Rätsel zu lösen."
+  ],
+  "recursion": [
+    "The computer algorithm uses recursion to traverse each node of the hierarchical directory tree.",
+    "Компьютерийн алгоритм нь шаталсан хавтасны модны зангилаа бүрийг шалгахын тулд рекурс буюу өөрийгөө дуудах аргыг ашигладаг.",
+    "Der Algorithmus nutzt Rekursion, um jeden Knoten des hierarchischen Verzeichnisbaums zu durchlaufen."
+  ],
+  "permutation": [
+    "The cryptographer calculated every possible character permutation to test the strength of the passcode.",
+    "Криптографч нууц үгийн бат бөх чанарыг шалгахын тулд тэмдэгтүүдийн боломжит бүх сэлгэмлийг тооцоолов.",
+    "Der Kryptograf berechnete jede mögliche Zeichenpermutation, um die Stärke des Passworts zu testen."
+  ],
+  "probability": [
+    "Calculating the conditional probability of default helps risk analysts price commercial credit portfolios.",
+    "Нөхцөлт магадлалыг тооцоолох нь эрсдэлийн шинжээчдэд арилжааны зээлийн багцын үнийг тогтооход тусалдаг.",
+    "Die Berechnung der bedingten Wahrscheinlichkeit hilft Risikoanalysten bei der Bewertung von Krediten."
+  ],
+  "variance": [
+    "High variance in quarterly sales figures indicates unstable demand for seasonal leisure products.",
+    "Улирлын борлуулалтын үзүүлэлтийн өндөр дисперс буюу тархалт нь улирлын чанартай бүтээгдэхүүний эрэлт тогтворгүйг харуулж байна.",
+    "Eine hohe Varianz bei den Quartalszahlen weist auf eine instabile Nachfrage nach Saisonprodukten hin."
+  ],
+  "standard deviation": [
+    "A small standard deviation shows that most student test scores clustered closely around the class mean.",
+    "Бага стандарт хазайлт нь оюутнуудын ихэнх шалгалтын оноо ангийн дундажтай маш ойрхон төвлөрснийг илтгэнэ.",
+    "Eine geringe Standardabweichung zeigt, dass die meisten Noten nahe um den Klassendurchschnitt lagen."
+  ],
+  "regression": [
+    "The data scientist applied multivariate linear regression to forecast future energy consumption peaks.",
+    "Өгөгдлийн шинжээч ирээдүйн эрчим хүчний хэрэглээний оргил үеийг таамаглахын тулд олон хүчин зүйлт шугаман регрессийг ашигласан.",
+    "Der Datenwissenschaftler wandte multivariate lineare Regression an, um den Energieverbrauch vorherzusagen."
+  ],
+  "covariance": [
+    "Positive covariance between the two tech stocks revealed that their daily prices move in tandem.",
+    "Технологийн хоёр хувьцааны хоорондох эерэг ковариац нь тэдгээрийн өдрийн үнэ нэгэн зэрэг хөдөлдгийг харуулсан.",
+    "Eine positive Kovarianz zwischen den beiden Tech-Aktien zeigte, dass sich ihre Kurse parallel bewegen."
+  ],
+  "microprocessor": [
+    "The newly fabricated silicon microprocessor packs over ten billion microscopic transistors.",
+    "Шинээр үйлдвэрлэсэн цахиурын микропроцессор нь арван тэрбум гаруй микроскоп транзисторыг агуулдаг.",
+    "Der neu gefertigte Silizium-Mikroprozessor enthält über zehn Milliarden mikroskopische Transistoren."
+  ],
+  "semiconductor": [
+    "Global automotive factories faced severe delays due to a shortage of semiconductor chips.",
+    "Хагас дамжуулагч чипний хомсдолоос шалтгаалан дэлхийн авто машин үйлдвэрлэгчид ноцтой сааталтай тулгарав.",
+    "Automobilhersteller weltweit erlitten schwere Verzögerungen aufgrund eines Mangels an Halbleitern."
+  ],
+  "biometrics": [
+    "Border immigration checkpoints use biometrics such as iris scans and facial geometry matching.",
+    "Хилийн шалган нэвтрүүлэх цэгүүд нүдний солонгон бүрхэвч ба царай таних биометрийн технологийг ашигладаг.",
+    "Grenzkontrollen nutzen Biometrie wie Iris-Scans und den Abgleich der Gesichtsgeometrie."
+  ],
+  "optics": [
+    "Advancements in precision optics enabled the space telescope to capture razor-sharp cosmic deep-field views.",
+    "Нарийн оптикийн дэвшил нь сансрын дуранд орчлон ертөнцийн гүнийг онцгой тод буулгах боломж олгов.",
+    "Fortschritte in der Präzisionsoptik ermöglichten es dem Weltraumteleskop, gestochen scharfe Bilder aufzunehmen."
+  ],
+  "renaissance": [
+    "The Italian Renaissance witnessed an extraordinary revival of classical philosophy, art, and science.",
+    "Италийн Сэргэн мандалтын үе нь сонгодог гүн ухаан, урлаг болон шинжлэх ухааны гайхамшигт сэргэлтийг авчирсан.",
+    "Die italienische Renaissance erlebte eine außergewöhnliche Wiederbelebung antiker Philosophie und Kunst."
+  ],
+  "baroque": [
+    "Baroque architecture features ornate ceiling frescoes, theatrical lighting, and dramatic gilded curves.",
+    "Барокко загварын уран барилга нь гоёмсог таазны фреск, театрын мэт гэрэлтүүлэг болон алтадмал муруй шугамаараа онцлогтой.",
+    "Die Barockarchitektur zeichnet sich durch kunstvolle Deckenfresken und dramatische Kurven aus."
+  ],
+  "neoclassicism": [
+    "Neoclassicism embraced symmetry, restrained elegance, and Roman columns in reaction against rococo excess.",
+    "Неоклассицизм нь рококогийн хэт тансаглалын эсрэг тэгш хэм, цэмцгэр дэгжин байдал, Ромын багануудыг чухалчилсан.",
+    "Der Neoklassizismus setzte auf Symmetrie, schlichte Eleganz und römische Säulen gegen den Rokoko-Überfluss."
+  ],
+  "modernism": [
+    "Twentieth-century modernism broke decisively with traditional ornamentation in favor of functional design.",
+    "Хорьдугаар зууны модернизм нь функциональ загварыг эрхэмлэн уламжлалт хээ угалзнаас эрс татгалзсан.",
+    "Die Moderne des zwanzigsten Jahrhunderts brach entschieden mit traditionellem Schmuck zugunsten funktionalen Designs."
+  ],
+  "minimalism": [
+    "Architectural minimalism emphasizes clean geometric lines, monochromatic palettes, and clutter-free living spaces.",
+    "Архитектурын минимализм нь цэвэр геометрийн шугам, нэг өнгийн шийдэл болон илүү дутуу зүйлгүй орчныг чухалчилдаг.",
+    "Architektonischer Minimalismus betont klare Linien, monochrome Paletten und reduzierte Wohnräume."
+  ],
+  "impressionism": [
+    "French impressionism captured changing daylight and atmospheric moods through loose, vibrant brushstrokes.",
+    "Францын импрессионизм нь гэрэл сүүдрийн хувиралт ба байгалийн агшин зуурын уур амьсгалыг чөлөөт бийрийн таталтаар буулгасан.",
+    "Der französische Impressionismus fing wechselndes Tageslicht durch dynamische Pinselstriche ein."
+  ],
+  "cubism": [
+    "Picasso pioneered cubism, fragmenting three-dimensional subjects into abstract geometric planes.",
+    "Пикассо кубизмыг санаачлан, бодит биетүүдийг геометрийн хийсвэр хавтгайнуудад задалж дүрсэлжээ.",
+    "Picasso leistete Pionierarbeit im Kubismus, indem er Motive in geometrische Flächen zerlegte."
+  ],
+  "surrealism": [
+    "Salvador Dalí's surrealism explored the irrational subconscious world of dreams and melted clocks.",
+    "Сальвадор Далигийн сюрреализм нь зүүд зөн, ухамсаргүй ертөнц болон урсаж буй цагнуудыг дүрсэлсэн байдаг.",
+    "Salvador Dalís Surrealismus erforschte das unbewusste Reich der Träume und schmelzenden Uhren."
+  ],
+  "fresco": [
+    "Michelangelo painted the monumental fresco directly onto the wet lime plaster of the Sistine Chapel ceiling.",
+    "Микеланжело Сикстиний сүмийн таазны нойтон шохойн шавардлага дээр алдарт ханын фреск зургаа зуржээ.",
+    "Michelangelo malte das monumentale Fresko direkt auf den feuchten Kalkputz der Sixtinischen Kapelle."
+  ],
+  "mosaic": [
+    "The Byzantine basilica floor is paved with an intricate mosaic of tinted glass and gold tesserae.",
+    "Византын сүмийн шалыг өнгөт шил, алтадмал хавтангуудыг шигтгэн урласан уран тансаг шигтгэмэл мозайкаар чимэглэжээ.",
+    "Der Boden der byzantinischen Basilika ist mit einem kunstvollen Mosaik aus Buntglas und Gold verziert."
+  ],
+  "bas-relief": [
+    "Carved marble bas-relief sculptures on the triumphal arch celebrate victorious military campaigns.",
+    "Ялалтын хаалган дээр сийлсэн гантиг чулуун товгор хавтгай сийлбэр буюу барельеф нь цэргийн ялалтыг магтан харуулдаг.",
+    "Gemeißelte Marmor-Flachreliefs am Triumphbogen erinnern an siegreiche Feldzüge."
+  ],
+  "facade": [
+    "Restorers cleaned centuries of urban soot from the ornate limestone facade of the Gothic cathedral.",
+    "Сэргээн засварлагчид Готик хийдийн шохойн чулуун гоёмсог нүүрэн талын хэдэн зуун жилийн тортог, тоосыг цэвэрлэв.",
+    "Restauratoren reinigten die kunstvolle Fassade der gotischen Kathedrale von Jahrhunderten städtischen Rußes."
+  ],
+  "colonnade": [
+    "Visitors walked beneath the imposing classical colonnade surrounding the public palace courtyard.",
+    "Зочлох хүмүүс ордны талбайг тойрсон сүрлэг сонгодог баганан эгнээ буюу колоннадын доогуур алхав.",
+    "Besucher schritten unter den imposanten klassischen Kolonnaden entlang, die den Schlosshof umgeben."
+  ],
+  "buttress": [
+    "Massive exterior flying buttress structures counteract the outward lateral thrust of the vaulted stone roof.",
+    "Сүмийн гаднах тулгуур багана буюу аркбутан нь нуман хэлбэртэй чулуун дээврийн хажуугийн даралтыг тэнцвэржүүлдэг.",
+    "Massive äußere Strebepfeiler fangen den seitlichen Schub des gewölbten Steindachs ab."
+  ],
+  "atrium": [
+    "Sunlight poured through the glass ceiling into the central five-story atrium of the corporate headquarters.",
+    "Нарны гэрэл шилэн дээврээр дамжин компанийн төв оффисын таван давхар өндөр төв хүлээн авах танхим буюу атриум руу тусав.",
+    "Sonnenlicht strömte durch das Glasdach in das zentrale fünfstöckige Atrium der Firmenzentrale."
+  ],
+  "portico": [
+    "Guests took shelter from the sudden summer rainstorm beneath the mansion's classical columned portico.",
+    "Зочид зуны гэнэтийн ширүүн борооноос хамгаалан харшийн баганат үүдний саравч буюу портик дор хоргодов.",
+    "Gäste suchten vor dem plötzlichen Sommerregen Schutz unter dem säulengestützten Portikus des Anwesens."
+  ],
+  "mezzanine": [
+    "The upscale cafe sits on the mezzanine overlooking the bustling main lobby of the grand hotel.",
+    "Дээд зэрэглэлийн кафе нь их зочид буудлын төв лобби руу харсан завсрын хагас давхар дээр байрладаг.",
+    "Das gehobene Café befindet sich auf dem Zwischengeschoss mit Blick auf die belebte Lobby."
+  ],
+  "sculpture": [
+    "The contemporary museum acquired a monumental bronze sculpture by a celebrated local artist.",
+    "Орчин үеийн урлагийн музей нэрт нутгийн уран барималчийн хүрэл хөшөө, баримлыг цуглуулгадаа нэмж авав.",
+    "Das Museum für moderne Kunst erwarb eine monumentale Bronzeskulptur eines gefeierten lokalen Künstlers."
+  ],
+  "installation": [
+    "The interactive multimedia art installation reacted dynamically to ambient sounds and visitor movements.",
+    "Интерактив мультимедиа инсталляци буюу орон зайн урлагийн бүтээл нь орчны чимээ ба зочдын хөдөлгөөнд хувирч байв.",
+    "Die interaktive Kunstinstallation reagierte dynamisch auf Umgebungsgeräusche und Bewegungen der Besucher."
+  ],
+  "perspective": [
+    "Brunelleschi introduced linear perspective, giving two-dimensional paintings the illusion of spatial depth.",
+    "Брунеллески шугаман алслалтыг нэвтрүүлснээр хоёр хэмжээст уран зурагт орон зайн гүний хуурмаг мэдрэмжийг өгсөн юм.",
+    "Brunelleschi führte die Zentralperspektive ein und verlieh Gemälden die Illusion räumlicher Tiefe."
+  ],
+  "teleology": [
+    "Aristotelian teleology asserts that all natural entities have an intrinsic purpose or ultimate end.",
+    "Аристотелийн телеологи нь байгалийн бүх биет юмс өөрийн гэсэн зорилго, эцсийн чиглэлтэй гэж үздэг.",
+    "Die aristotelische Teleologie besagt, dass alle Naturdinge einen immanenten Zweck oder ein Endziel haben."
+  ],
+  "categorical imperative": [
+    "Kant's categorical imperative demands that one act only on maxims that could become universal moral laws.",
+    "Кантын категорийн императив нь зөвхөн бүх нийтийн ёс суртахууны хууль болж чадахуйц зарчмаар үйлдэхийг шаарддаг.",
+    "Kants kategorischer Imperativ verlangt, nur nach Maximen zu handeln, die allgemeines Gesetz werden könnten."
+  ],
+  "pluralism": [
+    "A healthy democracy thrives on ideological pluralism, welcoming diverse cultural and political perspectives.",
+    "Эрүүл ардчилал нь олон ургальч үзэл дээр цэцэглэн хөгжиж, соёл болон улс төрийн олон талт байр суурийг хүлээн зөвшөөрдөг.",
+    "Eine gesunde Demokratie lebt vom weltanschaulichen Pluralismus und begrüßt vielfältige Perspektiven."
+  ],
+  "absolutism": [
+    "Seventeenth-century royal absolutism concentrated unlimited legislative and judicial authority in the monarch.",
+    "Арван долдугаар зууны хаант төрийн хэмжээгүй эрхт ёс буюу абсолютизм нь хууль тогтоох ба шүүх эрхийг хаанд бүрэн төвлөрүүлсэн.",
+    "Der fürstliche Absolutismus des siebzehnten Jahrhunderts konzentrierte unbegrenzte Macht beim Monarchen."
+  ],
+  "fatalism": [
+    "His philosophical fatalism led him to accept misfortunes calmly, believing destiny is entirely predetermined.",
+    "Түүний фатализм буюу хувь тавиланд найдах үзэл нь хувь заяа урьдаас зурагдсан гэж үзэн зовлон бэрхшээлийг тайван хүлээж авахад хүргэв.",
+    "Sein Fatalismus verleitete ihn dazu, Unglücke gelassen hinzunehmen, da alles vorherbestimmt sei."
+  ],
+  "hedonism": [
+    "Ancient Epicurean hedonism sought tranquility and intellectual pleasure rather than reckless sensory indulgence.",
+    "Эртний Эпикурын гедонизм нь замбараагүй зугаа цэнгэлээс илүү сэтгэлийн амар амгалан, оюуны таашаалыг эрэлхийлдэг байв.",
+    "Der antike Epikureismus strebte nach Seelenruhe und geistigem Genuss statt nach hemmungsloser Ausschweifung."
+  ],
+  "asceticism": [
+    "Monks practiced severe asceticism in the remote desert monastery, renouncing all worldly possessions.",
+    "Хийдийн лам хуврагууд алслагдсан цөлийн хийдэд дэлхийн бүх эд баялгаас татгалзан хатуу даяанчлал, даяанч ёсыг сахиж байв.",
+    "Mönche praktizierten strenge Askese im abgelegenen Wüstenkloster und entsagten allen weltlichen Gütern."
+  ],
+  "solipsism": [
+    "Philosophical solipsism holds the extreme epistemological view that only one's own mind is sure to exist.",
+    "Гүн ухааны солипсизм нь зөвхөн өөрийн ухамсар, сэтгэхүй л оршин байгаа нь эргэлзээгүй гэж үздэг туйлын үзэл юм.",
+    "Der Solipsismus vertritt die radikale Ansicht, dass nur das eigene Bewusstsein sicher existiert."
+  ],
+  "phenomenology": [
+    "Husserl's phenomenology investigates how conscious phenomena appear directly to human perception.",
+    "Гуссерлийн феноменологи нь ухамсарт юмс үзэгдэл хүний хүртэхүйд хэрхэн шууд буудгийг судалдаг.",
+    "Husserls Phänomenologie untersucht, wie bewusste Phänomene der menschlichen Wahrnehmung direkt erscheinen."
+  ],
+  "structuralism": [
+    "Linguistic structuralism analyzes human culture through underlying relational networks and signs.",
+    "Хэл шинжлэлийн структурализм буюу бүтцийн онол нь хүний соёлыг харилцааны суурь сүлжээ, тэмдгүүдээр дамжуулан шинжилдэг.",
+    "Der Strukturalismus analysiert Kultur anhand von zugrunde liegenden relationalen Zeichensystemen."
+  ],
+  "deconstruction": [
+    "Derrida introduced textual deconstruction to expose hidden contradictions within philosophical writings.",
+    "Деррида гүн ухааны бүтээлүүд дэх далд зөрчлийг илрүүлэхийн тулд бичвэрийг задлан шинжлэх деконструкцийн аргыг нэвтрүүлжээ.",
+    "Derrida führte die Dekonstruktion ein, um verborgene Widersprüche in philosophischen Texten aufzudecken."
+  ],
+  "existential threat": [
+    "Runaway climate change poses an existential threat to low-lying island nations.",
+    "Уур амьсгалын хяналтгүй дулаарал нь нам дор арал улсуудын оршин тогтнолд бодит аюул заналхийлж байна.",
+    "Der fortschreitende Klimawandel stellt eine existenzielle Bedrohung für tief liegende Inselstaaten dar."
+  ],
+  "moral dilemma": [
+    "Whistleblowers face an agonizing moral dilemma between corporate loyalty and public safety.",
+    "Шүгэл үлээгчид байгууллагадаа үнэнч байх ба нийтийн аюулгүй байдлыг хамгаалахын хооронд хүнд ёс суртахууны сонголттой тулгардаг.",
+    "Whistleblower stehen vor einem quälenden moralischen Dilemma zwischen Loyalität und Gemeinwohl."
+  ],
+  "hermeneutic circle": [
+    "Interpreting scripture requires navigating the hermeneutic circle between individual verses and whole texts.",
+    "Судар номыг тайлбарлах нь тусдаа бадаг ба бүхэл бичвэрийн хоорондох тайлбар зүйн тойргийг ойлгохыг шаарддаг.",
+    "Das Verstehen heiliger Texte erfordert das Durchlaufen des hermeneutischen Zirkels vom Teil zum Ganzen."
+  ],
+  "antiquity": [
+    "Archaeologists uncovered pristine Roman mosaics dating back to classical Mediterranean antiquity.",
+    "Археологичид сонгодог Газар дундын тэнгисийн эртний үед хамаарах Ромын бүрэн бүтэн мозайкуудыг илрүүлжээ.",
+    "Archäologen legten makellose römische Mosaike aus der klassischen mediterranen Antike frei."
+  ],
+  "feudalism": [
+    "Medieval feudalism bound peasant serfs to agricultural labor in exchange for lordly military protection.",
+    "Дундад зууны феодализм нь тариачдыг язгууртны цэргийн хамгаалалтын хариуд газар тариалангийн хөдөлмөрт уяж байв.",
+    "Der mittelalterliche Feudalismus band leibeigene Bauern im Tausch gegen Schutz an die Scholle."
+  ],
+  "agrarian society": [
+    "Before rapid industrialization, the country functioned primarily as a self-sufficient agrarian society.",
+    "Хурдацтай үйлдвэржилтээс өмнө тус улс голчлон өөрийгөө тэтгэдэг газар тариалангийн нийгэм хэлбэрээр ажилладаг байв.",
+    "Vor der raschen Industrialisierung fungierte das Land primär als autarke Agrargesellschaft."
+  ],
+  "mercantilism": [
+    "Early modern mercantilism prioritized bullion accumulation and strict imperial colonial monopolies.",
+    "Эрт үеийн меркантилизм нь алт мөнгө хуримтлуулах ба колонийн худалдааны хатуу монополийг нэн тэргүүнд тавьдаг байв.",
+    "Der frühneuzeitliche Merkantilismus setzte auf die Anhäufung von Edelmetallen und Handelsmonopole."
+  ],
+  "colonialism": [
+    "Nineteenth-century European colonialism exploited natural resources across Africa and South Asia.",
+    "Арван есдүгээр зууны Европын колоничлол нь Африк болон Өмнөд Азийн байгалийн баялгийг өргөнөөр мөлжиж байв.",
+    "Der europäische Kolonialismus des 19. Jahrhunderts beutete Rohstoffe in Afrika und Asien aus."
+  ],
+  "imperialism": [
+    "Economic imperialism expanded geopolitical spheres of influence through debt dependency and naval blockades.",
+    "Эдийн засгийн империализм нь өрийн хараат байдал ба тэнгисийн цэргийн хоригоор дамжуулан геополитикийн нөлөөгөө тэлжээ.",
+    "Wirtschaftlicher Imperialismus weitete Einflusszonen durch Schuldenabhängigkeit und Blockaden aus."
+  ],
+  "emancipation": [
+    "The constitutional proclamation secured the immediate emancipation of millions of enslaved workers.",
+    "Үндсэн хуулийн тунхаглал нь олон сая боолчлогдсон хүмүүсийн нэн даруй эрх чөлөөгөө олж чөлөөлөгдөх баталгааг хангасан.",
+    "Die verfassungsmäßige Proklamation sicherte die sofortige Emanzipation von Millionen Versklavten."
+  ],
+  "armistice": [
+    "The opposing generals signed a temporary armistice halting combat along the western front.",
+    "Эсрэг талуудын генералууд баруун фронтын дагуух тулааныг зогсоох түр гал зогсоох гэрээнд гарын үсэг зурав.",
+    "Die gegnerischen Generäle unterzeichneten einen Waffenstillstand, der die Kämpfe an der Front beendete."
+  ],
+  "confederation": [
+    "The loose confederation of autonomous cantons agreed to coordinate mutual defense and border customs.",
+    "Автономит кантонуудын холбоо буюу конфедераци нь харилцан бие биенээ батлан хамгаалах болон хилийн гаалиа зохицуулахаар тохиролцов.",
+    "Der lose Staatenbund autonomer Kantone vereinbarte gemeinsame Verteidigung und Zollgrenzen."
+  ],
+  "commonwealth": [
+    "Member nations of the international commonwealth collaborate on educational exchange and sporting events.",
+    "Олон улсын хамтын нөхөрлөлийн гишүүн орнууд боловсролын солилцоо, спортын арга хэмжээн дээр хамтран ажилладаг.",
+    "Mitgliedstaaten des internationalen Commonwealth kooperieren bei Bildungsaustausch und Sport."
+  ],
+  "renaissance man": [
+    "Leonardo da Vinci epitomized the ideal renaissance man, mastering anatomy, engineering, and painting.",
+    "Леонардо да Винчи нь анагаах, инженерчлэл, уран зурагт нэгэн зэрэг гаршсан сэргэн мандалтын үеийн тал бүрийн авьяастны тод жишээ байв.",
+    "Leonardo da Vinci verkörperte den Universalgelehrten, der Anatomie, Ingenieurwesen und Malerei beherrschte."
+  ],
+  "enlightenment": [
+    "The European Enlightenment championed scientific inquiry, personal liberty, and the questioning of monarchical power.",
+    "Европын Гэгээрлийн эрин үе нь шинжлэх ухааны эрэл хайгуул, хувь хүний эрх чөлөө болон хаант засаглалын эрх мэдлийг эргэлзэн шалгахыг уриалсан юм.",
+    "Die europäische Aufklärung trat für wissenschaftliche Forschung, persönliche Freiheit und Vernunft ein."
+  ],
+  "industrial revolution": [
+    "The first industrial revolution shifted manufacturing from artisan workshops to steam-powered textile mills.",
+    "Аж үйлдвэрийн анхдугаар хувьсгал нь үйлдвэрлэлийг гар урлалын цехээс уураар ажилладаг нэхмэлийн үйлдвэрүүд рүү шилжүүлсэн.",
+    "Die erste industrielle Revolution verlagerte die Fertigung von Handwerksbetrieben zu dampfbetriebenen Webereien."
+  ],
+  "global governance": [
+    "Multilateral institutions coordinate global governance to tackle cross-border challenges like pandemics.",
+    "Олон талт байгууллагууд цар тахал зэрэг хил дамнасан сорилтуудыг шийдвэрлэхийн тулд дэлхийн засаглалыг уялдуулан зохицуулдаг.",
+    "Multilaterale Institutionen koordinieren die Global Governance, um grenzüberschreitende Herausforderungen zu bewältigen."
+  ],
+  "corporate governance": [
+    "Transparent corporate governance protects minority shareholders and ensures financial accountability.",
+    "Ил тод компанийн засаглал нь жижиг хувьцаа эзэмшигчдийн эрхийг хамгаалж, санхүүгийн хариуцлагыг хангадаг.",
+    "Transparente Corporate Governance schützt Minderheitsaktionäre und sichert finanzielle Rechenschaftspflicht."
+  ],
+  "fiduciary duty": [
+    "Investment fund managers have a legal fiduciary duty to prioritize their clients' financial interests.",
+    "Хөрөнгө оруулалтын сангийн менежерүүд үйлчлүүлэгчдийнхээ санхүүгийн ашиг сонирхлыг нэн тэргүүнд тавих итгэмжлэлийн хууль ёсны үүрэгтэй.",
+    "Fondsmanager haben eine gesetzliche Treuepflicht, die finanziellen Interessen ihrer Kunden voranzustellen."
+  ],
+  "scrum master": [
+    "The scrum master removed workflow blockers so the software team could deliver sprint commitments on schedule.",
+    "Скрам мастер нь багийн ажлын урсгалын саадыг арилгаснаар програм хангамжийн баг спринтийн даалгавраа хугацаанд нь биелүүлэх боломжтой болсон.",
+    "Der Scrum Master beseitigte Hindernisse, damit das Entwicklerteam die Sprint-Ziele rechtzeitig erreichte."
+  ],
+  "agile methodology": [
+    "Adopting agile methodology enabled the engineering team to iterate rapidly on user feedback.",
+    "Эжайл арга зүйг нэвтрүүлснээр инженерийн баг хэрэглэгчийн санал хүсэлтэд үндэслэн бүтээгдэхүүнээ хурдан сайжруулах боломжтой болсон.",
+    "Die Einführung der agilen Methodik ermöglichte es dem Team, schnell auf Nutzerfeedback zu reagieren."
+  ],
+  "key performance indicator": [
+    "Customer churn rate serves as a key performance indicator for evaluating subscription business health.",
+    "Хэрэглэгчийн үйлчилгээнээс татгалзах хувь нь захиалгат бизнесийн гүйцэтгэлийн гол үзүүлэлт болдог.",
+    "Die Kundenabwanderungsrate dient als zentraler Leistungskennwert zur Beurteilung von Abonnementmodellen."
+  ],
+  "value proposition": [
+    "The software firm articulated a compelling value proposition centered on automated cost reduction.",
+    "Програм хангамжийн компани зардлыг автоматаар бууруулахад чиглэсэн үнэ цэнийн тодорхой санал дэвшүүлсэн.",
+    "Das Softwareunternehmen formulierte ein überzeugendes Nutzenversprechen rund um automatisierte Kostensenkung."
+  ],
+  "market penetration": [
+    "Aggressive introductory pricing enabled rapid market penetration in the competitive beverage sector.",
+    "Эхний үеийн өрсөлдөхүйц хямд үнэ нь ундааны зах зээлд хурдан нэвтрэх боломжийг олгосон.",
+    "Aggressive Einführungspreise ermöglichten eine rasche Marktdurchdringung im umkämpften Getränkesektor."
+  ],
+  "competitive advantage": [
+    "Proprietary patented battery technology gave the electric vehicle maker a durable competitive advantage.",
+    "Патентлагдсан өөрийн батарейн технологи нь цахилгаан автомашин үйлдвэрлэгчид урт хугацааны өрсөлдөөний давуу талыг олгосон.",
+    "Patentierte Batterietechnologie verschaffte dem Elektroautohersteller einen dauerhaften Wettbewerbsvorteil."
+  ],
+  "risk assessment": [
+    "Before underwriting the project, civil engineers conducted a comprehensive environmental risk assessment.",
+    "Төслийг батлахаас өмнө барилгын инженерүүд байгаль орчны эрсдэлийн цогц үнэлгээг хийсэн.",
+    "Vor der Freigabe des Projekts führten Bauingenieure eine umfassende Umweltrisikobewertung durch."
+  ],
+  "contingency plan": [
+    "The logistics company prepared a contingency plan in case hurricane winds closed the maritime port.",
+    "Далайн боомт хар салхины улмаас хаагдах тохиолдолд ложистикийн компани гэнэтийн нөхцөл байдлын төлөвлөгөө бэлтгэсэн байв.",
+    "Das Logistikunternehmen erstellte einen Notfallplan für den Fall, dass Hurrikanwinde den Seehafen lahmlegen."
+  ],
+  "synergy": [
+    "The corporate merger generated operational synergy, reducing duplicate administrative overhead.",
+    "Компаниудын нэгдэл нь үйл ажиллагааны харилцан үр ашиг, хамтын ажиллагааны синергийг бий болгож, давхардсан зардлыг бууруулсан.",
+    "Die Fusion schuf operative Synergieeffekte und senkte doppelte Verwaltungskosten."
+  ],
+  "benchmarking": [
+    "The hospital improved surgical outcomes by benchmarking recovery protocols against top global clinics.",
+    "Тус эмнэлэг дэлхийн шилдэг эмнэлгүүдийн эдгэрэлтийн протоколтой харьцуулан жишиг тогтоох замаар мэс заслын үр дүнгээ сайжруулсан.",
+    "Das Krankenhaus verbesserte chirurgische Ergebnisse durch Benchmarking mit weltweit führenden Kliniken."
+  ],
+  "change management": [
+    "Effective organizational change management requires empathetic communication with affected staff.",
+    "Байгууллагын өөрчлөлтийн үр дүнтэй менежмент нь нөлөөлөлд өртөж буй ажилтнуудтай ойлголцсон харилцаа тогтоохыг шаарддаг.",
+    "Effektives Change-Management erfordert einfühlsame Kommunikation mit den betroffenen Mitarbeitern."
+  ],
+  "due diligence": [
+    "Corporate lawyers completed three months of thorough due diligence before finalizing the acquisition.",
+    "Компанийн хуульчид худалдан авах хэлэлцээрийг дуусгахаас өмнө гурван сарын турш нарийвчилсан аудит, хуулийн шалгалт хийсэн.",
+    "Die Unternehmensanwälte schlossen eine dreimonatige sorgfältige Due-Diligence-Prüfung vor der Übernahme ab."
+  ],
+  "feasibility study": [
+    "The city council commissioned an independent feasibility study to evaluate the projected subway line.",
+    "Хотын захиргаа төлөвлөж буй метроны шугамын үр ашгийг үнэлэх зорилгоор хараат бус техник-эдийн засгийн үндэслэлийн судалгаа хийлгэсэн.",
+    "Der Stadtrat gab eine Machbarkeitsstudie in Auftrag, um die geplante U-Bahn-Linie zu bewerten."
+  ],
+  "ubiquitous presence": [
+    "Smartphones have established a ubiquitous presence in almost every facet of daily human life.",
+    "Ухаалаг утас нь хүний өдөр тутмын амьдралын бараг бүх салбарт хаа сайгүй орших түгээмэл үзэгдэл болжээ.",
+    "Smartphones haben eine allgegenwärtige Präsenz in fast allen Bereichen des täglichen Lebens erlangt."
+  ],
+  "ephemeral nature": [
+    "The blossoming cherry trees remind observers of the ephemeral nature of earthly beauty.",
+    "Цэцэглэж буй интоорын мод нь байгалийн гоо үзэсгэлэнгийн зуурдын, түр зуурын мөн чанарыг хүмүүст сануулдаг.",
+    "Die blühenden Kirschbäume erinnern den Betrachter an die vergängliche Natur irdischer Schönheit."
+  ],
+  "tenacious grip": [
+    "The mountain climber maintained a tenacious grip on the narrow rock ledge during the howling blizzard.",
+    "Уулчин ширүүн цасан шуурганы үеэр хадны нарийн ирмэгээс тууштай, чанга атгаж байлаа.",
+    "Der Bergsteiger behielt während des Sturms einen unerbittlichen Griff an der schmalen Felskante."
+  ],
+  "meticulous attention": [
+    "Restoring ancient manuscripts requires meticulous attention to delicate parchment fibers.",
+    "Эртний гар бичмэлийг сэргээн засварлах нь нарийн илгэн цаасны ширхэг бүрт туйлын нямбай, нягт анхаарал тавихыг шаарддаг.",
+    "Die Restaurierung alter Manuskripte erfordert akribische Aufmerksamkeit für empfindliche Pergamentfasern."
+  ],
+  "supernova": [
+    "A massive collapsing star detonates as a brilliant supernova, outshining an entire galaxy.",
+    "Нүсэр том одны мөхөл нь бүхэл бүтэн галактикаас ч тод гэрэлтэх шинэ одны дэлбэрэлт буюу супернова үүсгэдэг.",
+    "Ein kollabierender Riesenstern detoniert als brillante Supernova und überstrahlt eine ganze Galaxie."
+  ],
+  "black hole": [
+    "Nothing, not even light, can escape the immense gravitational pull of a supermassive black hole.",
+    "Хэт их масстай хар нүхний асар хүчтэй татах хүчнээс юу ч, тэр байтугай гэрэл ч зугтаж чадахгүй.",
+    "Nichts, nicht einmal Licht, kann der immensen Anziehungskraft eines Schwarzen Lochs entkommen."
+  ],
+  "event horizon": [
+    "Crossing the event horizon represents the point of no return for any matter falling into a black hole.",
+    "Үзэгдлийн хаяа буюу хилийг давах нь хар нүх рүү унаж буй аливаа бодисын хувьд эргэж буцахгүй цэг болдог.",
+    "Das Überschreiten des Ereignishorizonts markiert den Punkt ohne Wiederkehr für Materie."
+  ],
+  "singularity": [
+    "At the mathematical center of a black hole lies a gravitational singularity of infinite density.",
+    "Хар нүхний математик төвд хязгааргүй нягттай татах хүчний сингулярит буюу өвөрмөц цэг оршдог.",
+    "Im mathematischen Zentrum eines Schwarzen Lochs liegt eine Singularität unendlicher Dichte."
+  ],
+  "nebula": [
+    "Stellar winds sculpted glowing clouds of interstellar gas and dust into a majestic planetary nebula.",
+    "Одны салхи нь од хоорондын хий, тоосонцрын гэрэлтсэн үүлсийг сүрлэг мананцар буюу небула болгон хувиргажээ.",
+    "Stellare Winde formten leuchtende Gas- und Staubwolken zu einem majestätischen planetarischen Nebel."
+  ],
+  "pulsar": [
+    "Radio telescopes detected periodic electromagnetic pulses radiating from a rapidly spinning pulsar.",
+    "Радио телескопууд хурдан эргэлдэх пульсараас цацрах тогтмол цахилгаан соронзон цацрагийг илрүүлсэн.",
+    "Radioteleskope fingen periodische elektromagnetische Impulse eines schnell rotierenden Pulsars auf."
+  ],
+  "quasar": [
+    "Powered by an active galactic nucleus, the distant quasar emits more light than hundreds of normal galaxies.",
+    "Идэвхтэй галактикийн цөмөөр тэжээгддэг алсын квазар нь хэдэн зуун энгийн галактикаас ч илүү гэрлийг цацруулдаг.",
+    "Angetrieben von einem aktiven Galaxienkern strahlt der ferne Quasar mehr Licht ab als Hunderte Galaxien."
+  ],
+  "exoplanet": [
+    "Spectroscopic observations confirmed the presence of atmospheric water vapor on the temperate exoplanet.",
+    "Спектроскопийн ажиглалтаар тухайн тааламжтай бүсийн экзогариг дээр агаар мандлын усны уур байгааг баталсан.",
+    "Spektroskopische Beobachtungen bestätigten Wasserdampf in der Atmosphäre des Exoplaneten."
+  ],
+  "red giant": [
+    "As its hydrogen core depletes, the aging sun will expand into an enormous red giant star.",
+    "Устөрөгчийн цөм нь шавхагдах тусам хөгширч буй нар тэлж, аварга улаан од болон хувирах болно.",
+    "Wenn sein Wasserstoffkern erschöpft ist, wird sich der alternde Stern zu einem Roten Riesen aufblähen."
+  ],
+  "white dwarf": [
+    "After shedding its outer gas layers, the remnant stellar core cools slowly as a dense white dwarf.",
+    "Гаднах хийн давхаргаа гөвсний дараа одны үлдэгдэл цөм нь нягт цагаан одой од болон аажмаар хөрдөг.",
+    "Nach dem Abstoßen der Gashülle kühlt der dichte Kern langsam als Weißer Zwerg ab."
+  ],
+  "dark matter": [
+    "Galactic rotation curves provide indirect evidence for vast halos of invisible dark matter.",
+    "Галактикийн эргэлтийн хурдны муруй нь үл үзэгдэх харанхуй материйн асар том оршихуйн шууд бус нотолгоо болдог.",
+    "Galaktische Rotationskurven liefern indirekte Beweise für riesige Halos unsichtbarer Dunkler Materie."
+  ],
+  "dark energy": [
+    "Cosmologists hypothesize that dark energy drives the accelerating expansion of the observable universe.",
+    "Сансар судлаачид харанхуй энерги нь ажиглагдаж буй орчлон ертөнцийн хурдацтай тэлэлтийг өдөөдөг гэж үздэг.",
+    "Kosmologen vermuten, dass Dunkle Energie die beschleunigte Expansion des Universums antreibt."
+  ],
+  "gravitational wave": [
+    "Laser interferometers detected the faint ripple of a gravitational wave produced by colliding neutron stars.",
+    "Лазер интерферометрүүд мөргөлдсөн нейтрон оддоос үүссэн татах хүчний долгионы сул чичиргээг амжилттай бүртгэжээ.",
+    "Laserinterferometer wiesen die feine Raumzeit-Welle einer Gravitationswelle nach."
+  ],
+  "light year": [
+    "Proxima Centauri, our nearest stellar neighbor, is situated approximately four point two light years away.",
+    "Манай хамгийн ойрын хөрш Проксима Кентавр од ойролцоогоор дөрөв аравны хоёр гэрлийн жилийн зайд оршдог.",
+    "Proxima Centauri, unser nächster Nachbarstern, ist etwa 4,2 Lichtjahre entfernt."
+  ],
+  "bioluminescence": [
+    "Deep-sea anglerfish use bacterial bioluminescence to lure unsuspecting prey in pitch-black waters.",
+    "Далайн гүний загаснууд хав харанхуй усанд ангаа татахын тулд нянгийн био гэрэлтэлтийг ашигладаг.",
+    "Tiefsee-Anglerfische nutzen bakterielle Biolumineszenz, um Beute im stockdunklen Wasser anzulocken."
+  ],
+  "hydrothermal vent": [
+    "Chemosynthetic bacteria thrive around the scorching, mineral-rich plume of the deep hydrothermal vent.",
+    "Хемосинтезийн бактериуд далайн гүний халуун эрдэст гидротермал булаг буюу хүрхрээний орчимд үржин амьдардаг.",
+    "Chemosynthetische Bakterien gedeihen an den mineralreichen hydrothermalen Tiefseequellen."
+  ],
+  "coral bleaching": [
+    "Rising ocean water temperatures trigger widespread coral bleaching, threatening marine biodiversity.",
+    "Далайн усны температур нэмэгдсэн нь шүр цайрах үзэгдлийг өдөөж, далайн биологийн олон янз байдалд аюул учруулж байна.",
+    "Steigende Wassertemperaturen lösen weit verbreitete Korallenbleiche aus und gefährden Ökosysteme."
+  ],
+  "abyssal plain": [
+    "Sediments accumulate undisturbed across the vast, flat expanse of the deep ocean abyssal plain.",
+    "Далайн гүний тэгш тал буюу абиссаль талбайн уудам орон зайд тунамал хурдас олон зууны турш тайван хуримтлагддаг.",
+    "Sedimente lagern sich ungestört auf den weiten Ebenen der ozeanischen Tiefseeebene ab."
+  ],
+  "phytoplankton": [
+    "Microscopic marine phytoplankton produce more than half of the planet's atmospheric oxygen.",
+    "Микроскоп далайн фитопланктон нь дэлхийн агаар мандлын хүчилтөрөгчийн талаас илүү хувийг үйлдвэрлэдэг.",
+    "Mikroskopisches marines Phytoplankton erzeugt mehr als die Hälfte des Sauerstoffs unseres Planeten."
+  ],
+  "salinity": [
+    "High rates of surface water evaporation increase the salinity of enclosed tropical seas.",
+    "Гадаргын усны ууршилт ихэссэн нь хаалттай дулаан тэнгисүүдийн давсжилтын хэмжээг нэмэгдүүлдэг.",
+    "Hohe Verdunstungsraten des Oberflächenwassers erhöhen den Salzgehalt geschlossener Meere."
+  ],
+  "oceanic trench": [
+    "The Mariana Trench is the deepest oceanic trench on Earth, plunging nearly eleven kilometers down.",
+    "Марианы хотгор нь дэлхийн хамгийн гүн далайн хонхор бөгөөд бараг арван нэгэн километр гүн рүү шумбадаг.",
+    "Der Marianengraben ist der tiefste ozeanische Tiefseegraben der Erde und reicht fast elf Kilometer hinab."
+  ],
+  "upwelling": [
+    "Wind-driven coastal upwelling brings nutrient-dense cold water from the ocean depths to the surface.",
+    "Салхины нөлөөгөөр үүсэх эргийн өгсөх урсгал буюу апвеллинг нь далайн гүнээс шим тэжээлээр баялаг хүйтэн усыг гадарга руу гаргадаг.",
+    "Windgetriebener Auftrieb bringt nährstoffreiches kaltes Tiefenwasser an die Meeresoberfläche."
+  ],
+  "tide pool": [
+    "Children discovered colorful sea stars and hermit crabs trapped inside the rocky tide pool.",
+    "Хүүхдүүд далайн түрлэгийн цөөрөм (эрэг орчмын хадны тогтоол ус) дотор гацсан өнгө өнгийн далайн од, хавчнуудыг олж харав.",
+    "Kinder entdeckten bunte Seesterne und Einsiedlerkrebse im felsigen Gezeitentümpel."
+  ],
+  "tectonics": [
+    "Plate tectonics explains how colliding continental crusts form high mountain ranges like the Himalayas.",
+    "Хавтангийн тектоник нь тив хоорондын царцдас мөргөлдөж Гималайн нуруу шиг өндөр уулс хэрхэн үүссэнийг тайлбарладаг.",
+    "Die Plattentektonik erklärt, wie kollidierende Kontinentalplatten Gebirge wie den Himalaya formen."
+  ],
+  "photosynthesis": [
+    "Plant chloroplasts utilize photosynthesis to convert sunlight, carbon dioxide, and water into glucose.",
+    "Ургамлын хлоропластууд нарны гэрэл, нүүрстөрөгчийн давхар исэл ба усыг фотосинтезийн тусламжтайгаар глюкоз болгон хувиргадаг.",
+    "Pflanzliche Chloroplasten nutzen die Fotosynthese, um Sonnenlicht und Kohlendioxid in Glukose umzuwandeln."
+  ],
+  "cellular respiration": [
+    "Mitochondria generate cellular energy in the form of ATP through the biochemical process of cellular respiration.",
+    "Митохондри нь эсийн амьсгалын биохимийн процессоор дамжуулан АТФ хэлбэрээр эсийн энергийг ялгаруулдаг.",
+    "Mitochondrien erzeugen Zellenergie in Form von ATP durch den biochemischen Prozess der Zellatmung."
+  ],
+  "meiosis": [
+    "Meiosis produces genetically diverse reproductive gametes with half the chromosome count of somatic cells.",
+    "Мейоз хуваагдал нь биеийн эсийн хагас хромосом бүхий удамшлын хувьд олон янз нөхөн үржихүйн бэлгийн эсүүдийг үүсгэдэг.",
+    "Die Meiose erzeugt genetisch vielfältige Keimzellen mit halbiertem Chromosomensatz."
+  ],
+  "mitosis": [
+    "Cellular mitosis allows damaged tissues to regenerate by dividing one somatic cell into two identical daughter cells.",
+    "Эсийн митоз хуваагдал нь нэг эсийг ижил хоёр төл эс болгон хуваах замаар гэмтсэн эд эсийг нөхөн төлжүүлэх боломж олгодог.",
+    "Die Mitose ermöglicht die Geweberegeneration durch Teilung einer Zelle in zwei identische Tochterzellen."
+  ],
+  "homeostasis": [
+    "Sweating and shivering are physiological mechanisms that maintain internal thermal homeostasis in the body.",
+    "Хөлрөх ба чичрэх нь бие махбодын дотоод дулааны тэнцвэр буюу гомеостазыг хадгалдаг физиологийн хариу үйлдэл юм.",
+    "Schwitzen und Zittern sind Mechanismen, die die innere thermische Homöostase des Körpers aufrechterhalten."
+  ],
+  "entropy": [
+    "The second law of thermodynamics states that the total entropy of an isolated system always increases.",
+    "Термодинамикийн хоёрдугаар хуульд тусгаарлагдсан системийн нийт энтропи буюу эмх замбараагүй байдал үргэлж өсдөг гэж заасан байдаг.",
+    "Der zweite Hauptsatz der Thermodynamik besagt, dass die Entropie isolierter Systeme stets zunimmt."
+  ],
+  "enthalpy": [
+    "Calculating the change in reaction enthalpy indicates whether a chemical transformation absorbs or releases heat.",
+    "Урвалын энтальпийн өөрчлөлтийг тооцоолох нь химийн хувирал дулаан шингээх эсвэл ялгаруулах эсэхийг харуулдаг.",
+    "Die Enthalpieänderung zeigt an, ob eine chemische Reaktion Wärme aufnimmt oder freisetzt."
+  ],
+  "covalent bond": [
+    "Two hydrogen atoms share electrons with an oxygen atom to form a stable covalent bond in a water molecule.",
+    "Усны молекул дахь хүчилтөрөгчийн атомтай хоёр устөрөгчийн атом электроноо хуваалцаж тогтвортой ковалент холбоо үүсгэдэг.",
+    "Zwei Wasserstoffatome teilen sich Elektronen mit Sauerstoff für eine kovalente Bindung im Wassermolekül."
+  ],
+  "ionic bond": [
+    "Table salt crystallizes when positively charged sodium and negatively charged chloride form an ionic bond.",
+    "Эерэг цэнэгтэй натри ба сөрөг цэнэгтэй хлор нь ионы холбоо үүсгэснээр хоолны давс талсжин тогтдог.",
+    "Kochsalz kristallisiert, wenn positiv geladenes Natrium und Chlorid eine Ionenbindung eingehen."
+  ],
+  "enzyme": [
+    "The digestive enzyme amylase accelerates the breakdown of dietary starch into simple sugars.",
+    "Хоол боловсруулах амилаза фермент нь цардуулыг энгийн сахар болгон задлах явцыг хурдасгадаг.",
+    "Das Verdauungsenzym Amylase beschleunigt den Abbau von Stärke in einfache Zucker."
+  ],
+  "pragmatics": [
+    "Linguistic pragmatics examines how unspoken social context and intent influence the interpretation of utterances.",
+    "Хэл шинжлэлийн прагматик нь нийгмийн далд нөхцөл байдал ба харилцааны далд зорилго үгийн утгад хэрхэн нөлөөлдгийг судалдаг.",
+    "Die Pragmatik untersucht, wie sozialer Kontext und Sprecherabsicht die Bedeutung von Äußerungen prägen."
+  ],
+  "sociolinguistics": [
+    "Sociolinguistics explores how socioeconomic class, gender, and regional identity shape patterns of speech.",
+    "Нийгмийн хэл шинжлэл нь нийгэм-эдийн засгийн давхарга, хүйс ба нутаг усны онцлог ярианы хэв маягт хэрхэн нөлөөлдгийг судалдаг.",
+    "Die Soziolinguistik erforscht, wie soziale Schichten und Herkunft Sprachmuster beeinflussen."
+  ],
+  "dialectology": [
+    "Field researchers in dialectology travel to remote rural valleys to record endangered regional idioms.",
+    "Аялга судлалын судалгааны баг мөхөж буй нутгийн аялгууг тэмдэглэн үлдээхийн тулд алслагдсан хөдөө тосгодоор аялдаг.",
+    "Feldforscher der Dialektologie reisen in abgelegene Täler, um bedrohte Mundarten aufzuzeichnen."
+  ],
+  "bilingualism": [
+    "Childhood bilingualism fosters enhanced cognitive flexibility and executive control functions.",
+    "Бага наснаасаа хоёр хэлээр ярьж өсөх нь оюуны уян хатан чанар ба төвлөрөх чадварыг сайжруулдаг.",
+    "Frühkindliche Zweisprachigkeit fördert geistige Flexibilität und exekutive Kontrollfunktionen."
+  ],
+  "lingua franca": [
+    "English serves as the uncontested global lingua franca in international civil aviation communications.",
+    "Англи хэл нь олон улсын иргэний агаарын тээврийн харилцааны нийтлэг ойлголцлын хэл буюу лингва франка болдог.",
+    "Englisch dient als unumstrittene globale Lingua Franca in der internationalen Zivilluftfahrt."
+  ],
+  "prosody": [
+    "Poetic prosody encompasses rhythmic meter, tempo variations, and the melodic cadence of verse.",
+    "Шүлгийн дуу авианы бүтэц буюу просоди нь шүлгийн хэмнэл, хурдны өөрчлөлт ба аялга эгшгийг хамардаг.",
+    "Die poetische Prosodie umfasst Versmaß, Tempo und melodische Kadenz gesprochener Verse."
+  ],
+  "intonation": [
+    "A rising intonation at the end of a spoken sentence typically signals an inquiring question in English.",
+    "Өгүүлбэрийн төгсгөлд дууны өнгө өсөх нь англи хэлэнд асуулт асууж буйг илтгэдэг аялгын онцлог юм.",
+    "Eine steigende Intonation am Satzende signalisiert im Englischen typischerweise eine Frage."
+  ],
+  "zeitgeist": [
+    "The rebellious psychedelic music of the late 1960s perfectly captured the countercultural zeitgeist.",
+    "1960-аад оны сүүл үеийн сэтгэцэд нөлөөлөх хөгжим нь тухайн цаг үеийн сэтгэл зүй, үзэл санааны илэрхийлэл болж байв.",
+    "Die psychedelische Musik der späten 1960er fing den Geist der damaligen Epoche perfekt ein."
+  ],
+  "avant-garde": [
+    "The experimental fashion designer is celebrated for bold, avant-garde silhouettes that challenge gender norms.",
+    "Туршилтын загвар зохион бүтээгч нь уламжлалт хэв маягийг эвдсэн шинэлэг, авангард хэлбэр дүрсээрээ алдартай.",
+    "Der avantgardistische Modeschöpfer ist für gewagte Entwürfe bekannt, die Normen herausfordern."
+  ],
+  "sensationalism": [
+    "Tabloid sensationalism distorts serious public policy issues into dramatic celebrity scandals.",
+    "Шар хэвлэлийн сенсаци хөөцөлдөх, дуулиан дэгдээх хандлага нь нийгмийн чухал бодлогын асуудлуудыг ододын хэрүүл болгон гуйвуулдаг.",
+    "Boulevard-Sensationalismus verzerrt ernste Politik zu dramatischen Promi-Skandalen."
+  ],
+  "echo chamber": [
+    "Algorithmic social media feeds trap users inside an ideological echo chamber that reinforces bias.",
+    "Алгоритмд тулгуурласан сошиал медиа нь хэрэглэгчдийг өөрийн үзлийг л давтан баталгаажуулдаг мэдээллийн нэг талыг барьсан орчинд түгждэг.",
+    "Soziale Netzwerke sperren Nutzer oft in eine Echo-Kammer, die bestehende Vorurteile bestärkt."
+  ],
+  "media literacy": [
+    "Schools teach critical media literacy so students can distinguish factual journalism from deepfakes.",
+    "Сургуулиуд сурагчдад бодит сэтгүүл зүйг хуурамч мэдээллээс ялгахад туслах шүүмжлэлт медиа боловсролыг заадаг.",
+    "Schulen vermitteln Medienkompetenz, damit Schüler Fakten von Fälschungen unterscheiden können."
+  ],
+  "cancel culture": [
+    "Critics argue that online cancel culture discourages open nuance and promotes retaliatory harassment.",
+    "Шүүмжлэгчид цахим орчны бойкотлох соёл нь нээлттэй хэлэлцүүлгийг хаан боогдуулж, өс хонзонгийн шинжтэй дарамтыг дэвэргэдэг гэж үздэг.",
+    "Kritiker betonen, dass Online-Pranger differenzierte Debatten ersticken und Mobbing fördern."
+  ],
+  "constructivism": [
+    "Soviet constructivism integrated industrial materials like steel and glass into bold graphic typography.",
+    "Зөвлөлтийн конструктивизм нь ган ба шил зэрэг үйлдвэрийн материалыг зоримог график дүрслэлтэй нэгтгэсэн.",
+    "Der sowjetische Konstruktivismus integrierte Stahl und Glas in kühne grafische Entwürfe."
+  ],
+  "art deco": [
+    "The Chrysler Building showcases classic Art Deco geometry, polished chrome sunbursts, and aerodynamic lines.",
+    "Крайслер цамхаг нь сонгодог Арт Декогийн геометрийн тэгш хэм, өнгөлсөн хромон нарны цацраг ба цэвэр шугамыг харуулдаг.",
+    "Das Chrysler Building zeigt klassische Art-Déco-Geometrie, polierten Chrom und stromlinienförmige Linien."
+  ],
+  "art nouveau": [
+    "Art Nouveau architecture draws inspiration from organic nature, incorporating sinuous floral curves into ironwork.",
+    "Арт Нуво загварын архитектур нь байгалиас сэдэвлэн цэцэг навчны долгиолсон муруй шугамыг төмөр хийцэд шингээсэн байдаг.",
+    "Der Jugendstil lässt sich von der Natur inspirieren und nutzt florale Kurven in Schmiedearbeiten."
+  ],
+  "bauhaus": [
+    "The German Bauhaus movement championed the enduring design principle that form must follow function.",
+    "Германы Баухаус хөдөлгөөн нь аливаа зүйлийн хэлбэр нь түүний үүрэг зориулалтад нийцэх ёстой гэсэн дизайны үндсэн зарчмыг тунхагласан юм.",
+    "Das Bauhaus verfocht das Gestaltungsprinzip, dass die Form stets der Funktion folgen muss."
+  ],
+  "cantilever": [
+    "Frank Lloyd Wright engineered dramatic concrete cantilever balconies projecting outward over the waterfall.",
+    "Фрэнк Ллойд Райт хүрхрээн дээгүүр гадагш тэлж гарсан бетонон консоль тагт буюу кантилевер бүтцийг төлөвлөжээ.",
+    "Frank Lloyd Wright entwarf dramatische Kragträger-Balkone, die über den Wasserfall hinausragen."
+  ],
+  "pediment": [
+    "The triangular classical pediment above the museum entrance depicts carved Olympian deities.",
+    "Музейн үүдний дээд талын гурвалжин хэлбэрт фронтон буюу педимент дээр Олимпийн бурхдыг сийлсэн байдаг.",
+    "Das dreieckige klassische Giebelfeld über dem Portal zeigt gemeißelte olympische Gottheiten."
+  ],
+  "clerestory": [
+    "A continuous row of high clerestory windows illuminates the interior nave of the ancient basilica.",
+    "Сүмийн өндөрт байрлах тусгай цонхны эгнээ буюу клерестори нь дотоод гол танхимыг нарны байгалийн гэрлээр гэрэлтүүлдэг.",
+    "Eine durchgehende Reihe von Obergadenfenstern erhellt das Hauptschiff der Kathedrale."
+  ],
+  "vaulted ceiling": [
+    "Voices echoed musically beneath the ribbed stone vaulted ceiling of the Romanesque monastery.",
+    "Романеск хийдийн нуман хэлбэртэй чулуун өндөр таазны дор дуу хоолой цуурайтан уянгалав.",
+    "Stimmen hallten unter der gotischen Gewölbedecke des alten Klosters melodisch wider."
+  ],
+  "cornice": [
+    "Decorative stone brackets support the projecting classical cornice along the roofline of the palazzo.",
+    "Чимэглэлийн чулуун тулгуурууд нь ордны дээврийн дагуух гадагш товойсон хөвөө карниз буюу эмжээрийг тулдаг.",
+    "Verzierte Steinkonsolen stützen das vorspringende klassische Gesims entlang der Dachkante."
+  ],
+  "gargoyle": [
+    "Rainwater gushed from the open stone jaws of the grotesque carved cathedral gargoyle.",
+    "Цутгасан борооны ус сүмийн чулуун ус зайлуулагч амьтны дүрт гаргуйн нээлттэй амаар доош урсаж байв.",
+    "Regenwasser strömte aus dem geöffneten Steinmaul des grotesk gemeißelten Wasserspeiers."
+  ],
+  "gerrymandering": [
+    "Partisan gerrymandering redraws district voting maps to favor one political party over another.",
+    "Намын явцуу эрх ашигт нийцүүлэн сонгуулийн тойргийг өөрт ашигтайгаар хуваарилах нь шударга бус давуу тал үүсгэдэг.",
+    "Parteipolitisches Gerrymandering verzerrt Wahlbezirke, um eine politische Partei gezielt zu begünstigen."
+  ],
+  "demagogue": [
+    "The fiery political demagogue gained popularity by exploiting public prejudice and economic scapegoating.",
+    "Олон түмнийг өдөөн турхирагч популист улстөрч ард түмний сэтгэл зүй ба нийгмийн эмзэг сэдвийг ашиглан нэр хүнд олж авчээ.",
+    "Der populistische Demagoge gewann Popularität durch das Schüren von Ängsten und Vorurteilen."
+  ],
+  "populism": [
+    "Authoritarian populism pits ordinary hardworking citizens against what it portrays as a corrupt ruling elite.",
+    "Популизм буюу ард түмний сэтгэлд тааруулсан амлалт нь жирийн иргэдийг эрх баригч элитүүдийн эсрэг сөргөлдүүлэн турхирдаг.",
+    "Populismus stellt oft das einfache Volk einer angeblich korrupten Elite feindselig gegenüber."
+  ],
+  "meritocracy": [
+    "A true meritocracy rewards individuals based strictly on talent, competence, and measurable achievement.",
+    "Чадварт тулгуурласан шударга тогтолцоо буюу меритократи нь зөвхөн хувь хүний авьяас, мэдлэг чадвар ба бодит амжилтыг үнэлдэг.",
+    "Eine echte Meritokratie belohnt Menschen strikt nach Talent, Kompetenz und erbrachter Leistung."
+  ],
+  "plutocracy": [
+    "Unregulated corporate political campaign donations risk transforming democracy into an entrenched plutocracy.",
+    "Хязгааргүй сонгуулийн хандивууд нь ардчиллыг баян чинээлэг хүмүүсийн ноёрхол буюу плутократи болгон хувиргах эрсдэлтэй.",
+    "Uferlose Wahlkampfspenden drohen Demokratien in eine verfestigte Plutokratie der Superreichen zu verwandeln."
+  ],
+  "kleptocracy": [
+    "Investigative journalists exposed how the authoritarian kleptocracy diverted state mining wealth into secret offshore trusts.",
+    "Эрэн сурвалжлах сэтгүүлчид хулгайч дээрэмчдийн засаглал төрийн уул уурхайн орлогыг оффшор данс руу хэрхэн завшсаныг илчилжээ.",
+    "Investigative Journalisten deckten auf, wie die Kleptokratie Staatsvermögen auf Auslandskonten veruntreute."
+  ],
+  "technocracy": [
+    "During the debt crisis, the interim government was led by an unelected technocracy of central bankers and economists.",
+    "Өрийн хямралын үеэр түр засгийн газрыг эдийн засагчид ба банкны шинжээчдээс бүрдсэн мэргэжилтнүүдийн засаглал удирдсан.",
+    "In der Krise wurde die Übergangsregierung von einer Technokratie aus Wirtschaftsexperten geführt."
+  ],
+  "theocracy": [
+    "In a strict theocracy, civil legislation must conform precisely to religious scripture interpreted by clerics.",
+    "Теократ засаглал (шашны тэргүүний засаглал) бүхий оронд иргэний бүх хууль шашны судар ба номлолд яв цав нийцэх ёстой.",
+    "In einer strengen Theokratie muss die weltliche Gesetzgebung religiösen Texten entsprechen."
+  ],
+  "disenfranchisement": [
+    "Restrictive voter identification laws contribute to the systemic disenfranchisement of minority populations.",
+    "Хэт хатуу бүртгэлийн хууль нь цөөнх иргэдийн сонгуулийн эрхийг хасах буюу хязгаарлахад хүргэдэг.",
+    "Restriktive Wählergesetze führen zur systematischen Entrechtung marginalisierter Bevölkerungsgruppen."
+  ],
+  "polarization": [
+    "Partisan polarization prevents bipartisan compromise on pressing infrastructure and education legislation.",
+    "Улс төрийн талцал ба нийгмийн туйлшрал нь дэд бүтэц, боловсролын хууль дээр зөвшилцөлд хүрэхэд саад болдог.",
+    "Politische Polarisierung verhindert überparteiliche Kompromisse bei wichtigen Infrastrukturprojekten."
+  ],
+  "civil disobedience": [
+    "Mahatma Gandhi advocated nonviolent civil disobedience to peacefully resist unjust imperial colonial laws.",
+    "Махатма Ганди шударга бус хуулиудыг эсэргүүцэхийн тулд хүчирхийллийн бус иргэний тайван эсэргүүцлийг уриалж байсан.",
+    "Mahatma Gandhi trat für gewaltlosen zivilen Ungehorsam ein, um ungerechte Gesetze zu bekämpfen."
+  ],
+  "grassroots movement": [
+    "The clean water campaign began as a small grassroots movement organized by local parents and teachers.",
+    "Цэвэр усны төлөөх аян нь орон нутгийн эцэг эх, багш нарын санаачилсан ард түмний анхан шатны хөдөлгөөнөөр эхэлсэн.",
+    "Die Umweltschutzinitiative begann als kleine Graswurzelbewegung engagierter Eltern und Lehrer."
+  ],
+  "social cohesion": [
+    "Affordable municipal public parks and libraries foster community bonds and long-term social cohesion.",
+    "Олон нийтийн цэцэрлэгт хүрээлэн ба нийтийн номын сангууд нь иргэдийн эв нэгдэл, нийгмийн нягтралыг бэхжүүлдэг.",
+    "Bezahlbare Parks und Bibliotheken stärken den sozialen Zusammenhalt in der Nachbarschaft."
+  ],
+  "logarithm": [
+    "The Richter scale uses a base-ten logarithm to quantify earthquake magnitude across orders of scale.",
+    "Рихтерийн шатлал нь газар хөдлөлтийн эрч хүчийг тооцоолохдоо 10-ын суурьтай логарифмыг ашигладаг.",
+    "Die Richterskala nutzt einen Dekadischen Logarithmus, um die Erdbebenstärke zu beziffern."
+  ],
+  "exponential growth": [
+    "Unchecked viral transmission exhibits exponential growth during the initial stages of an epidemic.",
+    "Халдварт өвчний тархалт нь эхний шатандаа огцом, экспоненциал хурдацтай өсөлтийг харуулдаг.",
+    "Ungebremste Virusübertragung zeigt in der Anfangsphase einer Epidemie exponentielles Wachstum."
+  ],
+  "derivative": [
+    "In differential calculus, the derivative of position with respect to time yields instantaneous velocity.",
+    "Дифференциал тоололд байрлалын хугацаанаас хамаарсан уламжлал (математик) нь агшин зуурын хурдыг илэрхийлдэг.",
+    "In der Differenzialrechnung ergibt die Ableitung des Ortes nach der Zeit die Momentangeschwindigkeit."
+  ],
+  "integral": [
+    "Computing the definite integral enables mathematicians to determine the exact area beneath a curved graph.",
+    "Тодорхой интегралыг бодсоноор муруй шугамын доорх талбайг нарийвчлан тодорхойлох боломжтой болдог.",
+    "Die Berechnung des bestimmten Integrals ermöglicht die Bestimmung der Fläche unter einer Kurve."
+  ],
+  "calculus": [
+    "Newton and Leibniz independently invented infinitesimal calculus to model dynamic physical motion.",
+    "Ньютон ба Лейбниц нар динамик физик хөдөлгөөнийг судлахын тулд математик анализийн ухаан буюу тооллыг бие даан нээсэн.",
+    "Newton und Leibniz entwickelten unabhängig voneinander die Infinitesimalrechnung für dynamische Systeme."
+  ],
+  "equilibrium": [
+    "At dynamic chemical equilibrium, the rate of the forward reaction equals the rate of the reverse reaction.",
+    "Химийн динамик тэнцвэрийн үед шулуун урвалын хурд нь буцах урвалын хурдтай тэнцдэг.",
+    "Im chemischen Gleichgewicht ist die Geschwindigkeit der Hinreaktion gleich der Rückreaktion."
+  ],
+  "stoichiometry": [
+    "Using reaction stoichiometry, the industrial chemist calculated the exact grams of reactant required.",
+    "Урвалын стехиометрийг ашиглан үйлдвэрийн химич шаардагдах урвалжийн нарийн граммыг тооцоолов.",
+    "Mithilfe der Stöchiometrie berechnete der Industriechemiker die genaue benötigte Stoffmenge."
+  ],
+  "titration": [
+    "Students determined the precise acid concentration through slow volumetric chemical titration.",
+    "Оюутнууд хүчлийн нарийн концентрацийг тодорхойлохын тулд уусмалын титрлэлт шинжилгээг хийв.",
+    "Studenten ermittelten die exakte Säurekonzentration durch tropfenweise chemische Titration."
+  ],
+  "chromatography": [
+    "Gas chromatography separates volatile organic compounds based on their chemical travel velocity.",
+    "Хийн хроматографийн арга нь дэгдэмхий органик нэгдлүүдийг тархалтын хурдаар нь тусгаарладаг.",
+    "Die Gaschromatografie trennt flüchtige organische Verbindungen nach ihrer Wanderungsgeschwindigkeit."
+  ],
+  "electrophoresis": [
+    "Gel electrophoresis separates charged DNA fragments according to molecular length under an electric field.",
+    "Гель электрофорез нь цахилгаан орны тусламжтайгаар цэнэгтэй ДНХ-ийн хэлтэрхийнүүдийг хэмжээгээр нь ялгадаг.",
+    "Die Gelelektrophorese trennt geladene DNA-Fragmente im elektrischen Feld nach ihrer Molekülgröße."
+  ],
+  "crystallography": [
+    "X-ray crystallography enabled Rosalind Franklin to deduce the double-helix geometry of DNA.",
+    "Рентген талст судлал буюу кристаллографи нь Розалинд Франклинд ДНХ-ийн давхар спираль бүтцийг тайлахад тусалсан.",
+    "Die Röntgenkristallografie half Rosalind Franklin, die Doppelhelix-Struktur der DNA zu entschlüsseln."
+  ],
+  "superconductor": [
+    "Cooled by liquid helium, the ceramic superconductor expels magnetic fields and conducts current with zero resistance.",
+    "Шингэн гелигээр хөргөсөн шаазан хэт дамжуулагч материал нь соронзон орныг түлхэж, цахилгааныг тэглэсэн эсэргүүцэлтэй дамжуулдаг.",
+    "Gekühlt durch flüssiges Helium leitet der Keramik-Supraleiter Strom völlig widerstandslos."
+  ],
+  "photoelectric effect": [
+    "Einstein earned the Nobel Prize for demonstrating that the photoelectric effect proves light arrives in quanta.",
+    "Эйнштейн фотоэффект үзэгдэл нь гэрэл квант хэлбэрээр ирдгийг нотолсны учир Нобелийн шагнал хүртсэн.",
+    "Einstein erhielt den Nobelpreis für die Erklärung des lichtelektrischen Fotoeffekts durch Lichtquanten."
+  ],
+  "wave-particle duality": [
+    "The double-slit experiment illustrates the wave-particle duality inherent to photons and electrons.",
+    "Хос завсрын туршилт нь фотон ба электронд орших долгион-бөөмийн хоёрдмол чанарыг тодорхой харуулдаг.",
+    "Das Doppelspaltexperiment veranschaulicht den Welle-Teilchen-Dualismus von Photonen und Elektronen."
+  ],
+  "quantum entanglement": [
+    "Quantum entanglement links the quantum states of two paired particles regardless of the spatial distance separating them.",
+    "Квантын орооцолдоон нь орон зайн зайнаас үл хамааран хос хоёр бөөмийн квант төлөвийг хооронд нь холбодог.",
+    "Quantenverschränkung verbindet die Zustände zweier Teilchen unabhängig von ihrer räumlichen Distanz."
+  ],
+  "uncertainty principle": [
+    "Heisenberg's uncertainty principle asserts that a particle's exact position and momentum cannot both be simultaneously known.",
+    "Гейзенбергийн тодорхойгүйн зарчим нь эгэл бөөмийн байрлал ба импульсийг хоёуланг нь нэгэн зэрэг нарийн тогтоох боломжгүйг нотолдог.",
+    "Heisenbergs Unschärferelation besagt, dass Ort und Impuls eines Teilchens nicht zugleich exakt messbar sind."
+  ]
+}

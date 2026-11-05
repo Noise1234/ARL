@@ -1,18 +1,30 @@
 /**
  * ARL - GitHub Gist Cloud Sync Engine
  * Automated, zero-dependency cloud synchronization powered by GitHub Personal Access Tokens.
- * Syncs user SRS progress, active notes, and settings via a private GitHub Gist.
+ * Syncs user SRS progress, active notes, telemetry, and settings via a private GitHub Gist.
  * Never stores or exports tokens in sync payloads or backups.
  */
 
 import { db } from './db.js';
 import { state } from './state.js';
+import { telemetry } from './telemetry.js';
 
 const KEY_TOKEN = 'arl_gh_token';
 const KEY_GIST_ID = 'arl_gist_id';
 const KEY_LAST_SYNC = 'arl_sync_last';
 const SYNC_FILE_NAME = 'arl_sync_data.json';
 const GIST_API_BASE = 'https://api.github.com/gists';
+
+export function sanitizeGistId(input) {
+  if (!input) return '';
+  const trimmed = String(input).trim();
+  // Extract ID if pasted as a full URL: https://gist.github.com/username/gist_id
+  const urlMatch = trimmed.match(/gist\.github\.com\/(?:[^\/\s]+\/)?([a-f0-9]+)/i);
+  if (urlMatch && urlMatch[1]) {
+    return urlMatch[1];
+  }
+  return trimmed.replace(/[^a-zA-Z0-9_-]/g, '');
+}
 
 export class GistSync {
   constructor() {
@@ -34,10 +46,11 @@ export class GistSync {
   setToken(token) {
     try {
       if (typeof localStorage !== 'undefined') {
-        if (!token || !token.trim()) {
+        const clean = (token || '').trim();
+        if (!clean) {
           localStorage.removeItem(KEY_TOKEN);
         } else {
-          localStorage.setItem(KEY_TOKEN, token.trim());
+          localStorage.setItem(KEY_TOKEN, clean);
         }
       }
     } catch (e) {}
@@ -56,10 +69,11 @@ export class GistSync {
   setGistId(gistId) {
     try {
       if (typeof localStorage !== 'undefined') {
-        if (!gistId || !gistId.trim()) {
+        const clean = sanitizeGistId(gistId);
+        if (!clean) {
           localStorage.removeItem(KEY_GIST_ID);
         } else {
-          localStorage.setItem(KEY_GIST_ID, gistId.trim());
+          localStorage.setItem(KEY_GIST_ID, clean);
         }
       }
     } catch (e) {}
@@ -162,12 +176,44 @@ export class GistSync {
       }
     } catch (e) {}
 
+    // Extract vocab progress map
+    const vocabProgress = {};
+    if (state.progressMap && state.progressMap.forEach) {
+      state.progressMap.forEach((prog, id) => {
+        vocabProgress[id] = {
+          wordId: prog.wordId || id,
+          reps: prog.reps,
+          interval: prog.interval,
+          easeFactor: prog.easeFactor,
+          lapses: prog.lapses,
+          dueDate: prog.dueDate,
+          lastStudied: prog.lastStudied,
+          lastGrade: prog.lastGrade,
+          status: prog.status,
+          masteredAt: prog.masteredAt || null,
+          timeToMasterMs: prog.timeToMasterMs || 0
+        };
+      });
+    }
+
     const payload = {
       app: 'ARL',
       schemaVersion: 2,
       timestamp: new Date().toISOString(),
-      device: (typeof navigator !== 'undefined' && navigator.userAgent) ? navigator.userAgent.slice(0, 80) : 'ARL Terminal',
+      device: (typeof navigator !== 'undefined' && navigator.userAgent) ? navigator.userAgent.slice(0, 80) : 'ARL Device',
       db: dbData,
+      vocabProgress: vocabProgress,
+      wordStats: telemetry.wordStats || {},
+      grammarStats: telemetry.grammarStats || {},
+      studyTimeStats: {
+        totalActiveSeconds: telemetry.totalActiveSeconds,
+        dailyActiveSeconds: telemetry.dailyActiveSeconds,
+        sectionSeconds: telemetry.sectionSeconds
+      },
+      xpAndLevel: {
+        totalExp: state.totalExp,
+        level: state.level
+      },
       notes: notes,
       settings: {
         targetLang: state.targetLang || 'de',
@@ -182,85 +228,124 @@ export class GistSync {
   }
 
   /**
-   * Connect and auto-discover or create private Gist
+   * Diagnostic test connection method
+   * Prints exact HTTP feedback (✅ Connected: Last synced ... or ❌ HTTP 401: Bad Token / ❌ HTTP 404: Gist ID Not Found)
    */
-  async connect(token, manualGistId = null) {
-    if (!token || !token.trim()) {
-      this.setStatus('error', 'Token is required');
-      throw new Error('Personal Access Token is required');
+  async testConnection() {
+    const token = this.getToken();
+    const gistId = this.getGistId();
+
+    if (!token) {
+      return { ok: false, status: 0, message: '❌ Missing GitHub Personal Access Token' };
+    }
+    if (!gistId) {
+      return { ok: false, status: 0, message: '❌ Missing Gist ID' };
     }
 
-    const cleanToken = token.trim();
-    this.setToken(cleanToken);
-    this.setStatus('syncing', 'Authenticating with GitHub...');
-
-    const headers = {
-      'Authorization': `Bearer ${cleanToken}`,
-      'Accept': 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28'
-    };
-
-    // If manual Gist ID specified, link directly
-    if (manualGistId && manualGistId.trim()) {
-      const cleanGistId = manualGistId.trim();
-      const checkResp = await fetch(`${GIST_API_BASE}/${cleanGistId}`, { headers });
-      if (!checkResp.ok) {
-        this.setStatus('error', `Gist not accessible: HTTP ${checkResp.status}`);
-        throw new Error(`Could not access Gist ${cleanGistId} (HTTP ${checkResp.status})`);
-      }
-      this.setGistId(cleanGistId);
-      return await this.pull();
-    }
-
-    // Auto-discovery: search existing user gists for arl_sync_data.json
     try {
-      const listResp = await fetch(`${GIST_API_BASE}?per_page=100`, { headers });
-      if (!listResp.ok) {
-        this.setStatus('error', `Auth failed: HTTP ${listResp.status}`);
-        throw new Error(`GitHub auth failed (HTTP ${listResp.status}). Check token permissions (gist scope required).`);
-      }
-
-      const gists = await listResp.json();
-      const existing = Array.isArray(gists) ? gists.find(g => g.files && g.files[SYNC_FILE_NAME]) : null;
-
-      if (existing) {
-        this.setGistId(existing.id);
-        const result = await this.pull();
-        this.setStatus('ok', `Connected to existing Gist (${existing.id.slice(0, 7)})`);
-        return { success: true, gistId: existing.id, pulled: true, data: result.data };
-      }
-
-      // No existing gist found: Create private secret Gist
-      this.setStatus('syncing', 'Creating private Gist for ARL data...');
-      const payload = await this.getDataPayload();
-      const createResp = await fetch(GIST_API_BASE, {
-        method: 'POST',
+      const resp = await fetch(`${GIST_API_BASE}/${gistId}`, {
+        method: 'GET',
         headers: {
-          ...headers,
+          'Accept': 'application/vnd.github+json',
+          'Authorization': 'Bearer ' + token,
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          description: 'ARL Learning Data Sync',
-          public: false,
-          files: {
-            [SYNC_FILE_NAME]: {
-              content: JSON.stringify(payload, null, 2)
-            }
-          }
-        })
+        }
       });
 
-      if (!createResp.ok) {
-        this.setStatus('error', `Creation failed: HTTP ${createResp.status}`);
-        throw new Error(`Failed to create Gist (HTTP ${createResp.status})`);
+      if (resp.status === 200) {
+        const lastSync = this.getLastSync() ? new Date(this.getLastSync()).toLocaleString() : 'Never';
+        return {
+          ok: true,
+          status: 200,
+          message: `✅ Connected: Last synced ${lastSync}`
+        };
+      } else if (resp.status === 401) {
+        return { ok: false, status: 401, message: '❌ HTTP 401: Bad Token' };
+      } else if (resp.status === 404) {
+        return { ok: false, status: 404, message: '❌ HTTP 404: Gist ID Not Found' };
+      } else {
+        return { ok: false, status: resp.status, message: `❌ HTTP ${resp.status}: Request Failed` };
+      }
+    } catch (err) {
+      return { ok: false, status: 0, message: `❌ Network Error: ${err.message}` };
+    }
+  }
+
+  /**
+   * Connect and auto-discover or create private Gist
+   */
+  async connect(rawToken, explicitGistId = null) {
+    const token = (rawToken || '').trim();
+    if (!token) {
+      this.setStatus('error', 'Token cannot be empty');
+      throw new Error('Please enter a GitHub Personal Access Token');
+    }
+
+    this.setToken(token);
+    this.setStatus('syncing', 'Connecting to GitHub...');
+
+    try {
+      let gistId = sanitizeGistId(explicitGistId);
+
+      // If no Gist ID provided, search user's gists
+      if (!gistId) {
+        const listResp = await fetch(`${GIST_API_BASE}?per_page=100`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github+json',
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (!listResp.ok) {
+          const errMsg = listResp.status === 401 ? 'HTTP 401: Bad Token' : `HTTP ${listResp.status}`;
+          this.setStatus('error', `Authentication failed (${errMsg})`);
+          throw new Error(`Authentication failed (${errMsg})`);
+        }
+
+        const gists = await listResp.json();
+        const existing = Array.isArray(gists) && gists.find(g => g.files && g.files[SYNC_FILE_NAME]);
+        if (existing) {
+          gistId = existing.id;
+        }
       }
 
-      const createdGist = await createResp.json();
-      this.setGistId(createdGist.id);
-      const now = new Date().toISOString();
-      this.setLastSync(now);
-      this.setStatus('ok', `Created new private Gist (${createdGist.id.slice(0, 7)})`);
-      return { success: true, gistId: createdGist.id, created: true };
+      // If still not found, create new private Gist
+      let created = false;
+      if (!gistId) {
+        this.setStatus('syncing', 'Creating private ARL Gist...');
+        const initialPayload = await this.getDataPayload();
+        const createResp = await fetch(GIST_API_BASE, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            description: 'ARL Language Learning Sync Data',
+            public: false,
+            files: {
+              [SYNC_FILE_NAME]: {
+                content: JSON.stringify(initialPayload, null, 2)
+              }
+            }
+          })
+        });
+
+        if (!createResp.ok) {
+          this.setStatus('error', `Failed to create Gist (HTTP ${createResp.status})`);
+          throw new Error(`Failed to create Gist (HTTP ${createResp.status})`);
+        }
+
+        const newGist = await createResp.json();
+        gistId = newGist.id;
+        created = true;
+      }
+
+      this.setGistId(gistId);
+      this.setStatus('ok', 'Connected to GitHub Gist');
+      return { success: true, gistId, created };
     } catch (err) {
       this.setStatus('error', err.message);
       throw err;
@@ -268,7 +353,7 @@ export class GistSync {
   }
 
   /**
-   * Push local data up to Gist
+   * Push local data up to Gist (Force Push)
    */
   async push() {
     const token = this.getToken();
@@ -286,13 +371,12 @@ export class GistSync {
       const resp = await fetch(`${GIST_API_BASE}/${gistId}`, {
         method: 'PATCH',
         headers: {
-          'Authorization': `Bearer ${token}`,
           'Accept': 'application/vnd.github+json',
-          'Content-Type': 'application/json',
-          'X-GitHub-Api-Version': '2022-11-28'
+          'Authorization': 'Bearer ' + token,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          description: 'ARL Learning Data Sync',
+          description: 'ARL Language Learning Sync Data',
           files: {
             [SYNC_FILE_NAME]: {
               content: JSON.stringify(payload, null, 2)
@@ -302,8 +386,9 @@ export class GistSync {
       });
 
       if (!resp.ok) {
-        this.setStatus('error', `Push failed: HTTP ${resp.status}`);
-        throw new Error(`Push failed (HTTP ${resp.status})`);
+        const msg = resp.status === 401 ? 'HTTP 401: Bad Token' : (resp.status === 404 ? 'HTTP 404: Gist ID Not Found' : `HTTP ${resp.status}`);
+        this.setStatus('error', `Push failed: ${msg}`);
+        throw new Error(`Push failed (${msg})`);
       }
 
       const now = new Date().toISOString();
@@ -317,7 +402,7 @@ export class GistSync {
   }
 
   /**
-   * Pull remote data from Gist and merge into local IndexedDB and notes
+   * Pull remote data from Gist (Force Pull)
    */
   async pull() {
     const token = this.getToken();
@@ -332,16 +417,18 @@ export class GistSync {
 
     try {
       const resp = await fetch(`${GIST_API_BASE}/${gistId}`, {
+        method: 'GET',
         headers: {
-          'Authorization': `Bearer ${token}`,
           'Accept': 'application/vnd.github+json',
-          'X-GitHub-Api-Version': '2022-11-28'
+          'Authorization': 'Bearer ' + token,
+          'Content-Type': 'application/json'
         }
       });
 
       if (!resp.ok) {
-        this.setStatus('error', `Pull failed: HTTP ${resp.status}`);
-        throw new Error(`Pull failed (HTTP ${resp.status})`);
+        const msg = resp.status === 401 ? 'HTTP 401: Bad Token' : (resp.status === 404 ? 'HTTP 404: Gist ID Not Found' : `HTTP ${resp.status}`);
+        this.setStatus('error', `Pull failed: ${msg}`);
+        throw new Error(`Pull failed (${msg})`);
       }
 
       const gist = await resp.json();
@@ -354,7 +441,10 @@ export class GistSync {
       let content = file.content;
       if (file.truncated && file.raw_url) {
         const rawResp = await fetch(file.raw_url, {
-          headers: { 'Authorization': `Bearer ${token}` }
+          headers: {
+            'Authorization': 'Bearer ' + token,
+            'Accept': 'application/vnd.github+json'
+          }
         });
         if (rawResp.ok) {
           content = await rawResp.text();
@@ -373,7 +463,22 @@ export class GistSync {
         localStorage.setItem('arl_smart_notes', JSON.stringify(data.notes));
       }
 
-      // 3. Restore Settings
+      // 3. Restore Telemetry & Stats
+      if (data.wordStats && typeof localStorage !== 'undefined') {
+        localStorage.setItem('arl_word_stats', JSON.stringify(data.wordStats));
+      }
+      if (data.grammarStats && typeof localStorage !== 'undefined') {
+        localStorage.setItem('arl_grammar_stats', JSON.stringify(data.grammarStats));
+      }
+      if (data.studyTimeStats && typeof localStorage !== 'undefined') {
+        localStorage.setItem('arl_study_time_stats', JSON.stringify(data.studyTimeStats));
+      }
+
+      // 4. Restore Settings & EXP
+      if (data.xpAndLevel && typeof data.xpAndLevel.totalExp === 'number') {
+        state.totalExp = Math.max(state.totalExp || 0, data.xpAndLevel.totalExp);
+        await db.setSetting('totalExp', state.totalExp);
+      }
       if (data.settings) {
         if (data.settings.targetLang && data.settings.targetLang !== state.targetLang) {
           await state.setSetting('targetLang', data.settings.targetLang);
@@ -400,7 +505,25 @@ export class GistSync {
   }
 
   /**
-   * Debounced Auto-Push: triggers 3 seconds after an action (card grade, note edit)
+   * Sync Now (Merge): Pull remote changes, merge intelligently with local, push result back
+   */
+  async syncMerge() {
+    this.setStatus('syncing', 'Merging local and cloud data...');
+    try {
+      // 1. Pull remote data
+      const pullRes = await this.pull();
+      // 2. Push merged local state
+      await this.push();
+      this.setStatus('ok', `Merged ${new Date().toLocaleTimeString()}`);
+      return { success: true };
+    } catch (err) {
+      this.setStatus('error', `Merge error: ${err.message}`);
+      throw err;
+    }
+  }
+
+  /**
+   * Debounced Auto-Push: triggers 3 seconds after an action
    */
   scheduleAutoPush(delayMs = 3000) {
     if (!this.isConnected()) return;

@@ -31,9 +31,9 @@ def make_en_entry(idx, word, pos, mn, de, topic='General', level='B1'):
     mn = nfc(mn)
     de = nfc(de)
     
-    ex_en = f"Understanding {word} is very helpful."
-    ex_mn = f"{mn.capitalize()} гэдгийг ойлгох нь маш тустай."
-    ex_de = f"Das Verständnis von {de} ist sehr hilfreich."
+    ex_en = f"This example demonstrates how to use {word} in context."
+    ex_mn = f"Энэхүү жишээ нь {mn} гэх үгийг хам сэдэвт хэрэглэх аргыг харуулна."
+    ex_de = f"Dieses Beispiel veranschaulicht die Verwendung von {de} im Kontext."
     
     if pos == 'verb':
         ex_en = f"They need to {word} this carefully."

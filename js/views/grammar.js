@@ -13,6 +13,7 @@ import { sound } from '../sound.js';
 import { GeminiClient } from '../gemini.js';
 import { renderColorCodedDiff } from '../diff.js';
 import { grammarPip } from '../grammar-pip.js';
+import { telemetry } from '../telemetry.js';
 
 export class GrammarView {
   constructor(containerEl, onNavigate) {
@@ -194,18 +195,31 @@ export class GrammarView {
           ` : topics.map((topic, i) => {
             const isSelected = i === this.selectedTopicIdx;
             const drillCount = (topic.drills && topic.drills.length) || 20;
+            const stats = telemetry.grammarStats[topic.id] || {};
+            const isUnderstood = (stats.bestAccuracyPct >= 80) || Boolean(stats.understoodAt);
+            const timeSpent = telemetry.formatMs(stats.timeSpentMs || 0);
+
             return `
-              <div class="grammar-topic-item ${isSelected ? 'selected' : ''}" data-topic-id="${topic.id}" data-idx="${i}">
-                <div class="topic-item-left">
-                  <span class="topic-item-num">${String(i + 1).padStart(2, '0')}.</span>
-                  <div class="topic-item-content">
-                    <div class="topic-item-title">${topic.title}</div>
-                    ${topic.pattern ? `<div class="topic-item-pattern"><code>${topic.pattern}</code></div>` : ''}
-                  </div>
+              <div class="arl-card grammar-topic-card grammar-topic-item ${isSelected ? 'selected' : ''}" data-topic-id="${topic.id}" data-idx="${i}">
+                <div class="arl-card-header">
+                  <span class="arl-card-num-badge">${String(i + 1).padStart(2, '0')}.</span>
+                  <h3 class="arl-card-title">${topic.title}</h3>
                 </div>
-                <div class="topic-item-right">
-                  <span class="drill-count-badge">[${drillCount} Drills]</span>
-                  <span class="topic-arrow">→</span>
+                ${topic.pattern ? `
+                  <div class="arl-card-formula">
+                    <code>${topic.pattern}</code>
+                  </div>
+                ` : ''}
+                <div class="arl-card-footer">
+                  <div class="arl-card-meta">
+                    <span class="arl-card-status-badge ${isUnderstood ? 'understood' : 'learning'}">
+                      ${isUnderstood ? `✓ ${stats.bestAccuracyPct || 100}% Understood` : (stats.bestAccuracyPct > 0 ? `${stats.bestAccuracyPct}% In Progress` : 'New Rule')}
+                    </span>
+                    <span class="arl-card-time">⏱ ${timeSpent}</span>
+                  </div>
+                  <button class="arl-card-drills-btn btn-open-drills" data-topic-id="${topic.id}">
+                    [${drillCount} Drills ->]
+                  </button>
                 </div>
               </div>
             `;
@@ -972,6 +986,18 @@ export class GrammarView {
         const bonusLabel = feedback.verdict === 'Perfect!' ? 'Drill Master' : 'Drill Practice';
         state.addExp(feedback.expBonus, { label: bonusLabel, bonus: feedback.verdict === 'Perfect!' });
       }
+
+      // Record grammar telemetry
+      try {
+        let perfectCount = 0;
+        this.drillFeedbacks.forEach(f => {
+          if (f.verdict === 'Perfect!') perfectCount++;
+        });
+        const totalTested = this.drillFeedbacks.size;
+        const accuracyPct = totalTested > 0 ? (perfectCount / totalTested) * 100 : 0;
+        const elapsed = Date.now() - (this.topicStartTime || Date.now());
+        telemetry.recordGrammarDrill(topic.id, accuracyPct, elapsed);
+      } catch (e) {}
     } catch (err) {
       console.warn('Drill evaluation error:', err);
     } finally {

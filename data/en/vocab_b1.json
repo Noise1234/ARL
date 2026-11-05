@@ -7788,9 +7788,9 @@
     "mn": "ажилд гориллогч",
     "de": "Bewerber",
     "en": "applicant",
-    "example_en": "Understanding applicant is very helpful.",
-    "example_mn": "Ажилд гориллогч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Bewerber ist sehr hilfreich.",
+    "example_en": "Each applicant must submit a curriculum vitae and three letters of reference.",
+    "example_mn": "Ажилд гориллогч бүр намтар болон тодорхойлолтын гурван захидал ирүүлэх ёстой.",
+    "example_de": "Jeder Bewerber muss einen Lebenslauf und drei Referenzschreiben einreichen.",
     "topic": "Work"
   },
   {
@@ -7806,9 +7806,9 @@
     "mn": "харилцаа холбоо тогтоох",
     "de": "Netzwerken",
     "en": "networking",
-    "example_en": "Understanding networking is very helpful.",
-    "example_mn": "Харилцаа холбоо тогтоох гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Netzwerken ist sehr hilfreich.",
+    "example_en": "Active professional networking helps university graduates discover hidden job openings.",
+    "example_mn": "Мэргэжлийн харилцаа холбоо идэвхтэй тогтоох нь их сургуулийн төгсөгчдөд далд ажлын байруудыг олоход тусалдаг.",
+    "example_de": "Aktives berufliches Networking hilft Hochschulabsolventen, verdeckte Stellenangebote zu finden.",
     "topic": "Work"
   },
   {
@@ -7824,9 +7824,9 @@
     "mn": "туршилтын хугацаа",
     "de": "Probezeit",
     "en": "probation",
-    "example_en": "Understanding probation is very helpful.",
-    "example_mn": "Туршилтын хугацаа гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Probezeit ist sehr hilfreich.",
+    "example_en": "She completed her three-month probation and signed a permanent employment contract.",
+    "example_mn": "Тэрээр гурван сарын туршилтын хугацаагаа дуусгаж, байнгын хөдөлмөрийн гэрээ байгуулав.",
+    "example_de": "Sie schloss ihre dreimonatige Probezeit ab und unterzeichnete einen unbefristeten Arbeitsvertrag.",
     "topic": "Work"
   },
   {
@@ -7842,9 +7842,9 @@
     "mn": "ажлын байр",
     "de": "Arbeitsplatz",
     "en": "workplace",
-    "example_en": "Understanding workplace is very helpful.",
-    "example_mn": "Ажлын байр гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Arbeitsplatz ist sehr hilfreich.",
+    "example_en": "Ergonomic furniture and natural lighting create a healthier modern workplace.",
+    "example_mn": "Эргономик тавилга болон байгалийн гэрэлтүүлэг нь орчин үеийн илүү эрүүл ажлын байрыг бүрдүүлдэг.",
+    "example_de": "Ergonomische Möbel und natürliches Licht schaffen einen gesünderen modernen Arbeitsplatz.",
     "topic": "Work"
   },
   {
@@ -7860,9 +7860,9 @@
     "mn": "дадлага ажил",
     "de": "Praktikum",
     "en": "internship",
-    "example_en": "Understanding internship is very helpful.",
-    "example_mn": "Дадлага ажил гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Praktikum ist sehr hilfreich.",
+    "example_en": "During his summer internship, he assisted the senior research team in the laboratory.",
+    "example_mn": "Зуны дадлага ажлынхаа үеэр тэр лабораторийн ахлах судлаачдын багт туслан ажилласан.",
+    "example_de": "Während seines Sommerpraktikums unterstützte er das leitende Forschungsteam im Labor.",
     "topic": "Work"
   },
   {
@@ -7878,9 +7878,9 @@
     "mn": "төв оффис",
     "de": "Hauptsitz",
     "en": "headquarters",
-    "example_en": "Understanding headquarters is very helpful.",
-    "example_mn": "Төв оффис гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Hauptsitz ist sehr hilfreich.",
+    "example_en": "The software corporation decided to build its new regional headquarters in Berlin.",
+    "example_mn": "Програм хангамжийн корпораци бүс нутгийн шинэ төв оффисоо Берлин хотод барихаар шийдвэрлэв.",
+    "example_de": "Der Softwarekonzern beschloss, seine neue regionale Zentrale in Berlin zu errichten.",
     "topic": "Work"
   },
   {
@@ -7896,9 +7896,9 @@
     "mn": "хянагч, дарга",
     "de": "Vorgesetzter",
     "en": "supervisor",
-    "example_en": "Understanding supervisor is very helpful.",
-    "example_mn": "Хянагч, дарга гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Vorgesetzter ist sehr hilfreich.",
+    "example_en": "Before finalizing the weekly roster, consult with your immediate supervisor.",
+    "example_mn": "Долоо хоногийн ажлын хуваарийг эцэслэн батлахаасаа өмнө шууд удирдлага, даргатайгаа зөвлөлдөөрэй.",
+    "example_de": "Sprechen Sie mit Ihrem direkten Vorgesetzten, bevor Sie den wöchentlichen Dienstplan festlegen.",
     "topic": "Work"
   },
   {
@@ -7914,9 +7914,9 @@
     "mn": "хөдөлмөрийн хөлс",
     "de": "Entlohnung",
     "en": "remuneration",
-    "example_en": "Understanding remuneration is very helpful.",
-    "example_mn": "Хөдөлмөрийн хөлс гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Entlohnung ist sehr hilfreich.",
+    "example_en": "Competitive remuneration packages attract experienced software developers to the firm.",
+    "example_mn": "Өрсөлдөхүйц өндөр хөдөлмөрийн хөлсний багц нь компанид туршлагатай хөгжүүлэгчдийг татдаг.",
+    "example_de": "Wettbewerbsfähige Vergütungspakete ziehen erfahrene Softwareentwickler für das Unternehmen an.",
     "topic": "Work"
   },
   {
@@ -7932,9 +7932,9 @@
     "mn": "дагалдан ажилтан",
     "de": "Lehrling",
     "en": "apprentice",
-    "example_en": "Understanding apprentice is very helpful.",
-    "example_mn": "Дагалдан ажилтан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Lehrling ist sehr hilfreich.",
+    "example_en": "The master carpenter showed the young apprentice how to carve dovetail joints.",
+    "example_mn": "Туршлагатай мужаан залуу дагалдан ажилтанд уламжлалт холбоос сийлэх аргыг зааж өгөв.",
+    "example_de": "Der Schreinermeister zeigte dem jungen Lehrling, wie man Schwalbenschwanzverbindungen herstellt.",
     "topic": "Work"
   },
   {
@@ -7950,9 +7950,9 @@
     "mn": "бизнес эрхлэгч",
     "de": "Unternehmer",
     "en": "entrepreneur",
-    "example_en": "Understanding entrepreneur is very helpful.",
-    "example_mn": "Бизнес эрхлэгч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Unternehmer ist sehr hilfreich.",
+    "example_en": "A visionary entrepreneur launched an eco-friendly packaging company last year.",
+    "example_mn": "Алсын хараатай бизнес эрхлэгч өнгөрсөн жил байгальд ээлтэй сав баглаа боодлын компани байгуулжээ.",
+    "example_de": "Ein visionärer Unternehmer gründete im vergangenen Jahr ein Unternehmen für umweltfreundliche Verpackungen.",
     "topic": "Work"
   },
   {
@@ -7968,9 +7968,9 @@
     "mn": "чөлөөт уран бүтээлч",
     "de": "Freiberufler",
     "en": "freelancer",
-    "example_en": "Understanding freelancer is very helpful.",
-    "example_mn": "Чөлөөт уран бүтээлч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Freiberufler ist sehr hilfreich.",
+    "example_en": "Working as an independent freelancer allows him to set flexible working hours.",
+    "example_mn": "Бие даасан чөлөөт уран бүтээлчээр ажиллах нь түүнд ажлын цагаа уян хатан зохицуулах боломж олгодог.",
+    "example_de": "Die Arbeit als freiberuflicher Dienstleister ermöglicht es ihm, flexible Arbeitszeiten festzulegen.",
     "topic": "Work"
   },
   {
@@ -7986,9 +7986,9 @@
     "mn": "онгоцонд суух тасалбар",
     "de": "Bordkarte",
     "en": "boarding pass",
-    "example_en": "Understanding boarding pass is very helpful.",
-    "example_mn": "Онгоцонд суух тасалбар гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Bordkarte ist sehr hilfreich.",
+    "example_en": "Have your digital boarding pass ready on your phone before approaching the gate.",
+    "example_mn": "Нислэгийн гарц руу очихоосоо өмнө утсан дээрх цахим онгоцонд суух тасалбараа бэлдээрэй.",
+    "example_de": "Halten Sie Ihre digitale Bordkarte auf dem Smartphone bereit, bevor Sie zum Flugsteig gehen.",
     "topic": "Travel"
   },
   {
@@ -8004,9 +8004,9 @@
     "mn": "ачаа олгох хэсэг",
     "de": "Gepäckausgabe",
     "en": "baggage claim",
-    "example_en": "Understanding baggage claim is very helpful.",
-    "example_mn": "Ачаа олгох хэсэг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Gepäckausgabe ist sehr hilfreich.",
+    "example_en": "Passengers waited at carousel four in the baggage claim area for their luggage.",
+    "example_mn": "Зорчигчид ачаа олгох хэсгийн дөрөвдүгээр туузан дамжуургын дэргэд тээшээ хүлээж байв.",
+    "example_de": "Die Passagiere warteten am Gepäckband vier im Gepäckausgabebereich auf ihre Koffer.",
     "topic": "Travel"
   },
   {
@@ -8058,9 +8058,9 @@
     "mn": "аяллын маршрут",
     "de": "Reiseplan",
     "en": "itinerary",
-    "example_en": "Understanding itinerary is very helpful.",
-    "example_mn": "Аяллын маршрут гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Reiseplan ist sehr hilfreich.",
+    "example_en": "Our comprehensive itinerary covers historic cathedrals, museums, and mountain trails.",
+    "example_mn": "Бидний аяллын нарийвчилсан маршрутад түүхэн сүмүүд, музей, уулын жимүүд багтсан болно.",
+    "example_de": "Unser detaillierter Reiseplan umfasst historische Kathedralen, Museen und Bergpfade.",
     "topic": "Travel"
   },
   {
@@ -8076,9 +8076,9 @@
     "mn": "хөтөчтэй аялал",
     "de": "geführte Tour",
     "en": "guided tour",
-    "example_en": "Understanding guided tour is very helpful.",
-    "example_mn": "Хөтөчтэй аялал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von geführte Tour ist sehr hilfreich.",
+    "example_en": "We booked an informative guided tour through the medieval fortress and its secret tunnels.",
+    "example_mn": "Бид дундад зууны үеийн цайз болон түүний нууц хонгилоор танин мэдэхүйн хөтөчтэй аялал захиаллаа.",
+    "example_de": "Wir buchten eine informative Führung durch die mittelalterliche Festung und ihre geheimen Tunnel.",
     "topic": "Travel"
   },
   {
@@ -8094,9 +8094,9 @@
     "mn": "валют арилжаа",
     "de": "Geldwechsel",
     "en": "currency exchange",
-    "example_en": "Understanding currency exchange is very helpful.",
-    "example_mn": "Валют арилжаа гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Geldwechsel ist sehr hilfreich.",
+    "example_en": "Check the commission rates before using the airport currency exchange service.",
+    "example_mn": "Нисэх онгоцны буудлын валют арилжааны үйлчилгээг ашиглахаасаа өмнө шимтгэлийн хувийг шалгаарай.",
+    "example_de": "Überprüfen Sie die Provisionsgebühren, bevor Sie den Geldwechselservice am Flughafen nutzen.",
     "topic": "Travel"
   },
   {
@@ -8112,9 +8112,9 @@
     "mn": "паспортын шалгалт",
     "de": "Passkontrolle",
     "en": "passport control",
-    "example_en": "Understanding passport control is very helpful.",
-    "example_mn": "Паспортын шалгалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Passkontrolle ist sehr hilfreich.",
+    "example_en": "Border officers inspected international visas thoroughly at passport control.",
+    "example_mn": "Хилийн албаны ажилтнууд паспортын шалгалтын хэсэг дээр олон улсын визийг нягтлан шалгалаа.",
+    "example_de": "Die Grenzbeamten prüften die internationalen Visa an der Passkontrolle sehr gründlich.",
     "topic": "Travel"
   },
   {
@@ -8130,9 +8130,9 @@
     "mn": "бүртгэлийн цэг",
     "de": "Check-in-Schalter",
     "en": "check-in desk",
-    "example_en": "Understanding check-in desk is very helpful.",
-    "example_mn": "Бүртгэлийн цэг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Check-in-Schalter ist sehr hilfreich.",
+    "example_en": "Drop your heavy suitcases off at the airline check-in desk on the departure floor.",
+    "example_mn": "Хүнд чемодануудаа нислэгийн танхим дахь бүртгэлийн цэг дээр хүлээлгэн өгнө үү.",
+    "example_de": "Geben Sie Ihre schweren Koffer am Check-in-Schalter der Fluggesellschaft in der Abflughalle ab.",
     "topic": "Travel"
   },
   {
@@ -8148,9 +8148,9 @@
     "mn": "урьдчилсан захиалга",
     "de": "Reservierung",
     "en": "reservation",
-    "example_en": "Understanding reservation is very helpful.",
-    "example_mn": "Урьдчилсан захиалга гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Reservierung ist sehr hilfreich.",
+    "example_en": "We made a reservation two weeks in advance because the restaurant fills up quickly.",
+    "example_mn": "Тус зоогийн газар хурдан дүүрдэг тул бид хоёр долоо хоногийн өмнө урьдчилсан захиалга өгсөн.",
+    "example_de": "Wir haben zwei Wochen im Voraus eine Reservierung vorgenommen, da das Restaurant schnell ausgebucht ist.",
     "topic": "Travel"
   },
   {
@@ -8166,9 +8166,9 @@
     "mn": "байрлах газар",
     "de": "Unterkunft",
     "en": "accommodation",
-    "example_en": "Understanding accommodation is very helpful.",
-    "example_mn": "Байрлах газар гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Unterkunft ist sehr hilfreich.",
+    "example_en": "Finding budget-friendly accommodation near the city center can be challenging during peak season.",
+    "example_mn": "Аяллын оргил үед хотын төвд хямд төсөр байрлах газар олох нь амаргүй байдаг.",
+    "example_de": "In der Hochsaison kann es schwierig sein, eine bezahlbare Unterkunft in der Nähe des Stadtzentrums zu finden.",
     "topic": "Travel"
   },
   {
@@ -8184,9 +8184,9 @@
     "mn": "хостел, нийтийн байр",
     "de": "Jugendherberge",
     "en": "hostel",
-    "example_en": "Understanding hostel is very helpful.",
-    "example_mn": "Хостел, нийтийн байр гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Jugendherberge ist sehr hilfreich.",
+    "example_en": "Many solo backpackers choose to stay at a vibrant youth hostel to meet fellow travelers.",
+    "example_mn": "Олон ганцаарчилсан аялагч бусад жуулчидтай танилцахын тулд хөл хөдөлгөөнтэй хостел, нийтийн байранд буудалладаг.",
+    "example_de": "Viele Rucksacktouristen übernachten in einem Jugendhostel, um andere Reisende kennenzulernen.",
     "topic": "Travel"
   },
   {
@@ -8202,9 +8202,9 @@
     "mn": "люкс өрөө",
     "de": "Suite",
     "en": "suite",
-    "example_en": "Understanding suite is very helpful.",
-    "example_mn": "Люкс өрөө гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Suite ist sehr hilfreich.",
+    "example_en": "The bridal suite features a marble bathroom, private balcony, and king-size bed.",
+    "example_mn": "Хуримын люкс өрөө нь гантиг чулуун угаалгын өрөө, хувийн тагт, өргөн ортой ажээ.",
+    "example_de": "Die Hochzeitssuite verfügt über ein Marmorbad, einen privaten Balkon und ein Kingsize-Bett.",
     "topic": "Travel"
   },
   {
@@ -8238,9 +8238,9 @@
     "mn": "богино хугацааны аялал",
     "de": "Ausflug",
     "en": "excursion",
-    "example_en": "Understanding excursion is very helpful.",
-    "example_mn": "Богино хугацааны аялал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Ausflug ist sehr hilfreich.",
+    "example_en": "The cruise includes a scenic boat excursion around the remote glacial fjords.",
+    "example_mn": "Усан онгоцны аялалд алслагдсан мөстлөгийн хавцал дундуур хийх үзэсгэлэнт богино хугацааны аялал багтжээ.",
+    "example_de": "Die Kreuzfahrt beinhaltet einen malerischen Bootsausflug durch die abgelegenen Gletscherfjorde.",
     "topic": "Travel"
   },
   {
@@ -8256,9 +8256,9 @@
     "mn": "онош",
     "de": "Diagnose",
     "en": "diagnosis",
-    "example_en": "Understanding diagnosis is very helpful.",
-    "example_mn": "Онош гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Diagnose ist sehr hilfreich.",
+    "example_en": "Early clinical diagnosis significantly improves recovery rates for autoimmune disorders.",
+    "example_mn": "Эрт үеийн эмнэлзүйн онош нь аутоиммун өвчний эдгэрэлтийн түвшинг эрс сайжруулдаг.",
+    "example_de": "Eine frühzeitige klinische Diagnose verbessert die Heilungschancen bei Autoimmunerkrankungen erheblich.",
     "topic": "Health"
   },
   {
@@ -8274,9 +8274,9 @@
     "mn": "дотрын эмч",
     "de": "Arzt, Internist",
     "en": "physician",
-    "example_en": "Understanding physician is very helpful.",
-    "example_mn": "Дотрын эмч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Arzt, Internist ist sehr hilfreich.",
+    "example_en": "Consult your family physician before starting any intensive fitness regimen.",
+    "example_mn": "Аливаа эрчимтэй дасгалын хөтөлбөр эхлүүлэхээсээ өмнө гэр бүлийн дотрын эмчдээ хандаарай.",
+    "example_de": "Konsultieren Sie Ihren Hausarzt, bevor Sie mit einem intensiven Fitnessprogramm beginnen.",
     "topic": "Health"
   },
   {
@@ -8292,9 +8292,9 @@
     "mn": "өвчин намдаагч",
     "de": "Schmerzmittel",
     "en": "painkiller",
-    "example_en": "Understanding painkiller is very helpful.",
-    "example_mn": "Өвчин намдаагч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Schmerzmittel ist sehr hilfreich.",
+    "example_en": "The doctor prescribed a mild painkiller to relieve her recurring headaches.",
+    "example_mn": "Эмч түүний байнга хөндүүрлэх толгойн өвдөлтийг намдаахын тулд зөөлөн өвчин намдаагч бичиж өгөв.",
+    "example_de": "Der Arzt verschrieb ein mildes Schmerzmittel, um ihre wiederkehrenden Kopfschmerzen zu lindern.",
     "topic": "Health"
   },
   {
@@ -8310,9 +8310,9 @@
     "mn": "вакцинжуулалт",
     "de": "Impfung",
     "en": "vaccination",
-    "example_en": "Understanding vaccination is very helpful.",
-    "example_mn": "Вакцинжуулалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Impfung ist sehr hilfreich.",
+    "example_en": "Routine childhood vaccination protects communities against preventable infectious diseases.",
+    "example_mn": "Хүүхдийн товлолт вакцинжуулалт нь нийгмийг урьдчилан сэргийлж болох халдварт өвчнөөс хамгаалдаг.",
+    "example_de": "Regelmäßige Impfungen im Kindesalter schützen die Bevölkerung vor vermeidbaren Infektionskrankheiten.",
     "topic": "Health"
   },
   {
@@ -8328,9 +8328,9 @@
     "mn": "халууны шил",
     "de": "Fieberthermometer",
     "en": "thermometer",
-    "example_en": "Understanding thermometer is very helpful.",
-    "example_mn": "Халууны шил гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Fieberthermometer ist sehr hilfreich.",
+    "example_en": "Use a digital thermometer to check whether the child has a high fever.",
+    "example_mn": "Хүүхэд өндөр халуурсан эсэхийг шалгахын тулд цахим халууны шил ашиглаарай.",
+    "example_de": "Verwenden Sie ein digitales Fieberthermometer, um zu prüfen, ob das Kind hohes Fieber hat.",
     "topic": "Health"
   },
   {
@@ -8346,9 +8346,9 @@
     "mn": "хоол боловсруулалт",
     "de": "Verdauung",
     "en": "digestion",
-    "example_en": "Understanding digestion is very helpful.",
-    "example_mn": "Хоол боловсруулалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Verdauung ist sehr hilfreich.",
+    "example_en": "Eating dietary fiber and staying hydrated are essential for healthy digestion.",
+    "example_mn": "Хоол тэжээлийн эслэг хэрэглэх болон хангалттай ус уух нь эрүүл хоол боловсруулалтад чухал ач холбогдолтой.",
+    "example_de": "Ballaststoffreiche Ernährung und ausreichende Flüssigkeitszufuhr sind wichtig für eine gesunde Verdauung.",
     "topic": "Health"
   },
   {
@@ -8364,9 +8364,9 @@
     "mn": "цусны эргэлт",
     "de": "Blutkreislauf",
     "en": "circulation",
-    "example_en": "Understanding circulation is very helpful.",
-    "example_mn": "Цусны эргэлт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Blutkreislauf ist sehr hilfreich.",
+    "example_en": "Aerobic exercise strengthens the heart and enhances cardiovascular circulation.",
+    "example_mn": "Аэробик дасгал нь зүрхийг бэхжүүлж, зүрх судасны цусны эргэлтийг сайжруулдаг.",
+    "example_de": "Aerobes Training stärkt das Herz und verbessert den gesamten Blutkreislauf.",
     "topic": "Health"
   },
   {
@@ -8382,9 +8382,9 @@
     "mn": "толгой эргэх",
     "de": "Schwindel",
     "en": "dizziness",
-    "example_en": "Understanding dizziness is very helpful.",
-    "example_mn": "Толгой эргэх гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Schwindel ist sehr hilfreich.",
+    "example_en": "Standing up too abruptly can cause a sudden wave of lightheaded dizziness.",
+    "example_mn": "Хэт огцом босох нь гэнэт толгой эргэх мэдрэмж төрүүлж болзошгүй.",
+    "example_de": "Zu schnelles Aufstehen kann eine plötzliche Welle von Schwindelgefühl verursachen.",
     "topic": "Health"
   },
   {
@@ -8400,9 +8400,9 @@
     "mn": "дотор муухайрах",
     "de": "Übelkeit",
     "en": "nausea",
-    "example_en": "Understanding nausea is very helpful.",
-    "example_mn": "Дотор муухайрах гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Übelkeit ist sehr hilfreich.",
+    "example_en": "Ginger tea is a natural remedy known to soothe stomach nausea and motion sickness.",
+    "example_mn": "Цагаан гааны цай нь ходоодны дотор муухайрах болон тээврийн хэрэгсэлд дайвалзахыг дардаг байгалийн арга юм.",
+    "example_de": "Ingwertee ist ein bewährtes Hausmittel, um Magenübelkeit und Reisekrankheit zu lindern.",
     "topic": "Health"
   },
   {
@@ -8418,9 +8418,9 @@
     "mn": "нойргүйдэл",
     "de": "Schlaflosigkeit",
     "en": "insomnia",
-    "example_en": "Understanding insomnia is very helpful.",
-    "example_mn": "Нойргүйдэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Schlaflosigkeit ist sehr hilfreich.",
+    "example_en": "Reducing screen time before bedtime is an effective way to combat chronic insomnia.",
+    "example_mn": "Орондоо орохоосоо өмнө дэлгэц ширтэхээ багасгах нь архаг нойргүйдэлтэй тэмцэх үр дүнтэй арга юм.",
+    "example_de": "Die Reduzierung der Bildschirmzeit vor dem Schlafengehen hilft gegen chronische Schlaflosigkeit.",
     "topic": "Health"
   },
   {
@@ -8436,9 +8436,9 @@
     "mn": "ядаргаа",
     "de": "Müdigkeit, Erschöpfung",
     "en": "fatigue",
-    "example_en": "Understanding fatigue is very helpful.",
-    "example_mn": "Ядаргаа гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Müdigkeit, Erschöpfung ist sehr hilfreich.",
+    "example_en": "Persistent physical fatigue may be a symptom of severe vitamin deficiency.",
+    "example_mn": "Бие махбодын байнгын ядаргаа нь амин дэмийн ноцтой дутагдлын шинж тэмдэг байж болзошгүй.",
+    "example_de": "Anhaltende körperliche Müdigkeit kann ein Symptom für einen schweren Vitaminmangel sein.",
     "topic": "Health"
   },
   {
@@ -8454,9 +8454,9 @@
     "mn": "эрүүл ахуй",
     "de": "Hygiene",
     "en": "hygiene",
-    "example_en": "Understanding hygiene is very helpful.",
-    "example_mn": "Эрүүл ахуй гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Hygiene ist sehr hilfreich.",
+    "example_en": "Strict hand hygiene prevents the transmission of dangerous bacteria in hospital wards.",
+    "example_mn": "Гарын ариун цэвэр, эрүүл ахуйг чанд сахих нь эмнэлгийн тасагт аюултай нян халдварлахаас сэргийлдэг.",
+    "example_de": "Strikte Händehygiene verhindert die Übertragung gefährlicher Bakterien auf Krankenhausstationen.",
     "topic": "Health"
   },
   {
@@ -8472,9 +8472,9 @@
     "mn": "түрхлэг тос",
     "de": "Salbe",
     "en": "ointment",
-    "example_en": "Understanding ointment is very helpful.",
-    "example_mn": "Түрхлэг тос гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Salbe ist sehr hilfreich.",
+    "example_en": "Gently apply the soothing antibiotic ointment directly over the burn.",
+    "example_mn": "Тайвшруулах үйлчилгээтэй антибиотикийн түрхлэг тосыг түлэгдсэн хэсэг дээрээ зөөлөн түрхээрэй.",
+    "example_de": "Tragen Sie die lindernde antibiotische Salbe vorsichtig direkt auf die Verbrennung auf.",
     "topic": "Health"
   },
   {
@@ -8490,9 +8490,9 @@
     "mn": "нэвтрүүлэг",
     "de": "Sendung, Übertragung",
     "en": "broadcast",
-    "example_en": "Understanding broadcast is very helpful.",
-    "example_mn": "Нэвтрүүлэг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Sendung, Übertragung ist sehr hilfreich.",
+    "example_en": "The emergency radio broadcast alerted residents about the approaching hurricane.",
+    "example_mn": "Онцгой байдлын радио нэвтрүүлэг ойртон буй хар салхины талаар оршин суугчдад сэрэмжлүүлэв.",
+    "example_de": "Die Notfunkübertragung warnte die Anwohner vor dem herannahenden Hurrikan.",
     "topic": "Tech"
   },
   {
@@ -8508,9 +8508,9 @@
     "mn": "подкаст",
     "de": "Podcast",
     "en": "podcast",
-    "example_en": "Understanding podcast is very helpful.",
-    "example_mn": "Подкаст гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Podcast ist sehr hilfreich.",
+    "example_en": "I listen to an educational history podcast every morning during my train commute.",
+    "example_mn": "Би өглөө бүр галт тэргээр зорчихдоо түүхийн танин мэдэхүйн подкаст сонсдог.",
+    "example_de": "Ich höre jeden Morgen während meiner Bahnfahrt einen lehrreichen Geschichts-Podcast.",
     "topic": "Media"
   },
   {
@@ -8526,9 +8526,9 @@
     "mn": "кибер аюулгүй байдал",
     "de": "Cybersicherheit",
     "en": "cybersecurity",
-    "example_en": "Understanding cybersecurity is very helpful.",
-    "example_mn": "Кибер аюулгүй байдал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Cybersicherheit ist sehr hilfreich.",
+    "example_en": "Banks invest heavily in advanced cybersecurity to protect customer financial data.",
+    "example_mn": "Банкууд харилцагчдын санхүүгийн өгөгдлийг хамгаалахын тулд дэвшилтэт кибер аюулгүй байдалд их хэмжээний хөрөнгө оруулдаг.",
+    "example_de": "Banken investieren massiv in moderne Cybersicherheit, um Finanzdaten der Kunden zu schützen.",
     "topic": "Tech"
   },
   {
@@ -8544,9 +8544,9 @@
     "mn": "захын төхөөрөмж",
     "de": "Peripheriegerät",
     "en": "peripheral",
-    "example_en": "Understanding peripheral is very helpful.",
-    "example_mn": "Захын төхөөрөмж гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Peripheriegerät ist sehr hilfreich.",
+    "example_en": "A computer mouse, keyboard, and printer are common peripheral hardware devices.",
+    "example_mn": "Компьютерийн хулгана, гар, принтер зэрэг нь нийтлэг захын төхөөрөмжүүдэд тооцогддог.",
+    "example_de": "Maus, Tastatur und Drucker sind typische periphere Hardware-Geräte.",
     "topic": "Tech"
   },
   {
@@ -8562,9 +8562,9 @@
     "mn": "хавсралт файл",
     "de": "Anhang",
     "en": "attachment",
-    "example_en": "Understanding attachment is very helpful.",
-    "example_mn": "Хавсралт файл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Anhang ist sehr hilfreich.",
+    "example_en": "Do not open the suspicious email attachment if you do not recognize the sender.",
+    "example_mn": "Илгээгчийг нь мэдэхгүй бол сэжигтэй цахим шуудангийн хавсралт файлыг битгий нээгээрэй.",
+    "example_de": "Öffnen Sie keinen verdächtigen E-Mail-Anhang, wenn Sie den Absender nicht kennen.",
     "topic": "Tech"
   },
   {
@@ -8580,9 +8580,9 @@
     "mn": "хөтөч програм",
     "de": "Webbrowser",
     "en": "browser",
-    "example_en": "Understanding browser is very helpful.",
-    "example_mn": "Хөтөч програм гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Webbrowser ist sehr hilfreich.",
+    "example_en": "Clearing the web browser cache resolves many website loading and rendering issues.",
+    "example_mn": "Вэб хөтөч програмын кэшийг цэвэрлэх нь вэбсайтын ачаалал болон харагдах байдлын олон асуудлыг шийддэг.",
+    "example_de": "Das Löschen des Browser-Caches behebt viele Lade- und Darstellungsprobleme von Webseiten.",
     "topic": "Tech"
   },
   {
@@ -8616,9 +8616,9 @@
     "mn": "сүлжээний зурвасын өргөн",
     "de": "Bandbreite",
     "en": "bandwidth",
-    "example_en": "Understanding bandwidth is very helpful.",
-    "example_mn": "Сүлжээний зурвасын өргөн гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Bandbreite ist sehr hilfreich.",
+    "example_en": "Streaming high-definition video requires reliable internet connection with ample bandwidth.",
+    "example_mn": "Өндөр нягтралтай дүрс бичлэг шууд үзэхэд сүлжээний зурвасын хангалттай өргөнтэй найдвартай интернет хэрэгтэй.",
+    "example_de": "Das Streamen von HD-Videos erfordert eine zuverlässige Internetverbindung mit hoher Bandbreite.",
     "topic": "Tech"
   },
   {
@@ -8634,9 +8634,9 @@
     "mn": "мэдэгдэл",
     "de": "Benachrichtigung",
     "en": "notification",
-    "example_en": "Understanding notification is very helpful.",
-    "example_mn": "Мэдэгдэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Benachrichtigung ist sehr hilfreich.",
+    "example_en": "A pop-up notification alerted the administrator about an unauthorized login attempt.",
+    "example_mn": "Дэлгэц дээр гарч ирсэн мэдэгдэл зөвшөөрөлгүй нэвтрэх оролдлогын талаар администраторт анхааруулав.",
+    "example_de": "Eine Popup-Benachrichtigung warnte den Administrator vor einem unbefugten Anmeldeversuch.",
     "topic": "Tech"
   },
   {
@@ -8652,9 +8652,9 @@
     "mn": "хадгалах багтаамж",
     "de": "Speicher",
     "en": "storage",
-    "example_en": "Understanding storage is very helpful.",
-    "example_mn": "Хадгалах багтаамж гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Speicher ist sehr hilfreich.",
+    "example_en": "Solid-state drives offer high-speed digital storage for modern personal computers.",
+    "example_mn": "Хагас дамжуулагч дискүүд нь орчин үеийн компьютерүүдэд өндөр хурдны хадгалах багтаамжийг санал болгодог.",
+    "example_de": "Solid-State-Laufwerke bieten extrem schnellen Speicherplatz für moderne Personal Computer.",
     "topic": "Tech"
   },
   {
@@ -8670,9 +8670,9 @@
     "mn": "хэрэглэгчийн интерфэйс",
     "de": "Schnittstelle",
     "en": "interface",
-    "example_en": "Understanding interface is very helpful.",
-    "example_mn": "Хэрэглэгчийн интерфэйс гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Schnittstelle ist sehr hilfreich.",
+    "example_en": "The application was redesigned with an intuitive and responsive user interface.",
+    "example_mn": "Уг програмыг ойлгомжтой, ашиглахад хялбар хэрэглэгчийн интерфэйстэйгээр шинэчлэн бүтээжээ.",
+    "example_de": "Die Anwendung wurde mit einer intuitiven und responsiven Benutzeroberfläche neu gestaltet.",
     "topic": "Tech"
   },
   {
@@ -8688,9 +8688,9 @@
     "mn": "нөөц хуулбар",
     "de": "Datensicherung",
     "en": "backup",
-    "example_en": "Understanding backup is very helpful.",
-    "example_mn": "Нөөц хуулбар гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Datensicherung ist sehr hilfreich.",
+    "example_en": "Always create an encrypted cloud backup before performing a major system update.",
+    "example_mn": "Системийн томоохон шинэчлэлт хийхээсээ өмнө үүлэн санд шифрлэсэн нөөц хуулбар үргэлж үүсгэж бай.",
+    "example_de": "Erstellen Sie immer ein verschlüsseltes Cloud-Backup, bevor Sie ein großes Systemupdate durchführen.",
     "topic": "Tech"
   },
   {
@@ -8706,9 +8706,9 @@
     "mn": "хэрэглэгчийн нэр",
     "de": "Benutzername",
     "en": "username",
-    "example_en": "Understanding username is very helpful.",
-    "example_mn": "Хэрэглэгчийн нэр гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Benutzername ist sehr hilfreich.",
+    "example_en": "Please enter your registered username and password to access the portal.",
+    "example_mn": "Портал руу нэвтрэхийн тулд бүртгэлтэй хэрэглэгчийн нэр болон нууц үгээ оруулна уу.",
+    "example_de": "Bitte geben Sie Ihren registrierten Benutzernamen und Ihr Passwort ein, um auf das Portal zuzugreifen.",
     "topic": "Tech"
   },
   {
@@ -8760,9 +8760,9 @@
     "mn": "суулгагч програм",
     "de": "Installationsprogramm",
     "en": "installer",
-    "example_en": "Understanding installer is very helpful.",
-    "example_mn": "Суулгагч програм гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Installationsprogramm ist sehr hilfreich.",
+    "example_en": "Download the official software installer directly from the certified vendor website.",
+    "example_mn": "Програм суулгагч файлыг баталгаажсан үйлдвэрлэгчийн албан ёсны вэбсайтаас шууд татаж аваарай.",
+    "example_de": "Laden Sie das offizielle Installationsprogramm direkt von der verifizierten Hersteller-Website herunter.",
     "topic": "Tech"
   },
   {
@@ -8778,9 +8778,9 @@
     "mn": "тохиргоо",
     "de": "Einstellungen",
     "en": "settings",
-    "example_en": "Understanding settings is very helpful.",
-    "example_mn": "Тохиргоо гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Einstellungen ist sehr hilfreich.",
+    "example_en": "Adjust your privacy settings to restrict who can see your personal profile.",
+    "example_mn": "Хувийн танилцуулгыг тань хэн харах боломжтойг хязгаарлахын тулд нууцлалын тохиргоогоо өөрчилнө үү.",
+    "example_de": "Passen Sie Ihre Datenschutzeinstellungen an, um festzulegen, wer Ihr Profil sehen darf.",
     "topic": "Tech"
   },
   {
@@ -8796,9 +8796,9 @@
     "mn": "салхин сэнс",
     "de": "Windkraftanlage",
     "en": "wind turbine",
-    "example_en": "Understanding wind turbine is very helpful.",
-    "example_mn": "Салхин сэнс гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Windkraftanlage ist sehr hilfreich.",
+    "example_en": "Each modern wind turbine generates enough clean electricity for hundreds of homes.",
+    "example_mn": "Орчин үеийн салхин сэнс бүр олон зуун өрхийг цэвэр цахилгаан эрчим хүчээр хангах чадалтай.",
+    "example_de": "Jede moderne Windkraftanlage erzeugt sauberen Strom für Hunderte von Haushalten.",
     "topic": "Nature"
   },
   {
@@ -8814,9 +8814,9 @@
     "mn": "хийн ялгаруулалт",
     "de": "Emission, Ausstoß",
     "en": "emission",
-    "example_en": "Understanding emission is very helpful.",
-    "example_mn": "Хийн ялгаруулалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Emission, Ausstoß ist sehr hilfreich.",
+    "example_en": "Strict international regulations aim to cut greenhouse gas emission by half.",
+    "example_mn": "Олон улсын хатуу дүрэм журам нь хүлэмжийн хийн ялгаруулалтыг тал хувиар бууруулах зорилготой.",
+    "example_de": "Strenge internationale Vorschriften zielen darauf ab, die Treibhausgasemissionen zu halbieren.",
     "topic": "Nature"
   },
   {
@@ -8832,9 +8832,9 @@
     "mn": "зэрлэг ан амьтан",
     "de": "Tierwelt",
     "en": "wildlife",
-    "example_en": "Understanding wildlife is very helpful.",
-    "example_mn": "Зэрлэг ан амьтан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Tierwelt ist sehr hilfreich.",
+    "example_en": "The national park provides a safe habitat for endangered wildlife species.",
+    "example_mn": "Үндэсний цэцэрлэгт хүрээлэн нь ховордсон зэрлэг ан амьтдад аюулгүй амьдрах орчныг бүрдүүлдэг.",
+    "example_de": "Der Nationalpark bietet einen sicheren Lebensraum für gefährdete Wildtiere.",
     "topic": "Nature"
   },
   {
@@ -8850,9 +8850,9 @@
     "mn": "хур тунадас",
     "de": "Niederschlag",
     "en": "precipitation",
-    "example_en": "Understanding precipitation is very helpful.",
-    "example_mn": "Хур тунадас гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Niederschlag ist sehr hilfreich.",
+    "example_en": "High levels of annual precipitation sustain the dense temperate rainforest.",
+    "example_mn": "Жилийн хур тунадасны өндөр хэмжээ нь сэрүүн бүсийн өтгөн ширэнгэн ойг тэтгэдэг.",
+    "example_de": "Hohe jährliche Niederschlagsmengen erhalten den dichten gemäßigten Regenwald.",
     "topic": "Nature"
   },
   {
@@ -8868,9 +8868,9 @@
     "mn": "сургалтын төлбөр",
     "de": "Studiengebühr",
     "en": "tuition fee",
-    "example_en": "Understanding tuition fee is very helpful.",
-    "example_mn": "Сургалтын төлбөр гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Studiengebühr ist sehr hilfreich.",
+    "example_en": "The university foundation provides merit scholarships to cover each recipient's tuition fee.",
+    "example_mn": "Их сургуулийн сан нь тэтгэлэг хүртэгч бүрийн сургалтын төлбөрийг хариуцах тэтгэлэг олгодог.",
+    "example_de": "Die Universitätsstiftung vergibt Leistungsstipendien zur Deckung der Studiengebühren.",
     "topic": "Education"
   },
   {
@@ -8886,9 +8886,9 @@
     "mn": "биологийн шинжлэх ухаан",
     "de": "Biologie",
     "en": "biology",
-    "example_en": "Understanding biology is very helpful.",
-    "example_mn": "Биологийн шинжлэх ухаан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Biologie ist sehr hilfreich.",
+    "example_en": "Evolutionary biology examines how organisms adapt to changing environments over millions of years.",
+    "example_mn": "Хувьслын биологийн шинжлэх ухаан нь амьд биетүүд сая сая жилийн турш өөрчлөгдөж буй орчинд хэрхэн дасан зохицдогийг судалдаг.",
+    "example_de": "Die Evolutionsbiologie untersucht, wie sich Organismen an Umweltveränderungen anpassen.",
     "topic": "Science"
   },
   {
@@ -8904,9 +8904,9 @@
     "mn": "химийн шинжлэх ухаан",
     "de": "Chemie",
     "en": "chemistry",
-    "example_en": "Understanding chemistry is very helpful.",
-    "example_mn": "Химийн шинжлэх ухаан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Chemie ist sehr hilfreich.",
+    "example_en": "Organic chemistry focuses on the carbon compounds forming living matter.",
+    "example_mn": "Органик химийн шинжлэх ухаан нь амьд биетийг бүрдүүлэгч нүүрстөрөгчийн нэгдлүүдийг судалдаг.",
+    "example_de": "Die organische Chemie befasst sich mit Kohlenstoffverbindungen, die lebende Materie bilden.",
     "topic": "Science"
   },
   {
@@ -8922,9 +8922,9 @@
     "mn": "физикийн шинжлэх ухаан",
     "de": "Physik",
     "en": "physics",
-    "example_en": "Understanding physics is very helpful.",
-    "example_mn": "Физикийн шинжлэх ухаан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Physik ist sehr hilfreich.",
+    "example_en": "Theoretical physics explores the fundamental forces shaping the physical universe.",
+    "example_mn": "Онолын физикийн шинжлэх ухаан нь бодит ертөнцийг тодорхойлогч тулгуур хүчнүүдийг судалдаг.",
+    "example_de": "Die theoretische Physik erforscht die fundamentalen Kräfte des physikalischen Universums.",
     "topic": "Science"
   },
   {
@@ -8940,9 +8940,9 @@
     "mn": "одон орон судлал",
     "de": "Astronomie",
     "en": "astronomy",
-    "example_en": "Understanding astronomy is very helpful.",
-    "example_mn": "Одон орон судлал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Astronomie ist sehr hilfreich.",
+    "example_en": "Observational astronomy uses deep-space telescopes to discover distant star clusters.",
+    "example_mn": "Ажиглалтын одон орон судлал нь алс холын оддын бөөгнөрлийг илрүүлэхийн тулд сансрын дуран авай ашигладаг.",
+    "example_de": "Die beobachtende Astronomie nutzt Weltraumteleskope, um ferne Sternhaufen zu entdecken.",
     "topic": "Science"
   },
   {
@@ -8958,9 +8958,9 @@
     "mn": "геологи судлал",
     "de": "Geologie",
     "en": "geology",
-    "example_en": "Understanding geology is very helpful.",
-    "example_mn": "Геологи судлал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Geologie ist sehr hilfreich.",
+    "example_en": "Structural geology maps underground rock formations to assess earthquake hazards.",
+    "example_mn": "Бүтцийн геологи судлал нь газар хөдлөлтийн аюулыг үнэлэхийн тулд газрын доорх чулуулгийн тогтцын зураглалыг гаргадаг.",
+    "example_de": "Die Strukturgeologie kartiert unterirdische Felsformationen zur Erdbebenbewertung.",
     "topic": "Science"
   },
   {
@@ -8976,9 +8976,9 @@
     "mn": "их сургуулийн хотхон",
     "de": "Campus",
     "en": "campus",
-    "example_en": "Understanding campus is very helpful.",
-    "example_mn": "Их сургуулийн хотхон гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Campus ist sehr hilfreich.",
+    "example_en": "The sprawling university campus includes historic libraries, laboratories, and athletic fields.",
+    "example_mn": "Их сургуулийн өргөн уудам хотхон нь түүхэн номын сангууд, лабораториуд, спорт талбайтай.",
+    "example_de": "Der weitläufige Universitätscampus umfasst historische Bibliotheken, Labore und Sportplätze.",
     "topic": "Education"
   },
   {
@@ -8994,9 +8994,9 @@
     "mn": "даалгавар",
     "de": "Aufgabe",
     "en": "assignment",
-    "example_en": "Understanding assignment is very helpful.",
-    "example_mn": "Даалгавар гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Aufgabe ist sehr hilfreich.",
+    "example_en": "The professor asked students to submit their research assignment before midnight.",
+    "example_mn": "Профессор оюутнуудад судалгааны даалгавраа шөнө дундаас өмнө илгээхийг сануулав.",
+    "example_de": "Der Professor forderte die Studenten auf, ihre Forschungsaufgabe vor Mitternacht einzureichen.",
     "topic": "Education"
   },
   {
@@ -9012,9 +9012,9 @@
     "mn": "диссертаци, эрдмийн ажил",
     "de": "Dissertation",
     "en": "dissertation",
-    "example_en": "Understanding dissertation is very helpful.",
-    "example_mn": "Диссертаци, эрдмийн ажил гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Dissertation ist sehr hilfreich.",
+    "example_en": "After four years of dedicated archival research, she defended her doctoral dissertation.",
+    "example_mn": "Дөрвөн жилийн архивын судалгааны дараа тэрээр докторын диссертаци, эрдмийн ажлаа амжилттай хамгааллаа.",
+    "example_de": "Nach vier Jahren Archivforschung verteidigte sie ihre Dissertation erfolgreich.",
     "topic": "Education"
   },
   {
@@ -9030,9 +9030,9 @@
     "mn": "хүн барьцаалах",
     "de": "Entführung",
     "en": "kidnapping",
-    "example_en": "Understanding kidnapping is very helpful.",
-    "example_mn": "Хүн барьцаалах гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Entführung ist sehr hilfreich.",
+    "example_en": "Federal agents tracked the international syndicate responsible for the cross-border kidnapping.",
+    "example_mn": "Холбооны мөрдөгчид хил дамнасан хүн барьцаалах гэмт хэрэг үйлдсэн олон улсын бүлэглэлийг мөрдөн тогтоов.",
+    "example_de": "Bundesagenten verfolgten das Syndikat, das für die grenzüberschreitende Entführung verantwortlich war.",
     "topic": "Law"
   },
   {
@@ -9048,9 +9048,9 @@
     "mn": "сүрдүүлэг",
     "de": "Erpressung",
     "en": "blackmail",
-    "example_en": "Understanding blackmail is very helpful.",
-    "example_mn": "Сүрдүүлэг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Erpressung ist sehr hilfreich.",
+    "example_en": "The politician refused to yield to extortion and reported the digital blackmail to the police.",
+    "example_mn": "Улстөрч сүрдүүлэгт бууж өгөхөөс татгалзаж, цахим сүрдүүлгийн талаар цагдаад мэдэгдэв.",
+    "example_de": "Der Politiker weigerte sich, der Erpressung nachzugeben, und meldete sie der Polizei.",
     "topic": "Law"
   },
   {
@@ -9066,9 +9066,9 @@
     "mn": "хахууль",
     "de": "Bestechungsgeld",
     "en": "bribe",
-    "example_en": "Understanding bribe is very helpful.",
-    "example_mn": "Хахууль гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Bestechungsgeld ist sehr hilfreich.",
+    "example_en": "The corrupt inspector was arrested while accepting a cash bribe from the contractor.",
+    "example_mn": "Авлигад автсан байцаагч гүйцэтгэгчээс бэлэн мөнгөөр хахууль авч байх үедээ баривчлагджээ.",
+    "example_de": "Der korrupte Inspektor wurde festgenommen, als er Schmiergeld vom Auftragnehmer annahm.",
     "topic": "Law"
   },
   {
@@ -9084,9 +9084,9 @@
     "mn": "авлига",
     "de": "Korruption",
     "en": "corruption",
-    "example_en": "Understanding corruption is very helpful.",
-    "example_mn": "Авлига гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Korruption ist sehr hilfreich.",
+    "example_en": "Independent anti-fraud agencies were established to root out public sector corruption.",
+    "example_mn": "Төрийн салбар дахь авлигыг үндсээр нь таслан зогсоохын тулд хараат бус байгууллагууд байгуулав.",
+    "example_de": "Unabhängige Behörden wurden eingerichtet, um Korruption im öffentlichen Sektor zu bekämpfen.",
     "topic": "Law"
   },
   {
@@ -9102,9 +9102,9 @@
     "mn": "мөрдөн байцаалт",
     "de": "Ermittlung",
     "en": "investigation",
-    "example_en": "Understanding investigation is very helpful.",
-    "example_mn": "Мөрдөн байцаалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Ermittlung ist sehr hilfreich.",
+    "example_en": "A thorough forensic investigation revealed that faulty wiring caused the structural fire.",
+    "example_mn": "Шүүх эмнэлэг болон техникийн нарийвчилсан мөрдөн байцаалт нь цахилгааны утасны гэмтлээс гал гарсныг тогтоов.",
+    "example_de": "Eine gründliche Untersuchung ergab, dass fehlerhafte Verkabelung den Brand verursachte.",
     "topic": "Law"
   },
   {
@@ -9444,9 +9444,9 @@
     "mn": "түүнчлэн, үүнээс гадна",
     "de": "ferner, außerdem",
     "en": "furthermore",
-    "example_en": "Understanding furthermore is very helpful.",
-    "example_mn": "Түүнчлэн, үүнээс гадна гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von ferner, außerdem ist sehr hilfreich.",
+    "example_en": "The prototype achieved superior fuel efficiency; furthermore, it reduced maintenance expenses.",
+    "example_mn": "Туршилтын загвар нь түлшний хэмнэлтэд хүрсэн; түүнчлэн, үүнээс гадна засвар үйлчилгээний зардлыг бууруулав.",
+    "example_de": "Der Prototyp war sparsam; ferner senkte er die anfallenden Wartungskosten.",
     "topic": "Adverbs"
   },
   {
@@ -9462,9 +9462,9 @@
     "mn": "гэсэн хэдий ч",
     "de": "dennoch, trotzdem",
     "en": "nevertheless",
-    "example_en": "Understanding nevertheless is very helpful.",
-    "example_mn": "Гэсэн хэдий ч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von dennoch, trotzdem ist sehr hilfreich.",
+    "example_en": "The mountain trail was steep and muddy; nevertheless, the hikers reached the summit.",
+    "example_mn": "Уулын жим эгц, шавар ихтэй байсан; гэсэн хэдий ч явган аялагчид оргилд нь хүрч чадсан юм.",
+    "example_de": "Der Pfad war steil und schlammig; dennoch erreichten die Wanderer den Gipfel.",
     "topic": "Adverbs"
   },
   {
@@ -9480,9 +9480,9 @@
     "mn": "үр дүнд нь",
     "de": "infolgedessen",
     "en": "consequently",
-    "example_en": "Understanding consequently is very helpful.",
-    "example_mn": "Үр дүнд нь гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von infolgedessen ist sehr hilfreich.",
+    "example_en": "The factory failed safety inspections, and consequently, all production was temporarily halted.",
+    "example_mn": "Үйлдвэр аюулгүй байдлын шалгалтыг давж чадаагүй бөгөөд үр дүнд нь бүх үйлдвэрлэлийг түр зогсоов.",
+    "example_de": "Die Fabrik bestand die Sicherheitsprüfung nicht; folglich wurde die Produktion vorübergehend gestoppt.",
     "topic": "Adverbs"
   },
   {
@@ -9498,9 +9498,9 @@
     "mn": "аажмаар, бага багаар",
     "de": "allmählich",
     "en": "gradually",
-    "example_en": "Understanding gradually is very helpful.",
-    "example_mn": "Аажмаар, бага багаар гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von allmählich ist sehr hilfreich.",
+    "example_en": "As the spring temperature warmed, the thick mountain snow melted gradually.",
+    "example_mn": "Хаврын цаг агаар дулаарах тусам уулын зузаан цас аажмаар, бага багаар хайлав.",
+    "example_de": "Als es im Frühling wärmer wurde, schmolz der dicke Bergschnee allmählich.",
     "topic": "Adverbs"
   },
   {
@@ -9516,9 +9516,9 @@
     "mn": "харамсалтай нь",
     "de": "leider",
     "en": "unfortunately",
-    "example_en": "Understanding unfortunately is very helpful.",
-    "example_mn": "Харамсалтай нь гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von leider ist sehr hilfreich.",
+    "example_en": "Unfortunately, flight delays caused several delegates to miss the opening keynote address.",
+    "example_mn": "Харамсалтай нь, нислэг саатсаны улмаас хэд хэдэн төлөөлөгч нээлтийн үндсэн илтгэлээс хоцорчээ.",
+    "example_de": "Leider führten Flugverspätungen dazu, dass mehrere Delegierte die Eröffnungsrede verpassten.",
     "topic": "Adverbs"
   },
   {
@@ -9534,9 +9534,9 @@
     "mn": "гарцаагүй, мэдээж",
     "de": "definitiv",
     "en": "definitely",
-    "example_en": "Understanding definitely is very helpful.",
-    "example_mn": "Гарцаагүй, мэдээж гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von definitiv ist sehr hilfreich.",
+    "example_en": "Her groundbreaking presentation definitely impressed the academic committee.",
+    "example_mn": "Түүний шинэлэг судалгааны илтгэл эрдмийн зөвлөлд гарцаагүй, мэдээж маш гүн сэтгэгдэл үлдээв.",
+    "example_de": "Ihre bahnbrechende Präsentation hat das wissenschaftliche Komitee definitiv beeindruckt.",
     "topic": "Adverbs"
   },
   {
@@ -9552,9 +9552,9 @@
     "mn": "илт, тодорхой",
     "de": "offensichtlich",
     "en": "obviously",
-    "example_en": "Understanding obviously is very helpful.",
-    "example_mn": "Илт, тодорхой гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von offensichtlich ist sehr hilfreich.",
+    "example_en": "The candidate was obviously nervous during the televised prime-time debate.",
+    "example_mn": "Нэр дэвшигч шууд дамжуулсан халз мэтгэлцээний үеэр илт, тодорхой сандарч байсан.",
+    "example_de": "Der Kandidat war während der im Fernsehen übertragenen Debatte offensichtlich nervös.",
     "topic": "Adverbs"
   },
   {
@@ -9570,9 +9570,9 @@
     "mn": "одоогийн байдлаар",
     "de": "derzeit, momentan",
     "en": "currently",
-    "example_en": "Understanding currently is very helpful.",
-    "example_mn": "Одоогийн байдлаар гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von derzeit, momentan ist sehr hilfreich.",
+    "example_en": "The surgical department is currently piloting an automated robotic assistant.",
+    "example_mn": "Мэс заслын тасаг одоогийн байдлаар автоматжуулсан робот туслахыг туршин нэвтрүүлж байна.",
+    "example_de": "Die chirurgische Abteilung testet derzeit einen automatisierten Roboterassistenten.",
     "topic": "Adverbs"
   },
   {
@@ -9588,9 +9588,9 @@
     "mn": "яваандаа, эцэст нь",
     "de": "schließlich",
     "en": "eventually",
-    "example_en": "Understanding eventually is very helpful.",
-    "example_mn": "Яваандаа, эцэст нь гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von schließlich ist sehr hilfreich.",
+    "example_en": "Through patient practice and persistence, she eventually mastered fluent German.",
+    "example_mn": "Тэвчээртэй хичээл зүтгэл гаргасны дүнд тэрээр яваандаа, эцэст нь герман хэлийг чөлөөтэй эзэмшсэн.",
+    "example_de": "Durch geduldiges Üben und Ausdauer beherrschte sie schließlich fließend Deutsch.",
     "topic": "Adverbs"
   },
   {
@@ -9606,9 +9606,9 @@
     "mn": "харьцангуй",
     "de": "relativ",
     "en": "relatively",
-    "example_en": "Understanding relatively is very helpful.",
-    "example_mn": "Харьцангуй гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von relativ ist sehr hilfreich.",
+    "example_en": "Compared to neighboring capitals, living costs in this historic town remain relatively modest.",
+    "example_mn": "Хөрш зэргэлдээ нийслэлүүдтэй харьцуулахад энэхүү түүхэн хотын амьжиргааны өртөг харьцангуй даруухан хэвээр байна.",
+    "example_de": "Im Vergleich zu Nachbarstädten sind die Lebenshaltungskosten hier relativ moderat.",
     "topic": "Adverbs"
   },
   {
@@ -9624,9 +9624,9 @@
     "mn": "тухайлбал, тусгайлан",
     "de": "speziell, ausdrücklich",
     "en": "specifically",
-    "example_en": "Understanding specifically is very helpful.",
-    "example_mn": "Тухайлбал, тусгайлан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von speziell, ausdrücklich ist sehr hilfreich.",
+    "example_en": "The grant was designed specifically to support female founders in applied engineering.",
+    "example_mn": "Тус тэтгэлэг нь тухайлбал, тусгайлан хэрэглээний инженерийн чиглэлээр ажилладаг эмэгтэй үүсгэн байгуулагчдыг дэмжих зориулалттай.",
+    "example_de": "Das Stipendium wurde speziell zur Unterstützung von Gründerinnen im Ingenieurwesen konzipiert.",
     "topic": "Adverbs"
   },
   {
@@ -9642,9 +9642,9 @@
     "mn": "ойролцоогоор",
     "de": "ungefähr",
     "en": "approximately",
-    "example_en": "Understanding approximately is very helpful.",
-    "example_mn": "Ойролцоогоор гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von ungefähr ist sehr hilfreich.",
+    "example_en": "The construction of the solar park will take approximately eighteen months.",
+    "example_mn": "Нарны цахилгаан станцын барилгын ажил ойролцоогоор арван найман сар үргэлжилнэ.",
+    "example_de": "Der Bau des Solarparks wird ungefähr achtzehn Monate dauern.",
     "topic": "Adverbs"
   },
   {
@@ -9660,9 +9660,9 @@
     "mn": "ялангуяа",
     "de": "besonders",
     "en": "especially",
-    "example_en": "Understanding especially is very helpful.",
-    "example_mn": "Ялангуяа гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von besonders ist sehr hilfreich.",
+    "example_en": "Children are especially vulnerable to respiratory illnesses during cold winter inversions.",
+    "example_mn": "Хүйтэн өвлийн утааны үеэр хүүхдүүд ялангуяа амьсгалын замын өвчинд хамгийн эмзэг байдаг.",
+    "example_de": "Kinder sind bei kaltem Winterwetter besonders anfällig für Atemwegserkrankungen.",
     "topic": "Adverbs"
   },
   {
@@ -9678,9 +9678,9 @@
     "mn": "ихэвчлэн, ер нь",
     "de": "typischerweise",
     "en": "typically",
-    "example_en": "Understanding typically is very helpful.",
-    "example_mn": "Ихэвчлэн, ер нь гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von typischerweise ist sehr hilfreich.",
+    "example_en": "The annual shareholders meeting typically takes place during the second week of May.",
+    "example_mn": "Хувьцаа эзэмшигчдийн ээлжит хурал ерөнхийдөө, ихэвчлэн тавдугаар сарын хоёр дахь долоо хоногт болдог.",
+    "example_de": "Die jährliche Hauptversammlung findet typischerweise in der zweiten Maiwoche statt.",
     "topic": "Adverbs"
   },
   {
@@ -9696,9 +9696,9 @@
     "mn": "тууштайгаар",
     "de": "beständig",
     "en": "consistently",
-    "example_en": "Understanding consistently is very helpful.",
-    "example_mn": "Тууштайгаар гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von beständig ist sehr hilfreich.",
+    "example_en": "The laboratory technicians consistently followed strict chemical contamination protocols.",
+    "example_mn": "Лабораторийн техникчид химийн бохирдлоос сэргийлэх хатуу зааврыг тогтмол, тасралтгүй мөрдөж байв.",
+    "example_de": "Die Labortechniker befolgten stets und konsequent die strengen Dekontaminationsprotokolle.",
     "topic": "Adverbs"
   },
   {
@@ -9714,9 +9714,9 @@
     "mn": "дэд бүтэц",
     "de": "Infrastruktur",
     "en": "infrastructure",
-    "example_en": "Understanding infrastructure is very helpful.",
-    "example_mn": "Дэд бүтэц гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Infrastruktur ist sehr hilfreich.",
+    "example_en": "Massive investment in transport infrastructure reduced highway freight congestion.",
+    "example_mn": "Тээврийн дэд бүтцэд оруулсан их хэмжээний хөрөнгө оруулалт хурдны замын ачааны түгжрэлийг бууруулав.",
+    "example_de": "Massive Investitionen in die Verkehrsinfrastruktur verringerten die Frachtüberlastung.",
     "topic": "Urban"
   },
   {
@@ -9732,9 +9732,9 @@
     "mn": "зураг төсөл",
     "de": "Bauplan, Blaupause",
     "en": "blueprint",
-    "example_en": "Understanding blueprint is very helpful.",
-    "example_mn": "Зураг төсөл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Bauplan, Blaupause ist sehr hilfreich.",
+    "example_en": "The chief architect reviewed the detailed structural blueprint before concrete pouring.",
+    "example_mn": "Ерөнхий архитектор бетон цутгахаас өмнө барилгын нарийвчилсан зургийг нягтлан үзэв.",
+    "example_de": "Der leitende Architekt prüfte den Bauplan vor dem Betonieren sehr sorgfältig.",
     "topic": "Urban"
   },
   {
@@ -9750,9 +9750,9 @@
     "mn": "дүүжин гүүр",
     "de": "Hängebrücke",
     "en": "suspension bridge",
-    "example_en": "Understanding suspension bridge is very helpful.",
-    "example_mn": "Дүүжин гүүр гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Hängebrücke ist sehr hilfreich.",
+    "example_en": "The iconic suspension bridge spans the turbulent waters of the strait.",
+    "example_mn": "Уг алдартай дүүжин гүүр нь хоолойн догшин усыг гаталж, хоёр эргийг холбодог.",
+    "example_de": "Die ikonische Hängebrücke überspannt die unruhigen Gewässer der Meerenge.",
     "topic": "Urban"
   },
   {
@@ -9768,9 +9768,9 @@
     "mn": "агааржуулалтын систем",
     "de": "Belüftung",
     "en": "ventilation",
-    "example_en": "Understanding ventilation is very helpful.",
-    "example_mn": "Агааржуулалтын систем гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Belüftung ist sehr hilfreich.",
+    "example_en": "Proper underground ventilation protects miners from toxic gas build-up.",
+    "example_mn": "Газрын доорх агааржуулалтын зөв систем нь уурхайчдыг хорт хий хуримтлагдахаас хамгаалдаг.",
+    "example_de": "Eine ordnungsgemäße Belüftung schützt die Bergleute vor Ansammlungen giftiger Gase.",
     "topic": "Urban"
   },
   {
@@ -9786,9 +9786,9 @@
     "mn": "барилгын шат",
     "de": "Baugerüst",
     "en": "scaffolding",
-    "example_en": "Understanding scaffolding is very helpful.",
-    "example_mn": "Барилгын шат гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Baugerüst ist sehr hilfreich.",
+    "example_en": "Construction crews erected heavy steel scaffolding along the cathedral facade.",
+    "example_mn": "Барилгын бригад сүмийн нүүрэн талын дагуу ган шат, барилгын тулгуурыг угсрав.",
+    "example_de": "Die Bauarbeiter errichteten ein schweres Stahlgerüst an der Fassade der Kathedrale.",
     "topic": "Urban"
   },
   {
@@ -9804,9 +9804,9 @@
     "mn": "чулуун болон тоосгон өрлөг",
     "de": "Mauerwerk",
     "en": "masonry",
-    "example_en": "Understanding masonry is very helpful.",
-    "example_mn": "Чулуун болон тоосгон өрлөг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Mauerwerk ist sehr hilfreich.",
+    "example_en": "The historic stone masonry withstood intense tremors without sustaining cracks.",
+    "example_mn": "Түүхэн чулуун өрлөг нь цууралт үүсгэлгүйгээр хүчтэй газар хөдлөлтийг тэсвэрлэж гарсан.",
+    "example_de": "Das historische Mauerwerk überstand starke Erschütterungen ohne Risse.",
     "topic": "Urban"
   },
   {
@@ -9822,9 +9822,9 @@
     "mn": "барилгын суурь",
     "de": "Fundament",
     "en": "foundation",
-    "example_en": "Understanding foundation is very helpful.",
-    "example_mn": "Барилгын суурь гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Fundament ist sehr hilfreich.",
+    "example_en": "Workers drove concrete pilings deep into bedrock to secure the tower foundation.",
+    "example_mn": "Ажилчид цамхгийн бат бэх суурийг бэхжүүлэхийн тулд бетонон багануудыг хадан давхарга руу гүн суулгав.",
+    "example_de": "Die Arbeiter trieben Betonpfähle tief in den Fels, um das Fundament des Turms zu sichern.",
     "topic": "Urban"
   },
   {
@@ -9858,9 +9858,9 @@
     "mn": "бүсчлэл",
     "de": "Zoneneinteilung",
     "en": "zoning",
-    "example_en": "Understanding zoning is very helpful.",
-    "example_mn": "Бүсчлэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Zoneneinteilung ist sehr hilfreich.",
+    "example_en": "Municipal zoning regulations prevent commercial factories inside quiet residential neighborhoods.",
+    "example_mn": "Хотын захиргааны газар олголт, бүсчлэлийн дүрэм нь тайван орон сууцны хороололд үйлдвэр барихыг хориглодог.",
+    "example_de": "Städtische Zonenvorschriften verhindern gewerbliche Fabriken in ruhigen Wohngebieten.",
     "topic": "Urban"
   },
   {
@@ -9912,9 +9912,9 @@
     "mn": "шинэчлэлт, засвар",
     "de": "Renovierung",
     "en": "renovation",
-    "example_en": "Understanding renovation is very helpful.",
-    "example_mn": "Шинэчлэлт, засвар гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Renovierung ist sehr hilfreich.",
+    "example_en": "The historic theater reopened after a two-year interior renovation project.",
+    "example_mn": "Түүхэн театр дотоод заслын хоёр жилийн засварын ажлын дараа дахин үүд хаалгаа нээлээ.",
+    "example_de": "Das historische Theater wurde nach zweijähriger Renovierung wiedereröffnet.",
     "topic": "Urban"
   },
   {
@@ -9930,9 +9930,9 @@
     "mn": "сэргээн засварлалт",
     "de": "Sanierung",
     "en": "refurbishment",
-    "example_en": "Understanding refurbishment is very helpful.",
-    "example_mn": "Сэргээн засварлалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Sanierung ist sehr hilfreich.",
+    "example_en": "The hotel completed an extensive refurbishment of all its luxury guest rooms.",
+    "example_mn": "Зочид буудал тансаг зэрэглэлийн бүх өрөөнийхөө өнгө үзэмжийг сэргээн засах ажлыг хийж дуусгав.",
+    "example_de": "Das Hotel schloss eine umfassende Neugestaltung und Modernisierung aller Zimmer ab.",
     "topic": "Urban"
   },
   {
@@ -9948,9 +9948,9 @@
     "mn": "ус дамжуулах хоолой",
     "de": "Aquädukt",
     "en": "aqueduct",
-    "example_en": "Understanding aqueduct is very helpful.",
-    "example_mn": "Ус дамжуулах хоолой гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Aquädukt ist sehr hilfreich.",
+    "example_en": "The ancient Roman stone aqueduct still channels fresh spring water from the mountains.",
+    "example_mn": "Эртний Ромын чулуун усан суваг өнөөг хүртэл уулнаас цэнгэг булаг усыг дамжуулдаг.",
+    "example_de": "Das antike römische Aquädukt leitet noch immer frisches Quellwasser aus den Bergen.",
     "topic": "Urban"
   },
   {
@@ -9966,9 +9966,9 @@
     "mn": "гүүрэн гарц",
     "de": "Viadukt",
     "en": "viaduct",
-    "example_en": "Understanding viaduct is very helpful.",
-    "example_mn": "Гүүрэн гарц гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Viadukt ist sehr hilfreich.",
+    "example_en": "The high-speed passenger train glided silently across the concrete mountain viaduct.",
+    "example_mn": "Хурдны зорчигчийн галт тэрэг уулын бетонон гүүрэн зам дээгүүр чимээгүйхэн хурдлав.",
+    "example_de": "Der Hochgeschwindigkeitszug glitt lautlos über das Betonviadukt im Gebirge.",
     "topic": "Urban"
   },
   {
@@ -9984,9 +9984,9 @@
     "mn": "нураалт, буулгалт",
     "de": "Abriss",
     "en": "demolition",
-    "example_en": "Understanding demolition is very helpful.",
-    "example_mn": "Нураалт, буулгалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Abriss ist sehr hilfreich.",
+    "example_en": "Controlled explosive demolition safely brought down the abandoned chemical silos.",
+    "example_mn": "Хяналттай тэсэлгээний нураалт нь ашиглагдахаа больсон химийн агуулахуудыг аюулгүй нураав.",
+    "example_de": "Der kontrollierte Sprengabbruch brachte die stillgelegten Chemiesilos sicher zum Einsturz.",
     "topic": "Urban"
   },
   {
@@ -10002,9 +10002,9 @@
     "mn": "хоцролт, саатал",
     "de": "Latenzzeit",
     "en": "latency",
-    "example_en": "Understanding latency is very helpful.",
-    "example_mn": "Хоцролт, саатал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Latenzzeit ist sehr hilfreich.",
+    "example_en": "Fiber-optic cables dramatically minimize network latency for online multiplayer gaming.",
+    "example_mn": "Шилэн кабель нь онлайн сүлжээний хоцролтыг мэдэгдэхүйц багасгадаг.",
+    "example_de": "Glasfaserkabel minimieren die Netzwerklatenz für Online-Spiele drastisch.",
     "topic": "Tech"
   },
   {
@@ -10020,9 +10020,9 @@
     "mn": "хамгаалалтын хана",
     "de": "Firewall",
     "en": "firewall",
-    "example_en": "Understanding firewall is very helpful.",
-    "example_mn": "Хамгаалалтын хана гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Firewall ist sehr hilfreich.",
+    "example_en": "The enterprise firewall blocked thousands of suspicious inbound connection packets.",
+    "example_mn": "Байгууллагын галт хана сэжигтэй ирж буй олон мянган холболтын пакетийг хаасан.",
+    "example_de": "Die Firewall des Unternehmens blockierte Tausende verdächtiger eingehender Datenpakete.",
     "topic": "Tech"
   },
   {
@@ -10038,9 +10038,9 @@
     "mn": "суурилуулсан програм",
     "de": "Firmware",
     "en": "firmware",
-    "example_en": "Understanding firmware is very helpful.",
-    "example_mn": "Суурилуулсан програм гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Firmware ist sehr hilfreich.",
+    "example_en": "Updating router firmware protects home devices against newly discovered security vulnerabilities.",
+    "example_mn": "Чиглүүлэгчийн суулгагдсан програмыг шинэчлэх нь шинээр илэрсэн аюулгүй байдлын сул талуудаас хамгаалдаг.",
+    "example_de": "Ein Firmware-Update des Routers schützt Heimgeräte vor neu entdeckten Sicherheitslücken.",
     "topic": "Tech"
   },
   {
@@ -10056,9 +10056,9 @@
     "mn": "сан, репозитор",
     "de": "Repository, Ablage",
     "en": "repository",
-    "example_en": "Understanding repository is very helpful.",
-    "example_mn": "Сан, репозитор гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Repository, Ablage ist sehr hilfreich.",
+    "example_en": "Developers push tested code branches to the centralized open-source repository.",
+    "example_mn": "Хөгжүүлэгчид шалгагдсан кодын салбаруудыг нээлттэй эхийн нэгдсэн кодын сан руу илгээдэг.",
+    "example_de": "Entwickler laden geprüfte Code-Branches in das zentrale Open-Source-Repository hoch.",
     "topic": "Tech"
   },
   {
@@ -10074,9 +10074,9 @@
     "mn": "хөрвүүлэгч",
     "de": "Compiler",
     "en": "compiler",
-    "example_en": "Understanding compiler is very helpful.",
-    "example_mn": "Хөрвүүлэгч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Compiler ist sehr hilfreich.",
+    "example_en": "The Rust compiler catches memory safety issues before execution.",
+    "example_mn": "Раст хэлний хөрвүүлэгч нь санах ойн аюулгүй байдлын алдааг програм ажиллахаас өмнө илрүүлдэг.",
+    "example_de": "Der Rust-Compiler erkennt Speichersicherheitsfehler noch vor der Programmausführung.",
     "topic": "Tech"
   },
   {
@@ -10092,9 +10092,9 @@
     "mn": "алдаа шалгагч",
     "de": "Debugger",
     "en": "debugger",
-    "example_en": "Understanding debugger is very helpful.",
-    "example_mn": "Алдаа шалгагч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Debugger ist sehr hilfreich.",
+    "example_en": "The engineer used a step-through debugger to isolate the null pointer exception.",
+    "example_mn": "Инженер алдаа илрүүлэгч, дебаггерийн тусламжтайгаар заагчийн алдааг олж тусгаарлав.",
+    "example_de": "Der Ingenieur verwendete einen interaktiven Debugger, um den Fehler genau zu lokalisieren.",
     "topic": "Tech"
   },
   {
@@ -10110,9 +10110,9 @@
     "mn": "хэрэглэгчийн тал",
     "de": "Frontend",
     "en": "frontend",
-    "example_en": "Understanding frontend is very helpful.",
-    "example_mn": "Хэрэглэгчийн тал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Frontend ist sehr hilfreich.",
+    "example_en": "The frontend of the web application uses modern component-based architecture.",
+    "example_mn": "Вэб програмын хэрэглэгчийн харагдах хэсэг буюу фронтэнд нь орчин үеийн бүрэлдэхүүн хэсэгт тулгуурласан бүтэцтэй.",
+    "example_de": "Das Frontend der Webanwendung nutzt eine moderne komponentenbasierte Architektur.",
     "topic": "Tech"
   },
   {
@@ -10128,9 +10128,9 @@
     "mn": "серверийн тал",
     "de": "Backend",
     "en": "backend",
-    "example_en": "Understanding backend is very helpful.",
-    "example_mn": "Серверийн тал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Backend ist sehr hilfreich.",
+    "example_en": "High-volume transactional logic is processed securely on the backend server.",
+    "example_mn": "Их хэмжээний гүйлгээний логикийг серверийн арын систем буюу бэкенд дээр аюулгүй боловсруулдаг.",
+    "example_de": "Große Mengen an Transaktionen werden sicher auf dem Backend-Server verarbeitet.",
     "topic": "Tech"
   },
   {
@@ -10146,9 +10146,9 @@
     "mn": "микросервис",
     "de": "Microservice",
     "en": "microservice",
-    "example_en": "Understanding microservice is very helpful.",
-    "example_mn": "Микросервис гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Microservice ist sehr hilfreich.",
+    "example_en": "Splitting the monolithic system into each independent microservice improved team agility.",
+    "example_mn": "Нүсэр системийг бие даасан микросервис бүрт хуваах нь багийн уян хатан байдлыг сайжруулав.",
+    "example_de": "Die Aufteilung des Monolithen in unabhängige Microservices verbesserte die Agilität.",
     "topic": "Tech"
   },
   {
@@ -10164,9 +10164,9 @@
     "mn": "чингэлэгжүүлэлт",
     "de": "Containerisierung",
     "en": "containerization",
-    "example_en": "Understanding containerization is very helpful.",
-    "example_mn": "Чингэлэгжүүлэлт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Containerisierung ist sehr hilfreich.",
+    "example_en": "Software containerization allows seamless deployment across hybrid cloud environments.",
+    "example_mn": "Програм хангамжийн контейнержуулалт нь эрлийз үүлэн орчинд саадгүй ажиллуулах боломжийг олгодог.",
+    "example_de": "Software-Containerisierung ermöglicht eine nahtlose Bereitstellung in Hybrid-Clouds.",
     "topic": "Tech"
   },
   {
@@ -10182,9 +10182,9 @@
     "mn": "виртуал машин",
     "de": "virtuelle Maschine",
     "en": "virtual machine",
-    "example_en": "Understanding virtual machine is very helpful.",
-    "example_mn": "Виртуал машин гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von virtuelle Maschine ist sehr hilfreich.",
+    "example_en": "Testing legacy software inside an isolated virtual machine prevents host corruption.",
+    "example_mn": "Хуучин програмыг тусгаарлагдсан виртуал машин дотор турших нь үндсэн системийг гэмтэхээс хамгаалдаг.",
+    "example_de": "Das Testen alter Software in einer virtuellen Maschine verhindert Schäden am Hostsystem.",
     "topic": "Tech"
   },
   {
@@ -10200,9 +10200,9 @@
     "mn": "илүүдэл нөөцлөлт",
     "de": "Redundanz",
     "en": "redundancy",
-    "example_en": "Understanding redundancy is very helpful.",
-    "example_mn": "Илүүдэл нөөцлөлт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Redundanz ist sehr hilfreich.",
+    "example_en": "Critical data centers implement hardware redundancy to eliminate single points of failure.",
+    "example_mn": "Чухал өгөгдлийн төвүүд системийн тасралтгүй ажиллагааг хангахын тулд тоног төхөөрөмжийн илүүдэл, нөөцлөлт хийдэг.",
+    "example_de": "Rechenzentren implementieren Hardware-Redundanz, um Ausfallpunkte zu vermeiden.",
     "topic": "Tech"
   },
   {
@@ -10218,9 +10218,9 @@
     "mn": "нөөц систем рүү шилжих",
     "de": "Ausfallsicherung",
     "en": "failover",
-    "example_en": "Understanding failover is very helpful.",
-    "example_mn": "Нөөц систем рүү шилжих гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Ausfallsicherung ist sehr hilfreich.",
+    "example_en": "When the primary server crashed, automatic failover switched traffic to the standby cluster.",
+    "example_mn": "Үндсэн сервер унах үед автомат шилжилт нь урсгалыг бэлтгэл кластер руу шууд чиглүүлэв.",
+    "example_de": "Beim Serverausfall leitete das automatische Failover den Datenverkehr auf das Reservesystem um.",
     "topic": "Tech"
   },
   {
@@ -10236,9 +10236,9 @@
     "mn": "нэвтрүүлэх чадвар",
     "de": "Durchsatz",
     "en": "throughput",
-    "example_en": "Understanding throughput is very helpful.",
-    "example_mn": "Нэвтрүүлэх чадвар гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Durchsatz ist sehr hilfreich.",
+    "example_en": "Optimizing database indexes doubled the message throughput of the streaming pipeline.",
+    "example_mn": "Өгөгдлийн сангийн индексийг оновчтой болгосноор дамжуулах шугамын нэвтрүүлэх чадварыг хоёр дахин нэмэгдүүлэв.",
+    "example_de": "Die Optimierung von Datenbankindizes verdoppelte den Datendurchsatz der Pipeline.",
     "topic": "Tech"
   },
   {
@@ -10254,9 +10254,9 @@
     "mn": "алсын зайн хэмжилт",
     "de": "Telemetrie",
     "en": "telemetry",
-    "example_en": "Understanding telemetry is very helpful.",
-    "example_mn": "Алсын зайн хэмжилт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Telemetrie ist sehr hilfreich.",
+    "example_en": "Real-time telemetry feeds allow ground control to monitor satellite battery voltage.",
+    "example_mn": "Бодит цагийн алсын зайн хэмжилт, телеметр нь хиймэл дагуулын цэнэгийн түвшинг хянах боломж олгодог.",
+    "example_de": "Echtzeit-Telemetriedaten ermöglichen es, die Batteriespannung des Satelliten zu überwachen.",
     "topic": "Tech"
   },
   {
@@ -10272,9 +10272,9 @@
     "mn": "холболтын протокол",
     "de": "Protokoll",
     "en": "protocol",
-    "example_en": "Understanding protocol is very helpful.",
-    "example_mn": "Холболтын протокол гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Protokoll ist sehr hilfreich.",
+    "example_en": "Secure sockets layer is an encrypted communication protocol for transmitting web data.",
+    "example_mn": "Аюулгүй сувгийн протокол нь вэб өгөгдлийг дамжуулах шифрлэгдсэн харилцааны дүрэм юм.",
+    "example_de": "Das Verschlüsselungsprotokoll schützt vertrauliche Daten bei der Übertragung im Web.",
     "topic": "Tech"
   },
   {
@@ -10290,9 +10290,9 @@
     "mn": "токенжуулалт",
     "de": "Tokenisierung",
     "en": "tokenization",
-    "example_en": "Understanding tokenization is very helpful.",
-    "example_mn": "Токенжуулалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Tokenisierung ist sehr hilfreich.",
+    "example_en": "Payment processors use cryptographic tokenization to safeguard credit card numbers.",
+    "example_mn": "Төлбөрийн системүүд картын дугаарыг хамгаалахын тулд криптограф токенжуулалтыг ашигладаг.",
+    "example_de": "Zahlungsanbieter nutzen Tokenisierung, um Kreditkartennummern zuverlässig zu schützen.",
     "topic": "Tech"
   },
   {
@@ -10308,9 +10308,9 @@
     "mn": "цуваажуулалт",
     "de": "Serialisierung",
     "en": "serialization",
-    "example_en": "Understanding serialization is very helpful.",
-    "example_mn": "Цуваажуулалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Serialisierung ist sehr hilfreich.",
+    "example_en": "Binary serialization converts in-memory objects into compact byte streams for transmission.",
+    "example_mn": "Хоёртын цуваажуулалт нь санах ойд буй объектуудыг дамжуулахад тохиромжтой байтын урсгал болгон хөрвүүлдэг.",
+    "example_de": "Die binäre Serialisierung wandelt Objekte im Arbeitsspeicher in Byte-Streams um.",
     "topic": "Tech"
   },
   {
@@ -10362,9 +10362,9 @@
     "mn": "систем нэвтрүүлэлт",
     "de": "Bereitstellung",
     "en": "deployment",
-    "example_en": "Understanding deployment is very helpful.",
-    "example_mn": "Систем нэвтрүүлэлт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Bereitstellung ist sehr hilfreich.",
+    "example_en": "Automated continuous integration pipelines ensure smooth software deployment to production.",
+    "example_mn": "Автоматжуулсан систем нь програм хангамжийг бодит орчинд саадгүй нэвтрүүлж, суулгах боломжийг хангадаг.",
+    "example_de": "Automatisierte Pipelines gewährleisten eine reibungslose Bereitstellung in der Produktion.",
     "topic": "Tech"
   },
   {
@@ -10380,9 +10380,9 @@
     "mn": "өргөтгөх боломж",
     "de": "Skalierbarkeit",
     "en": "scalability",
-    "example_en": "Understanding scalability is very helpful.",
-    "example_mn": "Өргөтгөх боломж гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Skalierbarkeit ist sehr hilfreich.",
+    "example_en": "Stateless server architecture provides horizontal scalability during viral traffic surges.",
+    "example_mn": "Төлөв хадгалдаггүй серверийн бүтэц нь ачаалал эрс нэмэгдэх үед систем өргөжин тэлэх боломжийг олгодог.",
+    "example_de": "Eine zustandslose Architektur bietet hervorragende Skalierbarkeit bei hohem Datenverkehr.",
     "topic": "Tech"
   },
   {
@@ -10398,9 +10398,9 @@
     "mn": "нэгэн зэрэг ажиллах",
     "de": "Nebenläufigkeit",
     "en": "concurrency",
-    "example_en": "Understanding concurrency is very helpful.",
-    "example_mn": "Нэгэн зэрэг ажиллах гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Nebenläufigkeit ist sehr hilfreich.",
+    "example_en": "Thread-safe data structures prevent data races during heavy parallel concurrency.",
+    "example_mn": "Зэрэгцээ боловсруулалтын үед өгөгдөл давхцахаас сэргийлэхийн тулд найдвартай бүтцийг ашигладаг.",
+    "example_de": "Threadsichere Datenstrukturen verhindern Konflikte bei intensiver paralleler Nebenläufigkeit.",
     "topic": "Tech"
   },
   {
@@ -10416,9 +10416,9 @@
     "mn": "түр санах ойд хадгалах",
     "de": "Caching",
     "en": "caching",
-    "example_en": "Understanding caching is very helpful.",
-    "example_mn": "Түр санах ойд хадгалах гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Caching ist sehr hilfreich.",
+    "example_en": "In-memory caching keeps frequently requested queries accessible within sub-millisecond response times.",
+    "example_mn": "Санах ойд кэшлэх нь байнга ханддаг хүсэлтүүдийн хариуг секундийг мянга хуваасны нэгд багтаан өгдөг.",
+    "example_de": "Caching im Arbeitsspeicher ermöglicht extrem schnelle Antwortzeiten bei häufigen Abfragen.",
     "topic": "Tech"
   },
   {
@@ -10434,9 +10434,9 @@
     "mn": "зүйрлэл",
     "de": "Metapher",
     "en": "metaphor",
-    "example_en": "Understanding metaphor is very helpful.",
-    "example_mn": "Зүйрлэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Metapher ist sehr hilfreich.",
+    "example_en": "The poet used winter as a powerful metaphor for loneliness and quiet contemplation.",
+    "example_mn": "Яруу найрагч өвлийн улирлыг ганцаардал болон гүн бясалгалын хүчирхэг зүйрлэл болгон ашиглажээ.",
+    "example_de": "Der Dichter nutzte den Winter als kraftvolle Metapher für Einsamkeit und Nachdenklichkeit.",
     "topic": "Literature"
   },
   {
@@ -10452,9 +10452,9 @@
     "mn": "ёгтлол, далд утгат зохиол",
     "de": "Allegorie",
     "en": "allegory",
-    "example_en": "Understanding allegory is very helpful.",
-    "example_mn": "Ёгтлол, далд утгат зохиол гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Allegorie ist sehr hilfreich.",
+    "example_en": "George Orwell wrote Animal Farm as an enduring political allegory about authoritarianism.",
+    "example_mn": "Жорж Оруэлл 'Амьтны ферм' зохиолоо дарангуйллын тухай гүн утгат сургамжит ёгт үлгэр болгон бичсэн.",
+    "example_de": "George Orwell schrieb 'Farm der Tiere' als politische Allegorie über den Autoritarismus.",
     "topic": "Literature"
   },
   {
@@ -10470,9 +10470,9 @@
     "mn": "хэтрүүлэл",
     "de": "Übertreibung, Hyperbel",
     "en": "hyperbole",
-    "example_en": "Understanding hyperbole is very helpful.",
-    "example_mn": "Хэтрүүлэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Übertreibung, Hyperbel ist sehr hilfreich.",
+    "example_en": "Saying his suitcase weighed a million tons is a humorous literary hyperbole.",
+    "example_mn": "Чемодан нь сая тонн жинтэй байсан гэж хэлсэн нь уран зохиолын инээдэмтэй хэтрүүлэг юм.",
+    "example_de": "Zu sagen, der Koffer wiege eine Million Tonnen, ist eine humorvolle Hyperbel.",
     "topic": "Literature"
   },
   {
@@ -10488,9 +10488,9 @@
     "mn": "толгой холболт",
     "de": "Alliteration",
     "en": "alliteration",
-    "example_en": "Understanding alliteration is very helpful.",
-    "example_mn": "Толгой холболт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Alliteration ist sehr hilfreich.",
+    "example_en": "The phrase 'Peter Piper picked a peck of pickled peppers' is a classic tongue-twisting alliteration.",
+    "example_mn": "Энэхүү хэллэгийн гийгүүлэгч авианы давталт нь тод жишээ болдог.",
+    "example_de": "Der Satz ist ein klassisches Zungenbrecher-Beispiel für eine gelungene Alliteration.",
     "topic": "Literature"
   },
   {
@@ -10506,9 +10506,9 @@
     "mn": "егөөдөл, егөө",
     "de": "Ironie",
     "en": "irony",
-    "example_en": "Understanding irony is very helpful.",
-    "example_mn": "Егөөдөл, егөө гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Ironie ist sehr hilfreich.",
+    "example_en": "The situational irony was that the fire station burned down during the safety demonstration.",
+    "example_mn": "Аюулгүй байдлын үзүүлэх сургуулилтын үеэр гал командын анги өөрөө шатсан нь ёгт егөөдөл байв.",
+    "example_de": "Die Ironie lag darin, dass die Feuerwache während einer Vorführung abbrannte.",
     "topic": "Literature"
   },
   {
@@ -10524,9 +10524,9 @@
     "mn": "шог зохиол",
     "de": "Satire",
     "en": "satire",
-    "example_en": "Understanding satire is very helpful.",
-    "example_mn": "Шог зохиол гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Satire ist sehr hilfreich.",
+    "example_en": "The television comedy relies on sharp political satire to lampoon government inefficiency.",
+    "example_mn": "Тус телевизийн инээдмийн нэвтрүүлэг төрийн хүнд суртлыг элэглэхийн тулд хурц шог хошигнолыг ашигладаг.",
+    "example_de": "Die Fernsehkomödie nutzt scharfe Satire, um staatliche Ineffizienz zu verspotten.",
     "topic": "Literature"
   },
   {
@@ -10542,9 +10542,9 @@
     "mn": "гол баатар",
     "de": "Hauptfigur, Protagonist",
     "en": "protagonist",
-    "example_en": "Understanding protagonist is very helpful.",
-    "example_mn": "Гол баатар гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Hauptfigur, Protagonist ist sehr hilfreich.",
+    "example_en": "The courageous protagonist embarks on a dangerous quest across uncharted oceans.",
+    "example_mn": "Зоригт гол баатар үл таних далайг туулахаар аюултай аялалд гардаг.",
+    "example_de": "Die mutige Hauptfigur begibt sich auf eine gefährliche Reise über unbekannte Meere.",
     "topic": "Literature"
   },
   {
@@ -10560,9 +10560,9 @@
     "mn": "эсрэг дүр",
     "de": "Gegenspieler, Antagonist",
     "en": "antagonist",
-    "example_en": "Understanding antagonist is very helpful.",
-    "example_mn": "Эсрэг дүр гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Gegenspieler, Antagonist ist sehr hilfreich.",
+    "example_en": "The cunning antagonist sabotaged the peace negotiations to seize absolute power.",
+    "example_mn": "Зальжин эсрэг дүр хэмжээлгүй эрх мэдлийг гартаа авахын тулд энхийн хэлэлцээг нураасан.",
+    "example_de": "Der gerissene Gegenspieler sabotierte die Friedensverhandlungen, um die Macht zu ergreifen.",
     "topic": "Literature"
   },
   {
@@ -10578,9 +10578,9 @@
     "mn": "хүүрнэл",
     "de": "Erzählung",
     "en": "narration",
-    "example_en": "Understanding narration is very helpful.",
-    "example_mn": "Хүүрнэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Erzählung ist sehr hilfreich.",
+    "example_en": "The documentary features captivating voiceover narration by a renowned wildlife naturalist.",
+    "example_mn": "Баримтат кинонд алдартай байгаль судлаачийн сонирхолтой хүүрнэл яриа орсон байдаг.",
+    "example_de": "Die Dokumentation enthält eine fesselnde Erzählung eines bekannten Naturforschers.",
     "topic": "Literature"
   },
   {
@@ -10596,9 +10596,9 @@
     "mn": "номын хэсэг, ишлэл",
     "de": "Auszug",
     "en": "excerpt",
-    "example_en": "Understanding excerpt is very helpful.",
-    "example_mn": "Номын хэсэг, ишлэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Auszug ist sehr hilfreich.",
+    "example_en": "The literature teacher read an emotionally moving excerpt from the award-winning novel.",
+    "example_mn": "Уран зохиолын багш шагналт романы сэтгэл хөдөлгөм хэсэг, ишлэлээс уншиж танилцуулав.",
+    "example_de": "Der Literaturlehrer las einen bewegenden Auszug aus dem preisgekrönten Roman vor.",
     "topic": "Literature"
   },
   {
@@ -10614,9 +10614,9 @@
     "mn": "гар бичмэл",
     "de": "Manuskript",
     "en": "manuscript",
-    "example_en": "Understanding manuscript is very helpful.",
-    "example_mn": "Гар бичмэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Manuskript ist sehr hilfreich.",
+    "example_en": "Historians discovered an eleventh-century illuminated manuscript in the abbey archives.",
+    "example_mn": "Түүхчид хийдийн архиваас арван нэгдүгээр зууны үеийн зурмал гар бичмэлийг олж илрүүлжээ.",
+    "example_de": "Historiker entdeckten eine illuminierte Handschrift aus dem elften Jahrhundert im Archiv.",
     "topic": "Literature"
   },
   {
@@ -10632,9 +10632,9 @@
     "mn": "тогтмол хэвлэл",
     "de": "Zeitschrift",
     "en": "periodical",
-    "example_en": "Understanding periodical is very helpful.",
-    "example_mn": "Тогтмол хэвлэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Zeitschrift ist sehr hilfreich.",
+    "example_en": "The research library subscribes to every major monthly medical periodical.",
+    "example_mn": "Судалгааны номын сан сар тутмын анагаах ухааны томоохон тогтмол хэвлэлүүдийг бүгдийг нь захиалдаг.",
+    "example_de": "Die Forschungsbibliothek abonniert jede wichtige monatliche Fachzeitschrift.",
     "topic": "Literature"
   },
   {
@@ -10650,9 +10650,9 @@
     "mn": "булан хөтлөгч",
     "de": "Kolumnist",
     "en": "columnist",
-    "example_en": "Understanding columnist is very helpful.",
-    "example_mn": "Булан хөтлөгч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Kolumnist ist sehr hilfreich.",
+    "example_en": "The veteran newspaper columnist wrote a thought-provoking editorial on education reform.",
+    "example_mn": "Ахмад сонины нийтлэлч боловсролын шинэчлэлийн талаар бодууштай нийтлэл бичжээ.",
+    "example_de": "Der erfahrene Kolumnist verfasste einen nachdenklichen Leitartikel zur Bildungsreform.",
     "topic": "Literature"
   },
   {
@@ -10686,9 +10686,9 @@
     "mn": "тайлбар шүүмж",
     "de": "Kommentar",
     "en": "commentary",
-    "example_en": "Understanding commentary is very helpful.",
-    "example_mn": "Тайлбар шүүмж гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Kommentar ist sehr hilfreich.",
+    "example_en": "The radio station provided lively live sports commentary during the championship match.",
+    "example_mn": "Радио станц аваргын төлөөх тоглолтын үеэр шууд тайлбар, шүүмжийг хүргэж байв.",
+    "example_de": "Der Radiosender lieferte während des Finalspiels einen lebendigen Live-Kommentar.",
     "topic": "Literature"
   },
   {
@@ -10704,9 +10704,9 @@
     "mn": "түүвэр зохиол",
     "de": "Anthologie",
     "en": "anthology",
-    "example_en": "Understanding anthology is very helpful.",
-    "example_mn": "Түүвэр зохиол гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Anthologie ist sehr hilfreich.",
+    "example_en": "The professor edited a comprehensive anthology of modern post-war European poetry.",
+    "example_mn": "Профессор дайны дараах Европын орчин үеийн яруу найргийн эмхэтгэл, түүврийг хянан тохиолдуулав.",
+    "example_de": "Der Professor gab eine umfassende Anthologie moderner europäischer Nachkriegslyrik heraus.",
     "topic": "Literature"
   },
   {
@@ -10722,9 +10722,9 @@
     "mn": "оршил үг",
     "de": "Prolog",
     "en": "prologue",
-    "example_en": "Understanding prologue is very helpful.",
-    "example_mn": "Оршил үг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Prolog ist sehr hilfreich.",
+    "example_en": "The novel opens with an enigmatic prologue set ten years before the main events.",
+    "example_mn": "Уг роман үндсэн үйл явдлаас арван жилийн өмнөх нууцлаг удиртгал, эхлэл хэсгээр эхэлдэг.",
+    "example_de": "Der Roman beginnt mit einem rätselhaften Prolog, der zehn Jahre vor der Handlung spielt.",
     "topic": "Literature"
   },
   {
@@ -10740,9 +10740,9 @@
     "mn": "төгсгөлийн үг",
     "de": "Epilog",
     "en": "epilogue",
-    "example_en": "Understanding epilogue is very helpful.",
-    "example_mn": "Төгсгөлийн үг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Epilog ist sehr hilfreich.",
+    "example_en": "The author added an emotional epilogue recounting the characters' lives three decades later.",
+    "example_mn": "Зохиолч дүрүүдийн гучин жилийн дараах амьдралыг өгүүлсэн сэтгэл хөдөлгөм төгсгөлийн үгийг нэмжээ.",
+    "example_de": "Der Autor fügte einen emotionalen Epilog hinzu, der das spätere Leben der Figuren schildert.",
     "topic": "Literature"
   },
   {
@@ -10758,9 +10758,9 @@
     "mn": "оюуны хулгай",
     "de": "Plagiat",
     "en": "plagiarism",
-    "example_en": "Understanding plagiarism is very helpful.",
-    "example_mn": "Оюуны хулгай гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Plagiat ist sehr hilfreich.",
+    "example_en": "The university expelled the student for blatant academic plagiarism on his thesis.",
+    "example_mn": "Дипломын ажилдаа оюуны хулгай буюу плагиат хийсэн тул их сургуулиас оюутныг хөөжээ.",
+    "example_de": "Die Universität verwies den Studenten wegen Plagiats in seiner Abschlussarbeit.",
     "topic": "Literature"
   },
   {
@@ -10776,9 +10776,9 @@
     "mn": "дуу авианы цуурайлалт",
     "de": "Akustik",
     "en": "acoustics",
-    "example_en": "Understanding acoustics is very helpful.",
-    "example_mn": "Дуу авианы цуурайлалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Akustik ist sehr hilfreich.",
+    "example_en": "The wooden concert hall was renowned for its warm and crystal-clear musical acoustics.",
+    "example_mn": "Модон концертын танхим нь дуу авианы төгс цуурай, акустик шинжээрээ алдартай байв.",
+    "example_de": "Der hölzerne Konzertsaal war für seine warme und kristallklare Akustik berühmt.",
     "topic": "Arts"
   },
   {
@@ -10794,9 +10794,9 @@
     "mn": "дуу чангарах",
     "de": "Crescendo",
     "en": "crescendo",
-    "example_en": "Understanding crescendo is very helpful.",
-    "example_mn": "Дуу чангарах гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Crescendo ist sehr hilfreich.",
+    "example_en": "The orchestral symphony built toward a thundering brass crescendo in the finale.",
+    "example_mn": "Найрал хөгжмийн симфони төгсгөлдөө хүч түрэн чангарах оргил үед хүрч авав.",
+    "example_de": "Die Orchestersinfonie steigerte sich im Finale zu einem donnernden Crescendo der Blechbläser.",
     "topic": "Arts"
   },
   {
@@ -10812,9 +10812,9 @@
     "mn": "маэстро, хөгжмийн их багш",
     "de": "Maestro",
     "en": "maestro",
-    "example_en": "Understanding maestro is very helpful.",
-    "example_mn": "Маэстро, хөгжмийн их багш гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Maestro ist sehr hilfreich.",
+    "example_en": "The celebrated maestro raised his baton and silence fell over the crowded auditorium.",
+    "example_mn": "Алдартай удирдаач, мастер дохиураа өргөхөд үзэгчдийн танхим тэр чигтээ нам гүм болов.",
+    "example_de": "Der gefeierte Maestro hob den Taktstock, und Stille senkte sich über das Auditorium.",
     "topic": "Arts"
   },
   {
@@ -10830,9 +10830,9 @@
     "mn": "сонат",
     "de": "Sonate",
     "en": "sonata",
-    "example_en": "Understanding sonata is very helpful.",
-    "example_mn": "Сонат гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Sonate ist sehr hilfreich.",
+    "example_en": "The virtuoso pianist performed Beethoven's Moonlight Sonata with breathtaking sensitivity.",
+    "example_mn": "Төгөлдөр хуурч Бетховений 'Сарны сонат'-ыг гайхалтай уран чадварлаг тоглож сонирхуулав.",
+    "example_de": "Der Klaviervirtuose spielte Beethovens Mondscheinsonate mit atemberaubender Hingabe.",
     "topic": "Arts"
   },
   {
@@ -10848,9 +10848,9 @@
     "mn": "дуурийн цомнол",
     "de": "Libretto",
     "en": "libretto",
-    "example_en": "Understanding libretto is very helpful.",
-    "example_mn": "Дуурийн цомнол гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Libretto ist sehr hilfreich.",
+    "example_en": "Mozart collaborated closely with Lorenzo Da Ponte to draft the witty opera libretto.",
+    "example_mn": "Моцарт дуурийн хөгжмийн цомнол, цэцэн үгийг бичихдээ Лоренцо Да Понтетэй нягт хамтарчээ.",
+    "example_de": "Mozart arbeitete eng mit Da Ponte zusammen, um das geistreiche Opernlibretto zu verfassen.",
     "topic": "Arts"
   },
   {
@@ -10866,9 +10866,9 @@
     "mn": "кино зураг авалт",
     "de": "Kameraführung",
     "en": "cinematography",
-    "example_en": "Understanding cinematography is very helpful.",
-    "example_mn": "Кино зураг авалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Kameraführung ist sehr hilfreich.",
+    "example_en": "The atmospheric drama won an international award for its striking black-and-white cinematography.",
+    "example_mn": "Уг кино нь хар цагаан дүрс авалт, кино зургийн гайхамшигтай ур чадвараараа олон улсын шагнал хүртжээ.",
+    "example_de": "Das Drama gewann einen Preis für seine bemerkenswerte Schwarz-Weiß-Kameraführung.",
     "topic": "Arts"
   },
   {
@@ -10884,9 +10884,9 @@
     "mn": "кино зохиол",
     "de": "Drehbuch",
     "en": "screenplay",
-    "example_en": "Understanding screenplay is very helpful.",
-    "example_mn": "Кино зохиол гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Drehbuch ist sehr hilfreich.",
+    "example_en": "The director worked late into the night polishing dialogue in the thriller screenplay.",
+    "example_mn": "Найруулагч триллер киноны зохиолын харилцан яриаг сайжруулахаар шөнө дөл хүртэл суув.",
+    "example_de": "Der Regisseur feilte bis spät in die Nacht an den Dialogen im Drehbuch des Thrillers.",
     "topic": "Arts"
   },
   {
@@ -10902,9 +10902,9 @@
     "mn": "зурагт төлөвлөгөө",
     "de": "Storyboard",
     "en": "storyboard",
-    "example_en": "Understanding storyboard is very helpful.",
-    "example_mn": "Зурагт төлөвлөгөө гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Storyboard ist sehr hilfreich.",
+    "example_en": "Animators sketched every shot on a visual storyboard before starting computer rendering.",
+    "example_mn": "Хүүхэлдэйн киноны уран бүтээлчид компьютер графикаар дүрслэхээсээ өмнө зураглалын төлөвлөгөөг гаргав.",
+    "example_de": "Die Zeichner skizzierten jede Einstellung auf dem Storyboard vor dem Rendern.",
     "topic": "Arts"
   },
   {
@@ -10920,9 +10920,9 @@
     "mn": "нээлтийн тоглолт",
     "de": "Premiere",
     "en": "premiere",
-    "example_en": "Understanding premiere is very helpful.",
-    "example_mn": "Нээлтийн тоглолт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Premiere ist sehr hilfreich.",
+    "example_en": "Celebrities and film critics walked the red carpet for the gala world premiere.",
+    "example_mn": "Нэр хүндтэй зочид болон кино шүүмжлэгчид дэлхийн нээлтийн улаан хивсэн дээгүүр алхав.",
+    "example_de": "Prominente und Filmkritiker betraten den roten Teppich zur glanzvollen Weltpremiere.",
     "topic": "Arts"
   },
   {
@@ -10938,9 +10938,9 @@
     "mn": "үргэлжлэл анги",
     "de": "Fortsetzung",
     "en": "sequel",
-    "example_en": "Understanding sequel is very helpful.",
-    "example_mn": "Үргэлжлэл анги гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Fortsetzung ist sehr hilfreich.",
+    "example_en": "Fans eagerly awaited the cinematic sequel following the cliffhanger ending.",
+    "example_mn": "Шороон шуурга мэт төгсгөлийн дараа шүтэн бишрэгчид киноны дараагийн ангийг тэсэн ядан хүлээв.",
+    "example_de": "Die Fans warteten nach dem offenen Ende ungeduldig auf die filmische Fortsetzung.",
     "topic": "Arts"
   },
   {
@@ -10956,9 +10956,9 @@
     "mn": "өмнөх үйл явдлыг өгүүлэх анги",
     "de": "Prequel",
     "en": "prequel",
-    "example_en": "Understanding prequel is very helpful.",
-    "example_mn": "Өмнөх үйл явдлыг өгүүлэх анги гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Prequel ist sehr hilfreich.",
+    "example_en": "The fantasy novel serves as an origin prequel detailing the kingdom's founding.",
+    "example_mn": "Уг уран сэтгэмжит зохиол нь хаант улс үүссэн түүхийг өгүүлэх өмнөх үеийн түүх болдог.",
+    "example_de": "Der Fantasy-Roman dient als Vorgeschichte, die die Gründung des Königreichs schildert.",
     "topic": "Arts"
   },
   {
@@ -10974,9 +10974,9 @@
     "mn": "киноны хөгжим",
     "de": "Filmmusik",
     "en": "soundtrack",
-    "example_en": "Understanding soundtrack is very helpful.",
-    "example_mn": "Киноны хөгжим гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Filmmusik ist sehr hilfreich.",
+    "example_en": "The atmospheric musical soundtrack heightened the suspense throughout the mystery film.",
+    "example_mn": "Киноны хөгжим нь нууцлаг явдлын туршид үзэгчдийн сэтгэлийг улам бүр догдлуулж байв.",
+    "example_de": "Der stimmungsvolle Soundtrack steigerte die Spannung während des gesamten Mystery-Films.",
     "topic": "Arts"
   },
   {
@@ -10992,9 +10992,9 @@
     "mn": "үзэгчдийн танхим",
     "de": "Zuschauersaal",
     "en": "auditorium",
-    "example_en": "Understanding auditorium is very helpful.",
-    "example_mn": "Үзэгчдийн танхим гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Zuschauersaal ist sehr hilfreich.",
+    "example_en": "Over two thousand eager listeners packed the newly opened university auditorium.",
+    "example_mn": "Шинээр нээгдсэн их сургуулийн үзэгчдийн танхимд хоёр мянга гаруй сонсогч цугларав.",
+    "example_de": "Über zweitausend Zuhörer füllten das neu eröffnete Auditorium der Universität.",
     "topic": "Arts"
   },
   {
@@ -11010,9 +11010,9 @@
     "mn": "бжгийн дэглэлт",
     "de": "Choreografie",
     "en": "choreography",
-    "example_en": "Understanding choreography is very helpful.",
-    "example_mn": "Бжгийн дэглэлт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Choreografie ist sehr hilfreich.",
+    "example_en": "The modern ballet company performed intricate contemporary choreography to electronic music.",
+    "example_mn": "Орчин үеийн балетын хамт олон электрон хөгжмийн аянд бүжгийн нарийн дэглэлтийг үзүүлэв.",
+    "example_de": "Das Ballett-Ensemble zeigte eine komplexe zeitgenössische Choreografie zu Elektromusik.",
     "topic": "Arts"
   },
   {
@@ -11028,9 +11028,9 @@
     "mn": "зургийн зотон",
     "de": "Leinwand",
     "en": "canvas",
-    "example_en": "Understanding canvas is very helpful.",
-    "example_mn": "Зургийн зотон гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Leinwand ist sehr hilfreich.",
+    "example_en": "The landscape painter stretched heavy linen canvas onto the wooden frame.",
+    "example_mn": "Байгалийн зураач зузаан маалингын даавуун зургийн зотонгоо модон хүрээнд тэлж бэхлэв.",
+    "example_de": "Der Landschaftsmaler spannte schwere Leinwand auf den hölzernen Keilrahmen.",
     "topic": "Arts"
   },
   {
@@ -11046,9 +11046,9 @@
     "mn": "зургийн мольберт",
     "de": "Staffelei",
     "en": "easel",
-    "example_en": "Understanding easel is very helpful.",
-    "example_mn": "Зургийн мольберт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Staffelei ist sehr hilfreich.",
+    "example_en": "She adjusted the height of her wooden painting easel to catch the morning sunlight.",
+    "example_mn": "Тэрээр өглөөний нарны туяаг сайн тусгахын тулд зургийн модон тавиурынхаа өндрийг тохируулав.",
+    "example_de": "Sie passte die Höhe ihrer Holzstaffelei an, um das Morgenlicht optimal zu nutzen.",
     "topic": "Arts"
   },
   {
@@ -11064,9 +11064,9 @@
     "mn": "хөрөг зурах урлаг",
     "de": "Porträtkunst",
     "en": "portraiture",
-    "example_en": "Understanding portraiture is very helpful.",
-    "example_mn": "Хөрөг зурах урлаг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Porträtkunst ist sehr hilfreich.",
+    "example_en": "The gallery exhibition celebrates five centuries of European aristocratic portraiture.",
+    "example_mn": "Уг үзэсгэлэн Европын язгууртнуудын хөрөг зургийн таван зууны түүхийг дэлгэн харуулж байна.",
+    "example_de": "Die Galerieausstellung feiert fünf Jahrhunderte europäischer Porträtkunst.",
     "topic": "Arts"
   },
   {
@@ -11082,9 +11082,9 @@
     "mn": "шаазан ваар урлал",
     "de": "Töpferei",
     "en": "pottery",
-    "example_en": "Understanding pottery is very helpful.",
-    "example_mn": "Шаазан ваар урлал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Töpferei ist sehr hilfreich.",
+    "example_en": "Local artisans craft functional kitchen pottery using locally quarried red clay.",
+    "example_mn": "Нутгийн дархцуул ойролцоох уурхайн улаан шавраар ахуйн хэрэглээний ваар сав хийдэг.",
+    "example_de": "Einheimische Handwerker stellen Töpferwaren aus lokalem rotem Ton her.",
     "topic": "Arts"
   },
   {
@@ -11100,9 +11100,9 @@
     "mn": "керамик эдлэл",
     "de": "Keramik",
     "en": "ceramics",
-    "example_en": "Understanding ceramics is very helpful.",
-    "example_mn": "Керамик эдлэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Keramik ist sehr hilfreich.",
+    "example_en": "High-temperature glazed ceramics are prized for their exceptional heat resistance.",
+    "example_mn": "Өндөр температурт пааландсан шаазан эдлэл, керамик нь халуунд тэсвэртэй чанараараа үнэлэгддэг.",
+    "example_de": "Hochtemperaturglasierte Keramik wird für ihre außergewöhnliche Hitzebeständigkeit geschätzt.",
     "topic": "Arts"
   },
   {
@@ -11118,9 +11118,9 @@
     "mn": "нэхмэл хивсэнцэр зураг",
     "de": "Wandteppich",
     "en": "tapestry",
-    "example_en": "Understanding tapestry is very helpful.",
-    "example_mn": "Нэхмэл хивсэнцэр зураг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Wandteppich ist sehr hilfreich.",
+    "example_en": "A magnificent wool tapestry depicting historic royal battles hung on the castle wall.",
+    "example_mn": "Хааны түүхэн тулаануудыг дүрсэлсэн ноосон нэхмэл хивсэнцэр цайзын хананд өлгөөтэй байв.",
+    "example_de": "Ein prächtiger Wandteppich mit Darstellungen königlicher Schlachten hing an der Burgwand.",
     "topic": "Arts"
   },
   {
@@ -11136,9 +11136,9 @@
     "mn": "олтриг, бүлэг арлууд",
     "de": "Archipel",
     "en": "archipelago",
-    "example_en": "Understanding archipelago is very helpful.",
-    "example_mn": "Олтриг, бүлэг арлууд гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Archipel ist sehr hilfreich.",
+    "example_en": "The volcanic island archipelago spans over five hundred nautical miles.",
+    "example_mn": "Галт уулын арлуудаас бүрдсэн олтриг нь далайн таван зуун милийн зайд сунан оршдог.",
+    "example_de": "Der vulkanische Archipel erstreckt sich über mehr als fünfhundert Seemeilen.",
     "topic": "Nature"
   },
   {
@@ -11154,9 +11154,9 @@
     "mn": "хойг",
     "de": "Halbinsel",
     "en": "peninsula",
-    "example_en": "Understanding peninsula is very helpful.",
-    "example_mn": "Хойг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Halbinsel ist sehr hilfreich.",
+    "example_en": "Fishing villages dot the rugged coastline of the rocky northern peninsula.",
+    "example_mn": "Хадархаг хойд хагас арлын эрэг дагуу загасчдын жижиг тосгонууд байрладаг.",
+    "example_de": "Fischerdörfer säumen die zerklüftete Küste der felsigen Halbinsel im Norden.",
     "topic": "Nature"
   },
   {
@@ -11172,9 +11172,9 @@
     "mn": "тэгш өндөрлөг",
     "de": "Hochebene, Plateau",
     "en": "plateau",
-    "example_en": "Understanding plateau is very helpful.",
-    "example_mn": "Тэгш өндөрлөг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Hochebene, Plateau ist sehr hilfreich.",
+    "example_en": "The high-altitude Tibetan plateau is often referred to as the roof of the world.",
+    "example_mn": "Өндөр уулын Төвөдийн тэгш өндөрлөг газрыг 'дэлхийн дээвэр' гэж нэрлэдэг.",
+    "example_de": "Das tibetische Hochplateau wird oft als das Dach der Welt bezeichnet.",
     "topic": "Nature"
   },
   {
@@ -11190,9 +11190,9 @@
     "mn": "саванна",
     "de": "Savanne",
     "en": "savanna",
-    "example_en": "Understanding savanna is very helpful.",
-    "example_mn": "Саванна гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Savanne ist sehr hilfreich.",
+    "example_en": "Herds of wildebeest migrate across the arid African savanna during the dry season.",
+    "example_mn": "Хуурай улиралд зэрлэг гөрөөсний сүрэг Африкийн өвст тал буюу саванна дээгүүр нүүдэллэдэг.",
+    "example_de": "Gnuherden wandern während der Trockenzeit durch die weite afrikanische Savanne.",
     "topic": "Nature"
   },
   {
@@ -11208,9 +11208,9 @@
     "mn": "голын цутгал адаг",
     "de": "Mündungstrichter",
     "en": "estuary",
-    "example_en": "Understanding estuary is very helpful.",
-    "example_mn": "Голын цутгал адаг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Mündungstrichter ist sehr hilfreich.",
+    "example_en": "The river estuary provides a rich brackish nursery for young salmon and crabs.",
+    "example_mn": "Голын цутгал, адаг нь залуу хулд загас болон хавч үржих үржил шимтэй орчныг бүрдүүлдэг.",
+    "example_de": "Die Flussmündung bietet jungen Lachsen und Krabben einen nährstoffreichen Lebensraum.",
     "topic": "Nature"
   },
   {
@@ -11226,9 +11226,9 @@
     "mn": "голын цутгал",
     "de": "Nebenfluss",
     "en": "tributary",
-    "example_en": "Understanding tributary is very helpful.",
-    "example_mn": "Голын цутгал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Nebenfluss ist sehr hilfreich.",
+    "example_en": "A swift alpine tributary merges into the Rhine River just south of the city.",
+    "example_mn": "Уулын хурдан урсгалт голын цутгал хотын урдхан талд Рейн мөрөнтэй нийлдэг.",
+    "example_de": "Ein schneller Gebirgszufluss mündet südlich der Stadt in den Rhein.",
     "topic": "Nature"
   },
   {
@@ -11244,9 +11244,9 @@
     "mn": "фьорд булан",
     "de": "Fjord",
     "en": "fjord",
-    "example_en": "Understanding fjord is very helpful.",
-    "example_mn": "Фьорд булан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Fjord ist sehr hilfreich.",
+    "example_en": "Cruise ships navigate through the sheer granite walls of the Norwegian fjord.",
+    "example_mn": "Аяллын хөлөг онгоц Норвегийн боржин хадан хавцал бүхий фьордоор аялдаг.",
+    "example_de": "Kreuzfahrtschiffe navigieren durch die steilen Granitwände des norwegischen Fjords.",
     "topic": "Nature"
   },
   {
@@ -11262,9 +11262,9 @@
     "mn": "тундр",
     "de": "Tundra",
     "en": "tundra",
-    "example_en": "Understanding tundra is very helpful.",
-    "example_mn": "Тундр гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Tundra ist sehr hilfreich.",
+    "example_en": "Only hardy mosses and dwarf shrubs survive in the frozen sub-polar tundra.",
+    "example_mn": "Хөлдүү туйл орчмын тундрын бүсэд зөвхөн тэсвэртэй хөвд болон намхан бут сөөг ургадаг.",
+    "example_de": "Nur widerstandsfähige Moose und Zwergsträucher überleben in der gefrorenen Tundra.",
     "topic": "Nature"
   },
   {
@@ -11280,9 +11280,9 @@
     "mn": "галт уулын тогоо",
     "de": "Krater",
     "en": "crater",
-    "example_en": "Understanding crater is very helpful.",
-    "example_mn": "Галт уулын тогоо гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Krater ist sehr hilfreich.",
+    "example_en": "Scientists sampled mineral-rich volcanic ash inside the dormant volcanic crater.",
+    "example_mn": "Эрдэмтэд нойрсож буй галт уулын тогооноос эрдсээр баялаг галт уулын үнсний дээж авав.",
+    "example_de": "Wissenschaftler entnahmen Proben mineralreicher Asche im ruhenden Vulkankrater.",
     "topic": "Nature"
   },
   {
@@ -11298,9 +11298,9 @@
     "mn": "тектоник хавтан",
     "de": "tektonische Platte",
     "en": "tectonic plate",
-    "example_en": "Understanding tectonic plate is very helpful.",
-    "example_mn": "Тектоник хавтан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von tektonische Platte ist sehr hilfreich.",
+    "example_en": "Subduction of the oceanic tectonic plate triggered a powerful undersea earthquake.",
+    "example_mn": "Далайн тектоникийн хавтангийн шилжилт нь далайн ёроолын хүчтэй газар хөдлөлтийг үүсгэжээ.",
+    "example_de": "Die Subduktion der tektonischen Platte löste ein starkes Unterseebeben aus.",
     "topic": "Nature"
   },
   {
@@ -11316,9 +11316,9 @@
     "mn": "хөрсний элэгдэл",
     "de": "Erosion",
     "en": "erosion",
-    "example_en": "Understanding erosion is very helpful.",
-    "example_mn": "Хөрсний элэгдэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Erosion ist sehr hilfreich.",
+    "example_en": "Planting native deep-rooted shrubs prevents soil erosion along the windy coastline.",
+    "example_mn": "Гүн үндэстэй унаган ургамал тарих нь салхитай эрэг дагуух хөрсний эвдрэлээс сэргийлдэг.",
+    "example_de": "Das Pflanzen tief wurzelnder Sträucher verhindert die Bodenerosion an der Küste.",
     "topic": "Nature"
   },
   {
@@ -11334,9 +11334,9 @@
     "mn": "тунадас, хурдас",
     "de": "Sediment",
     "en": "sediment",
-    "example_en": "Understanding sediment is very helpful.",
-    "example_mn": "Тунадас, хурдас гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Sediment ist sehr hilfreich.",
+    "example_en": "Heavy seasonal rainfall washed thick mineral sediment into the freshwater reservoir.",
+    "example_mn": "Улирлын хүчтэй аадар бороо цэнгэг усны далан руу эрдэст тунадас шаврыг урсган оруулав.",
+    "example_de": "Starke Regenfälle schwemmten mineralische Sedimente in den Trinkwasserspeicher.",
     "topic": "Nature"
   },
   {
@@ -11352,9 +11352,9 @@
     "mn": "чулуужсан олдвор",
     "de": "Fossil",
     "en": "fossil",
-    "example_en": "Understanding fossil is very helpful.",
-    "example_mn": "Чулуужсан олдвор гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Fossil ist sehr hilfreich.",
+    "example_en": "Paleontologists unearthed a well-preserved dinosaur fossil embedded in sedimentary limestone.",
+    "example_mn": "Эртний шим судлаачид тунамал шохойн чулуунд шигдсэн үлэг гүрвэлийн олдвор, чулуужмал илрүүлэв.",
+    "example_de": "Paläontologen legten ein gut erhaltenes Fossil frei, das in Kalkstein eingebettet war.",
     "topic": "Nature"
   },
   {
@@ -11370,9 +11370,9 @@
     "mn": "газрын ан цав",
     "de": "Verwerfungslinie",
     "en": "fault line",
-    "example_en": "Understanding fault line is very helpful.",
-    "example_mn": "Газрын ан цав гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Verwerfungslinie ist sehr hilfreich.",
+    "example_en": "Geologists monitor underground seismic sensors placed along the active fault line.",
+    "example_mn": "Геологичид идэвхтэй хагарлын шугамын дагуу байрлуулсан газар доорх чичирхийлэл мэдрэгчийг хянадаг.",
+    "example_de": "Geologen überwachen seismische Sensoren entlang der aktiven tektonischen Verwerfungslinie.",
     "topic": "Nature"
   },
   {
@@ -11388,9 +11388,9 @@
     "mn": "бөмбөрцгийн хагас",
     "de": "Halbkugel",
     "en": "hemisphere",
-    "example_en": "Understanding hemisphere is very helpful.",
-    "example_mn": "Бөмбөрцгийн хагас гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Halbkugel ist sehr hilfreich.",
+    "example_en": "When it is winter in the northern hemisphere, summer arrives in the southern half.",
+    "example_mn": "Дэлхийн бөмбөрцгийн хойд хагаст өвөл болж байхад өмнөд хэсэгт нь зун ирдэг.",
+    "example_de": "Wenn auf der Nordhalbkugel Winter herrscht, beginnt auf der südlichen Hemisphäre der Sommer.",
     "topic": "Nature"
   },
   {
@@ -11406,9 +11406,9 @@
     "mn": "уртраг",
     "de": "Längengrad",
     "en": "longitude",
-    "example_en": "Understanding longitude is very helpful.",
-    "example_mn": "Уртраг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Längengrad ist sehr hilfreich.",
+    "example_en": "Navigators calculate their exact longitude by comparing local solar time with Greenwich Mean Time.",
+    "example_mn": "Усан замын чиглүүлэгчид уртрагийн байршлаа орон нутгийн нарны цагийг Гринвичийн цагтай харьцуулан тодорхойлдог.",
+    "example_de": "Navigatoren berechnen ihren Längengrad durch Vergleich mit der Greenwich-Zeit.",
     "topic": "Nature"
   },
   {
@@ -11424,9 +11424,9 @@
     "mn": "өргөрөг",
     "de": "Breitengrad",
     "en": "latitude",
-    "example_en": "Understanding latitude is very helpful.",
-    "example_mn": "Өргөрөг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Breitengrad ist sehr hilfreich.",
+    "example_en": "Polar bears reside almost exclusively within regions north of sixty degrees latitude.",
+    "example_mn": "Цагаан баавгайнууд зөвхөн өргөргийн жаран градусаас хойш орших бүсэд амьдардаг.",
+    "example_de": "Eisbären leben fast ausschließlich in Regionen jenseits des sechzigsten Breitengrades.",
     "topic": "Nature"
   },
   {
@@ -11442,9 +11442,9 @@
     "mn": "экватор, экваторын шугам",
     "de": "Äquator",
     "en": "equator",
-    "example_en": "Understanding equator is very helpful.",
-    "example_mn": "Экватор, экваторын шугам гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Äquator ist sehr hilfreich.",
+    "example_en": "Sunlight hits the tropical earth directly at the equator throughout the entire year.",
+    "example_mn": "Нарны туяа жилийн турш дэлхийн экватор дээр эгц дээрээс нь тусдаг.",
+    "example_de": "Das Sonnenlicht trifft am Äquator das ganze Jahr über fast senkrecht auf die Erde.",
     "topic": "Nature"
   },
   {
@@ -11478,9 +11478,9 @@
     "mn": "хоолны соёл судлал",
     "de": "Gastronomie",
     "en": "gastronomy",
-    "example_en": "Understanding gastronomy is very helpful.",
-    "example_mn": "Хоолны соёл судлал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Gastronomie ist sehr hilfreich.",
+    "example_en": "The coastal region is internationally famous for its exquisite seafood gastronomy.",
+    "example_mn": "Далайн эргийн бүс нутаг нь тансаг далайн хоолны хоол боловсруулах соёл, гастрономиороо алдартай.",
+    "example_de": "Die Küstenregion ist weltweit berühmt für ihre exquisite Meeresfrüchte-Gastronomie.",
     "topic": "Food"
   },
   {
@@ -11496,9 +11496,9 @@
     "mn": "исгэлт",
     "de": "Gärung, Fermentation",
     "en": "fermentation",
-    "example_en": "Understanding fermentation is very helpful.",
-    "example_mn": "Исгэлт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Gärung, Fermentation ist sehr hilfreich.",
+    "example_en": "Microbial fermentation transforms barley and hops into craft lager beer.",
+    "example_mn": "Бичил биетний исгэх процесс нь арвай болон зөрөг цэцгийг шар айраг болгон хувиргадаг.",
+    "example_de": "Mikrobielle Fermentation verwandelt Gerste und Hopfen in feines Craft-Bier.",
     "topic": "Food"
   },
   {
@@ -11514,9 +11514,9 @@
     "mn": "пастеризаци",
     "de": "Pasteurisierung",
     "en": "pasteurization",
-    "example_en": "Understanding pasteurization is very helpful.",
-    "example_mn": "Пастеризаци гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Pasteurisierung ist sehr hilfreich.",
+    "example_en": "Rapid thermal pasteurization eliminates dangerous bacteria without spoiling the fresh milk.",
+    "example_mn": "Богино хугацааны өндөр хэмийн пастеризаци нь шинэ сүүг гашууруулахгүйгээр аюултай нянг устгадаг.",
+    "example_de": "Die schnelle Pasteurisierung eliminiert gefährliche Keime, ohne die Milch zu verderben.",
     "topic": "Food"
   },
   {
@@ -11532,9 +11532,9 @@
     "mn": "мал сүрэг",
     "de": "Viehbestand",
     "en": "livestock",
-    "example_en": "Understanding livestock is very helpful.",
-    "example_mn": "Мал сүрэг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Viehbestand ist sehr hilfreich.",
+    "example_en": "Pastoral herders moved their livestock to higher alpine pastures for the summer.",
+    "example_mn": "Малчид зуны улиралд малаа уулын өндөр бэлчээр рүү оторлон нүүлгэжээ.",
+    "example_de": "Die Hirten trieben ihr Vieh für den Sommer auf die höher gelegenen Bergweiden.",
     "topic": "Food"
   },
   {
@@ -11550,9 +11550,9 @@
     "mn": "ургац хураалт",
     "de": "Ernte",
     "en": "harvest",
-    "example_en": "Understanding harvest is very helpful.",
-    "example_mn": "Ургац хураалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Ernte ist sehr hilfreich.",
+    "example_en": "Farmers celebrated an abundant wheat harvest following a warm, sunlit autumn.",
+    "example_mn": "Тариаланчид нарлаг дулаан намрын дараа арвин ургацын баяраа тэмдэглэлээ.",
+    "example_de": "Die Landwirte feierten eine reiche Weizenernte nach einem sonnigen Herbst.",
     "topic": "Food"
   },
   {
@@ -11568,9 +11568,9 @@
     "mn": "усжуулалтын систем",
     "de": "Bewässerung",
     "en": "irrigation",
-    "example_en": "Understanding irrigation is very helpful.",
-    "example_mn": "Усжуулалтын систем гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Bewässerung ist sehr hilfreich.",
+    "example_en": "Automated drip irrigation conserves valuable groundwater in arid desert orchards.",
+    "example_mn": "Автомат дуслын усжуулалтын систем нь цөлийн хуурай жимсний цэцэрлэгт гүний усыг хэмнэдэг.",
+    "example_de": "Automatische Tröpfchenbewässerung spart wertvolles Grundwasser in ariden Obstgärten.",
     "topic": "Food"
   },
   {
@@ -11586,9 +11586,9 @@
     "mn": "цэцэрлэгжүүлэлт, жимс ногоо тариалалт",
     "de": "Gartenbau",
     "en": "horticulture",
-    "example_en": "Understanding horticulture is very helpful.",
-    "example_mn": "Цэцэрлэгжүүлэлт, жимс ногоо тариалалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Gartenbau ist sehr hilfreich.",
+    "example_en": "She earned a specialized degree in sustainable urban horticulture and greenhouse design.",
+    "example_mn": "Тэрээр хотын тогтвортой цэцэрлэгжүүлэлт, хүлэмжийн дизайны чиглэлээр нарийн мэргэжил эзэмшсэн.",
+    "example_de": "Sie erwarb einen Abschluss in nachhaltigem Gartenbau und Gewächshausdesign.",
     "topic": "Food"
   },
   {
@@ -11604,9 +11604,9 @@
     "mn": "усны амьтан, ургамал үржүүлэг",
     "de": "Aquakultur",
     "en": "aquaculture",
-    "example_en": "Understanding aquaculture is very helpful.",
-    "example_mn": "Усны амьтан, ургамал үржүүлэг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Aquakultur ist sehr hilfreich.",
+    "example_en": "Sustainable inland aquaculture satisfies the global demand for fresh farmed salmon.",
+    "example_mn": "Эх газрын тогтвортой загас үржүүлэг нь хулд загасны дэлхийн хэрэгцээг хангаж байна.",
+    "example_de": "Nachhaltige Aquakultur deckt die weltweite Nachfrage nach frischem Zuchtlachs.",
     "topic": "Food"
   },
   {
@@ -11622,9 +11622,9 @@
     "mn": "үр тариа",
     "de": "Getreide",
     "en": "grain",
-    "example_en": "Understanding grain is very helpful.",
-    "example_mn": "Үр тариа гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Getreide ist sehr hilfreich.",
+    "example_en": "Combine harvesters gathered golden grain across miles of flat agricultural fields.",
+    "example_mn": "Комбайнууд олон бээрийн уудам талбайгаас алтан шар үр тариаг хураан авав.",
+    "example_de": "Mähdrescher ernteten das goldene Getreide auf kilometerlangen Feldern.",
     "topic": "Food"
   },
   {
@@ -11640,9 +11640,9 @@
     "mn": "арвай",
     "de": "Gerste",
     "en": "barley",
-    "example_en": "Understanding barley is very helpful.",
-    "example_mn": "Арвай гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Gerste ist sehr hilfreich.",
+    "example_en": "Malted barley is the primary cereal ingredient used in traditional scotch distillation.",
+    "example_mn": "Соёолуулсан арвайн үр нь уламжлалт виски нэрэхэд ашигладаг үндсэн үр тариа юм.",
+    "example_de": "Gemälzte Gerste ist der Hauptbestandteil bei der traditionellen Whisky-Destillation.",
     "topic": "Food"
   },
   {
@@ -11658,9 +11658,9 @@
     "mn": "хөх тариа",
     "de": "Roggen",
     "en": "rye",
-    "example_en": "Understanding rye is very helpful.",
-    "example_mn": "Хөх тариа гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Roggen ist sehr hilfreich.",
+    "example_en": "Dark sourdough bread baked from whole rye flour has a distinct robust flavor.",
+    "example_mn": "Хөх тарианы гурилаар барьсан бараан хөрөнгөт талх нь өвөрмөц сайхан амттай байдаг.",
+    "example_de": "Dunkles Sauerteigbrot aus Roggenmehl hat einen unverwechselbar kräftigen Geschmack.",
     "topic": "Food"
   },
   {
@@ -11676,9 +11676,9 @@
     "mn": "жимсний цэцэрлэг",
     "de": "Obstgarten",
     "en": "orchard",
-    "example_en": "Understanding orchard is very helpful.",
-    "example_mn": "Жимсний цэцэрлэг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Obstgarten ist sehr hilfreich.",
+    "example_en": "Families picked sweet crisp apples at the certified organic mountain orchard.",
+    "example_mn": "Гэр бүлүүд уулын органик жимсний цэцэрлэгт хүрээлэнгээс чихэрлэг алим түүв.",
+    "example_de": "Familien pflückten süße Äpfel auf der biologisch bewirtschafteten Obstplantage.",
     "topic": "Food"
   },
   {
@@ -11694,9 +11694,9 @@
     "mn": "усан үзмийн талбай",
     "de": "Weinberg",
     "en": "vineyard",
-    "example_en": "Understanding vineyard is very helpful.",
-    "example_mn": "Усан үзмийн талбай гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Weinberg ist sehr hilfreich.",
+    "example_en": "The historic terraced vineyard produces world-class dry Riesling white wine.",
+    "example_mn": "Уулын дэнж дээрх түүхэн усан үзмийн тариалан дэлхийн жишигт нийцсэн цагаан дарс үйлдвэрлэдэг.",
+    "example_de": "Der historische Terrassen-Weinberg produziert erstklassigen trockenen Riesling.",
     "topic": "Food"
   },
   {
@@ -11712,9 +11712,9 @@
     "mn": "шувууны аж ахуй",
     "de": "Geflügel",
     "en": "poultry",
-    "example_en": "Understanding poultry is very helpful.",
-    "example_mn": "Шувууны аж ахуй гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Geflügel ist sehr hilfreich.",
+    "example_en": "The farm supplies organic free-range poultry and fresh eggs to regional markets.",
+    "example_mn": "Тус ферм орон нутгийн зах зээлд органик тахиа шувууны мах болон шинэ өндөг нийлүүлдэг.",
+    "example_de": "Der Bauernhof liefert Bio-Geflügel und frische Eier an regionale Märkte.",
     "topic": "Food"
   },
   {
@@ -11730,9 +11730,9 @@
     "mn": "сүү, цагаан идээ",
     "de": "Molkerei",
     "en": "dairy",
-    "example_en": "Understanding dairy is very helpful.",
-    "example_mn": "Сүү, цагаан идээ гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Molkerei ist sehr hilfreich.",
+    "example_en": "Pasture-fed cows supply fresh milk to the local artisanal dairy cooperative.",
+    "example_mn": "Бэлчээрийн үнээнүүд орон нутгийн сүүний үйлдвэрийн хоршоонд шинэ сүү нийлүүлдэг.",
+    "example_de": "Weidekühe liefern frische Milch an die lokale genossenschaftliche Molkerei.",
     "topic": "Food"
   },
   {
@@ -11748,9 +11748,9 @@
     "mn": "дээд хэмжээний уулзалт",
     "de": "Gipfeltreffen",
     "en": "summit",
-    "example_en": "Understanding summit is very helpful.",
-    "example_mn": "Дээд хэмжээний уулзалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Gipfeltreffen ist sehr hilfreich.",
+    "example_en": "World leaders convened at the international climate summit to sign the treaty.",
+    "example_mn": "Дэлхийн удирдагчид цаг уурын олон улсын дээд хэмжээний уулзалтад цуглаж гэрээнд гарын үсэг зурав.",
+    "example_de": "Die Staats- und Regierungschefs trafen sich auf dem Klimagipfel, um den Vertrag zu unterzeichnen.",
     "topic": "Politics"
   },
   {
@@ -11766,9 +11766,9 @@
     "mn": "тусгай элч",
     "de": "Gesandter",
     "en": "envoy",
-    "example_en": "Understanding envoy is very helpful.",
-    "example_mn": "Тусгай элч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Gesandter ist sehr hilfreich.",
+    "example_en": "The president dispatched a diplomatic peace envoy to broker the disputed border treaty.",
+    "example_mn": "Ерөнхийлөгч хилийн маргаантай гэрээг зохицуулахаар дипломат тусгай элчийг томилон илгээв.",
+    "example_de": "Der Präsident entsandte einen Sondergesandten, um das Grenzabkommen zu vermitteln.",
     "topic": "Politics"
   },
   {
@@ -11784,9 +11784,9 @@
     "mn": "төлөөлөгч",
     "de": "Delegierter",
     "en": "delegate",
-    "example_en": "Understanding delegate is very helpful.",
-    "example_mn": "Төлөөлөгч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Delegierter ist sehr hilfreich.",
+    "example_en": "Each accredited international delegate cast a secret ballot during the assembly.",
+    "example_mn": "Итгэмжлэгдсэн олон улсын төлөөлөгч бүр ерөнхий чуулганы үеэр нууцаар санал өгөв.",
+    "example_de": "Jeder akkreditierte internationale Delegierte gab bei der Versammlung eine Stimme ab.",
     "topic": "Politics"
   },
   {
@@ -11802,9 +11802,9 @@
     "mn": "зуучлагч",
     "de": "Vermittler",
     "en": "mediator",
-    "example_en": "Understanding mediator is very helpful.",
-    "example_mn": "Зуучлагч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Vermittler ist sehr hilfreich.",
+    "example_en": "A neutral mediator assisted both corporate unions in resolving their wage dispute.",
+    "example_mn": "Төвийг сахисан зуучлагч компани болон үйлдвэрчний эвлэлийн хоорондох цалингийн маргааныг шийдвэрлэхэд туслав.",
+    "example_de": "Ein neutraler Vermittler half beiden Gewerkschaften, ihren Lohnstreit beizulegen.",
     "topic": "Politics"
   },
   {
@@ -11820,9 +11820,9 @@
     "mn": "гал зогсоох хэлэлцээр",
     "de": "Waffenstillstand",
     "en": "ceasefire",
-    "example_en": "Understanding ceasefire is very helpful.",
-    "example_mn": "Гал зогсоох хэлэлцээр гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Waffenstillstand ist sehr hilfreich.",
+    "example_en": "Both armies agreed to observe an immediate humanitarian ceasefire to evacuate wounded civilians.",
+    "example_mn": "Хоёр талын арми шархадсан иргэдийг нүүлгэн шилжүүлэхийн тулд гал зогсоох хэлэлцээрийг мөрдөхөөр тохиролцов.",
+    "example_de": "Beide Armeen vereinbarten eine Waffenruhe, um verwundete Zivilisten zu evakuieren.",
     "topic": "Politics"
   },
   {
@@ -11856,9 +11856,9 @@
     "mn": "цэрэг, улс төрийн холбоо",
     "de": "Bündnis, Allianz",
     "en": "alliance",
-    "example_en": "Understanding alliance is very helpful.",
-    "example_mn": "Цэрэг, улс төрийн холбоо гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Bündnis, Allianz ist sehr hilfreich.",
+    "example_en": "The mutual defense alliance pledged to protect member nations against foreign aggression.",
+    "example_mn": "Харилцан батлан хамгаалах холбоо, эвсэл нь гишүүн орнуудаа гадны түрэмгийллээс хамгаалахаа амлав.",
+    "example_de": "Das Verteidigungsbündnis verpflichtete sich, seine Mitglieder vor Aggression zu schützen.",
     "topic": "Politics"
   },
   {
@@ -11910,9 +11910,9 @@
     "mn": "давамгайлал, ноёрхол",
     "de": "Hegemonie",
     "en": "hegemony",
-    "example_en": "Understanding hegemony is very helpful.",
-    "example_mn": "Давамгайлал, ноёрхол гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Hegemonie ist sehr hilfreich.",
+    "example_en": "Historians analyze the economic and cultural hegemony of ancient naval empires.",
+    "example_mn": "Түүхчид эртний тэнгисийн эзэнт гүрнүүдийн эдийн засаг, соёлын ноёрхол, ноёлох эрхийг судалдаг.",
+    "example_de": "Historiker analysieren die wirtschaftliche und kulturelle Hegemonie antiker Seemächte.",
     "topic": "Politics"
   },
   {
@@ -11946,9 +11946,9 @@
     "mn": "хилийн хяналт",
     "de": "Grenzkontrolle",
     "en": "border control",
-    "example_en": "Understanding border control is very helpful.",
-    "example_mn": "Хилийн хяналт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Grenzkontrolle ist sehr hilfreich.",
+    "example_en": "Automated biometric scanners at border control accelerated customs passenger processing.",
+    "example_mn": "Хилийн шалган нэвтрүүлэх хэсэг дэх биометрик төхөөрөмж нь зорчигчдын шалгалтыг түргэтгэв.",
+    "example_de": "Biometrische Scanner an der Grenzkontrolle beschleunigten die Abfertigung der Passagiere.",
     "topic": "Politics"
   },
   {
@@ -11964,9 +11964,9 @@
     "mn": "гэмт этгээдийг шилжүүлэн өгөх",
     "de": "Auslieferung",
     "en": "extradition",
-    "example_en": "Understanding extradition is very helpful.",
-    "example_mn": "Гэмт этгээдийг шилжүүлэн өгөх гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Auslieferung ist sehr hilfreich.",
+    "example_en": "The federal court approved the formal extradition of the fugitive back to his homeland.",
+    "example_mn": "Холбооны шүүх оргодол этгээдийг эх оронд нь шилжүүлэн өгөх албан ёсны шийдвэрийг батлав.",
+    "example_de": "Das Gericht stimmte der formellen Auslieferung des Flüchtigen an sein Heimatland zu.",
     "topic": "Politics"
   },
   {
@@ -11982,9 +11982,9 @@
     "mn": "улс төрийн орогнол",
     "de": "Asyl",
     "en": "asylum",
-    "example_en": "Understanding asylum is very helpful.",
-    "example_mn": "Улс төрийн орогнол гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Asyl ist sehr hilfreich.",
+    "example_en": "Human rights advocates helped the displaced political dissident apply for permanent asylum.",
+    "example_mn": "Хүний эрхийн тэмцэгчид улс төрийн тэмцэгчид байнгын орогнол хүсэхэд нь тусалсан.",
+    "example_de": "Menschenrechtler halfen dem Dissidenten, politisches Asyl zu beantragen.",
     "topic": "Politics"
   },
   {
@@ -12000,9 +12000,9 @@
     "mn": "хэлэлцээр, гэрээ",
     "de": "Pakt",
     "en": "pact",
-    "example_en": "Understanding pact is very helpful.",
-    "example_mn": "Хэлэлцээр, гэрээ гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Pakt ist sehr hilfreich.",
+    "example_en": "The three neighboring trading nations ratified a landmark non-aggression pact.",
+    "example_mn": "Хөрш худалдааны гурван улс харилцан үл довтлох түүхэн гэрээ хэлэлцээрийг соёрхон батлав.",
+    "example_de": "Die drei Nachbarstaaten ratifizierten einen historischen Nichtangriffspakt.",
     "topic": "Politics"
   },
   {
@@ -12018,9 +12018,9 @@
     "mn": "тусгаар тогтносон улс",
     "de": "souveräner Staat",
     "en": "sovereign state",
-    "example_en": "Understanding sovereign state is very helpful.",
-    "example_mn": "Тусгаар тогтносон улс гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von souveräner Staat ist sehr hilfreich.",
+    "example_en": "A fully sovereign state exercises exclusive legal jurisdiction over its national borders.",
+    "example_mn": "Бүрэн эрхт тусгаар улс нь өөрийн улсын хил хязгаарт хууль эрх зүйн онцгой бүрэн эрхийг хэрэгжүүлдэг.",
+    "example_de": "Ein souveräner Staat übt die ausschließliche Rechtsordnung über sein Hoheitsgebiet aus.",
     "topic": "Politics"
   },
   {
@@ -12036,9 +12036,9 @@
     "mn": "зэвсэг үл дэлгэрүүлэх",
     "de": "Nichtverbreitung",
     "en": "non-proliferation",
-    "example_en": "Understanding non-proliferation is very helpful.",
-    "example_mn": "Зэвсэг үл дэлгэрүүлэх гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Nichtverbreitung ist sehr hilfreich.",
+    "example_en": "The multilateral non-proliferation treaty restricts the spread of enriched radioactive materials.",
+    "example_mn": "Цөмийн зэвсэг үл дэлгэрүүлэх тухай олон талт гэрээ нь баяжуулсан цацраг идэвхт бодисын тархалтыг хязгаарладаг.",
+    "example_de": "Der Atomwaffensperrvertrag begrenzt die Verbreitung von waffenfähigem radioaktivem Material.",
     "topic": "Politics"
   },
   {
@@ -12054,9 +12054,9 @@
     "mn": "энхийг сахиулах ажиллагаа",
     "de": "Friedenssicherung",
     "en": "peacekeeping",
-    "example_en": "Understanding peacekeeping is very helpful.",
-    "example_mn": "Энхийг сахиулах ажиллагаа гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Friedenssicherung ist sehr hilfreich.",
+    "example_en": "United Nations peacekeeping battalions patrolled the demilitarized buffer zone.",
+    "example_mn": "НҮБ-ын энхийг сахиулах батальонууд цэрэггүйжүүлсэн бүсийн дагуу эргүүл хийж байв.",
+    "example_de": "UN-Friedenstruppen patrouillierten in der entmilitarisierten Pufferzone.",
     "topic": "Politics"
   },
   {
@@ -12072,9 +12072,9 @@
     "mn": "бөөний худалдаа",
     "de": "Großhandel",
     "en": "wholesale",
-    "example_en": "Understanding wholesale is very helpful.",
-    "example_mn": "Бөөний худалдаа гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Großhandel ist sehr hilfreich.",
+    "example_en": "Supermarket chains purchase organic produce in massive wholesale quantities directly from farmers.",
+    "example_mn": "Сүлжээ дэлгүүрүүд органик хүнсний ногоог тариаланчдаас шууд бөөний худалдаагаар их хэмжээгээр авдаг.",
+    "example_de": "Supermarktketten kaufen Bio-Lebensmittel in großen Großhandelsmengen direkt von den Erzeugern.",
     "topic": "Commerce"
   },
   {
@@ -12090,9 +12090,9 @@
     "mn": "жижиглэн худалдаа",
     "de": "Einzelhandel",
     "en": "retail",
-    "example_en": "Understanding retail is very helpful.",
-    "example_mn": "Жижиглэн худалдаа гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Einzelhandel ist sehr hilfreich.",
+    "example_en": "Online retail platforms offer doorstep delivery for household consumer electronics.",
+    "example_mn": "Цахим жижиглэн худалдааны платформууд гэр ахуйн цахилгаан барааг хаалган дээр хүргэж өгдөг.",
+    "example_de": "Online-Einzelhändler bieten die Lieferung von Haushaltselektronik direkt an die Haustür an.",
     "topic": "Commerce"
   },
   {
@@ -12108,9 +12108,9 @@
     "mn": "ачаа тээвэрлэлт",
     "de": "Fracht",
     "en": "freight",
-    "example_en": "Understanding freight is very helpful.",
-    "example_mn": "Ачаа тээвэрлэлт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Fracht ist sehr hilfreich.",
+    "example_en": "The shipping conglomerate moved two million tons of commercial freight across the Atlantic.",
+    "example_mn": "Тээврийн томоохон конгломерат Атлантын далайг дамнуулан хоёр сая тонн арилжааны ачаа тээвэрлэжээ.",
+    "example_de": "Die Reederei beförderte zwei Millionen Tonnen Fracht über den Atlantischen Ozean.",
     "topic": "Commerce"
   },
   {
@@ -12126,9 +12126,9 @@
     "mn": "илгээсэн ачаа",
     "de": "Sendung, Frachtgut",
     "en": "consignment",
-    "example_en": "Understanding consignment is very helpful.",
-    "example_mn": "Илгээсэн ачаа гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Sendung, Frachtgut ist sehr hilfreich.",
+    "example_en": "The customs dock received a large consignment of handcrafted wool sweaters from Scotland.",
+    "example_mn": "Гаалийн боомтод Шотландаас илгээсэн гар хийцийн ноосон цамцны том илгээмж, ачаа ирлээ.",
+    "example_de": "Das Zolldock empfing eine große Lieferung handgefertigter Wollpullover aus Schottland.",
     "topic": "Commerce"
   },
   {
@@ -12144,9 +12144,9 @@
     "mn": "бараа материалын тооллого",
     "de": "Inventar",
     "en": "inventory",
-    "example_en": "Understanding inventory is very helpful.",
-    "example_mn": "Бараа материалын тооллого гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Inventar ist sehr hilfreich.",
+    "example_en": "Bar-code scanning software tracks warehouse inventory in real time to prevent shortages.",
+    "example_mn": "Зураасан код уншигч програм нь хомсдолоос сэргийлэхийн тулд агуулахын барааны тооллогыг шууд хянадаг.",
+    "example_de": "Barcodesoftware erfasst den Lagerbestand in Echtzeit, um Engpässe zu vermeiden.",
     "topic": "Commerce"
   },
   {
@@ -12162,9 +12162,9 @@
     "mn": "гаалийн бүрдүүлэлт",
     "de": "Zollabfertigung",
     "en": "customs clearance",
-    "example_en": "Understanding customs clearance is very helpful.",
-    "example_mn": "Гаалийн бүрдүүлэлт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Zollabfertigung ist sehr hilfreich.",
+    "example_en": "Importers submitted commercial invoices to speed up customs clearance for perishable berries.",
+    "example_mn": "Импортлогчид түргэн муудах жимсний гаалийн бүрдүүлэлтийг түргэтгэхийн тулд нэхэмжлэхүүдээ ирүүлэв.",
+    "example_de": "Importeure reichten Rechnungen ein, um die Zollabfertigung für Beeren zu beschleunigen.",
     "topic": "Commerce"
   },
   {
@@ -12180,9 +12180,9 @@
     "mn": "барааны агуулах",
     "de": "Warenlager",
     "en": "warehouse",
-    "example_en": "Understanding warehouse is very helpful.",
-    "example_mn": "Барааны агуулах гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Warenlager ist sehr hilfreich.",
+    "example_en": "Automated electric forklifts organize pallet racks in the climate-controlled warehouse.",
+    "example_mn": "Автоматжуулсан цахилгаан өргөгч машинууд тусгай температурын хяналттай агуулахад барааг өрж байрлуулдаг.",
+    "example_de": "Automatisierte Gabelstapler sortieren Palettenregale im klimatisierten Lagerhaus.",
     "topic": "Commerce"
   },
   {
@@ -12198,9 +12198,9 @@
     "mn": "дамжин өнгөрөлт",
     "de": "Transit",
     "en": "transit",
-    "example_en": "Understanding transit is very helpful.",
-    "example_mn": "Дамжин өнгөрөлт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Transit ist sehr hilfreich.",
+    "example_en": "The heavy shipping containers were damaged while in overland railway transit.",
+    "example_mn": "Хүнд далайн тээврийн контейнерууд хуурай замын төмөр замын дамжин өнгөрөх тээвэрлэлтийн үед гэмтсэн байв.",
+    "example_de": "Die schweren Frachtcontainer wurden während des Transports auf der Schiene beschädigt.",
     "topic": "Commerce"
   },
   {
@@ -12216,9 +12216,9 @@
     "mn": "илгээлт, явуулах",
     "de": "Versand",
     "en": "dispatch",
-    "example_en": "Understanding dispatch is very helpful.",
-    "example_mn": "Илгээлт, явуулах гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Versand ist sehr hilfreich.",
+    "example_en": "The logistics control center coordinated the swift dispatch of emergency relief convoys.",
+    "example_mn": "Логистикийн хяналтын төв тусламжийн цувааг гамшгийн бүс рүү яаралтай илгээх ажлыг зохион байгуулав.",
+    "example_de": "Das Logistikzentrum koordinierte den raschen Versand der Hilfskonvois.",
     "topic": "Commerce"
   },
   {
@@ -12234,9 +12234,9 @@
     "mn": "ачааны дагалдах бичиг",
     "de": "Konnossement",
     "en": "bill of lading",
-    "example_en": "Understanding bill of lading is very helpful.",
-    "example_mn": "Ачааны дагалдах бичиг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Konnossement ist sehr hilfreich.",
+    "example_en": "The cargo captain endorsed the original bill of lading upon offloading the containers.",
+    "example_mn": "Ачааны хөлгийн ахмад контейнеруудыг буулгасны дараа дагалдах бичиг, коносамент дээр гарын үсэг зурав.",
+    "example_de": "Der Frachtkapitän zeichnete das Original des Konnossements nach dem Entladen ab.",
     "topic": "Commerce"
   },
   {
@@ -12252,9 +12252,9 @@
     "mn": "худалдааны хориг",
     "de": "Handelsembargo",
     "en": "embargo",
-    "example_en": "Understanding embargo is very helpful.",
-    "example_mn": "Худалдааны хориг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Handelsembargo ist sehr hilfreich.",
+    "example_en": "The regional security council voted to impose an immediate maritime trade embargo.",
+    "example_mn": "Бүс нутгийн аюулгүй байдлын зөвлөл далайн худалдааны хориг арга хэмжээ авах шийдвэр гаргав.",
+    "example_de": "Der Sicherheitsrat stimmte für die Verhängung eines maritimen Handelsembargos.",
     "topic": "Commerce"
   },
   {
@@ -12270,9 +12270,9 @@
     "mn": "квот, хуваарь",
     "de": "Quote",
     "en": "quota",
-    "example_en": "Understanding quota is very helpful.",
-    "example_mn": "Квот, хуваарь гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Quote ist sehr hilfreich.",
+    "example_en": "The international treaty established an annual fishing quota for bluefin tuna.",
+    "example_mn": "Олон улсын гэрээгээр хөх сэрвээт туна загасны жилийн барих хэмжээ, квотыг тогтоосон.",
+    "example_de": "Das internationale Abkommen legte eine jährliche Fangquote für Roten Thun fest.",
     "topic": "Commerce"
   },
   {
@@ -12288,9 +12288,9 @@
     "mn": "ханган нийлүүлэгч",
     "de": "Lieferant",
     "en": "supplier",
-    "example_en": "Understanding supplier is very helpful.",
-    "example_mn": "Ханган нийлүүлэгч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Lieferant ist sehr hilfreich.",
+    "example_en": "The manufacturing plant audits each certified component supplier for environmental compliance.",
+    "example_mn": "Үйлдвэр нь байгаль орчны дүрэм журмыг мөрдөж буй эсэхийг шалгахаар эд анги нийлүүлэгч бүртээ аудит хийдэг.",
+    "example_de": "Das Werk auditiert jeden Komponentenlieferanten auf Umweltverträglichkeit.",
     "topic": "Commerce"
   },
   {
@@ -12306,9 +12306,9 @@
     "mn": "түгээгч",
     "de": "Vertreiber",
     "en": "distributor",
-    "example_en": "Understanding distributor is very helpful.",
-    "example_mn": "Түгээгч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Vertreiber ist sehr hilfreich.",
+    "example_en": "The publishing house signed an exclusive agreement with an international book distributor.",
+    "example_mn": "Хэвлэлийн газар олон улсын ном түгээгч компанитай онцгой эрхтэй түгээлтийн гэрээ байгуулав.",
+    "example_de": "Der Verlag unterzeichnete einen Exklusivvertrag mit einem internationalen Buchvertrieb.",
     "topic": "Commerce"
   },
   {
@@ -12324,9 +12324,9 @@
     "mn": "худалдаачин",
     "de": "Kaufmann, Händler",
     "en": "merchant",
-    "example_en": "Understanding merchant is very helpful.",
-    "example_mn": "Худалдаачин гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Kaufmann, Händler ist sehr hilfreich.",
+    "example_en": "A spice merchant traveled along the Silk Road trading saffron and cinnamon.",
+    "example_mn": "Халуун ногооны худалдаачин Торгоны замаар аялан гүргэм болон шанцай худалдаалдаг байжээ.",
+    "example_de": "Ein Gewürzhändler reiste entlang der Seidenstraße und handelte mit Safran und Zimt.",
     "topic": "Commerce"
   },
   {
@@ -12342,9 +12342,9 @@
     "mn": "борлуулагч",
     "de": "Verkäufer, Anbieter",
     "en": "vendor",
-    "example_en": "Understanding vendor is very helpful.",
-    "example_mn": "Борлуулагч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Verkäufer, Anbieter ist sehr hilfreich.",
+    "example_en": "Local market vendors sell fresh artisan bread and aged cheese every Saturday.",
+    "example_mn": "Орон нутгийн захын борлуулагчид бямба гараг бүр гар хийцийн талх болон бяслаг худалддаг.",
+    "example_de": "Lokale Markthändler verkaufen jeden Samstag frisches Bauernbrot und gereiften Käse.",
     "topic": "Commerce"
   },
   {
@@ -12360,9 +12360,9 @@
     "mn": "хугацаа хэтрүүлсний торгууль",
     "de": "Liegegeld",
     "en": "demurrage",
-    "example_en": "Understanding demurrage is very helpful.",
-    "example_mn": "Хугацаа хэтрүүлсний торгууль гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Liegegeld ist sehr hilfreich.",
+    "example_en": "The shipping line billed the importer daily demurrage fees for holding containers too long.",
+    "example_mn": "Усан тээврийн компани чингэлгийг хэт удаан саатуулсан тул хугацаа хэтрүүлсний торгууль ногдуулав.",
+    "example_de": "Die Reederei stellte dem Importeur Liegegebühren für die Verzögerung in Rechnung.",
     "topic": "Commerce"
   },
   {
@@ -12378,9 +12378,9 @@
     "mn": "төлбөрийн вексель",
     "de": "Wechsel",
     "en": "bill of exchange",
-    "example_en": "Understanding bill of exchange is very helpful.",
-    "example_mn": "Төлбөрийн вексель гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Wechsel ist sehr hilfreich.",
+    "example_en": "The merchant presented a foreign bill of exchange to secure funding for the shipment.",
+    "example_mn": "Худалдаачин бараа нийлүүлэлтийн санхүүжилтийг баталгаажуулахын тулд төлбөрийн вексель үзүүлэв.",
+    "example_de": "Der Kaufmann legte einen Wechsel vor, um die Finanzierung der Lieferung zu sichern.",
     "topic": "Commerce"
   },
   {
@@ -12396,9 +12396,9 @@
     "mn": "аккредитив баталгаа",
     "de": "Akkreditiv",
     "en": "letter of credit",
-    "example_en": "Understanding letter of credit is very helpful.",
-    "example_mn": "Аккредитив баталгаа гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Akkreditiv ist sehr hilfreich.",
+    "example_en": "The commercial bank issued an irrevocable letter of credit to guarantee export payment.",
+    "example_mn": "Арилжааны банк экспортын төлбөрийг баталгаажуулахын тулд цуцлашгүй аккредитив гаргаж өгөв.",
+    "example_de": "Die Geschäftsbank stellte ein unwiderrufliches Akkreditiv zur Zahlungsabsicherung aus.",
     "topic": "Commerce"
   },
   {
@@ -12414,9 +12414,9 @@
     "mn": "нийлүүлэлтийн сүлжээний менежмент",
     "de": "Lieferkettenmanagement",
     "en": "supply chain management",
-    "example_en": "Understanding supply chain management is very helpful.",
-    "example_mn": "Нийлүүлэлтийн сүлжээний менежмент гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Lieferkettenmanagement ist sehr hilfreich.",
+    "example_en": "Advanced analytics transformed global supply chain management during international crises.",
+    "example_mn": "Дэвшилтэт аналитик нь олон улсын хямралын үед нийлүүлэлтийн сүлжээний менежментийг эрс шинэчилсэн.",
+    "example_de": "Moderne Analysen transformierten das globale Lieferkettenmanagement während der Krise.",
     "topic": "Commerce"
   },
   {
@@ -12432,9 +12432,9 @@
     "mn": "тууштай чанар, тэсвэр",
     "de": "Beharrlichkeit",
     "en": "perseverance",
-    "example_en": "Understanding perseverance is very helpful.",
-    "example_mn": "Тууштай чанар, тэсвэр гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Beharrlichkeit ist sehr hilfreich.",
+    "example_en": "Her remarkable academic perseverance carried her through years of difficult clinical research.",
+    "example_mn": "Түүний эрдэм шинжилгээний цуцашгүй тууштай чанар нь олон жилийн хүнд судалгааг даван туулахад тусалсан.",
+    "example_de": "Ihre bemerkenswerte Ausdauer trug sie durch Jahre anspruchsvoller klinischer Forschung.",
     "topic": "Psychology"
   },
   {
@@ -12450,9 +12450,9 @@
     "mn": "үнэн бодит байдал",
     "de": "Authentizität",
     "en": "authenticity",
-    "example_en": "Understanding authenticity is very helpful.",
-    "example_mn": "Үнэн бодит байдал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Authentizität ist sehr hilfreich.",
+    "example_en": "Art historians conducted infrared analysis to establish the absolute authenticity of the painting.",
+    "example_mn": "Урлаг судлаачид уран зургийн жинхэнэ, үнэн бодит байдлыг тогтоохын тулд хэт улаан туяаны шинжилгээ хийв.",
+    "example_de": "Kunsthistoriker führten Infrarotanalysen durch, um die Echtheit des Gemäldes zu prüfen.",
     "topic": "Psychology"
   },
   {
@@ -12468,9 +12468,9 @@
     "mn": "нигүүлсэнгүй сэтгэл",
     "de": "Wohlwollen",
     "en": "benevolence",
-    "example_en": "Understanding benevolence is very helpful.",
-    "example_mn": "Нигүүлсэнгүй сэтгэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Wohlwollen ist sehr hilfreich.",
+    "example_en": "The elderly doctor was beloved throughout the valley for his quiet, compassionate benevolence.",
+    "example_mn": "Ахмад эмч аядуу зөөлөн, нигүүлсэнгүй сэтгэлээрээ хөндийн бүх оршин суугчдын хайр хүндэтгэлийг хүлээжээ.",
+    "example_de": "Der alte Arzt wurde wegen seines mitfühlenden Wohlwollens geschätzt.",
     "topic": "Psychology"
   },
   {
@@ -12486,9 +12486,9 @@
     "mn": "шулуун шулуухан зан",
     "de": "Aufrichtigkeit",
     "en": "candor",
-    "example_en": "Understanding candor is very helpful.",
-    "example_mn": "Шулуун шулуухан зан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Aufrichtigkeit ist sehr hilfreich.",
+    "example_en": "We appreciated her honest intellectual candor when discussing project shortcomings.",
+    "example_mn": "Төслийн дутагдалтай талуудыг хэлэлцэх үеэр түүний шулуун шударга, шулуухан занг бид өндрөөр үнэлсэн.",
+    "example_de": "Wir schätzten ihre intellektuelle Offenheit bei der Diskussion von Projektschwächen.",
     "topic": "Psychology"
   },
   {
@@ -12504,9 +12504,9 @@
     "mn": "хянуур болгоомж",
     "de": "Diskretion",
     "en": "discretion",
-    "example_en": "Understanding discretion is very helpful.",
-    "example_mn": "Хянуур болгоомж гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Diskretion ist sehr hilfreich.",
+    "example_en": "Legal counsel handled the sensitive merger negotiations with utmost professional discretion.",
+    "example_mn": "Хуулийн зөвлөх компанийн нэгдэх тухай эмзэг хэлэлцээг маш өндөр хянуур болгоомжтой явуулав.",
+    "example_de": "Der Rechtsberater führte die Verhandlungen mit größter Diskretion.",
     "topic": "Psychology"
   },
   {
@@ -12522,9 +12522,9 @@
     "mn": "уран цэцэн үг",
     "de": "Beredsamkeit",
     "en": "eloquence",
-    "example_en": "Understanding eloquence is very helpful.",
-    "example_mn": "Уран цэцэн үг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Beredsamkeit ist sehr hilfreich.",
+    "example_en": "The civil rights leader spoke with profound moral eloquence that moved the nation.",
+    "example_mn": "Иргэний эрхийн төлөө тэмцэгч ард түмний сэтгэлийг хөдөлгөсөн ёс суртахууны уран цэцэн үгээр илтгэв.",
+    "example_de": "Die Bürgerrechtlerin sprach mit moralischer Beredsamkeit, die die Nation tief bewegte.",
     "topic": "Psychology"
   },
   {
@@ -12540,9 +12540,9 @@
     "mn": "сэтгэлийн тэнхээ",
     "de": "Seelenstärke",
     "en": "fortitude",
-    "example_en": "Understanding fortitude is very helpful.",
-    "example_mn": "Сэтгэлийн тэнхээ гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Seelenstärke ist sehr hilfreich.",
+    "example_en": "The resilient population endured the harsh winter blockade with heroic spiritual fortitude.",
+    "example_mn": "Хатан зоригтой ард түмэн өвлийн хатуу бүслэлтийг сэтгэлийн тэнхээ, хатуужлаараа даван туулсан.",
+    "example_de": "Die Bevölkerung ertrug die harte Winterblockade mit bewundernswerter Seelenstärke.",
     "topic": "Psychology"
   },
   {
@@ -12558,9 +12558,9 @@
     "mn": "даруу зан",
     "de": "Bescheidenheit",
     "en": "humility",
-    "example_en": "Understanding humility is very helpful.",
-    "example_mn": "Даруу зан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Bescheidenheit ist sehr hilfreich.",
+    "example_en": "Despite his Nobel Prize recognition, the theoretical physicist maintained genuine personal humility.",
+    "example_mn": "Нобелийн шагнал хүртсэн хэдий ч онолын физикч эгэл даруу зан чанараа хадгалсаар байсан юм.",
+    "example_de": "Trotz des Nobelpreises bewahrte der Physiker stets aufrichtige Bescheidenheit.",
     "topic": "Psychology"
   },
   {
@@ -12576,9 +12576,9 @@
     "mn": "ухаалаг болгоомжтой байдал",
     "de": "Klugheit, Vorsicht",
     "en": "prudence",
-    "example_en": "Understanding prudence is very helpful.",
-    "example_mn": "Ухаалаг болгоомжтой байдал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Klugheit, Vorsicht ist sehr hilfreich.",
+    "example_en": "Financial prudence dictated that the household keep an emergency reserve fund in savings.",
+    "example_mn": "Санхүүгийн ухаалаг болгоомжтой байдал нь гэр бүлдээ гэнэтийн хэрэгцээний нөөц хадгаламжтай байхыг сануулдаг.",
+    "example_de": "Finanzielle Klugheit gebot es der Familie, einen Notfallfonds zu behalten.",
     "topic": "Psychology"
   },
   {
@@ -12594,9 +12594,9 @@
     "mn": "цуцашгүй зүтгэл",
     "de": "Zähigkeit",
     "en": "tenacity",
-    "example_en": "Understanding tenacity is very helpful.",
-    "example_mn": "Цуцашгүй зүтгэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Zähigkeit ist sehr hilfreich.",
+    "example_en": "The defense attorney pursued truth with extraordinary intellectual and investigative tenacity.",
+    "example_mn": "Өмгөөлөгч үнэний төлөө цуцашгүй зүтгэл, тууштай мөрдлөгөөр уйгагүй ажилласан.",
+    "example_de": "Die Anwältin verfolgte die Wahrheit mit bemerkenswerter Hartnäckigkeit.",
     "topic": "Psychology"
   },
   {
@@ -12612,9 +12612,9 @@
     "mn": "үнэнч шударга чанар",
     "de": "Wahrhaftigkeit",
     "en": "veracity",
-    "example_en": "Understanding veracity is very helpful.",
-    "example_mn": "Үнэнч шударга чанар гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Wahrhaftigkeit ist sehr hilfreich.",
+    "example_en": "The investigative journalist corroborated every factual witness statement to guarantee veracity.",
+    "example_mn": "Эрэн сурвалжлах сэтгүүлч үнэн зөв байдлыг хангахын тулд гэрчүүдийн бүх мэдүүлгийг тулган шалгав.",
+    "example_de": "Die Journalistin überprüfte jede Zeugenaussage, um deren Wahrhaftigkeit zu belegen.",
     "topic": "Psychology"
   },
   {
@@ -12630,9 +12630,9 @@
     "mn": "оргилуун хүсэл тэмүүлэл",
     "de": "Eifer",
     "en": "zeal",
-    "example_en": "Understanding zeal is very helpful.",
-    "example_mn": "Оргилуун хүсэл тэмүүлэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Eifer ist sehr hilfreich.",
+    "example_en": "The young volunteer addressed environmental cleanup tasks with infectious philanthropic zeal.",
+    "example_mn": "Залуу сайн дурын ажилтан байгаль орчныг цэвэрлэх ажилд оргилуун хүсэл тэмүүлэлтэйгээр хандаж байв.",
+    "example_de": "Der junge Freiwillige widmete sich den Umweltaufgaben mit ansteckendem Eifer.",
     "topic": "Psychology"
   },
   {
@@ -12648,9 +12648,9 @@
     "mn": "бусдын төлөө гэх сэтгэл",
     "de": "Altruismus",
     "en": "altruism",
-    "example_en": "Understanding altruism is very helpful.",
-    "example_mn": "Бусдын төлөө гэх сэтгэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Altruismus ist sehr hilfreich.",
+    "example_en": "Organ donation is an inspiring example of selfless medical altruism toward strangers.",
+    "example_mn": "Эрхтэн хандивлах нь танихгүй нэгний төлөө гаргаж буй бусдын төлөө гэх сэтгэлийн гайхамшигт жишээ юм.",
+    "example_de": "Die Organspende ist ein berührendes Beispiel für selbstlosen Altruismus.",
     "topic": "Psychology"
   },
   {
@@ -12666,9 +12666,9 @@
     "mn": "уужим өгөөмөр сэтгэл",
     "de": "Großherzigkeit",
     "en": "magnanimity",
-    "example_en": "Understanding magnanimity is very helpful.",
-    "example_mn": "Уужим өгөөмөр сэтгэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Großherzigkeit ist sehr hilfreich.",
+    "example_en": "The triumphant leader demonstrated statesmanlike magnanimity by pardoning all political prisoners.",
+    "example_mn": "Ялалт байгуулсан удирдагч бүх улс төрийн хоригдлуудыг өршөөснөөр уужим өгөөмөр сэтгэлээ харуулав.",
+    "example_de": "Der Sieger bewies staatsmännische Großmut, indem er politische Gefangene begnadigte.",
     "topic": "Psychology"
   },
   {
@@ -12684,9 +12684,9 @@
     "mn": "хэрсүү гярхай ухаан",
     "de": "Scharfsinn",
     "en": "acumen",
-    "example_en": "Understanding acumen is very helpful.",
-    "example_mn": "Хэрсүү гярхай ухаан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Scharfsinn ist sehr hilfreich.",
+    "example_en": "Her sharp commercial acumen allowed the investment firm to capitalize on emerging tech markets.",
+    "example_mn": "Түүний хэрсүү гярхай ухаан нь хөрөнгө оруулалтын компанид шинэ технологийн зах зээлийг ашиглах боломжийг олгосон.",
+    "example_de": "Ihr kaufmännischer Scharfsinn ermöglichte es der Firma, Chancen zu nutzen.",
     "topic": "Psychology"
   },
   {
@@ -12702,9 +12702,9 @@
     "mn": "эрс зоримог байдал",
     "de": "Kühnheit, Dreistigkeit",
     "en": "audacity",
-    "example_en": "Understanding audacity is very helpful.",
-    "example_mn": "Эрс зоримог байдал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Kühnheit, Dreistigkeit ist sehr hilfreich.",
+    "example_en": "The mountain climber had the supreme audacity to attempt the sheer frozen wall without safety ropes.",
+    "example_mn": "Уулчин хамгаалалтын олсгүйгээр эгц мөсөн ханыг давахаар эрс зоримог байдал гаргажээ.",
+    "example_de": "Der Bergsteiger besaß die Kühnheit, die Eiswand ohne Sicherung anzugehen.",
     "topic": "Psychology"
   },
   {
@@ -12720,9 +12720,9 @@
     "mn": "хөнгөн хийсвэр зориг",
     "de": "Prahlerei, Gehabe",
     "en": "bravado",
-    "example_en": "Understanding bravado is very helpful.",
-    "example_mn": "Хөнгөн хийсвэр зориг гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Prahlerei, Gehabe ist sehr hilfreich.",
+    "example_en": "His swaggering bravado masked deep personal insecurity about taking the qualifying examination.",
+    "example_mn": "Түүний хөнгөн хийсвэр зоригтой царайлах нь шалгалт өгөхөөс эмээх хувийн айдас эргэлзээгээ нуух оролдлого байв.",
+    "example_de": "Seine zur Schau gestellte Prahlerei überdeckte tiefe persönliche Unsicherheit.",
     "topic": "Psychology"
   },
   {
@@ -12738,9 +12738,9 @@
     "mn": "өөртөө хэт эрдэх",
     "de": "Selbstzufriedenheit",
     "en": "complacency",
-    "example_en": "Understanding complacency is very helpful.",
-    "example_mn": "Өөртөө хэт эрдэх гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Selbstzufriedenheit ist sehr hilfreich.",
+    "example_en": "Market leaders cannot afford intellectual complacency when innovative rivals enter the sector.",
+    "example_mn": "Шинэлэг өрсөлдөгчид гарч ирж байхад зах зээлийн тэргүүлэгчид өөртөө хэт эрдэх эрхгүй.",
+    "example_de": "Marktführer dürfen sich keine Selbstzufriedenheit leisten, wenn Rivalen aufkommen.",
     "topic": "Psychology"
   },
   {
@@ -12756,9 +12756,9 @@
     "mn": "хоёр нүүр, хуурмаг зан",
     "de": "Doppelzüngigkeit",
     "en": "duplicity",
-    "example_en": "Understanding duplicity is very helpful.",
-    "example_mn": "Хоёр нүүр, хуурмаг зан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Doppelzüngigkeit ist sehr hilfreich.",
+    "example_en": "The double agent was convicted for treasonous duplicity after leaking state cryptographic codes.",
+    "example_mn": "Давхар тагнуулч төрийн криптограф кодыг задруулсны дараа урвасан хоёр нүүрт зангаараа ял сонсжээ.",
+    "example_de": "Der Doppelagent wurde wegen verräterischer Doppelzüngigkeit verurteilt.",
     "topic": "Psychology"
   },
   {
@@ -12774,9 +12774,9 @@
     "mn": "хувирамтгай зан",
     "de": "Wankelmut",
     "en": "fickleness",
-    "example_en": "Understanding fickleness is very helpful.",
-    "example_mn": "Хувирамтгай зан гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Wankelmut ist sehr hilfreich.",
+    "example_en": "Seasonal tourists lament the notorious fickleness of coastal spring weather.",
+    "example_mn": "Улирлын жуулчид далайн эргийн хаврын цаг агаарын хувирамтгай тогтворгүй занг шүүмжилдэг.",
+    "example_de": "Touristen beklagen die berüchtigte Unbeständigkeit des Frühlingswetters an der Küste.",
     "topic": "Psychology"
   },
   {
@@ -12792,9 +12792,9 @@
     "mn": "зүрх судасны эмч",
     "de": "Kardiologe",
     "en": "cardiologist",
-    "example_en": "Understanding cardiologist is very helpful.",
-    "example_mn": "Зүрх судасны эмч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Kardiologe ist sehr hilfreich.",
+    "example_en": "The consulting cardiologist recommended cardiac catheterization to clear the blocked artery.",
+    "example_mn": "Зүрх судасны зөвлөх эмч бөглөрсөн судсыг нээхийн тулд зүрхний зондоор сэтгэх эмчилгээг санал болгов.",
+    "example_de": "Die Kardiologin empfahl eine Katheteruntersuchung, um die Arterie zu öffnen.",
     "topic": "Health"
   },
   {
@@ -12810,9 +12810,9 @@
     "mn": "мэдрэлийн эмч",
     "de": "Neurologe",
     "en": "neurologist",
-    "example_en": "Understanding neurologist is very helpful.",
-    "example_mn": "Мэдрэлийн эмч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Neurologe ist sehr hilfreich.",
+    "example_en": "A specialized neurologist performed an electroencephalogram to monitor seizure activity.",
+    "example_mn": "Мэргэшсэн мэдрэлийн эмч таталтын үйл ажиллагааг хянахын тулд тархины цахилгаан бичлэг хийсэн.",
+    "example_de": "Ein Neurologe führte ein EEG durch, um Anfallsaktivitäten im Gehirn zu überwachen.",
     "topic": "Health"
   },
   {
@@ -12828,9 +12828,9 @@
     "mn": "арьс өнгөний эмч",
     "de": "Dermatologe",
     "en": "dermatologist",
-    "example_en": "Understanding dermatologist is very helpful.",
-    "example_mn": "Арьс өнгөний эмч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Dermatologe ist sehr hilfreich.",
+    "example_en": "Visit an experienced dermatologist annually to examine suspicious moles on your skin.",
+    "example_mn": "Арьсан дээрх сэжигтэй мэнгээ шалгуулахын тулд туршлагатай арьс өнгөний эмчид жилд нэг удаа үзүүлж байгаарай.",
+    "example_de": "Suchen Sie jährlich einen Hautarzt auf, um auffällige Muttermale untersuchen zu lassen.",
     "topic": "Health"
   },
   {
@@ -12846,9 +12846,9 @@
     "mn": "хүүхдийн эмч",
     "de": "Kinderarzt",
     "en": "pediatrician",
-    "example_en": "Understanding pediatrician is very helpful.",
-    "example_mn": "Хүүхдийн эмч гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Kinderarzt ist sehr hilfreich.",
+    "example_en": "The friendly pediatrician weighed the newborn infant and administered developmental checks.",
+    "example_mn": "Нөхөрсөг хүүхдийн эмч нярайг жинлэж, хөгжлийн хэвийн явцыг шалгав.",
+    "example_de": "Der Kinderarzt wog den Säugling und führte die Entwicklungsuntersuchungen durch.",
     "topic": "Health"
   },
   {
@@ -12864,9 +12864,9 @@
     "mn": "хавдар судлал",
     "de": "Onkologie",
     "en": "oncology",
-    "example_en": "Understanding oncology is very helpful.",
-    "example_mn": "Хавдар судлал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Onkologie ist sehr hilfreich.",
+    "example_en": "Targeted immunotherapies have revolutionized modern clinical oncology and cancer survival.",
+    "example_mn": "Зорилтот дархлаа эмчилгээ нь орчин үеийн хавдар судлал болон хавдрыг даван туулах чадварыг эрс өөрчилсөн.",
+    "example_de": "Gezielte Immuntherapien revolutionierten die Onkologie und verbesserten Überlebenschancen.",
     "topic": "Health"
   },
   {
@@ -12882,9 +12882,9 @@
     "mn": "рентген зураглал",
     "de": "Röntgenologie",
     "en": "radiography",
-    "example_en": "Understanding radiography is very helpful.",
-    "example_mn": "Рентген зураглал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Röntgenologie ist sehr hilfreich.",
+    "example_en": "Digital chest radiography confirmed that the patient had completely recovered from pneumonia.",
+    "example_mn": "Уушгины дижитал рентген зураглал өвчтөн хатгалгаанаас бүрэн эдгэрснийг баталгаажуулав.",
+    "example_de": "Die Röntgenaufnahme des Brustkorbs bestätigte die vollständige Genesung von der Lungenentzündung.",
     "topic": "Health"
   },
   {
@@ -12900,9 +12900,9 @@
     "mn": "эхо оношлогоо",
     "de": "Ultraschall",
     "en": "ultrasound",
-    "example_en": "Understanding ultrasound is very helpful.",
-    "example_mn": "Эхо оношлогоо гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Ultraschall ist sehr hilfreich.",
+    "example_en": "An obstetric ultrasound revealed healthy fetal movement during the twentieth week.",
+    "example_mn": "Эх барихын эхо оношлогоо хорь дахь долоо хоногт ургийн эрүүл хөдөлгөөнийг харуулсан.",
+    "example_de": "Die Ultraschalluntersuchung zeigte gesunde Bewegungen des Fötus in der zwanzigsten Woche.",
     "topic": "Health"
   },
   {
@@ -12918,9 +12918,9 @@
     "mn": "эд эсийн шинжилгээ, биопси",
     "de": "Biopsie",
     "en": "biopsy",
-    "example_en": "Understanding biopsy is very helpful.",
-    "example_mn": "Эд эсийн шинжилгээ, биопси гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Biopsie ist sehr hilfreich.",
+    "example_en": "Pathologists examined the needle biopsy specimen under microscope to verify benign tissue.",
+    "example_mn": "Эмгэг судлаачид эд эсийн шинжилгээ, биопсийн дээжийг микроскопоор харж хоргүй хавдар болохыг батлав.",
+    "example_de": "Pathologen untersuchten die Biopsieprobe unter dem Mikroskop, um Gutartigkeit festzustellen.",
     "topic": "Health"
   },
   {
@@ -12936,9 +12936,9 @@
     "mn": "мэдээ алдуулалт",
     "de": "Narkose, Anästhesie",
     "en": "anaesthesia",
-    "example_en": "Understanding anaesthesia is very helpful.",
-    "example_mn": "Мэдээ алдуулалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Narkose, Anästhesie ist sehr hilfreich.",
+    "example_en": "The patient felt zero pain during oral surgery thanks to modern local anaesthesia.",
+    "example_mn": "Орчин үеийн хэсэг газрын мэдээ алдуулалтын ачаар өвчтөн амны хөндийн мэс заслын үед ямар ч өвдөлт мэдрээгүй.",
+    "example_de": "Dank moderner Lokalanästhesie spürte der Patient während des Eingriffs keine Schmerzen.",
     "topic": "Health"
   },
   {
@@ -12954,9 +12954,9 @@
     "mn": "өвчин үүсгэгч бичил биет",
     "de": "Krankheitserreger",
     "en": "pathogen",
-    "example_en": "Understanding pathogen is very helpful.",
-    "example_mn": "Өвчин үүсгэгч бичил биет гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Krankheitserreger ist sehr hilfreich.",
+    "example_en": "The infectious pathogen spreads rapidly through aerosol droplets in crowded indoor classrooms.",
+    "example_mn": "Халдварт өвчин үүсгэгч бичил биет нь битүү танхимд агаарын дуслын замаар маш хурдан тархдаг.",
+    "example_de": "Der Erreger verbreitet sich schnell über Tröpfchen in überfüllten Innenräumen.",
     "topic": "Health"
   },
   {
@@ -12972,9 +12972,9 @@
     "mn": "эсрэг биет",
     "de": "Antikörper",
     "en": "antibody",
-    "example_en": "Understanding antibody is very helpful.",
-    "example_mn": "Эсрэг биет гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Antikörper ist sehr hilfreich.",
+    "example_en": "After vaccination, B-cells generate specific antibody molecules to neutralize viruses.",
+    "example_mn": "Вакцин тариулсны дараа дархлааны эсүүд вирусийг саармагжуулах тусгай эсрэг биетүүдийг үүсгэдэг.",
+    "example_de": "Nach der Impfung bilden B-Zellen Antikörper, um Viren gezielt zu neutralisieren.",
     "topic": "Health"
   },
   {
@@ -12990,9 +12990,9 @@
     "mn": "бодисын солилцоо",
     "de": "Stoffwechsel",
     "en": "metabolism",
-    "example_en": "Understanding metabolism is very helpful.",
-    "example_mn": "Бодисын солилцоо гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Stoffwechsel ist sehr hilfreich.",
+    "example_en": "Regular physical conditioning stimulates cellular metabolism and caloric expenditure.",
+    "example_mn": "Тогтмол дасгал хөдөлгөөн нь эсийн бодисын солилцоог идэвхжүүлж, илчлэг шатаалтыг нэмэгдүүлдэг.",
+    "example_de": "Regelmäßiges Training kurbelt den Stoffwechsel an und verbrennt Kalorien.",
     "topic": "Health"
   },
   {
@@ -13008,9 +13008,9 @@
     "mn": "холестерин",
     "de": "Cholesterin",
     "en": "cholesterol",
-    "example_en": "Understanding cholesterol is very helpful.",
-    "example_mn": "Холестерин гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Cholesterin ist sehr hilfreich.",
+    "example_en": "Adopting a Mediterranean plant-based diet helps lower high serum cholesterol levels.",
+    "example_mn": "Газар дундын тэнгисийн ургамлын гаралтай хоолны дэглэм баримтлах нь цусан дахь холестерины түвшинг бууруулдаг.",
+    "example_de": "Eine mediterrane Ernährung hilft, erhöhte Cholesterinwerte wirksam zu senken.",
     "topic": "Health"
   },
   {
@@ -13026,9 +13026,9 @@
     "mn": "цусны даралт ихсэх",
     "de": "Bluthochdruck",
     "en": "hypertension",
-    "example_en": "Understanding hypertension is very helpful.",
-    "example_mn": "Цусны даралт ихсэх гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Bluthochdruck ist sehr hilfreich.",
+    "example_en": "Reducing sodium intake is recommended for individuals struggling with chronic hypertension.",
+    "example_mn": "Давсны хэрэглээг багасгах нь архаг цусны даралт ихсэх өвчтэй хүмүүст туйлын ач холбогдолтой.",
+    "example_de": "Eine geringere Natriumaufnahme wird Personen mit Bluthochdruck dringend empfohlen.",
     "topic": "Health"
   },
   {
@@ -13044,9 +13044,9 @@
     "mn": "чихрийн шижин",
     "de": "Diabetes",
     "en": "diabetes",
-    "example_en": "Understanding diabetes is very helpful.",
-    "example_mn": "Чихрийн шижин гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Diabetes ist sehr hilfreich.",
+    "example_en": "Type 2 diabetes can often be managed through disciplined nutrition and blood glucose monitoring.",
+    "example_mn": "Хоёрдугаар хэлбэрийн чихрийн шижинг хоолны дэглэм сахиж, цусан дахь сахарыг хянах замаар удирдаж болдог.",
+    "example_de": "Typ-2-Diabetes kann oft durch Ernährung und Blutzuckermessung kontrolliert werden.",
     "topic": "Health"
   },
   {
@@ -13062,9 +13062,9 @@
     "mn": "халдварт өвчний дэгдэлт",
     "de": "Epidemie",
     "en": "epidemic",
-    "example_en": "Understanding epidemic is very helpful.",
-    "example_mn": "Халдварт өвчний дэгдэлт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Epidemie ist sehr hilfreich.",
+    "example_en": "Health authorities coordinated quickly to contain the regional seasonal flu epidemic.",
+    "example_mn": "Эрүүл мэндийн байгууллагууд улирлын томуугийн халдварт өвчний дэгдэлтийг хязгаарлахаар шуурхай хамтран ажиллав.",
+    "example_de": "Die Behörden handelten schnell, um die regionale Grippeepidemie einzudämmen.",
     "topic": "Health"
   },
   {
@@ -13080,9 +13080,9 @@
     "mn": "цар тахал",
     "de": "Pandemie",
     "en": "pandemic",
-    "example_en": "Understanding pandemic is very helpful.",
-    "example_mn": "Цар тахал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Pandemie ist sehr hilfreich.",
+    "example_en": "The international pandemic disrupted global air travel and supply chains for months.",
+    "example_mn": "Олон улсын цар тахал дэлхийн агаарын тээвэр болон нийлүүлэлтийн сүлжээг олон сараар саатуулжээ.",
+    "example_de": "Die globale Pandemie legte den Flugverkehr und Lieferketten monatelang lahm.",
     "topic": "Health"
   },
   {
@@ -13098,9 +13098,9 @@
     "mn": "хөл хорио, тусгаарлалт",
     "de": "Quarantäne",
     "en": "quarantine",
-    "example_en": "Understanding quarantine is very helpful.",
-    "example_mn": "Хөл хорио, тусгаарлалт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Quarantäne ist sehr hilfreich.",
+    "example_en": "Arriving livestock were placed in a fourteen-day veterinary quarantine at the border.",
+    "example_mn": "Ирсэн мал амьтдыг хил дээр мал эмнэлгийн арван дөрөв хоногийн хөл хорио, тусгаарлалтад авав.",
+    "example_de": "Das eingetroffene Vieh wurde an der Grenze für zwei Wochen in Quarantäne gebracht.",
     "topic": "Health"
   },
   {
@@ -13116,9 +13116,9 @@
     "mn": "дархлаа",
     "de": "Immunität",
     "en": "immunity",
-    "example_en": "Understanding immunity is very helpful.",
-    "example_mn": "Дархлаа гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Immunität ist sehr hilfreich.",
+    "example_en": "Breast milk provides essential maternal antibodies that boost the newborn's early immunity.",
+    "example_mn": "Эхийн сүү нь нярайн эхэн үеийн дархлааг дэмжих чухал эсрэг биетүүдийг агуулдаг.",
+    "example_de": "Muttermilch liefert mütterliche Antikörper, die die Immunität des Neugeborenen stärken.",
     "topic": "Health"
   },
   {
@@ -13134,9 +13134,9 @@
     "mn": "нөхөн сэргээх эмчилгээ",
     "de": "Rehabilitation",
     "en": "rehabilitation",
-    "example_en": "Understanding rehabilitation is very helpful.",
-    "example_mn": "Нөхөн сэргээх эмчилгээ гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Rehabilitation ist sehr hilfreich.",
+    "example_en": "Following hip surgery, the athlete underwent six weeks of physical therapy rehabilitation.",
+    "example_mn": "Түнхний мэс заслын дараа тамирчин зургаан долоо хоногийн физик эмчилгээний нөхөн сэргээх эмчилгээ хийлгэжээ.",
+    "example_de": "Nach der Operation absolvierte die Athletin eine sechswöchige Reha-Maßnahme.",
     "topic": "Health"
   },
   {
@@ -13512,9 +13512,9 @@
     "mn": "хотжилт",
     "de": "Verstädterung",
     "en": "urbanization",
-    "example_en": "Understanding urbanization is very helpful.",
-    "example_mn": "Хотжилт гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Verstädterung ist sehr hilfreich.",
+    "example_en": "Rapid industrial urbanization drew millions of agrarian workers into modern metropolitan centers.",
+    "example_mn": "Хурдацтай үйлдвэржилт, хотжилт нь сая сая тариаланчдыг орчин үеийн хотууд руу татсан юм.",
+    "example_de": "Die rasche Urbanisierung zog Millionen Landarbeiter in moderne Metropolen.",
     "topic": "Society"
   },
   {
@@ -13530,9 +13530,9 @@
     "mn": "хотын хуучин дүүргийг өнгө засах",
     "de": "Gentrifizierung",
     "en": "gentrification",
-    "example_en": "Understanding gentrification is very helpful.",
-    "example_mn": "Хотын хуучин дүүргийг өнгө засах гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Gentrifizierung ist sehr hilfreich.",
+    "example_en": "Neighborhood gentrification brought trendy cafes but raised rent prices for longtime residents.",
+    "example_mn": "Хотын хуучин дүүргийг өнгө засах, шинэчлэх явц нь олон кофе шоп авчирсан ч түрээсийг өсгөв.",
+    "example_de": "Die Gentrifizierung des Viertels brachte Cafés, verteuerte aber den Wohnraum.",
     "topic": "Society"
   },
   {
@@ -13548,9 +13548,9 @@
     "mn": "хүн ам зүй",
     "de": "Demografie",
     "en": "demographics",
-    "example_en": "Understanding demographics is very helpful.",
-    "example_mn": "Хүн ам зүй гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Demografie ist sehr hilfreich.",
+    "example_en": "Shifting national demographics indicate that the median citizen age is rising steadily.",
+    "example_mn": "Улсын хүн ам зүйн өөрчлөлт нь иргэдийн дундаж нас тогтвортой өсөж байгааг харуулж байна.",
+    "example_de": "Die demografische Entwicklung zeigt, dass das Durchschnittsalter stetig steigt.",
     "topic": "Society"
   },
   {
@@ -13566,9 +13566,9 @@
     "mn": "даяаршил",
     "de": "Globalisierung",
     "en": "globalization",
-    "example_en": "Understanding globalization is very helpful.",
-    "example_mn": "Даяаршил гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Globalisierung ist sehr hilfreich.",
+    "example_en": "Economic globalization interconnected domestic financial markets across every continent.",
+    "example_mn": "Эдийн засгийн даяаршил нь тив бүрийн дотоодын санхүүгийн зах зээлүүдийг хооронд нь холбожээ.",
+    "example_de": "Die wirtschaftliche Globalisierung vernetzte die Finanzmärkte über alle Kontinente.",
     "topic": "Society"
   },
   {
@@ -13584,9 +13584,9 @@
     "mn": "олон соёлт ёс",
     "de": "Multikulturalismus",
     "en": "multiculturalism",
-    "example_en": "Understanding multiculturalism is very helpful.",
-    "example_mn": "Олон соёлт ёс гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Multikulturalismus ist sehr hilfreich.",
+    "example_en": "Metropolitan cities thrive through the vibrant cultural harmony fostered by multiculturalism.",
+    "example_mn": "Их хотууд олон соёлт ёсны үр дүнд бий болсон соёлын өнгөлөг зохицлоор дамжин хөгжин цэцэглэдэг.",
+    "example_de": "Großstädte florieren durch die kulturelle Vielfalt des Multikulturalismus.",
     "topic": "Society"
   },
   {
@@ -13602,9 +13602,9 @@
     "mn": "шашнаас ангид байх зарчим",
     "de": "Säkularismus",
     "en": "secularism",
-    "example_en": "Understanding secularism is very helpful.",
-    "example_mn": "Шашнаас ангид байх зарчим гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Säkularismus ist sehr hilfreich.",
+    "example_en": "Constitutional secularism guarantees that public educational curricula remain free of religious bias.",
+    "example_mn": "Үндсэн хуулийн шашнаас ангид байх зарчим нь сургуулийн сургалтын хөтөлбөрийг шашны хандлагаас ангид байлгадаг.",
+    "example_de": "Der Laizismus stellt sicher, dass der Schulunterricht frei von religiösen Einflüssen bleibt.",
     "topic": "Society"
   },
   {
@@ -13620,9 +13620,9 @@
     "mn": "буяны үйлс",
     "de": "Philanthropie",
     "en": "philanthropy",
-    "example_en": "Understanding philanthropy is very helpful.",
-    "example_mn": "Буяны үйлс гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Philanthropie ist sehr hilfreich.",
+    "example_en": "The billionaire pledged the majority of his tech fortune to global healthcare philanthropy.",
+    "example_mn": "Тэрбумтан технологийн салбараас олсон хөрөнгийнхөө ихэнхийг дэлхийн эрүүл мэндийн буяны үйлсэд зориулахаа амлав.",
+    "example_de": "Der Milliardär spendete den Großteil seines Vermögens für globale Philanthropie.",
     "topic": "Society"
   },
   {
@@ -13638,9 +13638,9 @@
     "mn": "хүмүүнлэг ёс",
     "de": "Humanitarismus",
     "en": "humanitarianism",
-    "example_en": "Understanding humanitarianism is very helpful.",
-    "example_mn": "Хүмүүнлэг ёс гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Humanitarismus ist sehr hilfreich.",
+    "example_en": "Providing clean drinking water and emergency shelters embodies universal humanitarianism.",
+    "example_mn": "Цэвэр ундны ус болон яаралтай тусламжийн байраар хангах нь бүх нийтийн хүмүүнлэг ёсны бодит илрэл юм.",
+    "example_de": "Die Bereitstellung von Trinkwasser und Notunterkünften verkörpert Humanität.",
     "topic": "Society"
   },
   {
@@ -13656,9 +13656,9 @@
     "mn": "иргэний оролцоо",
     "de": "bürgerschaftliches Engagement",
     "en": "civic engagement",
-    "example_en": "Understanding civic engagement is very helpful.",
-    "example_mn": "Иргэний оролцоо гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von bürgerschaftliches Engagement ist sehr hilfreich.",
+    "example_en": "Voting, volunteering, and attending town council meetings strengthen democratic civic engagement.",
+    "example_mn": "Сонгуульд санал өгөх, сайн дурын ажил хийх нь ардчилсан иргэний оролцоог бэхжүүлдэг.",
+    "example_de": "Wahlen, Ehrenämter und Bürgerversammlungen stärken das bürgerschaftliche Engagement.",
     "topic": "Society"
   },
   {
@@ -13674,9 +13674,9 @@
     "mn": "нийгмийн халамж",
     "de": "Sozialhilfe, Wohlfahrt",
     "en": "social welfare",
-    "example_en": "Understanding social welfare is very helpful.",
-    "example_mn": "Нийгмийн халамж гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Sozialhilfe, Wohlfahrt ist sehr hilfreich.",
+    "example_en": "Comprehensive social welfare programs protect low-income citizens from sudden destitution.",
+    "example_mn": "Нийгмийн халамжийн цогц хөтөлбөрүүд нь бага орлоготой иргэдийг гэнэтийн ядуурлаас хамгаалдаг.",
+    "example_de": "Sozialhilfeprogramme bewahren einkommensschwache Bürger vor plötzlicher Verarmung.",
     "topic": "Society"
   },
   {
@@ -13692,9 +13692,9 @@
     "mn": "хэт хэрэглээний үзэл",
     "de": "Konsumismus",
     "en": "consumerism",
-    "example_en": "Understanding consumerism is very helpful.",
-    "example_mn": "Хэт хэрэглээний үзэл гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Konsumismus ist sehr hilfreich.",
+    "example_en": "Environmentalists criticize runaway consumerism for generating excessive plastic packaging waste.",
+    "example_mn": "Байгаль хамгаалагчид хуванцар хог хаягдал ихээр үүсгэдэг хэт хэрэглээний үзлийг шүүмжилдэг.",
+    "example_de": "Umweltschützer kritisieren den übersteigerten Konsumismus wegen des Plastikmülls.",
     "topic": "Society"
   },
   {
@@ -13710,9 +13710,9 @@
     "mn": "амьжиргааны түвшин",
     "de": "Lebensstandard",
     "en": "standard of living",
-    "example_en": "Understanding standard of living is very helpful.",
-    "example_mn": "Амьжиргааны түвшин гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Lebensstandard ist sehr hilfreich.",
+    "example_en": "Access to affordable healthcare, clean sanitation, and reliable power raises the national standard of living.",
+    "example_mn": "Боломжийн үнэтэй эмнэлэг, цэвэр ус, цахилгаантай байх нь улсын амьжиргааны түвшинг дээшлүүлдэг.",
+    "example_de": "Der Zugang zu Gesundheitsversorgung und Strom hebt den Lebensstandard des Landes.",
     "topic": "Society"
   },
   {
@@ -13728,9 +13728,9 @@
     "mn": "амьдралын чанар",
     "de": "Lebensqualität",
     "en": "quality of life",
-    "example_en": "Understanding quality of life is very helpful.",
-    "example_mn": "Амьдралын чанар гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Lebensqualität ist sehr hilfreich.",
+    "example_en": "Green parks, walkable streets, and clean mountain air greatly enhance city residents' quality of life.",
+    "example_mn": "Ногоон байгууламж, явган хүний зам, цэнгэг агаар нь хотын оршин суугчдын амьдралын чанарыг ихээхэн сайжруулдаг.",
+    "example_de": "Grünflächen und saubere Luft verbessern die Lebensqualität der Stadtbewohner.",
     "topic": "Society"
   },
   {
@@ -13746,9 +13746,9 @@
     "mn": "иргэний эрх",
     "de": "Bürgerrechte",
     "en": "civil rights",
-    "example_en": "Understanding civil rights is very helpful.",
-    "example_mn": "Иргэний эрх гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Bürgerrechte ist sehr hilfreich.",
+    "example_en": "The constitution protects core civil rights including peaceful protest, free speech, and due process.",
+    "example_mn": "Үндсэн хууль нь тайван жагсаал хийх, үг хэлэх эрх зэрэг иргэний үндсэн эрхийг хамгаалдаг.",
+    "example_de": "Die Verfassung schützt grundlegende Bürgerrechte wie Versammlungs- und Redefreiheit.",
     "topic": "Society"
   },
   {
@@ -13764,9 +13764,9 @@
     "mn": "тэгш эрх, тэгш байдал",
     "de": "Gleichheit",
     "en": "equality",
-    "example_en": "Understanding equality is very helpful.",
-    "example_mn": "Тэгш эрх, тэгш байдал гэдгийг ойлгох нь маш тустай.",
-    "example_de": "Das Verständnis von Gleichheit ist sehr hilfreich.",
+    "example_en": "Democratic societies strive for total legal equality regardless of heritage or economic background.",
+    "example_mn": "Ардчилсан нийгэм гарал үүсэл, хөрөнгө чинээ үл харгалзан бүх хүнд тэгш эрх, тэгш байдлыг олгохыг эрмэлздэг.",
+    "example_de": "Demokratische Gesellschaften streben nach völliger Gleichheit vor dem Gesetz.",
     "topic": "Society"
   }
 ]

@@ -83,17 +83,20 @@ export function getCardHint(card, stage, targetLang = 'de') {
     // Stage 3: Cloze In-Context Scaffold
     if (stage === 3) {
       if (card.example_de) {
-        // Mask the target word in the example sentence, showing just the first letter
-        const firstLetter = card.word.charAt(0);
-        const masked = card.example_de.replace(
-          new RegExp(`\\b${card.word}\\b`, 'gi'),
-          `[${firstLetter}_____]`
-        );
+        // Mask the target word in the example sentence, showing initial letter cue
+        const firstLetter = card.word ? card.word.charAt(0) : '';
+        const escapedWord = (card.word || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const masked = escapedWord
+          ? card.example_de.replace(new RegExp(`\\b${escapedWord}\\b`, 'gi'), `[${firstLetter}_____]`)
+          : card.example_de;
+        const mnCue = card.example_mn ? `\n(Орчуулга: ${card.example_mn})` : '';
         return {
           stage: 3,
           label: 'Stage 3 · Kontext-Satz',
           badge: 'CLOZE CONTEXT',
-          text: `„${masked}“`
+          text: `„${masked}“${mnCue}`,
+          cloze: masked,
+          translation_mn: card.example_mn || ''
         };
       }
 
@@ -128,16 +131,19 @@ export function getCardHint(card, stage, targetLang = 'de') {
 
   if (stage === 3) {
     if (card.example_en) {
-      const firstLetter = card.word.charAt(0);
-      const masked = card.example_en.replace(
-        new RegExp(`\\b${card.word}\\b`, 'gi'),
-        `[${firstLetter}_____]`
-      );
+      const firstLetter = card.word ? card.word.charAt(0) : '';
+      const escapedWord = (card.word || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const masked = escapedWord
+        ? card.example_en.replace(new RegExp(`\\b${escapedWord}\\b`, 'gi'), `[${firstLetter}_____]`)
+        : card.example_en;
+      const mnCue = card.example_mn ? `\n(Орчуулга: ${card.example_mn})` : '';
       return {
         stage: 3,
         label: 'Stage 3 · Context Sentence',
         badge: 'CLOZE CONTEXT',
-        text: `"${masked}"`
+        text: `"${masked}"${mnCue}`,
+        cloze: masked,
+        translation_mn: card.example_mn || ''
       };
     }
 
