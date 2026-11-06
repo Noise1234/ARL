@@ -36,8 +36,10 @@
 
 .hud-tag {
   font-weight: 700;
+  font-size: 0.78rem;
+  min-height: 26px;
   color: var(--text-primary);
-  padding: 3px 8px;
+  padding: 2px 7px;
   background-color: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
@@ -137,8 +139,11 @@
 .hud-nav-item {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 3px;
-  padding: 4px 8px;
+  min-height: 28px;
+  padding: 3px 8px;
+  font-size: 0.78rem;
   color: var(--text-muted);
   border-radius: var(--radius-sm);
   user-select: none;
@@ -478,35 +483,37 @@
 .btn-mini-audio {
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  min-height: 26px;
   padding: 3px 8px;
   background-color: var(--bg-card-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
 }
 
-/* Mobile-First Bottom Thumb-Zone Buttons (min 48px tap targets) */
+/* Compact Bottom Thumb-Zone Buttons */
 .card-keyhints-row.thumb-dock {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 8px;
   width: 100%;
 }
 
 .card-rating-row.thumb-dock {
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  gap: 6px;
 }
 
 .touch-target {
-  min-height: 48px;
-  min-width: 48px;
+  min-height: 36px;
+  min-width: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  border-radius: var(--radius-md);
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 8px;
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 600;
   background-color: var(--btn-secondary-bg);
   border: 1px solid var(--btn-secondary-border);
@@ -658,12 +665,13 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 6px 14px;
+  min-height: 28px;
+  padding: 4px 10px;
   background-color: var(--bg-card-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   white-space: nowrap;
 }
@@ -805,8 +813,9 @@
 
 .btn-drill-rule {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  padding: 6px 14px;
+  font-size: 0.8rem;
+  min-height: 28px;
+  padding: 4px 10px;
   background-color: var(--btn-secondary-bg);
   border: 1px solid var(--btn-secondary-border);
   border-radius: var(--radius-sm);
@@ -859,7 +868,8 @@
 .lang-pill {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  padding: 2px 8px;
+  min-height: 22px;
+  padding: 2px 7px;
   background-color: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
@@ -1023,14 +1033,14 @@
 }
 
 .char-chip-btn {
-  min-height: 42px;
-  min-width: 42px;
-  padding: 6px 12px;
+  min-height: 28px;
+  min-width: 28px;
+  padding: 3px 8px;
   background-color: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-primary);
   cursor: pointer;
@@ -1251,7 +1261,9 @@
 }
 
 .settings-action-btn {
-  padding: 10px 14px;
+  min-height: 32px;
+  padding: 6px 12px;
+  font-size: 0.82rem;
   background-color: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
@@ -1275,12 +1287,13 @@
 }
 
 .lvl-choice-btn {
-  padding: 8px 10px;
+  min-height: 28px;
+  padding: 4px 8px;
   background-color: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
 
@@ -1348,7 +1361,8 @@
 .btn-clear-key {
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  padding: 0 12px;
+  min-height: 28px;
+  padding: 3px 10px;
   background-color: var(--btn-secondary-bg);
   border: 1px solid var(--btn-secondary-border);
   border-radius: var(--radius-sm);
@@ -1649,7 +1663,9 @@
 }
 
 .hud-help-btn {
-  padding: 0 10px !important;
+  min-height: 28px;
+  padding: 2px 8px !important;
+  font-size: 0.8rem;
 }
 
 /* ========================================================
@@ -2080,11 +2096,12 @@
 }
 
 .filter-chip {
+  min-height: 26px;
   background: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 4px 10px;
-  font-size: 0.78rem;
+  padding: 3px 8px;
+  font-size: 0.76rem;
   font-family: var(--font-mono);
   color: var(--text-muted);
   cursor: pointer;
@@ -2466,7 +2483,9 @@
   .card-keyhints-row.thumb-dock .keyhint-btn,
   .card-rating-row .keyhint-btn {
     width: 100% !important;
-    min-height: 44px !important;
+    min-height: 38px !important;
+    padding: 6px 10px !important;
+    font-size: 0.82rem !important;
   }
 
   /* 7.4 Floating Grammar PiP Mobile Bounds */
@@ -2541,13 +2560,14 @@
 .memorize-sprint-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  min-height: 32px;
   background: var(--btn-primary-bg);
   color: var(--btn-primary-text);
   font-weight: 700;
-  font-size: 0.9rem;
-  padding: 10px 18px;
-  border-radius: var(--radius-md);
+  font-size: 0.84rem;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--btn-primary-border);
   cursor: pointer;
   transition: transform 0.1s ease, box-shadow 0.15s ease;
@@ -2690,13 +2710,14 @@
 
 .mem-filter-chip,
 .mem-pos-chip {
+  min-height: 26px;
   background: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   color: var(--text-muted);
   border-radius: var(--radius-sm);
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-family: var(--font-mono);
-  padding: 6px 10px;
+  padding: 3px 8px;
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -3245,10 +3266,11 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   color: var(--text-main);
-  padding: 5px 12px;
+  min-height: 28px;
+  padding: 3px 10px;
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -4373,9 +4395,10 @@
   border: 1px solid var(--border-subtle);
   color: var(--text-white);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  padding: 6px 14px;
+  min-height: 28px;
+  padding: 4px 10px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -4427,7 +4450,8 @@
 }
 
 .hud-theme-btn {
-  font-size: 1rem;
+  font-size: 0.85rem;
+  min-height: 28px;
   padding: 2px 6px !important;
   cursor: pointer;
 }
@@ -4471,6 +4495,7 @@
     gap: 1px;
     flex: 1 1 0px;
     min-width: 38px;
+    min-height: 0;
     height: 100%;
     padding: 3px 1px;
     color: var(--text-dim);
@@ -4539,8 +4564,9 @@
   #nav-btn-settings,
   #nav-btn-help {
     display: inline-flex !important;
-    padding: 3px 5px !important;
-    font-size: 0.8rem;
+    min-height: 28px;
+    padding: 3px 6px !important;
+    font-size: 0.78rem;
   }
 
   /* Notes Workspace Stacked on Mobile */
@@ -4578,13 +4604,15 @@
   #nav-btn-settings,
   #nav-btn-help {
     display: inline-flex !important;
-    padding: 2px 4px !important;
-    font-size: 0.76rem;
+    min-height: 26px !important;
+    padding: 2px 5px !important;
+    font-size: 0.74rem;
   }
 
   .hud-tag {
+    min-height: 24px;
     padding: 2px 5px;
-    font-size: 0.75rem;
+    font-size: 0.74rem;
   }
 }
 
@@ -4746,6 +4774,9 @@
 }
 
 .hud-sync-btn {
+  min-height: 28px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
   font-family: var(--font-mono);
   cursor: pointer;
 }
@@ -5102,9 +5133,10 @@
   background: var(--bg-surface-2);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
-  padding: 4px 12px;
-  border-radius: 8px;
-  font-size: 0.78rem;
+  min-height: 26px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.76rem;
   cursor: pointer;
   font-family: var(--font-mono);
   transition: all 0.15s ease;
@@ -5220,9 +5252,10 @@
   background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 0.78rem;
+  min-height: 26px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.76rem;
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -5304,9 +5337,10 @@
   background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 0.8rem;
+  min-height: 28px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.78rem;
   cursor: pointer;
   font-family: inherit;
   transition: all 0.15s ease;
@@ -5330,9 +5364,11 @@
   background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 0.85rem;
+  min-height: 26px;
+  min-width: 26px;
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-size: 0.82rem;
   font-family: inherit;
   cursor: pointer;
 }
@@ -5406,9 +5442,10 @@
   background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 0.78rem;
+  min-height: 26px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.76rem;
   cursor: pointer;
 }
 
@@ -5511,9 +5548,10 @@
   background: var(--bg-surface-2);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
+  min-height: 22px;
   padding: 2px 6px;
   border-radius: 4px;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-family: var(--font-mono);
   cursor: pointer;
   transition: all 0.15s ease;
@@ -5592,6 +5630,10 @@
   border: 1px solid #3b82f6;
   color: #60a5fa;
   font-weight: 600;
+  min-height: 32px;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  border-radius: 8px;
 }
 
 .sync-feedback-card {
