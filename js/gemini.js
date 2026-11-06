@@ -8,6 +8,9 @@
 
 import { evaluateRuleFallback } from './grammar-fallback.js';
 import { computeDiff, renderColorCodedDiff, renderWordDiff } from './diff.js';
+import { verifyDrillSentence } from './drill-validator.js';
+
+export { verifyDrillSentence } from './drill-validator.js';
 
 export const USER_AI_KEY_STORAGE = 'arl_user_ai_key';
 export const LEGACY_GEMINI_KEY_STORAGE = 'arl_gemini_api_key';
@@ -205,7 +208,8 @@ export function safeParseAiJson(rawText) {
 export async function checkSentenceGrammar(text, lang = 'de', options = {}) {
   const trimmed = String(text ?? '').trim();
   const targetTopic = options.targetTopic || '';
-  const expectedSentence = options.expectedSentence || '';
+  const expectedSentence = options.expectedSentence || (options.drill?.target || '');
+  const mongolianPrompt = options.mongolianPrompt || (options.drill?.prompt_mn || '');
 
   // 0. Empty input defense
   if (!trimmed) {
@@ -218,8 +222,47 @@ export async function checkSentenceGrammar(text, lang = 'de', options = {}) {
       diffHtml: '<span class="diff-error">Empty input</span>',
       wordDiffHtml: '<span class="diff-error">Empty input</span>',
       verdict: 'Needs Correction',
+      verdictLabel: '✗ Incomplete / Invalid Sentence',
+      statusLabel: '✗ Incomplete / Invalid Sentence',
       expBonus: 0
     };
+  }
+
+  // Target-Aware Drill Evaluation Pipeline (Steps 1 through 5)
+  if (options.drill || expectedSentence) {
+    const drillObj = options.drill || {
+      target: expectedSentence,
+      prompt_mn: mongolianPrompt,
+      woerterbuch: options.requiredWords || []
+    };
+    const topicObj = options.topic || {
+      title: targetTopic,
+      id: options.topicId || ''
+    };
+
+    const callContextAwareAi = async ({ userText, mongolianPrompt, targetAnswer, activeGrammarRule, lang }) => {
+      const userKey = getUserAiKey();
+      if (userKey) {
+        const keyType = getAiKeyType(userKey);
+        try {
+          if (keyType === 'Gemini') {
+            const res = await callTier1Gemini(userText, lang, userKey, activeGrammarRule, targetAnswer, mongolianPrompt);
+            if (res) return res;
+          } else if (keyType === 'Groq') {
+            const res = await callTier1Groq(userText, lang, userKey, activeGrammarRule, targetAnswer, mongolianPrompt);
+            if (res) return res;
+          }
+        } catch (e) {
+          console.warn('Personal key failed in drill evaluation:', e);
+        }
+      }
+      return callTier3Pollinations(userText, lang, activeGrammarRule, targetAnswer, mongolianPrompt);
+    };
+
+    return verifyDrillSentence(trimmed, drillObj, topicObj, lang, {
+      ...options,
+      callContextAwareAi
+    });
   }
 
   const isOnline = typeof navigator === 'undefined' || navigator.onLine !== false;
@@ -288,12 +331,38 @@ export async function checkSentenceGrammar(text, lang = 'de', options = {}) {
 /**
  * Tier 1A: Personal Google Gemini 2.5 Flash
  */
-async function callTier1Gemini(text, lang, apiKey, targetTopic = '', expectedSentence = '') {
+async function callTier1Gemini(text, lang, apiKey, targetTopic = '', expectedSentence = '', mongolianPrompt = '') {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 8000);
 
   const langName = lang === 'de' ? 'German' : 'English';
-  const systemPrompt = `You are an expert pedagogical language tutor auditing a student sentence in ${langName}.
+  let systemPrompt;
+  let userPrompt;
+
+  if (mongolianPrompt && expectedSentence) {
+    systemPrompt = `You are an expert language teacher and examiner evaluating a student translation into ${langName}.
+Active Grammar Rule: "${targetTopic || 'General Grammar'}".
+Mongolian Source Prompt: "${mongolianPrompt}".
+Expected Target Sentence: "${expectedSentence}".
+
+Evaluate the user's German/English sentence strictly as a translation of the Mongolian prompt following the active grammar rule. If their sentence is a valid alternative translation with correct V2/Nebensatz word order and cases, mark isCorrect: true. Otherwise, correct it to natural B1 German/English matching the target meaning and explain the exact grammar/word-order mistake.
+
+Respond ONLY with valid JSON matching this schema (no markdown, no code fences):
+{
+  "isCorrect": boolean,
+  "correctedSentence": "clean corrected sentence",
+  "explanations": ["concise list of mistakes fixed"],
+  "grammarTip": "short pedagogical tip"
+}`;
+
+    userPrompt = `Mongolian Prompt: "${mongolianPrompt}"
+Expected Target: "${expectedSentence}"
+Active Grammar Rule: "${targetTopic}"
+Student Attempt: "${text}"
+
+Analyze correctness against target meaning and grammar rule, then output JSON:`;
+  } else {
+    systemPrompt = `You are an expert pedagogical language tutor auditing a student sentence in ${langName}.
 Target Grammar Topic: "${targetTopic || 'General Grammar'}".
 ${expectedSentence ? `Expected Target: "${expectedSentence}".` : ''}
 Student Sentence: "${text}".
@@ -307,6 +376,9 @@ Respond ONLY with a single valid JSON object matching this exact schema (no mark
   "grammarTip": "1-sentence memorable rule or mnemonic for this grammar structure"
 }`;
 
+    userPrompt = `Analyze: "${text}"`;
+  }
+
   const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
 
   try {
@@ -315,7 +387,7 @@ Respond ONLY with a single valid JSON object matching this exact schema (no mark
       headers: { 'Content-Type': 'application/json' },
       signal: controller.signal,
       body: JSON.stringify({
-        contents: [{ parts: [{ text: systemPrompt }] }],
+        contents: [{ parts: [{ text: `${systemPrompt}\n\n${userPrompt}` }] }],
         generationConfig: {
           temperature: 0.1,
           maxOutputTokens: 600,
@@ -347,12 +419,23 @@ Respond ONLY with a single valid JSON object matching this exact schema (no mark
 /**
  * Tier 1B: Personal Groq Llama-3.3-70b-versatile
  */
-async function callTier1Groq(text, lang, apiKey, targetTopic = '', expectedSentence = '') {
+async function callTier1Groq(text, lang, apiKey, targetTopic = '', expectedSentence = '', mongolianPrompt = '') {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 8000);
 
   const langName = lang === 'de' ? 'German' : 'English';
-  const systemPrompt = `You are an expert language teacher for ${langName}. Output ONLY valid JSON:
+  let systemPrompt;
+  let userPrompt;
+
+  if (mongolianPrompt && expectedSentence) {
+    systemPrompt = `You are an expert language teacher and examiner evaluating a student translation into ${langName}.
+Active Grammar Rule: "${targetTopic || 'General Grammar'}".
+Mongolian Source Prompt: "${mongolianPrompt}".
+Expected Target Sentence: "${expectedSentence}".
+
+Evaluate the user's German/English sentence strictly as a translation of the Mongolian prompt following the active grammar rule. If their sentence is a valid alternative translation with correct V2/Nebensatz word order and cases, mark isCorrect: true. Otherwise, correct it to natural B1 German/English matching the target meaning and explain the exact grammar/word-order mistake.
+
+Output ONLY valid JSON:
 {
   "isCorrect": boolean,
   "correctedSentence": "clean corrected sentence",
@@ -360,10 +443,26 @@ async function callTier1Groq(text, lang, apiKey, targetTopic = '', expectedSente
   "grammarTip": "short pedagogical tip"
 }`;
 
-  const userPrompt = `Target Topic: "${targetTopic || 'General'}".
+    userPrompt = `Mongolian Prompt: "${mongolianPrompt}"
+Expected Target: "${expectedSentence}"
+Active Grammar Rule: "${targetTopic}"
+Student Attempt: "${text}"
+
+Analyze correctness against target meaning and grammar rule, then output JSON:`;
+  } else {
+    systemPrompt = `You are an expert language teacher for ${langName}. Output ONLY valid JSON:
+{
+  "isCorrect": boolean,
+  "correctedSentence": "clean corrected sentence",
+  "explanations": ["concise list of mistakes fixed"],
+  "grammarTip": "short pedagogical tip"
+}`;
+
+    userPrompt = `Target Topic: "${targetTopic || 'General'}".
 ${expectedSentence ? `Target Construction: "${expectedSentence}".` : ''}
 Student Sentence: "${text}".
 Analyze and correct:`;
+  }
 
   try {
     const resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -430,6 +529,27 @@ async function callTier2LanguageTool(text, lang, targetTopic = '', expectedSente
 
     const data = await resp.json();
     const matches = Array.isArray(data?.matches) ? data.matches : [];
+
+    // Defend against turning gibberish into nonsensical sentences
+    const words = text.split(/\s+/).filter(Boolean);
+    const spellingErrors = matches.filter(m => m.rule?.id?.includes('SPELL') || m.rule?.issueType === 'misspelling');
+    if (words.length > 0 && spellingErrors.length / words.length >= 0.5) {
+      // Over 50% of words are spelling errors -> Treat as unrecognized / gibberish text
+      const badWords = spellingErrors.map(m => text.slice(m.offset, m.offset + m.length));
+      return {
+        isCorrect: false,
+        correctedSentence: text,
+        explanations: [`Unrecognized or invalid words detected: ${badWords.map(w => `"${w}"`).join(', ')}. Please use real German words.`],
+        grammarTip: 'Type a complete sentence using known vocabulary.',
+        engine: 'LanguageTool',
+        diffHtml: renderWordDiff(text, text),
+        wordDiffHtml: renderWordDiff(text, text),
+        verdict: 'Needs Correction',
+        verdictLabel: '✗ Incomplete / Invalid Sentence',
+        statusLabel: '✗ Incomplete / Invalid Sentence',
+        expBonus: 0
+      };
+    }
 
     // If LanguageTool found 0 errors, double-check against local deterministic rules
     if (matches.length === 0) {
@@ -509,12 +629,23 @@ async function callTier2LanguageTool(text, lang, targetTopic = '', expectedSente
 /**
  * Tier 3: Keyless Pollinations AI Enhancement (Free OpenAI-compatible endpoint)
  */
-async function callTier3Pollinations(text, lang, targetTopic = '', expectedSentence = '') {
+async function callTier3Pollinations(text, lang, targetTopic = '', expectedSentence = '', mongolianPrompt = '') {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 6000);
 
   const langName = lang === 'de' ? 'German' : 'English';
-  const systemPrompt = `You are an expert language teacher for ${langName}. Output ONLY valid JSON:
+  let systemPrompt;
+  let userPrompt;
+
+  if (mongolianPrompt && expectedSentence) {
+    systemPrompt = `You are an expert language teacher and examiner evaluating a student translation into ${langName}.
+Active Grammar Rule: "${targetTopic || 'General Grammar'}".
+Mongolian Source Prompt: "${mongolianPrompt}".
+Expected Target Sentence: "${expectedSentence}".
+
+Evaluate the user's German/English sentence strictly as a translation of the Mongolian prompt following the active grammar rule. If their sentence is a valid alternative translation with correct V2/Nebensatz word order and cases, mark isCorrect: true. Otherwise, correct it to natural B1 German/English matching the target meaning and explain the exact grammar/word-order mistake.
+
+Output ONLY valid JSON:
 {
   "isCorrect": boolean,
   "correctedSentence": "clean corrected sentence",
@@ -522,10 +653,26 @@ async function callTier3Pollinations(text, lang, targetTopic = '', expectedSente
   "grammarTip": "short pedagogical tip"
 }`;
 
-  const userPrompt = `Target Topic: "${targetTopic || 'General'}".
+    userPrompt = `Mongolian Prompt: "${mongolianPrompt}"
+Expected Target: "${expectedSentence}"
+Active Grammar Rule: "${targetTopic}"
+Student Attempt: "${text}"
+
+Analyze correctness and return JSON:`;
+  } else {
+    systemPrompt = `You are an expert language teacher for ${langName}. Output ONLY valid JSON:
+{
+  "isCorrect": boolean,
+  "correctedSentence": "clean corrected sentence",
+  "explanations": ["concise list of mistakes fixed"],
+  "grammarTip": "short pedagogical tip"
+}`;
+
+    userPrompt = `Target Topic: "${targetTopic || 'General'}".
 ${expectedSentence ? `Target Construction: "${expectedSentence}".` : ''}
 Sentence: "${text}".
 Analyze, correct, and return JSON:`;
+  }
 
   try {
     const resp = await fetch('https://text.pollinations.ai/openai', {
@@ -593,17 +740,32 @@ function formatGrammarResult(originalText, parsed, engineName) {
   const grammarTip = String(parsed.grammarTip || explanations[0] || '').trim();
 
   let verdict = 'Needs Correction';
+  let expBonus = 0;
+  let statusLabel = '✗ Corrections Found';
+
+  const cleanOrig = originalText.toLowerCase().replace(/[.,!?;:„"“”«»()]/g, '').trim();
+  const cleanCorr = correctedSentence.toLowerCase().replace(/[.,!?;:„"“”«»()]/g, '').trim();
+
   if (isCorrect || originalText.trim() === correctedSentence) {
     verdict = 'Perfect!';
-  } else if (explanations.length <= 1) {
+    statusLabel = '✓ Grammatically Correct';
+    expBonus = 15;
+  } else if (cleanOrig === cleanCorr) {
     verdict = 'Almost There';
+    statusLabel = 'Minor Capitalization / Punctuation Adjustment';
+    expBonus = 5;
+  } else {
+    verdict = 'Needs Correction';
+    statusLabel = '✗ Corrections Found';
+    expBonus = 0;
   }
 
-  const expBonus = verdict === 'Perfect!' ? 50 : (verdict === 'Almost There' ? 35 : 15);
   const diffHtml = renderWordDiff(originalText, correctedSentence);
 
   return {
     isCorrect,
+    statusLabel,
+    verdictLabel: statusLabel,
     correctedSentence,
     explanations,
     grammarTip,

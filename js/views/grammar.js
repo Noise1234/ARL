@@ -1003,7 +1003,19 @@ export class GrammarView {
     const engine = feedback.engine || (feedback.apiStatus?.includes('gemini') ? 'Gemini' : (feedback.apiStatus?.includes('groq') ? 'Groq' : (feedback.apiStatus?.includes('pollinations') ? 'Pollinations AI' : (feedback.apiStatus?.includes('languagetool') ? 'LanguageTool' : 'Offline Rules'))));
     const statusClass = isCorrect ? 'verdict-correct' : 'verdict-mistake';
     const statusIcon = isCorrect ? '✓' : '✗';
-    const statusLabel = isCorrect ? 'Grammatically Correct' : 'Corrections Found';
+    let statusLabel = isCorrect ? 'Grammatically Correct' : 'Corrections Found';
+
+    if (feedback.statusLabel) {
+      statusLabel = feedback.statusLabel.replace(/^[✓✗]\s*/, '');
+    } else if (feedback.verdictLabel) {
+      statusLabel = feedback.verdictLabel.replace(/^[✓✗]\s*/, '');
+    } else if (feedback.verdict === 'Incomplete / Invalid Sentence') {
+      statusLabel = 'Incomplete / Invalid Sentence';
+    } else if (feedback.verdict === 'Almost There' || feedback.expBonus === 5) {
+      statusLabel = 'Minor Capitalization / Punctuation Adjustment';
+    }
+
+    const exp = typeof feedback.expBonus === 'number' ? feedback.expBonus : (isCorrect ? 15 : 0);
 
     const inputSentence = prefix === 'drill'
       ? (this.drillInputs?.get(this.activeDrillIdx) || '')
@@ -1022,7 +1034,7 @@ export class GrammarView {
             ${statusIcon} ${statusLabel}
           </span>
           <span class="feedback-engine-badge">Engine: ${escapeHtml(engine)}</span>
-          <span class="feedback-exp-pill">+${feedback.expBonus || (isCorrect ? 50 : 15)} EXP</span>
+          <span class="feedback-exp-pill">+${exp} EXP</span>
         </div>
 
         <!-- 2. Word-Level Visual Diff -->
@@ -1218,16 +1230,21 @@ export class GrammarView {
         state.targetLang,
         {
           targetTopic: topic?.title || '',
-          expectedSentence: currentDrill?.target || ''
+          topicId: topic?.id || '',
+          expectedSentence: currentDrill?.target || '',
+          mongolianPrompt: currentDrill?.prompt_mn || '',
+          requiredWords: currentDrill?.woerterbuch || [],
+          drill: currentDrill,
+          topic: topic
         }
       );
 
       this.drillFeedbacks.set(this.activeDrillIdx, feedback);
       this.drillAnswersRevealed.add(this.activeDrillIdx);
 
-      // Award EXP
+      // Award EXP strictly per feedback.expBonus
       if (feedback && feedback.expBonus > 0) {
-        const bonusLabel = feedback.isCorrect ? 'Drill Master' : 'Drill Practice';
+        const bonusLabel = feedback.isCorrect ? 'Drill Master' : (feedback.expBonus === 5 ? 'Drill Partial Credit' : 'Drill Practice');
         state.addExp(feedback.expBonus, { label: bonusLabel, bonus: feedback.isCorrect });
       }
 

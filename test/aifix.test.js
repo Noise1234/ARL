@@ -8,6 +8,7 @@ import assert from 'assert';
 import { evaluateRuleFallback } from '../js/grammar-fallback.js';
 import { safeParseAiJson, GeminiClient, checkSentenceGrammar, getUserAiKey, setUserAiKey, getAiKeyType } from '../js/gemini.js';
 import { renderColorCodedDiff, renderWordDiff } from '../js/diff.js';
+import { verifyDrillSentence } from '../js/drill-validator.js';
 
 export async function runAiFixTests(it) {
   console.log('\n--- Testing AI Fixer / Grammar Check Hardening Suite (test/aifix.test.js) ---');
@@ -144,5 +145,93 @@ export async function runAiFixTests(it) {
         Object.defineProperty(global.navigator, 'onLine', { value: true, configurable: true });
       }
     }
+  });
+
+  const sampleDrill = {
+    id: 'de_a1_hauptsatz_drill_1',
+    prompt_mn: 'Өнөөдөр би номын санд герман хэл сурч байна.',
+    target: 'Heute lerne ich in der Bibliothek Deutsch.',
+    rule_breakdown: 'Цаг хугацаа (Heute) 1-р байранд орсон тул V2 дүрмээр үйл үг (lerne) 2-р байранд орно.',
+    woerterbuch: [
+      { word: 'heute', pos: 'adv' },
+      { word: 'lernen', pos: 'verb' },
+      { word: 'die Bibliothek', pos: 'noun' },
+      { word: 'Deutsch', pos: 'noun' }
+    ]
+  };
+  const sampleTopic = {
+    id: 'de_a1_hauptsatz',
+    title: 'Hauptsatz & Verb-Zweit-Stellung (V2 Rule)'
+  };
+
+  await it('Drill Target-Aware Step A: Blocks gibberish immediately with 0 EXP and target answer', async () => {
+    const res = await verifyDrillSentence('uch bgha jjah js', sampleDrill, sampleTopic, 'de');
+    assert.strictEqual(res.isCorrect, false);
+    assert.strictEqual(res.statusLabel, '✗ Incomplete / Invalid Sentence');
+    assert.strictEqual(res.expBonus, 0, 'Gibberish must NEVER award EXP');
+    assert.strictEqual(res.correctedSentence, 'Heute lerne ich in der Bibliothek Deutsch.');
+    assert(res.explanations.some(e => e.includes('Missing required vocabulary') || e.includes('invalid words')));
+    assert(res.diffHtml.includes('<ins class="diff-inserted">'));
+  });
+
+  await it('Drill Target-Aware Step B: Detects Verb-First (V1) declarative error with 0 EXP', async () => {
+    const res = await verifyDrillSentence('lerne heute ich in der Bibliothek Deutsch', sampleDrill, sampleTopic, 'de');
+    assert.strictEqual(res.isCorrect, false);
+    assert.strictEqual(res.expBonus, 0, 'V1 word order error must award 0 EXP');
+    assert.strictEqual(res.correctedSentence, 'Heute lerne ich in der Bibliothek Deutsch.');
+    assert(res.explanations[0].includes('V2 Rule Violation'), 'Must flag V2 rule violation');
+    assert(res.explanations[0].includes("conjugated verb ('lerne') must be in Position 2, not Position 1"));
+    assert(res.diffHtml.includes('<del class="diff-deleted">lerne</del>'));
+  });
+
+  await it('Drill Target-Aware Step B: Detects No-Inversion (V3) error after fronted adverbial with 0 EXP', async () => {
+    const res = await verifyDrillSentence('Heute ich lerne in der Bibliothek Deutsch', sampleDrill, sampleTopic, 'de');
+    assert.strictEqual(res.isCorrect, false);
+    assert.strictEqual(res.expBonus, 0, 'Inversion error must award 0 EXP');
+    assert.strictEqual(res.correctedSentence, 'Heute lerne ich in der Bibliothek Deutsch.');
+    assert(res.explanations[0].includes('V2 Inversion Error'), 'Must flag V2 inversion error');
+    assert(res.explanations[0].includes("When a time/place phrase ('Heute') is at Position 1, the verb ('lerne') must stay at Position 2"));
+  });
+
+  await it('Drill Target-Aware Step B: Detects Preposition / Case Error with 0 EXP', async () => {
+    const res = await verifyDrillSentence('Heute lerne ich in die Bibliothek Deutsch.', sampleDrill, sampleTopic, 'de');
+    assert.strictEqual(res.isCorrect, false);
+    assert.strictEqual(res.expBonus, 0, 'Preposition case error must award 0 EXP');
+    assert(res.explanations[0].includes("in der Bibliothek") && res.explanations[0].includes('Dativ'));
+  });
+
+  await it('Drill Target-Aware Step B: Recognizes valid V2 alternative permutation and awards 15 EXP', async () => {
+    const res = await verifyDrillSentence('Ich lerne heute in der Bibliothek Deutsch.', sampleDrill, sampleTopic, 'de');
+    assert.strictEqual(res.isCorrect, true);
+    assert.strictEqual(res.statusLabel, '✓ Grammatically Correct');
+    assert.strictEqual(res.expBonus, 15, 'Valid alternative must award +15 EXP');
+    assert.strictEqual(res.correctedSentence, 'Ich lerne heute in der Bibliothek Deutsch.');
+  });
+
+  await it('Drill Target-Aware Step B: Awards +5 EXP partial credit for punctuation/case only', async () => {
+    const res = await verifyDrillSentence('heute lerne ich in der bibliothek deutsch', sampleDrill, sampleTopic, 'de');
+    assert.strictEqual(res.isCorrect, false);
+    assert.strictEqual(res.statusLabel, 'Minor Capitalization / Punctuation Adjustment');
+    assert.strictEqual(res.expBonus, 5, 'Punctuation/case error awards +5 EXP partial credit');
+    assert.strictEqual(res.correctedSentence, 'Heute lerne ich in der Bibliothek Deutsch.');
+  });
+
+  await it('Drill Target-Aware Step B: Exact target match awards 15 EXP', async () => {
+    const res = await verifyDrillSentence('Heute lerne ich in der Bibliothek Deutsch.', sampleDrill, sampleTopic, 'de');
+    assert.strictEqual(res.isCorrect, true);
+    assert.strictEqual(res.statusLabel, '✓ Grammatically Correct');
+    assert.strictEqual(res.expBonus, 15);
+  });
+
+  await it('checkSentenceGrammar seamlessly executes target-aware drill pipeline via options.drill', async () => {
+    const bad = await checkSentenceGrammar('uch bgha jjah js', 'de', { drill: sampleDrill, topic: sampleTopic });
+    assert.strictEqual(bad.isCorrect, false);
+    assert.strictEqual(bad.expBonus, 0);
+    assert.strictEqual(bad.statusLabel, '✗ Incomplete / Invalid Sentence');
+
+    const good = await checkSentenceGrammar('Ich lerne heute in der Bibliothek Deutsch.', 'de', { drill: sampleDrill, topic: sampleTopic });
+    assert.strictEqual(good.isCorrect, true);
+    assert.strictEqual(good.expBonus, 15);
+    assert.strictEqual(good.statusLabel, '✓ Grammatically Correct');
   });
 }
