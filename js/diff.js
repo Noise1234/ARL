@@ -6,7 +6,7 @@
  * - Green Highlight (<span class="diff-correct">): Correctly structured segments.
  */
 
-function escapeHtml(str) {
+export function escapeHtml(str) {
   if (!str) return '';
   return String(str)
     .replace(/&/g, '&amp;')

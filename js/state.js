@@ -382,11 +382,11 @@ class AppState {
   }
 
   // Interactive Sentence Evaluation (Rule 4)
-  async evaluateGrammarSentence(userSentence, targetTopic = '') {
+  async evaluateGrammarSentence(userSentence, targetTopic = '', expectedSentence = '') {
     if (this.isEvaluating) return null;
     this.isEvaluating = true;
     try {
-      const result = await GeminiClient.evaluateSentence(userSentence, targetTopic, this.targetLang);
+      const result = await GeminiClient.evaluateSentence(userSentence, targetTopic, this.targetLang, expectedSentence);
 
       // Award EXP based on result
       if (result && result.expBonus > 0) {

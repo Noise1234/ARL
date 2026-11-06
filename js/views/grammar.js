@@ -11,7 +11,7 @@ import { state } from '../state.js';
 import { t } from '../i18n.js';
 import { sound } from '../sound.js';
 import { GeminiClient } from '../gemini.js';
-import { renderColorCodedDiff } from '../diff.js';
+import { renderColorCodedDiff, escapeHtml } from '../diff.js';
 import { grammarPip } from '../grammar-pip.js';
 import { telemetry } from '../telemetry.js';
 
@@ -615,7 +615,7 @@ export class GrammarView {
                     rows="2"
                     spellcheck="false"
                     autocomplete="off"
-                  >${drillInputText}</textarea>
+                  >${escapeHtml(drillInputText)}</textarea>
                 </div>
 
                 <!-- Action Button Row -->
@@ -623,11 +623,11 @@ export class GrammarView {
                   <button
                     type="button"
                     id="btn-check-drill-sentence"
-                    class="keyhint-btn btn-primary-action touch-target btn-check-sentence"
+                    class="keyhint-btn btn-primary-action touch-target btn-check-sentence ${this.isCheckingDrill ? 'btn-loading' : ''}"
                     ${this.isCheckingDrill ? 'disabled' : ''}
                   >
-                    <span class="micro-bracket">[Ctrl+Enter]</span>
-                    <span class="keyhint-label">${this.isCheckingDrill ? 'Evaluating...' : 'Check Sentence & Earn EXP'}</span>
+                    <span class="micro-bracket">${this.isCheckingDrill ? '...' : '[Ctrl+Enter]'}</span>
+                    <span class="keyhint-label">${this.isCheckingDrill ? 'Checking Sentence...' : 'Check Sentence & Earn EXP'}</span>
                   </button>
 
                   <button
@@ -644,33 +644,49 @@ export class GrammarView {
                   <div class="drill-feedback-card verdict-${(drillFeedback.verdict || '').toLowerCase().replace(/[^a-z]/g, '-')}">
                     <div class="feedback-badge-row">
                       <span class="verdict-pill verdict-${(drillFeedback.verdict || '').toLowerCase().replace(/[^a-z]/g, '-')}">
-                        ${drillFeedback.verdict}
+                        ${escapeHtml(drillFeedback.verdict)}
                       </span>
                       <span class="feedback-exp-pill">+${drillFeedback.expBonus || 15} EXP Awarded</span>
-                      ${drillFeedback.apiStatus && drillFeedback.apiStatus.startsWith('ai-fallback') ? `
-                        <span class="api-status-pill pill-local" title="${drillFeedback.errorMessage || ''}">[Local Checker]</span>
-                      ` : `
-                        <span class="api-status-pill pill-online">[Gemini 2.5 Flash]</span>
-                      `}
+                      <span class="api-status-pill ${drillFeedback.apiStatus?.includes('local') ? 'pill-local' : 'pill-online'}" title="${escapeHtml(drillFeedback.errorMessage || '')}">
+                        ${escapeHtml(drillFeedback.apiBadge || (drillFeedback.apiStatus?.includes('local') ? '[Offline Rule Check]' : '[AI Verified]'))}
+                      </span>
+                    </div>
+
+                    <!-- Corrected Sentence with One-Tap Apply Fix and Copy actions -->
+                    <div class="feedback-corrected-section">
+                      <div class="feedback-corrected-label-row">
+                        <span class="feedback-label">Corrected Sentence:</span>
+                        <div class="feedback-actions-bar">
+                          <button type="button" class="btn-action-pill btn-apply-fix" id="btn-apply-drill-fix" title="Apply this fix to your input">
+                            [Apply Fix]
+                          </button>
+                          <button type="button" class="btn-action-pill btn-copy-fix" id="btn-copy-drill-fix" title="Copy corrected sentence to clipboard">
+                            [Copy]
+                          </button>
+                        </div>
+                      </div>
+                      <div class="feedback-corrected-sentence" id="drill-corrected-target">
+                        ${escapeHtml(drillFeedback.correctedSentence)}
+                      </div>
                     </div>
 
                     <!-- Color-Coded Mistake & Word-Order Highlighting -->
                     <div class="feedback-section">
                       <span class="feedback-label">Correction & Diff Highlighting:</span>
                       <div class="feedback-diff-box">
-                        ${drillFeedback.diffHtml || `<div class="corrected-text">${drillFeedback.correctedSentence}</div>`}
+                        ${drillFeedback.diffHtml || `<div class="corrected-text">${escapeHtml(drillFeedback.correctedSentence)}</div>`}
                       </div>
                     </div>
 
                     <div class="feedback-section">
-                      <span class="feedback-label">Why:</span>
-                      <div class="feedback-val why-text">${drillFeedback.why}</div>
+                      <span class="feedback-label">Rule Explanation:</span>
+                      <div class="feedback-val why-text">${escapeHtml(drillFeedback.why)}</div>
                     </div>
 
                     ${drillFeedback.naturalAlternative ? `
                       <div class="feedback-section">
                         <span class="feedback-label">Natural Native Phrasing:</span>
-                        <div class="feedback-val natural-text">„${drillFeedback.naturalAlternative}“</div>
+                        <div class="feedback-val natural-text">„${escapeHtml(drillFeedback.naturalAlternative)}“</div>
                       </div>
                     ` : ''}
                   </div>
@@ -740,18 +756,18 @@ export class GrammarView {
                   rows="2"
                   spellcheck="false"
                   autocomplete="off"
-                >${this.sandboxText}</textarea>
+                >${escapeHtml(this.sandboxText)}</textarea>
               </div>
 
               <div class="sandbox-submit-row">
                 <button
                   type="button"
                   id="btn-evaluate-free-sentence"
-                  class="keyhint-btn btn-primary-action touch-target btn-check-sentence"
+                  class="keyhint-btn btn-primary-action touch-target btn-check-sentence ${this.isCheckingSandbox ? 'btn-loading' : ''}"
                   ${this.isCheckingSandbox ? 'disabled' : ''}
                 >
-                  <span class="micro-bracket">[Ctrl+Enter]</span>
-                  <span class="keyhint-label">${this.isCheckingSandbox ? 'Evaluating...' : 'Check Custom Sentence'}</span>
+                  <span class="micro-bracket">${this.isCheckingSandbox ? '...' : '[Ctrl+Enter]'}</span>
+                  <span class="keyhint-label">${this.isCheckingSandbox ? 'Checking Custom Sentence...' : 'Check Custom Sentence'}</span>
                 </button>
               </div>
 
@@ -759,18 +775,46 @@ export class GrammarView {
                 <div class="sandbox-feedback-card verdict-${(this.sandboxFeedback.verdict || '').toLowerCase().replace(/[^a-z]/g, '-')}">
                   <div class="feedback-badge-row">
                     <span class="verdict-pill verdict-${(this.sandboxFeedback.verdict || '').toLowerCase().replace(/[^a-z]/g, '-')}">
-                      ${this.sandboxFeedback.verdict}
+                      ${escapeHtml(this.sandboxFeedback.verdict)}
                     </span>
                     <span class="feedback-exp-pill">+${this.sandboxFeedback.expBonus || 15} EXP</span>
+                    <span class="api-status-pill ${this.sandboxFeedback.apiStatus?.includes('local') ? 'pill-local' : 'pill-online'}" title="${escapeHtml(this.sandboxFeedback.errorMessage || '')}">
+                      ${escapeHtml(this.sandboxFeedback.apiBadge || (this.sandboxFeedback.apiStatus?.includes('local') ? '[Offline Rule Check]' : '[AI Verified]'))}
+                    </span>
                   </div>
+
+                  <!-- Corrected Sentence with One-Tap Apply Fix and Copy actions -->
+                  <div class="feedback-corrected-section">
+                    <div class="feedback-corrected-label-row">
+                      <span class="feedback-label">Corrected Sentence:</span>
+                      <div class="feedback-actions-bar">
+                        <button type="button" class="btn-action-pill btn-apply-fix" id="btn-apply-sandbox-fix" title="Apply this fix to your input">
+                          [Apply Fix]
+                        </button>
+                        <button type="button" class="btn-action-pill btn-copy-fix" id="btn-copy-sandbox-fix" title="Copy corrected sentence to clipboard">
+                          [Copy]
+                        </button>
+                      </div>
+                    </div>
+                    <div class="feedback-corrected-sentence" id="sandbox-corrected-target">
+                      ${escapeHtml(this.sandboxFeedback.correctedSentence)}
+                    </div>
+                  </div>
+
                   <div class="feedback-section">
                     <span class="feedback-label">Evaluation Diff:</span>
-                    <div class="feedback-diff-box">${this.sandboxFeedback.diffHtml || `<div class="corrected-text">${this.sandboxFeedback.correctedSentence}</div>`}</div>
+                    <div class="feedback-diff-box">${this.sandboxFeedback.diffHtml || `<div class="corrected-text">${escapeHtml(this.sandboxFeedback.correctedSentence)}</div>`}</div>
                   </div>
                   <div class="feedback-section">
-                    <span class="feedback-label">Why:</span>
-                    <div class="feedback-val why-text">${this.sandboxFeedback.why}</div>
+                    <span class="feedback-label">Rule Explanation:</span>
+                    <div class="feedback-val why-text">${escapeHtml(this.sandboxFeedback.why)}</div>
                   </div>
+                  ${this.sandboxFeedback.naturalAlternative ? `
+                    <div class="feedback-section">
+                      <span class="feedback-label">Natural Native Phrasing:</span>
+                      <div class="feedback-val natural-text">„${escapeHtml(this.sandboxFeedback.naturalAlternative)}“</div>
+                    </div>
+                  ` : ''}
                 </div>
               ` : ''}
             </section>
@@ -861,6 +905,7 @@ export class GrammarView {
     // Drill input textarea
     const drillTextarea = this.container.querySelector('#drill-sentence-textarea');
     if (drillTextarea) {
+      drillTextarea.value = drillInputText;
       drillTextarea.addEventListener('input', (e) => {
         this.drillInputs.set(this.activeDrillIdx, e.target.value);
       });
@@ -871,6 +916,50 @@ export class GrammarView {
         }
       });
     }
+
+    // Apply & Copy actions for drill correction
+    this.container.querySelector('#btn-apply-drill-fix')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      sound.playClick();
+      const feedback = this.drillFeedbacks.get(this.activeDrillIdx);
+      if (!feedback?.correctedSentence) return;
+      const fixed = feedback.correctedSentence;
+      this.drillInputs.set(this.activeDrillIdx, fixed);
+      if (drillTextarea) {
+        drillTextarea.value = fixed;
+        drillTextarea.focus();
+      }
+      const btn = e.currentTarget;
+      const orig = btn.textContent;
+      btn.textContent = '✓ Applied!';
+      setTimeout(() => { btn.textContent = orig; }, 1800);
+    });
+
+    this.container.querySelector('#btn-copy-drill-fix')?.addEventListener('click', async (e) => {
+      e.preventDefault();
+      sound.playClick();
+      const feedback = this.drillFeedbacks.get(this.activeDrillIdx);
+      if (!feedback?.correctedSentence) return;
+      const fixed = feedback.correctedSentence;
+      try {
+        if (navigator?.clipboard?.writeText) {
+          await navigator.clipboard.writeText(fixed);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = fixed;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+      } catch (err) {
+        console.warn('Clipboard write failed:', err);
+      }
+      const btn = e.currentTarget;
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => { btn.textContent = orig; }, 1800);
+    });
 
     // Special characters for drill textarea
     this.container.querySelectorAll('.drill-char-chip').forEach(btn => {
@@ -915,6 +1004,7 @@ export class GrammarView {
     // Free Sandbox textarea
     const sandboxTextarea = this.container.querySelector('#sandbox-textarea');
     if (sandboxTextarea) {
+      sandboxTextarea.value = this.sandboxText || '';
       sandboxTextarea.addEventListener('input', (e) => {
         this.sandboxText = e.target.value;
       });
@@ -925,6 +1015,48 @@ export class GrammarView {
         }
       });
     }
+
+    // Apply & Copy actions for sandbox correction
+    this.container.querySelector('#btn-apply-sandbox-fix')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      sound.playClick();
+      if (!this.sandboxFeedback?.correctedSentence) return;
+      const fixed = this.sandboxFeedback.correctedSentence;
+      this.sandboxText = fixed;
+      if (sandboxTextarea) {
+        sandboxTextarea.value = fixed;
+        sandboxTextarea.focus();
+      }
+      const btn = e.currentTarget;
+      const orig = btn.textContent;
+      btn.textContent = '✓ Applied!';
+      setTimeout(() => { btn.textContent = orig; }, 1800);
+    });
+
+    this.container.querySelector('#btn-copy-sandbox-fix')?.addEventListener('click', async (e) => {
+      e.preventDefault();
+      sound.playClick();
+      if (!this.sandboxFeedback?.correctedSentence) return;
+      const fixed = this.sandboxFeedback.correctedSentence;
+      try {
+        if (navigator?.clipboard?.writeText) {
+          await navigator.clipboard.writeText(fixed);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = fixed;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+      } catch (err) {
+        console.warn('Clipboard write failed:', err);
+      }
+      const btn = e.currentTarget;
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => { btn.textContent = orig; }, 1800);
+    });
 
     // Special characters for sandbox textarea
     this.container.querySelectorAll('.sandbox-char-chip').forEach(btn => {
@@ -967,17 +1099,25 @@ export class GrammarView {
     }
 
     this.isCheckingDrill = true;
-    this.renderTopicDetail(topic);
+
+    // Update check button in place without wiping DOM or textarea input!
+    const checkBtn = this.container.querySelector('#btn-check-drill-sentence');
+    if (checkBtn) {
+      checkBtn.disabled = true;
+      checkBtn.classList.add('btn-loading');
+      checkBtn.innerHTML = '<span class="micro-bracket">...</span> Checking Sentence...';
+    }
 
     try {
-      // Evaluate sentence through GeminiClient with structured color diff
+      // Evaluate sentence through multi-tier pipeline with expected sentence context
       const feedback = await GeminiClient.evaluateSentence(
         userText,
         topic.title,
-        state.targetLang
+        state.targetLang,
+        currentDrill?.target || ''
       );
 
-      // If drill has exact target and user is very close, give feedback
+      // Save feedback
       this.drillFeedbacks.set(this.activeDrillIdx, feedback);
       this.drillAnswersRevealed.add(this.activeDrillIdx);
 
@@ -1018,7 +1158,14 @@ export class GrammarView {
     }
 
     this.isCheckingSandbox = true;
-    this.renderTopicDetail(topic);
+
+    // Update sandbox check button in place without wiping DOM or textarea input!
+    const evalBtn = this.container.querySelector('#btn-evaluate-free-sentence');
+    if (evalBtn) {
+      evalBtn.disabled = true;
+      evalBtn.classList.add('btn-loading');
+      evalBtn.innerHTML = '<span class="micro-bracket">...</span> Checking Custom Sentence...';
+    }
 
     try {
       const feedback = await GeminiClient.evaluateSentence(text, topic.title, state.targetLang);
