@@ -17,7 +17,6 @@ export async function runMobileAuditTests(it) {
   const hudJs = fs.readFileSync(path.join(ROOT, 'js', 'views', 'hud.js'), 'utf-8');
   const settingsJs = fs.readFileSync(path.join(ROOT, 'js', 'views', 'settings.js'), 'utf-8');
   const grammarJs = fs.readFileSync(path.join(ROOT, 'js', 'views', 'grammar.js'), 'utf-8');
-  const notesJs = fs.readFileSync(path.join(ROOT, 'js', 'views', 'notes.js'), 'utf-8');
   const componentsCss = fs.readFileSync(path.join(ROOT, 'css', 'components.css'), 'utf-8');
 
   // ==========================================
@@ -36,16 +35,21 @@ export async function runMobileAuditTests(it) {
     }
   });
 
-  await it('Typographic UI: Bottom navigation covers all 8 modules with monospace bracket tags', () => {
-    const requiredModules = ['vocab', 'memorize', 'quiz', 'lexicon', 'grammar', 'notes', 'media', 'pip'];
+  await it('Typographic UI: Bottom navigation covers active modules with monospace bracket tags (Notes removed)', () => {
+    const requiredModules = ['vocab', 'memorize', 'quiz', 'lexicon', 'grammar', 'media', 'pip'];
     for (const mod of requiredModules) {
       assert(hudJs.includes(`data-target="${mod}"`), `Bottom nav must contain data-target="${mod}"`);
     }
 
-    const requiredKeys = ['[V]', '[M]', '[Q]', '[L]', '[G]', '[N]', '[I]', '[P]'];
+    const requiredKeys = ['[V]', '[M]', '[Q]', '[L]', '[G]', '[I]', '[P]'];
     for (const key of requiredKeys) {
       assert(hudJs.includes(key), `Bottom nav must contain bracket key ${key}`);
     }
+
+    // Notes must be completely removed from bottom and top nav
+    assert(!hudJs.includes('data-target="notes"'), 'Bottom nav must not contain data-target="notes"');
+    assert(!hudJs.includes('id="nav-btn-notes"'), 'Top HUD must not contain nav-btn-notes');
+    assert(!hudJs.includes('[N]'), 'HUD must not contain bracket tag [N]');
   });
 
   await it('Typographic UI: Top header navigation contains zero OS emojis and uses bracket tags', () => {

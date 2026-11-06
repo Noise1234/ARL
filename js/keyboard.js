@@ -185,11 +185,6 @@ class KeyboardRouter {
         this.trigger('toggle_help');
         return;
       }
-      if (key === 'n' || key === 'N') {
-        e.preventDefault();
-        this.trigger('nav_notes');
-        return;
-      }
       if (key === 'p' || key === 'P') {
         e.preventDefault();
         this.trigger('toggle_pip');

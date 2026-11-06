@@ -1,8 +1,8 @@
 /**
  * ARL - Single-Line Top HUD View with Integrated EXP & Level Progress
- * Renders: [DE·B1] (quick-level selector) | counts | Level & EXP progress | Nav items [V] [M] [Q] [L] [G] [N] [I] [P] [SYNC] [T] [S] [?]
+ * Renders: [DE·B1] (quick-level selector) | counts | Level & EXP progress | Nav items [V] [M] [Q] [L] [G] [I] [P] [SYNC] [T] [S] [?]
  * Typographic Terminal Aesthetic: ZERO OS emojis in header and bottom control bars.
- * Mobile Bottom Navigation covers 100% of app features (all 8 modules).
+ * Mobile Bottom Navigation covers 100% of app features (active modules).
  */
 
 import { state } from '../state.js';
@@ -112,9 +112,6 @@ export class TopHudView {
           <button class="hud-nav-item ${this.currentView === 'grammar' ? 'active' : ''}" id="nav-btn-grammar" data-key="g" title="Keyboard: G">
             <span class="hud-key">[G]</span><span class="hud-label">${t('hud_grammar') ? t('hud_grammar').replace(/\[G\]\s*/, '') : 'Grammar'}</span>
           </button>
-          <button class="hud-nav-item ${this.currentView === 'notes' ? 'active' : ''}" id="nav-btn-notes" data-key="n" title="Keyboard: N">
-            <span class="hud-key">[N]</span><span class="hud-label">Notes</span>
-          </button>
           <button class="hud-nav-item ${this.currentView === 'media' ? 'active' : ''}" id="nav-btn-media" data-key="i" title="Keyboard: I">
             <span class="hud-key">[I]</span><span class="hud-label">${t('hud_media') ? t('hud_media').replace(/\[[MI]\]\s*/, '') : 'Media'}</span>
           </button>
@@ -163,10 +160,6 @@ export class TopHudView {
         <button class="mobile-nav-tab ${this.currentView === 'grammar' ? 'active' : ''}" data-target="grammar">
           <span class="tab-key">[G]</span>
           <span class="tab-label">Grammar</span>
-        </button>
-        <button class="mobile-nav-tab ${this.currentView === 'notes' ? 'active' : ''}" data-target="notes">
-          <span class="tab-key">[N]</span>
-          <span class="tab-label">Notes</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'media' ? 'active' : ''}" data-target="media">
           <span class="tab-key">[I]</span>
@@ -269,7 +262,6 @@ export class TopHudView {
       ['#nav-btn-quiz', 'quiz'],
       ['#nav-btn-lexicon', 'lexicon'],
       ['#nav-btn-grammar', 'grammar'],
-      ['#nav-btn-notes', 'notes'],
       ['#nav-btn-media', 'media'],
       ['#nav-btn-stats', 'stats'],
       ['#nav-btn-settings', 'settings'],

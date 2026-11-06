@@ -11,7 +11,6 @@ import { MemorizeView } from './views/memorize.js';
 import { QuizView } from './views/quiz.js';
 import { LexiconView } from './views/lexicon.js';
 import { GrammarView } from './views/grammar.js';
-import { NotesView } from './views/notes.js';
 import { MediaView } from './views/media.js';
 import { SettingsModalView } from './views/settings.js';
 import { HelpModalView } from './views/help.js';
@@ -24,7 +23,7 @@ import { SyncModalView } from './views/sync-modal.js';
 
 class ARLApp {
   constructor() {
-    this.currentView = 'vocab'; // 'vocab' | 'memorize' | 'quiz' | 'lexicon' | 'grammar' | 'notes' | 'media' | 'stats'
+    this.currentView = 'vocab'; // 'vocab' | 'memorize' | 'quiz' | 'lexicon' | 'grammar' | 'media' | 'stats'
     this.isSettingsOpen = false;
     this.isHelpOpen = false;
     this.isSyncModalOpen = false;
@@ -36,7 +35,6 @@ class ARLApp {
     this.quizView = null;
     this.lexiconView = null;
     this.grammarView = null;
-    this.notesView = null;
     this.mediaView = null;
     this.statsView = null;
     this.settingsView = null;
@@ -101,7 +99,6 @@ class ARLApp {
       () => this.openAddWordModal()
     );
     this.grammarView = new GrammarView(mainMount, (viewName) => this.navigateTo(viewName));
-    this.notesView = new NotesView(mainMount, (viewName) => this.navigateTo(viewName));
     this.mediaView = new MediaView(mainMount, (viewName) => this.navigateTo(viewName));
     this.statsView = new StatsView(mainMount, (viewName) => this.navigateTo(viewName));
     this.settingsView = new SettingsModalView(settingsMount, () => {
@@ -126,7 +123,7 @@ class ARLApp {
     this.setupKeyboardActions();
     keyboard.init();
 
-    // 8. Subscribe to State Changes (Safe for in-progress grammar drills & notes)
+    // 8. Subscribe to State Changes (Safe for in-progress grammar drills)
     state.subscribe(() => {
       this.hudView.render();
       if (this.isSettingsOpen) {
@@ -135,10 +132,6 @@ class ARLApp {
       }
       // If user is inside an active grammar topic drill or sandbox, do not reload/wipe the view!
       if (this.currentView === 'grammar' && this.grammarView.activeTopic) {
-        return;
-      }
-      // If user is typing in notes, do not re-render notes on background EXP
-      if (this.currentView === 'notes') {
         return;
       }
       this.renderCurrentView();
@@ -226,9 +219,6 @@ class ARLApp {
         }
         this.grammarView.render();
         break;
-      case 'notes':
-        this.notesView.render();
-        break;
       case 'media':
         await this.mediaView.loadData();
         this.mediaView.render();
@@ -276,7 +266,6 @@ class ARLApp {
     keyboard.on('nav_quiz', () => this.navigateTo('quiz'));
     keyboard.on('nav_lexicon', () => this.navigateTo('lexicon'));
     keyboard.on('nav_grammar', () => this.navigateTo('grammar'));
-    keyboard.on('nav_notes', () => this.navigateTo('notes'));
     keyboard.on('nav_media', () => this.navigateTo('media'));
     keyboard.on('nav_stats', () => this.navigateTo('stats'));
     keyboard.on('toggle_sync', () => this.openSyncModal());

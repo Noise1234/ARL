@@ -3,7 +3,6 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { computeDiff, renderColorCodedDiff } from '../js/diff.js';
-import { NotesView } from '../js/views/notes.js';
 import { grammarPip } from '../js/grammar-pip.js';
 import { LexiconView } from '../js/views/lexicon.js';
 import { state } from '../js/state.js';
@@ -176,42 +175,22 @@ export async function runMajorUpgradeTests(it) {
     assert(html3.includes('class="diff-misplaced"'), 'Word order misplacements rendered with diff-misplaced');
   });
 
-  console.log('\n--- Testing Smart Notes Workspace & Persistence (js/views/notes.js) ---');
+  console.log('\n--- Testing Complete Notes Section Removal & Clean App Shell ---');
 
-  it('NotesView initializes, manages multiple notes, and persists to localStorage', () => {
-    const mockStorage = {};
-    global.localStorage = {
-      getItem: (k) => mockStorage[k] || null,
-      setItem: (k, v) => { mockStorage[k] = String(v); },
-      removeItem: (k) => { delete mockStorage[k]; }
-    };
+  it('Notes section is completely decommissioned and removed from app shell and navigation', () => {
+    const hudSrc = fs.readFileSync(path.join(ROOT, 'js', 'views', 'hud.js'), 'utf-8');
+    const appSrc = fs.readFileSync(path.join(ROOT, 'js', 'app.js'), 'utf-8');
+    const kbSrc = fs.readFileSync(path.join(ROOT, 'js', 'keyboard.js'), 'utf-8');
+    const swSrc = fs.readFileSync(path.join(ROOT, 'sw.js'), 'utf-8');
 
-    const container = new MockElement('main');
-    const notesView = new NotesView(container);
-    
-    // Initial state: creates default Welcome note
-    assert(Array.isArray(notesView.notes), 'notes must be an array');
-    assert(notesView.notes.length >= 1, 'notes must start with at least 1 note');
-    
-    // Create new note
-    const newNote = notesView.createNote('My German Practice');
-    assert(newNote, 'createNote must return created note');
-    assert.strictEqual(newNote.title, 'My German Practice');
-    assert.strictEqual(notesView.activeNoteId, newNote.id);
-
-    // Update note content
-    notesView.updateActiveNote({ content: 'Ich gehe heute ins Kino, weil ich Zeit habe.' });
-    const stored = JSON.parse(mockStorage['arl_smart_notes']);
-    const activeStored = stored.find(n => n.id === newNote.id);
-    assert(activeStored, 'Active note must be in localStorage');
-    assert.strictEqual(activeStored.content, 'Ich gehe heute ins Kino, weil ich Zeit habe.');
-
-    // Render workspace
-    notesView.render();
-    assert(container.innerHTML.includes('notes-workspace-container'), 'Workspace container present');
-    assert(container.innerHTML.includes('notes-sidebar'), 'Notes sidebar present');
-    assert(container.innerHTML.includes('notes-editor-panel'), 'Notes editor panel present');
-    assert(container.innerHTML.includes('notes-selection-toolbar'), 'Selection toolbar present');
+    assert(!hudSrc.includes('id="nav-btn-notes"'), 'Top HUD must not have nav-btn-notes');
+    assert(!hudSrc.includes('data-target="notes"'), 'Bottom nav must not have notes tab');
+    assert(!hudSrc.includes('[N]'), 'HUD must not have [N] bracket');
+    assert(!appSrc.includes('NotesView'), 'app.js must not import or instantiate NotesView');
+    assert(!appSrc.includes("case 'notes':"), 'app.js must not have notes view route');
+    assert(!kbSrc.includes('nav_notes'), 'keyboard.js must not route nav_notes');
+    assert(!swSrc.includes('notes.js'), 'Service worker cache must not include notes.js');
+    assert(!fs.existsSync(path.join(ROOT, 'js', 'views', 'notes.js')), 'notes.js file must be deleted');
   });
 
   console.log('\n--- Testing Floating Grammar PiP 3-State Machine (js/grammar-pip.js) ---');

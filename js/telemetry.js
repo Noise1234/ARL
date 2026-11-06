@@ -63,7 +63,6 @@ export class TelemetryEngine {
       sprint: 0,
       quiz: 0,
       grammar: 0,
-      notes: 0,
       media: 0,
       lexicon: 0
     };
@@ -649,7 +648,7 @@ export class TelemetryEngine {
       { name: 'Vocab', sec: this.sectionSeconds.vocab || 0, color: 'var(--text-primary, #ffffff)' },
       { name: 'Quiz', sec: this.sectionSeconds.quiz || 0, color: 'var(--text-secondary, #a1a1aa)' },
       { name: 'Grammar', sec: this.sectionSeconds.grammar || 0, color: 'var(--text-muted, #71717a)' },
-      { name: 'Notes', sec: this.sectionSeconds.notes || 0, color: 'var(--border-focus, #52525b)' }
+      { name: 'Lexicon', sec: this.sectionSeconds.lexicon || 0, color: 'var(--border-focus, #52525b)' }
     ];
 
     let breakdownSvg = `<g transform="translate(${width - 200}, 25)">`;

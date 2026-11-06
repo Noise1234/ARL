@@ -1,4 +1,4 @@
-const CACHE_NAME = 'arl-cache-v3.3';
+const CACHE_NAME = 'arl-cache-v3.4';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -30,7 +30,6 @@ const ASSETS_TO_CACHE = [
   './js/views/quiz.js',
   './js/views/lexicon.js',
   './js/views/grammar.js',
-  './js/views/notes.js',
   './js/views/media.js',
   './js/views/stats.js',
   './js/views/sync-modal.js',
