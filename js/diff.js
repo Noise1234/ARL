@@ -160,3 +160,58 @@ export function renderColorCodedDiff(userText, correctedText, context = {}) {
     return `<span class="diff-correct">${textEscaped}</span>`;
   }).join('');
 }
+
+/**
+ * Word-level visual diff highlighting deleted/incorrect tokens with strikethrough (<del>)
+ * and corrected insertions in bold high-contrast styling (<ins>).
+ * @param {string} userText
+ * @param {string} correctedText
+ * @returns {string} Safe HTML string
+ */
+export function renderWordDiff(userText, correctedText) {
+  const u = String(userText || '').trim();
+  const c = String(correctedText || '').trim();
+  if (!u && !c) return '';
+  if (!u) return `<ins class="diff-inserted">${escapeHtml(c)}</ins>`;
+  if (!c) return `<del class="diff-deleted">${escapeHtml(u)}</del>`;
+  if (u === c) return `<span class="diff-same">${escapeHtml(u)}</span>`;
+
+  const oldWords = u.split(/\s+/);
+  const newWords = c.split(/\s+/);
+  const m = oldWords.length;
+  const n = newWords.length;
+  const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (oldWords[i - 1].toLowerCase() === newWords[j - 1].toLowerCase()) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  let i = m;
+  let j = n;
+  const parts = [];
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && oldWords[i - 1].toLowerCase() === newWords[j - 1].toLowerCase()) {
+      if (oldWords[i - 1] === newWords[j - 1]) {
+        parts.unshift(`<span class="diff-same">${escapeHtml(oldWords[i - 1])}</span>`);
+      } else {
+        parts.unshift(`<del class="diff-deleted">${escapeHtml(oldWords[i - 1])}</del> <ins class="diff-inserted">${escapeHtml(newWords[j - 1])}</ins>`);
+      }
+      i--;
+      j--;
+    } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+      parts.unshift(`<ins class="diff-inserted">${escapeHtml(newWords[j - 1])}</ins>`);
+      j--;
+    } else {
+      parts.unshift(`<del class="diff-deleted">${escapeHtml(oldWords[i - 1])}</del>`);
+      i--;
+    }
+  }
+
+  return parts.join(' ');
+}

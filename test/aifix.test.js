@@ -6,8 +6,8 @@
 
 import assert from 'assert';
 import { evaluateRuleFallback } from '../js/grammar-fallback.js';
-import { safeParseAiJson, GeminiClient } from '../js/gemini.js';
-import { renderColorCodedDiff } from '../js/diff.js';
+import { safeParseAiJson, GeminiClient, checkSentenceGrammar, getUserAiKey, setUserAiKey, getAiKeyType } from '../js/gemini.js';
+import { renderColorCodedDiff, renderWordDiff } from '../js/diff.js';
 
 export async function runAiFixTests(it) {
   console.log('\n--- Testing AI Fixer / Grammar Check Hardening Suite (test/aifix.test.js) ---');
@@ -98,5 +98,51 @@ export async function runAiFixTests(it) {
     const res = await GeminiClient.evaluateSentence('', 'Grammar', 'de');
     assert.strictEqual(res.verdict, 'Needs Correction');
     assert(res.diffHtml.includes('Empty input'));
+  });
+
+  await it('renderWordDiff produces token-level <del> and <ins> markup', () => {
+    const user = 'Ich gehe mit mein Freund.';
+    const corr = 'Ich gehe mit meinem Freund.';
+    const diff = renderWordDiff(user, corr);
+    assert(diff.includes('<del class="diff-deleted">mein</del>'), 'Must strikethrough deleted token');
+    assert(diff.includes('<ins class="diff-inserted">meinem</ins>'), 'Must highlight inserted token');
+    assert(diff.includes('Ich'), 'Must contain unchanged words');
+    assert(diff.includes('Freund.'), 'Must contain unchanged words with punctuation');
+  });
+
+  await it('Key Vault helper functions accurately identify Gemini and Groq keys', () => {
+    assert.strictEqual(getAiKeyType('AIzaSyAbc1234567890'), 'Gemini');
+    assert.strictEqual(getAiKeyType('gsk_abcdef1234567890'), 'Groq');
+    assert.strictEqual(getAiKeyType('sk-otherKey'), 'OpenAI');
+    assert.strictEqual(getAiKeyType('custom_model_key_123'), 'Custom');
+    assert.strictEqual(getAiKeyType(''), null);
+    assert.strictEqual(getAiKeyType(null), null);
+
+    // Save and clear test
+    setUserAiKey('AIzaTestKey123');
+    assert.strictEqual(getUserAiKey(), 'AIzaTestKey123');
+    setUserAiKey('');
+    assert.strictEqual(getUserAiKey(), '');
+  });
+
+  await it('checkSentenceGrammar Tier 4 returns valid structured output offline', async () => {
+    const origDesc = Object.getOwnPropertyDescriptor(global.navigator, 'onLine');
+    Object.defineProperty(global.navigator, 'onLine', { value: false, configurable: true });
+
+    try {
+      const res = await checkSentenceGrammar('Ich gehe mit mein Freund.', 'de');
+      assert.strictEqual(res.isCorrect, false);
+      assert.strictEqual(res.engine, 'Offline Rules');
+      assert.strictEqual(res.correctedSentence, 'Ich gehe mit meinem Freund.');
+      assert(Array.isArray(res.explanations) && res.explanations.length > 0);
+      assert(typeof res.grammarTip === 'string');
+      assert(res.wordDiffHtml.includes('<del class="diff-deleted">'));
+    } finally {
+      if (origDesc) {
+        Object.defineProperty(global.navigator, 'onLine', origDesc);
+      } else {
+        Object.defineProperty(global.navigator, 'onLine', { value: true, configurable: true });
+      }
+    }
   });
 }

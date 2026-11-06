@@ -3,19 +3,28 @@
  * 4 Proficiency Levels (A1 - B2) with 4-part pedagogical layout,
  * Contextual Mini-Wörterbuch (Required Words per sentence),
  * Revealable Answer & Translation Section,
- * Color-Coded Mistake & Word-Order Diff Highlighting (Red / Blue / Green),
+ * Keyless + LocalStorage Hybrid Engine with Word-Level Strikethrough Diff,
  * and Free-form Sentence Sandbox.
  */
 
 import { state } from '../state.js';
 import { t } from '../i18n.js';
 import { sound } from '../sound.js';
-import { GeminiClient } from '../gemini.js';
-import { renderColorCodedDiff, escapeHtml } from '../diff.js';
+import {
+  GeminiClient,
+  checkSentenceGrammar,
+  getUserAiKey,
+  setUserAiKey,
+  getAiKeyType
+} from '../gemini.js';
+import { renderColorCodedDiff, renderWordDiff, escapeHtml } from '../diff.js';
 import { grammarPip } from '../grammar-pip.js';
 import { telemetry } from '../telemetry.js';
 
 export class GrammarView {
+  static activeInstance = null;
+  static _delegationInitialized = false;
+
   constructor(containerEl, onNavigate) {
     this.container = containerEl;
     this.onNavigate = onNavigate;
@@ -40,6 +49,208 @@ export class GrammarView {
     this.sandboxText = '';
     this.sandboxFeedback = null;
     this.isCheckingSandbox = false;
+
+    // API Key Vault popover toggle state
+    this.isKeyVaultOpen = false;
+
+    GrammarView.activeInstance = this;
+    GrammarView.ensureDelegation();
+  }
+
+  /**
+   * Document-level event delegation ensuring that DOM re-renders
+   * never detach event listeners from buttons, inputs, or keycaps.
+   */
+  static ensureDelegation() {
+    if (typeof document === 'undefined' || GrammarView._delegationInitialized) return;
+    GrammarView._delegationInitialized = true;
+
+    // Global Click Delegation
+    document.addEventListener('click', (e) => {
+      const inst = GrammarView.activeInstance;
+      if (!inst || !inst.activeTopic) return;
+
+      // 1. Drill Sentence Check Button
+      if (e.target.closest('#btn-check-drill-sentence, .btn-check-sentence, [data-action="check-drill"]')) {
+        e.preventDefault();
+        const drills = inst.activeTopic.drills || [];
+        const currentDrill = drills[inst.activeDrillIdx] || null;
+        inst.submitDrillSentence(inst.activeTopic, currentDrill);
+        return;
+      }
+
+      // 2. Sandbox Free Sentence Check Button
+      if (e.target.closest('#btn-evaluate-free-sentence, .btn-check-sandbox-sentence, [data-action="check-sandbox"]')) {
+        e.preventDefault();
+        inst.submitSandboxSentence(inst.activeTopic);
+        return;
+      }
+
+      // 3. API Key Vault Toggle
+      if (e.target.closest('#btn-toggle-key-vault')) {
+        e.preventDefault();
+        inst.toggleKeyVault();
+        return;
+      }
+
+      // 4. API Key Save Button
+      if (e.target.closest('#btn-save-user-ai-key')) {
+        e.preventDefault();
+        inst.saveKeyVaultInput();
+        return;
+      }
+
+      // 5. API Key Clear Button
+      if (e.target.closest('#btn-clear-user-ai-key')) {
+        e.preventDefault();
+        inst.clearKeyVaultInput();
+        return;
+      }
+
+      // 6. Apply Fix to Input (Drill)
+      const applyDrill = e.target.closest('#btn-apply-drill-fix');
+      if (applyDrill) {
+        e.preventDefault();
+        inst.applyDrillFix();
+        return;
+      }
+
+      // 7. Copy Clean Sentence (Drill)
+      const copyDrill = e.target.closest('#btn-copy-drill-fix');
+      if (copyDrill) {
+        e.preventDefault();
+        inst.copyDrillFix();
+        return;
+      }
+
+      // 8. Apply Fix to Input (Sandbox)
+      const applySandbox = e.target.closest('#btn-apply-sandbox-fix');
+      if (applySandbox) {
+        e.preventDefault();
+        inst.applySandboxFix();
+        return;
+      }
+
+      // 9. Copy Clean Sentence (Sandbox)
+      const copySandbox = e.target.closest('#btn-copy-sandbox-fix');
+      if (copySandbox) {
+        e.preventDefault();
+        inst.copySandboxFix();
+        return;
+      }
+
+      // 10. Toggle Drill Answer Reveal
+      if (e.target.closest('#btn-toggle-drill-answer')) {
+        e.preventDefault();
+        sound.playClick();
+        if (inst.drillAnswersRevealed.has(inst.activeDrillIdx)) {
+          inst.drillAnswersRevealed.delete(inst.activeDrillIdx);
+        } else {
+          inst.drillAnswersRevealed.add(inst.activeDrillIdx);
+        }
+        inst.renderTopicDetail(inst.activeTopic);
+        return;
+      }
+
+      // 11. Prev Drill Navigation
+      if (e.target.closest('#btn-prev-drill')) {
+        e.preventDefault();
+        if (inst.activeDrillIdx > 0) {
+          sound.playClick();
+          inst.saveCurrentDrillInput();
+          inst.activeDrillIdx--;
+          inst.renderTopicDetail(inst.activeTopic);
+        }
+        return;
+      }
+
+      // 12. Next Drill Navigation
+      if (e.target.closest('#btn-next-drill')) {
+        e.preventDefault();
+        const total = (inst.activeTopic.drills || []).length;
+        if (inst.activeDrillIdx < total - 1) {
+          sound.playClick();
+          inst.saveCurrentDrillInput();
+          inst.activeDrillIdx++;
+          inst.renderTopicDetail(inst.activeTopic);
+        }
+        return;
+      }
+
+      // 13. Step Pills Navigation
+      const pill = e.target.closest('.drill-pill-step');
+      if (pill) {
+        e.preventDefault();
+        sound.playClick();
+        inst.saveCurrentDrillInput();
+        const step = parseInt(pill.getAttribute('data-step'), 10);
+        const total = (inst.activeTopic.drills || []).length;
+        if (!isNaN(step) && step >= 0 && step < total) {
+          inst.activeDrillIdx = step;
+          inst.renderTopicDetail(inst.activeTopic);
+        }
+        return;
+      }
+
+      // 14. Special Character Chips (Drill)
+      const drillChip = e.target.closest('.drill-char-chip');
+      if (drillChip) {
+        e.preventDefault();
+        const ch = drillChip.getAttribute('data-char');
+        const ta = inst.container.querySelector('#drill-sentence-textarea');
+        if (ta && ch) {
+          const start = ta.selectionStart ?? ta.value.length;
+          const end = ta.selectionEnd ?? ta.value.length;
+          const val = ta.value;
+          ta.value = val.slice(0, start) + ch + val.slice(end);
+          ta.selectionStart = ta.selectionEnd = start + ch.length;
+          inst.drillInputs.set(inst.activeDrillIdx, ta.value);
+          ta.focus();
+        }
+        return;
+      }
+
+      // 15. Special Character Chips (Sandbox)
+      const sandboxChip = e.target.closest('.sandbox-char-chip');
+      if (sandboxChip) {
+        e.preventDefault();
+        const ch = sandboxChip.getAttribute('data-char');
+        const ta = inst.container.querySelector('#sandbox-textarea');
+        if (ta && ch) {
+          const start = ta.selectionStart ?? ta.value.length;
+          const end = ta.selectionEnd ?? ta.value.length;
+          const val = ta.value;
+          ta.value = val.slice(0, start) + ch + val.slice(end);
+          ta.selectionStart = ta.selectionEnd = start + ch.length;
+          inst.sandboxText = ta.value;
+          ta.focus();
+        }
+        return;
+      }
+    });
+
+    // Global Keydown Delegation: Enter / Ctrl+Enter for Instant Evaluation
+    document.addEventListener('keydown', (e) => {
+      const inst = GrammarView.activeInstance;
+      if (!inst || !inst.activeTopic) return;
+
+      if (e.key === 'Enter') {
+        if (e.target && e.target.id === 'drill-sentence-textarea') {
+          // Trigger on Ctrl+Enter or plain Enter without Shift
+          if (e.ctrlKey || e.metaKey || !e.shiftKey) {
+            e.preventDefault();
+            const drills = inst.activeTopic.drills || [];
+            const currentDrill = drills[inst.activeDrillIdx] || null;
+            inst.submitDrillSentence(inst.activeTopic, currentDrill);
+          }
+        } else if (e.target && e.target.id === 'sandbox-textarea') {
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            inst.submitSandboxSentence(inst.activeTopic);
+          }
+        }
+      }
+    });
   }
 
   async loadData(force = false) {
@@ -66,71 +277,68 @@ export class GrammarView {
     } catch (e) {
       console.warn('Could not load redemittel:', e);
     }
-
-    // Reset topic pointer defensively on dataset switch
-    this.selectedTopicIdx = 0;
-    this.activeTopic = null;
-    this.searchQuery = '';
-    this.activeDrillIdx = 0;
-    this.drillInputs.clear();
-    this.drillFeedbacks.clear();
-    this.drillAnswersRevealed.clear();
-    this.sandboxText = '';
-    this.sandboxFeedback = null;
-    if (this.currentFolderIdx >= this.folders.length) {
-      this.currentFolderIdx = 0;
-    }
   }
 
   setFolderIndex(idx) {
-    if (idx >= 0 && idx < this.folders.length) {
-      this.currentFolderIdx = idx;
-      this.activeTopic = null;
-      this.selectedTopicIdx = 0;
-      this.isRedemittelActive = false;
-      this.searchQuery = '';
-      this.activeDrillIdx = 0;
-      this.drillInputs.clear();
-      this.drillFeedbacks.clear();
-      this.drillAnswersRevealed.clear();
-      this.sandboxText = '';
-      this.sandboxFeedback = null;
-      this.render();
-    }
+    this.currentFolderIdx = idx;
+    this.selectedTopicIdx = 0;
+    this.isRedemittelActive = false;
+    this.activeTopic = null;
+    this.searchQuery = '';
+    this.render();
   }
 
-  toggleRedemittel() {
-    this.isRedemittelActive = !this.isRedemittelActive;
+  setRedemittelActive(active = true) {
+    this.isRedemittelActive = active;
     this.activeTopic = null;
     this.searchQuery = '';
     this.render();
   }
 
   getFilteredTopics() {
-    const currentFolder = this.folders[this.currentFolderIdx];
-    if (!currentFolder || !currentFolder.topics) return [];
-    if (!this.searchQuery.trim()) return currentFolder.topics;
+    if (this.folders.length === 0) return [];
+    const folder = this.folders[this.currentFolderIdx];
+    if (!folder || !folder.topics) return [];
 
-    const q = this.searchQuery.toLowerCase().trim();
-    return currentFolder.topics.filter(topic => {
-      const titleMatch = topic.title.toLowerCase().includes(q);
-      const patternMatch = topic.pattern && topic.pattern.toLowerCase().includes(q);
-      const idMatch = topic.id.toLowerCase().includes(q);
-      const conceptMatch = topic.core_concept && Object.values(topic.core_concept).some(val =>
-        typeof val === 'string' && val.toLowerCase().includes(q)
+    const q = this.searchQuery.trim().toLowerCase();
+    if (!q) return folder.topics;
+
+    return folder.topics.filter(t => {
+      const matchTitle = (t.title || '').toLowerCase().includes(q);
+      const matchPattern = (t.pattern || '').toLowerCase().includes(q);
+      const matchTrap = (t.common_trap || '').toLowerCase().includes(q);
+      const matchConcept = t.core_concept && Object.values(t.core_concept).some(c => (c || '').toLowerCase().includes(q));
+      const matchDrills = t.drills && t.drills.some(d =>
+        (d.prompt_mn || '').toLowerCase().includes(q) ||
+        (d.target || '').toLowerCase().includes(q)
       );
-      return titleMatch || patternMatch || idMatch || conceptMatch;
+      return matchTitle || matchPattern || matchTrap || matchConcept || matchDrills;
     });
   }
 
   render() {
-    if (this.activeTopic) {
-      this.renderTopicDetail(this.activeTopic);
+    GrammarView.activeInstance = this;
+
+    if (this.folders.length === 0) {
+      this.container.innerHTML = `
+        <div class="grammar-view-container">
+          <div class="grammar-empty-state">
+            <div class="empty-icon">⏳</div>
+            <div class="empty-text">Loading Grammar Syllabus...</div>
+          </div>
+        </div>
+      `;
+      this.loadData().then(() => this.render());
       return;
     }
 
     if (this.isRedemittelActive) {
-      this.renderRedemittelList();
+      this.renderRedemittel();
+      return;
+    }
+
+    if (this.activeTopic) {
+      this.renderTopicDetail(this.activeTopic);
       return;
     }
 
@@ -138,15 +346,14 @@ export class GrammarView {
   }
 
   renderTopicList() {
-    const currentFolder = this.folders[this.currentFolderIdx];
+    const folder = this.folders[this.currentFolderIdx] || { level: 'A1', topics: [] };
     const topics = this.getFilteredTopics();
-    const folderLevel = currentFolder ? currentFolder.level : `Level ${this.currentFolderIdx + 1}`;
-    const folderCount = currentFolder && currentFolder.topics ? currentFolder.topics.length : 0;
+    const folderCount = (folder.topics && folder.topics.length) || 0;
+    const folderLevel = folder.level || 'A1';
 
     this.container.innerHTML = `
       <div class="grammar-view-container">
-        
-        <!-- Folders Header Tabs [1-4] + [R] -->
+        <!-- Navigation Header -->
         <div class="grammar-nav-bar">
           <div class="grammar-folders-tabs">
             ${this.folders.map((f, i) => `
@@ -252,7 +459,7 @@ export class GrammarView {
 
     this.container.querySelector('#btn-tab-redemittel')?.addEventListener('click', () => {
       sound.playClick();
-      this.toggleRedemittel();
+      this.setRedemittelActive(true);
     });
 
     this.container.querySelector('#btn-global-pip-toggle')?.addEventListener('click', () => {
@@ -266,15 +473,11 @@ export class GrammarView {
         this.searchQuery = e.target.value;
         this.selectedTopicIdx = 0;
         this.render();
-        const reInput = this.container.querySelector('#grammar-search-input');
-        if (reInput) {
-          reInput.focus();
-          reInput.setSelectionRange(reInput.value.length, reInput.value.length);
-        }
       });
     }
 
     this.container.querySelector('#btn-clear-grammar-search')?.addEventListener('click', () => {
+      sound.playClick();
       this.searchQuery = '';
       this.selectedTopicIdx = 0;
       this.render();
@@ -283,19 +486,18 @@ export class GrammarView {
     this.container.querySelectorAll('.grammar-topic-item').forEach(item => {
       item.addEventListener('click', () => {
         sound.playClick();
-        const tid = item.getAttribute('data-topic-id');
-        const found = this.folders[this.currentFolderIdx]?.topics?.find(t => t.id === tid);
-        if (found) {
-          this.activeTopic = found;
-          this.activeDrillIdx = 0;
-          this.render();
+        const idx = parseInt(item.getAttribute('data-idx'), 10);
+        const filtered = this.getFilteredTopics();
+        if (filtered[idx]) {
+          this.selectedTopicIdx = idx;
+          this.openSelectedTopic();
         }
       });
     });
   }
 
-  renderRedemittelList() {
-    const sections = this.redemittel ? this.redemittel.sections : [];
+  renderRedemittel() {
+    const sections = this.redemittel || [];
 
     this.container.innerHTML = `
       <div class="grammar-view-container">
@@ -424,6 +626,7 @@ export class GrammarView {
   }
 
   renderTopicDetail(topic) {
+    GrammarView.activeInstance = this;
     const activeLang = this.conceptLang || state.interfaceLang;
     const coreConceptText = (topic.core_concept && topic.core_concept[activeLang]) ||
       (topic.core_concept && (topic.core_concept.mn || topic.core_concept.en || topic.core_concept.de)) || '';
@@ -433,7 +636,9 @@ export class GrammarView {
       '<span class="formula-position-chip">[$1]</span>'
     );
 
-    const hasKey = GeminiClient.hasApiKey();
+    const userKey = getUserAiKey();
+    const hasKey = Boolean(userKey);
+    const keyType = getAiKeyType(userKey) || 'Custom';
     const specialChars = state.targetLang === 'de'
       ? ['ä', 'ö', 'ü', 'ß', 'Ä', 'Ö', 'Ü']
       : ["'", '"', '-', '?', '!'];
@@ -455,6 +660,49 @@ export class GrammarView {
           </button>
 
           <div class="topic-header-actions-group">
+            <!-- Minimalist Monochrome API Key Vault Toggle -->
+            <div class="grammar-key-vault-wrap">
+              <button type="button" class="keyhint-btn btn-key-vault touch-target" id="btn-toggle-key-vault" title="AI Key Settings (Gemini / Groq / Free Mode)">
+                <span class="micro-bracket">[KEY]</span>
+                <span class="key-vault-badge-text ${hasKey ? 'badge-active' : 'badge-free'}">
+                  ${hasKey ? `Key Active (${keyType})` : 'Free Keyless Mode'}
+                </span>
+              </button>
+
+              ${this.isKeyVaultOpen ? `
+                <div class="key-vault-dropdown-card" id="grammar-key-vault-dropdown">
+                  <div class="key-vault-header-row">
+                    <span class="key-vault-title">AI Key Vault (BYOK)</span>
+                    <span class="key-vault-status-chip ${hasKey ? 'active' : ''}">
+                      ${hasKey ? `Active (${keyType})` : 'Free Keyless Mode'}
+                    </span>
+                  </div>
+                  <p class="key-vault-hint">
+                    Enter your personal Gemini (<code>AIza...</code>) or Groq (<code>gsk_...</code>) key. Leave empty for 100% free LanguageTool + Pollinations AI mode.
+                  </p>
+                  <div class="key-vault-form-row">
+                    <input
+                      type="password"
+                      id="input-grammar-user-ai-key"
+                      class="key-vault-input-field"
+                      placeholder="AIza... or gsk_..."
+                      value="${escapeHtml(userKey)}"
+                      autocomplete="off"
+                      spellcheck="false"
+                    />
+                    <button type="button" class="btn-action-pill btn-save-key-pill" id="btn-save-user-ai-key">
+                      Save
+                    </button>
+                    ${hasKey ? `
+                      <button type="button" class="btn-action-pill btn-clear-key-pill" id="btn-clear-user-ai-key">
+                        Clear Key
+                      </button>
+                    ` : ''}
+                  </div>
+                </div>
+              ` : ''}
+            </div>
+
             <button class="keyhint-btn btn-pin-pip touch-target" id="btn-pin-topic-pip" title="Open this rule in floating PiP reference">
               [P] Pin to PiP
             </button>
@@ -554,7 +802,7 @@ export class GrammarView {
                   ${drills.map((_, idx) => {
                     const isCur = idx === this.activeDrillIdx;
                     const hasDone = this.drillFeedbacks.has(idx);
-                    const isPerfect = hasDone && this.drillFeedbacks.get(idx)?.verdict === 'Perfect!';
+                    const isPerfect = hasDone && (this.drillFeedbacks.get(idx)?.isCorrect || this.drillFeedbacks.get(idx)?.verdict === 'Perfect!');
                     let stateCls = isCur ? 'pill-current' : '';
                     if (isPerfect) stateCls += ' pill-passed';
                     else if (hasDone) stateCls += ' pill-reviewed';
@@ -606,7 +854,7 @@ export class GrammarView {
                   `).join('')}
                 </div>
 
-                <!-- Sentence Input Textarea -->
+                <!-- Sentence Input Textarea (Values programmatically preserved) -->
                 <div class="drill-input-wrapper">
                   <textarea
                     id="drill-sentence-textarea"
@@ -627,7 +875,7 @@ export class GrammarView {
                     ${this.isCheckingDrill ? 'disabled' : ''}
                   >
                     <span class="micro-bracket">${this.isCheckingDrill ? '...' : '[Ctrl+Enter]'}</span>
-                    <span class="keyhint-label">${this.isCheckingDrill ? 'Checking Sentence...' : 'Check Sentence & Earn EXP'}</span>
+                    <span class="keyhint-label">${this.isCheckingDrill ? 'Checking grammar...' : 'Check Sentence & Earn EXP'}</span>
                   </button>
 
                   <button
@@ -639,58 +887,10 @@ export class GrammarView {
                   </button>
                 </div>
 
-                <!-- Diff Feedback Card with Red/Blue/Green highlights -->
-                ${drillFeedback ? `
-                  <div class="drill-feedback-card verdict-${(drillFeedback.verdict || '').toLowerCase().replace(/[^a-z]/g, '-')}">
-                    <div class="feedback-badge-row">
-                      <span class="verdict-pill verdict-${(drillFeedback.verdict || '').toLowerCase().replace(/[^a-z]/g, '-')}">
-                        ${escapeHtml(drillFeedback.verdict)}
-                      </span>
-                      <span class="feedback-exp-pill">+${drillFeedback.expBonus || 15} EXP Awarded</span>
-                      <span class="api-status-pill ${drillFeedback.apiStatus?.includes('local') ? 'pill-local' : 'pill-online'}" title="${escapeHtml(drillFeedback.errorMessage || '')}">
-                        ${escapeHtml(drillFeedback.apiBadge || (drillFeedback.apiStatus?.includes('local') ? '[Offline Rule Check]' : '[AI Verified]'))}
-                      </span>
-                    </div>
-
-                    <!-- Corrected Sentence with One-Tap Apply Fix and Copy actions -->
-                    <div class="feedback-corrected-section">
-                      <div class="feedback-corrected-label-row">
-                        <span class="feedback-label">Corrected Sentence:</span>
-                        <div class="feedback-actions-bar">
-                          <button type="button" class="btn-action-pill btn-apply-fix" id="btn-apply-drill-fix" title="Apply this fix to your input">
-                            [Apply Fix]
-                          </button>
-                          <button type="button" class="btn-action-pill btn-copy-fix" id="btn-copy-drill-fix" title="Copy corrected sentence to clipboard">
-                            [Copy]
-                          </button>
-                        </div>
-                      </div>
-                      <div class="feedback-corrected-sentence" id="drill-corrected-target">
-                        ${escapeHtml(drillFeedback.correctedSentence)}
-                      </div>
-                    </div>
-
-                    <!-- Color-Coded Mistake & Word-Order Highlighting -->
-                    <div class="feedback-section">
-                      <span class="feedback-label">Correction & Diff Highlighting:</span>
-                      <div class="feedback-diff-box">
-                        ${drillFeedback.diffHtml || `<div class="corrected-text">${escapeHtml(drillFeedback.correctedSentence)}</div>`}
-                      </div>
-                    </div>
-
-                    <div class="feedback-section">
-                      <span class="feedback-label">Rule Explanation:</span>
-                      <div class="feedback-val why-text">${escapeHtml(drillFeedback.why)}</div>
-                    </div>
-
-                    ${drillFeedback.naturalAlternative ? `
-                      <div class="feedback-section">
-                        <span class="feedback-label">Natural Native Phrasing:</span>
-                        <div class="feedback-val natural-text">„${escapeHtml(drillFeedback.naturalAlternative)}“</div>
-                      </div>
-                    ` : ''}
-                  </div>
-                ` : ''}
+                <!-- Dedicated Feedback Container -->
+                <div id="drill-feedback-container" class="grammar-feedback-container">
+                  ${this.renderFeedbackCardHtml(drillFeedback, 'drill')}
+                </div>
 
                 <!-- Revealable Answer & Translation Section -->
                 ${isAnswerRevealed ? `
@@ -731,10 +931,9 @@ export class GrammarView {
                   <h3 class="sandbox-title">Free Sentence Production</h3>
                 </div>
                 <div class="sandbox-ai-indicator">
-                  ${hasKey
-                    ? '<span class="ai-badge ai-online" title="Gemini 2.5 Flash Connected">[Gemini 2.5 Flash]</span>'
-                    : '<span class="ai-badge ai-local" title="Deterministic local validator active.">[Local Checker]</span>'
-                  }
+                  <span class="ai-badge ${hasKey ? 'ai-online' : 'ai-local'}">
+                    ${hasKey ? `[${keyType} Active]` : '[Free Keyless Mode]'}
+                  </span>
                 </div>
               </div>
 
@@ -767,56 +966,14 @@ export class GrammarView {
                   ${this.isCheckingSandbox ? 'disabled' : ''}
                 >
                   <span class="micro-bracket">${this.isCheckingSandbox ? '...' : '[Ctrl+Enter]'}</span>
-                  <span class="keyhint-label">${this.isCheckingSandbox ? 'Checking Custom Sentence...' : 'Check Custom Sentence'}</span>
+                  <span class="keyhint-label">${this.isCheckingSandbox ? 'Checking grammar...' : 'Check Custom Sentence'}</span>
                 </button>
               </div>
 
-              ${this.sandboxFeedback ? `
-                <div class="sandbox-feedback-card verdict-${(this.sandboxFeedback.verdict || '').toLowerCase().replace(/[^a-z]/g, '-')}">
-                  <div class="feedback-badge-row">
-                    <span class="verdict-pill verdict-${(this.sandboxFeedback.verdict || '').toLowerCase().replace(/[^a-z]/g, '-')}">
-                      ${escapeHtml(this.sandboxFeedback.verdict)}
-                    </span>
-                    <span class="feedback-exp-pill">+${this.sandboxFeedback.expBonus || 15} EXP</span>
-                    <span class="api-status-pill ${this.sandboxFeedback.apiStatus?.includes('local') ? 'pill-local' : 'pill-online'}" title="${escapeHtml(this.sandboxFeedback.errorMessage || '')}">
-                      ${escapeHtml(this.sandboxFeedback.apiBadge || (this.sandboxFeedback.apiStatus?.includes('local') ? '[Offline Rule Check]' : '[AI Verified]'))}
-                    </span>
-                  </div>
-
-                  <!-- Corrected Sentence with One-Tap Apply Fix and Copy actions -->
-                  <div class="feedback-corrected-section">
-                    <div class="feedback-corrected-label-row">
-                      <span class="feedback-label">Corrected Sentence:</span>
-                      <div class="feedback-actions-bar">
-                        <button type="button" class="btn-action-pill btn-apply-fix" id="btn-apply-sandbox-fix" title="Apply this fix to your input">
-                          [Apply Fix]
-                        </button>
-                        <button type="button" class="btn-action-pill btn-copy-fix" id="btn-copy-sandbox-fix" title="Copy corrected sentence to clipboard">
-                          [Copy]
-                        </button>
-                      </div>
-                    </div>
-                    <div class="feedback-corrected-sentence" id="sandbox-corrected-target">
-                      ${escapeHtml(this.sandboxFeedback.correctedSentence)}
-                    </div>
-                  </div>
-
-                  <div class="feedback-section">
-                    <span class="feedback-label">Evaluation Diff:</span>
-                    <div class="feedback-diff-box">${this.sandboxFeedback.diffHtml || `<div class="corrected-text">${escapeHtml(this.sandboxFeedback.correctedSentence)}</div>`}</div>
-                  </div>
-                  <div class="feedback-section">
-                    <span class="feedback-label">Rule Explanation:</span>
-                    <div class="feedback-val why-text">${escapeHtml(this.sandboxFeedback.why)}</div>
-                  </div>
-                  ${this.sandboxFeedback.naturalAlternative ? `
-                    <div class="feedback-section">
-                      <span class="feedback-label">Natural Native Phrasing:</span>
-                      <div class="feedback-val natural-text">„${escapeHtml(this.sandboxFeedback.naturalAlternative)}“</div>
-                    </div>
-                  ` : ''}
-                </div>
-              ` : ''}
+              <!-- Dedicated Feedback Container -->
+              <div id="sandbox-feedback-container" class="grammar-feedback-container">
+                ${this.renderFeedbackCardHtml(this.sandboxFeedback, 'sandbox')}
+              </div>
             </section>
 
           </div>
@@ -836,10 +993,103 @@ export class GrammarView {
     this.bindTopicDetailEvents(topic);
   }
 
+  /**
+   * Renders structured feedback result card with Status Header,
+   * Word-Level Strikethrough Diff, and One-Click Copy / Apply Fix.
+   */
+  renderFeedbackCardHtml(feedback, prefix = 'drill') {
+    if (!feedback) return '';
+    const isCorrect = Boolean(feedback.isCorrect || feedback.verdict === 'Perfect!');
+    const engine = feedback.engine || (feedback.apiStatus?.includes('gemini') ? 'Gemini' : (feedback.apiStatus?.includes('groq') ? 'Groq' : (feedback.apiStatus?.includes('pollinations') ? 'Pollinations AI' : (feedback.apiStatus?.includes('languagetool') ? 'LanguageTool' : 'Offline Rules'))));
+    const statusClass = isCorrect ? 'verdict-correct' : 'verdict-mistake';
+    const statusIcon = isCorrect ? '✓' : '✗';
+    const statusLabel = isCorrect ? 'Grammatically Correct' : 'Corrections Found';
+
+    const inputSentence = prefix === 'drill'
+      ? (this.drillInputs?.get(this.activeDrillIdx) || '')
+      : (this.sandboxText || '');
+
+    const wordDiffHtml = renderWordDiff(inputSentence, feedback.correctedSentence);
+    const explanations = Array.isArray(feedback.explanations) && feedback.explanations.length > 0
+      ? feedback.explanations
+      : (feedback.why ? [feedback.why] : []);
+
+    return `
+      <div class="drill-feedback-card ${statusClass}">
+        <!-- 1. Status Header -->
+        <div class="feedback-badge-row">
+          <span class="verdict-pill ${statusClass}">
+            ${statusIcon} ${statusLabel}
+          </span>
+          <span class="feedback-engine-badge">Engine: ${escapeHtml(engine)}</span>
+          <span class="feedback-exp-pill">+${feedback.expBonus || (isCorrect ? 50 : 15)} EXP</span>
+        </div>
+
+        <!-- 2. Word-Level Visual Diff -->
+        <div class="feedback-section">
+          <span class="feedback-label">Word-Level Visual Diff:</span>
+          <div class="feedback-diff-box feedback-word-diff">
+            ${wordDiffHtml || escapeHtml(feedback.correctedSentence)}
+          </div>
+        </div>
+
+        <!-- 3. Clean Corrected Sentence with One-Click Copy & Apply Fix buttons -->
+        <div class="feedback-corrected-section">
+          <div class="feedback-corrected-label-row">
+            <span class="feedback-label">Clean Corrected Sentence:</span>
+            <div class="feedback-actions-bar">
+              <button type="button" class="btn-action-pill btn-apply-fix" id="btn-apply-${prefix}-fix" data-fixed="${escapeHtml(feedback.correctedSentence)}" title="Apply this correction to input">
+                [Apply to Input]
+              </button>
+              <button type="button" class="btn-action-pill btn-copy-fix" id="btn-copy-${prefix}-fix" data-fixed="${escapeHtml(feedback.correctedSentence)}" title="Copy clean sentence to clipboard">
+                [Copy]
+              </button>
+            </div>
+          </div>
+          <div class="feedback-corrected-sentence" id="${prefix}-corrected-target">
+            ${escapeHtml(feedback.correctedSentence)}
+          </div>
+        </div>
+
+        <!-- 4. Explanations & Tip -->
+        ${explanations.length > 0 ? `
+          <div class="feedback-section">
+            <span class="feedback-label">Rule Explanations:</span>
+            <ul class="feedback-explanations-list">
+              ${explanations.map(exp => `<li>${escapeHtml(exp)}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        ${feedback.grammarTip ? `
+          <div class="feedback-section feedback-tip-section">
+            <span class="feedback-label">Grammar Tip:</span>
+            <div class="feedback-val tip-text">💡 ${escapeHtml(feedback.grammarTip)}</div>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
   bindTopicDetailEvents(topic) {
-    const drills = topic.drills || [];
-    const totalDrills = drills.length;
-    const currentDrill = drills[this.activeDrillIdx] || null;
+    const drillInputText = this.drillInputs.get(this.activeDrillIdx) || '';
+
+    // Programmatically ensure textarea values are pristine (never wiped)
+    const drillTextarea = this.container.querySelector('#drill-sentence-textarea');
+    if (drillTextarea) {
+      drillTextarea.value = drillInputText;
+      drillTextarea.addEventListener('input', (e) => {
+        this.drillInputs.set(this.activeDrillIdx, e.target.value);
+      });
+    }
+
+    const sandboxTextarea = this.container.querySelector('#sandbox-textarea');
+    if (sandboxTextarea) {
+      sandboxTextarea.value = this.sandboxText || '';
+      sandboxTextarea.addEventListener('input', (e) => {
+        this.sandboxText = e.target.value;
+      });
+    }
 
     // Back to list
     this.container.querySelector('#btn-back-to-list')?.addEventListener('click', () => {
@@ -871,128 +1121,6 @@ export class GrammarView {
       });
     });
 
-    // Drill step navigation
-    this.container.querySelector('#btn-prev-drill')?.addEventListener('click', () => {
-      if (this.activeDrillIdx > 0) {
-        sound.playClick();
-        this.saveCurrentDrillInput();
-        this.activeDrillIdx--;
-        this.renderTopicDetail(topic);
-      }
-    });
-
-    this.container.querySelector('#btn-next-drill')?.addEventListener('click', () => {
-      if (this.activeDrillIdx < totalDrills - 1) {
-        sound.playClick();
-        this.saveCurrentDrillInput();
-        this.activeDrillIdx++;
-        this.renderTopicDetail(topic);
-      }
-    });
-
-    this.container.querySelectorAll('.drill-pill-step').forEach(btn => {
-      btn.addEventListener('click', () => {
-        sound.playClick();
-        this.saveCurrentDrillInput();
-        const step = parseInt(btn.getAttribute('data-step'), 10);
-        if (!isNaN(step) && step >= 0 && step < totalDrills) {
-          this.activeDrillIdx = step;
-          this.renderTopicDetail(topic);
-        }
-      });
-    });
-
-    // Drill input textarea
-    const drillTextarea = this.container.querySelector('#drill-sentence-textarea');
-    if (drillTextarea) {
-      drillTextarea.value = drillInputText;
-      drillTextarea.addEventListener('input', (e) => {
-        this.drillInputs.set(this.activeDrillIdx, e.target.value);
-      });
-      drillTextarea.addEventListener('keydown', (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-          e.preventDefault();
-          this.submitDrillSentence(topic, currentDrill);
-        }
-      });
-    }
-
-    // Apply & Copy actions for drill correction
-    this.container.querySelector('#btn-apply-drill-fix')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      sound.playClick();
-      const feedback = this.drillFeedbacks.get(this.activeDrillIdx);
-      if (!feedback?.correctedSentence) return;
-      const fixed = feedback.correctedSentence;
-      this.drillInputs.set(this.activeDrillIdx, fixed);
-      if (drillTextarea) {
-        drillTextarea.value = fixed;
-        drillTextarea.focus();
-      }
-      const btn = e.currentTarget;
-      const orig = btn.textContent;
-      btn.textContent = '✓ Applied!';
-      setTimeout(() => { btn.textContent = orig; }, 1800);
-    });
-
-    this.container.querySelector('#btn-copy-drill-fix')?.addEventListener('click', async (e) => {
-      e.preventDefault();
-      sound.playClick();
-      const feedback = this.drillFeedbacks.get(this.activeDrillIdx);
-      if (!feedback?.correctedSentence) return;
-      const fixed = feedback.correctedSentence;
-      try {
-        if (navigator?.clipboard?.writeText) {
-          await navigator.clipboard.writeText(fixed);
-        } else {
-          const ta = document.createElement('textarea');
-          ta.value = fixed;
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-        }
-      } catch (err) {
-        console.warn('Clipboard write failed:', err);
-      }
-      const btn = e.currentTarget;
-      const orig = btn.textContent;
-      btn.textContent = '✓ Copied!';
-      setTimeout(() => { btn.textContent = orig; }, 1800);
-    });
-
-    // Special characters for drill textarea
-    this.container.querySelectorAll('.drill-char-chip').forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (!drillTextarea) return;
-        const char = btn.getAttribute('data-char');
-        const start = drillTextarea.selectionStart ?? drillTextarea.value.length;
-        const end = drillTextarea.selectionEnd ?? drillTextarea.value.length;
-        const val = drillTextarea.value;
-        drillTextarea.value = val.slice(0, start) + char + val.slice(end);
-        drillTextarea.selectionStart = drillTextarea.selectionEnd = start + char.length;
-        this.drillInputs.set(this.activeDrillIdx, drillTextarea.value);
-        drillTextarea.focus();
-      });
-    });
-
-    // Check Drill Sentence
-    this.container.querySelector('#btn-check-drill-sentence')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      this.submitDrillSentence(topic, currentDrill);
-    });
-
-    // Toggle Drill Answer
-    this.container.querySelector('#btn-toggle-drill-answer')?.addEventListener('click', () => {
-      sound.playClick();
-      if (this.drillAnswersRevealed.has(this.activeDrillIdx)) {
-        this.drillAnswersRevealed.delete(this.activeDrillIdx);
-      } else {
-        this.drillAnswersRevealed.add(this.activeDrillIdx);
-      }
-      this.renderTopicDetail(topic);
-    });
-
     // Audio button for target sentence
     this.container.querySelector('#btn-drill-audio')?.addEventListener('click', (e) => {
       const target = e.currentTarget.getAttribute('data-target');
@@ -1000,84 +1128,30 @@ export class GrammarView {
         state.playAudio(target);
       }
     });
+  }
 
-    // Free Sandbox textarea
-    const sandboxTextarea = this.container.querySelector('#sandbox-textarea');
-    if (sandboxTextarea) {
-      sandboxTextarea.value = this.sandboxText || '';
-      sandboxTextarea.addEventListener('input', (e) => {
-        this.sandboxText = e.target.value;
-      });
-      sandboxTextarea.addEventListener('keydown', (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-          e.preventDefault();
-          this.submitSandboxSentence(topic);
-        }
-      });
+  toggleKeyVault() {
+    sound.playClick();
+    this.isKeyVaultOpen = !this.isKeyVaultOpen;
+    this.renderTopicDetail(this.activeTopic);
+  }
+
+  saveKeyVaultInput() {
+    sound.playClick();
+    const input = this.container.querySelector('#input-grammar-user-ai-key');
+    if (input) {
+      const val = input.value.trim();
+      setUserAiKey(val);
+      this.isKeyVaultOpen = false;
+      this.renderTopicDetail(this.activeTopic);
     }
+  }
 
-    // Apply & Copy actions for sandbox correction
-    this.container.querySelector('#btn-apply-sandbox-fix')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      sound.playClick();
-      if (!this.sandboxFeedback?.correctedSentence) return;
-      const fixed = this.sandboxFeedback.correctedSentence;
-      this.sandboxText = fixed;
-      if (sandboxTextarea) {
-        sandboxTextarea.value = fixed;
-        sandboxTextarea.focus();
-      }
-      const btn = e.currentTarget;
-      const orig = btn.textContent;
-      btn.textContent = '✓ Applied!';
-      setTimeout(() => { btn.textContent = orig; }, 1800);
-    });
-
-    this.container.querySelector('#btn-copy-sandbox-fix')?.addEventListener('click', async (e) => {
-      e.preventDefault();
-      sound.playClick();
-      if (!this.sandboxFeedback?.correctedSentence) return;
-      const fixed = this.sandboxFeedback.correctedSentence;
-      try {
-        if (navigator?.clipboard?.writeText) {
-          await navigator.clipboard.writeText(fixed);
-        } else {
-          const ta = document.createElement('textarea');
-          ta.value = fixed;
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-        }
-      } catch (err) {
-        console.warn('Clipboard write failed:', err);
-      }
-      const btn = e.currentTarget;
-      const orig = btn.textContent;
-      btn.textContent = '✓ Copied!';
-      setTimeout(() => { btn.textContent = orig; }, 1800);
-    });
-
-    // Special characters for sandbox textarea
-    this.container.querySelectorAll('.sandbox-char-chip').forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (!sandboxTextarea) return;
-        const char = btn.getAttribute('data-char');
-        const start = sandboxTextarea.selectionStart ?? sandboxTextarea.value.length;
-        const end = sandboxTextarea.selectionEnd ?? sandboxTextarea.value.length;
-        const currentVal = sandboxTextarea.value;
-        sandboxTextarea.value = currentVal.substring(0, start) + char + currentVal.substring(end);
-        sandboxTextarea.selectionStart = sandboxTextarea.selectionEnd = start + char.length;
-        sandboxTextarea.focus();
-        this.sandboxText = sandboxTextarea.value;
-      });
-    });
-
-    // Check Free Sandbox sentence
-    this.container.querySelector('#btn-evaluate-free-sentence')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      this.submitSandboxSentence(topic);
-    });
+  clearKeyVaultInput() {
+    sound.playClick();
+    setUserAiKey('');
+    this.isKeyVaultOpen = false;
+    this.renderTopicDetail(this.activeTopic);
   }
 
   saveCurrentDrillInput() {
@@ -1085,6 +1159,19 @@ export class GrammarView {
     if (ta) {
       this.drillInputs.set(this.activeDrillIdx, ta.value);
     }
+  }
+
+  updateDrillPills() {
+    const drills = this.activeTopic?.drills || [];
+    this.container.querySelectorAll('.drill-pill-step').forEach((btn, idx) => {
+      const isCur = idx === this.activeDrillIdx;
+      const hasDone = this.drillFeedbacks.has(idx);
+      const isPerfect = hasDone && (this.drillFeedbacks.get(idx)?.isCorrect || this.drillFeedbacks.get(idx)?.verdict === 'Perfect!');
+      let stateCls = isCur ? 'pill-current' : '';
+      if (isPerfect) stateCls += ' pill-passed';
+      else if (hasDone) stateCls += ' pill-reviewed';
+      btn.className = `drill-pill-step ${stateCls}`.trim();
+    });
   }
 
   async submitDrillSentence(topic, currentDrill) {
@@ -1100,49 +1187,89 @@ export class GrammarView {
 
     this.isCheckingDrill = true;
 
-    // Update check button in place without wiping DOM or textarea input!
+    // 1. In-place loading state on check button
     const checkBtn = this.container.querySelector('#btn-check-drill-sentence');
     if (checkBtn) {
       checkBtn.disabled = true;
       checkBtn.classList.add('btn-loading');
-      checkBtn.innerHTML = '<span class="micro-bracket">...</span> Checking Sentence...';
+      checkBtn.innerHTML = '<span class="micro-bracket">...</span> Checking grammar...';
+    }
+
+    // 2. Visible loading state inside feedback container (NEVER wipes textarea)
+    const feedbackContainer = this.container.querySelector('#drill-feedback-container');
+    if (feedbackContainer) {
+      feedbackContainer.innerHTML = `
+        <div class="drill-feedback-card feedback-loading-card">
+          <div class="feedback-badge-row">
+            <span class="verdict-pill verdict-loading">Checking grammar...</span>
+            <span class="feedback-engine-badge">Querying Linguistic Engine</span>
+          </div>
+          <div class="feedback-loading-indicator">
+            <div class="loading-pulse-dot"></div>
+            <span class="loading-pulse-text">Analyzing syntax, case governance & verb placement...</span>
+          </div>
+        </div>
+      `;
     }
 
     try {
-      // Evaluate sentence through multi-tier pipeline with expected sentence context
-      const feedback = await GeminiClient.evaluateSentence(
+      const feedback = await checkSentenceGrammar(
         userText,
-        topic.title,
         state.targetLang,
-        currentDrill?.target || ''
+        {
+          targetTopic: topic?.title || '',
+          expectedSentence: currentDrill?.target || ''
+        }
       );
 
-      // Save feedback
       this.drillFeedbacks.set(this.activeDrillIdx, feedback);
       this.drillAnswersRevealed.add(this.activeDrillIdx);
 
       // Award EXP
       if (feedback && feedback.expBonus > 0) {
-        const bonusLabel = feedback.verdict === 'Perfect!' ? 'Drill Master' : 'Drill Practice';
-        state.addExp(feedback.expBonus, { label: bonusLabel, bonus: feedback.verdict === 'Perfect!' });
+        const bonusLabel = feedback.isCorrect ? 'Drill Master' : 'Drill Practice';
+        state.addExp(feedback.expBonus, { label: bonusLabel, bonus: feedback.isCorrect });
       }
 
-      // Record grammar telemetry
+      // Record telemetry
       try {
         let perfectCount = 0;
         this.drillFeedbacks.forEach(f => {
-          if (f.verdict === 'Perfect!') perfectCount++;
+          if (f.isCorrect || f.verdict === 'Perfect!') perfectCount++;
         });
         const totalTested = this.drillFeedbacks.size;
         const accuracyPct = totalTested > 0 ? (perfectCount / totalTested) * 100 : 0;
         const elapsed = Date.now() - (this.topicStartTime || Date.now());
         telemetry.recordGrammarDrill(topic.id, accuracyPct, elapsed);
       } catch (e) {}
+
+      // Update feedback container directly without touching textarea DOM
+      if (feedbackContainer) {
+        feedbackContainer.innerHTML = this.renderFeedbackCardHtml(feedback, 'drill');
+      }
+
+      // Update drill step pills
+      this.updateDrillPills();
+
     } catch (err) {
       console.warn('Drill evaluation error:', err);
+      if (feedbackContainer) {
+        feedbackContainer.innerHTML = `
+          <div class="drill-feedback-card verdict-mistake">
+            <div class="feedback-badge-row">
+              <span class="verdict-pill verdict-mistake">Notice</span>
+            </div>
+            <div class="feedback-val">${escapeHtml(err.message || 'Grammar check encountered an error.')}</div>
+          </div>
+        `;
+      }
     } finally {
       this.isCheckingDrill = false;
-      this.renderTopicDetail(topic);
+      if (checkBtn) {
+        checkBtn.disabled = false;
+        checkBtn.classList.remove('btn-loading');
+        checkBtn.innerHTML = '<span class="micro-bracket">[Ctrl+Enter]</span> <span class="keyhint-label">Check Sentence & Earn EXP</span>';
+      }
     }
   }
 
@@ -1159,25 +1286,136 @@ export class GrammarView {
 
     this.isCheckingSandbox = true;
 
-    // Update sandbox check button in place without wiping DOM or textarea input!
+    // 1. In-place loading state on sandbox check button
     const evalBtn = this.container.querySelector('#btn-evaluate-free-sentence');
     if (evalBtn) {
       evalBtn.disabled = true;
       evalBtn.classList.add('btn-loading');
-      evalBtn.innerHTML = '<span class="micro-bracket">...</span> Checking Custom Sentence...';
+      evalBtn.innerHTML = '<span class="micro-bracket">...</span> Checking grammar...';
+    }
+
+    // 2. Visible loading state inside feedback container (NEVER wipes textarea)
+    const feedbackContainer = this.container.querySelector('#sandbox-feedback-container');
+    if (feedbackContainer) {
+      feedbackContainer.innerHTML = `
+        <div class="drill-feedback-card feedback-loading-card">
+          <div class="feedback-badge-row">
+            <span class="verdict-pill verdict-loading">Checking grammar...</span>
+            <span class="feedback-engine-badge">Querying Linguistic Engine</span>
+          </div>
+          <div class="feedback-loading-indicator">
+            <div class="loading-pulse-dot"></div>
+            <span class="loading-pulse-text">Analyzing custom sentence syntax & verb agreement...</span>
+          </div>
+        </div>
+      `;
     }
 
     try {
-      const feedback = await GeminiClient.evaluateSentence(text, topic.title, state.targetLang);
+      const feedback = await checkSentenceGrammar(text, state.targetLang, {
+        targetTopic: topic?.title || ''
+      });
       this.sandboxFeedback = feedback;
+
       if (feedback && feedback.expBonus > 0) {
-        state.addExp(feedback.expBonus, { label: 'Sentence Master', bonus: feedback.verdict === 'Perfect!' });
+        state.addExp(feedback.expBonus, { label: 'Sentence Master', bonus: feedback.isCorrect });
+      }
+
+      if (feedbackContainer) {
+        feedbackContainer.innerHTML = this.renderFeedbackCardHtml(feedback, 'sandbox');
       }
     } catch (err) {
       console.warn('Sandbox evaluation error:', err);
+      if (feedbackContainer) {
+        feedbackContainer.innerHTML = `
+          <div class="drill-feedback-card verdict-mistake">
+            <div class="feedback-badge-row">
+              <span class="verdict-pill verdict-mistake">Notice</span>
+            </div>
+            <div class="feedback-val">${escapeHtml(err.message || 'Custom sentence check encountered an error.')}</div>
+          </div>
+        `;
+      }
     } finally {
       this.isCheckingSandbox = false;
-      this.renderTopicDetail(topic);
+      if (evalBtn) {
+        evalBtn.disabled = false;
+        evalBtn.classList.remove('btn-loading');
+        evalBtn.innerHTML = '<span class="micro-bracket">[Ctrl+Enter]</span> <span class="keyhint-label">Check Custom Sentence</span>';
+      }
+    }
+  }
+
+  applyDrillFix() {
+    sound.playClick();
+    const feedback = this.drillFeedbacks.get(this.activeDrillIdx);
+    if (!feedback?.correctedSentence) return;
+    const fixed = feedback.correctedSentence;
+    this.drillInputs.set(this.activeDrillIdx, fixed);
+    const ta = this.container.querySelector('#drill-sentence-textarea');
+    if (ta) {
+      ta.value = fixed;
+      ta.focus();
+    }
+    const btn = this.container.querySelector('#btn-apply-drill-fix');
+    if (btn) {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Applied!';
+      setTimeout(() => { if (btn) btn.textContent = orig; }, 1800);
+    }
+  }
+
+  copyDrillFix() {
+    sound.playClick();
+    const feedback = this.drillFeedbacks.get(this.activeDrillIdx);
+    if (!feedback?.correctedSentence) return;
+    this.copyToClipboard(feedback.correctedSentence, '#btn-copy-drill-fix');
+  }
+
+  applySandboxFix() {
+    sound.playClick();
+    if (!this.sandboxFeedback?.correctedSentence) return;
+    const fixed = this.sandboxFeedback.correctedSentence;
+    this.sandboxText = fixed;
+    const ta = this.container.querySelector('#sandbox-textarea');
+    if (ta) {
+      ta.value = fixed;
+      ta.focus();
+    }
+    const btn = this.container.querySelector('#btn-apply-sandbox-fix');
+    if (btn) {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Applied!';
+      setTimeout(() => { if (btn) btn.textContent = orig; }, 1800);
+    }
+  }
+
+  copySandboxFix() {
+    sound.playClick();
+    if (!this.sandboxFeedback?.correctedSentence) return;
+    this.copyToClipboard(this.sandboxFeedback.correctedSentence, '#btn-copy-sandbox-fix');
+  }
+
+  async copyToClipboard(text, btnSelector) {
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else if (typeof document !== 'undefined') {
+        const temp = document.createElement('textarea');
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+      }
+    } catch (e) {
+      console.warn('Clipboard write failed:', e);
+    }
+    const btn = this.container?.querySelector(btnSelector);
+    if (btn) {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => { if (btn) btn.textContent = orig; }, 1800);
     }
   }
 }

@@ -3680,6 +3680,219 @@ button.btn-loading,
   color: var(--accent-blue);
 }
 
+.feedback-engine-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface-2);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.verdict-pill.verdict-correct {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+.verdict-pill.verdict-mistake {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.verdict-pill.verdict-loading {
+  background: rgba(59, 130, 246, 0.12);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+/* Loading card */
+.feedback-loading-card {
+  border-color: var(--border-focus) !important;
+  background: var(--bg-surface-2);
+}
+
+.feedback-loading-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}
+
+.loading-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3b82f6;
+  animation: pulseLoading 1.2s infinite ease-in-out;
+}
+
+/* Word-Level Diff Styling */
+.feedback-word-diff {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  padding: 10px 12px;
+  background: var(--bg-surface-2);
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  word-break: break-word;
+}
+
+del.diff-deleted {
+  text-decoration: line-through;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+  padding: 1px 5px;
+  border-radius: 4px;
+  margin-right: 2px;
+  font-weight: 500;
+}
+
+ins.diff-inserted {
+  text-decoration: none;
+  font-weight: 700;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+  padding: 1px 5px;
+  border-radius: 4px;
+  margin-right: 2px;
+}
+
+span.diff-same {
+  color: var(--text-primary);
+}
+
+.feedback-explanations-list {
+  margin: 4px 0 0 18px;
+  padding: 0;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.feedback-explanations-list li {
+  margin-bottom: 4px;
+}
+
+.feedback-tip-section .tip-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding-left: 4px;
+}
+
+/* Minimalist Monochrome Key Vault Popover */
+.grammar-key-vault-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.key-vault-badge-text {
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.key-vault-badge-text.badge-active {
+  color: #22c55e;
+}
+
+.key-vault-badge-text.badge-free {
+  color: var(--text-muted);
+}
+
+.key-vault-dropdown-card {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 1000;
+  min-width: 310px;
+  max-width: 90vw;
+  background: var(--bg-surface-1, #121215);
+  border: 1px solid var(--border-focus);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.key-vault-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.key-vault-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.key-vault-status-chip {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--bg-surface-2);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+}
+
+.key-vault-status-chip.active {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.key-vault-hint {
+  margin: 0;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.key-vault-hint code {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  padding: 1px 4px;
+  background: var(--bg-surface-2);
+  border-radius: 3px;
+  color: var(--text-primary);
+}
+
+.key-vault-form-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.key-vault-input-field {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.key-vault-input-field:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
 .feedback-section {
   display: flex;
   flex-direction: column;
