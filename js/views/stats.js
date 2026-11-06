@@ -1,7 +1,9 @@
 /**
- * ARL - Telemetry & Visual Analytics Dashboard View ([📊 Stats])
- * Renders the 4-timeframe Memorized Counter Grid, Active Study Time Breakdown,
- * and 4 interactive SVG charts (Timeline, Word Velocity, Grammar Mastery, Study Distribution).
+ * ARL - Telemetry & Visual Analytics Dashboard View ([X] Statistik)
+ * Consolidated Analytics Hub:
+ * - 5-Card Monochrome Bento Grid: Weekly, Monthly, Seasonal (90-day), Yearly, and Total
+ * - App Usage Time Tracker: Daily, Weekly, Total study hours (tab-visibility & idle protected)
+ * - Learning Speed Analytics Graphics: High-contrast monochrome SVG charts & learning velocity
  */
 
 import { state } from '../state.js';
@@ -44,85 +46,93 @@ export class StatsView {
     const timeStats = telemetry.getTimeStats();
     const velocity = telemetry.getWordVelocityAnalytics(state.cards);
 
+    const totalHoursNum = Math.max(0.05, (timeStats.totalSec || 0) / 3600);
+    const wordsPerHour = memCounts.total > 0 ? (memCounts.total / totalHoursNum).toFixed(1) : '0.0';
+
     this.container.innerHTML = `
       <div class="stats-dashboard-container">
         
         <!-- Dashboard Header -->
         <div class="stats-header-bar">
           <div>
-            <h2 class="stats-title">[📊 Stats] Telemetry & Visual Analytics</h2>
-            <div class="stats-subtitle">Real-time learning velocity, retention telemetry, and active study tracking</div>
+            <h2 class="stats-title">[X] Statistik & Analytics</h2>
+            <div class="stats-subtitle">Active SM-2 retention metrics, study velocity, and usage time telemetry</div>
           </div>
           <div class="stats-top-badge">
-            <span class="session-timer-badge">${telemetry.formatSessionTime()} active</span>
+            <span class="session-timer-badge">⏱ ${telemetry.formatSessionTime()} active session</span>
           </div>
         </div>
 
-        <!-- 1. Memorized Words Counter Grid (4 Timeframes) -->
+        <!-- 1. Memorized Words Bento Grid (5 Cards: Week, Month, Season, Year, Total) -->
         <section class="stats-section">
           <div class="stats-section-header">
-            <h3 class="stats-section-title">WORDS MEMORIZED (ACTIVE SM-2 RETENTION)</h3>
+            <h3 class="stats-section-title">WORDS MEMORIZED (ACTIVE SM-2 PROGRESSION)</h3>
           </div>
-          <div class="memorized-grid-4">
-            <div class="mem-stat-card">
-              <span class="mem-stat-label">THIS WEEK</span>
-              <span class="mem-stat-val text-blue">${memCounts.week}</span>
-              <span class="mem-stat-sub">Mon – Sun</span>
+          <div class="stats-bento-grid memorized-bento-grid">
+            <div class="bento-stat-card">
+              <span class="bento-stat-label">THIS WEEK</span>
+              <span class="bento-stat-val">${memCounts.week}</span>
+              <span class="bento-stat-sub">ISO Mon – Sun</span>
             </div>
-            <div class="mem-stat-card">
-              <span class="mem-stat-label">THIS MONTH</span>
-              <span class="mem-stat-val text-emerald">${memCounts.month}</span>
-              <span class="mem-stat-sub">Calendar Month</span>
+            <div class="bento-stat-card">
+              <span class="bento-stat-label">THIS MONTH</span>
+              <span class="bento-stat-val">${memCounts.month}</span>
+              <span class="bento-stat-sub">Calendar Month</span>
             </div>
-            <div class="mem-stat-card">
-              <span class="mem-stat-label">THIS SEASON</span>
-              <span class="mem-stat-val text-amber">${memCounts.season}</span>
-              <span class="mem-stat-sub">3-Month Quarter</span>
+            <div class="bento-stat-card">
+              <span class="bento-stat-label">THIS SEASON</span>
+              <span class="bento-stat-val">${memCounts.season}</span>
+              <span class="bento-stat-sub">90-Day Quarter</span>
             </div>
-            <div class="mem-stat-card">
-              <span class="mem-stat-label">THIS YEAR</span>
-              <span class="mem-stat-val text-purple">${memCounts.year}</span>
-              <span class="mem-stat-sub">Calendar Year (${memCounts.total} Total)</span>
+            <div class="bento-stat-card">
+              <span class="bento-stat-label">THIS YEAR</span>
+              <span class="bento-stat-val">${memCounts.year}</span>
+              <span class="bento-stat-sub">Calendar Year</span>
+            </div>
+            <div class="bento-stat-card bento-stat-highlight">
+              <span class="bento-stat-label">TOTAL MEMORIZED</span>
+              <span class="bento-stat-val">${memCounts.total}</span>
+              <span class="bento-stat-sub">All-time Mastered</span>
             </div>
           </div>
         </section>
 
-        <!-- 2. Active Study Time Breakdown -->
+        <!-- 2. App Usage Time Tracker (Daily, Weekly, Total Hours) -->
         <section class="stats-section">
           <div class="stats-section-header">
-            <h3 class="stats-section-title">ACTIVE STUDY TIME (IDLE PROTECTED)</h3>
+            <h3 class="stats-section-title">ACTIVE USAGE TIME (IDLE & TAB-VISIBILITY PROTECTED)</h3>
           </div>
-          <div class="time-stats-grid">
-            <div class="time-stat-pill">
-              <span class="time-label">Today:</span>
-              <strong class="time-val">${timeStats.today}</strong>
+          <div class="stats-bento-grid usage-time-bento-grid">
+            <div class="bento-stat-card">
+              <span class="bento-stat-label">DAILY ACTIVE</span>
+              <span class="bento-stat-val">${timeStats.todayHours}</span>
+              <span class="bento-stat-sub">${timeStats.today}</span>
             </div>
-            <div class="time-stat-pill">
-              <span class="time-label">This Week:</span>
-              <strong class="time-val">${timeStats.week}</strong>
+            <div class="bento-stat-card">
+              <span class="bento-stat-label">WEEKLY ACTIVE</span>
+              <span class="bento-stat-val">${timeStats.weekHours}</span>
+              <span class="bento-stat-sub">${timeStats.week}</span>
             </div>
-            <div class="time-stat-pill">
-              <span class="time-label">This Month:</span>
-              <strong class="time-val">${timeStats.month}</strong>
+            <div class="bento-stat-card">
+              <span class="bento-stat-label">TOTAL STUDY TIME</span>
+              <span class="bento-stat-val">${timeStats.totalHours}</span>
+              <span class="bento-stat-sub">${timeStats.total}</span>
             </div>
-            <div class="time-stat-pill">
-              <span class="time-label">This Season:</span>
-              <strong class="time-val">${timeStats.season}</strong>
-            </div>
-            <div class="time-stat-pill">
-              <span class="time-label">This Year:</span>
-              <strong class="time-val">${timeStats.year}</strong>
+            <div class="bento-stat-card bento-stat-highlight">
+              <span class="bento-stat-label">LEARNING SPEED</span>
+              <span class="bento-stat-val">${wordsPerHour} w/h</span>
+              <span class="bento-stat-sub">Words / Active Hour</span>
             </div>
           </div>
         </section>
 
-        <!-- 3. Interactive Charts Grid -->
+        <!-- 3. Interactive Monochrome SVG Charts Grid -->
         <div class="stats-charts-grid">
           
           <!-- Chart 1: Memorized Words Timeline -->
           <div class="arl-card chart-card">
             <div class="chart-header">
-              <h4 class="chart-title">Chart 1: Memorized Words Timeline</h4>
+              <h4 class="chart-title">Chart 1: Words Memorized Timeline</h4>
               <div class="chart-toggles">
                 <button class="chart-tab-btn ${this.timelineMode === 'week' ? 'active' : ''}" data-mode="week">Week</button>
                 <button class="chart-tab-btn ${this.timelineMode === 'month' ? 'active' : ''}" data-mode="month">Month</button>
@@ -138,8 +148,8 @@ export class StatsView {
           <!-- Chart 2: Time to Memorize 1 Word & Velocity Breakdown -->
           <div class="arl-card chart-card">
             <div class="chart-header">
-              <h4 class="chart-title">Chart 2: Learning Velocity (Time to Memorize 1 Word)</h4>
-              <span class="velocity-overall-badge">Avg: ${velocity.overallAvg} / word</span>
+              <h4 class="chart-title">Chart 2: Learning Velocity (Avg Time / Word)</h4>
+              <span class="velocity-overall-badge">Avg: ${velocity.overallAvg}</span>
             </div>
             <div class="chart-body">
               <div class="velocity-level-row">
@@ -150,20 +160,20 @@ export class StatsView {
               </div>
               <div class="velocity-word-lists">
                 <div class="word-list-col">
-                  <div class="word-list-header text-emerald">⚡ Fastest Memorized Words</div>
+                  <div class="word-list-header">⚡ Fastest Memorized Words</div>
                   ${velocity.fastest.length === 0 ? '<div class="text-dim text-sm">Study words to generate velocity data</div>' : velocity.fastest.map(w => `
                     <div class="velocity-word-item">
-                      <span class="vword-name">${w.word}</span>
-                      <span class="vword-time">${telemetry.formatMs(w.timeMs)}</span>
+                      <span class="vword-name font-mono">${w.word}</span>
+                      <span class="vword-time font-mono">${telemetry.formatMs(w.timeMs)}</span>
                     </div>
                   `).join('')}
                 </div>
                 <div class="word-list-col">
-                  <div class="word-list-header text-amber">🔥 Hardest Words (Most Time Spent)</div>
+                  <div class="word-list-header">🔥 Hardest Words (Most Review Time)</div>
                   ${velocity.hardest.length === 0 ? '<div class="text-dim text-sm">Study words to generate velocity data</div>' : velocity.hardest.map(w => `
                     <div class="velocity-word-item">
-                      <span class="vword-name">${w.word}</span>
-                      <span class="vword-time">${telemetry.formatMs(w.timeMs)} (${w.attempts}x)</span>
+                      <span class="vword-name font-mono">${w.word}</span>
+                      <span class="vword-time font-mono">${telemetry.formatMs(w.timeMs)} (${w.attempts}x)</span>
                     </div>
                   `).join('')}
                 </div>
@@ -174,7 +184,7 @@ export class StatsView {
           <!-- Chart 3: Grammar Understanding Time & Mastery -->
           <div class="arl-card chart-card">
             <div class="chart-header">
-              <h4 class="chart-title">Chart 3: Grammar Understanding Time & Mastery (80% Drill Threshold)</h4>
+              <h4 class="chart-title">Chart 3: Grammar Mastery & Drill Understanding (80% Threshold)</h4>
             </div>
             <div class="chart-body">
               ${telemetry.renderChart3Grammar(this.grammarTopics)}
@@ -184,7 +194,7 @@ export class StatsView {
           <!-- Chart 4: Daily Study Time Distribution & Heatmap -->
           <div class="arl-card chart-card">
             <div class="chart-header">
-              <h4 class="chart-title">Chart 4: Daily Study Minutes & Activity Distribution</h4>
+              <h4 class="chart-title">Chart 4: Daily Study Minutes & Module Distribution</h4>
             </div>
             <div class="chart-body">
               ${telemetry.renderChart4Distribution()}

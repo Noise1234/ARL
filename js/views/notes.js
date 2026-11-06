@@ -1,22 +1,31 @@
 /**
  * ARL - Samsung Notes-Style Smart Notes Workspace ([N])
  * Full-featured note-taking workspace with:
- * - Dynamic Folder System (All Notes, Grammar, Vocab, B1 Speaking, Custom Folders)
- * - Live-editable auto-saving Note Title input
- * - Unified compact toolbar (Font size A-/A+, Quick German/English characters, Mode toggles, AI Check)
- * - S-Pen / Touch / Mouse High-DPI Drawing Canvas with undo, colors, eraser, touch-action: none
- * - In-Note AI Grammar & Study Checker with color-coded diff and 1-tap correction apply
+ * - Instant inline title editing via direct <input type="text" class="note-title-input">
+ * - Zero-lag textarea editor with Text Size Adjuster (14px–22px)
+ * - Dynamic Samsung-style Folder system (All Notes, Grammar, Vocab, B1 Speaking, Custom Folders)
+ * - High-DPI Handwriting & S-Pen Canvas (PointerEvents, touch-action: none, undo, clear)
+ * - In-Note AI Writing & Grammar Assistant with color-coded diff & 1-tap correction
  */
 
 import { state } from '../state.js';
 import { sound } from '../sound.js';
 import { GeminiClient } from '../gemini.js';
-import { grammarPip } from '../grammar-pip.js';
 import { gistSync } from '../sync.js';
-import { computeDiff, renderColorCodedDiff } from '../diff.js';
 
 const STORAGE_KEY = 'arl_smart_notes';
 const STORAGE_FOLDERS_KEY = 'arl_notes_folders';
+const STORAGE_FONT_KEY = 'arl_notes_fontsize';
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 
 export class NotesView {
   constructor(containerEl, onNavigate) {
@@ -34,14 +43,14 @@ export class NotesView {
 
     // View mode: 'text' | 'draw' | 'split'
     this.viewMode = 'text';
-    this.fontSize = 16; // 13px - 24px
+    this.fontSize = 16; // Clamped strictly 14px - 22px
 
     // Drawing state
     this.penColor = '#ffffff';
-    this.penWidth = 4;
+    this.penWidth = 3;
     this.isEraser = false;
     this.isDrawing = false;
-    this.strokesHistory = []; // list of image data URLs or stroke paths for Undo
+    this.strokesHistory = [];
     this.canvasEl = null;
     this.ctx = null;
 
@@ -53,16 +62,21 @@ export class NotesView {
       if (typeof localStorage !== 'undefined') {
         const rawFolders = localStorage.getItem(STORAGE_FOLDERS_KEY);
         if (rawFolders) {
-          this.folders = JSON.parse(rawFolders);
+          const parsed = JSON.parse(rawFolders);
+          if (Array.isArray(parsed) && parsed.length > 0) this.folders = parsed;
         }
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) {
-          this.notes = JSON.parse(raw);
+        const rawNotes = localStorage.getItem(STORAGE_KEY);
+        if (rawNotes) {
+          const parsed = JSON.parse(rawNotes);
+          if (Array.isArray(parsed) && parsed.length > 0) this.notes = parsed;
+        }
+        const savedFont = parseInt(localStorage.getItem(STORAGE_FONT_KEY), 10);
+        if (savedFont && savedFont >= 14 && savedFont <= 22) {
+          this.fontSize = savedFont;
         }
       }
     } catch (e) {
       console.warn('Failed to load notes from localStorage:', e);
-      this.notes = [];
     }
 
     if (!Array.isArray(this.folders) || this.folders.length === 0) {
@@ -70,12 +84,11 @@ export class NotesView {
     }
 
     if (!Array.isArray(this.notes) || this.notes.length === 0) {
-      // Seed initial sample note
       const initialNote = {
         id: 'note_' + Date.now(),
         title: '🇩🇪 German Grammar & Drafting Notes',
         folder: 'Grammar',
-        content: `### My German Study Notes\n\n1. Hauptsatz (V2 Rule):\nHeute lerne ich fleißig Deutsch.\n\n2. Subordinate Clause (Verb-End):\nIch bleibe zu Hause, weil es heute stark regnet.\n\n3. Dativ & Akkusativ sentences:\nIch schenke meinem Bruder ein neues Buch.\n\nHighlight any sentence or tap [✨ AI Check] to test instant grammar feedback!`,
+        content: `### My German Study Notes\n\n1. Hauptsatz (V2 Rule):\nHeute lerne ich fleißig Deutsch.\n\n2. Subordinate Clause (Verb-End):\nIch bleibe zu Hause, weil es heute stark regnet.\n\n3. Dativ & Akkusativ sentences:\nIch schenke meinem Bruder ein neues Buch.\n\nHighlight any sentence or tap [✨ AI Assist] to test instant grammar feedback!`,
         drawingData: null,
         updatedAt: Date.now()
       };
@@ -178,13 +191,16 @@ export class NotesView {
       if (statusEl) {
         statusEl.textContent = '✓ Saved';
         statusEl.classList.add('saved-flash');
-        setTimeout(() => statusEl.classList.remove('saved-flash'), 2000);
+        setTimeout(() => statusEl.classList.remove('saved-flash'), 1800);
       }
-    }, 400);
+    }, 300);
   }
 
   setFontSize(delta) {
-    this.fontSize = Math.max(13, Math.min(24, this.fontSize + delta));
+    this.fontSize = Math.max(14, Math.min(22, this.fontSize + delta));
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(STORAGE_FONT_KEY, String(this.fontSize));
+    }
     const ta = this.container.querySelector('#notes-main-textarea');
     if (ta) ta.style.fontSize = `${this.fontSize}px`;
     const label = this.container.querySelector('#font-size-label');
@@ -212,7 +228,7 @@ export class NotesView {
           
           <div class="notes-sidebar-header">
             <h3 class="notes-sidebar-title">[N] Smart Notes</h3>
-            <button class="notes-new-btn touch-target" id="btn-create-note" title="Create a new note">
+            <button class="notes-new-btn btn touch-target" id="btn-create-note" title="Create a new note">
               + New Note
             </button>
           </div>
@@ -233,10 +249,10 @@ export class NotesView {
               <div class="empty-folder-state">No notes in this folder.</div>
             ` : filteredNotes.map(note => `
               <div class="note-list-item ${note.id === activeNote.id ? 'active' : ''}" data-id="${note.id}">
-                <div class="note-item-title">${note.title || 'Untitled Note'}</div>
-                <div class="note-item-snippet">${(note.content || '').slice(0, 40).replace(/\n/g, ' ') || (note.drawingData ? '[✏️ Drawing]' : 'Empty note')}</div>
+                <div class="note-item-title">${escapeHtml(note.title) || 'Untitled Note'}</div>
+                <div class="note-item-snippet">${escapeHtml((note.content || '').slice(0, 45).replace(/\n/g, ' ')) || (note.drawingData ? '[✏️ Drawing]' : 'Empty note')}</div>
                 <div class="note-item-meta">
-                  <span class="note-folder-tag">${note.folder || 'All'}</span>
+                  <span class="note-folder-tag">${escapeHtml(note.folder || 'All')}</span>
                   <button class="note-delete-btn" data-delete-id="${note.id}" title="Delete note">✕</button>
                 </div>
               </div>
@@ -245,8 +261,8 @@ export class NotesView {
 
           <!-- Footer utility -->
           <div class="notes-sidebar-footer">
-            <button class="notes-import-export-btn touch-target" id="btn-export-note">⬇ Export</button>
-            <label class="notes-import-export-btn touch-target" id="label-import-note">
+            <button class="notes-import-export-btn btn touch-target" id="btn-export-note">⬇ Export</button>
+            <label class="notes-import-export-btn btn touch-target" id="label-import-note">
               ⬆ Import
               <input type="file" id="input-import-note" accept=".json,.txt,.md" style="display:none;" />
             </label>
@@ -256,16 +272,17 @@ export class NotesView {
         <!-- Main Editor Panel -->
         <main class="notes-editor-panel">
           
-          <!-- Top Title Bar with Editable Input & Folder Switcher -->
+          <!-- Top Title Bar with Instant Inline Title Input -->
           <div class="notes-title-header-row">
             <div class="notes-title-input-wrap">
               <input
                 type="text"
                 id="note-title-input"
                 class="note-title-input"
-                placeholder="Untitled Note..."
-                value="${(activeNote.title || '').replace(/"/g, '&quot;')}"
+                placeholder="Note Title..."
+                value="${escapeHtml(activeNote.title || '')}"
                 autocomplete="off"
+                spellcheck="false"
               />
             </div>
 
@@ -275,44 +292,44 @@ export class NotesView {
                   <option value="${f}" ${activeNote.folder === f ? 'selected' : ''}>📁 ${f}</option>
                 `).join('')}
               </select>
-              <span id="notes-save-status" class="notes-save-status">Auto-saved</span>
+              <span id="notes-save-status" class="notes-save-status">Saved</span>
             </div>
           </div>
 
           <!-- Unified Sleek Toolbar -->
           <div class="notes-unified-toolbar">
             
-            <!-- Font Size Controls -->
+            <!-- Font Size Controls (14px - 22px) -->
             <div class="toolbar-group font-size-controls">
-              <button class="toolbar-btn" id="btn-font-dec" title="Decrease font size">[A-]</button>
+              <button class="toolbar-btn btn" id="btn-font-dec" title="Decrease font size">[A-]</button>
               <span class="font-size-label" id="font-size-label">${this.fontSize}px</span>
-              <button class="toolbar-btn" id="btn-font-inc" title="Increase font size">[A+]</button>
+              <button class="toolbar-btn btn" id="btn-font-inc" title="Increase font size">[A+]</button>
             </div>
 
-            <!-- Quick Special Characters -->
+            <!-- Quick German Special Characters -->
             <div class="toolbar-group special-chars-group">
               ${['ä', 'ö', 'ü', 'ß', '“', '”', '—'].map(ch => `
                 <button type="button" class="char-chip-btn toolbar-char-btn" data-char="${ch}">${ch}</button>
               `).join('')}
             </div>
 
-            <!-- Mode Toggles: Text, Draw, Split -->
+            <!-- Mode Toggles: Text & Draw -->
             <div class="toolbar-group mode-toggles-group">
-              <button class="toolbar-btn mode-btn ${this.viewMode === 'text' ? 'active' : ''}" data-mode="text" title="Keyboard Text Mode">
+              <button class="toolbar-btn mode-btn btn ${this.viewMode === 'text' ? 'active' : ''}" data-mode="text" title="Keyboard Text Mode">
                 ⌨️ Text
               </button>
-              <button class="toolbar-btn mode-btn ${this.viewMode === 'draw' ? 'active' : ''}" data-mode="draw" title="Handwriting & S-Pen Drawing">
+              <button class="toolbar-btn mode-btn btn ${this.viewMode === 'draw' ? 'active' : ''}" data-mode="draw" title="Handwriting & S-Pen Drawing">
                 ✏️ Draw
               </button>
-              <button class="toolbar-btn mode-btn ${this.viewMode === 'split' ? 'active' : ''}" data-mode="split" title="Split Screen Mode">
+              <button class="toolbar-btn mode-btn btn ${this.viewMode === 'split' ? 'active' : ''}" data-mode="split" title="Split Screen Mode">
                 Split
               </button>
             </div>
 
             <!-- AI Grammar Assistant Trigger -->
             <div class="toolbar-group">
-              <button class="toolbar-btn ai-trigger-btn touch-target" id="btn-toolbar-ai-check" title="AI Grammar & Syntax Check">
-                ✨ AI Check
+              <button class="toolbar-btn ai-trigger-btn btn btn-primary touch-target" id="btn-toolbar-ai-check" title="AI Grammar & Syntax Check">
+                ✨ AI Assist
               </button>
             </div>
 
@@ -322,7 +339,7 @@ export class NotesView {
           <div class="drawing-sub-bar ${this.viewMode === 'text' ? 'hidden' : ''}" id="drawing-sub-bar">
             
             <div class="drawing-colors">
-              ${['#ffffff', '#3b82f6', '#10b981', '#f59e0b', '#ef4444'].map(color => `
+              ${['#ffffff', '#a1a1aa', '#71717a', '#3b82f6', '#ef4444'].map(color => `
                 <button
                   type="button"
                   class="color-dot-btn ${this.penColor === color && !this.isEraser ? 'active' : ''}"
@@ -340,7 +357,7 @@ export class NotesView {
                   class="width-dot-btn ${this.penWidth === w && !this.isEraser ? 'active' : ''}"
                   data-width="${w}"
                   title="${w}px stroke">
-                  <span style="width: ${w * 2}px; height: ${w * 2}px; background: white; border-radius: 50%; display:inline-block;"></span>
+                  <span style="width: ${w * 2}px; height: ${w * 2}px; background: currentColor; border-radius: 50%; display:inline-block;"></span>
                 </button>
               `).join('')}
             </div>
@@ -362,18 +379,18 @@ export class NotesView {
                 id="notes-main-textarea"
                 class="notes-main-textarea"
                 style="font-size: ${this.fontSize}px;"
-                placeholder="Write your study notes, drafts, or German/English sentences here... Tap [✨ AI Check] anytime!"
-              >${activeNote.content || ''}</textarea>
+                placeholder="Start typing your study notes here..."
+                spellcheck="true"
+              >${escapeHtml(activeNote.content || '')}</textarea>
 
-              <!-- Floating selection toolbar for quick actions -->
+              <!-- Floating Selection Toolbar for Instant AI Feedback -->
               <div class="notes-selection-toolbar" id="notes-selection-toolbar" style="display: none;">
-                <button class="sel-action-btn" id="btn-sel-check">✨ Check</button>
-                <button class="sel-action-btn" id="btn-sel-explain">💡 Explain</button>
-                <button class="sel-action-btn" id="btn-sel-pip">[P] PiP</button>
+                <button class="sel-tool-btn" id="btn-ai-check-selection">✨ AI Check Selection</button>
+                <button class="sel-tool-btn" id="btn-wrap-quotes">“…”</button>
               </div>
             </div>
 
-            <!-- Handwriting Canvas Container (S-Pen & PointerEvents with touch-action: none) -->
+            <!-- High-DPI S-Pen / Touch Canvas Container -->
             <div class="notes-canvas-container ${this.viewMode === 'text' ? 'hidden' : ''}">
               <canvas id="notes-drawing-canvas" class="notes-drawing-canvas"></canvas>
             </div>
@@ -402,18 +419,18 @@ export class NotesView {
                   </div>
 
                   <div class="ai-diff-body">
-                    ${this.aiDiff.diffHtml || `<div class="diff-fallback">${this.aiDiff.correctedSentence || ''}</div>`}
+                    ${this.aiDiff.diffHtml || `<div class="diff-fallback">${escapeHtml(this.aiDiff.correctedSentence || '')}</div>`}
                   </div>
 
                   ${this.aiDiff.why ? `
                     <div class="ai-explanation-box">
-                      <strong>🇲🇳 Тайлбар:</strong> ${this.aiDiff.why}
+                      <strong>🇲🇳 Тайлбар:</strong> ${escapeHtml(this.aiDiff.why)}
                     </div>
                   ` : ''}
 
                   ${this.aiDiff.correctedSentence ? `
                     <div class="ai-actions-footer">
-                      <button class="btn-primary-action touch-target apply-correction-btn" id="btn-apply-correction">
+                      <button class="btn-primary-action touch-target apply-correction-btn btn btn-primary" id="btn-apply-correction">
                         ✓ Apply Correction to Note
                       </button>
                     </div>
@@ -423,7 +440,7 @@ export class NotesView {
 
               ${this.aiExplanation ? `
                 <div class="ai-explanation-box">
-                  <div class="expl-text">${this.aiExplanation}</div>
+                  <div class="expl-text">${escapeHtml(this.aiExplanation)}</div>
                 </div>
               ` : ''}
 
@@ -487,33 +504,41 @@ export class NotesView {
       });
     });
 
-    // Note title input
+    // Instant Inline Title Input with Zero-Lag Auto-Save
     const titleInput = this.container.querySelector('#note-title-input');
-    if (titleInput) {
-      titleInput.addEventListener('input', (e) => {
-        const val = e.target.value;
+    if (titleInput && activeNote) {
+      const handleTitleUpdate = (val) => {
         activeNote.title = val;
         activeNote.updatedAt = Date.now();
-        this.scheduleAutoSave();
-
-        // Update title in sidebar immediately
         const sidebarTitle = this.container.querySelector(`.note-list-item[data-id="${activeNote.id}"] .note-item-title`);
         if (sidebarTitle) sidebarTitle.textContent = val || 'Untitled Note';
+        this.scheduleAutoSave();
+      };
+
+      titleInput.addEventListener('input', (e) => {
+        handleTitleUpdate(e.target.value);
+      });
+      titleInput.addEventListener('change', (e) => {
+        handleTitleUpdate(e.target.value);
+        this.saveNotes();
+      });
+      titleInput.addEventListener('blur', () => {
+        this.saveNotes();
       });
     }
 
     // Folder dropdown
     const folderSelect = this.container.querySelector('#note-folder-select');
-    if (folderSelect) {
+    if (folderSelect && activeNote) {
       folderSelect.addEventListener('change', (e) => {
         activeNote.folder = e.target.value;
         activeNote.updatedAt = Date.now();
-        this.scheduleAutoSave();
+        this.saveNotes();
         this.render();
       });
     }
 
-    // Font size controls
+    // Font size controls (clamped 14px - 22px)
     this.container.querySelector('#btn-font-dec')?.addEventListener('click', () => {
       sound.playClick();
       this.setFontSize(-1);
@@ -523,13 +548,13 @@ export class NotesView {
       this.setFontSize(1);
     });
 
-    // Special characters
+    // Quick special characters insert
     const textarea = this.container.querySelector('#notes-main-textarea');
     this.container.querySelectorAll('.toolbar-char-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         sound.playClick();
         const char = btn.getAttribute('data-char');
-        if (textarea) {
+        if (textarea && activeNote) {
           const start = textarea.selectionStart ?? textarea.value.length;
           const end = textarea.selectionEnd ?? textarea.value.length;
           const val = textarea.value;
@@ -542,7 +567,7 @@ export class NotesView {
       });
     });
 
-    // Mode toggles
+    // Mode toggles (Text, Draw, Split)
     this.container.querySelectorAll('.mode-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         sound.playClick();
@@ -550,14 +575,14 @@ export class NotesView {
       });
     });
 
-    // Textarea input
-    if (textarea) {
+    // Zero-lag Textarea input
+    if (textarea && activeNote) {
       textarea.addEventListener('input', (e) => {
         activeNote.content = e.target.value;
         activeNote.updatedAt = Date.now();
         this.scheduleAutoSave();
         const snippet = this.container.querySelector(`.note-list-item[data-id="${activeNote.id}"] .note-item-snippet`);
-        if (snippet) snippet.textContent = e.target.value.slice(0, 40).replace(/\n/g, ' ') || 'Empty note';
+        if (snippet) snippet.textContent = e.target.value.slice(0, 45).replace(/\n/g, ' ') || 'Empty note';
       });
 
       const handleSelection = () => {
@@ -573,7 +598,7 @@ export class NotesView {
       textarea.addEventListener('keyup', handleSelection);
     }
 
-    // AI Check trigger (button in toolbar & selection toolbar)
+    // AI Check trigger
     const triggerAi = async () => {
       sound.playClick();
       const targetText = this.selectedText || (textarea ? textarea.value.trim() : '');
@@ -600,171 +625,134 @@ export class NotesView {
     };
 
     this.container.querySelector('#btn-toolbar-ai-check')?.addEventListener('click', triggerAi);
-    this.container.querySelector('#btn-sel-check')?.addEventListener('click', triggerAi);
+    this.container.querySelector('#btn-ai-check-selection')?.addEventListener('click', triggerAi);
 
-    // Explain selection
-    this.container.querySelector('#btn-sel-explain')?.addEventListener('click', async () => {
-      if (!this.selectedText) return;
-      this.isAiLoading = true;
-      this.aiDiff = null;
-      this.aiExplanation = null;
-      this.render();
-
-      try {
-        const exp = await GeminiClient.explainGrammarConcept(this.selectedText, state.targetLang);
-        this.aiExplanation = exp;
-      } catch (err) {
-        this.aiExplanation = `Grammar reference for: "${this.selectedText}"`;
-      } finally {
-        this.isAiLoading = false;
-        this.render();
+    // Apply correction button
+    this.container.querySelector('#btn-apply-correction')?.addEventListener('click', () => {
+      if (!this.aiDiff || !this.aiDiff.correctedSentence || !textarea || !activeNote) return;
+      sound.playClick();
+      if (this.selectedText && textarea.value.includes(this.selectedText)) {
+        textarea.value = textarea.value.replace(this.selectedText, this.aiDiff.correctedSentence);
+      } else {
+        textarea.value = this.aiDiff.correctedSentence;
       }
+      activeNote.content = textarea.value;
+      activeNote.updatedAt = Date.now();
+      this.saveNotes();
+      this.aiDiff = null;
+      this.render();
     });
 
-    // PiP trigger
-    this.container.querySelector('#btn-sel-pip')?.addEventListener('click', () => {
-      grammarPip.toggle();
-    });
-
-    // Close AI result panel
     this.container.querySelector('#btn-close-ai-panel')?.addEventListener('click', () => {
       this.aiDiff = null;
       this.aiExplanation = null;
       this.render();
     });
 
-    // Apply AI Correction to note
-    this.container.querySelector('#btn-apply-correction')?.addEventListener('click', () => {
-      sound.playSuccess();
-      if (this.aiDiff && this.aiDiff.correctedSentence && textarea) {
-        if (this.selectedText && textarea.selectionStart !== textarea.selectionEnd) {
-          const start = textarea.selectionStart;
-          const end = textarea.selectionEnd;
-          textarea.value = textarea.value.slice(0, start) + this.aiDiff.correctedSentence + textarea.value.slice(end);
-        } else {
-          textarea.value = this.aiDiff.correctedSentence;
-        }
+    // Wrap quotes helper
+    this.container.querySelector('#btn-wrap-quotes')?.addEventListener('click', () => {
+      if (!textarea || !this.selectedText) return;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const val = textarea.value;
+      textarea.value = val.slice(0, start) + `“${this.selectedText}”` + val.slice(end);
+      if (activeNote) {
         activeNote.content = textarea.value;
         this.scheduleAutoSave();
-        this.aiDiff = null;
+      }
+    });
+
+    // Drawing sub-bar tools
+    this.container.querySelectorAll('.color-dot-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.penColor = btn.getAttribute('data-color');
+        this.isEraser = false;
         this.render();
+      });
+    });
+
+    this.container.querySelectorAll('.width-dot-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.penWidth = parseInt(btn.getAttribute('data-width'), 10) || 4;
+        this.isEraser = false;
+        this.render();
+      });
+    });
+
+    this.container.querySelector('#btn-draw-eraser')?.addEventListener('click', () => {
+      this.isEraser = !this.isEraser;
+      this.render();
+    });
+
+    this.container.querySelector('#btn-draw-undo')?.addEventListener('click', () => {
+      this.undoCanvasStroke();
+    });
+
+    this.container.querySelector('#btn-draw-clear')?.addEventListener('click', () => {
+      if (confirm('Clear the entire drawing canvas?')) {
+        this.clearCanvas();
       }
     });
 
     // Export note
     this.container.querySelector('#btn-export-note')?.addEventListener('click', () => {
       sound.playClick();
-      const current = this.getActiveNote();
-      if (!current) return;
-      const blob = new Blob([JSON.stringify([current], null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `arl_note_${(current.title || 'study_note').replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}.json`;
-      a.click();
-      URL.revokeObjectURL(url);
+      if (!activeNote) return;
+      const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(activeNote, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute('href', dataStr);
+      downloadAnchor.setAttribute('download', `${(activeNote.title || 'note').replace(/[^a-zA-Z0-9_-]/g, '_')}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
     });
 
     // Import note
-    const importInput = this.container.querySelector('#input-import-note');
-    if (importInput) {
-      importInput.addEventListener('change', (e) => {
-        const file = e.target.files && e.target.files[0];
+    const fileInput = this.container.querySelector('#input-import-note');
+    if (fileInput) {
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files?.[0];
         if (!file) return;
         const reader = new FileReader();
-        reader.onload = (re) => {
+        reader.onload = (evt) => {
           try {
-            const raw = re.target.result;
-            let imported;
-            try {
-              imported = JSON.parse(raw);
-            } catch {
-              imported = [{ title: file.name.replace(/\.[^.]+$/, ''), content: raw }];
-            }
-            if (Array.isArray(imported)) {
-              imported.forEach(n => {
-                this.notes.unshift({
-                  id: 'note_' + Date.now() + Math.random(),
-                  title: n.title || 'Imported Note',
-                  folder: n.folder || 'Grammar',
-                  content: n.content || '',
-                  drawingData: n.drawingData || null,
-                  updatedAt: Date.now()
-                });
-              });
-              this.activeNoteId = this.notes[0].id;
-              this.saveNotes();
+            const parsed = JSON.parse(evt.target.result);
+            if (parsed && (parsed.content !== undefined || parsed.title !== undefined)) {
+              this.createNote(parsed.title || file.name.replace(/\.[^/.]+$/, ''));
+              this.updateActiveNote({ content: parsed.content || '', drawingData: parsed.drawingData || null });
+              this.render();
+            } else {
+              this.createNote(file.name.replace(/\.[^/.]+$/, ''));
+              this.updateActiveNote({ content: evt.target.result });
               this.render();
             }
           } catch (err) {
-            console.error('Import error:', err);
+            this.createNote(file.name.replace(/\.[^/.]+$/, ''));
+            this.updateActiveNote({ content: evt.target.result });
+            this.render();
           }
         };
         reader.readAsText(file);
       });
     }
-
-    // Drawing sub-bar events
-    this.container.querySelectorAll('.color-dot-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        sound.playClick();
-        this.penColor = btn.getAttribute('data-color');
-        this.isEraser = false;
-        this.container.querySelectorAll('.color-dot-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        this.container.querySelector('#btn-draw-eraser')?.classList.remove('active');
-      });
-    });
-
-    this.container.querySelectorAll('.width-dot-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        sound.playClick();
-        this.penWidth = parseInt(btn.getAttribute('data-width'), 10);
-        this.container.querySelectorAll('.width-dot-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-
-    this.container.querySelector('#btn-draw-eraser')?.addEventListener('click', () => {
-      sound.playClick();
-      this.isEraser = !this.isEraser;
-      this.container.querySelector('#btn-draw-eraser')?.classList.toggle('active', this.isEraser);
-    });
-
-    this.container.querySelector('#btn-draw-undo')?.addEventListener('click', () => {
-      sound.playClick();
-      this.undoCanvasStroke(activeNote);
-    });
-
-    this.container.querySelector('#btn-draw-clear')?.addEventListener('click', () => {
-      if (confirm('Clear the entire drawing canvas?')) {
-        sound.playClick();
-        this.clearCanvas(activeNote);
-      }
-    });
   }
 
-  /* -------------------------------------------------------------
-   * S-Pen / Touch / Mouse High-DPI Canvas Engine
-   * ------------------------------------------------------------- */
   initCanvas(activeNote) {
     const canvas = this.container.querySelector('#notes-drawing-canvas');
     if (!canvas) return;
     this.canvasEl = canvas;
 
-    const parent = canvas.parentElement;
-    const rect = (parent && typeof parent.getBoundingClientRect === 'function') ? parent.getBoundingClientRect() : { width: 600, height: 500 };
-    const dpr = (typeof window !== 'undefined' && window.devicePixelRatio) || 1;
-    const width = rect.width || 600;
-    const height = Math.max(450, rect.height || 500);
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const w = rect.width || 400;
+    const h = rect.height || 400;
 
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = `${w}px`;
+    canvas.style.height = `${h}px`;
 
-    const ctx = (typeof canvas.getContext === 'function') ? canvas.getContext('2d') : null;
-    if (!ctx) return;
+    const ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
@@ -774,15 +762,16 @@ export class NotesView {
     if (activeNote.drawingData) {
       const img = new Image();
       img.onload = () => {
-        ctx.drawImage(img, 0, 0, width, height);
-        this.pushCanvasSnapshot();
+        ctx.drawImage(img, 0, 0, w, h);
+        this.saveCanvasStateToHistory();
       };
       img.src = activeNote.drawingData;
     } else {
-      this.pushCanvasSnapshot();
+      this.strokesHistory = [];
+      this.saveCanvasStateToHistory();
     }
 
-    // PointerEvents with strict touch-action: none
+    let isDown = false;
     let lastX = 0;
     let lastY = 0;
 
@@ -795,105 +784,93 @@ export class NotesView {
     };
 
     canvas.onpointerdown = (e) => {
-      if (e.preventDefault) e.preventDefault();
-      if (typeof canvas.setPointerCapture === 'function') {
-        try { canvas.setPointerCapture(e.pointerId); } catch {}
-      }
-      this.isDrawing = true;
+      canvas.setPointerCapture(e.pointerId);
+      isDown = true;
       const pos = getPos(e);
       lastX = pos.x;
       lastY = pos.y;
 
       ctx.beginPath();
       ctx.moveTo(lastX, lastY);
+      ctx.strokeStyle = this.isEraser ? '#09090b' : this.penColor;
+      ctx.lineWidth = this.isEraser ? 20 : this.penWidth;
     };
 
     canvas.onpointermove = (e) => {
-      if (!this.isDrawing) return;
-      if (e.preventDefault) e.preventDefault();
+      if (!isDown) return;
       const pos = getPos(e);
-
-      ctx.beginPath();
-      ctx.moveTo(lastX, lastY);
       ctx.lineTo(pos.x, pos.y);
-
-      if (this.isEraser) {
-        ctx.globalCompositeOperation = 'destination-out';
-        ctx.lineWidth = this.penWidth * 4;
-      } else {
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.strokeStyle = this.penColor;
-        ctx.lineWidth = this.penWidth;
-      }
-
       ctx.stroke();
       lastX = pos.x;
       lastY = pos.y;
     };
 
     const stopDrawing = (e) => {
-      if (!this.isDrawing) return;
-      this.isDrawing = false;
-      ctx.globalCompositeOperation = 'source-over';
-      if (typeof canvas.releasePointerCapture === 'function') {
-        try { canvas.releasePointerCapture(e.pointerId); } catch {}
+      if (!isDown) return;
+      isDown = false;
+      ctx.closePath();
+      try {
+        canvas.releasePointerCapture(e.pointerId);
+      } catch (err) {
+        // ignore
       }
-
-      // Save drawing snapshot to note and undo stack
-      this.pushCanvasSnapshot();
-      if (typeof canvas.toDataURL === 'function') {
-        activeNote.drawingData = canvas.toDataURL('image/png');
-      }
-      activeNote.updatedAt = Date.now();
-      this.scheduleAutoSave();
+      this.saveCanvasStateToHistory();
+      this.persistDrawingData(activeNote);
     };
 
     canvas.onpointerup = stopDrawing;
     canvas.onpointercancel = stopDrawing;
   }
 
-  pushCanvasSnapshot() {
-    if (!this.canvasEl || typeof this.canvasEl.toDataURL !== 'function') return;
+  saveCanvasStateToHistory() {
+    if (!this.canvasEl) return;
     try {
-      const snap = this.canvasEl.toDataURL('image/png');
-      this.strokesHistory.push(snap);
+      const data = this.canvasEl.toDataURL();
+      this.strokesHistory.push(data);
       if (this.strokesHistory.length > 20) {
         this.strokesHistory.shift();
       }
-    } catch {}
-  }
-
-  undoCanvasStroke(activeNote) {
-    if (!this.canvasEl || !this.ctx || this.strokesHistory.length <= 1) return;
-    this.strokesHistory.pop(); // discard current state
-    const prev = this.strokesHistory[this.strokesHistory.length - 1];
-
-    const rect = this.canvasEl.getBoundingClientRect();
-    this.ctx.clearRect(0, 0, this.canvasEl.width, this.canvasEl.height);
-
-    if (prev) {
-      const img = new Image();
-      img.onload = () => {
-        this.ctx.drawImage(img, 0, 0, rect.width, rect.height);
-        activeNote.drawingData = prev;
-        activeNote.updatedAt = Date.now();
-        this.scheduleAutoSave();
-      };
-      img.src = prev;
-    } else {
-      activeNote.drawingData = null;
-      activeNote.updatedAt = Date.now();
-      this.scheduleAutoSave();
+    } catch (e) {
+      // ignore
     }
   }
 
-  clearCanvas(activeNote) {
+  undoCanvasStroke() {
+    if (this.strokesHistory.length <= 1 || !this.canvasEl || !this.ctx) return;
+    this.strokesHistory.pop(); // remove current state
+    const prev = this.strokesHistory[this.strokesHistory.length - 1];
+    const img = new Image();
+    img.onload = () => {
+      const rect = this.canvasEl.getBoundingClientRect();
+      this.ctx.clearRect(0, 0, rect.width, rect.height);
+      this.ctx.drawImage(img, 0, 0, rect.width, rect.height);
+      const active = this.getActiveNote();
+      if (active) this.persistDrawingData(active);
+    };
+    img.src = prev;
+  }
+
+  clearCanvas() {
     if (!this.canvasEl || !this.ctx) return;
-    this.ctx.clearRect(0, 0, this.canvasEl.width, this.canvasEl.height);
-    activeNote.drawingData = null;
-    activeNote.updatedAt = Date.now();
+    const rect = this.canvasEl.getBoundingClientRect();
+    this.ctx.clearRect(0, 0, rect.width, rect.height);
     this.strokesHistory = [];
-    this.pushCanvasSnapshot();
-    this.scheduleAutoSave();
+    this.saveCanvasStateToHistory();
+    const active = this.getActiveNote();
+    if (active) {
+      active.drawingData = null;
+      this.saveNotes();
+    }
+  }
+
+  persistDrawingData(activeNote) {
+    if (!this.canvasEl) return;
+    try {
+      activeNote.drawingData = this.canvasEl.toDataURL('image/png');
+      activeNote.updatedAt = Date.now();
+      this.scheduleAutoSave();
+    } catch (e) {
+      // ignore
+    }
   }
 }

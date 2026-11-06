@@ -347,7 +347,13 @@ export class TelemetryEngine {
       month: this.formatTimeSpan(monthSec),
       season: this.formatTimeSpan(seasonSec),
       year: this.formatTimeSpan(yearSec),
-      total: this.formatTimeSpan(this.totalActiveSeconds)
+      total: this.formatTimeSpan(this.totalActiveSeconds),
+      todayHours: (todaySec / 3600).toFixed(1) + 'h',
+      weekHours: (weekSec / 3600).toFixed(1) + 'h',
+      totalHours: (this.totalActiveSeconds / 3600).toFixed(1) + 'h',
+      todaySec,
+      weekSec,
+      totalSec: this.totalActiveSeconds
     };
   }
 
@@ -510,24 +516,24 @@ export class TelemetryEngine {
       const y = padding.top + (plotH - barH);
 
       barsSvg += `
-        <rect x="${x}" y="${y}" width="${barWidth}" height="${barH}" rx="4" fill="#3b82f6" opacity="0.85">
+        <rect x="${x}" y="${y}" width="${barWidth}" height="${barH}" rx="4" fill="var(--text-primary, #ffffff)" opacity="0.88">
           <title>${label}: ${val} words</title>
         </rect>
-        <text x="${x + barWidth / 2}" y="${y - 4}" text-anchor="middle" fill="#93c5fd" font-size="10" font-family="'JetBrains Mono', monospace">${val > 0 ? val : ''}</text>
-        <text x="${x + barWidth / 2}" y="${height - 12}" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="'JetBrains Mono', monospace">${label}</text>
+        <text x="${x + barWidth / 2}" y="${y - 4}" text-anchor="middle" fill="var(--text-primary, #ffffff)" font-size="10" font-family="'JetBrains Mono', monospace">${val > 0 ? val : ''}</text>
+        <text x="${x + barWidth / 2}" y="${height - 12}" text-anchor="middle" fill="var(--text-secondary, #a1a1aa)" font-size="11" font-family="'JetBrains Mono', monospace">${label}</text>
       `;
     });
 
     // Y-axis grid lines (0, 50%, 100%)
     const gridSvg = `
-      <line x1="${padding.left}" y1="${padding.top}" x2="${width - padding.right}" y2="${padding.top}" stroke="#1e293b" stroke-dasharray="3,3"/>
-      <text x="${padding.left - 8}" y="${padding.top + 4}" text-anchor="end" fill="#64748b" font-size="10">${maxVal}</text>
+      <line x1="${padding.left}" y1="${padding.top}" x2="${width - padding.right}" y2="${padding.top}" stroke="var(--border-subtle, rgba(255,255,255,0.08))" stroke-dasharray="3,3"/>
+      <text x="${padding.left - 8}" y="${padding.top + 4}" text-anchor="end" fill="var(--text-muted, #71717a)" font-size="10">${maxVal}</text>
       
-      <line x1="${padding.left}" y1="${padding.top + plotH / 2}" x2="${width - padding.right}" y2="${padding.top + plotH / 2}" stroke="#1e293b" stroke-dasharray="3,3"/>
-      <text x="${padding.left - 8}" y="${padding.top + plotH / 2 + 4}" text-anchor="end" fill="#64748b" font-size="10">${Math.round(maxVal / 2)}</text>
+      <line x1="${padding.left}" y1="${padding.top + plotH / 2}" x2="${width - padding.right}" y2="${padding.top + plotH / 2}" stroke="var(--border-subtle, rgba(255,255,255,0.08))" stroke-dasharray="3,3"/>
+      <text x="${padding.left - 8}" y="${padding.top + plotH / 2 + 4}" text-anchor="end" fill="var(--text-muted, #71717a)" font-size="10">${Math.round(maxVal / 2)}</text>
       
-      <line x1="${padding.left}" y1="${padding.top + plotH}" x2="${width - padding.right}" y2="${padding.top + plotH}" stroke="#334155"/>
-      <text x="${padding.left - 8}" y="${padding.top + plotH + 4}" text-anchor="end" fill="#64748b" font-size="10">0</text>
+      <line x1="${padding.left}" y1="${padding.top + plotH}" x2="${width - padding.right}" y2="${padding.top + plotH}" stroke="var(--border-focus, rgba(255,255,255,0.22))"/>
+      <text x="${padding.left - 8}" y="${padding.top + plotH + 4}" text-anchor="end" fill="var(--text-muted, #71717a)" font-size="10">0</text>
     `;
 
     return `
@@ -564,23 +570,23 @@ export class TelemetryEngine {
       const timeW = Math.min(180, (mins / 30) * 180);
 
       itemsSvg += `
-        <text x="${padding.left - 10}" y="${y + 12}" text-anchor="end" fill="#e2e8f0" font-size="11" font-weight="500">${title}</text>
+        <text x="${padding.left - 10}" y="${y + 12}" text-anchor="end" fill="var(--text-primary, #ffffff)" font-size="11" font-weight="500">${title}</text>
         
         <!-- Accuracy Bar -->
-        <rect x="${padding.left}" y="${y}" width="180" height="${barH}" fill="#1e293b" rx="3"/>
-        <rect x="${padding.left}" y="${y}" width="${accW}" height="${barH}" fill="${isUnderstood ? '#10b981' : '#f59e0b'}" rx="3">
+        <rect x="${padding.left}" y="${y}" width="180" height="${barH}" fill="var(--bg-surface-2, #1a1a1e)" stroke="var(--border-subtle, rgba(255,255,255,0.08))" rx="3"/>
+        <rect x="${padding.left}" y="${y}" width="${accW}" height="${barH}" fill="var(--accent-primary, #ffffff)" rx="3">
           <title>${acc}% drill accuracy</title>
         </rect>
-        <text x="${padding.left + 185}" y="${y + 11}" fill="${isUnderstood ? '#34d399' : '#fbbf24'}" font-size="10" font-family="'JetBrains Mono', monospace">
+        <text x="${padding.left + 185}" y="${y + 11}" fill="var(--text-primary, #ffffff)" font-size="10" font-family="'JetBrains Mono', monospace">
           ${acc}% ${isUnderstood ? '✓ Understood' : ''}
         </text>
 
         <!-- Time Bar -->
-        <rect x="${padding.left + 290}" y="${y}" width="140" height="${barH}" fill="#0f172a" stroke="#1e293b" rx="3"/>
-        <rect x="${padding.left + 290}" y="${y}" width="${timeW}" height="${barH}" fill="#3b82f6" rx="3">
+        <rect x="${padding.left + 290}" y="${y}" width="140" height="${barH}" fill="var(--bg-surface-2, #1a1a1e)" stroke="var(--border-subtle, rgba(255,255,255,0.08))" rx="3"/>
+        <rect x="${padding.left + 290}" y="${y}" width="${timeW}" height="${barH}" fill="var(--text-secondary, #a1a1aa)" rx="3">
           <title>${mins} mins</title>
         </rect>
-        <text x="${padding.left + 438}" y="${y + 11}" fill="#93c5fd" font-size="10" font-family="'JetBrains Mono', monospace">
+        <text x="${padding.left + 438}" y="${y + 11}" fill="var(--text-secondary, #a1a1aa)" font-size="10" font-family="'JetBrains Mono', monospace">
           ${mins}m
         </text>
       `;
@@ -588,8 +594,8 @@ export class TelemetryEngine {
 
     return `
       <svg viewBox="0 0 ${width} ${height}" class="arl-analytics-svg" style="width:100%; height:auto;">
-        <text x="${padding.left}" y="12" fill="#64748b" font-size="10" font-family="'JetBrains Mono', monospace">ACCURACY</text>
-        <text x="${padding.left + 290}" y="12" fill="#64748b" font-size="10" font-family="'JetBrains Mono', monospace">TIME SPENT</text>
+        <text x="${padding.left}" y="12" fill="var(--text-muted, #71717a)" font-size="10" font-family="'JetBrains Mono', monospace">ACCURACY</text>
+        <text x="${padding.left + 290}" y="12" fill="var(--text-muted, #71717a)" font-size="10" font-family="'JetBrains Mono', monospace">TIME SPENT</text>
         ${itemsSvg}
       </svg>
     `;
@@ -629,21 +635,21 @@ export class TelemetryEngine {
       const x = padding.left + (i * step) + (step - barW) / 2;
       const y = padding.top + (plotH - bH);
       bars += `
-        <rect x="${x}" y="${y}" width="${barW}" height="${bH}" rx="4" fill="#8b5cf6" opacity="0.85">
+        <rect x="${x}" y="${y}" width="${barW}" height="${bH}" rx="4" fill="var(--text-primary, #ffffff)" opacity="0.88">
           <title>${day.label}: ${day.mins} mins</title>
         </rect>
-        <text x="${x + barW / 2}" y="${y - 4}" text-anchor="middle" fill="#c4b5fd" font-size="10" font-family="'JetBrains Mono', monospace">${day.mins > 0 ? day.mins + 'm' : ''}</text>
-        <text x="${x + barW / 2}" y="${height - 10}" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="'JetBrains Mono', monospace">${day.label}</text>
+        <text x="${x + barW / 2}" y="${y - 4}" text-anchor="middle" fill="var(--text-primary, #ffffff)" font-size="10" font-family="'JetBrains Mono', monospace">${day.mins > 0 ? day.mins + 'm' : ''}</text>
+        <text x="${x + barW / 2}" y="${height - 10}" text-anchor="middle" fill="var(--text-secondary, #a1a1aa)" font-size="11" font-family="'JetBrains Mono', monospace">${day.label}</text>
       `;
     });
 
     // Right-side category breakdown
     const totalSec = Math.max(1, Object.values(this.sectionSeconds).reduce((a, b) => a + b, 0));
     const sections = [
-      { name: 'Vocab', sec: this.sectionSeconds.vocab || 0, color: '#3b82f6' },
-      { name: 'Quiz', sec: this.sectionSeconds.quiz || 0, color: '#f59e0b' },
-      { name: 'Grammar', sec: this.sectionSeconds.grammar || 0, color: '#10b981' },
-      { name: 'Notes', sec: this.sectionSeconds.notes || 0, color: '#ec4899' }
+      { name: 'Vocab', sec: this.sectionSeconds.vocab || 0, color: 'var(--text-primary, #ffffff)' },
+      { name: 'Quiz', sec: this.sectionSeconds.quiz || 0, color: 'var(--text-secondary, #a1a1aa)' },
+      { name: 'Grammar', sec: this.sectionSeconds.grammar || 0, color: 'var(--text-muted, #71717a)' },
+      { name: 'Notes', sec: this.sectionSeconds.notes || 0, color: 'var(--border-focus, #52525b)' }
     ];
 
     let breakdownSvg = `<g transform="translate(${width - 200}, 25)">`;
@@ -652,7 +658,7 @@ export class TelemetryEngine {
       const y = idx * 28;
       breakdownSvg += `
         <rect x="0" y="${y}" width="10" height="10" rx="2" fill="${s.color}"/>
-        <text x="18" y="${y + 9}" fill="#e2e8f0" font-size="11" font-family="'JetBrains Mono', monospace">${s.name}: ${this.formatTimeSpan(s.sec)} (${pct}%)</text>
+        <text x="18" y="${y + 9}" fill="var(--text-primary, #ffffff)" font-size="11" font-family="'JetBrains Mono', monospace">${s.name}: ${this.formatTimeSpan(s.sec)} (${pct}%)</text>
       `;
     });
     breakdownSvg += `</g>`;
