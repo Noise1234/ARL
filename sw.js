@@ -1,4 +1,4 @@
-const CACHE_NAME = 'arl-cache-v3.0';
+const CACHE_NAME = 'arl-cache-v3.1';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -22,6 +22,8 @@ const ASSETS_TO_CACHE = [
   './js/grammar-fallback.js',
   './js/sound.js',
   './js/manual-entry.js',
+  './js/telemetry.js',
+  './js/sync.js',
   './js/views/hud.js',
   './js/views/study.js',
   './js/views/memorize.js',
@@ -30,6 +32,8 @@ const ASSETS_TO_CACHE = [
   './js/views/grammar.js',
   './js/views/notes.js',
   './js/views/media.js',
+  './js/views/stats.js',
+  './js/views/sync-modal.js',
   './js/views/settings.js',
   './js/views/help.js',
   './data/i18n.json',
@@ -56,10 +60,11 @@ const ASSETS_TO_CACHE = [
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(ASSETS_TO_CACHE);
-    }).then(() => self.skipWaiting())
+    })
   );
 });
 
@@ -77,24 +82,21 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+// Network-First with Cache Fallback: ensures latest updates are seen immediately while retaining 100% offline support
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      const fetchPromise = fetch(event.request).then((networkResponse) => {
-        if (networkResponse && networkResponse.status === 200) {
-          const responseToCache = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
-        }
-        return networkResponse;
-      }).catch(() => {
-        return cachedResponse;
-      });
-
-      return cachedResponse || fetchPromise;
+    fetch(event.request).then((networkResponse) => {
+      if (networkResponse && networkResponse.status === 200) {
+        const responseToCache = networkResponse.clone();
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, responseToCache);
+        });
+      }
+      return networkResponse;
+    }).catch(() => {
+      return caches.match(event.request);
     })
   );
 });

@@ -49,9 +49,18 @@ class ARLApp {
     // 1. Service Worker registration
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch(err => {
+        navigator.serviceWorker.register('sw.js').then((reg) => {
+          if (reg) reg.update();
+        }).catch(err => {
           console.warn('SW registration failed:', err);
         });
+      });
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        // Automatically reload once when new service worker takes over if needed
+        if (!window.__reloadedBySw) {
+          window.__reloadedBySw = true;
+          window.location.reload();
+        }
       });
     }
 
