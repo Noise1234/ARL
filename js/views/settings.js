@@ -11,6 +11,7 @@ import { t } from '../i18n.js';
 import { keyboard, KeyboardState } from '../keyboard.js';
 import { GeminiClient } from '../gemini.js';
 import { gistSync } from '../sync.js';
+import { socialClient } from '../social.js';
 
 export class SettingsModalView {
   constructor(overlayEl, onCloseCallback) {
@@ -18,7 +19,9 @@ export class SettingsModalView {
     this.onClose = onCloseCallback;
     this.showApiKey = false;
     this.showGhToken = false;
+    this.showSupabaseKey = false;
     this.syncNotice = '';
+    this.supabaseNotice = '';
     this.isSyncOperating = false;
   }
 
@@ -130,6 +133,11 @@ export class SettingsModalView {
     const lastSyncFormatted = lastSync
       ? `Last synced: ${new Date(lastSync).toLocaleTimeString()} (${new Date(lastSync).toLocaleDateString()})`
       : 'Never synced';
+
+    const socialProfile = socialClient.getProfile();
+    const supabaseUrl = socialClient.getUrl();
+    const supabaseKey = socialClient.getAnonKey();
+    const isSupabaseConfigured = socialClient.isConfigured();
 
     this.overlay.innerHTML = `
       <div class="settings-modal-backdrop" id="settings-backdrop">
@@ -257,6 +265,71 @@ export class SettingsModalView {
 
               <div class="sync-note-text">
                 ${lastSyncFormatted}. Token is saved locally in <code>localStorage</code> only and is strictly excluded from backups and sync payloads.
+              </div>
+            </div>
+
+            <!-- Supabase Cloud Social & Leaderboard -->
+            <div class="settings-row settings-sync-row">
+              <div class="sync-header-row">
+                <span class="settings-label">Supabase REST (Friends & Leaderboard)</span>
+                <span class="sync-status-tag ${isSupabaseConfigured ? 'tag-connected' : 'tag-idle'}" id="settings-supabase-status-badge">
+                  ${socialProfile ? `[@${socialProfile.username} · Lv.${socialProfile.level}]` : (isSupabaseConfigured ? '[Supabase REST Live]' : '[Mock Sandbox Active]')}
+                </span>
+              </div>
+
+              <div class="sync-inputs-grid">
+                <div class="sync-input-field">
+                  <div class="sync-label-small">Supabase Project URL</div>
+                  <input
+                    type="url"
+                    id="settings-supabase-url"
+                    class="settings-text-input"
+                    placeholder="https://xyzproject.supabase.co"
+                    value="${supabaseUrl}"
+                    autocomplete="off"
+                    spellcheck="false"
+                  />
+                </div>
+
+                <div class="sync-input-field">
+                  <div class="sync-label-small">Supabase Public Anon Key</div>
+                  <input
+                    type="${this.showSupabaseKey ? 'text' : 'password'}"
+                    id="settings-supabase-key"
+                    class="settings-text-input"
+                    placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                    value="${supabaseKey}"
+                    autocomplete="off"
+                    spellcheck="false"
+                  />
+                </div>
+
+                <div class="sync-actions-row">
+                  <button type="button" class="settings-action-btn touch-target" id="btn-save-settings-supabase">
+                    <span class="micro-bracket">[Save]</span> Save Credentials
+                  </button>
+                  <button type="button" class="settings-action-btn touch-target" id="btn-test-settings-supabase">
+                    <span class="micro-bracket">[🩺]</span> Test Supabase
+                  </button>
+                  <button type="button" class="settings-action-btn touch-target" id="btn-goto-social-from-settings">
+                    <span class="micro-bracket">[F]</span> Open Social View
+                  </button>
+                  ${isSupabaseConfigured ? `
+                    <button type="button" class="btn-clear-key touch-target" id="btn-clear-settings-supabase">
+                      Disconnect
+                    </button>
+                  ` : ''}
+                </div>
+              </div>
+
+              ${this.supabaseNotice ? `
+                <div class="sync-notice-text ${this.supabaseNotice.startsWith('Error') ? 'notice-error' : 'notice-ok'}">
+                  ${this.supabaseNotice}
+                </div>
+              ` : ''}
+
+              <div class="sync-note-text">
+                Direct PostgREST API integration. Profiles and ranks are PIN-protected with SHA-256 cryptographic verification.
               </div>
             </div>
 
@@ -463,6 +536,46 @@ export class SettingsModalView {
     this.overlay.querySelector('#btn-sync-disconnect')?.addEventListener('click', () => {
       gistSync.disconnect();
       this.syncNotice = 'Disconnected from Gist cloud sync.';
+      this.render();
+    });
+
+    // Supabase: Save Credentials
+    this.overlay.querySelector('#btn-save-settings-supabase')?.addEventListener('click', () => {
+      const urlInput = this.overlay.querySelector('#settings-supabase-url');
+      const keyInput = this.overlay.querySelector('#settings-supabase-key');
+      socialClient.setUrl(urlInput ? urlInput.value.trim() : '');
+      socialClient.setAnonKey(keyInput ? keyInput.value.trim() : '');
+      this.supabaseNotice = 'Supabase credentials saved locally!';
+      this.render();
+    });
+
+    // Supabase: Test Connection
+    this.overlay.querySelector('#btn-test-settings-supabase')?.addEventListener('click', async () => {
+      this.supabaseNotice = 'Testing Supabase connection...';
+      this.render();
+      const diag = await socialClient.testConnection();
+      if (diag.ok) {
+        this.supabaseNotice = diag.message;
+      } else {
+        this.supabaseNotice = `Error: ${diag.message}`;
+      }
+      this.render();
+    });
+
+    // Supabase: Open Social View
+    this.overlay.querySelector('#btn-goto-social-from-settings')?.addEventListener('click', () => {
+      this.close();
+      const socialBtn = document.querySelector('#nav-btn-social');
+      if (socialBtn) {
+        socialBtn.click();
+      }
+    });
+
+    // Supabase: Clear Credentials
+    this.overlay.querySelector('#btn-clear-settings-supabase')?.addEventListener('click', () => {
+      socialClient.setUrl('');
+      socialClient.setAnonKey('');
+      this.supabaseNotice = 'Credentials cleared. Switched to Mock Sandbox.';
       this.render();
     });
 

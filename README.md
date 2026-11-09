@@ -20,9 +20,12 @@
 - **Revealable Answer Breakdown:** Reveal target sentences with word-for-word literal and natural Mongolian translations, plus a 1-sentence breakdown of why the grammar rule applies.
 - **Color-Coded Mistake & Word-Order Diff:** Visual error feedback highlighting spelling/conjugation/case errors in **Red** (`.diff-error`), syntax/word-order misplacements in **Blue** (`.diff-misplaced`), and correct structure in **Green** (`.diff-correct`).
 
-### 2. Persistent Smart Notes & Floating Grammar PiP
-- **Smart Note Workspace ([N]otes):** Persistent multi-note notebook with auto-save to `localStorage`, special character quick chips, and a text-selection floating toolbar to instantly ask the AI for explanations or sentence evaluation.
-- **Minimizable 3-State Grammar PiP ([P]iP):** Floating, draggable grammar reference window with 3 states: **Full View**, **Minimized Dock** (read rules while writing notes or practicing), and **Completely Hidden** (`display: none`).
+### 2. PIN-Protected "Friends & Leaderboard" Cloud Social Engine
+- **Decentralized Supabase REST Integration:** Zero-dependency PostgREST client connecting to Supabase cloud tables (`arl_profiles`, `arl_friendships`) with full Row Level Security (RLS) support.
+- **Cryptographic SHA-256 PIN Protection:** Identity ownership secured with client-side SHA-256 PIN hashing (`hashPin` & `sha256Sync`), preventing score tampering or handle hijacking without complex OAuth friction.
+- **Dual Leaderboards & Metallic Podiums:** Global Top 50 learners and Friends-Only leaderboards with Gold `#1`, Silver `#2`, and Bronze `#3` podium cards, CEFR track filters, and real-time relative ranking.
+- **Friends Graph & Shareable Friend Codes:** Add study peers via `@username` or 1-tap copyable Friend Code (`ARL:USERNAME`), with duplicate-add defense and self-add prevention.
+- **High-Fidelity Mock Sandbox Fallback:** 100% offline functionality pre-seeded with 15 community learners across CEFR levels A1-B2.
 
 ### 3. Dual Theme, Responsive Navigation & Lexicon Pagination
 - **Modern High-Contrast Dashboard:** Dual dark and light theme with tactile micro-interactions and smooth transitions.
@@ -51,7 +54,8 @@
 | <kbd>Q</kbd> | [Q] Quiz Mode | Active Recall 4-option MCQs |
 | <kbd>L</kbd> | [L] Lexicon Browser | Word search & POS filters |
 | <kbd>G</kbd> | [G] Grammar Library | Rules & 20-Sentence Drills |
-| <kbd>N</kbd> | [N] Smart Notes | Study notes & AI selection toolbar |
+| <kbd>X</kbd> | [X] Stats Bento | Telemetry & Visual Analytics |
+| <kbd>F</kbd> | [F] Social & Friends | Cloud Leaderboard & Peers |
 | <kbd>P</kbd> | [P] Floating PiP | Toggle Grammar Picture-in-Picture |
 | <kbd>I</kbd> | [I] Immersion Media | Curated reading & listening |
 | <kbd>S</kbd> | [S] Settings | Settings modal & API configuration |
@@ -80,9 +84,10 @@
 │   ├── app.js              # Application orchestrator
 │   ├── db.js               # IndexedDB persistence layer & backup import/export
 │   ├── state.js            # State store, streak logic & retention gate rules
+│   ├── social.js           # Supabase REST Social Engine (PIN-protection, friends & leaderboard)
 │   ├── diff.js             # Color-coded error and word-order diff engine
 │   ├── grammar-pip.js      # Floating minimizable 3-state Picture-in-Picture drawer
-│   ├── views/              # View controllers (Study, Memorize, Quiz, Lexicon, Grammar, Notes, HUD)
+│   ├── views/              # View controllers (Study, Memorize, Quiz, Lexicon, Grammar, Social, HUD)
 │   └── manual-entry.js     # Modal for adding custom words
 ├── data/
 │   ├── de/                 # German A1-B2 vocabulary & 50-topic 20-drill grammar
@@ -93,7 +98,8 @@
 ├── scripts/
 │   └── package_apk.py      # Automated APK packager, aligner & signer
 └── test/
-    ├── run-tests.js        # Main test runner (85 automated tests)
+    ├── run-tests.js        # Main test runner (144 automated tests)
+    ├── social.test.js      # Supabase Social Engine & PIN verification test suite
     └── major-upgrade.test.js # Feature verification test suite
 ```
 

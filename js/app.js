@@ -20,10 +20,12 @@ import { gistSync } from './sync.js';
 import { telemetry } from './telemetry.js';
 import { StatsView } from './views/stats.js';
 import { SyncModalView } from './views/sync-modal.js';
+import { SocialView } from './views/social.js';
+import { socialClient } from './social.js';
 
 class ARLApp {
   constructor() {
-    this.currentView = 'vocab'; // 'vocab' | 'memorize' | 'quiz' | 'lexicon' | 'grammar' | 'media' | 'stats'
+    this.currentView = 'vocab'; // 'vocab' | 'memorize' | 'quiz' | 'lexicon' | 'grammar' | 'media' | 'stats' | 'social'
     this.isSettingsOpen = false;
     this.isHelpOpen = false;
     this.isSyncModalOpen = false;
@@ -37,6 +39,7 @@ class ARLApp {
     this.grammarView = null;
     this.mediaView = null;
     this.statsView = null;
+    this.socialView = null;
     this.settingsView = null;
     this.helpView = null;
     this.syncModal = null;
@@ -75,6 +78,7 @@ class ARLApp {
     // 3. Initialize application state and telemetry
     await state.init();
     await telemetry.init();
+    await socialClient.init();
 
     // 4. Mount layout containers
     this.renderLayout();
@@ -101,6 +105,7 @@ class ARLApp {
     this.grammarView = new GrammarView(mainMount, (viewName) => this.navigateTo(viewName));
     this.mediaView = new MediaView(mainMount, (viewName) => this.navigateTo(viewName));
     this.statsView = new StatsView(mainMount, (viewName) => this.navigateTo(viewName));
+    this.socialView = new SocialView(mainMount, (viewName) => this.navigateTo(viewName));
     this.settingsView = new SettingsModalView(settingsMount, () => {
       this.isSettingsOpen = false;
       this.hudView.setActiveView(this.currentView);
@@ -226,6 +231,10 @@ class ARLApp {
       case 'stats':
         this.statsView.render();
         break;
+      case 'social':
+        await this.socialView.loadLeaderboards();
+        this.socialView.render();
+        break;
     }
   }
 
@@ -268,6 +277,7 @@ class ARLApp {
     keyboard.on('nav_grammar', () => this.navigateTo('grammar'));
     keyboard.on('nav_media', () => this.navigateTo('media'));
     keyboard.on('nav_stats', () => this.navigateTo('stats'));
+    keyboard.on('nav_social', () => this.navigateTo('social'));
     keyboard.on('toggle_sync', () => this.openSyncModal());
     keyboard.on('toggle_pip', () => grammarPip.toggle());
     keyboard.on('toggle_settings', () => this.toggleSettings());
@@ -294,6 +304,7 @@ class ARLApp {
       if (this.currentView === 'vocab' && state.isCardRevealed) {
         state.gradeCurrentCard(grade);
         gistSync.scheduleAutoPush();
+        socialClient.scheduleAutoSync();
       }
     });
     keyboard.on('study_audio', () => {

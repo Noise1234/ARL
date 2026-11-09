@@ -100,6 +100,8 @@ class KeyboardRouter {
       keyLower === 'g' ? '#nav-btn-grammar' : null,
       keyLower === 'm' ? '#nav-btn-memorize' : null,
       keyLower === 'i' ? '#nav-btn-media' : null,
+      keyLower === 'x' ? '#nav-btn-stats' : null,
+      keyLower === 'f' ? '#nav-btn-social' : null,
       keyLower === 's' ? '#nav-btn-settings' : null,
       keyLower === '?' ? '#nav-btn-help' : null,
       keyLower === 'n' ? '#btn-lexicon-add-word' : null,
@@ -173,6 +175,16 @@ class KeyboardRouter {
       if (key === 'i' || key === 'I') {
         e.preventDefault();
         this.trigger('nav_media');
+        return;
+      }
+      if (key === 'x' || key === 'X') {
+        e.preventDefault();
+        this.trigger('nav_stats');
+        return;
+      }
+      if (key === 'f' || key === 'F') {
+        e.preventDefault();
+        this.trigger('nav_social');
         return;
       }
       if (key === 's' || key === 'S') {

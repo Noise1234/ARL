@@ -118,6 +118,9 @@ export class TopHudView {
           <button class="hud-nav-item ${this.currentView === 'stats' ? 'active' : ''}" id="nav-btn-stats" data-key="x" title="Telemetry & Visual Analytics [Stats]">
             <span class="hud-key">[X]</span><span class="hud-label">Stats</span>
           </button>
+          <button class="hud-nav-item ${this.currentView === 'social' ? 'active' : ''}" id="nav-btn-social" data-key="f" title="Friends & Leaderboard [F]">
+            <span class="hud-key">[F]</span><span class="hud-label">Social</span>
+          </button>
           <button class="hud-nav-item" id="nav-btn-pip" data-key="p" title="Toggle Floating Grammar PiP [P]">
             <span class="hud-key">[P]</span><span class="hud-label">PiP</span>
           </button>
@@ -168,6 +171,10 @@ export class TopHudView {
         <button class="mobile-nav-tab ${this.currentView === 'stats' ? 'active' : ''}" data-target="stats">
           <span class="tab-key">[X]</span>
           <span class="tab-label">Stats</span>
+        </button>
+        <button class="mobile-nav-tab ${this.currentView === 'social' ? 'active' : ''}" data-target="social">
+          <span class="tab-key">[F]</span>
+          <span class="tab-label">Social</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'pip' ? 'active' : ''}" data-target="pip">
           <span class="tab-key">[P]</span>
@@ -264,6 +271,7 @@ export class TopHudView {
       ['#nav-btn-grammar', 'grammar'],
       ['#nav-btn-media', 'media'],
       ['#nav-btn-stats', 'stats'],
+      ['#nav-btn-social', 'social'],
       ['#nav-btn-settings', 'settings'],
       ['#nav-btn-help', 'help']
     ];
