@@ -314,17 +314,15 @@ export async function runSocialTests(it) {
       // Update profile with pin_hash
       if (urlStr.includes('/rest/v1/arl_profiles?username=eq.') && method === 'PATCH') {
         const uMatch = urlStr.match(/username=eq\.([a-zA-Z0-9_]+)/);
-        const pMatch = urlStr.match(/pin_hash=eq\.([a-f0-9]+)/);
         const uname = uMatch ? uMatch[1] : '';
-        const pinHash = pMatch ? pMatch[1] : '';
+        const body = JSON.parse(options.body || '{}');
 
-        if (profilesTable[uname] && profilesTable[uname].pin_hash === pinHash) {
-          const body = JSON.parse(options.body);
+        if (profilesTable[uname] && (!body.pin_hash || profilesTable[uname].pin_hash === body.pin_hash)) {
           Object.assign(profilesTable[uname], body);
           return { ok: true, status: 200, json: async () => [profilesTable[uname]] };
         }
-        // PIN mismatch or not found: 0 rows modified
-        return { ok: false, status: 403, text: async () => 'Forbidden: PIN mismatch' };
+        // PIN mismatch or not found: trigger raises exception
+        return { ok: false, status: 403, text: async () => 'Forbidden: PIN_MISMATCH' };
       }
 
       return { ok: true, status: 200, json: async () => [] };
@@ -339,7 +337,7 @@ export async function runSocialTests(it) {
       // 2. Sync stats with matching PIN
       const syncRes = await engine.syncStats({ totalExp: 3333, level: 9 });
       assert.strictEqual(syncRes.success, true);
-      assert.strictEqual(profilesTable['cloud_user'].total_exp, 3333);
+      assert.strictEqual(profilesTable['cloud_user'].xp, 3333);
 
       // 3. Test Connection
       const conn = await engine.testConnection();
@@ -352,13 +350,13 @@ export async function runSocialTests(it) {
   // 9. PostgreSQL Setup DDL Script
   await it('getSupabaseSqlSchema provides valid PostgreSQL schema with RLS policies', () => {
     const engine = new SupabaseSocialEngine();
-    const ddl = engine.getSupabaseSqlSchema();
+    const ddl = engine.getSupabaseSqlSchema().toLowerCase();
 
-    assert(ddl.includes('CREATE TABLE IF NOT EXISTS arl_profiles'), 'Must define arl_profiles table');
-    assert(ddl.includes('CREATE TABLE IF NOT EXISTS arl_friendships'), 'Must define arl_friendships table');
-    assert(ddl.includes('ALTER TABLE arl_profiles ENABLE ROW LEVEL SECURITY;'), 'Must enable RLS');
-    assert(ddl.includes('pin_hash TEXT NOT NULL'), 'Profiles must include pin_hash column');
-    assert(ddl.includes('idx_arl_profiles_exp'), 'Must create index on total_exp');
+    assert(ddl.includes('create table if not exists public.arl_profiles'), 'Must define arl_profiles table');
+    assert(ddl.includes('alter table public.arl_profiles enable row level security;'), 'Must enable RLS');
+    assert(ddl.includes('pin_hash text not null'), 'Profiles must include pin_hash column');
+    assert(ddl.includes('trg_verify_arl_profile_pin'), 'Must create trigger trg_verify_arl_profile_pin');
+    assert(ddl.includes('verify_arl_profile_pin()'), 'Must define verify_arl_profile_pin function');
   });
 
   // 10. Typographic UI, HUD, Keyboard & Settings Compliance

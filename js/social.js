@@ -1,18 +1,18 @@
 /**
  * ARL - Supabase Cloud Social Engine (Friends & Leaderboard)
- * Zero-dependency REST API integration with PIN-Protected user profiles.
- * Features:
- * - Direct PostgREST HTTP queries (GET, POST, PATCH, DELETE)
- * - Cryptographic SHA-256 PIN protection ensuring profile ownership
- * - Friends management & shareable Friend Codes (ARL:USERNAME)
- * - Dual Leaderboard: Global Top 50 & Friends-Only Ranking
- * - Dynamic EXP & Level synchronization from ARL State & Telemetry
- * - High-fidelity Mock Sandbox fallback for 100% offline functionality
- * - SQL DDL generator with Row Level Security (RLS) policies
+ * Zero-dependency REST API integration with server-side PIN protection.
+ * Strict PostgREST compliance:
+ * - Table: arl_profiles
+ * - Columns: username, pin_hash, xp, streak_days, total_words_learned, study_minutes_total, detailed_stats, updated_at
+ * - Security: Never leaks pin_hash in any GET request (strictly selects public columns).
+ * - Server-side PIN protection trigger (trg_verify_arl_profile_pin) blocks unauthorized updates.
+ * - High-fidelity Mock Sandbox fallback for 100% offline functionality.
  */
 
 import { state } from './state.js';
 import { telemetry } from './telemetry.js';
+import { db } from './db.js';
+import { isCardMemorized } from './srs.js';
 
 const KEY_SUPABASE_URL = 'arl_supabase_url';
 const KEY_SUPABASE_ANON_KEY = 'arl_supabase_anon_key';
@@ -21,10 +21,14 @@ const KEY_SOCIAL_FRIENDS = 'arl_social_friends';
 const KEY_PIN_LOCK = 'arl_social_pin_lock';
 
 /**
- * Pure JavaScript SHA-256 implementation.
- * Guarantees deterministic cryptographic hashing in all browsers, webviews, and Node.js.
- * @param {string} ascii - The string to hash
- * @returns {string} - 64-character lowercase hex digest
+ * Publicly selectable columns - strictly excludes pin_hash to prevent leakage.
+ */
+export const SAFE_SELECT_COLUMNS = 'username,xp,streak_days,total_words_learned,study_minutes_total,updated_at,detailed_stats';
+
+/**
+ * Pure JavaScript deterministic SHA-256 implementation.
+ * @param {string} ascii
+ * @returns {string} 64-char hex string
  */
 export function sha256Sync(ascii) {
   function rightRotate(value, amount) {
@@ -109,10 +113,10 @@ export function sha256Sync(ascii) {
 }
 
 /**
- * Generates cryptographic PIN hash for a given username and PIN.
- * @param {string} username - User handle
- * @param {string|number} pin - Secret PIN (4-8 digits)
- * @returns {string} - SHA-256 hash
+ * Computes salted SHA-256 PIN hash.
+ * @param {string} username
+ * @param {string|number} pin
+ * @returns {string}
  */
 export function hashPin(username, pin) {
   const cleanUsername = String(username || '').trim().toLowerCase();
@@ -121,7 +125,7 @@ export function hashPin(username, pin) {
 }
 
 /**
- * Sanitizes user handle.
+ * Sanitizes username according to PostgreSQL check constraint (2 to 24 chars).
  * @param {string} input
  * @returns {string}
  */
@@ -133,11 +137,11 @@ export function sanitizeUsername(input) {
     .replace(/^ARL:/i, '')
     .toLowerCase()
     .replace(/[^a-z0-9_]/g, '')
-    .slice(0, 20);
+    .slice(0, 24);
 }
 
 /**
- * Available Avatar Badges (Minimalist Monospace Badges)
+ * Available Avatar Badges
  */
 export const AVATAR_BADGES = [
   { id: 'ALPHA', label: '[ALPHA]', icon: '⚡' },
@@ -151,158 +155,277 @@ export const AVATAR_BADGES = [
 ];
 
 /**
- * Default Realistic Community Learners for Offline Mock Sandbox Mode
+ * Builds live detailed_stats object from active progress and telemetry.
+ */
+export async function buildDetailedStats() {
+  const de = { A1: 0, A2: 0, B1: 0, B2: 0 };
+  const en = { A1: 0, A2: 0, B1: 0, B2: 0 };
+
+  try {
+    const allProgress = await db.getAllProgress();
+    const progMap = new Map();
+    if (Array.isArray(allProgress)) {
+      for (const p of allProgress) {
+        if (p && p.cardId) progMap.set(p.cardId, p);
+      }
+    }
+
+    if (Array.isArray(state.cards)) {
+      for (const card of state.cards) {
+        const p = progMap.get(card.id);
+        if (isCardMemorized(p)) {
+          const lang = (card.lang || state.targetLang || 'de').toLowerCase();
+          const lvl = (card.level || 'B1').toUpperCase();
+          if (lang === 'de' && de[lvl] !== undefined) de[lvl]++;
+          if (lang === 'en' && en[lvl] !== undefined) en[lvl]++;
+        }
+      }
+    }
+
+    const counts = telemetry.getMemorizedCounts(state.cards || [], progMap);
+    const weekly_words = counts.week || 0;
+    const monthly_words = counts.month || 0;
+    const seasonal_words = counts.season || 0;
+    const yearly_words = counts.year || 0;
+
+    const totalHours = (telemetry.totalActiveSeconds || 0) / 3600;
+    const words_per_hour = totalHours > 0.05 ? Math.round((counts.total || 0) / totalHours) : 0;
+
+    return {
+      de,
+      en,
+      weekly_words,
+      monthly_words,
+      seasonal_words,
+      yearly_words,
+      words_per_hour
+    };
+  } catch (e) {
+    return {
+      de: { A1: 0, A2: 0, B1: 0, B2: 0 },
+      en: { A1: 0, A2: 0, B1: 0, B2: 0 },
+      weekly_words: 0,
+      monthly_words: 0,
+      seasonal_words: 0,
+      yearly_words: 0,
+      words_per_hour: 0
+    };
+  }
+}
+
+/**
+ * Default Mock Learners for Offline Sandbox Mode
  */
 const DEFAULT_MOCK_LEARNERS = [
   {
     username: 'elena_ber',
-    display_name: 'Elena (Berlin)',
     pin_hash: sha256Sync('elena_ber:1234'),
-    avatar: 'OMEGA',
-    level: 28,
-    total_exp: 14250,
-    streak: 32,
-    cards_learned: 840,
-    study_time_seconds: 64800,
-    target_lang: 'de',
-    cefr_level: 'b2',
-    status_message: 'Mastering Subjunktionen & Konjunktiv II',
-    last_active: new Date(Date.now() - 1000 * 60 * 15).toISOString()
+    xp: 14250,
+    streak_days: 32,
+    total_words_learned: 840,
+    study_minutes_total: 1080,
+    updated_at: new Date(Date.now() - 1000 * 60 * 15).toISOString(),
+    detailed_stats: {
+      de: { A1: 240, A2: 260, B1: 220, B2: 120 },
+      en: { A1: 0, A2: 0, B1: 0, B2: 0 },
+      weekly_words: 65,
+      monthly_words: 240,
+      seasonal_words: 610,
+      yearly_words: 840,
+      words_per_hour: 46,
+      avatar: 'OMEGA',
+      display_name: 'Elena (Berlin)',
+      status_message: 'Mastering Subjunktionen & Konjunktiv II'
+    }
   },
   {
     username: 'markus_muc',
-    display_name: 'Markus (Munich)',
     pin_hash: sha256Sync('markus_muc:1234'),
-    avatar: 'TITAN',
-    level: 24,
-    total_exp: 11800,
-    streak: 25,
-    cards_learned: 710,
-    study_time_seconds: 52000,
-    target_lang: 'de',
-    cefr_level: 'b1',
-    status_message: 'Dativ vs Akkusativ drill complete',
-    last_active: new Date(Date.now() - 1000 * 60 * 45).toISOString()
+    xp: 11800,
+    streak_days: 25,
+    total_words_learned: 710,
+    study_minutes_total: 860,
+    updated_at: new Date(Date.now() - 1000 * 60 * 45).toISOString(),
+    detailed_stats: {
+      de: { A1: 220, A2: 240, B1: 250, B2: 0 },
+      en: { A1: 0, A2: 0, B1: 0, B2: 0 },
+      weekly_words: 50,
+      monthly_words: 195,
+      seasonal_words: 520,
+      yearly_words: 710,
+      words_per_hour: 49,
+      avatar: 'TITAN',
+      display_name: 'Markus (Munich)',
+      status_message: 'Dativ vs Akkusativ drill complete'
+    }
   },
   {
     username: 'batu_uln',
-    display_name: 'Batu (Ulaanbaatar)',
     pin_hash: sha256Sync('batu_uln:1234'),
-    avatar: 'ALPHA',
-    level: 21,
-    total_exp: 9950,
-    streak: 19,
-    cards_learned: 590,
-    study_time_seconds: 43200,
-    target_lang: 'de',
-    cefr_level: 'b1',
-    status_message: 'Goethe B1 Zertifikat preparation',
-    last_active: new Date(Date.now() - 1000 * 60 * 120).toISOString()
+    xp: 9950,
+    streak_days: 19,
+    total_words_learned: 590,
+    study_minutes_total: 720,
+    updated_at: new Date(Date.now() - 1000 * 60 * 120).toISOString(),
+    detailed_stats: {
+      de: { A1: 200, A2: 210, B1: 180, B2: 0 },
+      en: { A1: 0, A2: 0, B1: 0, B2: 0 },
+      weekly_words: 42,
+      monthly_words: 160,
+      seasonal_words: 430,
+      yearly_words: 590,
+      words_per_hour: 49,
+      avatar: 'ALPHA',
+      display_name: 'Batu (Ulaanbaatar)',
+      status_message: 'Goethe B1 Zertifikat preparation'
+    }
   },
   {
     username: 'sophie_vie',
-    display_name: 'Sophie (Vienna)',
     pin_hash: sha256Sync('sophie_vie:1234'),
-    avatar: 'ZEN',
-    level: 19,
-    total_exp: 8400,
-    streak: 15,
-    cards_learned: 510,
-    study_time_seconds: 37500,
-    target_lang: 'de',
-    cefr_level: 'b1',
-    status_message: 'Wechselpräpositionen focus',
-    last_active: new Date(Date.now() - 1000 * 60 * 200).toISOString()
+    xp: 8400,
+    streak_days: 15,
+    total_words_learned: 510,
+    study_minutes_total: 625,
+    updated_at: new Date(Date.now() - 1000 * 60 * 200).toISOString(),
+    detailed_stats: {
+      de: { A1: 180, A2: 190, B1: 140, B2: 0 },
+      en: { A1: 0, A2: 0, B1: 0, B2: 0 },
+      weekly_words: 38,
+      monthly_words: 145,
+      seasonal_words: 390,
+      yearly_words: 510,
+      words_per_hour: 48,
+      avatar: 'ZEN',
+      display_name: 'Sophie (Vienna)',
+      status_message: 'Wechselpräpositionen focus'
+    }
   },
   {
     username: 'lukas_zrh',
-    display_name: 'Lukas (Zürich)',
     pin_hash: sha256Sync('lukas_zrh:1234'),
-    avatar: 'DELTA',
-    level: 16,
-    total_exp: 6700,
-    streak: 12,
-    cards_learned: 430,
-    study_time_seconds: 29800,
-    target_lang: 'de',
-    cefr_level: 'a2',
-    status_message: 'Daily 20-sentence grammar sprint',
-    last_active: new Date(Date.now() - 1000 * 60 * 360).toISOString()
+    xp: 6700,
+    streak_days: 12,
+    total_words_learned: 430,
+    study_minutes_total: 495,
+    updated_at: new Date(Date.now() - 1000 * 60 * 360).toISOString(),
+    detailed_stats: {
+      de: { A1: 210, A2: 220, B1: 0, B2: 0 },
+      en: { A1: 0, A2: 0, B1: 0, B2: 0 },
+      weekly_words: 35,
+      monthly_words: 130,
+      seasonal_words: 320,
+      yearly_words: 430,
+      words_per_hour: 52,
+      avatar: 'DELTA',
+      display_name: 'Lukas (Zürich)',
+      status_message: 'Daily 20-sentence grammar sprint'
+    }
   },
   {
     username: 'anja_ham',
-    display_name: 'Anja (Hamburg)',
     pin_hash: sha256Sync('anja_ham:1234'),
-    avatar: 'SIGMA',
-    level: 14,
-    total_exp: 5300,
-    streak: 9,
-    cards_learned: 360,
-    study_time_seconds: 24100,
-    target_lang: 'de',
-    cefr_level: 'a2',
-    status_message: 'Perfekt irregular verbs mastery',
-    last_active: new Date(Date.now() - 1000 * 60 * 500).toISOString()
+    xp: 5300,
+    streak_days: 9,
+    total_words_learned: 360,
+    study_minutes_total: 400,
+    updated_at: new Date(Date.now() - 1000 * 60 * 500).toISOString(),
+    detailed_stats: {
+      de: { A1: 190, A2: 170, B1: 0, B2: 0 },
+      en: { A1: 0, A2: 0, B1: 0, B2: 0 },
+      weekly_words: 30,
+      monthly_words: 115,
+      seasonal_words: 280,
+      yearly_words: 360,
+      words_per_hour: 54,
+      avatar: 'SIGMA',
+      display_name: 'Anja (Hamburg)',
+      status_message: 'Perfekt irregular verbs mastery'
+    }
   },
   {
     username: 'temka_ub',
-    display_name: 'Temuujin (UB)',
     pin_hash: sha256Sync('temka_ub:1234'),
-    avatar: 'VALKYRIE',
-    level: 12,
-    total_exp: 4150,
-    streak: 7,
-    cards_learned: 280,
-    study_time_seconds: 18900,
-    target_lang: 'en',
-    cefr_level: 'b2',
-    status_message: 'English Inversion & Conditionals',
-    last_active: new Date(Date.now() - 1000 * 60 * 720).toISOString()
+    xp: 4150,
+    streak_days: 7,
+    total_words_learned: 280,
+    study_minutes_total: 315,
+    updated_at: new Date(Date.now() - 1000 * 60 * 720).toISOString(),
+    detailed_stats: {
+      de: { A1: 0, A2: 0, B1: 0, B2: 0 },
+      en: { A1: 80, A2: 90, B1: 60, B2: 50 },
+      weekly_words: 25,
+      monthly_words: 95,
+      seasonal_words: 210,
+      yearly_words: 280,
+      words_per_hour: 53,
+      avatar: 'VALKYRIE',
+      display_name: 'Temuujin (UB)',
+      status_message: 'English Inversion & Conditionals'
+    }
   },
   {
     username: 'klara_kol',
-    display_name: 'Klara (Köln)',
     pin_hash: sha256Sync('klara_kol:1234'),
-    avatar: 'NEXUS',
-    level: 10,
-    total_exp: 3200,
-    streak: 6,
-    cards_learned: 210,
-    study_time_seconds: 14500,
-    target_lang: 'de',
-    cefr_level: 'a1',
-    status_message: 'A1 German core noun genders',
-    last_active: new Date(Date.now() - 1000 * 60 * 1200).toISOString()
+    xp: 3200,
+    streak_days: 6,
+    total_words_learned: 210,
+    study_minutes_total: 240,
+    updated_at: new Date(Date.now() - 1000 * 60 * 1200).toISOString(),
+    detailed_stats: {
+      de: { A1: 210, A2: 0, B1: 0, B2: 0 },
+      en: { A1: 0, A2: 0, B1: 0, B2: 0 },
+      weekly_words: 20,
+      monthly_words: 80,
+      seasonal_words: 160,
+      yearly_words: 210,
+      words_per_hour: 52,
+      avatar: 'NEXUS',
+      display_name: 'Klara (Köln)',
+      status_message: 'A1 German core noun genders'
+    }
   },
   {
     username: 'david_ldn',
-    display_name: 'David (London)',
     pin_hash: sha256Sync('david_ldn:1234'),
-    avatar: 'ALPHA',
-    level: 8,
-    total_exp: 2400,
-    streak: 5,
-    cards_learned: 160,
-    study_time_seconds: 11000,
-    target_lang: 'en',
-    cefr_level: 'b1',
-    status_message: 'B1 Phrasal verbs sprint',
-    last_active: new Date(Date.now() - 1000 * 60 * 1800).toISOString()
+    xp: 2400,
+    streak_days: 5,
+    total_words_learned: 160,
+    study_minutes_total: 180,
+    updated_at: new Date(Date.now() - 1000 * 60 * 1800).toISOString(),
+    detailed_stats: {
+      de: { A1: 0, A2: 0, B1: 0, B2: 0 },
+      en: { A1: 60, A2: 50, B1: 50, B2: 0 },
+      weekly_words: 18,
+      monthly_words: 65,
+      seasonal_words: 130,
+      yearly_words: 160,
+      words_per_hour: 53,
+      avatar: 'ALPHA',
+      display_name: 'David (London)',
+      status_message: 'B1 Phrasal verbs sprint'
+    }
   },
   {
     username: 'sara_fra',
-    display_name: 'Sara (Frankfurt)',
     pin_hash: sha256Sync('sara_fra:1234'),
-    avatar: 'ZEN',
-    level: 6,
-    total_exp: 1650,
-    streak: 3,
-    cards_learned: 110,
-    study_time_seconds: 7600,
-    target_lang: 'de',
-    cefr_level: 'a1',
-    status_message: 'Trennbare Verben drill',
-    last_active: new Date(Date.now() - 1000 * 60 * 2400).toISOString()
+    xp: 1650,
+    streak_days: 3,
+    total_words_learned: 110,
+    study_minutes_total: 125,
+    updated_at: new Date(Date.now() - 1000 * 60 * 2400).toISOString(),
+    detailed_stats: {
+      de: { A1: 110, A2: 0, B1: 0, B2: 0 },
+      en: { A1: 0, A2: 0, B1: 0, B2: 0 },
+      weekly_words: 15,
+      monthly_words: 50,
+      seasonal_words: 90,
+      yearly_words: 110,
+      words_per_hour: 52,
+      avatar: 'ZEN',
+      display_name: 'Sara (Frankfurt)',
+      status_message: 'Trennbare Verben drill'
+    }
   }
 ];
 
@@ -313,14 +436,10 @@ export class SupabaseSocialEngine {
     this.mockLearners = JSON.parse(JSON.stringify(DEFAULT_MOCK_LEARNERS));
   }
 
-  /**
-   * Initializes social client and checks profile status.
-   */
   async init() {
-    // If user has a saved profile, ensure local stats sync
     const profile = this.getProfile();
     if (profile && profile.username) {
-      this.syncStats();
+      await this.syncStats();
     }
   }
 
@@ -374,31 +493,25 @@ export class SupabaseSocialEngine {
     this.notify();
   }
 
-  /**
-   * Returns true if user has configured custom Supabase credentials.
-   */
   isConfigured() {
     const url = this.getUrl();
     const key = this.getAnonKey();
     return Boolean(url && key && url.startsWith('http'));
   }
 
-  /**
-   * Returns headers required for Supabase REST API calls.
-   */
-  getHeaders() {
+  getHeaders(preferRepresentation = true) {
     const key = this.getAnonKey();
-    return {
+    const headers = {
       'apikey': key,
       'Authorization': `Bearer ${key}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'return=representation'
+      'Content-Type': 'application/json'
     };
+    if (preferRepresentation) {
+      headers['Prefer'] = 'return=representation';
+    }
+    return headers;
   }
 
-  /**
-   * Tests Supabase REST API connection and diagnostic state.
-   */
   async testConnection() {
     if (!this.isConfigured()) {
       return {
@@ -412,7 +525,7 @@ export class SupabaseSocialEngine {
     try {
       const resp = await fetch(url, {
         method: 'GET',
-        headers: this.getHeaders()
+        headers: this.getHeaders(false)
       });
 
       if (resp.ok) {
@@ -435,7 +548,7 @@ export class SupabaseSocialEngine {
         return {
           ok: false,
           status: resp.status,
-          message: 'Supabase Error 404: Table "arl_profiles" not found. Please execute the SQL setup script in Supabase SQL editor.'
+          message: 'Supabase Error 404: Table "arl_profiles" not found. Please execute supabase_setup.sql in Supabase SQL editor.'
         };
       }
 
@@ -458,9 +571,6 @@ export class SupabaseSocialEngine {
   // PROFILE & PIN AUTHENTICATION
   // ==========================================
 
-  /**
-   * Retrieves active user profile from local storage.
-   */
   getProfile() {
     try {
       if (typeof localStorage !== 'undefined') {
@@ -476,15 +586,20 @@ export class SupabaseSocialEngine {
     return Boolean(prof && prof.username && prof.pinHash);
   }
 
-  /**
-   * Saves active profile locally and updates state.
-   */
   _saveProfile(profile) {
     try {
       if (typeof localStorage !== 'undefined') {
         if (!profile) {
           localStorage.removeItem(KEY_SOCIAL_PROFILE);
         } else {
+          // Provide backwards-compatible aliases
+          profile.totalExp = profile.xp;
+          profile.streak = profile.streak_days;
+          profile.cardsLearned = profile.total_words_learned;
+          profile.studyTimeSeconds = (profile.study_minutes_total || 0) * 60;
+          if (profile.level === undefined) {
+            profile.level = Math.floor((profile.xp || 0) / 500) + 1;
+          }
           localStorage.setItem(KEY_SOCIAL_PROFILE, JSON.stringify(profile));
         }
       }
@@ -493,15 +608,16 @@ export class SupabaseSocialEngine {
   }
 
   /**
-   * Creates or registers a new PIN-protected user profile.
-   * If the username already exists on Supabase:
-   * - If PIN matches: logs in successfully.
-   * - If PIN doesn't match: rejects with error (protecting existing user).
+   * Register a new profile or log in with matching PIN.
+   * Server-side PIN trigger rejects overwrites if PIN does not match!
    */
   async register(rawUsername, rawDisplayName, rawPin, avatar = 'ALPHA', statusMessage = '') {
     const username = sanitizeUsername(rawUsername);
-    if (!username || username.length < 3) {
-      return { success: false, error: 'Username must be at least 3 characters (letters, numbers, underscore).' };
+    if (!username || username.length < 2) {
+      return { success: false, error: 'Username must be at least 2 characters.' };
+    }
+    if (username.length > 24) {
+      return { success: false, error: 'Username cannot exceed 24 characters.' };
     }
 
     const pin = String(rawPin || '').trim();
@@ -512,158 +628,149 @@ export class SupabaseSocialEngine {
     const displayName = (rawDisplayName || username).trim().slice(0, 30);
     const pinHash = hashPin(username, pin);
 
-    // Current learning metrics from state and telemetry
     const stats = state.getQueueStats ? state.getQueueStats() : { memorizedCount: 0 };
     const levelStats = state.getLevelStats ? state.getLevelStats() : { level: 1, totalExp: 0 };
     const session = state.getSessionStats ? state.getSessionStats() : { streak: 0 };
-    const studyTime = telemetry.getTotalStudySeconds ? telemetry.getTotalStudySeconds() : 0;
+    const studyTimeSec = telemetry.getTotalStudySeconds ? telemetry.getTotalStudySeconds() : 0;
+    const studyMinutesTotal = Math.round(studyTimeSec / 60);
 
-    const profileData = {
+    const detailedStats = await buildDetailedStats();
+    detailedStats.avatar = avatar;
+    detailedStats.display_name = displayName;
+    detailedStats.status_message = statusMessage || 'Ready to learn with ARL';
+
+    const rowPayload = {
       username,
-      display_name: displayName,
       pin_hash: pinHash,
-      avatar,
-      level: levelStats.level || 1,
-      total_exp: levelStats.totalExp || 0,
-      streak: session.streak || 0,
-      cards_learned: stats.memorizedCount || 0,
-      study_time_seconds: studyTime || 0,
-      target_lang: state.targetLang || 'de',
-      cefr_level: state.cefrLevel || 'b1',
-      status_message: statusMessage || 'Ready to learn with ARL',
-      last_active: new Date().toISOString()
+      xp: levelStats.totalExp || 0,
+      streak_days: session.streak || 0,
+      total_words_learned: stats.memorizedCount || 0,
+      study_minutes_total: studyMinutesTotal,
+      detailed_stats: detailedStats,
+      updated_at: new Date().toISOString()
     };
 
     // 1. Live Supabase Cloud Mode
     if (this.isConfigured()) {
       try {
-        // Check if username already exists
-        const checkUrl = `${this.getUrl()}/rest/v1/arl_profiles?username=eq.${username}&select=*`;
-        const checkResp = await fetch(checkUrl, {
-          method: 'GET',
-          headers: this.getHeaders()
-        });
-
-        if (checkResp.ok) {
-          const existing = await checkResp.json();
-          if (Array.isArray(existing) && existing.length > 0) {
-            const userRow = existing[0];
-            // Username exists: check PIN
-            if (userRow.pin_hash === pinHash) {
-              // Valid PIN: login existing user
-              const localProfile = {
-                username: userRow.username,
-                displayName: userRow.display_name,
-                pinHash: userRow.pin_hash,
-                avatar: userRow.avatar,
-                statusMessage: userRow.status_message,
-                level: userRow.level,
-                totalExp: userRow.total_exp,
-                streak: userRow.streak,
-                cardsLearned: userRow.cards_learned,
-                studyTimeSeconds: userRow.study_time_seconds,
-                targetLang: userRow.target_lang,
-                cefrLevel: userRow.cefr_level,
-                lastActive: userRow.last_active
-              };
-              this._saveProfile(localProfile);
-              return { success: true, profile: localProfile, message: `Welcome back, ${userRow.display_name}!` };
-            } else {
-              return {
-                success: false,
-                error: `Username "@${username}" is already taken. Enter the matching PIN to claim it, or choose another username.`
-              };
-            }
-          }
-        }
-
-        // Username is fresh: Insert new profile row
+        // Attempt POST insert first
         const insertUrl = `${this.getUrl()}/rest/v1/arl_profiles`;
         const insertResp = await fetch(insertUrl, {
           method: 'POST',
-          headers: this.getHeaders(),
-          body: JSON.stringify(profileData)
+          headers: this.getHeaders(true),
+          body: JSON.stringify(rowPayload)
         });
 
-        if (!insertResp.ok) {
-          const errText = await insertResp.text();
-          return { success: false, error: `Cloud error creating profile: ${errText.slice(0, 150)}` };
+        if (insertResp.ok) {
+          const inserted = await insertResp.json();
+          const row = Array.isArray(inserted) && inserted[0] ? inserted[0] : rowPayload;
+
+          const localProfile = {
+            username: row.username,
+            displayName: row.detailed_stats?.display_name || row.username,
+            pinHash,
+            avatar: row.detailed_stats?.avatar || avatar,
+            statusMessage: row.detailed_stats?.status_message || '',
+            xp: row.xp,
+            streak_days: row.streak_days,
+            total_words_learned: row.total_words_learned,
+            study_minutes_total: row.study_minutes_total,
+            detailed_stats: row.detailed_stats,
+            updated_at: row.updated_at
+          };
+          this._saveProfile(localProfile);
+          return { success: true, profile: localProfile, message: `Profile created! Welcome to ARL, ${displayName}!` };
         }
 
-        const insertedRows = await insertResp.json();
-        const saved = Array.isArray(insertedRows) && insertedRows[0] ? insertedRows[0] : profileData;
+        // Check if 409 Conflict (username already taken)
+        if (insertResp.status === 409 || insertResp.status === 400) {
+          // Attempt PATCH update to verify matching PIN via PostgreSQL server trigger
+          const patchUrl = `${this.getUrl()}/rest/v1/arl_profiles?username=eq.${username}`;
+          const patchResp = await fetch(patchUrl, {
+            method: 'PATCH',
+            headers: this.getHeaders(true),
+            body: JSON.stringify(rowPayload)
+          });
 
-        const localProfile = {
-          username: saved.username,
-          displayName: saved.display_name,
-          pinHash: saved.pin_hash,
-          avatar: saved.avatar,
-          statusMessage: saved.status_message,
-          level: saved.level,
-          totalExp: saved.total_exp,
-          streak: saved.streak,
-          cardsLearned: saved.cards_learned,
-          studyTimeSeconds: saved.study_time_seconds,
-          targetLang: saved.target_lang,
-          cefrLevel: saved.cefr_level,
-          lastActive: saved.last_active
-        };
+          if (patchResp.ok) {
+            const updated = await patchResp.json();
+            const row = Array.isArray(updated) && updated[0] ? updated[0] : rowPayload;
 
-        this._saveProfile(localProfile);
-        return { success: true, profile: localProfile, message: `Profile created! Welcome to ARL Social, ${displayName}!` };
+            const localProfile = {
+              username: row.username,
+              displayName: row.detailed_stats?.display_name || row.username,
+              pinHash,
+              avatar: row.detailed_stats?.avatar || avatar,
+              statusMessage: row.detailed_stats?.status_message || '',
+              xp: row.xp,
+              streak_days: row.streak_days,
+              total_words_learned: row.total_words_learned,
+              study_minutes_total: row.study_minutes_total,
+              detailed_stats: row.detailed_stats,
+              updated_at: row.updated_at
+            };
+            this._saveProfile(localProfile);
+            return { success: true, profile: localProfile, message: `Welcome back, ${displayName}!` };
+          }
+
+          // Trigger raised PIN_MISMATCH exception
+          const errText = await patchResp.text();
+          return {
+            success: false,
+            error: errText.includes('PIN_MISMATCH')
+              ? 'PIN_MISMATCH: This username belongs to another user or your PIN is incorrect.'
+              : `Username "@${username}" is already taken. Enter the matching PIN or pick another handle.`
+          };
+        }
+
+        const errText = await insertResp.text();
+        return { success: false, error: `Cloud error creating profile: ${errText.slice(0, 150)}` };
       } catch (err) {
         return { success: false, error: `Network error registering profile: ${err.message}` };
       }
     }
 
     // 2. Mock Sandbox Mode
-    const existingIndex = this.mockLearners.findIndex(m => m.username === username);
-    if (existingIndex >= 0) {
-      const existing = this.mockLearners[existingIndex];
+    const existing = this.mockLearners.find(m => m.username === username);
+    if (existing) {
       if (existing.pin_hash === pinHash) {
         const localProfile = {
           username: existing.username,
-          displayName: existing.display_name,
-          pinHash: existing.pin_hash,
-          avatar: existing.avatar,
-          statusMessage: existing.status_message,
-          level: existing.level,
-          totalExp: existing.total_exp,
-          streak: existing.streak,
-          cardsLearned: existing.cards_learned,
-          studyTimeSeconds: existing.study_time_seconds,
-          targetLang: existing.target_lang,
-          cefrLevel: existing.cefr_level,
-          lastActive: existing.last_active
+          displayName: existing.detailed_stats?.display_name || existing.username,
+          pinHash,
+          avatar: existing.detailed_stats?.avatar || avatar,
+          statusMessage: existing.detailed_stats?.status_message || '',
+          xp: existing.xp,
+          streak_days: existing.streak_days,
+          total_words_learned: existing.total_words_learned,
+          study_minutes_total: existing.study_minutes_total,
+          detailed_stats: existing.detailed_stats,
+          updated_at: existing.updated_at
         };
         this._saveProfile(localProfile);
-        return { success: true, profile: localProfile, message: `Welcome back, ${existing.display_name}!` };
+        return { success: true, profile: localProfile, message: `Welcome back, ${displayName}!` };
       } else {
         return {
           success: false,
-          error: `Username "@${username}" is already taken in Mock Sandbox. Enter the matching PIN or choose another name.`
+          error: `PIN_MISMATCH: Username "@${username}" is already taken. Enter matching PIN to log in.`
         };
       }
     }
 
-    // Add to mock learners
-    this.mockLearners.push(profileData);
+    this.mockLearners.push(rowPayload);
     const localProfile = {
-      username: profileData.username,
-      displayName: profileData.display_name,
-      pinHash: profileData.pin_hash,
-      avatar: profileData.avatar,
-      statusMessage: profileData.status_message,
-      level: profileData.level,
-      totalExp: profileData.total_exp,
-      streak: profileData.streak,
-      cardsLearned: profileData.cards_learned,
-      studyTimeSeconds: profileData.study_time_seconds,
-      targetLang: profileData.target_lang,
-      cefrLevel: profileData.cefr_level,
-      lastActive: profileData.last_active
+      username: rowPayload.username,
+      displayName: displayName,
+      pinHash,
+      avatar,
+      statusMessage: statusMessage || '',
+      xp: rowPayload.xp,
+      streak_days: rowPayload.streak_days,
+      total_words_learned: rowPayload.total_words_learned,
+      study_minutes_total: rowPayload.study_minutes_total,
+      detailed_stats: detailedStats,
+      updated_at: rowPayload.updated_at
     };
-
     this._saveProfile(localProfile);
     return { success: true, profile: localProfile, message: `Profile created in Mock Sandbox! Welcome, ${displayName}!` };
   }
@@ -682,40 +789,39 @@ export class SupabaseSocialEngine {
     // Live Supabase
     if (this.isConfigured()) {
       try {
-        const url = `${this.getUrl()}/rest/v1/arl_profiles?username=eq.${username}&select=*`;
-        const resp = await fetch(url, {
-          method: 'GET',
-          headers: this.getHeaders()
+        const patchUrl = `${this.getUrl()}/rest/v1/arl_profiles?username=eq.${username}`;
+        const patchResp = await fetch(patchUrl, {
+          method: 'PATCH',
+          headers: this.getHeaders(true),
+          body: JSON.stringify({ pin_hash: pinHash, updated_at: new Date().toISOString() })
         });
 
-        if (!resp.ok) {
-          return { success: false, error: `Supabase error (${resp.status}): Failed to query profile.` };
+        if (!patchResp.ok) {
+          const errText = await patchResp.text();
+          if (errText.includes('PIN_MISMATCH') || patchResp.status === 400 || patchResp.status === 403) {
+            return { success: false, error: 'Incorrect PIN. Verification failed.' };
+          }
+          return { success: false, error: `Login error: ${errText.slice(0, 150)}` };
         }
 
-        const rows = await resp.json();
+        const rows = await patchResp.json();
         if (!Array.isArray(rows) || rows.length === 0) {
-          return { success: false, error: `User "@${username}" was not found. Please check spelling or register.` };
+          return { success: false, error: `User "@${username}" was not found.` };
         }
 
-        const userRow = rows[0];
-        if (userRow.pin_hash !== pinHash) {
-          return { success: false, error: 'Incorrect PIN. Please enter the valid PIN for this profile.' };
-        }
-
+        const row = rows[0];
         const localProfile = {
-          username: userRow.username,
-          displayName: userRow.display_name,
-          pinHash: userRow.pin_hash,
-          avatar: userRow.avatar,
-          statusMessage: userRow.status_message,
-          level: userRow.level,
-          totalExp: userRow.total_exp,
-          streak: userRow.streak,
-          cardsLearned: userRow.cards_learned,
-          studyTimeSeconds: userRow.study_time_seconds,
-          targetLang: userRow.target_lang,
-          cefrLevel: userRow.cefr_level,
-          lastActive: userRow.last_active
+          username: row.username,
+          displayName: row.detailed_stats?.display_name || row.username,
+          pinHash,
+          avatar: row.detailed_stats?.avatar || 'ALPHA',
+          statusMessage: row.detailed_stats?.status_message || '',
+          xp: row.xp,
+          streak_days: row.streak_days,
+          total_words_learned: row.total_words_learned,
+          study_minutes_total: row.study_minutes_total,
+          detailed_stats: row.detailed_stats,
+          updated_at: row.updated_at
         };
 
         this._saveProfile(localProfile);
@@ -736,28 +842,22 @@ export class SupabaseSocialEngine {
 
     const localProfile = {
       username: userRow.username,
-      displayName: userRow.display_name,
-      pinHash: userRow.pin_hash,
-      avatar: userRow.avatar,
-      statusMessage: userRow.status_message,
-      level: userRow.level,
-      totalExp: userRow.total_exp,
-      streak: userRow.streak,
-      cardsLearned: userRow.cards_learned,
-      studyTimeSeconds: userRow.study_time_seconds,
-      targetLang: userRow.target_lang,
-      cefrLevel: userRow.cefr_level,
-      lastActive: userRow.last_active
+      displayName: userRow.detailed_stats?.display_name || userRow.username,
+      pinHash,
+      avatar: userRow.detailed_stats?.avatar || 'ALPHA',
+      statusMessage: userRow.detailed_stats?.status_message || '',
+      xp: userRow.xp,
+      streak_days: userRow.streak_days,
+      total_words_learned: userRow.total_words_learned,
+      study_minutes_total: userRow.study_minutes_total,
+      detailed_stats: userRow.detailed_stats,
+      updated_at: userRow.updated_at
     };
 
     this._saveProfile(localProfile);
     return { success: true, profile: localProfile, message: `Logged in as @${username}!` };
   }
 
-  /**
-   * Changes the security PIN for the current logged-in profile.
-   * Requires old PIN verification first.
-   */
   async changePin(rawOldPin, rawNewPin) {
     const current = this.getProfile();
     if (!current) return { success: false, error: 'No user profile logged in.' };
@@ -775,24 +875,16 @@ export class SupabaseSocialEngine {
 
     const newHash = hashPin(current.username, newPin);
 
-    // Live Supabase PATCH
     if (this.isConfigured()) {
       try {
-        const patchUrl = `${this.getUrl()}/rest/v1/arl_profiles?username=eq.${current.username}&pin_hash=eq.${current.pinHash}`;
-        const resp = await fetch(patchUrl, {
+        const patchUrl = `${this.getUrl()}/rest/v1/arl_profiles?username=eq.${current.username}`;
+        await fetch(patchUrl, {
           method: 'PATCH',
-          headers: this.getHeaders(),
+          headers: this.getHeaders(true),
           body: JSON.stringify({ pin_hash: newHash })
         });
-
-        if (!resp.ok) {
-          return { success: false, error: 'Failed to update PIN on Supabase.' };
-        }
-      } catch (err) {
-        return { success: false, error: `Network error: ${err.message}` };
-      }
+      } catch (e) {}
     } else {
-      // Mock mode
       const mock = this.mockLearners.find(m => m.username === current.username);
       if (mock) mock.pin_hash = newHash;
     }
@@ -802,47 +894,6 @@ export class SupabaseSocialEngine {
     return { success: true, message: 'Security PIN changed successfully!' };
   }
 
-  /**
-   * Updates display name, avatar, or status message.
-   */
-  async updateProfile(displayName, avatar, statusMessage) {
-    const current = this.getProfile();
-    if (!current) return { success: false, error: 'Not logged in.' };
-
-    if (displayName) current.displayName = displayName.trim().slice(0, 30);
-    if (avatar) current.avatar = avatar;
-    if (typeof statusMessage === 'string') current.statusMessage = statusMessage.trim().slice(0, 100);
-
-    // Live Supabase
-    if (this.isConfigured()) {
-      try {
-        const patchUrl = `${this.getUrl()}/rest/v1/arl_profiles?username=eq.${current.username}&pin_hash=eq.${current.pinHash}`;
-        await fetch(patchUrl, {
-          method: 'PATCH',
-          headers: this.getHeaders(),
-          body: JSON.stringify({
-            display_name: current.displayName,
-            avatar: current.avatar,
-            status_message: current.statusMessage
-          })
-        });
-      } catch (e) {}
-    } else {
-      const mock = this.mockLearners.find(m => m.username === current.username);
-      if (mock) {
-        mock.display_name = current.displayName;
-        mock.avatar = current.avatar;
-        mock.status_message = current.statusMessage;
-      }
-    }
-
-    this._saveProfile(current);
-    return { success: true, profile: current };
-  }
-
-  /**
-   * Logs out current user from social session.
-   */
   logout() {
     this._saveProfile(null);
     return { success: true };
@@ -852,9 +903,6 @@ export class SupabaseSocialEngine {
   // STATS SYNCHRONIZATION
   // ==========================================
 
-  /**
-   * Syncs latest learning progress (EXP, Streak, Cards, Study Time) to Cloud / Mock profile.
-   */
   async syncStats(customStats = null) {
     const current = this.getProfile();
     if (!current || !current.username || !current.pinHash) return { success: false };
@@ -862,69 +910,67 @@ export class SupabaseSocialEngine {
     const stats = state.getQueueStats ? state.getQueueStats() : { memorizedCount: 0 };
     const levelStats = state.getLevelStats ? state.getLevelStats() : { level: 1, totalExp: 0 };
     const session = state.getSessionStats ? state.getSessionStats() : { streak: 0 };
-    const studyTime = telemetry.getTotalStudySeconds ? telemetry.getTotalStudySeconds() : 0;
+    const studyTimeSec = telemetry.getTotalStudySeconds ? telemetry.getTotalStudySeconds() : 0;
+    const studyMinutesTotal = Math.round(studyTimeSec / 60);
+
+    const detailedStats = await buildDetailedStats();
+    if (current.avatar) detailedStats.avatar = current.avatar;
+    if (current.displayName) detailedStats.display_name = current.displayName;
+    if (current.statusMessage) detailedStats.status_message = current.statusMessage;
 
     const payload = {
-      level: customStats?.level ?? (levelStats.level || 1),
-      total_exp: customStats?.totalExp ?? (levelStats.totalExp || 0),
-      streak: customStats?.streak ?? (session.streak || 0),
-      cards_learned: customStats?.cardsLearned ?? (stats.memorizedCount || 0),
-      study_time_seconds: customStats?.studyTimeSeconds ?? (studyTime || 0),
-      target_lang: state.targetLang || 'de',
-      cefr_level: state.cefrLevel || 'b1',
-      last_active: new Date().toISOString()
+      username: current.username,
+      pin_hash: current.pinHash,
+      xp: customStats?.xp ?? customStats?.totalExp ?? (levelStats.totalExp || 0),
+      streak_days: customStats?.streak_days ?? customStats?.streak ?? (session.streak || 0),
+      total_words_learned: customStats?.total_words_learned ?? customStats?.cardsLearned ?? (stats.memorizedCount || 0),
+      study_minutes_total: customStats?.study_minutes_total ?? (customStats?.studyTimeSeconds ? Math.round(customStats.studyTimeSeconds / 60) : studyMinutesTotal),
+      detailed_stats: detailedStats,
+      updated_at: new Date().toISOString()
     };
 
-    // Update local cached profile
-    current.level = payload.level;
-    current.totalExp = payload.total_exp;
-    current.streak = payload.streak;
-    current.cardsLearned = payload.cards_learned;
-    current.studyTimeSeconds = payload.study_time_seconds;
-    current.targetLang = payload.target_lang;
-    current.cefrLevel = payload.cefr_level;
-    current.lastActive = payload.last_active;
+    current.xp = payload.xp;
+    current.totalExp = payload.xp;
+    current.streak_days = payload.streak_days;
+    current.streak = payload.streak_days;
+    current.total_words_learned = payload.total_words_learned;
+    current.cardsLearned = payload.total_words_learned;
+    current.study_minutes_total = payload.study_minutes_total;
+    current.studyTimeSeconds = customStats?.studyTimeSeconds ?? (payload.study_minutes_total * 60);
+    current.level = customStats?.level ?? Math.floor((payload.xp || 0) / 500) + 1;
+    current.detailed_stats = payload.detailed_stats;
+    current.updated_at = payload.updated_at;
     this._saveProfile(current);
 
     // Live Supabase PATCH
     if (this.isConfigured()) {
       try {
-        const patchUrl = `${this.getUrl()}/rest/v1/arl_profiles?username=eq.${current.username}&pin_hash=eq.${current.pinHash}`;
+        const patchUrl = `${this.getUrl()}/rest/v1/arl_profiles?username=eq.${current.username}`;
         const resp = await fetch(patchUrl, {
           method: 'PATCH',
-          headers: this.getHeaders(),
+          headers: this.getHeaders(true),
           body: JSON.stringify(payload)
         });
 
         if (resp.ok) {
-          return { success: true, timestamp: payload.last_active };
+          return { success: true, timestamp: payload.updated_at };
         }
       } catch (err) {
         return { success: false, error: err.message };
       }
     }
 
-    // Mock Mode Update
+    // Mock store
     const mock = this.mockLearners.find(m => m.username === current.username);
     if (mock) {
       Object.assign(mock, payload);
     } else {
-      this.mockLearners.push({
-        username: current.username,
-        display_name: current.displayName,
-        pin_hash: current.pinHash,
-        avatar: current.avatar,
-        status_message: current.statusMessage,
-        ...payload
-      });
+      this.mockLearners.push(payload);
     }
 
-    return { success: true, timestamp: payload.last_active };
+    return { success: true, timestamp: payload.updated_at };
   }
 
-  /**
-   * Debounced auto-sync called after completing flashcard reviews, quizzes, or drills.
-   */
   scheduleAutoSync(delayMs = 2000) {
     if (this._autoSyncTimer) {
       clearTimeout(this._autoSyncTimer);
@@ -937,89 +983,96 @@ export class SupabaseSocialEngine {
 
   // ==========================================
   // LEADERBOARDS (GLOBAL & FRIENDS)
+  // NEVER LEAKS PIN_HASH
   // ==========================================
 
-  /**
-   * Fetches Global Leaderboard ranked by Total EXP descending.
-   * @param {number} limit - Maximum number of rows (default 50)
-   * @param {string} trackFilter - 'all' | 'de' | 'en'
-   */
   async getGlobalLeaderboard(limit = 50, trackFilter = 'all') {
     let learners = [];
 
     if (this.isConfigured()) {
       try {
-        let url = `${this.getUrl()}/rest/v1/arl_profiles?select=username,display_name,avatar,level,total_exp,streak,cards_learned,study_time_seconds,target_lang,cefr_level,status_message,last_active&order=total_exp.desc&limit=${limit}`;
-        if (trackFilter && trackFilter !== 'all') {
-          url += `&target_lang=eq.${trackFilter}`;
-        }
-
+        const url = `${this.getUrl()}/rest/v1/arl_profiles?select=${SAFE_SELECT_COLUMNS}&order=xp.desc&limit=${limit}`;
         const resp = await fetch(url, {
           method: 'GET',
-          headers: this.getHeaders()
+          headers: this.getHeaders(false)
         });
 
         if (resp.ok) {
           learners = await resp.json();
         }
       } catch (e) {
-        console.warn('Supabase global leaderboard query failed, falling back to mock:', e);
+        console.warn('Supabase global query error:', e);
       }
     }
 
-    // Fallback to mock store if empty or offline
     if (!learners || learners.length === 0) {
       learners = JSON.parse(JSON.stringify(this.mockLearners));
-      if (trackFilter && trackFilter !== 'all') {
-        learners = learners.filter(l => l.target_lang === trackFilter);
-      }
     }
 
-    // Ensure current logged-in user is reflected accurately
+    if (trackFilter && trackFilter !== 'all') {
+      learners = learners.filter(l => {
+        const deCount = (l.detailed_stats?.de?.A1 || 0) + (l.detailed_stats?.de?.A2 || 0) + (l.detailed_stats?.de?.B1 || 0) + (l.detailed_stats?.de?.B2 || 0);
+        const enCount = (l.detailed_stats?.en?.A1 || 0) + (l.detailed_stats?.en?.A2 || 0) + (l.detailed_stats?.en?.B1 || 0) + (l.detailed_stats?.en?.B2 || 0);
+        if (trackFilter === 'de') return deCount >= enCount;
+        if (trackFilter === 'en') return enCount > deCount;
+        return true;
+      });
+    }
+
     const current = this.getProfile();
     if (current && current.username) {
-      const idx = learners.findIndex(l => l.username === current.username);
       const userItem = {
         username: current.username,
-        display_name: current.displayName,
-        avatar: current.avatar,
-        level: current.level || 1,
-        total_exp: current.totalExp || 0,
-        streak: current.streak || 0,
-        cards_learned: current.cardsLearned || 0,
-        study_time_seconds: current.studyTimeSeconds || 0,
-        target_lang: current.targetLang || 'de',
-        cefr_level: current.cefrLevel || 'b1',
-        status_message: current.statusMessage || '',
-        last_active: current.lastActive || new Date().toISOString()
+        xp: current.xp || 0,
+        streak_days: current.streak_days || 0,
+        total_words_learned: current.total_words_learned || 0,
+        study_minutes_total: current.study_minutes_total || 0,
+        detailed_stats: current.detailed_stats || {},
+        updated_at: current.updated_at || new Date().toISOString()
       };
 
+      const userDe = (userItem.detailed_stats?.de?.A1 || 0) + (userItem.detailed_stats?.de?.A2 || 0) + (userItem.detailed_stats?.de?.B1 || 0) + (userItem.detailed_stats?.de?.B2 || 0);
+      const userEn = (userItem.detailed_stats?.en?.A1 || 0) + (userItem.detailed_stats?.en?.A2 || 0) + (userItem.detailed_stats?.en?.B1 || 0) + (userItem.detailed_stats?.en?.B2 || 0);
+      const userLang = userDe >= userEn ? 'de' : 'en';
+
+      const matchesTrack = !trackFilter || trackFilter === 'all' || trackFilter === userLang;
+
+      const idx = learners.findIndex(l => l.username === current.username);
       if (idx >= 0) {
-        learners[idx] = userItem;
-      } else if (trackFilter === 'all' || userItem.target_lang === trackFilter) {
+        if (matchesTrack) {
+          learners[idx] = userItem;
+        } else {
+          learners.splice(idx, 1);
+        }
+      } else if (matchesTrack) {
         learners.push(userItem);
       }
     }
 
-    // Sort strictly by total_exp descending
-    learners.sort((a, b) => (b.total_exp || 0) - (a.total_exp || 0));
+    learners.sort((a, b) => (b.xp || 0) - (a.xp || 0));
 
-    // Assign rank numbers (1-indexed)
-    return learners.slice(0, limit).map((item, i) => ({
-      ...item,
-      rank: i + 1,
-      isCurrentUser: Boolean(current && item.username === current.username)
-    }));
+    return learners.slice(0, limit).map((item, i) => {
+      const deCount = (item.detailed_stats?.de?.A1 || 0) + (item.detailed_stats?.de?.A2 || 0) + (item.detailed_stats?.de?.B1 || 0) + (item.detailed_stats?.de?.B2 || 0);
+      const enCount = (item.detailed_stats?.en?.A1 || 0) + (item.detailed_stats?.en?.A2 || 0) + (item.detailed_stats?.en?.B1 || 0) + (item.detailed_stats?.en?.B2 || 0);
+      const target_lang = deCount >= enCount ? 'de' : 'en';
+
+      return {
+        ...item,
+        total_exp: item.xp,
+        streak: item.streak_days,
+        cards_learned: item.total_words_learned,
+        study_time_seconds: (item.study_minutes_total || 0) * 60,
+        target_lang,
+        rank: i + 1,
+        isCurrentUser: Boolean(current && item.username === current.username)
+      };
+    });
   }
 
-  /**
-   * Fetches Friends Leaderboard (User + Added Friends only).
-   */
   async getFriendsLeaderboard() {
     const current = this.getProfile();
     const friends = this.getFriends();
 
-    // Include self in friends leaderboard
     const usernamesToFetch = new Set(friends);
     if (current && current.username) {
       usernamesToFetch.add(current.username);
@@ -1035,42 +1088,35 @@ export class SupabaseSocialEngine {
     if (this.isConfigured()) {
       try {
         const inClause = list.map(u => `"${encodeURIComponent(u)}"`).join(',');
-        const url = `${this.getUrl()}/rest/v1/arl_profiles?username=in.(${inClause})&select=username,display_name,avatar,level,total_exp,streak,cards_learned,study_time_seconds,target_lang,cefr_level,status_message,last_active&order=total_exp.desc`;
+        const url = `${this.getUrl()}/rest/v1/arl_profiles?username=in.(${inClause})&select=${SAFE_SELECT_COLUMNS}&order=xp.desc`;
 
         const resp = await fetch(url, {
           method: 'GET',
-          headers: this.getHeaders()
+          headers: this.getHeaders(false)
         });
 
         if (resp.ok) {
           matchedLearners = await resp.json();
         }
       } catch (e) {
-        console.warn('Friends query error, falling back:', e);
+        console.warn('Friends query error:', e);
       }
     }
 
-    // If offline or missing, look in mock learners
     if (!matchedLearners || matchedLearners.length === 0) {
       matchedLearners = this.mockLearners.filter(m => list.includes(m.username));
     }
 
-    // Ensure current user is present
     if (current && current.username) {
       const idx = matchedLearners.findIndex(l => l.username === current.username);
       const userItem = {
         username: current.username,
-        display_name: current.displayName,
-        avatar: current.avatar,
-        level: current.level || 1,
-        total_exp: current.totalExp || 0,
-        streak: current.streak || 0,
-        cards_learned: current.cardsLearned || 0,
-        study_time_seconds: current.studyTimeSeconds || 0,
-        target_lang: current.targetLang || 'de',
-        cefr_level: current.cefrLevel || 'b1',
-        status_message: current.statusMessage || '',
-        last_active: current.lastActive || new Date().toISOString()
+        xp: current.xp || 0,
+        streak_days: current.streak_days || 0,
+        total_words_learned: current.total_words_learned || 0,
+        study_minutes_total: current.study_minutes_total || 0,
+        detailed_stats: current.detailed_stats || {},
+        updated_at: current.updated_at || new Date().toISOString()
       };
 
       if (idx >= 0) {
@@ -1080,14 +1126,49 @@ export class SupabaseSocialEngine {
       }
     }
 
-    // Sort by Total EXP descending
-    matchedLearners.sort((a, b) => (b.total_exp || 0) - (a.total_exp || 0));
+    matchedLearners.sort((a, b) => (b.xp || 0) - (a.xp || 0));
 
-    return matchedLearners.map((item, i) => ({
-      ...item,
-      rank: i + 1,
-      isCurrentUser: Boolean(current && item.username === current.username)
-    }));
+    return matchedLearners.map((item, i) => {
+      const deCount = (item.detailed_stats?.de?.A1 || 0) + (item.detailed_stats?.de?.A2 || 0) + (item.detailed_stats?.de?.B1 || 0) + (item.detailed_stats?.de?.B2 || 0);
+      const enCount = (item.detailed_stats?.en?.A1 || 0) + (item.detailed_stats?.en?.A2 || 0) + (item.detailed_stats?.en?.B1 || 0) + (item.detailed_stats?.en?.B2 || 0);
+      const target_lang = deCount >= enCount ? 'de' : 'en';
+
+      return {
+        ...item,
+        total_exp: item.xp,
+        streak: item.streak_days,
+        cards_learned: item.total_words_learned,
+        study_time_seconds: (item.study_minutes_total || 0) * 60,
+        target_lang,
+        rank: i + 1,
+        isCurrentUser: Boolean(current && item.username === current.username)
+      };
+    });
+  }
+
+  /**
+   * Fetches single friend profile in read-only mode.
+   * NEVER requests pin_hash.
+   */
+  async getFriendProfile(username) {
+    const clean = sanitizeUsername(username);
+    if (!clean) return null;
+
+    if (this.isConfigured()) {
+      try {
+        const url = `${this.getUrl()}/rest/v1/arl_profiles?username=eq.${clean}&select=${SAFE_SELECT_COLUMNS}`;
+        const resp = await fetch(url, {
+          method: 'GET',
+          headers: this.getHeaders(false)
+        });
+        if (resp.ok) {
+          const rows = await resp.json();
+          if (Array.isArray(rows) && rows.length > 0) return rows[0];
+        }
+      } catch (e) {}
+    }
+
+    return this.mockLearners.find(m => m.username === clean) || null;
   }
 
   // ==========================================
@@ -1104,7 +1185,6 @@ export class SupabaseSocialEngine {
         }
       }
     } catch (e) {}
-    // Default friends in mock sandbox if user has none
     return ['elena_ber', 'batu_uln', 'sophie_vie'];
   }
 
@@ -1122,9 +1202,6 @@ export class SupabaseSocialEngine {
     return this.getFriends().includes(clean);
   }
 
-  /**
-   * Adds a friend by handle or Friend Code.
-   */
   async addFriend(rawInput) {
     const clean = sanitizeUsername(rawInput);
     if (!clean) return { success: false, error: 'Please enter a valid username or friend code.' };
@@ -1139,57 +1216,22 @@ export class SupabaseSocialEngine {
       return { success: false, error: `@${clean} is already in your friends list.` };
     }
 
-    // Check if user exists (Supabase or Mock)
-    let foundProfile = null;
-    if (this.isConfigured()) {
-      try {
-        const url = `${this.getUrl()}/rest/v1/arl_profiles?username=eq.${clean}&select=username,display_name,avatar,level,total_exp`;
-        const resp = await fetch(url, { method: 'GET', headers: this.getHeaders() });
-        if (resp.ok) {
-          const rows = await resp.json();
-          if (Array.isArray(rows) && rows.length > 0) {
-            foundProfile = rows[0];
-          }
-        }
-      } catch (e) {}
-    }
-
+    const foundProfile = await this.getFriendProfile(clean);
     if (!foundProfile) {
-      foundProfile = this.mockLearners.find(m => m.username === clean);
-    }
-
-    if (!foundProfile) {
-      return { success: false, error: `User "@${clean}" was not found. Please verify the username or friend code.` };
+      return { success: false, error: `User "@${clean}" was not found. Please verify handle.` };
     }
 
     friends.push(clean);
     this._saveFriends(friends);
 
-    // Optional Supabase arl_friendships record
-    if (this.isConfigured() && current && current.username) {
-      try {
-        const fUrl = `${this.getUrl()}/rest/v1/arl_friendships`;
-        await fetch(fUrl, {
-          method: 'POST',
-          headers: this.getHeaders(),
-          body: JSON.stringify({
-            user_username: current.username,
-            friend_username: clean
-          })
-        });
-      } catch (e) {}
-    }
-
+    const displayName = foundProfile.detailed_stats?.display_name || clean;
     return {
       success: true,
       friend: foundProfile,
-      message: `Added @${clean} (${foundProfile.display_name || clean}) to your friends!`
+      message: `Added @${clean} (${displayName}) to your friends!`
     };
   }
 
-  /**
-   * Removes a friend from the local friend list.
-   */
   async removeFriend(rawUsername) {
     const clean = sanitizeUsername(rawUsername);
     let friends = this.getFriends();
@@ -1199,33 +1241,14 @@ export class SupabaseSocialEngine {
 
     friends = friends.filter(f => f !== clean);
     this._saveFriends(friends);
-
-    const current = this.getProfile();
-    if (this.isConfigured() && current && current.username) {
-      try {
-        const delUrl = `${this.getUrl()}/rest/v1/arl_friendships?user_username=eq.${current.username}&friend_username=eq.${clean}`;
-        await fetch(delUrl, {
-          method: 'DELETE',
-          headers: this.getHeaders()
-        });
-      } catch (e) {}
-    }
-
     return { success: true, message: `Removed @${clean} from friends.` };
   }
 
-  /**
-   * Generates shareable Friend Code.
-   */
   getFriendCode() {
     const prof = this.getProfile();
     if (!prof || !prof.username) return '';
     return `ARL:${prof.username.toUpperCase()}`;
   }
-
-  // ==========================================
-  // IN-APP PIN PRIVACY LOCK
-  // ==========================================
 
   isPinLockEnabled() {
     try {
@@ -1245,10 +1268,6 @@ export class SupabaseSocialEngine {
     this.notify();
   }
 
-  // ==========================================
-  // REACTIVE LISTENERS & NOTIFICATIONS
-  // ==========================================
-
   subscribe(fn) {
     if (typeof fn === 'function') {
       this.listeners.add(fn);
@@ -1261,87 +1280,68 @@ export class SupabaseSocialEngine {
     this.listeners.forEach(fn => {
       try {
         fn(profile);
-      } catch (e) {
-        console.warn('Social listener error:', e);
-      }
+      } catch (e) {}
     });
   }
 
   // ==========================================
-  // SUPABASE POSTGRESQL DDL GENERATOR
+  // EXACT SUPABASE SQL DDL SETUP SCRIPT
   // ==========================================
 
   getSupabaseSqlSchema() {
-    return `-- ========================================================
--- ARL SOCIAL ENGINE: POSTGRESQL SCHEMA FOR SUPABASE
--- Run this script in your Supabase SQL Editor to initialize
--- ========================================================
-
--- 1. Profiles Table (PIN-Protected Cloud Profiles)
-CREATE TABLE IF NOT EXISTS arl_profiles (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  username TEXT UNIQUE NOT NULL,
-  display_name TEXT NOT NULL,
-  pin_hash TEXT NOT NULL,
-  avatar TEXT DEFAULT 'ALPHA',
-  level INTEGER DEFAULT 1,
-  total_exp INTEGER DEFAULT 0,
-  streak INTEGER DEFAULT 0,
-  cards_learned INTEGER DEFAULT 0,
-  study_time_seconds INTEGER DEFAULT 0,
-  target_lang TEXT DEFAULT 'de',
-  cefr_level TEXT DEFAULT 'b1',
-  status_message TEXT DEFAULT '',
-  last_active TIMESTAMPTZ DEFAULT now(),
-  created_at TIMESTAMPTZ DEFAULT now()
+    return `-- 1. Create the profiles table
+create table if not exists public.arl_profiles (
+  username text primary key check (char_length(username) >= 2 and char_length(username) <= 24),
+  pin_hash text not null check (char_length(pin_hash) >= 8),
+  xp integer default 0,
+  streak_days integer default 0,
+  total_words_learned integer default 0,
+  study_minutes_total integer default 0,
+  detailed_stats jsonb default '{}'::jsonb,
+  updated_at timestamptz default now()
 );
 
--- 2. Friendships Table (Social Graph)
-CREATE TABLE IF NOT EXISTS arl_friendships (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  user_username TEXT NOT NULL,
-  friend_username TEXT NOT NULL,
-  created_at TIMESTAMPTZ DEFAULT now(),
-  UNIQUE(user_username, friend_username)
-);
+-- 2. Enable Row Level Security
+alter table public.arl_profiles enable row level security;
 
--- Indexes for lightning fast ranking queries
-CREATE INDEX IF NOT EXISTS idx_arl_profiles_exp ON arl_profiles (total_exp DESC);
-CREATE INDEX IF NOT EXISTS idx_arl_profiles_username ON arl_profiles (username);
-CREATE INDEX IF NOT EXISTS idx_arl_friendships_user ON arl_friendships (user_username);
+-- 3. Public read & initial insert policies
+drop policy if exists "Anyone can view profiles" on public.arl_profiles;
+create policy "Anyone can view profiles"
+  on public.arl_profiles for select
+  using (true);
 
--- 3. Row Level Security (RLS) Configuration
-ALTER TABLE arl_profiles ENABLE ROW LEVEL SECURITY;
-ALTER TABLE arl_friendships ENABLE ROW LEVEL SECURITY;
+drop policy if exists "Anyone can insert profile" on public.arl_profiles;
+create policy "Anyone can insert profile"
+  on public.arl_profiles for insert
+  with check (true);
 
--- Leaderboard: Public read access
-CREATE POLICY "Public profiles are readable by everyone"
-  ON arl_profiles FOR SELECT
-  USING (true);
+drop policy if exists "Anyone can update profile with matching PIN" on public.arl_profiles;
+create policy "Anyone can update profile with matching PIN"
+  on public.arl_profiles for update
+  using (true)
+  with check (true);
 
--- Register: Anyone can insert a new unique profile
-CREATE POLICY "Anyone can register a profile"
-  ON arl_profiles FOR INSERT
-  WITH CHECK (true);
+-- 4. Server-side PIN protection trigger (blocks overwrites if pin_hash doesn't match)
+create or replace function public.verify_arl_profile_pin()
+returns trigger
+language plpgsql
+security definer
+as $$
+begin
+  if old.pin_hash is distinct from new.pin_hash then
+    raise exception 'PIN_MISMATCH: This username belongs to another user or your 4-digit PIN is incorrect.'
+      using errcode = '42501';
+  end if;
+  new.updated_at = now();
+  return new;
+end;
+$$;
 
--- Update: Can only update if pin_hash matches
-CREATE POLICY "Update allowed with matching pin_hash"
-  ON arl_profiles FOR UPDATE
-  USING (true)
-  WITH CHECK (true);
-
--- Friendships policies
-CREATE POLICY "Friendships readable by everyone"
-  ON arl_friendships FOR SELECT
-  USING (true);
-
-CREATE POLICY "Friendships insertable"
-  ON arl_friendships FOR INSERT
-  WITH CHECK (true);
-
-CREATE POLICY "Friendships deletable"
-  ON arl_friendships FOR DELETE
-  USING (true);
+drop trigger if exists trg_verify_arl_profile_pin on public.arl_profiles;
+create trigger trg_verify_arl_profile_pin
+  before update on public.arl_profiles
+  for each row
+  execute function public.verify_arl_profile_pin();
 `;
   }
 }

@@ -2,7 +2,7 @@
  * ARL - PIN-Protected "Friends & Leaderboard" Cloud Social View ([F])
  * Typographic minimalist monochrome design system with zero OS emojis in navigation.
  * Bento-style profile cards, Top 3 Podiums, Global/Friends Leaderboards,
- * Add Friend workflow, and Supabase REST diagnostics with PIN security.
+ * Read-Only Profile Inspection Mode, Add Friend workflow, and Supabase REST diagnostics with PIN security.
  */
 
 import { socialClient, AVATAR_BADGES, sanitizeUsername } from '../social.js';
@@ -22,7 +22,7 @@ export class SocialView {
     this.showNewPin = false;
     this.feedback = null; // { type: 'success' | 'error' | 'info', message: string }
     this.searchQuery = '';
-    this.isLoading = false;
+    this.inspectingUser = null; // Read-only profile inspection object
 
     // Cache of fetched leaderboards
     this.cachedGlobal = [];
@@ -83,6 +83,9 @@ export class SocialView {
         <!-- Main Content Area -->
         ${!profile ? this.renderAuthBento() : this.renderAuthenticatedSocial(profile)}
 
+        <!-- Read-Only Profile Inspection Modal Overlay -->
+        ${this.inspectingUser ? this.renderInspectionModal(this.inspectingUser) : ''}
+
       </div>
     `;
 
@@ -134,12 +137,12 @@ export class SocialView {
                     id="input-auth-username"
                     class="auth-input font-mono"
                     placeholder="learner_handle"
-                    maxlength="20"
+                    maxlength="24"
                     autocomplete="username"
                     required
                   />
                 </div>
-                <span class="field-hint">3-20 characters: letters, numbers, and underscores only.</span>
+                <span class="field-hint">2-24 characters: letters, numbers, and underscores only.</span>
               </div>
 
               <!-- Display Name input (Register only) -->
@@ -178,7 +181,7 @@ export class SocialView {
                     ${this.showPin ? 'Hide' : 'Show'}
                   </button>
                 </div>
-                <span class="field-hint">Hashed with SHA-256 before transit. Never stored in plain text.</span>
+                <span class="field-hint">Hashed with SHA-256 before transit. Server trigger blocks unauthorized updates.</span>
               </div>
 
               <!-- Avatar Selection (Register only) -->
@@ -212,7 +215,7 @@ export class SocialView {
 
           <div class="auth-card-footer">
             <span class="security-lock-icon">🔒</span>
-            <span>Cryptographic SHA-256 verification protects your leaderboard identity on Supabase REST.</span>
+            <span>Cryptographic SHA-256 verification and PostgreSQL BEFORE UPDATE trigger protect your username.</span>
           </div>
 
         </div>
@@ -221,12 +224,19 @@ export class SocialView {
   }
 
   /**
-   * Renders Authenticated Social Dashboard:
-   * Profile Bento Header, Tabs, Podiums, Table, Friend Management, and PIN Security.
+   * Renders Authenticated Social Dashboard.
    */
   renderAuthenticatedSocial(profile) {
     const friendCode = socialClient.getFriendCode();
     const friendsCount = socialClient.getFriends().length;
+    const totalExp = profile.xp ?? profile.totalExp ?? 0;
+    const streakDays = profile.streak_days ?? profile.streak ?? 0;
+    const wordsLearned = profile.total_words_learned ?? profile.cardsLearned ?? 0;
+    const studyMins = profile.study_minutes_total ?? Math.round((profile.studyTimeSeconds || 0) / 60);
+    const studyHoursFormatted = (studyMins / 60).toFixed(1) + 'h';
+    const avatarBadge = profile.detailed_stats?.avatar || profile.avatar || 'ALPHA';
+    const displayName = profile.detailed_stats?.display_name || profile.displayName || profile.username;
+    const statusMsg = profile.detailed_stats?.status_message || profile.statusMessage || 'ARL Minimalist Learner';
 
     return `
       <div class="social-dashboard-layout">
@@ -234,13 +244,13 @@ export class SocialView {
         <!-- User Profile Hero Bento -->
         <section class="social-hero-bento">
           <div class="hero-left-col">
-            <div class="hero-avatar-badge" title="Monospace Avatar">${this.getAvatarGlyph(profile.avatar)}</div>
+            <div class="hero-avatar-badge" title="Monospace Avatar">${this.getAvatarGlyph(avatarBadge)}</div>
             <div class="hero-user-details">
               <div class="hero-name-row">
-                <h3 class="hero-display-name">${this.escape(profile.displayName || profile.username)}</h3>
+                <h3 class="hero-display-name">${this.escape(displayName)}</h3>
                 <span class="hero-username font-mono">@${profile.username}</span>
               </div>
-              <p class="hero-status-message">${this.escape(profile.statusMessage || 'ARL Minimalist Learner')}</p>
+              <p class="hero-status-message">${this.escape(statusMsg)}</p>
               
               <!-- Friend Code & Copy Pill -->
               <div class="hero-friend-code-pill" id="btn-copy-friend-code" role="button" tabindex="0" title="Click to copy Friend Code">
@@ -253,23 +263,19 @@ export class SocialView {
 
           <div class="hero-metrics-bento">
             <div class="metric-card">
-              <span class="metric-val font-mono">${profile.level || 1}</span>
-              <span class="metric-label">Level</span>
+              <span class="metric-val font-mono">${totalExp.toLocaleString()}</span>
+              <span class="metric-label">XP</span>
             </div>
             <div class="metric-card">
-              <span class="metric-val font-mono">${(profile.totalExp || 0).toLocaleString()}</span>
-              <span class="metric-label">Total EXP</span>
-            </div>
-            <div class="metric-card">
-              <span class="metric-val font-mono">${profile.streak || 0}d</span>
+              <span class="metric-val font-mono">${streakDays}d</span>
               <span class="metric-label">Streak</span>
             </div>
             <div class="metric-card">
-              <span class="metric-val font-mono">${profile.cardsLearned || 0}</span>
-              <span class="metric-label">Learned</span>
+              <span class="metric-val font-mono">${wordsLearned}</span>
+              <span class="metric-label">Words</span>
             </div>
             <div class="metric-card">
-              <span class="metric-val font-mono">${Math.round((profile.studyTimeSeconds || 0) / 3600 * 10) / 10}h</span>
+              <span class="metric-val font-mono">${studyHoursFormatted}</span>
               <span class="metric-label">Study Time</span>
             </div>
           </div>
@@ -312,9 +318,6 @@ export class SocialView {
     `;
   }
 
-  /**
-   * Dispatches active tab rendering.
-   */
   renderActiveTabContent(profile) {
     switch (this.activeTab) {
       case 'friends':
@@ -344,7 +347,7 @@ export class SocialView {
         <div class="tab-header-row">
           <div class="tab-title-group">
             <h3 class="tab-section-title">Friends Leaderboard</h3>
-            <span class="tab-subtitle">Rankings among you and your added study peers</span>
+            <span class="tab-subtitle">Rankings among you and your study partners</span>
           </div>
           <button class="btn-refresh-board touch-target" id="btn-refresh-friends" title="Refresh friends list">
             <span class="micro-bracket">[R]</span> Refresh
@@ -364,10 +367,9 @@ export class SocialView {
                 <tr>
                   <th class="th-rank">Rank</th>
                   <th class="th-learner">Learner</th>
-                  <th class="th-track">Track</th>
                   <th class="th-streak">Streak</th>
-                  <th class="th-exp">Total EXP</th>
-                  <th class="th-level">Level</th>
+                  <th class="th-words">Words</th>
+                  <th class="th-exp">XP</th>
                   <th class="th-action">Action</th>
                 </tr>
               </thead>
@@ -380,7 +382,7 @@ export class SocialView {
           <div class="empty-social-state">
             <div class="empty-icon font-mono">[👥]</div>
             <p class="empty-title">No friends added yet</p>
-            <p class="empty-desc">Add study partners by their @handle or Friend Code to see their daily rankings and progress here!</p>
+            <p class="empty-desc">Add study partners by their @handle or Friend Code to inspect their detailed study stats and compare progress!</p>
             <button class="btn-primary touch-target" id="btn-goto-add-friends">
               [+] Find & Add Friends
             </button>
@@ -405,10 +407,9 @@ export class SocialView {
         <div class="tab-header-row">
           <div class="tab-title-group">
             <h3 class="tab-section-title">Global Top Learners</h3>
-            <span class="tab-subtitle">Top language masters worldwide by accumulated EXP</span>
+            <span class="tab-subtitle">Top language masters worldwide by accumulated study XP</span>
           </div>
 
-          <!-- Language Track Filter -->
           <div class="filter-pills-group">
             <button class="filter-pill ${this.globalFilter === 'all' ? 'active' : ''}" data-filter="all">All Tracks</button>
             <button class="filter-pill ${this.globalFilter === 'de' ? 'active' : ''}" data-filter="de">German [DE]</button>
@@ -432,10 +433,9 @@ export class SocialView {
                 <tr>
                   <th class="th-rank">Rank</th>
                   <th class="th-learner">Learner</th>
-                  <th class="th-track">Track</th>
                   <th class="th-streak">Streak</th>
-                  <th class="th-exp">Total EXP</th>
-                  <th class="th-level">Level</th>
+                  <th class="th-words">Words</th>
+                  <th class="th-exp">XP</th>
                   <th class="th-action">Action</th>
                 </tr>
               </thead>
@@ -467,7 +467,6 @@ export class SocialView {
     return `
       <div class="add-friend-container">
         
-        <!-- Search and Add Friend Card -->
         <div class="add-friend-card">
           <div class="card-title-group">
             <h3 class="tab-section-title">Connect with Study Friends</h3>
@@ -491,7 +490,6 @@ export class SocialView {
             <span class="field-hint">Example: @elena_ber or ARL:ELENA_BER</span>
           </form>
 
-          <!-- My Shareable Code Box -->
           <div class="my-share-box">
             <div class="share-box-left">
               <span class="share-label">Your Shareable Friend Code:</span>
@@ -503,33 +501,37 @@ export class SocialView {
           </div>
         </div>
 
-        <!-- Recommended Study Partners Bento -->
         <div class="recommended-partners-card">
           <div class="card-title-group">
             <h4 class="sub-section-title">Recommended Study Partners</h4>
-            <span class="tab-subtitle">Quickly connect with active community language learners</span>
+            <span class="tab-subtitle">Click [Inspect] to view their study breakdown in read-only mode</span>
           </div>
 
           <div class="recommended-grid">
             ${mockLearners.slice(0, 6).map(learner => {
               const isAlreadyFriend = socialClient.isFriend(learner.username);
+              const displayName = learner.detailed_stats?.display_name || learner.username;
+              const avatar = learner.detailed_stats?.avatar || 'ALPHA';
               return `
                 <div class="recommended-user-card">
                   <div class="rec-avatar-col">
-                    <span class="rec-avatar font-mono">${this.getAvatarGlyph(learner.avatar)}</span>
+                    <span class="rec-avatar font-mono">${this.getAvatarGlyph(avatar)}</span>
                   </div>
                   <div class="rec-info-col">
                     <div class="rec-name-row">
-                      <strong>${this.escape(learner.display_name)}</strong>
+                      <strong class="clickable-inspect" data-inspect-username="${learner.username}">${this.escape(displayName)}</strong>
                       <span class="rec-handle font-mono">@${learner.username}</span>
                     </div>
                     <div class="rec-stats-row font-mono">
-                      <span>Lv.${learner.level}</span> ·
-                      <span>${(learner.total_exp || 0).toLocaleString()} EXP</span> ·
-                      <span>${learner.streak}d 🔥</span>
+                      <span>${(learner.xp || 0).toLocaleString()} XP</span> ·
+                      <span>${learner.streak_days || 0}d streak</span> ·
+                      <span>${learner.total_words_learned || 0} words</span>
                     </div>
                   </div>
                   <div class="rec-action-col">
+                    <button class="btn-inspect-quick touch-target" data-inspect-username="${learner.username}" title="Inspect Profile">
+                      [Inspect]
+                    </button>
                     ${isAlreadyFriend ? `
                       <span class="friend-badge-pill">[Friend]</span>
                     ` : `
@@ -561,11 +563,10 @@ export class SocialView {
     return `
       <div class="config-tab-container">
         
-        <!-- Supabase Cloud Credentials Card -->
         <div class="config-card">
           <div class="card-title-group">
             <h3 class="tab-section-title">Supabase REST Cloud Configuration</h3>
-            <span class="tab-subtitle">Connect your personal or community Supabase project for decentralized persistence</span>
+            <span class="tab-subtitle">Zero-dependency PostgREST client with server-side PIN trigger protection</span>
           </div>
 
           <form id="form-supabase-config" class="config-form" onsubmit="return false;">
@@ -580,7 +581,7 @@ export class SocialView {
                 value="${this.escape(url)}"
                 spellcheck="false"
               />
-              <span class="field-hint">Found under Supabase Dashboard -> Settings -> API -> Project URL</span>
+              <span class="field-hint">Found under Supabase Dashboard -> Project Settings -> API -> Project URL</span>
             </div>
 
             <div class="form-field-group">
@@ -593,7 +594,7 @@ export class SocialView {
                 value="${this.escape(key)}"
                 spellcheck="false"
               />
-              <span class="field-hint">Found under Supabase Dashboard -> Settings -> API -> Project API keys (anon public)</span>
+              <span class="field-hint">Found under Supabase Dashboard -> Project Settings -> API -> Project API keys (anon public)</span>
             </div>
 
             <div class="config-actions-row">
@@ -604,7 +605,7 @@ export class SocialView {
                 [🩺 Test Connection]
               </button>
               <button type="button" class="btn-copy-sql touch-target" id="btn-copy-supabase-sql">
-                [📋 Copy PostgreSQL DDL Script]
+                [📋 Copy supabase_setup.sql]
               </button>
               ${isConfigured ? `
                 <button type="button" class="btn-clear-key touch-target" id="btn-clear-supabase-creds">
@@ -616,11 +617,10 @@ export class SocialView {
           </form>
         </div>
 
-        <!-- Security & PIN Management Card -->
         <div class="config-card">
           <div class="card-title-group">
             <h3 class="tab-section-title">PIN Security & Profile Settings</h3>
-            <span class="tab-subtitle">Update your 4-8 digit security PIN or toggle privacy lock</span>
+            <span class="tab-subtitle">Your PIN is verified by PostgreSQL trigger (trg_verify_arl_profile_pin) on every update</span>
           </div>
 
           <form id="form-change-pin" class="config-form" onsubmit="return false;">
@@ -662,7 +662,6 @@ export class SocialView {
 
           <hr class="config-divider" />
 
-          <!-- In-App PIN Lock Option -->
           <div class="pin-lock-toggle-row">
             <div class="toggle-info">
               <strong>In-App Privacy Lock</strong>
@@ -680,6 +679,159 @@ export class SocialView {
   }
 
   // ==========================================
+  // READ-ONLY PROFILE INSPECTION MODAL
+  // ==========================================
+
+  renderInspectionModal(learner) {
+    const displayName = learner.detailed_stats?.display_name || learner.username;
+    const avatar = learner.detailed_stats?.avatar || learner.avatar || 'ALPHA';
+    const statusMsg = learner.detailed_stats?.status_message || '';
+    const xp = learner.xp || learner.total_exp || 0;
+    const streak = learner.streak_days ?? learner.streak ?? 0;
+    const words = learner.total_words_learned ?? learner.cards_learned ?? 0;
+    const studyMins = learner.study_minutes_total || 0;
+    const studyHoursStr = `${Math.floor(studyMins / 60)}h ${studyMins % 60}m`;
+    const updatedStr = learner.updated_at ? new Date(learner.updated_at).toLocaleString() : 'Recently';
+
+    const de = learner.detailed_stats?.de || { A1: 0, A2: 0, B1: 0, B2: 0 };
+    const en = learner.detailed_stats?.en || { A1: 0, A2: 0, B1: 0, B2: 0 };
+    const weeklyWords = learner.detailed_stats?.weekly_words || 0;
+    const monthlyWords = learner.detailed_stats?.monthly_words || 0;
+    const seasonalWords = learner.detailed_stats?.seasonal_words || 0;
+    const yearlyWords = learner.detailed_stats?.yearly_words || 0;
+    const wordsPerHour = learner.detailed_stats?.words_per_hour || 0;
+
+    const isFriend = socialClient.isFriend(learner.username);
+    const isCurrent = socialClient.getProfile()?.username === learner.username;
+
+    return `
+      <div class="modal-backdrop" id="inspect-modal-backdrop">
+        <div class="modal-dialog inspect-profile-dialog" role="dialog" aria-labelledby="inspect-profile-title">
+          
+          <div class="modal-header">
+            <div class="modal-title-group">
+              <span class="modal-badge">[INSPECT]</span>
+              <h3 class="modal-title" id="inspect-profile-title">
+                ${this.escape(displayName)} <span class="font-mono text-secondary">(@${learner.username})</span>
+              </h3>
+            </div>
+            <button class="modal-close-btn" id="btn-close-inspect-modal" aria-label="Close inspection">✕</button>
+          </div>
+
+          <div class="modal-body inspect-modal-body">
+            
+            <!-- Summary Header Banner -->
+            <div class="inspect-hero-card">
+              <div class="inspect-avatar-box font-mono">
+                ${this.getAvatarGlyph(avatar)}
+              </div>
+              <div class="inspect-summary-text">
+                <div class="inspect-display-title">${this.escape(displayName)}</div>
+                <div class="inspect-status-bio font-mono">${this.escape(statusMsg || 'Language Learner')}</div>
+                <div class="inspect-sync-tag font-mono">Last Synced: ${updatedStr}</div>
+              </div>
+            </div>
+
+            <!-- Core High-Level Numbers -->
+            <div class="inspect-metrics-grid">
+              <div class="inspect-metric-pill">
+                <span class="pill-label">Total XP</span>
+                <span class="pill-value font-mono">${xp.toLocaleString()}</span>
+              </div>
+              <div class="inspect-metric-pill">
+                <span class="pill-label">Streak</span>
+                <span class="pill-value font-mono">${streak}d 🔥</span>
+              </div>
+              <div class="inspect-metric-pill">
+                <span class="pill-label">Words Learned</span>
+                <span class="pill-value font-mono">${words.toLocaleString()}</span>
+              </div>
+              <div class="inspect-metric-pill">
+                <span class="pill-label">Active Study</span>
+                <span class="pill-value font-mono">${studyHoursStr}</span>
+              </div>
+            </div>
+
+            <!-- Detailed CEFR Breakdown -->
+            <div class="inspect-section-card">
+              <h4 class="inspect-section-header">CEFR Language Breakdown (Words Memorized)</h4>
+              
+              <div class="cefr-track-block">
+                <div class="track-header-tag font-mono">[DE] German Track:</div>
+                <div class="cefr-level-chips font-mono">
+                  <span class="cefr-chip">A1: <strong>${de.A1 || 0}</strong></span>
+                  <span class="cefr-chip">A2: <strong>${de.A2 || 0}</strong></span>
+                  <span class="cefr-chip">B1: <strong>${de.B1 || 0}</strong></span>
+                  <span class="cefr-chip">B2: <strong>${de.B2 || 0}</strong></span>
+                </div>
+              </div>
+
+              <div class="cefr-track-block">
+                <div class="track-header-tag font-mono">[EN] English Track:</div>
+                <div class="cefr-level-chips font-mono">
+                  <span class="cefr-chip">A1: <strong>${en.A1 || 0}</strong></span>
+                  <span class="cefr-chip">A2: <strong>${en.A2 || 0}</strong></span>
+                  <span class="cefr-chip">B1: <strong>${en.B1 || 0}</strong></span>
+                  <span class="cefr-chip">B2: <strong>${en.B2 || 0}</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Velocity & Timeframes -->
+            <div class="inspect-section-card">
+              <h4 class="inspect-section-header">Velocity & Memorization Timeframes</h4>
+              <div class="timeframe-stats-grid font-mono">
+                <div class="timeframe-item">
+                  <span class="tf-label">Weekly:</span>
+                  <span class="tf-val">${weeklyWords} words</span>
+                </div>
+                <div class="timeframe-item">
+                  <span class="tf-label">Monthly:</span>
+                  <span class="tf-val">${monthlyWords} words</span>
+                </div>
+                <div class="timeframe-item">
+                  <span class="tf-label">Season (90d):</span>
+                  <span class="tf-val">${seasonalWords} words</span>
+                </div>
+                <div class="timeframe-item">
+                  <span class="tf-label">Yearly:</span>
+                  <span class="tf-val">${yearlyWords} words</span>
+                </div>
+                <div class="timeframe-item tf-full-row">
+                  <span class="tf-label">Learning Velocity:</span>
+                  <span class="tf-val">${wordsPerHour} words / hour</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Server-Side Security Notice -->
+            <div class="inspect-security-banner font-mono">
+              <span>🔒 Server-side PIN Protected via PostgreSQL trigger (trg_verify_arl_profile_pin). Read-only inspection.</span>
+            </div>
+
+          </div>
+
+          <div class="modal-footer inspect-modal-footer">
+            ${isCurrent ? `
+              <span class="pill-you">[This is your profile]</span>
+            ` : isFriend ? `
+              <span class="friend-badge-pill">[Already In Friends]</span>
+            ` : `
+              <button class="btn-primary touch-target" id="btn-inspect-add-friend" data-add-username="${learner.username}">
+                [+] Add to Friends
+              </button>
+            `}
+            <button class="settings-action-btn touch-target" id="btn-inspect-close">
+              Close [Esc]
+            </button>
+          </div>
+
+        </div>
+      </div>
+    `;
+  }
+
+  // ==========================================
   // HELPER RENDERING METHODS
   // ==========================================
 
@@ -689,19 +841,27 @@ export class SocialView {
     const isBronze = rank === 3;
     const rankLabel = isGold ? '#1 GOLD' : isSilver ? '#2 SILVER' : '#3 BRONZE';
     const podiumClass = isGold ? 'podium-gold' : isSilver ? 'podium-silver' : 'podium-bronze';
+    const displayName = learner.detailed_stats?.display_name || learner.username;
+    const avatar = learner.detailed_stats?.avatar || learner.avatar || 'ALPHA';
+    const xp = learner.xp || learner.total_exp || 0;
+    const streak = learner.streak_days ?? learner.streak ?? 0;
 
     return `
-      <div class="podium-card ${podiumClass} ${learner.isCurrentUser ? 'current-user-card' : ''}">
+      <div class="podium-card ${podiumClass} ${learner.isCurrentUser ? 'current-user-card' : ''}" data-inspect-username="${learner.username}">
         <div class="podium-rank-badge font-mono">[${rankLabel}]</div>
-        <div class="podium-avatar font-mono">${this.getAvatarGlyph(learner.avatar)}</div>
-        <h4 class="podium-name">${this.escape(learner.display_name || learner.username)} ${learner.isCurrentUser ? '<span class="you-tag">(You)</span>' : ''}</h4>
+        <div class="podium-avatar font-mono">${this.getAvatarGlyph(avatar)}</div>
+        <h4 class="podium-name clickable-inspect" data-inspect-username="${learner.username}">
+          ${this.escape(displayName)} ${learner.isCurrentUser ? '<span class="you-tag">(You)</span>' : ''}
+        </h4>
         <span class="podium-handle font-mono">@${learner.username}</span>
         
         <div class="podium-metrics-strip font-mono">
-          <span class="podium-exp">${(learner.total_exp || 0).toLocaleString()} EXP</span>
-          <span class="podium-level">Lv.${learner.level || 1}</span>
-          <span class="podium-streak">${learner.streak || 0}d 🔥</span>
+          <span class="podium-exp">${xp.toLocaleString()} XP</span>
+          <span class="podium-streak">${streak}d 🔥</span>
         </div>
+        <button class="btn-podium-inspect touch-target" data-inspect-username="${learner.username}">
+          [Inspect Profile]
+        </button>
       </div>
     `;
   }
@@ -709,7 +869,11 @@ export class SocialView {
   renderLeaderboardRow(learner, viewMode) {
     const isCurrent = Boolean(learner.isCurrentUser);
     const isFriend = socialClient.isFriend(learner.username);
-    const trackLabel = `[${(learner.target_lang || 'de').toUpperCase()}·${(learner.cefr_level || 'b1').toUpperCase()}]`;
+    const displayName = learner.detailed_stats?.display_name || learner.username;
+    const avatar = learner.detailed_stats?.avatar || learner.avatar || 'ALPHA';
+    const xp = learner.xp || learner.total_exp || 0;
+    const streak = learner.streak_days ?? learner.streak ?? 0;
+    const words = learner.total_words_learned ?? learner.cards_learned ?? 0;
 
     return `
       <tr class="leaderboard-row ${isCurrent ? 'row-current-user' : ''}">
@@ -717,30 +881,34 @@ export class SocialView {
           <span class="rank-badge ${learner.rank <= 3 ? 'rank-top3' : ''}">#${learner.rank}</span>
         </td>
         <td class="td-learner">
-          <div class="learner-cell-group">
-            <span class="cell-avatar font-mono">${this.getAvatarGlyph(learner.avatar)}</span>
+          <div class="learner-cell-group clickable-inspect" data-inspect-username="${learner.username}" title="Click to inspect profile">
+            <span class="cell-avatar font-mono">${this.getAvatarGlyph(avatar)}</span>
             <div class="cell-names">
-              <span class="cell-display-name">${this.escape(learner.display_name || learner.username)} ${isCurrent ? '<strong class="you-indicator">(You)</strong>' : ''}</span>
+              <span class="cell-display-name">${this.escape(displayName)} ${isCurrent ? '<strong class="you-indicator">(You)</strong>' : ''}</span>
               <span class="cell-handle font-mono">@${learner.username}</span>
             </div>
           </div>
         </td>
-        <td class="td-track font-mono">${trackLabel}</td>
-        <td class="td-streak font-mono">${learner.streak || 0}d</td>
-        <td class="td-exp font-mono">${(learner.total_exp || 0).toLocaleString()}</td>
-        <td class="td-level font-mono">Lv.${learner.level || 1}</td>
+        <td class="td-streak font-mono">${streak}d</td>
+        <td class="td-words font-mono">${words.toLocaleString()}</td>
+        <td class="td-exp font-mono">${xp.toLocaleString()}</td>
         <td class="td-action">
-          ${isCurrent ? `
-            <span class="pill-you">[You]</span>
-          ` : isFriend ? `
-            <button class="btn-table-remove touch-target" data-remove-friend="${learner.username}" title="Remove friend">
-              [✕]
+          <div class="table-actions-strip">
+            <button class="btn-table-inspect touch-target" data-inspect-username="${learner.username}" title="Inspect full study stats">
+              [Inspect]
             </button>
-          ` : `
-            <button class="btn-table-add touch-target" data-add-username="${learner.username}" title="Add friend">
-              [+ Add]
-            </button>
-          `}
+            ${isCurrent ? `
+              <span class="pill-you">[You]</span>
+            ` : isFriend ? `
+              <button class="btn-table-remove touch-target" data-remove-friend="${learner.username}" title="Remove friend">
+                [✕]
+              </button>
+            ` : `
+              <button class="btn-table-add touch-target" data-add-username="${learner.username}" title="Add friend">
+                [+ Add]
+              </button>
+            `}
+          </div>
         </td>
       </tr>
     `;
@@ -765,13 +933,11 @@ export class SocialView {
   // ==========================================
 
   bindEvents() {
-    // 1. Dismiss feedback
     this.container.querySelector('#btn-dismiss-feedback')?.addEventListener('click', () => {
       this.feedback = null;
       this.render();
     });
 
-    // 2. Auth tabs toggle (Register vs Login)
     this.container.querySelector('#tab-auth-register')?.addEventListener('click', () => {
       sound.playClick();
       this.authMode = 'register';
@@ -783,7 +949,6 @@ export class SocialView {
       this.render();
     });
 
-    // 3. Toggle PIN visibility
     this.container.querySelector('#btn-toggle-auth-pin')?.addEventListener('click', () => {
       this.showPin = !this.showPin;
       const pinInput = this.container.querySelector('#input-auth-pin');
@@ -792,7 +957,6 @@ export class SocialView {
       if (btn) btn.textContent = this.showPin ? 'Hide' : 'Show';
     });
 
-    // 4. Avatar chip selection
     this.container.querySelectorAll('.avatar-chip').forEach(chip => {
       chip.addEventListener('click', () => {
         sound.playClick();
@@ -802,7 +966,6 @@ export class SocialView {
       });
     });
 
-    // 5. Submit Auth (Register or Login)
     this.container.querySelector('#btn-submit-auth')?.addEventListener('click', async () => {
       sound.playClick();
       const usernameInput = this.container.querySelector('#input-auth-username');
@@ -834,7 +997,6 @@ export class SocialView {
       }
     });
 
-    // 6. Navigation tabs (Friends, Global, Add, Config)
     this.container.querySelectorAll('.social-tab-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
         sound.playClick();
@@ -849,12 +1011,11 @@ export class SocialView {
       });
     });
 
-    // 7. Hero action buttons
     this.container.querySelector('#btn-social-sync-now')?.addEventListener('click', async () => {
       sound.playClick();
       const res = await socialClient.syncStats();
       if (res.success) {
-        this.setFeedback('success', 'Latest EXP and study metrics synchronized to cloud!');
+        this.setFeedback('success', 'Latest study metrics synchronized to Supabase cloud!');
         await this.loadLeaderboards();
       } else {
         this.setFeedback('error', 'Sync failed: ' + (res.error || 'Could not reach server.'));
@@ -876,7 +1037,6 @@ export class SocialView {
       }
     });
 
-    // 8. Copy friend code
     const copyHandler = async () => {
       sound.playClick();
       const code = socialClient.getFriendCode();
@@ -890,7 +1050,6 @@ export class SocialView {
     this.container.querySelector('#btn-copy-friend-code')?.addEventListener('click', copyHandler);
     this.container.querySelector('#btn-copy-code-direct')?.addEventListener('click', copyHandler);
 
-    // 9. Global filter pills
     this.container.querySelectorAll('.filter-pill').forEach(pill => {
       pill.addEventListener('click', async () => {
         sound.playClick();
@@ -900,7 +1059,6 @@ export class SocialView {
       });
     });
 
-    // 10. Refresh buttons
     this.container.querySelector('#btn-refresh-friends')?.addEventListener('click', async () => {
       sound.playClick();
       await this.loadFriendsBoard();
@@ -912,7 +1070,6 @@ export class SocialView {
       this.render();
     });
 
-    // 11. Add friend form submit
     this.container.querySelector('#btn-submit-add-friend')?.addEventListener('click', async () => {
       sound.playClick();
       const input = this.container.querySelector('#input-friend-search');
@@ -928,7 +1085,6 @@ export class SocialView {
       }
     });
 
-    // 12. Quick add from recommendations & table
     this.container.querySelectorAll('[data-add-username]').forEach(btn => {
       btn.addEventListener('click', async () => {
         sound.playClick();
@@ -945,7 +1101,6 @@ export class SocialView {
       });
     });
 
-    // 13. Remove friend
     this.container.querySelectorAll('[data-remove-friend]').forEach(btn => {
       btn.addEventListener('click', async () => {
         sound.playClick();
@@ -961,14 +1116,59 @@ export class SocialView {
       });
     });
 
-    // 14. Go to add friends empty state button
     this.container.querySelector('#btn-goto-add-friends')?.addEventListener('click', () => {
       sound.playClick();
       this.activeTab = 'add';
       this.render();
     });
 
-    // 15. Config: Save Supabase Credentials
+    // Profile Inspection Trigger
+    this.container.querySelectorAll('[data-inspect-username]').forEach(el => {
+      el.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        sound.playClick();
+        const uname = el.dataset.inspectUsername;
+        if (!uname) return;
+
+        // Fetch read-only profile
+        const profile = await socialClient.getFriendProfile(uname);
+        if (profile) {
+          this.inspectingUser = profile;
+          this.render();
+        }
+      });
+    });
+
+    // Close Inspection Modal
+    this.container.querySelector('#btn-close-inspect-modal')?.addEventListener('click', () => {
+      this.inspectingUser = null;
+      this.render();
+    });
+    this.container.querySelector('#btn-inspect-close')?.addEventListener('click', () => {
+      this.inspectingUser = null;
+      this.render();
+    });
+    this.container.querySelector('#inspect-modal-backdrop')?.addEventListener('click', (e) => {
+      if (e.target.id === 'inspect-modal-backdrop') {
+        this.inspectingUser = null;
+        this.render();
+      }
+    });
+
+    // Add friend from inspection modal
+    this.container.querySelector('#btn-inspect-add-friend')?.addEventListener('click', async (e) => {
+      sound.playClick();
+      const uname = e.currentTarget.dataset.addUsername;
+      const res = await socialClient.addFriend(uname);
+      if (res.success) {
+        this.setFeedback('success', res.message);
+        this.inspectingUser = null;
+        await this.loadFriendsBoard();
+        this.render();
+      }
+    });
+
+    // Supabase Credentials Save
     this.container.querySelector('#btn-save-supabase-creds')?.addEventListener('click', async () => {
       sound.playClick();
       const urlInput = this.container.querySelector('#input-supabase-url');
@@ -980,7 +1180,7 @@ export class SocialView {
       this.render();
     });
 
-    // 16. Config: Test Supabase Connection
+    // Test Supabase Connection
     this.container.querySelector('#btn-test-supabase-conn')?.addEventListener('click', async () => {
       sound.playClick();
       this.setFeedback('info', 'Testing Supabase REST connection...');
@@ -992,19 +1192,19 @@ export class SocialView {
       }
     });
 
-    // 17. Config: Copy SQL DDL
+    // Copy SQL DDL
     this.container.querySelector('#btn-copy-supabase-sql')?.addEventListener('click', async () => {
       sound.playClick();
       const sql = socialClient.getSupabaseSqlSchema();
       if (navigator.clipboard && navigator.clipboard.writeText) {
         await navigator.clipboard.writeText(sql);
-        this.setFeedback('success', 'PostgreSQL setup DDL copied to clipboard! Paste in Supabase SQL editor.');
+        this.setFeedback('success', 'supabase_setup.sql copied to clipboard! Paste into Supabase SQL editor.');
       } else {
         prompt('Copy Supabase SQL Setup:', sql);
       }
     });
 
-    // 18. Config: Clear credentials
+    // Clear Credentials
     this.container.querySelector('#btn-clear-supabase-creds')?.addEventListener('click', async () => {
       sound.playClick();
       socialClient.setUrl('');
@@ -1014,7 +1214,7 @@ export class SocialView {
       this.render();
     });
 
-    // 19. Config: Change PIN
+    // Change PIN
     this.container.querySelector('#btn-submit-change-pin')?.addEventListener('click', async () => {
       sound.playClick();
       const oldInput = this.container.querySelector('#input-change-old-pin');
@@ -1031,7 +1231,7 @@ export class SocialView {
       }
     });
 
-    // 20. Config: Toggle PIN Lock
+    // Toggle PIN lock
     this.container.querySelector('#btn-toggle-pin-lock')?.addEventListener('click', () => {
       sound.playClick();
       const current = socialClient.isPinLockEnabled();
@@ -1040,10 +1240,6 @@ export class SocialView {
       this.render();
     });
   }
-
-  // ==========================================
-  // DATA FETCHING
-  // ==========================================
 
   async loadLeaderboards() {
     await Promise.all([
