@@ -29,7 +29,7 @@ export function runDatasetTests(it) {
     }
   });
 
-  const deLevels = ['a1', 'a2', 'b1', 'b2'];
+  const deLevels = ['a1', 'a2', 'b1', 'b2', 'c1', 'c2'];
   for (const lvl of deLevels) {
     it(`data/de/vocab_${lvl}.json exists, valid JSON, complies with pedagogical cloze specs`, () => {
       const p = path.join(ROOT, 'data', 'de', `vocab_${lvl}.json`);
@@ -57,7 +57,7 @@ export function runDatasetTests(it) {
     });
   }
 
-  const enLevels = ['a1', 'a2', 'b1', 'b2'];
+  const enLevels = ['a1', 'a2', 'b1', 'b2', 'c1', 'c2'];
   for (const lvl of enLevels) {
     it(`data/en/vocab_${lvl}.json exists, valid JSON, contains translations and prompt cloze`, () => {
       const p = path.join(ROOT, 'data', 'en', `vocab_${lvl}.json`);
@@ -74,6 +74,58 @@ export function runDatasetTests(it) {
       }
     });
   }
+
+  it('German vocabulary has zero duplicate target words across all 6 levels (A1-C2)', () => {
+    const seen = new Map();
+    const dupes = [];
+    for (const lvl of ['a1', 'a2', 'b1', 'b2', 'c1', 'c2']) {
+      const p = path.join(ROOT, 'data', 'de', `vocab_${lvl}.json`);
+      const words = JSON.parse(fs.readFileSync(p, 'utf-8'));
+      for (const w of words) {
+        const key = w.word.trim().toLowerCase();
+        if (seen.has(key)) {
+          dupes.push({ word: w.word, firstLevel: seen.get(key), duplicateLevel: lvl });
+        } else {
+          seen.set(key, lvl);
+        }
+      }
+    }
+    assert.strictEqual(dupes.length, 0, `Found ${dupes.length} duplicates in German: ${JSON.stringify(dupes.slice(0, 5))}`);
+    assert(seen.size >= 3500, `Expected at least 3500 German words, got ${seen.size}`);
+  });
+
+  it('English vocabulary has zero duplicate target words across all 6 levels (A1-C2)', () => {
+    const seen = new Map();
+    const dupes = [];
+    for (const lvl of ['a1', 'a2', 'b1', 'b2', 'c1', 'c2']) {
+      const p = path.join(ROOT, 'data', 'en', `vocab_${lvl}.json`);
+      const words = JSON.parse(fs.readFileSync(p, 'utf-8'));
+      for (const w of words) {
+        const key = w.word.trim().toLowerCase();
+        if (seen.has(key)) {
+          dupes.push({ word: w.word, firstLevel: seen.get(key), duplicateLevel: lvl });
+        } else {
+          seen.set(key, lvl);
+        }
+      }
+    }
+    assert.strictEqual(dupes.length, 0, `Found ${dupes.length} duplicates in English: ${JSON.stringify(dupes.slice(0, 5))}`);
+    assert(seen.size >= 3500, `Expected at least 3500 English words, got ${seen.size}`);
+  });
+
+  it('Modular lazy-loaded JSON aliases (a1.json .. c2.json) exist and match vocab_*.json datasets', () => {
+    for (const lang of ['de', 'en']) {
+      for (const lvl of ['a1', 'a2', 'b1', 'b2', 'c1', 'c2']) {
+        const aliasPath = path.join(ROOT, 'data', lang, `${lvl}.json`);
+        const vocabPath = path.join(ROOT, 'data', lang, `vocab_${lvl}.json`);
+        assert(fs.existsSync(aliasPath), `Missing alias ${aliasPath}`);
+        assert(fs.existsSync(vocabPath), `Missing primary ${vocabPath}`);
+        const aliasWords = JSON.parse(fs.readFileSync(aliasPath, 'utf-8'));
+        const vocabWords = JSON.parse(fs.readFileSync(vocabPath, 'utf-8'));
+        assert.strictEqual(aliasWords.length, vocabWords.length, `Length mismatch in ${lang}/${lvl}.json`);
+      }
+    }
+  });
 
   it('data/de/vocab_b1.json verb forms, auxiliaries, and rektion comply with linguistic standards', () => {
     const p = path.join(ROOT, 'data', 'de', 'vocab_b1.json');
@@ -119,11 +171,11 @@ export function runDatasetTests(it) {
   });
 
   for (const lang of ['de', 'en']) {
-    it(`data/${lang}/grammar.json has 4 folders and 4-part layout on every topic`, () => {
+    it(`data/${lang}/grammar.json has full CEFR folders (A1-C2) and 4-part layout on every topic`, () => {
       const p = path.join(ROOT, 'data', lang, 'grammar.json');
       assert(fs.existsSync(p), `data/${lang}/grammar.json missing`);
       const folders = JSON.parse(fs.readFileSync(p, 'utf-8'));
-      assert.strictEqual(folders.length, 4, `Expected exactly 4 folders in ${lang} grammar`);
+      assert.strictEqual(folders.length, 6, `Expected exactly 6 folders (A1-C2) in ${lang} grammar`);
 
       if (lang === 'de') {
         const folder3 = folders.find(f => f.folder_id === 'folder_03');

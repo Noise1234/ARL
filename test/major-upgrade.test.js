@@ -69,7 +69,7 @@ class MockElement {
 export async function runMajorUpgradeTests(it) {
   console.log('\n--- Testing Major Feature Upgrade: 20-Sentence Drills & Wörterbuch Helper ---');
 
-  // 1. German Grammar 20-Sentence Drills & Wörterbuch Check
+  // 1. German Grammar 20-Sentence Drills & Wörterbuch Check (A1-B2 Core: Folders 01-04)
   it('data/de/grammar.json contains 50 topics and each topic has exactly 20 drills (1,000 drills total)', () => {
     const deGrammarPath = path.join(ROOT, 'data', 'de', 'grammar.json');
     assert(fs.existsSync(deGrammarPath), 'data/de/grammar.json exists');
@@ -78,8 +78,9 @@ export async function runMajorUpgradeTests(it) {
     
     let totalTopics = 0;
     let totalDrills = 0;
+    const a1b2Folders = folders.filter(f => ['folder_01', 'folder_02', 'folder_03', 'folder_04'].includes(f.folder_id));
 
-    for (const folder of folders) {
+    for (const folder of a1b2Folders) {
       assert(Array.isArray(folder.topics), 'folder.topics must be an array');
       for (const topic of folder.topics) {
         totalTopics++;
@@ -109,7 +110,7 @@ export async function runMajorUpgradeTests(it) {
     assert.strictEqual(totalDrills, 1000, `Expected 1,000 German drills, got ${totalDrills}`);
   });
 
-  // 2. English Grammar 20-Sentence Drills & Wörterbuch Check
+  // 2. English Grammar 20-Sentence Drills & Wörterbuch Check (A1-B2 Core: Folders 01-04)
   it('data/en/grammar.json contains 20 topics and each topic has exactly 20 drills (400 drills total)', () => {
     const enGrammarPath = path.join(ROOT, 'data', 'en', 'grammar.json');
     assert(fs.existsSync(enGrammarPath), 'data/en/grammar.json exists');
@@ -118,8 +119,9 @@ export async function runMajorUpgradeTests(it) {
     
     let totalTopics = 0;
     let totalDrills = 0;
+    const a1b2Folders = folders.filter(f => ['folder_01', 'folder_02', 'folder_03', 'folder_04'].includes(f.folder_id));
 
-    for (const folder of folders) {
+    for (const folder of a1b2Folders) {
       assert(Array.isArray(folder.topics), 'folder.topics must be an array');
       for (const topic of folder.topics) {
         totalTopics++;

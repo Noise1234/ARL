@@ -11,7 +11,6 @@ import { t } from '../i18n.js';
 import { keyboard, KeyboardState } from '../keyboard.js';
 import { GeminiClient } from '../gemini.js';
 import { gistSync } from '../sync.js';
-import { socialClient } from '../social.js';
 
 export class SettingsModalView {
   constructor(overlayEl, onCloseCallback) {
@@ -19,9 +18,7 @@ export class SettingsModalView {
     this.onClose = onCloseCallback;
     this.showApiKey = false;
     this.showGhToken = false;
-    this.showSupabaseKey = false;
     this.syncNotice = '';
-    this.supabaseNotice = '';
     this.isSyncOperating = false;
   }
 
@@ -107,7 +104,7 @@ export class SettingsModalView {
   render() {
     const targetLabel = state.targetLang === 'de' ? 'German (DE)' : 'English (EN)';
     const i18nLabel = state.interfaceLang.toUpperCase();
-    const cefrLevels = ['a1', 'a2', 'b1', 'b2'];
+    const cefrLevels = ['a1', 'a2', 'b1', 'b2', 'c1', 'c2'];
     const currentKey = GeminiClient.getApiKey();
     const hasKey = Boolean(currentKey.trim());
 
@@ -118,8 +115,14 @@ export class SettingsModalView {
     const syncStatus = gistSync.getStatus();
 
     let syncBadgeText = '[Not Connected]';
-    let syncBadgeClass = 'tag-fallback';
-    if (syncStatus.status === 'syncing') {
+    let syncBadgeClass = 'tag-idle';
+    if (syncStatus.status === 'invalid_token') {
+      syncBadgeText = '[Invalid Token]';
+      syncBadgeClass = 'tag-error';
+    } else if (syncStatus.status === 'rate_limited') {
+      syncBadgeText = '[Rate Limited]';
+      syncBadgeClass = 'tag-error';
+    } else if (syncStatus.status === 'syncing') {
       syncBadgeText = '[Syncing...]';
       syncBadgeClass = 'tag-syncing';
     } else if (gistSync.isConnected()) {
@@ -133,11 +136,6 @@ export class SettingsModalView {
     const lastSyncFormatted = lastSync
       ? `Last synced: ${new Date(lastSync).toLocaleTimeString()} (${new Date(lastSync).toLocaleDateString()})`
       : 'Never synced';
-
-    const socialProfile = socialClient.getProfile();
-    const supabaseUrl = socialClient.getUrl();
-    const supabaseKey = socialClient.getAnonKey();
-    const isSupabaseConfigured = socialClient.isConfigured();
 
     this.overlay.innerHTML = `
       <div class="settings-modal-backdrop" id="settings-backdrop">
@@ -255,6 +253,24 @@ export class SettingsModalView {
                     </button>
                   ` : ''}
                 </div>
+
+                <!-- Offline Safety Net: Local JSON Backup Controls -->
+                <div class="sync-actions-row" style="margin-top:6px;gap:8px;">
+                  <button type="button" class="settings-action-btn touch-target" id="btn-sync-export-json" title="Export arl_backup_v2.json locally">
+                    <span class="micro-bracket">[Export]</span> Export Local JSON
+                  </button>
+                  <button type="button" class="settings-action-btn touch-target" id="btn-sync-import-json" title="Import arl_backup_v2.json locally">
+                    <span class="micro-bracket">[Import]</span> Import Local JSON
+                  </button>
+                  <input type="file" id="settings-sync-file-input" accept=".json,application/json" style="display:none" />
+                </div>
+
+                <div class="sync-options-row" style="margin-top:8px;">
+                  <label class="sync-checkbox-label" style="display:flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--text-muted);cursor:pointer;">
+                    <input type="checkbox" id="settings-sync-auto-end" ${gistSync.isAutoSyncEnabled() ? 'checked' : ''} />
+                    <span>Auto-Sync on Session End (timestamp protected)</span>
+                  </label>
+                </div>
               </div>
 
               ${this.syncNotice ? `
@@ -265,71 +281,6 @@ export class SettingsModalView {
 
               <div class="sync-note-text">
                 ${lastSyncFormatted}. Token is saved locally in <code>localStorage</code> only and is strictly excluded from backups and sync payloads.
-              </div>
-            </div>
-
-            <!-- Supabase Cloud Social & Leaderboard -->
-            <div class="settings-row settings-sync-row">
-              <div class="sync-header-row">
-                <span class="settings-label">Supabase REST (Friends & Leaderboard)</span>
-                <span class="sync-status-tag ${isSupabaseConfigured ? 'tag-connected' : 'tag-idle'}" id="settings-supabase-status-badge">
-                  ${socialProfile ? `[@${socialProfile.username} · Lv.${socialProfile.level}]` : (isSupabaseConfigured ? '[Supabase REST Live]' : '[Mock Sandbox Active]')}
-                </span>
-              </div>
-
-              <div class="sync-inputs-grid">
-                <div class="sync-input-field">
-                  <div class="sync-label-small">Supabase Project URL</div>
-                  <input
-                    type="url"
-                    id="settings-supabase-url"
-                    class="settings-text-input"
-                    placeholder="https://xyzproject.supabase.co"
-                    value="${supabaseUrl}"
-                    autocomplete="off"
-                    spellcheck="false"
-                  />
-                </div>
-
-                <div class="sync-input-field">
-                  <div class="sync-label-small">Supabase Public Anon Key</div>
-                  <input
-                    type="${this.showSupabaseKey ? 'text' : 'password'}"
-                    id="settings-supabase-key"
-                    class="settings-text-input"
-                    placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-                    value="${supabaseKey}"
-                    autocomplete="off"
-                    spellcheck="false"
-                  />
-                </div>
-
-                <div class="sync-actions-row">
-                  <button type="button" class="settings-action-btn touch-target" id="btn-save-settings-supabase">
-                    <span class="micro-bracket">[Save]</span> Save Credentials
-                  </button>
-                  <button type="button" class="settings-action-btn touch-target" id="btn-test-settings-supabase">
-                    <span class="micro-bracket">[🩺]</span> Test Supabase
-                  </button>
-                  <button type="button" class="settings-action-btn touch-target" id="btn-goto-social-from-settings">
-                    <span class="micro-bracket">[F]</span> Open Social View
-                  </button>
-                  ${isSupabaseConfigured ? `
-                    <button type="button" class="btn-clear-key touch-target" id="btn-clear-settings-supabase">
-                      Disconnect
-                    </button>
-                  ` : ''}
-                </div>
-              </div>
-
-              ${this.supabaseNotice ? `
-                <div class="sync-notice-text ${this.supabaseNotice.startsWith('Error') ? 'notice-error' : 'notice-ok'}">
-                  ${this.supabaseNotice}
-                </div>
-              ` : ''}
-
-              <div class="sync-note-text">
-                Direct PostgREST API integration. Profiles and ranks are PIN-protected with SHA-256 cryptographic verification.
               </div>
             </div>
 
@@ -539,44 +490,36 @@ export class SettingsModalView {
       this.render();
     });
 
-    // Supabase: Save Credentials
-    this.overlay.querySelector('#btn-save-settings-supabase')?.addEventListener('click', () => {
-      const urlInput = this.overlay.querySelector('#settings-supabase-url');
-      const keyInput = this.overlay.querySelector('#settings-supabase-key');
-      socialClient.setUrl(urlInput ? urlInput.value.trim() : '');
-      socialClient.setAnonKey(keyInput ? keyInput.value.trim() : '');
-      this.supabaseNotice = 'Supabase credentials saved locally!';
+    // Auto-sync on session end
+    this.overlay.querySelector('#settings-sync-auto-end')?.addEventListener('change', (e) => {
+      gistSync.setAutoSyncEnabled(e.target.checked);
+      this.syncNotice = `Auto-Sync on session end: ${e.target.checked ? 'Enabled' : 'Disabled'}`;
       this.render();
     });
 
-    // Supabase: Test Connection
-    this.overlay.querySelector('#btn-test-settings-supabase')?.addEventListener('click', async () => {
-      this.supabaseNotice = 'Testing Supabase connection...';
-      this.render();
-      const diag = await socialClient.testConnection();
-      if (diag.ok) {
-        this.supabaseNotice = diag.message;
-      } else {
-        this.supabaseNotice = `Error: ${diag.message}`;
+    // Export Local JSON (One-click)
+    this.overlay.querySelector('#btn-sync-export-json')?.addEventListener('click', () => {
+      gistSync.exportLocalJson();
+    });
+
+    // Import Local JSON (One-click)
+    const syncFileInput = this.overlay.querySelector('#settings-sync-file-input');
+    this.overlay.querySelector('#btn-sync-import-json')?.addEventListener('click', () => {
+      syncFileInput?.click();
+    });
+
+    syncFileInput?.addEventListener('change', async (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        await gistSync.importLocalJson(text);
+        this.syncNotice = 'Local JSON backup restored!';
+        this.render();
+      } catch (err) {
+        this.syncNotice = `Import failed: ${err.message}`;
+        this.render();
       }
-      this.render();
-    });
-
-    // Supabase: Open Social View
-    this.overlay.querySelector('#btn-goto-social-from-settings')?.addEventListener('click', () => {
-      this.close();
-      const socialBtn = document.querySelector('#nav-btn-social');
-      if (socialBtn) {
-        socialBtn.click();
-      }
-    });
-
-    // Supabase: Clear Credentials
-    this.overlay.querySelector('#btn-clear-settings-supabase')?.addEventListener('click', () => {
-      socialClient.setUrl('');
-      socialClient.setAnonKey('');
-      this.supabaseNotice = 'Credentials cleared. Switched to Mock Sandbox.';
-      this.render();
     });
 
     // Gemini API key visibility toggle

@@ -12,7 +12,7 @@ import { runMajorUpgradeTests } from './major-upgrade.test.js';
 import { runResponsiveThemeTests } from './responsive-theme.test.js';
 import { runMobileAuditTests } from './mobile-audit.test.js';
 import { runAiFixTests } from './aifix.test.js';
-import { runSocialTests } from './social.test.js';
+import { runGistSyncV2Tests } from './gist-sync-v2.test.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -277,8 +277,8 @@ async function main() {
   // 12. AI Fixer / Grammar Check Hardening & Verification Suite
   await runAiFixTests(it);
 
-  // 13. PIN-Protected "Friends & Leaderboard" Supabase Social Engine
-  await runSocialTests(it);
+  // 13. GitHub Gist Cloud Sync & Backup Engine (v2)
+  await runGistSyncV2Tests(it);
 
   console.log('\n----------------------------------------------------');
   console.log(`TEST RESULTS: ${passedTests} passed, ${failedTests} failed.`);

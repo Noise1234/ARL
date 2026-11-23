@@ -41,6 +41,27 @@ export class StatsView {
     this.render();
   }
 
+  getLevelMasteryStats(lvl) {
+    const cleanLvl = String(lvl).toLowerCase();
+    let total = 0;
+    let memorized = 0;
+    for (const card of (state.cards || [])) {
+      if ((card.level || '').toLowerCase() === cleanLvl) {
+        total++;
+        const prog = state.progressMap[card.id];
+        if (prog && (prog.status === 'memorized' || (prog.reps >= 2 && prog.interval >= 4))) {
+          memorized++;
+        }
+      }
+    }
+    const fallbackTotal = cleanLvl === state.cefrLevel ? state.cards.length : 350;
+    const fallbackMem = cleanLvl === state.cefrLevel ? state.getQueueStats().memorizedCount : 0;
+    const finalTotal = total || fallbackTotal;
+    const finalMem = memorized || fallbackMem;
+    const pct = finalTotal > 0 ? Math.min(100, Math.round((finalMem / finalTotal) * 100)) : 0;
+    return { total: finalTotal, memorized: finalMem, pct };
+  }
+
   render() {
     const memCounts = telemetry.getMemorizedCounts(state.cards, state.progressMap);
     const timeStats = telemetry.getTimeStats();
@@ -93,6 +114,29 @@ export class StatsView {
               <span class="bento-stat-label">TOTAL MEMORIZED</span>
               <span class="bento-stat-val">${memCounts.total}</span>
               <span class="bento-stat-sub">All-time Mastered</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- CEFR Mastery Progress Progression (A1 - C2) -->
+        <section class="stats-section">
+          <div class="stats-section-header">
+            <h3 class="stats-section-title">CEFR MASTERY PROGRESSION (A1 – C2)</h3>
+          </div>
+          <div class="arl-card" style="padding: 16px 20px;">
+            <div class="cefr-mastery-strip">
+              ${['a1', 'a2', 'b1', 'b2', 'c1', 'c2'].map(lvl => {
+                const s = this.getLevelMasteryStats(lvl);
+                return `
+                  <div class="cefr-bar-row">
+                    <span class="cefr-bar-label font-mono">${lvl.toUpperCase()}</span>
+                    <div class="cefr-bar-track">
+                      <div class="cefr-bar-fill" style="width: ${s.pct}%"></div>
+                    </div>
+                    <span class="cefr-bar-stat font-mono">${s.memorized}/${s.total} (${s.pct}%)</span>
+                  </div>
+                `;
+              }).join('')}
             </div>
           </div>
         </section>
@@ -157,6 +201,8 @@ export class StatsView {
                 <div class="velocity-level-pill"><span class="lvl-tag">A2</span> ${velocity.avgByLevel.A2}</div>
                 <div class="velocity-level-pill"><span class="lvl-tag">B1</span> ${velocity.avgByLevel.B1}</div>
                 <div class="velocity-level-pill"><span class="lvl-tag">B2</span> ${velocity.avgByLevel.B2}</div>
+                <div class="velocity-level-pill"><span class="lvl-tag">C1</span> ${velocity.avgByLevel.C1}</div>
+                <div class="velocity-level-pill"><span class="lvl-tag">C2</span> ${velocity.avgByLevel.C2}</div>
               </div>
               <div class="velocity-word-lists">
                 <div class="word-list-col">

@@ -76,7 +76,7 @@ export class MediaView {
           </div>
 
           <div class="media-level-filters">
-            ${['A1', 'A2', 'B1', 'B2'].map((lvl, idx) => `
+            ${['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map((lvl, idx) => `
               <button class="filter-lvl-btn ${this.selectedLevel === lvl ? 'active' : ''}" data-lvl="${lvl}">
                 <span class="micro-bracket">[${idx + 1}]</span> ${lvl}
               </button>

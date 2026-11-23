@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "node test/run-tests.js",
+    "build": "node test/run-tests.js",
     "build:apk": "./build-apk.sh"
   },
   "keywords": [

@@ -158,6 +158,8 @@ export class LexiconView {
               <button class="filter-chip ${this.levelFilter === 'a2' ? 'active' : ''}" data-lvl="a2">A2</button>
               <button class="filter-chip ${this.levelFilter === 'b1' ? 'active' : ''}" data-lvl="b1">B1</button>
               <button class="filter-chip ${this.levelFilter === 'b2' ? 'active' : ''}" data-lvl="b2">B2</button>
+              <button class="filter-chip ${this.levelFilter === 'c1' ? 'active' : ''}" data-lvl="c1">C1</button>
+              <button class="filter-chip ${this.levelFilter === 'c2' ? 'active' : ''}" data-lvl="c2">C2</button>
             </div>
 
             <!-- POS Filters -->

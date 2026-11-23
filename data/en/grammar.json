@@ -10105,5 +10105,579 @@
         ]
       }
     ]
+  },
+  {
+    "folder_id": "folder_05",
+    "folder_name": "Folder 05: C1 - Advanced Fluency & Academic Discourse",
+    "level": "C1",
+    "topics": [
+      {
+        "id": "en_c1_negative_inversion",
+        "title": "Negative & Limiting Inversion",
+        "core_concept": {
+          "mn": "Өгүүлбэрийн эхэнд сөрөг болон хязгаарлах утгатай дайвар үгс (Not only, Hardly, Rarely, Under no circumstances) орвол асуух өгүүлбэрийн адил туслах үйл үг эзэн биеийнхээ өмнө орж урвуу бүтэц үүсдэг.",
+          "en": "When negative or restrictive adverbials begin a sentence for dramatic rhetorical emphasis, auxiliary inversion (Auxiliary + Subject + Verb) is grammatically mandatory.",
+          "de": "Beginnt ein Satz mit verneinenden oder einschränkenden Adverbialen (z.B. Hardly, Never, Under no circumstances), erfolgt obligatorisch die Inversion von Hilfsverb und Subjekt."
+        },
+        "pattern": "[Negative/Restrictive Adverbial] + [Auxiliary Verb: do/did/have/had/will/is] + [Subject] + [Main Verb]...",
+        "examples": [
+          {
+            "target": "Under no circumstances should sensitive customer credentials be stored in unencrypted text.",
+            "mn": "Ямар ч тохиолдолд үйлчлүүлэгчийн эмзэг нууц мэдээллийг шифрлэгдээгүй эх бичвэрээр хадгалж болохгүй.",
+            "en": "Under no circumstances should sensitive customer credentials be stored in unencrypted text."
+          },
+          {
+            "target": "Rarely had the global community witnessed such rapid technological upheaval.",
+            "mn": "Дэлхийн хамтын нийгэмлэг технологийн ийм огцом тэсрэлтийг өмнө нь тун ховор харж байсан юм.",
+            "en": "Rarely had the global community witnessed such rapid technological upheaval."
+          }
+        ],
+        "common_trap": "Never maintain standard declarative word order after negative openers: Do NOT say 'Under no circumstances you should...'; say 'Under no circumstances should you...'",
+        "drills": [
+          {
+            "id": "en_c1_inv_drill_1",
+            "prompt_mn": "Тэрээр зөвхөн судалгаагаа амжилттай дуусгаад зогсохгүй нэр хүндтэй шагнал хүртжээ.",
+            "target": "Not only did she complete the rigorous research, but she also received a prestigious award.",
+            "literal_mn": "Зөвхөн биш хийв тэр эмэгтэй дуусгах тэр нарийн судалгааг, гэвч тэр эмэгтэй мөн хүлээн авав нэг нэр хүндтэй шагнал.",
+            "natural_mn": "Тэрээр нарийн судалгаагаа амжилттай дуусгаад зогсохгүй нэр хүндтэй шагнал хүртсэн байна.",
+            "rule_breakdown": "'Not only' эхэнд орсон тул Past Simple цагийн 'did' туслах үйл үг 'she'-ийн урд орно.",
+            "woerterbuch": [
+              {
+                "word": "not only",
+                "pos": "conj",
+                "meaning": "зөвхөн ... биш"
+              },
+              {
+                "word": "complete",
+                "pos": "verb",
+                "meaning": "гүйцээх, дуусгах"
+              },
+              {
+                "word": "prestigious",
+                "pos": "adj",
+                "meaning": "нэр хүндтэй"
+              },
+              {
+                "word": "award",
+                "pos": "noun",
+                "meaning": "шагнал"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "en_c1_cleft_sentences",
+        "title": "Cleft Sentences for Focus & Emphasis (It-cleft & Wh-cleft)",
+        "core_concept": {
+          "mn": "Өгүүлбэрийн тодорхой нэг хэсэгт (эзэн бие, цаг хугацаа, шалтгаан) онцгой ач холбогдол өгөхийн тулд өгүүлбэрийг 'It is/was... that' эсвэл 'What... is' хэлбэрээр зааглан хуваах бүтэц.",
+          "en": "Cleft sentences split a single semantic clause across two syntactic units to spotlight the focal information via It-clefts or Pseudo-clefts (Wh-clefts).",
+          "de": "Spaltsätze (Cleft Sentences) zerlegen eine Aussage in zwei Prädikationen, um ein Element fokussierend herauszustellen (It is... that / What I need is...)."
+        },
+        "pattern": "It is/was + [FOCUSED ELEMENT] + that/who + [REST OF SENTENCE] | What + [SUBJECT + VERB] + is/was + [FOCUS]",
+        "examples": [
+          {
+            "target": "It was her groundbreaking algorithm that transformed modern cryptographic security.",
+            "mn": "Орчин үеийн криптограф аюулгүй байдлыг үндсээр нь өөрчилсөн зүйл бол түүний шинэлэг алгоритм байсан юм.",
+            "en": "It was her groundbreaking algorithm that transformed modern cryptographic security."
+          },
+          {
+            "target": "What the team urgently requires is decisive leadership and financial autonomy.",
+            "mn": "Баг хамт олонд нэн даруй шаардлагатай байгаа зүйл бол шийдэмгий удирдлага болон санхүүгийн бие даасан байдал юм.",
+            "en": "What the team urgently requires is decisive leadership and financial autonomy."
+          }
+        ],
+        "common_trap": "Do not confuse 'It' with 'What' in cleft structures. For personal or prepositional focuses, use 'It was X that...'; for actions or whole clauses, use 'What X did was...'",
+        "drills": [
+          {
+            "id": "en_c1_cleft_drill_1",
+            "prompt_mn": "Манай системд хэрэгтэй байгаа зүйл бол найдвартай офлайн ажиллагаа юм.",
+            "target": "What our users value most is deterministic and resilient offline performance.",
+            "literal_mn": "Юу манай хэрэглэгчид үнэлдэг хамгийн их бол тодорхой бөгөөд уян хатан офлайн гүйцэтгэл.",
+            "natural_mn": "Манай хэрэглэгчдийн хамгийн их үнэлдэг зүйл бол найдвартай, баталгаатай офлайн ажиллагаа юм.",
+            "rule_breakdown": "'What'-cleft өгүүлбэр нь тухайн үнэлдэг зүйлийг өгүүлбэрийн төгсгөлд гол анхаарлын төвд авчирч байна.",
+            "woerterbuch": [
+              {
+                "word": "value",
+                "pos": "verb",
+                "meaning": "үнэлэх, эрхэмлэх"
+              },
+              {
+                "word": "deterministic",
+                "pos": "adj",
+                "meaning": "баталгаатай, тодорхой"
+              },
+              {
+                "word": "resilient",
+                "pos": "adj",
+                "meaning": "найдвартай, уян хатан"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "en_c1_mixed_conditionals",
+        "title": "Mixed Conditionals (Past Condition to Present Result & Vice Versa)",
+        "core_concept": {
+          "mn": "Өнгөрсөн үйл явдлын бодит бус нөхцөл одоо цагт үр дүн үзүүлэх (Past condition -> Present result) эсвэл одоогийн бодит байдал өнгөрсөн үйлдэлд нөлөөлөх холимог нөхцөлүүд.",
+          "en": "Mixed conditionals combine clauses across different time frames, most commonly pairing an unreal past condition (had + V3) with an unreal present consequence (would + base verb).",
+          "de": "Mixed Conditionals verknüpfen unterschiedliche Zeitebenen, typischerweise eine irreale Bedingung der Vergangenheit mit einer Konsequenz in der Gegenwart."
+        },
+        "pattern": "If + Subject + had + V3, Subject + would + Base Verb (Past -> Present) | If + Subject + Past Simple, Subject + would have + V3 (Present -> Past)",
+        "examples": [
+          {
+            "target": "If he had pursued a degree in computational linguistics, he would be working as an AI researcher today.",
+            "mn": "Хэрэв тэрээр тооцооллын хэл шинжлэлийн чиглэлээр суралцсан бол өнөөдөр хиймэл оюун ухааны судлаачаар ажиллаж байх байлаа.",
+            "en": "If he had pursued a degree in computational linguistics, he would be working as an AI researcher today."
+          },
+          {
+            "target": "If she were not so inherently principled, she would have accepted the dubious corporate offer.",
+            "mn": "Тэр эмэгтэй өөрөө тийм өндөр зарчимч хүн биш байсан бол тэрхүү сэжигтэй бизнесийн саналыг аль хэдийнэ хүлээн авах байсан.",
+            "en": "If she were not so inherently principled, she would have accepted the dubious corporate offer."
+          }
+        ],
+        "common_trap": "Beware mixing up 'would have V3' (past result) and 'would + V1' (present result). Check the time markers like 'today' or 'now'.",
+        "drills": [
+          {
+            "id": "en_c1_cond_drill_1",
+            "prompt_mn": "Хэрэв бид өгөгдлөө өчигдөр нөөцөлсөн сөн бол одоо ямар ч асуудалгүй байх байлаа.",
+            "target": "If we had backed up our local data yesterday, we would not be facing this crisis now.",
+            "literal_mn": "Хэрэв бид байсан нөөцөлсөн манай орон нутгийн өгөгдлийг өчигдөр, бид байхгүй байх байсан тулгарах энэ хямралтай одоо.",
+            "natural_mn": "Хэрэв бид өчигдөр өгөгдлөө нөөцөлсөн байсан бол өдийд ийм хүнд байдалд орохгүй байх байсан.",
+            "rule_breakdown": "Өнгөрсөн цагийн нөхцөл (had backed up) + одоо цагийн үр дагавар (would not be facing).",
+            "woerterbuch": [
+              {
+                "word": "back up",
+                "pos": "verb",
+                "meaning": "нөөцлөх"
+              },
+              {
+                "word": "face",
+                "pos": "verb",
+                "meaning": "тулгарах"
+              },
+              {
+                "word": "crisis",
+                "pos": "noun",
+                "meaning": "хямрал, хүндрэл"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "en_c1_participle_clauses",
+        "title": "Participle Clauses for Syntactic Compression",
+        "core_concept": {
+          "mn": "Шалтгаан, цаг хугацаа, нөхцөл заасан урт гишүүн өгүүлбэрүүдийг Present Participle (-ing), Past Participle (-ed), эсвэл Perfect Participle (Having + V3) ашиглан чадварлаг товчилдог.",
+          "en": "Participle clauses replace adverbial and relative clauses with non-finite participles, achieving concision, stylistic sophistication, and seamless flow.",
+          "de": "Partizipialkonstruktionen ersetzen Adverbialsätze (Kausal-, Temporal- und Modalsätze) durch elegante syntaktische Verdichtung."
+        },
+        "pattern": "[Having + V3 / Being + V3 / V-ing], [Main Subject] + [Main Verb]... Note: Dangling participles must be strictly avoided.",
+        "examples": [
+          {
+            "target": "Having scrutinized the experimental findings, the lead investigator revised the initial hypothesis.",
+            "mn": "Туршилтын үр дүнг нягтлан судалсныхаа дараа ахлах шинжээч анхны таамаглалаа шинэчлэн засав.",
+            "en": "Having scrutinized the experimental findings, the lead investigator revised the initial hypothesis."
+          },
+          {
+            "target": "Deprived of financial backing, the ambitious startup had to streamline operations.",
+            "mn": "Санхүүгийн дэмжлэгээсээ салсан тул уг өсөлттэй гарааны компани үйл ажиллагаагаа цомхотгохоос өөр аргагүй болов.",
+            "en": "Deprived of financial backing, the ambitious startup had to streamline operations."
+          }
+        ],
+        "common_trap": "Beware dangling participles! The implied subject of the participle clause MUST match the subject of the main clause.",
+        "drills": [
+          {
+            "id": "en_c1_part_drill_1",
+            "prompt_mn": "Төслийн тайланг нягтлан үзээд захирал төсвийг батлав.",
+            "target": "Having reviewed the comprehensive project proposal, the director approved the funding.",
+            "literal_mn": "Байгаад нягталсан тэр дэлгэрэнгүй төслийн саналыг, тэр захирал зөвшөөрөв тэр санхүүжилтийг.",
+            "natural_mn": "Төслийн дэлгэрэнгүй саналыг хянаж үзсэний дараа захирал санхүүжилтийг баталлаа.",
+            "rule_breakdown": "Эхлээд болсон үйлдэлд 'Having reviewed' бүтэц хэрэглэгдэж захирал өөрөө хянасан тул эзэн бие яг тохирно.",
+            "woerterbuch": [
+              {
+                "word": "review",
+                "pos": "verb",
+                "meaning": "хянах, нягтлах"
+              },
+              {
+                "word": "proposal",
+                "pos": "noun",
+                "meaning": "санал"
+              },
+              {
+                "word": "funding",
+                "pos": "noun",
+                "meaning": "санхүүжилт"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "en_c1_advanced_passive",
+        "title": "Advanced Passive Structures & Impersonal Reporting",
+        "core_concept": {
+          "mn": "Сэтгүүл зүй, эрдэм шинжилгээний тайланд бодит байдлыг төвийг сахисан, хувь хүний үзэл бодлоос ангид байдлаар мэдээлэхэд 'is said to be', 'is believed to have been' зэрэг дэвшилтэт бүтцийг ашиглана.",
+          "en": "Advanced passives shift focus from actors to facts through impersonal constructions ('It is acknowledged that...') and personal nominative passives ('She is thought to have led...').",
+          "de": "Erweiterte Passivstrukturen (Impersonal Passive / Personal Nominative with Infinitive) distanzieren den Autor von unbestätigten Fakten und sichern akademische Neutralität."
+        },
+        "pattern": "Subject + [passive verb: is believed / reported / claimed] + to + [Infinitiv / have + V3]",
+        "examples": [
+          {
+            "target": "The ancient manuscripts are thought to have originated in the twelfth century.",
+            "mn": "Эртний гар бичмэлүүдийг арван хоёрдугаар зуунд үүссэн гэж эрдэмтэд үздэг.",
+            "en": "The ancient manuscripts are thought to have originated in the twelfth century."
+          },
+          {
+            "target": "It is widely acknowledged that continuous deliberate practice yields superior mastery.",
+            "mn": "Тасралтгүй, зорилготой дасгал сургуулилалт нь хамгийн дээд зэргийн ур чадварт хүргэдэг гэдгийг нийтээр хүлээн зөвшөөрдөг.",
+            "en": "It is widely acknowledged that continuous deliberate practice yields superior mastery."
+          }
+        ],
+        "common_trap": "Do not say 'They are believed that they originated...'; with personal subjects use infinitive: 'They are believed to have originated...'",
+        "drills": [
+          {
+            "id": "en_c1_pass_drill_1",
+            "prompt_mn": "Энэхүү шинэ технологи нь харилцаа холбоог хувьсган өөрчилсөн гэгддэг.",
+            "target": "This groundbreaking technology is said to have revolutionized global communications.",
+            "literal_mn": "Энэ зааглагч технологи байна хэлэгдсэн байхаар хувьсгасан дэлхийн харилцаа холбоог.",
+            "natural_mn": "Энэхүү шинэлэг технологи дэлхийн харилцаа холбоонд хувьсгал хийсэн гэж үздэг.",
+            "rule_breakdown": "'is said to have revolutionized' - субъектийг нэрлэсэн идэвхгүй төлөв дээр төгссөн үйлдэлд Perfect Infinitive хэрэглэнэ.",
+            "woerterbuch": [
+              {
+                "word": "groundbreaking",
+                "pos": "adj",
+                "meaning": "хувьсгалт, шинэ зам гаргасан"
+              },
+              {
+                "word": "revolutionize",
+                "pos": "verb",
+                "meaning": "хувьсгал хийх"
+              },
+              {
+                "word": "communication",
+                "pos": "noun",
+                "meaning": "харилцаа холбоо"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "en_c1_hedging_discourse",
+        "title": "Hedging & Academic Discourse Markers",
+        "core_concept": {
+          "mn": "Эрдэм шинжилгээний бичлэгт хэт бардам эсвэл шууд дүгнэлтээс сэргийлж, болгоомжтой байр суурь (hedging: arguably, ostensibly, tends to indicate) илэрхийлэх чадвар.",
+          "en": "Hedging modulates epistemic commitment, enabling scholars to state claims with appropriate caution, nuance, and rhetorical rigor without sounding overly dogmatic.",
+          "de": "Hedging mildert absolute Aussagen im wissenschaftlichen Diskurs ab (z.B. presumably, arguably, appears to indicate), um methodische Vorbehalte präzise auszudrücken."
+        },
+        "pattern": "[Modal lexical verbs: tend to, appear to, suggest that] + [Epistemic adverbs: arguably, ostensibly, ostensibly, conceivably]",
+        "examples": [
+          {
+            "target": "The preliminary empirical data appear to suggest a plausible correlation between both variables.",
+            "mn": "Урьдчилсан туршилтын өгөгдөл нь хоёр хувьсагчийн хооронд боломжит хамаарал байж болохыг харуулж байна.",
+            "en": "The preliminary empirical data appear to suggest a plausible correlation between both variables."
+          },
+          {
+            "target": "This finding is arguably one of the most substantial breakthroughs in modern pharmacology.",
+            "mn": "Энэхүү нээлт нь орчин үеийн эмийн судлалын салбар дахь хамгийн томоохон ололтуудын нэг гэж маргаангүй үзэгдэж байна.",
+            "en": "This finding is arguably one of the most substantial breakthroughs in modern pharmacology."
+          }
+        ],
+        "common_trap": "Never write raw categorical statements like 'This proves that...' in academic contexts; use hedged formulations like 'These findings lend credence to the view that...'",
+        "drills": [
+          {
+            "id": "en_c1_hedge_drill_1",
+            "prompt_mn": "Үр дүн нь анхны таамаглал үнэн байсныг харуулах хандлагатай байна.",
+            "target": "The statistical observations tend to corroborate the original hypothesis.",
+            "literal_mn": "Тэдгээр статистик ажиглалтууд хандлагатай байна бататгах тэр анхны таамаглалыг.",
+            "natural_mn": "Статистик ажиглалтын үр дүн анхны таамаглалыг бататгах хандлагатай харагдаж байна.",
+            "rule_breakdown": "'tend to corroborate' нь шууд 'батлав' гэхээс сэргийлж шинжлэх ухааны найруулгын сэрэмжлүүлэг (hedging) оруулж байна.",
+            "woerterbuch": [
+              {
+                "word": "observation",
+                "pos": "noun",
+                "meaning": "ажиглалт"
+              },
+              {
+                "word": "corroborate",
+                "pos": "verb",
+                "meaning": "бататгах, нотлох"
+              },
+              {
+                "word": "hypothesis",
+                "pos": "noun",
+                "meaning": "таамаглал"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "folder_id": "folder_06",
+    "folder_name": "Folder 06: C2 - Mastery & Nuanced Stylistics",
+    "level": "C2",
+    "topics": [
+      {
+        "id": "en_c2_subjunctive",
+        "title": "The Mandative & Formulaic Subjunctive Mood",
+        "core_concept": {
+          "mn": "Албан ёсны хүсэлт, шаардлага, дүрэм журмын дараа үйл үг бие төлөөний хувирал авахгүй үндсэн хэлбэрээр (bare infinitive) байхыг Mandative Subjunctive гэнэ.",
+          "en": "The mandative subjunctive employs the bare base form of the verb in that-clauses following verbs or adjectives of urgency, decree, or recommendation (e.g. demand that he be present).",
+          "de": "Der mandative Konjunktiv im Englischen nutzt die bare Infinitivform nach Verben der Forderung oder Notwendigkeit (z.B. insist that she remain)."
+        },
+        "pattern": "[Verb/Adj: insist, recommend, crucial, vital] + that + Subject + [BARE INFINITIVE: be / do / remain / speak]",
+        "examples": [
+          {
+            "target": "The board demanded that the chief executive step down with immediate effect.",
+            "mn": "Удирдах зөвлөл гүйцэтгэх захирлыг нэн даруй огцрохыг шаардав.",
+            "en": "The board demanded that the chief executive step down with immediate effect."
+          },
+          {
+            "target": "It is imperative that every transaction be verified cryptographically.",
+            "mn": "Гүйлгээ бүрийг криптограф аргаар шалган баталгаажуулах нь зайлшгүй шаардлагатай.",
+            "en": "It is imperative that every transaction be verified cryptographically."
+          }
+        ],
+        "common_trap": "Do not add third-person '-s' in the subjunctive clause: say 'demanded that he step down' (NOT: 'steps down' or 'stepped down').",
+        "drills": [
+          {
+            "id": "en_c2_subj_drill_1",
+            "prompt_mn": "Хуралдааны өмнө бүх тайланг нухацтай хянаж үзсэн байхыг шүүгч шаардав.",
+            "target": "The magistrate insisted that all confidential records be submitted before dusk.",
+            "literal_mn": "Тэр шүүгч шаардав тэр бүх нууц тэмдэглэлүүд байх ирүүлэгдсэн өмнө бүрэнхий.",
+            "natural_mn": "Шүүгч бүх нууц бичиг баримтыг харанхуй болохоос өмнө ирүүлсэн байхыг хатуу шаардлаа.",
+            "rule_breakdown": "'insisted that ... be submitted' - Subjunctive хэлбэрт үйлдэгдэх хэв дээр 'be' хувирахгүй үндсэн хэлбэрээрээ байна.",
+            "woerterbuch": [
+              {
+                "word": "magistrate",
+                "pos": "noun",
+                "meaning": "шүүгч"
+              },
+              {
+                "word": "insist",
+                "pos": "verb",
+                "meaning": "шаардах, шаардлага тавих"
+              },
+              {
+                "word": "confidential",
+                "pos": "adj",
+                "meaning": "нууц, нууцын зэрэглэлтэй"
+              },
+              {
+                "word": "submit",
+                "pos": "verb",
+                "meaning": "ирүүлэх, өгөх"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "en_c2_ellipsis_substitution",
+        "title": "Ellipsis & Substitution in Sophisticated Prose",
+        "core_concept": {
+          "mn": "Үгийн давталтаас зайлсхийж, өгүүлбэрийг нямбай, уран найруулгатай болгохын тулд өмнө дурдсан үг, хэллэгийг товчлох (Ellipsis) эсвэл орлуулагч хэрэглүүр (do so, one, such) ашиглах урлаг.",
+          "en": "Ellipsis omits words recoverably understood from context, while substitution uses pro-forms (do so, none, that of) to achieve syntactic economy and rhythmic elegance.",
+          "de": "Ellipse (Auslassung) und Substitution (Ersatzformen) vermeiden redundante Wiederholungen und erzeugen geschmeidige, meisterhafte Textkohärenz."
+        },
+        "pattern": "Omission: She wanted to contest the ruling, but decided not to [contest the ruling]. Substitution: We asked him to revise the draft, and he did so immediately.",
+        "examples": [
+          {
+            "target": "Some participants opted for an early exit, others did so only after strenuous deliberation.",
+            "mn": "Зарим оролцогчид эртхэн гарахыг сонгосон бол бусад нь удаан бодож эргэцүүлсний эцэст л тэгэв.",
+            "en": "Some participants opted for an early exit, others did so only after strenuous deliberation."
+          },
+          {
+            "target": "Her grasp of syntax surpassed even that of her most revered mentors.",
+            "mn": "Түүний өгүүлбэр зүйн мэдлэг хамгийн хүндэтгэлт багш нарынх нь мэдлэгээс ч давж гарсан байв.",
+            "en": "Her grasp of syntax surpassed even that of her most revered mentors."
+          }
+        ],
+        "common_trap": "Use 'that of / those of' to avoid repeating nouns in comparisons: say 'The economy of Germany is larger than that of Greece' (NOT: 'larger than Greece').",
+        "drills": [
+          {
+            "id": "en_c2_ell_drill_1",
+            "prompt_mn": "Тэд түүнийг ажлаа дуусгахыг хүссэн ба тэрээр хоёр ч удаа бодолгүйгээр шууд тэгсэн юм.",
+            "target": "They urged him to finalize the transaction, and he did so without hesitation.",
+            "literal_mn": "Тэд ятгав түүнийг эцэслэх тэр хэлцлийг, ба тэр хийв тэгж үгүй эргэлзээ.",
+            "natural_mn": "Тэд түүнийг хэлцлийг эцэслэн шийдэхийг ятгасан бөгөөд тэрээр огт эргэлзэлгүйгээр даруй тэгсэн юм.",
+            "rule_breakdown": "'did so' нь 'finalized the transaction' гэсэн бүтцийг орлож давталтаас сэргийлж байна.",
+            "woerterbuch": [
+              {
+                "word": "urge",
+                "pos": "verb",
+                "meaning": "шаардах, ятгах"
+              },
+              {
+                "word": "finalize",
+                "pos": "verb",
+                "meaning": "эцэслэн шийдэх"
+              },
+              {
+                "word": "hesitation",
+                "pos": "noun",
+                "meaning": "эргэлзээ, тээнэгэлзэл"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "en_c2_fronting_emphasis",
+        "title": "Fronting & Thematic Reordering for Stylistic Emphasis",
+        "core_concept": {
+          "mn": "Өгүүлбэрийн төгсгөлд байх ёстой үйл үгт, чиглэл заасан эсвэл тэмдэг нэрийн тодотголыг хамгийн урд байрлуулан өндөр найруулга, сэтгэл хөдлөл үүсгэх бүтэц.",
+          "en": "Fronting brings adverbials, adjectives, or locative prepositions to the opening of the sentence, immediately followed by the verb, producing poetic inversion and rhetorical power.",
+          "de": "Fronting rückt Satzglieder (Ortsangaben, Adjektive, Partizipien) an die absolute Satzspitze, gefolgt von einer Inversion (z.B. Into the room stepped...)."
+        },
+        "pattern": "[Directional Prepositional Phrase / Adjective] + [Main Verb] + [Subject] (e.g., Down came the torrential rain)",
+        "examples": [
+          {
+            "target": "Deep within the secluded valley lay the forgotten ruins of the ancient sanctuary.",
+            "mn": "Алслагдсан хөндийн гүнд эртний сүм хийдийн мартагдсан туурь дүнхийн харагдана.",
+            "en": "Deep within the secluded valley lay the forgotten ruins of the ancient sanctuary."
+          },
+          {
+            "target": "Brilliant though her initial hypothesis was, it collapsed under empirical scrutiny.",
+            "mn": "Түүний анхны таамаглал хэчнээн гайхалтай байсан ч бодит туршилтын шалгуур дор нуран унав.",
+            "en": "Brilliant though her initial hypothesis was, it collapsed under empirical scrutiny."
+          }
+        ],
+        "common_trap": "In full locative inversion, do NOT use dummy 'did': say 'Into the hall walked the delegates' (NOT: 'Into the hall did walk the delegates').",
+        "drills": [
+          {
+            "id": "en_c2_front_drill_1",
+            "prompt_mn": "Үүлэн цоорхойгоор өглөөний нарны анхны алтан туяа гэрэлтэн тусав.",
+            "target": "Through the dense fog pierced the first golden rays of dawn.",
+            "literal_mn": "Дундуур тэр өтгөн манан нэвт хатгав тэдгээр анхны алтан цацрагууд тэр үүр цайхын.",
+            "natural_mn": "Өтгөн манангийн дундуур үүр цайхын анхны алтан туяа нэвт гэрэлтэв.",
+            "rule_breakdown": "'Through the dense fog' гэсэн чиглэл урд орж үйл үг 'pierced' эзэн бие 'the first golden rays'-ийн урд шууд орж байна.",
+            "woerterbuch": [
+              {
+                "word": "pierce",
+                "pos": "verb",
+                "meaning": "нэвтлэх, тусах"
+              },
+              {
+                "word": "fog",
+                "pos": "noun",
+                "meaning": "манан"
+              },
+              {
+                "word": "dawn",
+                "pos": "noun",
+                "meaning": "үүр цайх"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "en_c2_advanced_collocations",
+        "title": "Advanced Collocations & Nuanced Phrasal Verbs",
+        "core_concept": {
+          "mn": "Төрөлх хэлтний өндөр түвшний нарийн холбоо үгс (z.B. unmitigated disaster, categorically deny, harbor suspicions) болон олон давхар утгатай угтвар үгт үйл үгс.",
+          "en": "C2 mastery hinges on natural fixed lexical bundles, nuanced idiomatic collocations, and register-sensitive multi-word predicates that distinguish elite fluency.",
+          "de": "Feste Kollokationen (z.B. categorically deny, unmitigated disaster) und nuancierte Phrasal Verbs kennzeichnen muttersprachliche Ausdruckskraft."
+        },
+        "pattern": "[Adverb + Adjective: utterly futile] | [Adverb + Verb: categorically reject] | [Verb + Noun: exercise discretion]",
+        "examples": [
+          {
+            "target": "The spokesperson categorically refuted all allegations of institutional corruption.",
+            "mn": "Хэвлэлийн төлөөлөгч байгууллагын авлигатай холбоотой бүх мэдэгдлийг эрс эсэргүүцэн няцаав.",
+            "en": "The spokesperson categorically refuted all allegations of institutional corruption."
+          },
+          {
+            "target": "The proposed constitutional amendment is fraught with unforeseen diplomatic complications.",
+            "mn": "Санал болгож буй үндсэн хуулийн нэмэлт өөрчлөлт нь урьдчилан хараагүй дипломат ээдрээг дагуулах аюултай байна.",
+            "en": "The proposed constitutional amendment is fraught with unforeseen diplomatic complications."
+          }
+        ],
+        "common_trap": "Do not substitute synonyms arbitrarily: 'categorically deny' is natural; 'severely deny' or 'strongly reject without proof' sounds non-native.",
+        "drills": [
+          {
+            "id": "en_c2_colloc_drill_1",
+            "prompt_mn": "Тэрээр санхүүгийн ноцтой хүндрэлийг даван туулахын тулд маш их тэвчээр заав.",
+            "target": "She exercised immense restraint while navigating the turbulent financial crisis.",
+            "literal_mn": "Тэр эмэгтэй гаргав асар их тэвчээр зуураа залах тэр догшин санхүүгийн хямралыг.",
+            "natural_mn": "Тэрээр санхүүгийн хүнд хямралыг гэтлэхдээ асар их тэвчээр, ухаалаг хүлээцтэй байдал гаргасан юм.",
+            "rule_breakdown": "'exercise restraint' (тэвчээр гаргах), 'turbulent crisis' (хүнд ширүүн хямрал) гэх дээд зэрэглэлийн үгсийн холбоо.",
+            "woerterbuch": [
+              {
+                "word": "exercise",
+                "pos": "verb",
+                "meaning": "хэрэгжүүлэх, гаргах (тэвчээр)"
+              },
+              {
+                "word": "restraint",
+                "pos": "noun",
+                "meaning": "хүлээцтэй байдал, тэвчээр"
+              },
+              {
+                "word": "turbulent",
+                "pos": "adj",
+                "meaning": "догшин, ээдрээтэй"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "en_c2_modal_deduction",
+        "title": "Nuanced Modal Deduction & Epistemic Stance",
+        "core_concept": {
+          "mn": "Өнгөрсөн болон одоо цагт болсон үйл явдлын боломж, магадлалын зэргийг туйлын нарийн өнгө аястайгаар (can hardly have, might conceivably, must needs) гаргах аргууд.",
+          "en": "Epistemic stance markers modulate deductive certainty, counterfactuality, and speculation through intricate modal configurations across past and non-past planes.",
+          "de": "Nuancierte modale Deduktion drückt fein abgestufte epistemische Sicherheit und spekulative Annahmen aus (z.B. can hardly have done, might conceivably be)."
+        },
+        "pattern": "[Subject + can/could hardly have + V3] (near impossibility) | [Subject + might conceivably + have + V3] (remote possibility)",
+        "examples": [
+          {
+            "target": "He can hardly have anticipated the unprecedented scale of the technological transformation.",
+            "mn": "Технологийн өөрчлөлтийн урьд өмнө байгаагүй ийм аугаа далайцыг тэрээр урьдчилан таамагласан байх магадлал бараг үгүй юм.",
+            "en": "He can hardly have anticipated the unprecedented scale of the technological transformation."
+          },
+          {
+            "target": "The anomaly might conceivably have arisen from a subtle hardware glitch during compilation.",
+            "mn": "Уг гажиг нь код хөрвүүлэх явцад төхөөрөмжийн нарийн саатлаас үүссэн байх магадлалтай.",
+            "en": "The anomaly might conceivably have arisen from a subtle hardware glitch during compilation."
+          }
+        ],
+        "common_trap": "Use 'can hardly have + V3' for near impossible past deduction, NOT 'must not have' when rejecting logical likelihood.",
+        "drills": [
+          {
+            "id": "en_c2_modal_drill_1",
+            "prompt_mn": "Тэрээр ийм тодорхой нотлох баримтыг анзааралгүй өнгөрөөсөн байх учиргүй.",
+            "target": "She can hardly have overlooked such conspicuous and overwhelming evidence.",
+            "literal_mn": "Тэр эмэгтэй чадна бараг үгүй байхаар анзааралгүй өнгөрсөн тийм илэрхий бөгөөд асар их нотолгоог.",
+            "natural_mn": "Тэр эмэгтэй ийм илэрхий, хөдөлшгүй нотлох баримтыг анзааралгүй өнгөрөөнө гэж бараг байхгүй дээ.",
+            "rule_breakdown": "'can hardly have overlooked' нь өнгөрсөнд тэгсэн байх боломж бараг үгүй болохыг логикоор няцааж байна.",
+            "woerterbuch": [
+              {
+                "word": "hardly",
+                "pos": "adv",
+                "meaning": "бараг үгүй"
+              },
+              {
+                "word": "overlook",
+                "pos": "verb",
+                "meaning": "анзааралгүй өнгөрөх"
+              },
+              {
+                "word": "conspicuous",
+                "pos": "adj",
+                "meaning": "нүдэнд тусахуйц, илэрхий"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]

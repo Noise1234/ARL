@@ -101,7 +101,6 @@ class KeyboardRouter {
       keyLower === 'm' ? '#nav-btn-memorize' : null,
       keyLower === 'i' ? '#nav-btn-media' : null,
       keyLower === 'x' ? '#nav-btn-stats' : null,
-      keyLower === 'f' ? '#nav-btn-social' : null,
       keyLower === 's' ? '#nav-btn-settings' : null,
       keyLower === '?' ? '#nav-btn-help' : null,
       keyLower === 'n' ? '#btn-lexicon-add-word' : null,
@@ -182,11 +181,6 @@ class KeyboardRouter {
         this.trigger('nav_stats');
         return;
       }
-      if (key === 'f' || key === 'F') {
-        e.preventDefault();
-        this.trigger('nav_social');
-        return;
-      }
       if (key === 's' || key === 'S') {
         e.preventDefault();
         this.trigger('toggle_settings');
@@ -262,7 +256,7 @@ class KeyboardRouter {
         } else if (key === 'i' || key === 'I') {
           e.preventDefault();
           this.trigger('settings_cycle_i18n');
-        } else if (['1', '2', '3', '4'].includes(key)) {
+        } else if (['1', '2', '3', '4', '5', '6'].includes(key)) {
           e.preventDefault();
           this.trigger('settings_set_level', parseInt(key, 10));
         } else if (key === 'e' || key === 'E') {
@@ -272,7 +266,7 @@ class KeyboardRouter {
         break;
 
       case KeyboardState.GRAMMAR_LIST:
-        if (['1', '2', '3', '4'].includes(key)) {
+        if (['1', '2', '3', '4', '5', '6'].includes(key)) {
           e.preventDefault();
           this.trigger('grammar_set_folder', parseInt(key, 10));
         } else if ((key === 'r' || key === 'R') && !e.shiftKey) {
@@ -304,7 +298,7 @@ class KeyboardRouter {
         break;
 
       case KeyboardState.MEDIA_HUB:
-        if (['1', '2', '3', '4'].includes(key)) {
+        if (['1', '2', '3', '4', '5', '6'].includes(key)) {
           e.preventDefault();
           this.trigger('media_filter_level', parseInt(key, 10));
         } else if (key === 'a' || key === 'A') {

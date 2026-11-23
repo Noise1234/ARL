@@ -1,21 +1,18 @@
 [
   {
     "id": "en_b1_0001",
-    "word": "depend on",
+    "word": "count on",
     "pos": "verb",
     "lang": "en",
     "level": "B1",
-    "forms": "depend | depended | depended",
-    "rektion": "depend on",
-    "prompt_front": "depend _____ [prep]",
-    "revealed_back": "depend on",
-    "mn": "хамаарах, найдах",
-    "de": "abhängen von",
-    "en": "depend on",
-    "example_en": "Our success depends on team collaboration.",
-    "example_mn": "Бидний амжилт багийн хамтын ажиллагаанаас хамаарна.",
-    "example_de": "Unser Erfolg hängt von der Teamarbeit ab.",
-    "topic": "Core English"
+    "forms": "count on | counts on | counted on | counted on",
+    "rektion": null,
+    "prompt_front": "_____ (найдах, итгэл хүлээлгэх)",
+    "revealed_back": "count on",
+    "mn": "найдах, итгэл хүлээлгэх",
+    "example_en": "You can always count on close friends during tough times.",
+    "example_mn": "Хүнд хэцүү цагт чи ойр дотны найзууддаа ямагт найдаж болно.",
+    "topic": "Relationships"
   },
   {
     "id": "en_b1_0002",

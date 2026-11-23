@@ -231,15 +231,56 @@ class ARLDatabase {
     const soundEnabled = await this.getSetting('soundEnabled', true);
     const speechRate = await this.getSetting('speechRate', 1.0);
     const streak = await this.getSetting('streak', 0);
+    const autoSyncOnSessionEnd = await this.getSetting('autoSyncOnSessionEnd', true);
 
-    // Collect all related localStorage items as safeguard
+    // Calculate mastery counts
+    let memorizedCount = 0;
+    let learningCount = 0;
+    for (const p of progressList) {
+      if (p.status === 'memorized' || (p.reps >= 2 && p.interval >= 4)) {
+        memorizedCount++;
+      } else {
+        learningCount++;
+      }
+    }
+
+    // Time logs & stats
+    let studyTimeStats = {};
+    let wordStats = {};
+    let grammarStats = {};
+    let notes = [];
+    let lastStudyDate = '';
+
+    if (typeof localStorage !== 'undefined') {
+      try {
+        const rawTime = localStorage.getItem('arl_study_time_stats');
+        if (rawTime) studyTimeStats = JSON.parse(rawTime);
+      } catch (e) {}
+      try {
+        const rawWords = localStorage.getItem('arl_word_stats');
+        if (rawWords) wordStats = JSON.parse(rawWords);
+      } catch (e) {}
+      try {
+        const rawGrammar = localStorage.getItem('arl_grammar_stats');
+        if (rawGrammar) grammarStats = JSON.parse(rawGrammar);
+      } catch (e) {}
+      try {
+        const rawNotes = localStorage.getItem('arl_smart_notes');
+        if (rawNotes) notes = JSON.parse(rawNotes);
+      } catch (e) {}
+      try {
+        lastStudyDate = localStorage.getItem('arl_last_study_date') || '';
+      } catch (e) {}
+    }
+
+    // Collect all related localStorage items as safeguard (excluding secrets)
     const localStorageData = {};
     if (typeof localStorage !== 'undefined') {
       try {
         for (let i = 0; i < localStorage.length; i++) {
           const k = localStorage.key(i);
           if (k && (k.startsWith('arl_') || k.startsWith('arl:'))) {
-            if (k === 'arl_gh_token' || k === 'arl_gemini_api_key') continue;
+            if (k === 'arl_gh_token' || k === 'arl_gemini_api_key' || k === 'arl_gist_id') continue;
             localStorageData[k] = localStorage.getItem(k);
           }
         }
@@ -248,10 +289,12 @@ class ARLDatabase {
       }
     }
 
+    const nowIso = new Date().toISOString();
     const backup = {
       app: 'ARL',
       version: 2,
-      exportDate: new Date().toISOString(),
+      updatedAt: nowIso,
+      exportDate: nowIso,
       settings: {
         targetLang,
         interfaceLang,
@@ -259,9 +302,25 @@ class ARLDatabase {
         totalExp,
         soundEnabled,
         speechRate,
-        streak
+        streak,
+        autoSyncOnSessionEnd
       },
       progress: progressList,
+      masteryCounts: {
+        totalTracked: progressList.length,
+        memorized: memorizedCount,
+        learning: learningCount
+      },
+      streaks: {
+        streak,
+        lastStudyDate
+      },
+      timeLogs: {
+        studyTimeStats,
+        wordStats,
+        grammarStats
+      },
+      notes,
       localStorage: localStorageData
     };
 
@@ -283,12 +342,34 @@ class ARLDatabase {
       if (typeof data.settings.soundEnabled === 'boolean') await this.setSetting('soundEnabled', data.settings.soundEnabled);
       if (typeof data.settings.speechRate === 'number') await this.setSetting('speechRate', data.settings.speechRate);
       if (typeof data.settings.streak === 'number') await this.setSetting('streak', data.settings.streak);
+      if (typeof data.settings.autoSyncOnSessionEnd === 'boolean') await this.setSetting('autoSyncOnSessionEnd', data.settings.autoSyncOnSessionEnd);
+    }
+
+    if (data.timeLogs && typeof localStorage !== 'undefined') {
+      try {
+        if (data.timeLogs.studyTimeStats) localStorage.setItem('arl_study_time_stats', JSON.stringify(data.timeLogs.studyTimeStats));
+        if (data.timeLogs.wordStats) localStorage.setItem('arl_word_stats', JSON.stringify(data.timeLogs.wordStats));
+        if (data.timeLogs.grammarStats) localStorage.setItem('arl_grammar_stats', JSON.stringify(data.timeLogs.grammarStats));
+      } catch (e) {}
+    }
+
+    if (data.notes && Array.isArray(data.notes) && typeof localStorage !== 'undefined') {
+      try {
+        localStorage.setItem('arl_smart_notes', JSON.stringify(data.notes));
+      } catch (e) {}
+    }
+
+    if (data.streaks && typeof localStorage !== 'undefined') {
+      try {
+        if (data.streaks.lastStudyDate) localStorage.setItem('arl_last_study_date', data.streaks.lastStudyDate);
+      } catch (e) {}
     }
 
     if (data.localStorage && typeof localStorage !== 'undefined') {
       try {
         for (const [k, v] of Object.entries(data.localStorage)) {
           if (k.startsWith('arl_') || k.startsWith('arl:')) {
+            if (k === 'arl_gh_token' || k === 'arl_gemini_api_key' || k === 'arl_gist_id') continue;
             localStorage.setItem(k, v);
           }
         }

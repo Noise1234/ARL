@@ -152,7 +152,7 @@ add_dir('icons')
 # Verify core datasets are bundled
 total_words = 0
 for lang in ['de', 'en']:
-    for lvl in ['a1', 'a2', 'b1', 'b2']:
+    for lvl in ['a1', 'a2', 'b1', 'b2', 'c1', 'c2']:
         p = f"assets/www/data/{lang}/vocab_{lvl}.json"
         if p not in web_assets:
             raise RuntimeError(f"Missing essential vocabulary asset in bundle: {p}")

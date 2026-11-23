@@ -363,7 +363,7 @@ export class TelemetryEngine {
       cards.forEach(c => cardsById.set(c.id, c));
     }
 
-    const byLevel = { A1: [], A2: [], B1: [], B2: [] };
+    const byLevel = { A1: [], A2: [], B1: [], B2: [], C1: [], C2: [] };
     const allMastered = [];
 
     for (const [id, stats] of Object.entries(this.wordStats)) {
@@ -384,7 +384,7 @@ export class TelemetryEngine {
     }
 
     const avgByLevel = {};
-    for (const lvl of ['A1', 'A2', 'B1', 'B2']) {
+    for (const lvl of ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']) {
       const list = byLevel[lvl];
       if (list.length > 0) {
         const sum = list.reduce((acc, c) => acc + c.timeMs, 0);

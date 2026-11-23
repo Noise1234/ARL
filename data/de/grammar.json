@@ -26363,5 +26363,621 @@
         ]
       }
     ]
+  },
+  {
+    "folder_id": "folder_05",
+    "folder_name": "Folder 05: C1 - Fortgeschrittene Sprachkompetenz",
+    "level": "C1",
+    "topics": [
+      {
+        "id": "de_c1_nominalisierung",
+        "title": "Nominalisierung & Verbalisierung (Nominalstil vs. Verbalstil)",
+        "core_concept": {
+          "mn": "Эрдэм шинжилгээ, албан бичигт өгүүлбэрийг нягтаршуулахын тулд үйлийг нэр үг болгон (Nominalstil) бичдэг бол яриа болон уран зохиолд үйл үгээр дэлгэрүүлэн (Verbalstil) илэрхийлдэг.",
+          "en": "Nominalization converts verbs and dependent clauses into concise noun phrases with genitive or prepositional attributes, quintessential for academic and bureaucratic German.",
+          "de": "Die Nominalisierung verdichtet Nebensätze zu präpositionalen Nominalphrasen mit Genitivattributen. Sie prägt die gehobene Wissenschafts- und Behördensprache."
+        },
+        "pattern": "Weil die Preise steigen -> Wegen des Preisanstiegs | Wenn man plant -> Bei der Planung",
+        "examples": [
+          {
+            "target": "Wegen des rapiden Anstiegs der Rohstoffpreise müssen die Produktionskosten gesenkt werden.",
+            "mn": "Түүхий эдийн үнэ огцом өссөнөөс үүдэн үйлдвэрлэлийн зардлыг бууруулах шаардлагатай болж байна.",
+            "en": "Due to the rapid rise in raw material prices, production costs must be reduced."
+          },
+          {
+            "target": "Nach der sorgfältigen Prüfung aller Unterlagen traf das Komitee eine Entscheidung.",
+            "mn": "Бүх бичиг баримтыг нягтлан шалгасны дараа комисс шийдвэрээ гаргав.",
+            "en": "After careful examination of all documents, the committee made a decision."
+          }
+        ],
+        "common_trap": "Анхаарах: Нэр үг болгохдоо холбогдох угтвар үгийг зөв сонгох ёстой (z.B. nach + Dat, bei + Dat, wegen + Gen). Мөн нэрлэсэн нэр үгийн хүйсийг алдаж болохгүй.",
+        "drills": [
+          {
+            "id": "de_c1_nom_drill_1",
+            "prompt_mn": "Хэлэлцээ амжилттай дууссаны дараа гэрээнд гарын үсэг зурав.",
+            "target": "Nach dem erfolgreichen Abschluss der Verhandlungen wurde der Vertrag unterzeichnet.",
+            "literal_mn": "Дараа тэр амжилттай дуусах тэр хэлэлцээнүүдийн байв тэр гэрээ гарын үсэг зурагдсан.",
+            "natural_mn": "Хэлэлцээр амжилттай өндөрлөсний дараа гэрээнд гарын үсэг зурсан.",
+            "rule_breakdown": "Nach + Dativ бүтэцтэй нэршүүлэлт: 'nach dem erfolgreichen Abschluss der Verhandlungen' гэж Genitiv тодотголтой хэрэглэнэ.",
+            "woerterbuch": [
+              {
+                "word": "nach",
+                "pos": "prep",
+                "meaning": "дараа (+ Dat)"
+              },
+              {
+                "word": "der Abschluss",
+                "pos": "noun",
+                "meaning": "дуусах, төгсгөл",
+                "article": "der"
+              },
+              {
+                "word": "die Verhandlung",
+                "pos": "noun",
+                "meaning": "хэлэлцээ",
+                "article": "die"
+              },
+              {
+                "word": "unterzeichnen",
+                "pos": "verb",
+                "meaning": "гарын үсэг зурах",
+                "infinitive": "unterzeichnen"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "de_c1_partizipialattribute",
+        "title": "Erweiterte Partizipialattribute (Partizip I & II)",
+        "core_concept": {
+          "mn": "Хамаатуулах өгүүлбэрийг (Relativsatz) үйлт нэрийн (Partizip I/II) дэлгэрэнгүй тодотгол болгон нэр үгийн өмнө байрлуулж, өгүүлбэрийн бүтцийг өндөр түвшинд нягтаршуулдаг.",
+          "en": "Extended participial attributes place complex relative clauses directly before nouns using Participle I (active/simultaneous) or Participle II (passive/completed), tightly packaging information.",
+          "de": "Erweiterte Partizipialattribute komprimieren Relativsätze zu linksattributiven Konstruktionen vor dem Nomen mit Partizip I oder Partizip II."
+        },
+        "pattern": "Artikel + [Erweiterungen: Adverbien, Dativ-/Akkusativobjekte, Präpositionen] + PARTIZIP (flektiert) + Nomen",
+        "examples": [
+          {
+            "target": "Die von den Wissenschaftlern gestern veröffentlichte Studie erregte großes Aufsehen.",
+            "mn": "Эрдэмтдийн өчигдөр нийтлүүлсэн судалгаа олон нийтийн анхаарлыг ихэд татав.",
+            "en": "The study published yesterday by the scientists caused a major sensation."
+          },
+          {
+            "target": "Die kontinuierlich ansteigenden Temperaturen bedrohen das alpine Ökosystem.",
+            "mn": "Тасралтгүй нэмэгдэж буй дулааны хэм альпийн экологийн системийг заналхийлж байна.",
+            "en": "The continuously rising temperatures threaten the alpine ecosystem."
+          }
+        ],
+        "common_trap": "Анхаарах: Partizip нь араас нь залгах нэр үгийнхээ хүйс, тийн ялгал, тоонд тохирсон тэмдэг нэрийн төгсгөл заавал авна (z.B. die veröffentlicht-e Studie).",
+        "drills": [
+          {
+            "id": "de_c1_part_drill_1",
+            "prompt_mn": "Засгийн газрын төлөвлөсөн арга хэмжээнүүд маргааш хүчин төгөлдөр болно.",
+            "target": "Die von der Regierung geplanten Maßnahmen treten morgen in Kraft.",
+            "literal_mn": "Тэдгээр -аас тэр засгийн газар төлөвлөгдсөн арга хэмжээнүүд гишгэнэ маргааш дотор хүч.",
+            "natural_mn": "Засгийн газрын төлөвлөсөн арга хэмжээ маргаашнаас хэрэгжиж эхэлнэ.",
+            "rule_breakdown": "Partizip II 'geplant' нь олон тооны нэр үг 'Maßnahmen'-д тохирч сул хувирлаар '-en' төгсгөл авна: 'Die ... geplanten Maßnahmen'.",
+            "woerterbuch": [
+              {
+                "word": "die Regierung",
+                "pos": "noun",
+                "meaning": "засгийн газар",
+                "article": "die"
+              },
+              {
+                "word": "planen",
+                "pos": "verb",
+                "meaning": "төлөвлөх",
+                "infinitive": "planen"
+              },
+              {
+                "word": "die Maßnahme",
+                "pos": "noun",
+                "meaning": "арга хэмжээ",
+                "article": "die"
+              },
+              {
+                "word": "in Kraft treten",
+                "pos": "verb",
+                "meaning": "хүчин төгөлдөр болох"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "de_c1_funktionsverbgefuege",
+        "title": "Funktionsverbgefüge (Nomen-Verb-Verbindungen)",
+        "core_concept": {
+          "mn": "Энгийн үйл үгийн оронд 'Нэр үг + Угтвар үг + Туслах үйл үг' бүхий тогтвортой хэллэг ашиглаж, найруулгын өнгө аясыг албан ёсны, нарийн болгодог.",
+          "en": "Function Verb Categories (FVG) combine abstract nouns with semantically bleached verbs (e.g. ziehen, bringen, stellen), creating formal idiomatic expressions.",
+          "de": "Funktionsverbgefüge verbinden ein abstraktes Substantiv (oft mit Präposition) mit einem bedeutungsarmen Verb zur Nuancierung von Aspekt und Stil."
+        },
+        "pattern": "Nomen (+ Präposition) + Funktionsverb (z.B. in Betracht ziehen = berücksichtigen | zur Sprache bringen = ansprechen)",
+        "examples": [
+          {
+            "target": "Wir müssen alle relevanten Aspekte sorgfältig in Betracht ziehen.",
+            "mn": "Бид холбогдох бүх талуудыг нухацтай харгалзан үзэх ёстой.",
+            "en": "We must carefully take all relevant aspects into consideration."
+          },
+          {
+            "target": "Der Ausschuss hat das heikle Thema endlich zur Sprache gebracht.",
+            "mn": "Тус хороо эцэст нь энэхүү эмзэг сэдвийг хөндөж ярив.",
+            "en": "The committee finally brought the delicate topic up for discussion."
+          }
+        ],
+        "common_trap": "Анхаарах: Нэр үгтэй хорших угтвар үг ба үйл үг тогтмол байдаг. Жишээ нь: 'in Frage stellen' (биш: 'zur Frage stellen').",
+        "drills": [
+          {
+            "id": "de_c1_fvg_drill_1",
+            "prompt_mn": "Тэрээр захирлын гаргасан шийдвэрийг ил тод эргэлзээнд оруулав.",
+            "target": "Er hat die Entscheidung des Direktors offen in Frage gestellt.",
+            "literal_mn": "Тэр байна тэр шийдвэрийг тэр захирлын нээлттэй дотор асуулт тавьсан.",
+            "natural_mn": "Тэр захирлын гаргасан шийдвэрийг шууд эргэлзэж шүүмжилсэн.",
+            "rule_breakdown": "'in Frage stellen' нь 'эргэлзэх, үнэн эсэхийг нь шүүмжлэх' гэсэн утгатай тогтвортой хэллэг бөгөөд үйл үг нь төгсгөлдөө очно.",
+            "woerterbuch": [
+              {
+                "word": "die Entscheidung",
+                "pos": "noun",
+                "meaning": "шийдвэр",
+                "article": "die"
+              },
+              {
+                "word": "der Direktor",
+                "pos": "noun",
+                "meaning": "захирал",
+                "article": "der"
+              },
+              {
+                "word": "in Frage stellen",
+                "pos": "verb",
+                "meaning": "эргэлзэх, эсэргүүцэх"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "de_c1_subjektive_modalverben",
+        "title": "Subjektive Modalverben (Vermutung & fremde Behauptung)",
+        "core_concept": {
+          "mn": "Modal үйл үгс нь бодит боломж, үүргээс гадна ярьж буй хүний таамаглалын магадлалын зэрэг (müssen, dürften, können) эсвэл бусдын үгийг иш татахыг (sollen, wollen) илэрхийлдэг.",
+          "en": "Subjective modal verbs express speaker certainty/probability (müssen ~95%, dürften ~75%, können ~50%) or report unverified claims made by third parties (sollen) or subjects themselves (wollen).",
+          "de": "Subjektive Modalverben drücken Vermutungsgrade des Sprechers oder fremde Aussagen aus (sollen = man sagt; wollen = das Subjekt behauptet von sich)."
+        },
+        "pattern": "Gegenwart: Modalverb + Infinitiv I | Vergangenheit: Modalverb + Infinitiv II (Partizip II + haben/sein)",
+        "examples": [
+          {
+            "target": "Er dürfte mittlerweile am Flughafen angekommen sein.",
+            "mn": "Тэрээр одоогийн байдлаар нисэх буудалд оччихсон байх магадлал маш өндөр байна.",
+            "en": "He should likely have arrived at the airport by now."
+          },
+          {
+            "target": "Der Politiker will von den Schmiergeldern nichts gewusst haben.",
+            "mn": "Уг улс төрч хахуулийн мөнгөний талаар огт мэдээгүй байсан гэж өөрийгөө баталж байна.",
+            "en": "The politician claims not to have known anything about the bribes."
+          }
+        ],
+        "common_trap": "Анхаарах: 'sollen' нь бусдын хэлсэн цуурхлыг ('хүмүүс тэгж ярьж байна'), харин 'wollen' нь тухайн субъект өөрийгөө тэгсэн гэж зүтгэж буйг илэрхийлнэ.",
+        "drills": [
+          {
+            "id": "de_c1_modal_drill_1",
+            "prompt_mn": "Тэр эмэгтэй шалгалтаа өгөөд тэнцчихсэн байх өндөр магадлалтай.",
+            "target": "Sie muss die schwierige Prüfung bestanden haben.",
+            "literal_mn": "Тэр эмэгтэй ёстой тэр хэцүү шалгалтыг давчихсан байх.",
+            "natural_mn": "Тэр тэрхүү хүнд шалгалтаа лавтайяа давчихсан байх.",
+            "rule_breakdown": "Өнгөрсөн цаг дээр бараг гарцаагүй үнэн гэсэн таамаглалд: 'muss + Partizip II (bestanden) + haben' гэж бүтнэ.",
+            "woerterbuch": [
+              {
+                "word": "müssen",
+                "pos": "verb",
+                "meaning": "лавтайяа ... байх (таамаглал)"
+              },
+              {
+                "word": "die Prüfung",
+                "pos": "noun",
+                "meaning": "шалгалт",
+                "article": "die"
+              },
+              {
+                "word": "bestehen",
+                "pos": "verb",
+                "meaning": "тэнцэх, давах",
+                "infinitive": "bestehen"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "de_c1_konjunktiv1",
+        "title": "Konjunktiv I in der indirekten Rede & Berichterstattung",
+        "core_concept": {
+          "mn": "Сэтгүүл зүй, албан ёсны илтгэлд бусдын үгийг төвийг сахисан, үнэн худлыг өөрөө хариуцахгүй байдлаар дамжуулахад Konjunktiv I-ийг ашигладаг.",
+          "en": "Konjunktiv I signals neutral indirect speech in journalism and official reports, disclaiming speaker responsibility for the truth value of the reported statement.",
+          "de": "Der Konjunktiv I distanziert den Sprecher vom Inhalt der fremden Aussage. Er ist Standard in seriöser Nachrichtenberichterstattung."
+        },
+        "pattern": "Infinitivstamm + Konjunktiv-Endung (-e, -est, -e, -en, -et, -en). Wenn formgleich mit Indikativ -> Konjunktiv II als Ersatzform.",
+        "examples": [
+          {
+            "target": "Der Minister erklärte, die Regierung plane umfangreiche Steuerreformen.",
+            "mn": "Сайд мэдэгдэхдээ засгийн газар татварын өргөн цар хүрээтэй шинэчлэл төлөвлөж байгаа гэв.",
+            "en": "The minister explained that the government was planning comprehensive tax reforms."
+          },
+          {
+            "target": "Die Zeugen behaupteten, der Fahrer sei mit überhöhter Geschwindigkeit gefahren.",
+            "mn": "Гэрчүүд жолоочийг хурд хэтрүүлэн давхисан гэж мэдэгдэв.",
+            "en": "The witnesses claimed that the driver had been traveling at excessive speed."
+          }
+        ],
+        "common_trap": "Анхаарах: 1-р бие ба олон тоонд (wir/sie) Konjunktiv I нь Indikativ-тай ижил болбол заавал Konjunktiv II-ээр орлуулна (z.B. sie hätten statt sie haben).",
+        "drills": [
+          {
+            "id": "de_c1_konj1_drill_1",
+            "prompt_mn": "Хотын дарга төсвийг хэдийн баталсан гэж хэлэв.",
+            "target": "Der Bürgermeister sagte, der Stadtrat habe den Haushalt bereits verabschiedet.",
+            "literal_mn": "Тэр хотын дарга хэлсэн, тэр хотын зөвлөл байг тэр төсвийг хэдийн баталсан.",
+            "natural_mn": "Хотын дарга хэлэхдээ хотын зөвлөл төсвийг хэдийнээ баталсан гэжээ.",
+            "rule_breakdown": "3-р биеийн өнгөрсөн цагийн шууд бус ярианд: 'habe ... verabschiedet' (Konjunktiv I туслах үйл үг).",
+            "woerterbuch": [
+              {
+                "word": "der Bürgermeister",
+                "pos": "noun",
+                "meaning": "хотын дарга",
+                "article": "der"
+              },
+              {
+                "word": "der Stadtrat",
+                "pos": "noun",
+                "meaning": "хотын зөвлөл",
+                "article": "der"
+              },
+              {
+                "word": "der Haushalt",
+                "pos": "noun",
+                "meaning": "төсөв",
+                "article": "der"
+              },
+              {
+                "word": "verabschieden",
+                "pos": "verb",
+                "meaning": "батлах (хууль, төсөв)",
+                "infinitive": "verabschieden"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "de_c1_komplexe_konnektoren",
+        "title": "Komplexe mehrteilige Konnektoren & Satzverknüpfung",
+        "core_concept": {
+          "mn": "C1 түвшинд энгийн холбоосоос илүүтэй хоёр талт болон учир зүйн өндөр төвшний холбоос үгсийг (anstatt dass, ungeachtet dessen, je... desto) найруулгад чөлөөтэй ашигладаг.",
+          "en": "Complex correlative and concessive connectors establish intricate syntactic relations between clauses, essential for analytical argumentation.",
+          "de": "Mehrteilige Konnektoren (z.B. nicht nur... sondern auch, je... desto, anstatt dass, ungeachtet dessen) strukturieren komplexe Argumentationsgänge."
+        },
+        "pattern": "Nebensatz: Anstatt dass / Ungeachtet dessen, dass ... | Hauptsatz: Je + Komparativ (Nebensatz), desto/umso + Komparativ + Verb (Hauptsatz)",
+        "examples": [
+          {
+            "target": "Je komplexer die Problemstellung ist, desto präziser müssen die Lösungsansätze formuliert werden.",
+            "mn": "Асуудал хэдий чинээ ээдрээтэй байна, шийдлийн арга замууд төдий чинээ нарийн тодорхойлогдох учиртай.",
+            "en": "The more complex the problem is, the more precisely the approaches to a solution must be formulated."
+          },
+          {
+            "target": "Ungeachtet der widrigen Umstände wurde das Forschungsprojekt pünktlich abgeschlossen.",
+            "mn": "Таагүй нөхцөл байдлыг үл харгалзан судалгааны төслийг цагт нь дуусгав.",
+            "en": "Notwithstanding the adverse circumstances, the research project was completed on time."
+          }
+        ],
+        "common_trap": "Анхаарах: 'Je... desto' бүтцэд 'Je'-тэй хэсэг нь туслах өгүүлбэр (үйл үг төгсгөлд), харин 'desto'-той хэсэг нь гол өгүүлбэр (харьцуулсан зэргийн дараа үйл үг 2-р байранд) байна.",
+        "drills": [
+          {
+            "id": "de_c1_konn_drill_1",
+            "prompt_mn": "Бид хэдий чинээ их хичээж сурна, үр дүн төдий чинээ сайн байх болно.",
+            "target": "Je fleißiger wir lernen, desto besser werden unsere Resultate sein.",
+            "literal_mn": "Хэдий хичээнгүй бид сурна, төдий сайн болно бидний үр дүнгүүд байх.",
+            "natural_mn": "Бид хэдий чинээ хичээнгүй суралцана, үр дүн маань төдий чинээ сайн байна.",
+            "rule_breakdown": "'Je fleißiger wir lernen' (V-End) + 'desto besser werden' (Verb auf Pos 2 nach Komparativ).",
+            "woerterbuch": [
+              {
+                "word": "fleißig",
+                "pos": "adj",
+                "meaning": "хичээнгүй"
+              },
+              {
+                "word": "das Resultat",
+                "pos": "noun",
+                "meaning": "үр дүн",
+                "article": "das"
+              },
+              {
+                "word": "je... desto",
+                "pos": "conj",
+                "meaning": "хэдий чинээ... төдий чинээ"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "folder_id": "folder_06",
+    "folder_name": "Folder 06: C2 - Annähernd muttersprachliche Finesse",
+    "level": "C2",
+    "topics": [
+      {
+        "id": "de_c2_satzklammer_ausklammerung",
+        "title": "Stilistische Satzklammer & bewusste Ausklammerung (Nachfeld)",
+        "core_concept": {
+          "mn": "Герман хэлний үндсэн өгүүлбэрийн хүрээний дүрмийг (Satzklammer) уран зохиол, илтгэлд зориудаар зөрчин, зарим тодотгол, харьцуулалтыг төгсгөлийн араар гаргахыг Ausklammerung гэнэ.",
+          "en": "Deliberate right-dislocation (Ausklammerung into the Nachfeld) relaxes the rigid German sentence frame to emphasize prepositional phrases, comparisons, or long clauses without syntactic overload.",
+          "de": "Die stilistische Ausklammerung ins Nachfeld durchbricht die starre Satzklammer, um schwere Satzglieder gezielt hervorzuheben oder das Mittelfeld zu entlasten."
+        },
+        "pattern": "[Vollverb am Satzende] + [AUSGEKLAMMERTES GLIED: Präpositionalphrase, Vergleich mit wie/als, Nebensatz]",
+        "examples": [
+          {
+            "target": "Er hat gestern lange gesprochen mit dem leitenden Ausschussvorsitzenden.",
+            "mn": "Тэрээр өчигдөр удирдах хорооны даргатай онцгой удаан ярилцсан юм.",
+            "en": "He spoke yesterday for a long time with the chief committee chairperson."
+          },
+          {
+            "target": "Niemand hatte so viel geleistet für die Allgemeinheit wie dieser bescheidene Gelehrte.",
+            "mn": "Энэхүү даруу эрдэмтэн шиг нийгмийн сайн сайхны төлөө тийм их зүйл бүтээсэн хүн үгүй байлаа.",
+            "en": "No one had accomplished as much for the public good as this modest scholar."
+          }
+        ],
+        "common_trap": "Анхаарах: Хүрээний араар ямар ч хамаагүй үгийг гаргаж болохгүй. Зөвхөн урт угтвар үгт нэгдлүүд, харьцуулсан бүтцүүд (wie/als) болон туслах өгүүлбэрийг найруулгын зорилгоор гаргана.",
+        "drills": [
+          {
+            "id": "de_c2_satzkl_drill_1",
+            "prompt_mn": "Тэрээр нарийн төвөгтэй сэдвийн талаар гүн гүнзгий бодлогоширсон байв.",
+            "target": "Sie hatte stundenlang nachgedacht über die Tragweite dieser historischen Entscheidung.",
+            "literal_mn": "Тэр эмэгтэй байв цагуудаар бодсон тухай тэр далайц тэр түүхэн шийдвэрийн.",
+            "natural_mn": "Тэрээр энэхүү түүхэн шийдвэрийн үр дагаврын талаар олон цагаар гүн бодлогширсон байлаа.",
+            "rule_breakdown": "'nachgedacht' үйл үгийн араар урт 'über'-тэй хэллэгийг гарган Nachfeld-д тавьж өгүүлбэрийн төгсгөлийг онцлов.",
+            "woerterbuch": [
+              {
+                "word": "nachdenken",
+                "pos": "verb",
+                "meaning": "бодох, тунгаах (+ über Akk)",
+                "infinitive": "nachdenken"
+              },
+              {
+                "word": "die Tragweite",
+                "pos": "noun",
+                "meaning": "далайц, хол уршиг",
+                "article": "die"
+              },
+              {
+                "word": "historisch",
+                "pos": "adj",
+                "meaning": "түүхэн"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "de_c2_konjunktiv2_vergangenheit",
+        "title": "Gehobener Konjunktiv II der Vergangenheit (Konditionale Inversion)",
+        "core_concept": {
+          "mn": "'Wenn' холбоосгүйгээр туслах үйл үгийг (Hätte/Wäre) өгүүлбэрийн хамгийн урд байрлуулан өнгөрсөн цагийн биелэгдээгүй нөхцөлийг өндөр найруулгаар илэрхийлэх бүтэц.",
+          "en": "Hypothetical past conditional inversion drops 'wenn' and places the conjugated subjunctive auxiliary (Hätte/Wäre/Stünde) in Position 1, epitomizing literary elegance.",
+          "de": "Der gehobene uneingeleitete Konditionalsatz stellt das finite Konjunktiv-II-Verb an Position 1 (V1-Stellung) und verzichtet auf die Konjunktion 'wenn'."
+        },
+        "pattern": "Position 1: [Hätte / Wäre / Stünde] + Subjekt + ... + Partizip II, [so/dann] + finites Verb + Subjekt...",
+        "examples": [
+          {
+            "target": "Hätte die Delegation rechtzeitig interveniert, wäre die Eskalation vermeidbar gewesen.",
+            "mn": "Төлөөлөгчид цаг тухайд нь хөндлөнгөөс оролцсон ахул уг хурцадмал байдлаас зайлсхийж болох байлаа.",
+            "en": "Had the delegation intervened in time, the escalation would have been avoidable."
+          },
+          {
+            "target": "Wäre der Brief früher eingetroffen, hätten wir sofort reagieren können.",
+            "mn": "Уг захидал эртхэн ирсэн сэн бол бид даруй арга хэмжээ авч чадах байсан юм.",
+            "en": "Had the letter arrived earlier, we would have been able to react immediately."
+          }
+        ],
+        "common_trap": "Анхаарах: 1-р байранд үйл үг орсон тул хоёр дахь өгүүлбэр (Hauptsatz) мөн адил үйл үгээр эхэлнэ (эсвэл 'so/dann' дагалдана).",
+        "drills": [
+          {
+            "id": "de_c2_konj2_drill_1",
+            "prompt_mn": "Бид эрсдэлийг урьдчилан харсан сан бол тийм их хохирол амсахгүй байх байсан.",
+            "target": "Hätten wir die drohenden Gefahren rechtzeitig erkannt, so hätten wir diesen schweren Verlust abgewendet.",
+            "literal_mn": "Байсан бол бид тэр заналхийлж буй аюулуудыг цагтаа таньсан, тийн байх байсан бид энэ хүнд гарзыг зайлуулсан.",
+            "natural_mn": "Нүүрлэж буй аюулыг бид цагт нь мэдэрсэн сэн бол энэхүү хүнд хохирлоос сэргийлэх байсан юм.",
+            "rule_breakdown": "'Hätten wir ... erkannt' (V1 conditional clause) + 'so hätten wir ... abgewendet'.",
+            "woerterbuch": [
+              {
+                "word": "erkennen",
+                "pos": "verb",
+                "meaning": "таних, ухаарах",
+                "infinitive": "erkennen"
+              },
+              {
+                "word": "die Gefahr",
+                "pos": "noun",
+                "meaning": "аюул",
+                "article": "die"
+              },
+              {
+                "word": "abwenden",
+                "pos": "verb",
+                "meaning": "зайлуулах, гэтлэх",
+                "infinitive": "abwenden"
+              },
+              {
+                "word": "der Verlust",
+                "pos": "noun",
+                "meaning": "хохирол, гарз",
+                "article": "der"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "de_c2_passiversatzformen",
+        "title": "Passiversatzformen (sein + zu + Infinitiv, sich lassen, Gerundiv)",
+        "core_concept": {
+          "mn": "'Werden'-тэй үйлдэгдэх хэвийн давталтаас зайлсхийхийн тулд 'sein + zu + Infinitiv' (боломж, шаардлага), 'sich lassen + Infinitiv' (боломж) эсвэл -bar/-lich төгсгөлтэй бүтцийг хэрэглэдэг.",
+          "en": "Passive substitutes replace passive with 'sein + zu + Infinitiv' (modal necessity/possibility), reflexive 'sich lassen + Infinitiv', or gerundives, elevating prose diversity.",
+          "de": "Passiversatzformen vermeiden das schwerfällige Passiv durch 'sein + zu + Infinitiv' (müssen/können), 'sich lassen + Infinitiv' (können) oder das Gerundivum."
+        },
+        "pattern": "Nomen + sein + zu + Infinitiv (muss/kann getan werden) | Nomen + lässt sich + Infinitiv (kann getan werden)",
+        "examples": [
+          {
+            "target": "Dieses brisante Problem ist nicht innerhalb weniger Tage zu lösen.",
+            "mn": "Энэхүү хурцадмал асуудлыг хэдхэн хоногийн дотор шийдвэрлэх боломжгүй юм (шийдэгдэх боломжгүй).",
+            "en": "This explosive problem cannot be solved within a few days."
+          },
+          {
+            "target": "Die Authentizität des Dokuments lässt sich zweifelsfrei nachweisen.",
+            "mn": "Уг баримт бичгийн жинхэнэ болохыг ямар ч эргэлзээгүйгээр нотлох бүрэн боломжтой.",
+            "en": "The authenticity of the document can be proven beyond doubt."
+          }
+        ],
+        "common_trap": "Анхаарах: 'sein + zu + Infinitiv' нь өгүүлбэрийн хам сэдвээсээ хамааран 'боломжтой' (können) эсвэл 'ёстой' (müssen) гэсэн утгын аль алийг гаргадаг.",
+        "drills": [
+          {
+            "id": "de_c2_pass_drill_1",
+            "prompt_mn": "Эдгээр бүх зааварчилгааг чандлан дагаж мөрдөх ёстой.",
+            "target": "Alle Sicherheitsvorschriften sind strikt einzuhalten.",
+            "literal_mn": "Бүх аюулгүй байдлын зааврууд байна чанд сахигдахаар.",
+            "natural_mn": "Аюулгүй байдлын бүх журмыг хатуу чанд мөрдөх учиртай.",
+            "rule_breakdown": "'sind ... einzuhalten' = 'müssen eingehalten werden' гэсэн үйлдэгдэх хэвийн утгыг орлосон бүтэц.",
+            "woerterbuch": [
+              {
+                "word": "die Sicherheitsvorschrift",
+                "pos": "noun",
+                "meaning": "аюулгүй байдлын журам",
+                "article": "die"
+              },
+              {
+                "word": "einhalten",
+                "pos": "verb",
+                "meaning": "мөрдөх, сахих",
+                "infinitive": "einhalten"
+              },
+              {
+                "word": "strikt",
+                "pos": "adv",
+                "meaning": "хатуу чанд"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "de_c2_modalpartikeln",
+        "title": "Modalpartikeln & feine Bedeutungsnuancen (ja, denn, wohl, eben)",
+        "core_concept": {
+          "mn": "Герман хэлний хамгийн өвөрмөц хэсэг болох Modalpartikeln (сул үгс) нь өгүүлбэрийн мэдээллийг өөрчлөхгүй ч яригчийн сэтгэл хөдлөл, итгэл үнэмшил, далд хандлагыг тодорхойлдог.",
+          "en": "Modal particles (ja, denn, wohl, halt, eben, eh, bloß, etwa) subtly modify interpersonal stance, shared knowledge, or emotional coloring without changing truth conditions.",
+          "de": "Modalpartikeln färben Aussagen pragmatisch ein. Sie signalisieren geteiltes Vorwissen (ja), Resignation (halt/eben), Überraschung (denn) oder Vermutung (wohl)."
+        },
+        "pattern": "Aussagesatz / Fragesatz: Steht unbetont im Mittelfeld hinter dem finiten Verb und Pronomen.",
+        "examples": [
+          {
+            "target": "Das ist ja eine erstaunliche Wendung der Ereignisse!",
+            "mn": "Энэ чинь харин ёстой гайхалтай үйл явдлын эргэлт байна шүү дээ! (ярилцагчийн мэддэг зүйлийг батлах)",
+            "en": "That is indeed an astonishing turn of events! (as we both can see)"
+          },
+          {
+            "target": "Er wird wohl den falschen Zug genommen haben.",
+            "mn": "Тэр лав буруу галт тэргэнд суучихсан бололтой доо. (таамаглал)",
+            "en": "He has probably taken the wrong train."
+          }
+        ],
+        "common_trap": "Анхаарах: Modalpartikeln нь өргөлт авдаггүй бөгөөд асуулт, батлах өгүүлбэрт огт өөр өнгө аяс (denn = сонирхол татах, etwa = сэжиглэх) үүсгэдэг.",
+        "drills": [
+          {
+            "id": "de_c2_partikeln_drill_1",
+            "prompt_mn": "Чи үүнийг аль хэдийнэ мэдэж л байгаа шүү дээ.",
+            "target": "Du weißt das ja ohnehin schon längst.",
+            "literal_mn": "Чи мэднэ үүнийг мэдээж ямар ч байсан хэдийн эртнээс.",
+            "natural_mn": "Чи үүнийг ямар ч байсан хэдийнээ мэдчихсэн л байгаа шүү дээ.",
+            "rule_breakdown": "'ja' нь сонсогч аль хэдийн мэддэг гэдгийг тодотгож байна. 'ohnehin' нь ямар ч байсан гэсэн утга нэмнэ.",
+            "woerterbuch": [
+              {
+                "word": "wissen",
+                "pos": "verb",
+                "meaning": "мэдэх",
+                "infinitive": "wissen"
+              },
+              {
+                "word": "ohnehin",
+                "pos": "adv",
+                "meaning": "ямар ч байсан, угаасаа"
+              },
+              {
+                "word": "längst",
+                "pos": "adv",
+                "meaning": "хэдийнээ, эртнээс"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "de_c2_genitiv_praepositionen",
+        "title": "Gehobene Präpositionen mit Genitiv (anlässlich, kraft, mangels)",
+        "core_concept": {
+          "mn": "Хууль зүй, албан ёсны бичиг баримт болон өндөр зэрэглэлийн ярианд Genitiv авдаг сонгодог угтвар үгс (anlässlich, kraft, mangels, unbeschadet, zeit) хэрэглэгддэг.",
+          "en": "Elevated genitive prepositions (anlässlich, kraft, mangels, unbeschadet, zeit, behufs) demonstrate formal legal and academic precision in syntactical framing.",
+          "de": "Gehobene Genitivpräpositionen kennzeichnen die juristische, staatliche und akademische Hochsprache und fordern ausnahmslos den Genitiv."
+        },
+        "pattern": "[anlässlich / kraft / mangels / unbeschadet / zeit / infolge] + Substantiv im Genitiv",
+        "examples": [
+          {
+            "target": "Kraft seines Amtes erließ der Richter ein sofortiges Ausreiseverbot.",
+            "mn": "Шүүгч өөрийн албан тушаалын эрх мэдлийн хүрээнд улсын хилээр гарахыг хориглосон шийдвэр гаргав.",
+            "en": "By virtue of his office, the judge issued an immediate travel ban."
+          },
+          {
+            "target": "Mangels hinreichender Beweise wurde der Angeklagte freigesprochen.",
+            "mn": "Хангалттай нотлох баримт дутмаг байсны улмаас шүүгдэгчийг цагаатгалаа.",
+            "en": "For lack of sufficient evidence, the defendant was acquitted."
+          }
+        ],
+        "common_trap": "Анхаарах: Хэзээ ч ярианы хэлний Dativ хэрэглэж болохгүй (биш: 'mangels Beweisen', харин заавал 'mangels Beweise' буюу Genitiv).",
+        "drills": [
+          {
+            "id": "de_c2_genitiv_drill_1",
+            "prompt_mn": "Их сургуулийн 100 жилийн ойг тохиолдуулан олон улсын хурал зохион байгуулав.",
+            "target": "Anlässlich des hundertjährigen Jubiläums der Universität wurde ein internationaler Kongress veranstaltet.",
+            "literal_mn": "Тохиолдуулан тэр зуун жилийн ойн тэр их сургуулийн байв нэг олон улсын их хурал зохион байгуулагдсан.",
+            "natural_mn": "Их сургуулийн 100 жилийн ойг тохиолдуулан олон улсын эрдэм шинжилгээний хурал зохион байгууллаа.",
+            "rule_breakdown": "'Anlässlich + Genitiv' (des Jubiläums) нь 'ойг тохиолдуулан' гэсэн албан ёсны хүндэтгэлийн бүтэц үүсгэнэ.",
+            "woerterbuch": [
+              {
+                "word": "anlässlich",
+                "pos": "prep",
+                "meaning": "тохиолдуулан (+ Gen)"
+              },
+              {
+                "word": "das Jubiläum",
+                "pos": "noun",
+                "meaning": "ой, тэмдэглэлт өдөр",
+                "article": "das"
+              },
+              {
+                "word": "der Kongress",
+                "pos": "noun",
+                "meaning": "их хурал",
+                "article": "der"
+              },
+              {
+                "word": "veranstalten",
+                "pos": "verb",
+                "meaning": "зохион байгуулах",
+                "infinitive": "veranstalten"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]

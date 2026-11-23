@@ -1,4 +1,4 @@
-/* ARL v2.1 Animations & Dopamine Reward Micro-Interactions */
+/* ARL v2.2 Tactile Animations, 3D Flashcard Micro-Interactions & Dopamine Rewards */
 
 /* User select prevention on interactive keyhints and buttons */
 .keyhint-btn,
@@ -12,10 +12,12 @@
   -webkit-user-select: none;
 }
 
-/* Smooth Progress Bar Transitions */
+/* Smooth Progress Bar & Ring Transitions */
 .card-progress-fill,
-.hud-exp-fill {
-  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+.hud-exp-fill,
+.ring-progress,
+.cefr-bar-fill {
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), stroke-dashoffset 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* 1. Floating +EXP Badges */
@@ -34,9 +36,9 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background-color: #18181b;
-  border: 1px solid var(--border-focus);
-  color: #fafafa;
+  background-color: var(--bg-surface, #18181b);
+  border: 1px solid var(--border-focus, #fafafa);
+  color: var(--text-primary, #fafafa);
   font-family: var(--font-mono);
   font-size: 0.85rem;
   font-weight: 700;
@@ -72,27 +74,190 @@
   }
 }
 
+/* 2. Tactile Button Micro-Interactions & Press States */
+button:active:not(:disabled),
+.touch-target:active:not(:disabled),
+.keyhint-btn:active:not(:disabled),
+.hud-nav-item:active:not(:disabled),
+.mobile-nav-tab:active:not(:disabled) {
+  transform: scale(0.98);
+  transition: transform 0.05s ease;
+}
 
 /* Physical Key Depression Micro-Interaction */
 .key-pressed-active {
-  transform: translateY(2px) scale(0.97) !important;
+  transform: translateY(2px) scale(0.98) !important;
   border-color: #fafafa !important;
   background-color: #27272a !important;
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.25) !important;
   transition: all 0.05s ease !important;
 }
 
-/* 3D Card Hover & Flip Micro-Interaction */
+/* 3. Fluid 3D Flashcard Transitions */
 .active-flashcard {
-  perspective: 1000px;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s ease;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.15s ease;
+  touch-action: pan-y;
 }
 
 .active-flashcard:hover {
-  border-color: #3f3f46;
+  border-color: var(--border-hover, #3f3f46);
 }
 
-/* Tactile button clicks */
-button:active:not(:disabled) {
-  transform: scale(0.97);
+.unrevealed-flashcard {
+  animation: cardSlideNext 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.revealed-flashcard {
+  animation: cardFlipIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardFlipIn {
+  0% {
+    transform: perspective(1000px) rotateY(-35deg) scale(0.96);
+    opacity: 0.7;
+  }
+  50% {
+    transform: perspective(1000px) rotateY(4deg) scale(1.01);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes cardSlideNext {
+  0% {
+    transform: perspective(1000px) translateY(10px) scale(0.98);
+    opacity: 0.5;
+  }
+  100% {
+    transform: perspective(1000px) translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* 4. Circular Monochrome Progress Ring */
+.progress-ring-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+}
+
+.progress-ring-svg {
+  transform: rotate(-90deg);
+  width: 38px;
+  height: 38px;
+}
+
+.ring-bg {
+  stroke: var(--border-color, #27272a);
+}
+
+.ring-progress {
+  stroke: var(--text-primary, #fafafa);
+  stroke-dasharray: 88;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.progress-ring-text {
+  position: absolute;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-primary, #fafafa);
+}
+
+/* 5. Animated CEFR Mastery Bars */
+.cefr-mastery-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.cefr-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+}
+
+.cefr-bar-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  width: 28px;
+  color: var(--text-secondary);
+}
+
+.cefr-bar-track {
+  flex: 1;
+  height: 8px;
+  background-color: var(--bg-card-subtle, #27272a);
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle, #3f3f46);
+}
+
+.cefr-bar-fill {
+  height: 100%;
+  background: var(--text-primary, #fafafa);
+  border-radius: 9999px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cefr-bar-stat {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  min-width: 70px;
+  text-align: right;
+}
+
+/* 6. Completion & Batch Celebration Overlay */
+.batch-completion-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 32px 20px;
+  animation: scaleFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.completion-icon-ring {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--text-primary, #fafafa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: var(--text-primary, #fafafa);
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes scaleFadeIn {
+  0% {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 16px 2px rgba(255, 255, 255, 0.2);
+  }
 }

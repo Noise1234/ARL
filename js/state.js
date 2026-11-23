@@ -24,7 +24,7 @@ class AppState {
   constructor() {
     this.targetLang = 'de'; // 'de' | 'en'
     this.interfaceLang = 'mn'; // 'mn' | 'en' | 'de'
-    this.cefrLevel = 'b1'; // 'a1' | 'a2' | 'b1' | 'b2'
+    this.cefrLevel = 'b1'; // 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2'
     this.reviewMode = 'active'; // 'active' | 'memorized'
 
     this.cards = [];
@@ -120,10 +120,14 @@ class AppState {
 
   async loadActiveDataset() {
     const filePath = `data/${this.targetLang}/vocab_${this.cefrLevel}.json`;
+    const fallbackPath = `data/${this.targetLang}/${this.cefrLevel}.json`;
     let list = [];
     if (typeof fetch !== 'undefined') {
       try {
-        const resp = await fetch(filePath);
+        let resp = await fetch(filePath);
+        if (!resp.ok) {
+          resp = await fetch(fallbackPath);
+        }
         if (resp.ok) {
           list = await resp.json();
         }
@@ -583,7 +587,7 @@ class AppState {
 
   async setCefrLevel(lvl) {
     const cleanLvl = String(lvl).toLowerCase();
-    if (['a1', 'a2', 'b1', 'b2'].includes(cleanLvl) && cleanLvl !== this.cefrLevel) {
+    if (['a1', 'a2', 'b1', 'b2', 'c1', 'c2'].includes(cleanLvl) && cleanLvl !== this.cefrLevel) {
       this.cefrLevel = cleanLvl;
       await db.setSetting('cefrLevel', cleanLvl);
       await this.loadActiveDataset();
