@@ -3,12 +3,20 @@
 **ARL** is an ultra-minimalist, distraction-free Progressive Web App (PWA) and native Android application designed for deep focus, deterministic SM-2 spaced repetition, and comprehensive German & English grammar mastery across all CEFR levels **A1, A2, B1, B2, C1, and C2**.
 
 [![Download Android APK](https://img.shields.io/badge/Download-Android%20APK%20(v2.2.0)-black?style=for-the-badge&logo=android)](https://github.com/Noise1234/ARL/raw/main/dist/ARL-v2.2.0.apk)
+[![Web PWA](https://img.shields.io/badge/PWA-Local--First%20Offline-black?style=for-the-badge&logo=pwa)](http://localhost:3000)
 
-### 📥 Direct Downloads
-- **Android APK v2.2.0 (Latest Release)**: [Download ARL-v2.2.0.apk](https://github.com/Noise1234/ARL/raw/main/dist/ARL-v2.2.0.apk) (signed release containing all 7,506 words & complete A1–C2 grammar drills)
-- **Direct Local/Web Endpoint**: [http://localhost:3000/apk](http://localhost:3000/apk)
+### 📥 Direct Downloads & Links
+- **Android APK v2.2.0 (Latest Signed Release)**: [Download ARL-v2.2.0.apk from GitHub](https://github.com/Noise1234/ARL/raw/main/dist/ARL-v2.2.0.apk) (11.6 MB, cryptographically signed with v1/v2/v3 schemes, 4-byte aligned, containing all 7,506 verified words & 92 A1–C2 grammar topics)
+- **GitHub Repository File View**: [View dist/ARL-v2.2.0.apk on GitHub](https://github.com/Noise1234/ARL/blob/main/dist/ARL-v2.2.0.apk)
+- **Direct Local Server Download**: [http://localhost:3000/apk](http://localhost:3000/apk) (when running locally)
 - **Permanent Mirror**: [Download ARL-v2.0.apk](https://github.com/Noise1234/ARL/raw/main/dist/ARL-v2.0.apk)
 - **GitHub Repository**: [Noise1234/ARL](https://github.com/Noise1234/ARL)
+
+#### 📱 Android Installation Guide
+1. Tap the [Download ARL-v2.2.0.apk](https://github.com/Noise1234/ARL/raw/main/dist/ARL-v2.2.0.apk) link on your Android device (or download via browser).
+2. Open the downloaded `.apk` file from your notification bar or Downloads folder.
+3. If prompted, allow "Install from unknown sources" for your browser/file manager.
+4. Tap **Install** and launch **ARL**. The app operates 100% offline with zero cloud configuration required.
 
 ---
 
@@ -127,4 +135,9 @@ npm test
 Or build/verify:
 ```bash
 npm run build
+```
+
+Package & sign Android APK:
+```bash
+npm run build:apk
 ```
