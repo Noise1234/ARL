@@ -2,18 +2,18 @@
 
 **ARL** is an ultra-minimalist, distraction-free Progressive Web App (PWA) and native Android application designed for deep focus, deterministic SM-2 spaced repetition, and comprehensive German & English grammar mastery across all CEFR levels **A1, A2, B1, B2, C1, and C2**.
 
-[![Download Android APK](https://img.shields.io/badge/Download-Android%20APK%20(v2.2.0)-black?style=for-the-badge&logo=android)](https://github.com/Noise1234/ARL/raw/main/dist/ARL-v2.2.0.apk)
+[![Download Android APK](https://img.shields.io/badge/Download-Android%20APK%20(v3.0.0)-black?style=for-the-badge&logo=android)](https://github.com/Noise1234/ARL/raw/main/dist/ARL-v3.0.0.apk)
 [![Web PWA](https://img.shields.io/badge/PWA-Local--First%20Offline-black?style=for-the-badge&logo=pwa)](http://localhost:3000)
 
 ### 📥 Direct Downloads & Links
-- **Android APK v2.2.0 (Latest Signed Release)**: [Download ARL-v2.2.0.apk from GitHub](https://github.com/Noise1234/ARL/raw/main/dist/ARL-v2.2.0.apk) (11.6 MB, cryptographically signed with v1/v2/v3 schemes, 4-byte aligned, containing all 7,506 verified words & 92 A1–C2 grammar topics)
-- **GitHub Repository File View**: [View dist/ARL-v2.2.0.apk on GitHub](https://github.com/Noise1234/ARL/blob/main/dist/ARL-v2.2.0.apk)
+- **Android APK v3.0.0 (Latest Signed Release)**: [Download ARL-v3.0.0.apk from GitHub](https://github.com/Noise1234/ARL/raw/main/dist/ARL-v3.0.0.apk) (11.6 MB, cryptographically signed with v1/v2/v3 schemes, 4-byte aligned, containing all 7,506 verified words & 92 A1–C2 grammar topics)
+- **GitHub Repository File View**: [View dist/ARL-v3.0.0.apk on GitHub](https://github.com/Noise1234/ARL/blob/main/dist/ARL-v3.0.0.apk)
 - **Direct Local Server Download**: [http://localhost:3000/apk](http://localhost:3000/apk) (when running locally)
 - **Permanent Mirror**: [Download ARL-v2.0.apk](https://github.com/Noise1234/ARL/raw/main/dist/ARL-v2.0.apk)
 - **GitHub Repository**: [Noise1234/ARL](https://github.com/Noise1234/ARL)
 
 #### 📱 Android Installation Guide
-1. Tap the [Download ARL-v2.2.0.apk](https://github.com/Noise1234/ARL/raw/main/dist/ARL-v2.2.0.apk) link on your Android device (or download via browser).
+1. Tap the [Download ARL-v3.0.0.apk](https://github.com/Noise1234/ARL/raw/main/dist/ARL-v3.0.0.apk) link on your Android device (or download via browser).
 2. Open the downloaded `.apk` file from your notification bar or Downloads folder.
 3. If prompted, allow "Install from unknown sources" for your browser/file manager.
 4. Tap **Install** and launch **ARL**. The app operates 100% offline with zero cloud configuration required.
@@ -50,8 +50,15 @@
 - **Active Recall Quiz Mode ([Q]uiz):** Fast 4-option multiple-choice drill with keyboard bindings <kbd>1</kbd>–<kbd>4</kbd>, tactile color feedback, and EXP rewards.
 
 ### 5. Native Android Container & Standalone PWA
-- **Android App:** Built via automated toolchain (AAPT, D8/R8, zipalign, apksigner) into a signed, 4-byte aligned native APK.
-- **Offline PWA:** Fully cached with Service Worker (`sw.js` v4.0) for 100% offline functionality.
+- **Android App:** Built via automated toolchain (AAPT, D8/R8, zipalign, apksigner) into a signed, 4-byte aligned native APK (`ARL-v3.0.0.apk`).
+- **Offline PWA:** Fully cached with Service Worker (`sw.js` v3.0.0) for 100% offline functionality and immediate cache invalidation on version update.
+
+### 6. v3.0.0 Targeted Polish & Enhancements
+- **Intelligent TTS Pronunciation Engine:** Web Speech API integration for German (`de-DE`) and English (`en-US`) with queue cancellation to eliminate audio locks on mobile WebViews, dynamic async `voiceschanged` discovery, clean metadata stripping (`+ Akk`, `+ Dat`, parentheticals, cloze blanks), and subtle `.is-playing` visual pulse states.
+- **Complete Trilingual UI Localization (i18n):** 100% complete interface localization with 256 keys across Mongolian (`mn`), English (`en`), and German (`de`), updating all views, dialogs, and mobile navigation bars reactively without page reloads.
+- **Strict Monochrome Harmonization:** All grammar cards, formula blocks, status badges, and interactive feedback pills redesigned using semantic monochrome CSS variables, eliminating clashing colors in both Dark and Light themes.
+- **Hardware Keyboard Ergonomics for Memorize & Sprint:** Full hardware hotkey support inside the Memory Studio (<kbd>S</kbd> to launch Speed Imprint Sprint, <kbd>Space</kbd> to pause/resume, <kbd>Enter</kbd> / <kbd>M</kbd> to memorize, <kbd>←</kbd> / <kbd>→</kbd> navigation, <kbd>Esc</kbd> exit).
+- **Free-form Sentence Sandbox & Linguistic Checker:** Real-time multi-tier syntax verification (Gemini 2.5 Flash, Groq, Pollinations AI, LanguageTool, and Deterministic Offline Rules) with token-level visual diffs, one-tap `[Apply Fix]` / `[Copy]`, and XP rewards.
 
 ---
 
@@ -105,13 +112,13 @@
 │   ├── de/                 # German A1-C2 vocabulary (3,746 words) & 61 grammar topics
 │   └── en/                 # English A1-C2 vocabulary (3,760 words) & 31 grammar topics
 ├── dist/
-│   ├── ARL-v2.2.0.apk      # Signed native Android container
+│   ├── ARL-v3.0.0.apk      # Signed native Android container
 │   └── ARL-v2.0.apk        # Permanent signed release mirror
 ├── scripts/
 │   ├── package_apk.py      # Automated APK packager, aligner & signer
 │   └── assemble_lexicon.py # Vocabulary expansion & cross-level deduplication engine
 └── test/
-    ├── run-tests.js        # Main test runner (141 tests)
+    ├── run-tests.js        # Main test runner (143 tests)
     ├── dataset.test.js     # Vocabulary integrity & deduplication verification
     ├── gist-sync-v2.test.js# Gist sync engine v2 & toast test suite
     └── major-upgrade.test.js # Feature verification test suite

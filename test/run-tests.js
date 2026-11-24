@@ -13,6 +13,7 @@ import { runResponsiveThemeTests } from './responsive-theme.test.js';
 import { runMobileAuditTests } from './mobile-audit.test.js';
 import { runAiFixTests } from './aifix.test.js';
 import { runGistSyncV2Tests } from './gist-sync-v2.test.js';
+import { initI18n } from '../js/i18n.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -41,6 +42,11 @@ async function it(name, fn) {
 }
 
 async function main() {
+  const i18nPath = path.join(ROOT, 'data', 'i18n.json');
+  if (fs.existsSync(i18nPath)) {
+    initI18n(JSON.parse(fs.readFileSync(i18nPath, 'utf-8')), 'en');
+  }
+
   // 1. Unicode & Text Hygiene
   await runUnicodeTests(it);
 

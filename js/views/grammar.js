@@ -384,7 +384,7 @@ export class GrammarView {
               type="text"
               id="grammar-search-input"
               class="grammar-search-field"
-              placeholder="${t('grammar_search_placeholder') || 'Search topics or formulas [/]...'}"
+              placeholder="${t('search_grammar_placeholder')}"
               value="${this.searchQuery}"
               autocomplete="off"
             />
@@ -397,7 +397,7 @@ export class GrammarView {
           ${topics.length === 0 ? `
             <div class="grammar-empty-state">
               <div class="empty-icon">∅</div>
-              <div class="empty-text">No grammar topics match your filter.</div>
+              <div class="empty-text">${t('no_grammar_found')}</div>
             </div>
           ` : topics.map((topic, i) => {
             const isSelected = i === this.selectedTopicIdx;
@@ -425,7 +425,7 @@ export class GrammarView {
                     <span class="arl-card-time">⏱ ${timeSpent}</span>
                   </div>
                   <button class="arl-card-drills-btn btn-open-drills" data-topic-id="${topic.id}">
-                    [${drillCount} Drills ->]
+                    [${drillCount} ${t('drills_btn')} ->]
                   </button>
                 </div>
               </div>
@@ -435,11 +435,11 @@ export class GrammarView {
 
         <!-- Keyhint Footer -->
         <div class="view-keyhints-bar">
-          <span class="micro-keyhint"><span class="micro-bracket">[1-4]</span> Switch Levels</span>
-          <span class="micro-keyhint"><span class="micro-bracket">[R]</span> Redemittel</span>
-          <span class="micro-keyhint"><span class="micro-bracket">[/]</span> Search</span>
-          <span class="micro-keyhint"><span class="micro-bracket">[J/K]</span> Navigate</span>
-          <span class="micro-keyhint"><span class="micro-bracket">[Enter]</span> Open</span>
+          <span class="micro-keyhint"><span class="micro-bracket">[1-4]</span> ${t('keyhint_switch_levels')}</span>
+          <span class="micro-keyhint"><span class="micro-bracket">[R]</span> ${t('keyhint_redemittel')}</span>
+          <span class="micro-keyhint"><span class="micro-bracket">[/]</span> ${t('keyhint_search')}</span>
+          <span class="micro-keyhint"><span class="micro-bracket">[J/K]</span> ${t('keyhint_navigate')}</span>
+          <span class="micro-keyhint"><span class="micro-bracket">[Enter]</span> ${t('keyhint_open')}</span>
         </div>
 
       </div>
@@ -625,6 +625,23 @@ export class GrammarView {
     }
   }
 
+  saveCurrentTextareaInputs() {
+    const drillTa = this.container.querySelector('#drill-sentence-textarea');
+    if (drillTa) {
+      this.drillInputs.set(this.activeDrillIdx, drillTa.value);
+    }
+    const sandboxTa = this.container.querySelector('#sandbox-textarea');
+    if (sandboxTa) {
+      this.sandboxText = sandboxTa.value;
+    }
+  }
+
+  updateTopicLabels() {
+    if (!this.activeTopic) return;
+    this.saveCurrentTextareaInputs();
+    this.renderTopicDetail(this.activeTopic);
+  }
+
   renderTopicDetail(topic) {
     GrammarView.activeInstance = this;
     const activeLang = this.conceptLang || state.interfaceLang;
@@ -655,8 +672,8 @@ export class GrammarView {
         
         <!-- Header Bar -->
         <div class="topic-detail-header">
-          <button class="btn-back-link touch-target" id="btn-back-to-list" title="Back to topic list [Esc]">
-            ← ${t('back_to_grammar') || 'Grammar Topics'}
+          <button class="btn-back-link touch-target" id="btn-back-to-list" title="${t('back_to_list')}">
+            ${t('back_to_list')}
           </button>
 
           <div class="topic-header-actions-group">
@@ -672,7 +689,7 @@ export class GrammarView {
               ${this.isKeyVaultOpen ? `
                 <div class="key-vault-dropdown-card" id="grammar-key-vault-dropdown">
                   <div class="key-vault-header-row">
-                    <span class="key-vault-title">AI Key Vault (BYOK)</span>
+                    <span class="key-vault-title">${t('key_vault_title')}</span>
                     <span class="key-vault-status-chip ${hasKey ? 'active' : ''}">
                       ${hasKey ? `Active (${keyType})` : 'Free Keyless Mode'}
                     </span>
@@ -691,11 +708,11 @@ export class GrammarView {
                       spellcheck="false"
                     />
                     <button type="button" class="btn-action-pill btn-save-key-pill" id="btn-save-user-ai-key">
-                      Save
+                      ${t('save_key')}
                     </button>
                     ${hasKey ? `
                       <button type="button" class="btn-action-pill btn-clear-key-pill" id="btn-clear-user-ai-key">
-                        Clear Key
+                        ${t('clear_key')}
                       </button>
                     ` : ''}
                   </div>
@@ -704,10 +721,10 @@ export class GrammarView {
             </div>
 
             <button class="keyhint-btn btn-pin-pip touch-target" id="btn-pin-topic-pip" title="Open this rule in floating PiP reference">
-              [P] Pin to PiP
+              ${t('open_pip')}
             </button>
             <button class="keyhint-btn btn-drill-rule touch-target" id="btn-drill-topic" data-key="d" title="Practice flashcards for this topic [D]">
-              <span class="micro-bracket">[D]</span> Flashcards
+              <span class="micro-bracket">[D]</span> ${t('drill_rule')}
             </button>
           </div>
         </div>
@@ -784,15 +801,15 @@ export class GrammarView {
                 
                 <div class="drill-trainer-header">
                   <div class="drill-step-info">
-                    <span class="drill-tag">DRILL TRAINER</span>
-                    <span class="drill-step-title">Sentence ${this.activeDrillIdx + 1} of ${totalDrills}</span>
+                    <span class="drill-tag">${t('drill_trainer')}</span>
+                    <span class="drill-step-title">${t('sentence_of')} ${this.activeDrillIdx + 1} / ${totalDrills}</span>
                   </div>
                   <div class="drill-nav-btn-group">
                     <button class="drill-step-btn" id="btn-prev-drill" ${this.activeDrillIdx === 0 ? 'disabled' : ''} title="Previous sentence">
-                      ← Prev
+                      ${t('prev_sentence')}
                     </button>
                     <button class="drill-step-btn" id="btn-next-drill" ${this.activeDrillIdx >= totalDrills - 1 ? 'disabled' : ''} title="Next sentence">
-                      Next →
+                      ${t('next_sentence')}
                     </button>
                   </div>
                 </div>
@@ -875,7 +892,7 @@ export class GrammarView {
                     ${this.isCheckingDrill ? 'disabled' : ''}
                   >
                     <span class="micro-bracket">${this.isCheckingDrill ? '...' : '[Ctrl+Enter]'}</span>
-                    <span class="keyhint-label">${this.isCheckingDrill ? 'Checking grammar...' : 'Check Sentence & Earn EXP'}</span>
+                    <span class="keyhint-label">${this.isCheckingDrill ? t('checking_grammar') : t('check_answer')}</span>
                   </button>
 
                   <button
@@ -883,7 +900,7 @@ export class GrammarView {
                     id="btn-toggle-drill-answer"
                     class="keyhint-btn btn-secondary-action touch-target"
                   >
-                    ${isAnswerRevealed ? 'Hide Answer' : 'Show Answer'}
+                    ${isAnswerRevealed ? t('hide_drill_answer') : t('show_drill_answer')}
                   </button>
                 </div>
 
@@ -896,8 +913,8 @@ export class GrammarView {
                 ${isAnswerRevealed ? `
                   <div class="drill-revealed-answer-card">
                     <div class="answer-card-header">
-                      <span class="answer-badge">[✓] Correct Target Construction</span>
-                      <button class="drill-audio-btn touch-target" id="btn-drill-audio" data-target="${currentDrill.target}" title="Listen to pronunciation">
+                      <span class="answer-badge">${t('correct_construction')}</span>
+                      <button class="drill-audio-btn touch-target" id="btn-drill-audio" data-target="${currentDrill.target}" title="${t('audio_tooltip')}">
                         [Audio] Listen
                       </button>
                     </div>
@@ -928,7 +945,7 @@ export class GrammarView {
               <div class="sandbox-header-row">
                 <div class="sandbox-title-wrap">
                   <span class="sandbox-icon">[Sandbox]</span>
-                  <h3 class="sandbox-title">Free Sentence Production</h3>
+                  <h3 class="sandbox-title">${t('free_sandbox_title')}</h3>
                 </div>
                 <div class="sandbox-ai-indicator">
                   <span class="ai-badge ${hasKey ? 'ai-online' : 'ai-local'}">
@@ -938,7 +955,7 @@ export class GrammarView {
               </div>
 
               <p class="sandbox-instruction">
-                Draft a custom sentence about your life using this topic to earn additional EXP:
+                ${t('free_sandbox_desc')}
               </p>
 
               <div class="quick-char-bar">
@@ -966,7 +983,7 @@ export class GrammarView {
                   ${this.isCheckingSandbox ? 'disabled' : ''}
                 >
                   <span class="micro-bracket">${this.isCheckingSandbox ? '...' : '[Ctrl+Enter]'}</span>
-                  <span class="keyhint-label">${this.isCheckingSandbox ? 'Checking grammar...' : 'Check Custom Sentence'}</span>
+                  <span class="keyhint-label">${this.isCheckingSandbox ? t('checking_grammar') : t('evaluate_sandbox')}</span>
                 </button>
               </div>
 
@@ -982,10 +999,10 @@ export class GrammarView {
 
         <!-- Keyhint Footer -->
         <div class="view-keyhints-bar">
-          <span class="micro-keyhint"><span class="micro-bracket">[Esc]</span> Back to List</span>
-          <span class="micro-keyhint"><span class="micro-bracket">[D]</span> Flashcards</span>
-          <span class="micro-keyhint"><span class="micro-bracket">[Ctrl+Enter]</span> Check Sentence</span>
-          <span class="micro-keyhint"><span class="micro-bracket">[V]</span> Vocab</span>
+          <span class="micro-keyhint"><span class="micro-bracket">[Esc]</span> ${t('keyhint_back_to_list')}</span>
+          <span class="micro-keyhint"><span class="micro-bracket">[D]</span> ${t('keyhint_flashcards')}</span>
+          <span class="micro-keyhint"><span class="micro-bracket">[Ctrl+Enter]</span> ${t('keyhint_check_sentence')}</span>
+          <span class="micro-keyhint"><span class="micro-bracket">[V]</span> ${t('keyhint_vocab')}</span>
         </div>
       </div>
     `;
@@ -1050,11 +1067,11 @@ export class GrammarView {
           <div class="feedback-corrected-label-row">
             <span class="feedback-label">Clean Corrected Sentence:</span>
             <div class="feedback-actions-bar">
-              <button type="button" class="btn-action-pill btn-apply-fix" id="btn-apply-${prefix}-fix" data-fixed="${escapeHtml(feedback.correctedSentence)}" title="Apply this correction to input">
-                [Apply to Input]
+              <button type="button" class="btn-action-pill btn-apply-fix" id="btn-apply-${prefix}-fix" data-fixed="${escapeHtml(feedback.correctedSentence)}" title="${t('apply_fix')}">
+                [${t('apply_fix')}]
               </button>
-              <button type="button" class="btn-action-pill btn-copy-fix" id="btn-copy-${prefix}-fix" data-fixed="${escapeHtml(feedback.correctedSentence)}" title="Copy clean sentence to clipboard">
-                [Copy]
+              <button type="button" class="btn-action-pill btn-copy-fix" id="btn-copy-${prefix}-fix" data-fixed="${escapeHtml(feedback.correctedSentence)}" title="${t('copy_sentence')}">
+                [${t('copy_sentence')}]
               </button>
             </div>
           </div>
@@ -1137,7 +1154,7 @@ export class GrammarView {
     this.container.querySelector('#btn-drill-audio')?.addEventListener('click', (e) => {
       const target = e.currentTarget.getAttribute('data-target');
       if (target) {
-        state.playAudio(target);
+        state.playAudio(target, e.currentTarget);
       }
     });
   }
@@ -1285,7 +1302,7 @@ export class GrammarView {
       if (checkBtn) {
         checkBtn.disabled = false;
         checkBtn.classList.remove('btn-loading');
-        checkBtn.innerHTML = '<span class="micro-bracket">[Ctrl+Enter]</span> <span class="keyhint-label">Check Sentence & Earn EXP</span>';
+        checkBtn.innerHTML = `<span class="micro-bracket">[Ctrl+Enter]</span> <span class="keyhint-label">${t('check_answer')}</span>`;
       }
     }
   }
@@ -1301,6 +1318,7 @@ export class GrammarView {
       return;
     }
 
+    sound.playClick();
     this.isCheckingSandbox = true;
 
     // 1. In-place loading state on sandbox check button
@@ -1308,7 +1326,7 @@ export class GrammarView {
     if (evalBtn) {
       evalBtn.disabled = true;
       evalBtn.classList.add('btn-loading');
-      evalBtn.innerHTML = '<span class="micro-bracket">...</span> Checking grammar...';
+      evalBtn.innerHTML = `<span class="micro-bracket">...</span> ${t('checking_grammar')}...`;
     }
 
     // 2. Visible loading state inside feedback container (NEVER wipes textarea)
@@ -1317,7 +1335,7 @@ export class GrammarView {
       feedbackContainer.innerHTML = `
         <div class="drill-feedback-card feedback-loading-card">
           <div class="feedback-badge-row">
-            <span class="verdict-pill verdict-loading">Checking grammar...</span>
+            <span class="verdict-pill verdict-loading">${t('checking_grammar')}...</span>
             <span class="feedback-engine-badge">Querying Linguistic Engine</span>
           </div>
           <div class="feedback-loading-indicator">
@@ -1333,6 +1351,12 @@ export class GrammarView {
         targetTopic: topic?.title || ''
       });
       this.sandboxFeedback = feedback;
+
+      if (feedback && feedback.isCorrect) {
+        sound.playSuccess();
+      } else {
+        sound.playRetry();
+      }
 
       if (feedback && feedback.expBonus > 0) {
         state.addExp(feedback.expBonus, { label: 'Sentence Master', bonus: feedback.isCorrect });
@@ -1358,7 +1382,7 @@ export class GrammarView {
       if (evalBtn) {
         evalBtn.disabled = false;
         evalBtn.classList.remove('btn-loading');
-        evalBtn.innerHTML = '<span class="micro-bracket">[Ctrl+Enter]</span> <span class="keyhint-label">Check Custom Sentence</span>';
+        evalBtn.innerHTML = `<span class="micro-bracket">[Ctrl+Enter]</span> <span class="keyhint-label">${t('evaluate_sandbox')}</span>`;
       }
     }
   }

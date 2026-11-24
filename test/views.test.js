@@ -8,6 +8,8 @@ import { QuizView } from '../js/views/quiz.js';
 import { LexiconView } from '../js/views/lexicon.js';
 import { HelpModalView } from '../js/views/help.js';
 import { MemorizeView } from '../js/views/memorize.js';
+import { keyboard, KeyboardState } from '../js/keyboard.js';
+import { checkSentenceGrammar } from '../js/gemini.js';
 
 // Minimal mock DOM for Node.js test environment
 class MockElement {
@@ -77,7 +79,7 @@ class MockElement {
   }
 }
 
-export function runViewTests(it) {
+export async function runViewTests(it) {
   console.log('\n--- Testing View Component Mounting & Structural Integrity ---');
 
   it('TopHudView renders without crashing and includes Level & EXP progress track', () => {
@@ -235,5 +237,80 @@ export function runViewTests(it) {
     assert(memorize.isSprintMode === false, 'Sprint mode should be exited');
     assert(container.innerHTML.includes('memory-matrix-grid'), 'Must return to matrix grid on sprint exit');
     memorize.destroy();
+  });
+
+  it('Memorize keyboard routing switches states and handles S/Space/Enter/Esc', () => {
+    const container = new MockElement('main');
+    const memorize = new MemorizeView(container, () => {});
+
+    state.cards = [
+      { id: 'm1', word: 'Gedächtnis', pos: 'noun', mn: 'санах ой' }
+    ];
+
+    memorize.render();
+    assert.strictEqual(keyboard.getState(), KeyboardState.MEMORIZE, 'Rendering matrix must set keyboard state to MEMORIZE');
+
+    // Test that 'S' in MEMORIZE triggers memorize_start_sprint instead of toggle_settings
+    let sprintTriggered = false;
+    let settingsTriggered = false;
+    const offSprint = keyboard.on('memorize_start_sprint', () => { sprintTriggered = true; });
+    const offSettings = keyboard.on('toggle_settings', () => { settingsTriggered = true; });
+
+    keyboard.onKeyDown({ key: 's', code: 'KeyS', preventDefault: () => {} });
+    assert(sprintTriggered, 'Pressing S in MEMORIZE state must trigger memorize_start_sprint');
+    assert(!settingsTriggered, 'Pressing S in MEMORIZE state must NOT trigger toggle_settings');
+
+    offSprint();
+    offSettings();
+
+    // Start Sprint and test SPRINT state
+    memorize.startSprint();
+    assert.strictEqual(keyboard.getState(), KeyboardState.SPRINT, 'Starting sprint must transition keyboard to SPRINT state');
+
+    let pauseTriggered = false;
+    let advanceTriggered = false;
+    let exitTriggered = false;
+    const offPause = keyboard.on('sprint_pause_toggle', () => { pauseTriggered = true; });
+    const offAdv = keyboard.on('sprint_memorize_advance', () => { advanceTriggered = true; });
+    const offExit = keyboard.on('sprint_exit', () => { exitTriggered = true; });
+
+    keyboard.onKeyDown({ key: ' ', code: 'Space', preventDefault: () => {} });
+    assert(pauseTriggered, 'Space during sprint must trigger sprint_pause_toggle');
+
+    keyboard.onKeyDown({ key: 'Enter', code: 'Enter', preventDefault: () => {} });
+    assert(advanceTriggered, 'Enter during sprint must trigger sprint_memorize_advance');
+
+    keyboard.onKeyDown({ key: 'Escape', code: 'Escape', preventDefault: () => {} });
+    assert(exitTriggered, 'Escape during sprint must trigger sprint_exit');
+
+    offPause();
+    offAdv();
+    offExit();
+
+    memorize.exitSprint();
+    assert.strictEqual(keyboard.getState(), KeyboardState.MEMORIZE, 'Exiting sprint must restore keyboard state to MEMORIZE');
+    memorize.destroy();
+  });
+
+  await it('Free-form Sandbox Sentence Checker evaluates sentences and outputs diffs, verdicts, and rules', async () => {
+    // 1. Incomplete / empty input
+    const emptyRes = await checkSentenceGrammar('', 'de', { targetTopic: 'Nebensätze mit weil' });
+    assert.strictEqual(emptyRes.isCorrect, false);
+    assert(emptyRes.explanations.length > 0);
+
+    // 2. Erroneous sentence in sandbox (Tier 4 offline local evaluation check)
+    const errSentence = 'Ich gehe mit mein Freund in der Park weil das Wetter schön ist.';
+    const res = await checkSentenceGrammar(errSentence, 'de', { targetTopic: 'Nebensätze mit weil' });
+    assert(res.correctedSentence, 'Must produce corrected sentence');
+    assert(res.diffHtml, 'Must produce diff HTML');
+    assert(typeof res.expBonus === 'number', 'Must specify expBonus');
+    assert(res.engine, 'Must indicate evaluation engine');
+
+    // 3. Perfect sentence
+    const perfSentence = 'Ich gehe mit meinem Freund in den Park, weil das Wetter schön ist.';
+    const perfRes = await checkSentenceGrammar(perfSentence, 'de', { targetTopic: 'Nebensätze mit weil' });
+    assert(perfRes.correctedSentence, 'Must produce corrected sentence');
+    assert.strictEqual(perfRes.isCorrect, true);
+    assert.strictEqual(perfRes.verdict, 'Perfect!');
   });
 }

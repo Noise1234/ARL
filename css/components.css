@@ -910,7 +910,7 @@
   background-color: var(--bg-card-subtle);
   border: 1px solid var(--border-muted);
   border-radius: var(--radius-sm);
-  color: #38bdf8;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
@@ -1101,15 +1101,15 @@
 }
 
 .sandbox-feedback-card.verdict-perfect {
-  border-left: 4px solid #22c55e;
+  border-left: 4px solid var(--border-focus);
 }
 
 .sandbox-feedback-card.verdict-almost-there {
-  border-left: 4px solid #f59e0b;
+  border-left: 4px solid var(--border-subtle);
 }
 
 .sandbox-feedback-card.verdict-needs-correction {
-  border-left: 4px solid #ef4444;
+  border-left: 4px solid var(--border-focus);
 }
 
 .feedback-badge-row {
@@ -3322,22 +3322,22 @@
 }
 
 .drill-pill-step.pill-current {
-  background: var(--accent-blue-bg);
-  border-color: var(--accent-blue);
-  color: var(--text-white);
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+  background: var(--bg-surface-hover);
+  border-color: var(--accent-primary);
+  color: var(--accent-text);
+  box-shadow: 0 0 0 1px var(--accent-primary);
   transform: scale(1.08);
 }
 
 .drill-pill-step.pill-passed {
-  background: var(--accent-green-bg);
-  border-color: var(--accent-green);
-  color: var(--accent-green);
+  background: var(--bg-surface-2);
+  border-color: var(--border-focus);
+  color: var(--text-primary);
 }
 
 .drill-pill-step.pill-reviewed:not(.pill-passed):not(.pill-current) {
-  border-color: var(--accent-yellow);
-  color: var(--accent-yellow);
+  border-color: var(--border-subtle);
+  color: var(--text-muted);
 }
 
 /* Mongolian Prompt Box */
@@ -3528,19 +3528,19 @@
 
 .drill-feedback-card.verdict-perfect,
 .sandbox-feedback-card.verdict-perfect {
-  border-color: rgba(34, 197, 94, 0.4);
+  border-color: var(--border-focus);
 }
 
 .drill-feedback-card.verdict-almost-there,
 .sandbox-feedback-card.verdict-almost-there,
 .drill-feedback-card.verdict-minor-mistake-spelling {
-  border-color: rgba(234, 179, 8, 0.4);
+  border-color: var(--border-subtle);
 }
 
 .drill-feedback-card.verdict-needs-correction,
 .sandbox-feedback-card.verdict-needs-correction,
 .drill-feedback-card.verdict-grammar-word-order-error {
-  border-color: rgba(239, 68, 68, 0.4);
+  border-color: var(--border-focus);
 }
 
 .feedback-badge-row {
@@ -3919,13 +3919,14 @@ span.diff-same {
 
 .feedback-val.natural-text {
   font-style: italic;
-  color: var(--accent-blue);
+  color: var(--text-secondary);
 }
 
 /* Revealed Answer Card */
 .drill-revealed-answer-card {
-  background: var(--bg-card-subtle);
-  border: 1px solid rgba(34, 197, 94, 0.35);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
   border-radius: var(--radius-md);
   padding: 16px;
   display: flex;
@@ -3945,7 +3946,7 @@ span.diff-same {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--accent-green);
+  color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -3962,6 +3963,33 @@ span.diff-same {
 
 .drill-audio-btn:hover {
   border-color: var(--border-focus);
+}
+
+/* Subtle Monochrome Playing State for Audio Pronunciation Buttons */
+.is-playing,
+button.is-playing,
+.drill-audio-btn.is-playing,
+.item-audio-btn.is-playing,
+.tile-audio-btn.is-playing,
+#btn-audio.is-playing,
+#btn-sprint-audio.is-playing {
+  border-color: var(--text-primary) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 0 0 2px var(--border-focus), 0 0 8px rgba(255, 255, 255, 0.25) !important;
+  transform: scale(1.04);
+  animation: audioPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes audioPulse {
+  0% {
+    box-shadow: 0 0 0 1px var(--border-focus), 0 0 4px rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 2px var(--accent-primary), 0 0 10px rgba(255, 255, 255, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 1px var(--border-focus), 0 0 4px rgba(255, 255, 255, 0.15);
+  }
 }
 
 .answer-target-sentence {
@@ -4495,7 +4523,7 @@ span.diff-same {
 }
 
 .pip-formula-code {
-  color: #38bdf8;
+  color: var(--text-primary);
   font-family: var(--font-mono);
   font-weight: 700;
 }
@@ -4622,13 +4650,13 @@ span.diff-same {
 }
 
 .pip-pattern-box {
-  background: var(--bg-surface);
+  background: var(--bg-surface-2);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 10px 14px;
   font-family: var(--font-mono);
   font-size: 0.95rem;
-  color: #38bdf8;
+  color: var(--text-primary);
   font-weight: 700;
 }
 
@@ -4643,12 +4671,12 @@ span.diff-same {
 }
 
 .pip-trap-section .pip-trap-box {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 10px 14px;
   font-size: 0.9rem;
-  color: #f87171;
+  color: var(--text-primary);
   line-height: 1.45;
 }
 
@@ -5102,7 +5130,7 @@ span.diff-same {
 
 .arl-card.selected,
 .arl-card:hover {
-  border-color: #3b82f6;
+  border-color: var(--border-focus);
   box-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
 
@@ -5113,9 +5141,9 @@ span.diff-same {
 }
 
 .arl-card-num-badge {
-  background: #1e293b;
-  color: #60a5fa;
-  border: 1px solid #334155;
+  background: var(--bg-surface-2);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
   padding: 2px 8px;
   border-radius: 6px;
   font-family: 'JetBrains Mono', monospace;
@@ -5125,7 +5153,7 @@ span.diff-same {
 }
 
 .arl-card-title {
-  color: #f8fafc;
+  color: var(--text-primary);
   font-size: 1.05rem;
   font-weight: 600;
   margin: 8px 0;
@@ -5133,10 +5161,10 @@ span.diff-same {
 }
 
 .arl-card-formula {
-  background: #090b10;
-  border: 1px solid #1e293b;
-  border-left: 3px solid #3b82f6;
-  color: #93c5fd;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent-primary);
+  color: var(--text-primary);
   font-family: 'JetBrains Mono', monospace;
   padding: 10px 12px;
   border-radius: 8px;
@@ -5161,7 +5189,7 @@ span.diff-same {
   align-items: center;
   gap: 12px;
   font-size: 0.82rem;
-  color: #94a3b8;
+  color: var(--text-muted);
   font-family: 'JetBrains Mono', monospace;
 }
 
@@ -5175,21 +5203,21 @@ span.diff-same {
 }
 
 .arl-card-status-badge.understood {
-  background: rgba(16, 185, 129, 0.2);
-  color: #34d399;
-  border: 1px solid #059669;
+  background: var(--bg-surface-2);
+  color: var(--text-primary);
+  border: 1px solid var(--border-focus);
 }
 
 .arl-card-status-badge.learning {
-  background: rgba(148, 163, 184, 0.15);
-  color: #cbd5e1;
-  border: 1px solid #475569;
+  background: var(--bg-surface-1);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
 }
 
 .arl-card-drills-btn {
-  background: #172554;
-  color: #60a5fa;
-  border: 1px solid #2563eb;
+  background: var(--bg-surface-2);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
   padding: 6px 14px;
   border-radius: 8px;
   font-weight: 600;
@@ -5200,9 +5228,9 @@ span.diff-same {
 }
 
 .arl-card-drills-btn:hover {
-  background: #1e3a8a;
-  border-color: #3b82f6;
-  color: #93c5fd;
+  background: var(--bg-surface-hover);
+  border-color: var(--border-focus);
+  color: var(--text-primary);
 }
 
 /* 2. Memorized Words Counter Grid & Stats Dashboard */

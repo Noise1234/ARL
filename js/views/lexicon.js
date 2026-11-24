@@ -139,7 +139,7 @@ export class LexiconView {
               type="text"
               id="lexicon-search-input"
               class="lexicon-input"
-              placeholder="Search words, translations, examples... (e.g. Haus, авах, to see)"
+              placeholder="${t('lexicon_search_placeholder')}"
               value="${this.searchQuery}"
               autocomplete="off"
             />
@@ -165,33 +165,33 @@ export class LexiconView {
             <!-- POS Filters -->
             <div class="filter-chip-group">
               <span class="filter-label">POS:</span>
-              <button class="filter-chip ${this.posFilter === 'all' ? 'active' : ''}" data-pos="all">All</button>
-              <button class="filter-chip ${this.posFilter === 'noun' ? 'active' : ''}" data-pos="noun">Nouns</button>
-              <button class="filter-chip ${this.posFilter === 'verb' ? 'active' : ''}" data-pos="verb">Verbs</button>
-              <button class="filter-chip ${this.posFilter === 'adjective' ? 'active' : ''}" data-pos="adjective">Adjectives</button>
+              <button class="filter-chip ${this.posFilter === 'all' ? 'active' : ''}" data-pos="all">${t('pos_all')}</button>
+              <button class="filter-chip ${this.posFilter === 'noun' ? 'active' : ''}" data-pos="noun">${t('pos_noun')}</button>
+              <button class="filter-chip ${this.posFilter === 'verb' ? 'active' : ''}" data-pos="verb">${t('pos_verb')}</button>
+              <button class="filter-chip ${this.posFilter === 'adjective' ? 'active' : ''}" data-pos="adjective">${t('pos_adj')}</button>
             </div>
 
             <!-- Status Filters -->
             <div class="filter-chip-group">
               <span class="filter-label">SRS:</span>
-              <button class="filter-chip ${this.statusFilter === 'all' ? 'active' : ''}" data-status="all">All</button>
-              <button class="filter-chip ${this.statusFilter === 'due' ? 'active' : ''}" data-status="due">Due</button>
-              <button class="filter-chip ${this.statusFilter === 'new' ? 'active' : ''}" data-status="new">New</button>
-              <button class="filter-chip ${this.statusFilter === 'memorized' ? 'active' : ''}" data-status="memorized">Learned</button>
+              <button class="filter-chip ${this.statusFilter === 'all' ? 'active' : ''}" data-status="all">${t('status_all')}</button>
+              <button class="filter-chip ${this.statusFilter === 'due' ? 'active' : ''}" data-status="due">${t('status_due')}</button>
+              <button class="filter-chip ${this.statusFilter === 'new' ? 'active' : ''}" data-status="new">${t('status_new')}</button>
+              <button class="filter-chip ${this.statusFilter === 'memorized' ? 'active' : ''}" data-status="memorized">${t('status_learned')}</button>
             </div>
           </div>
 
           <!-- Pagination Bar -->
           <div class="lexicon-pagination-bar">
             <button class="page-nav-btn touch-target" id="btn-page-prev" ${this.currentPage <= 1 ? 'disabled' : ''}>
-              ← Previous
+              ${t('page_prev')}
             </button>
             <span class="page-indicator">
-              Page <strong>${this.currentPage}</strong> of <strong>${totalPages}</strong>
+              ${t('page')} <strong>${this.currentPage}</strong> ${t('of')} <strong>${totalPages}</strong>
               <span class="page-range">(${startIndex + 1}–${Math.min(startIndex + this.pageSize, filtered.length)} of ${filtered.length})</span>
             </span>
             <button class="page-nav-btn touch-target" id="btn-page-next" ${this.currentPage >= totalPages ? 'disabled' : ''}>
-              Next →
+              ${t('page_next')}
             </button>
           </div>
         </div>
@@ -201,14 +201,14 @@ export class LexiconView {
           ${pagedItems.length === 0 ? `
             <div class="lexicon-empty-state">
               <div class="empty-icon">∅</div>
-              <div class="empty-text">No vocabulary matches your search criteria.</div>
+              <div class="empty-text">${t('no_words_found')}</div>
             </div>
           ` : pagedItems.map(card => {
             const prog = state.progressMap.get(card.id);
-            let srsBadge = '<span class="status-pill pill-new">New</span>';
+            let srsBadge = `<span class="status-pill pill-new">${t('status_new')}</span>`;
             if (prog && prog.lastStudied) {
               if (prog.interval >= 21 || prog.reps >= 4) {
-                srsBadge = '<span class="status-pill pill-memorized">✓ Learned</span>';
+                srsBadge = `<span class="status-pill pill-memorized">✓ ${t('status_learned')}</span>`;
               } else {
                 srsBadge = `<span class="status-pill pill-due">Due in ${prog.interval || 1}d</span>`;
               }
@@ -236,7 +236,7 @@ export class LexiconView {
                   </div>
                   <div class="item-header-actions">
                     ${srsBadge}
-                    <button class="item-audio-btn touch-target" data-word="${card.word}" title="Listen to pronunciation">
+                    <button class="item-audio-btn touch-target" data-word="${card.word}" title="${t('audio_tooltip')}">
                       🔊
                     </button>
                   </div>
@@ -275,13 +275,13 @@ export class LexiconView {
         ${totalPages > 1 ? `
           <div class="lexicon-pagination-bottom">
             <button class="page-nav-btn touch-target" id="btn-page-prev-bottom" ${this.currentPage <= 1 ? 'disabled' : ''}>
-              ← Previous
+              ${t('page_prev')}
             </button>
             <span class="page-indicator">
-              Page <strong>${this.currentPage}</strong> of <strong>${totalPages}</strong>
+              ${t('page')} <strong>${this.currentPage}</strong> ${t('of')} <strong>${totalPages}</strong>
             </span>
             <button class="page-nav-btn touch-target" id="btn-page-next-bottom" ${this.currentPage >= totalPages ? 'disabled' : ''}>
-              Next →
+              ${t('page_next')}
             </button>
           </div>
         ` : ''}
@@ -365,7 +365,7 @@ export class LexiconView {
         e.stopPropagation();
         const word = btn.dataset.word;
         if (word) {
-          state.playAudio(word);
+          state.playAudio(word, btn);
         }
       });
     });

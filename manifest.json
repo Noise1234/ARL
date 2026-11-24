@@ -1,6 +1,7 @@
 {
   "name": "ARL - Minimal Language Mastery",
   "short_name": "ARL",
+  "version": "3.0.0",
   "description": "Ultra-minimalist active recall language learning PWA for German and English with deterministic SM-2 spaced repetition.",
   "start_url": "./index.html",
   "scope": "./",

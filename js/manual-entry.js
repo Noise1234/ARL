@@ -44,18 +44,18 @@ export class ManualWordEntryModal {
           <form id="custom-word-form" class="modal-form">
             <div class="form-row">
               <div class="form-group flex-1">
-                <label for="word-pos">Part of Speech</label>
+                <label for="word-pos">${t('pos_label')}</label>
                 <select id="word-pos" class="form-select">
-                  <option value="noun">Noun</option>
-                  <option value="verb">Verb</option>
-                  <option value="adjective">Adjective</option>
-                  <option value="adverb">Adverb</option>
+                  <option value="noun">${t('pos_noun')}</option>
+                  <option value="verb">${t('pos_verb')}</option>
+                  <option value="adjective">${t('pos_adj')}</option>
+                  <option value="adverb">${t('pos_adv')}</option>
                 </select>
               </div>
 
               ${isDe ? `
                 <div class="form-group flex-1" id="article-group">
-                  <label for="word-article">Article</label>
+                  <label for="word-article">${t('article_label')}</label>
                   <select id="word-article" class="form-select">
                     <option value="der">der (masculine)</option>
                     <option value="die">die (feminine)</option>
@@ -67,13 +67,13 @@ export class ManualWordEntryModal {
 
             <div class="form-row">
               <div class="form-group flex-2">
-                <label for="word-target">Word (${targetLangLabel}) *</label>
+                <label for="word-target">${t('word_label')} (${targetLangLabel}) *</label>
                 <input type="text" id="word-target" class="form-input" placeholder="${isDe ? 'e.g. Entscheidung' : 'e.g. decision'}" required autocomplete="off" />
               </div>
 
               ${isDe ? `
                 <div class="form-group flex-1" id="plural-group">
-                  <label for="word-plural">Plural Form</label>
+                  <label for="word-plural">${t('plural_label')}</label>
                   <input type="text" id="word-plural" class="form-input" placeholder="-en, -e, -er, -" autocomplete="off" />
                 </div>
               ` : ''}
@@ -85,23 +85,23 @@ export class ManualWordEntryModal {
             </div>
 
             <div class="form-group">
-              <label for="word-mn">Mongolian Translation (Cyrillic) *</label>
+              <label for="word-mn">${t('translation_label')} (Cyrillic) *</label>
               <input type="text" id="word-mn" class="form-input" placeholder="Жишээ: шийдвэр, сонголт" required autocomplete="off" />
             </div>
 
             <div class="form-group">
-              <label for="word-ex-target">Example Sentence (${targetLangLabel})</label>
+              <label for="word-ex-target">${t('example_label')} (${targetLangLabel})</label>
               <input type="text" id="word-ex-target" class="form-input" placeholder="${isDe ? 'z. B. Das war eine gute Entscheidung.' : 'e.g. That was a wise decision.'}" autocomplete="off" />
             </div>
 
             <div class="form-group">
-              <label for="word-ex-mn">Mongolian Example Translation</label>
+              <label for="word-ex-mn">${t('example_label')} (MN)</label>
               <input type="text" id="word-ex-mn" class="form-input" placeholder="Жишээ: Энэ бол зөв шийдвэр байсан." autocomplete="off" />
             </div>
 
             <div class="form-actions-row">
-              <button type="button" class="keyhint-btn touch-target" id="btn-cancel-word">Cancel</button>
-              <button type="submit" class="keyhint-btn keyhint-primary touch-target" id="btn-save-word">Save Word</button>
+              <button type="button" class="keyhint-btn touch-target" id="btn-cancel-word">${t('cancel')}</button>
+              <button type="submit" class="keyhint-btn keyhint-primary touch-target" id="btn-save-word">${t('save_word')}</button>
             </div>
           </form>
 

@@ -104,7 +104,13 @@ class ARLApp {
     this.settingsView = new SettingsModalView(settingsMount, () => {
       this.isSettingsOpen = false;
       this.hudView.setActiveView(this.currentView);
-      this.renderCurrentView();
+      if (this.currentView === 'grammar' && this.grammarView.activeTopic) {
+        if (typeof this.grammarView.updateTopicLabels === 'function') {
+          this.grammarView.updateTopicLabels();
+        }
+      } else {
+        this.renderCurrentView();
+      }
     });
     this.helpView = new HelpModalView(modalMount, () => {
       this.isHelpOpen = false;
@@ -128,10 +134,20 @@ class ARLApp {
       this.hudView.render();
       if (this.isSettingsOpen) {
         this.settingsView.render();
+        if (this.currentView === 'grammar' && this.grammarView.activeTopic) {
+          if (typeof this.grammarView.updateTopicLabels === 'function') {
+            this.grammarView.updateTopicLabels();
+          }
+        } else {
+          this.renderCurrentView();
+        }
         return;
       }
-      // If user is inside an active grammar topic drill or sandbox, do not reload/wipe the view!
+      // If user is inside an active grammar topic drill or sandbox, update topic detail controls/labels reactively without wiping textarea content
       if (this.currentView === 'grammar' && this.grammarView.activeTopic) {
+        if (typeof this.grammarView.updateTopicLabels === 'function') {
+          this.grammarView.updateTopicLabels();
+        }
         return;
       }
       this.renderCurrentView();
@@ -189,6 +205,9 @@ class ARLApp {
     }
     if (this.isSyncModalOpen) {
       this.syncModal.hide();
+    }
+    if (this.currentView === 'memorize' && viewName !== 'memorize' && this.memorizeView?.isSprintMode) {
+      this.memorizeView.exitSprint();
     }
 
     this.currentView = viewName;
@@ -402,6 +421,49 @@ class ARLApp {
     keyboard.on('media_filter_type', (type) => {
       if (this.currentView === 'media') {
         this.mediaView.setTypeFilter(type);
+      }
+    });
+
+    // Memorize & Speed Imprint Sprint Actions
+    keyboard.on('memorize_start_sprint', () => {
+      if (this.currentView === 'memorize') {
+        this.memorizeView.startSprint();
+      }
+    });
+    keyboard.on('memorize_focus_search', () => {
+      if (this.currentView === 'memorize') {
+        const input = document.getElementById('mem-search-input');
+        if (input) input.focus();
+      }
+    });
+    keyboard.on('sprint_pause_toggle', () => {
+      if (this.currentView === 'memorize' && this.memorizeView.isSprintMode) {
+        this.memorizeView.toggleSprintPause();
+      }
+    });
+    keyboard.on('sprint_memorize_advance', () => {
+      if (this.currentView === 'memorize' && this.memorizeView.isSprintMode) {
+        this.memorizeView.nextSprintCard(true);
+      }
+    });
+    keyboard.on('sprint_prev', () => {
+      if (this.currentView === 'memorize' && this.memorizeView.isSprintMode) {
+        this.memorizeView.prevSprintCard();
+      }
+    });
+    keyboard.on('sprint_next', () => {
+      if (this.currentView === 'memorize' && this.memorizeView.isSprintMode) {
+        this.memorizeView.nextSprintCard(false);
+      }
+    });
+    keyboard.on('sprint_exit', () => {
+      if (this.currentView === 'memorize' && this.memorizeView.isSprintMode) {
+        this.memorizeView.exitSprint();
+      }
+    });
+    keyboard.on('sprint_audio', () => {
+      if (this.currentView === 'memorize' && this.memorizeView.isSprintMode) {
+        this.memorizeView.playSprintAudio();
       }
     });
   }

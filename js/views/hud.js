@@ -143,35 +143,35 @@ export class TopHudView {
       <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
         <button class="mobile-nav-tab ${this.currentView === 'vocab' ? 'active' : ''}" data-target="vocab">
           <span class="tab-key">[V]</span>
-          <span class="tab-label">Vocab</span>
+          <span class="tab-label">${t('nav_vocab')}</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'memorize' ? 'active' : ''}" data-target="memorize">
           <span class="tab-key">[M]</span>
-          <span class="tab-label">Sprint</span>
+          <span class="tab-label">${t('nav_sprint')}</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'quiz' ? 'active' : ''}" data-target="quiz">
           <span class="tab-key">[Q]</span>
-          <span class="tab-label">Quiz</span>
+          <span class="tab-label">${t('nav_quiz')}</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'lexicon' ? 'active' : ''}" data-target="lexicon">
           <span class="tab-key">[L]</span>
-          <span class="tab-label">Lexicon</span>
+          <span class="tab-label">${t('nav_lexicon')}</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'grammar' ? 'active' : ''}" data-target="grammar">
           <span class="tab-key">[G]</span>
-          <span class="tab-label">Grammar</span>
+          <span class="tab-label">${t('nav_grammar')}</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'media' ? 'active' : ''}" data-target="media">
           <span class="tab-key">[I]</span>
-          <span class="tab-label">Media</span>
+          <span class="tab-label">${t('nav_media')}</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'stats' ? 'active' : ''}" data-target="stats">
           <span class="tab-key">[X]</span>
-          <span class="tab-label">Stats</span>
+          <span class="tab-label">${t('nav_stats')}</span>
         </button>
         <button class="mobile-nav-tab ${this.currentView === 'pip' ? 'active' : ''}" data-target="pip">
           <span class="tab-key">[P]</span>
-          <span class="tab-label">PiP</span>
+          <span class="tab-label">${t('nav_pip')}</span>
         </button>
       </nav>
     `;

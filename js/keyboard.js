@@ -11,6 +11,8 @@ export const KeyboardState = {
   GRAMMAR_LIST: 'GRAMMAR_LIST',
   GRAMMAR_TOPIC: 'GRAMMAR_TOPIC',
   MEDIA_HUB: 'MEDIA_HUB',
+  MEMORIZE: 'MEMORIZE',
+  SPRINT: 'SPRINT',
   INPUT_FOCUSED: 'INPUT_FOCUSED'
 };
 
@@ -121,7 +123,7 @@ class KeyboardRouter {
 
   onKeyDown(e) {
     // 1. Check if user is typing in an active text input or textarea
-    const activeEl = document.activeElement;
+    const activeEl = typeof document !== 'undefined' ? document.activeElement : null;
     const isInput = activeEl && (
       activeEl.tagName === 'INPUT' ||
       activeEl.tagName === 'TEXTAREA' ||
@@ -145,7 +147,7 @@ class KeyboardRouter {
     this.flashKeyVisual(key, code);
 
     // 2. Global View Navigation (V, G, M, S) available across all non-input views
-    if (state !== KeyboardState.SETTINGS_OVERLAY) {
+    if (state !== KeyboardState.SETTINGS_OVERLAY && state !== KeyboardState.SPRINT) {
       if (key === 'v' || key === 'V') {
         e.preventDefault();
         this.trigger('nav_vocab');
@@ -183,7 +185,11 @@ class KeyboardRouter {
       }
       if (key === 's' || key === 'S') {
         e.preventDefault();
-        this.trigger('toggle_settings');
+        if (state === KeyboardState.MEMORIZE) {
+          this.trigger('memorize_start_sprint');
+        } else {
+          this.trigger('toggle_settings');
+        }
         return;
       }
       if (key === '?') {
@@ -313,6 +319,38 @@ class KeyboardRouter {
         } else if (key === 'w' || key === 'W') {
           e.preventDefault();
           this.trigger('media_filter_type', 'show');
+        }
+        break;
+
+      case KeyboardState.MEMORIZE:
+        if (key === 's' || key === 'S' || code === 'Space') {
+          e.preventDefault();
+          this.trigger('memorize_start_sprint');
+        } else if (key === '/') {
+          e.preventDefault();
+          this.trigger('memorize_focus_search');
+        }
+        break;
+
+      case KeyboardState.SPRINT:
+        if (code === 'Space') {
+          e.preventDefault();
+          this.trigger('sprint_pause_toggle');
+        } else if (code === 'Enter' || key === 'm' || key === 'M') {
+          e.preventDefault();
+          this.trigger('sprint_memorize_advance');
+        } else if (key === 'ArrowLeft' || key === 'h' || key === 'H') {
+          e.preventDefault();
+          this.trigger('sprint_prev');
+        } else if (key === 'ArrowRight' || key === 'l' || key === 'L') {
+          e.preventDefault();
+          this.trigger('sprint_next');
+        } else if (key === 'Escape') {
+          e.preventDefault();
+          this.trigger('sprint_exit');
+        } else if (key === 'a' || key === 'A') {
+          e.preventDefault();
+          this.trigger('sprint_audio');
         }
         break;
     }

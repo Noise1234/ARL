@@ -199,7 +199,7 @@ export class SettingsModalView {
             <!-- GitHub Gist Cloud Sync -->
             <div class="settings-row settings-sync-row">
               <div class="sync-header-row">
-                <span class="settings-label">GitHub Gist Cloud Sync</span>
+                <span class="settings-label">${t('settings_gist_sync')}</span>
                 <span class="sync-status-badge ${syncBadgeClass}" id="settings-sync-status-badge">
                   ${syncBadgeText}
                 </span>
@@ -219,7 +219,7 @@ export class SettingsModalView {
                       spellcheck="false"
                     />
                     <button type="button" class="btn-api-toggle" id="btn-toggle-gh-token" title="Show/Hide Token">
-                      ${this.showGhToken ? 'Hide' : 'Show'}
+                      ${this.showGhToken ? t('hide') : t('show')}
                     </button>
                   </div>
                 </div>
@@ -239,17 +239,17 @@ export class SettingsModalView {
 
                 <div class="sync-actions-row">
                   <button type="button" class="settings-action-btn btn-connect-sync touch-target" id="btn-sync-connect" ${this.isSyncOperating ? 'disabled' : ''}>
-                    <span class="micro-bracket">[SYNC]</span> Connect & Auto-Sync
+                    <span class="micro-bracket">[SYNC]</span> ${t('connect_auto_sync')}
                   </button>
                   <button type="button" class="settings-action-btn btn-push-sync touch-target" id="btn-sync-push" ${(!gistId || this.isSyncOperating) ? 'disabled' : ''}>
-                    <span class="micro-bracket">[Push]</span> Upload Local
+                    <span class="micro-bracket">[Push]</span> ${t('upload_local')}
                   </button>
                   <button type="button" class="settings-action-btn btn-pull-sync touch-target" id="btn-sync-pull" ${(!gistId || this.isSyncOperating) ? 'disabled' : ''}>
-                    <span class="micro-bracket">[Pull]</span> Download Remote
+                    <span class="micro-bracket">[Pull]</span> ${t('download_remote')}
                   </button>
                   ${(ghToken || gistId) ? `
                     <button type="button" class="btn-clear-key touch-target" id="btn-sync-disconnect" title="Disconnect and clear token">
-                      Disconnect
+                      ${t('disconnect')}
                     </button>
                   ` : ''}
                 </div>
@@ -257,10 +257,10 @@ export class SettingsModalView {
                 <!-- Offline Safety Net: Local JSON Backup Controls -->
                 <div class="sync-actions-row" style="margin-top:6px;gap:8px;">
                   <button type="button" class="settings-action-btn touch-target" id="btn-sync-export-json" title="Export arl_backup_v2.json locally">
-                    <span class="micro-bracket">[Export]</span> Export Local JSON
+                    <span class="micro-bracket">[Export]</span> ${t('export_local_json')}
                   </button>
                   <button type="button" class="settings-action-btn touch-target" id="btn-sync-import-json" title="Import arl_backup_v2.json locally">
-                    <span class="micro-bracket">[Import]</span> Import Local JSON
+                    <span class="micro-bracket">[Import]</span> ${t('import_local_json')}
                   </button>
                   <input type="file" id="settings-sync-file-input" accept=".json,application/json" style="display:none" />
                 </div>
@@ -268,7 +268,7 @@ export class SettingsModalView {
                 <div class="sync-options-row" style="margin-top:8px;">
                   <label class="sync-checkbox-label" style="display:flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--text-muted);cursor:pointer;">
                     <input type="checkbox" id="settings-sync-auto-end" ${gistSync.isAutoSyncEnabled() ? 'checked' : ''} />
-                    <span>Auto-Sync on Session End (timestamp protected)</span>
+                    <span>${t('auto_sync_label')}</span>
                   </label>
                 </div>
               </div>
@@ -287,7 +287,7 @@ export class SettingsModalView {
             <!-- Free Gemini 2.5 Flash API Configuration -->
             <div class="settings-row settings-gemini-row">
               <div class="gemini-header-row">
-                <span class="settings-label">Gemini AI Key (Free Tier)</span>
+                <span class="settings-label">${t('settings_gemini_key')}</span>
                 <span class="gemini-status-tag ${hasKey ? 'tag-connected' : 'tag-fallback'}">
                   ${hasKey ? '[Gemini 2.5 Flash Active]' : '[Local Fallback Active]'}
                 </span>
@@ -304,14 +304,14 @@ export class SettingsModalView {
                   spellcheck="false"
                 />
                 <button type="button" class="btn-api-toggle" id="btn-toggle-key-visibility" title="Show/Hide Key">
-                  ${this.showApiKey ? 'Hide' : 'Show'}
+                  ${this.showApiKey ? t('hide') : t('show')}
                 </button>
                 <button type="button" class="settings-action-btn btn-save-key" id="btn-save-gemini-key">
-                  Save
+                  ${t('save')}
                 </button>
                 ${hasKey ? `
                   <button type="button" class="btn-clear-key" id="btn-clear-gemini-key" title="Clear key">
-                    Clear
+                    ${t('clear')}
                   </button>
                 ` : ''}
               </div>
@@ -323,30 +323,30 @@ export class SettingsModalView {
 
             <!-- Android Native APK Download -->
             <div class="settings-row settings-apk-row">
-              <span class="settings-label">Android Native App (v2.2.0)</span>
+              <span class="settings-label">Android Native App (v3.0.0)</span>
               <div class="apk-download-group">
-                <a href="/apk" class="settings-action-btn touch-target btn-download-apk" download="ARL-v2.2.0.apk" style="text-decoration:none; text-align:center;">
-                  <span class="micro-bracket">[APK]</span> Download Android APK v2.2.0 (Latest Release)
+                <a href="/apk" class="settings-action-btn touch-target btn-download-apk" download="ARL-v3.0.0.apk" style="text-decoration:none; text-align:center;">
+                  <span class="micro-bracket">[APK]</span> Download Android APK v3.0.0 (Latest Release)
                 </a>
               </div>
             </div>
 
             <!-- Backup & Progress Safeguard -->
             <div class="settings-row settings-backup-row">
-              <span class="settings-label">Backup & Progress Safeguard</span>
+              <span class="settings-label">${t('settings_backup_safeguard')}</span>
               <div class="backup-btn-group" style="display:flex; flex-wrap:wrap; gap:6px;">
                 <button class="settings-action-btn touch-target" id="btn-export-backup" title="Export file">
-                  <span class="micro-bracket">[E]</span> Export File
+                  <span class="micro-bracket">[E]</span> ${t('export_file')}
                 </button>
                 <button class="settings-action-btn touch-target" id="btn-copy-backup" title="Copy JSON to clipboard">
-                  <span class="micro-bracket">[Copy]</span> Copy JSON
+                  <span class="micro-bracket">[Copy]</span> ${t('copy_json')}
                 </button>
                 <input type="file" id="settings-backup-input" accept=".json" style="display:none;" />
                 <button class="settings-action-btn touch-target" id="btn-import-backup" title="Import from file">
-                  <span class="micro-bracket">[Import]</span> Import File
+                  <span class="micro-bracket">[Import]</span> ${t('import_file')}
                 </button>
                 <button class="settings-action-btn touch-target" id="btn-paste-backup" title="Paste JSON from clipboard">
-                  <span class="micro-bracket">[Paste]</span> Paste JSON
+                  <span class="micro-bracket">[Paste]</span> ${t('paste_json')}
                 </button>
               </div>
             </div>

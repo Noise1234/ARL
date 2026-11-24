@@ -3,6 +3,8 @@
  * Comprehensive overview of all tactile keyboard shortcuts and gestural actions.
  */
 
+import { t } from '../i18n.js';
+
 export class HelpModalView {
   constructor(overlayEl, onCloseCallback) {
     this.overlay = overlayEl;
@@ -27,10 +29,10 @@ export class HelpModalView {
           
           <div class="settings-hud-header">
             <div class="help-title-group">
-              <span class="settings-hud-title">⌨ Keyboard Navigation Reference</span>
-              <span class="help-subtitle">Hardware-first tactile ergonomics</span>
+              <span class="settings-hud-title">${t('help_title')}</span>
+              <span class="help-subtitle">${t('help_subtitle')}</span>
             </div>
-            <button class="settings-close-btn touch-target" id="btn-help-close" title="Close [Esc]">
+            <button class="settings-close-btn touch-target" id="btn-help-close" title="${t('help_close')}">
               <span class="micro-bracket">[Esc]</span> ✕
             </button>
           </div>
@@ -39,7 +41,7 @@ export class HelpModalView {
             
             <!-- Global Navigation -->
             <div class="help-section">
-              <h4 class="help-section-title">Navigation</h4>
+              <h4 class="help-section-title">${t('help_nav_title')}</h4>
               <div class="shortcut-list">
                 <div class="shortcut-row">
                   <span class="shortcut-key"><kbd>V</kbd></span>
@@ -78,7 +80,7 @@ export class HelpModalView {
 
             <!-- Flashcard Mode -->
             <div class="help-section">
-              <h4 class="help-section-title">Flashcard Study Mode</h4>
+              <h4 class="help-section-title">${t('help_study_title')}</h4>
               <div class="shortcut-list">
                 <div class="shortcut-row">
                   <span class="shortcut-key"><kbd>Space</kbd> / <kbd>Enter</kbd></span>
@@ -121,7 +123,7 @@ export class HelpModalView {
 
             <!-- Memorize & Speed Imprint Studio -->
             <div class="help-section">
-              <h4 class="help-section-title">Memorize & Imprint Studio</h4>
+              <h4 class="help-section-title">${t('help_imprint_title')}</h4>
               <div class="shortcut-list">
                 <div class="shortcut-row">
                   <span class="shortcut-key"><kbd>S</kbd></span>
@@ -148,7 +150,7 @@ export class HelpModalView {
 
             <!-- Quiz & Grammar -->
             <div class="help-section">
-              <h4 class="help-section-title">Quiz & Grammar Mode</h4>
+              <h4 class="help-section-title">${t('help_quiz_grammar_title')}</h4>
               <div class="shortcut-list">
                 <div class="shortcut-row">
                   <span class="shortcut-key"><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd></span>
@@ -180,7 +182,7 @@ export class HelpModalView {
           </div>
 
           <div class="help-footer-row">
-            <button class="keyhint-btn keyhint-primary touch-target" id="btn-help-dismiss">Got It</button>
+            <button class="keyhint-btn keyhint-primary touch-target" id="btn-help-dismiss">${t('help_got_it')}</button>
           </div>
 
         </div>

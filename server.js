@@ -25,9 +25,11 @@ const server = http.createServer((req, res) => {
   if (cleanUrl === '/' || cleanUrl === '') {
     cleanUrl = '/index.html';
   } else if (cleanUrl === '/download' || cleanUrl === '/apk' || cleanUrl === '/download/apk') {
-    cleanUrl = fs.existsSync(path.join(ROOT, 'dist/ARL-v2.2.0.apk'))
-      ? '/dist/ARL-v2.2.0.apk'
-      : '/dist/ARL-v2.0.apk';
+    cleanUrl = fs.existsSync(path.join(ROOT, 'dist/ARL-v3.0.0.apk'))
+      ? '/dist/ARL-v3.0.0.apk'
+      : (fs.existsSync(path.join(ROOT, 'dist/ARL-v2.2.0.apk'))
+        ? '/dist/ARL-v2.2.0.apk'
+        : '/dist/ARL-v2.0.apk');
   }
 
   const filePath = path.join(ROOT, cleanUrl);

@@ -33,8 +33,8 @@ KEY_ALIAS = 'arlrelease'
 CERT_PEM = os.path.join(ROOT, 'android/keystore/arl-release.crt')
 KEY_PEM = os.path.join(ROOT, 'android/keystore/arl-release.key')
 
-VERSION_CODE = 220
-VERSION_NAME = "2.2.0"
+VERSION_CODE = 300
+VERSION_NAME = "3.0.0"
 
 BUILD_DIR = '/tmp/arl_apk_build'
 shutil.rmtree(BUILD_DIR, ignore_errors=True)

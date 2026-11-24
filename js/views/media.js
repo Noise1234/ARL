@@ -87,7 +87,7 @@ export class MediaView {
         <!-- Curated Items List -->
         <div class="media-cards-list">
           ${filtered.length === 0 ? `
-            <div class="empty-state">No media recommendations matching selected filters.</div>
+            <div class="empty-state">${t('empty_media')}</div>
           ` : filtered.map((item, idx) => {
             const desc = item.description[uiLang] || item.description.en || item.description.de || '';
             return `

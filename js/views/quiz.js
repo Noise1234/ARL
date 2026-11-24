@@ -164,12 +164,12 @@ export class QuizView {
               <div class="quiz-progress-fill" style="width: ${progressPct}%"></div>
             </div>
           </div>
-          <button class="quiz-close-btn touch-target" id="btn-quiz-exit" title="Exit Quiz [Esc]">✕</button>
+          <button class="quiz-close-btn touch-target" id="btn-quiz-exit" title="${t('quiz_exit')} [Esc]">✕</button>
         </div>
 
         <!-- Question Prompt Card -->
         <div class="quiz-prompt-card">
-          <div class="quiz-prompt-label">Select correct ${state.targetLang === 'de' ? 'German' : 'English'} equivalent:</div>
+          <div class="quiz-prompt-label">${t('quiz_question_prompt')}</div>
           <div class="quiz-prompt-target">${promptText}</div>
           ${promptExample ? `<div class="quiz-prompt-sub">${promptExample}</div>` : ''}
         </div>
@@ -204,7 +204,7 @@ export class QuizView {
 
         <!-- Bottom Keyboard Reference -->
         <div class="quiz-bottom-hint">
-          <span>Tap an option or press <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> on your keyboard</span>
+          <span>${t('quiz_keyboard_hint')}</span>
         </div>
       </div>
     `;
@@ -236,34 +236,34 @@ export class QuizView {
       <div class="quiz-container">
         <div class="quiz-summary-card">
           <div class="summary-check-icon">✓</div>
-          <h2 class="summary-heading">Quiz Complete!</h2>
-          <p class="summary-subheading">Active recall convergence session mastered.</p>
+          <h2 class="summary-heading">${t('quiz_complete')}</h2>
+          <p class="summary-subheading">${t('quiz_complete_sub')}</p>
 
           <div class="summary-metric-grid">
             <div class="summary-metric-pill">
               <span class="metric-val">${this.correctCount} / ${total}</span>
-              <span class="metric-label">Correct</span>
+              <span class="metric-label">${t('correct')}</span>
             </div>
             <div class="summary-metric-pill highlight-pill">
               <span class="metric-val">${accuracy}%</span>
-              <span class="metric-label">Accuracy</span>
+              <span class="metric-label">${t('accuracy')}</span>
             </div>
             <div class="summary-metric-pill">
               <span class="metric-val">+${this.totalExpEarned}</span>
-              <span class="metric-label">EXP Earned</span>
+              <span class="metric-label">${t('exp_earned')}</span>
             </div>
             <div class="summary-metric-pill">
               <span class="metric-val">[STK] ${session.streak}</span>
-              <span class="metric-label">Streak</span>
+              <span class="metric-label">${t('streak_label')}</span>
             </div>
           </div>
 
           <div class="summary-actions-row">
             <button class="keyhint-btn keyhint-primary touch-target" id="btn-quiz-restart">
-              <span class="micro-bracket">[Space]</span> Take Another Quiz
+              <span class="micro-bracket">[Space]</span> ${t('quiz_restart')}
             </button>
             <button class="keyhint-btn touch-target" id="btn-quiz-study-cards">
-              <span class="micro-bracket">[V]</span> Back to Study Cards
+              <span class="micro-bracket">[V]</span> ${t('quiz_study_cards')}
             </button>
           </div>
         </div>
@@ -283,9 +283,9 @@ export class QuizView {
     this.container.innerHTML = `
       <div class="quiz-container">
         <div class="quiz-summary-card">
-          <h2 class="summary-heading">No Vocabulary Found</h2>
-          <p class="summary-subheading">Select a level with vocabulary cards or add custom words.</p>
-          <button class="keyhint-btn keyhint-primary touch-target" id="btn-quiz-to-vocab">Back to Vocab</button>
+          <h2 class="summary-heading">${t('no_quiz_vocab')}</h2>
+          <p class="summary-subheading">${t('no_quiz_vocab_sub')}</p>
+          <button class="keyhint-btn keyhint-primary touch-target" id="btn-quiz-to-vocab">${t('back_to_vocab')}</button>
         </div>
       </div>
     `;

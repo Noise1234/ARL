@@ -53,7 +53,7 @@ export class StudyView {
       <div class="study-card-wrapper">
         <div class="active-flashcard empty-flashcard batch-completion-banner">
           <div class="completion-icon-ring">✓</div>
-          <div class="card-empty-title font-mono">[BATCH COMPLETE]</div>
+          <div class="card-empty-title font-mono">${t('batch_complete')}</div>
           <div class="card-empty-desc">${t('session_empty_sub') || 'All scheduled cards in this batch have been reviewed!'}</div>
 
           <div class="empty-exp-summary">
@@ -129,7 +129,7 @@ export class StudyView {
 
               <!-- Circular Monochrome Progress Ring & Pill -->
               <div style="display:flex;align-items:center;gap:8px;">
-                <div class="progress-ring-wrapper" title="Card ${currentIdx} of ${totalInBatch}">
+                <div class="progress-ring-wrapper" title="${t('card_of')} ${currentIdx} / ${totalInBatch}">
                   <svg class="progress-ring-svg" viewBox="0 0 36 36">
                     <circle class="ring-bg" cx="18" cy="18" r="14" fill="none" stroke-width="3"></circle>
                     <circle class="ring-progress" cx="18" cy="18" r="14" fill="none" stroke-width="3"
@@ -137,7 +137,7 @@ export class StudyView {
                   </svg>
                   <span class="progress-ring-text">${progressPct}%</span>
                 </div>
-                <div class="card-progress-pill" title="Card ${currentIdx} of ${totalInBatch}">
+                <div class="card-progress-pill" title="${t('card_of')} ${currentIdx} / ${totalInBatch}">
                   <span class="progress-pill-num">${currentIdx}</span>
                   <span class="progress-pill-sep">/</span>
                   <span class="progress-pill-total">${totalInBatch}</span>
@@ -173,8 +173,8 @@ export class StudyView {
           <div class="card-controls-panel">
             <!-- Telemetry & Streak Strip -->
             <div class="card-telemetry-strip">
-              <span class="telemetry-item"><span class="telemetry-icon">⚡</span> ${session.streak} streak</span>
-              <span class="telemetry-item">${session.avgSpeed}s avg</span>
+              <span class="telemetry-item"><span class="telemetry-icon">⚡</span> ${session.streak} ${t('streak')}</span>
+              <span class="telemetry-item">${session.avgSpeed}s ${t('avg_speed')}</span>
             </div>
 
             <!-- Bottom Thumb Zone Touch Targets -->
@@ -273,7 +273,7 @@ export class StudyView {
 
               <!-- Circular Progress Ring & Pill -->
               <div style="display:flex;align-items:center;gap:8px;">
-                <div class="progress-ring-wrapper" title="Card ${currentIdx} of ${totalInBatch}">
+                <div class="progress-ring-wrapper" title="${t('card_of')} ${currentIdx} / ${totalInBatch}">
                   <svg class="progress-ring-svg" viewBox="0 0 36 36">
                     <circle class="ring-bg" cx="18" cy="18" r="14" fill="none" stroke-width="3"></circle>
                     <circle class="ring-progress" cx="18" cy="18" r="14" fill="none" stroke-width="3"
@@ -281,7 +281,7 @@ export class StudyView {
                   </svg>
                   <span class="progress-ring-text">${progressPct}%</span>
                 </div>
-                <div class="card-progress-pill" title="Card ${currentIdx} of ${totalInBatch}">
+                <div class="card-progress-pill" title="${t('card_of')} ${currentIdx} / ${totalInBatch}">
                   <span class="progress-pill-num">${currentIdx}</span>
                   <span class="progress-pill-sep">/</span>
                   <span class="progress-pill-total">${totalInBatch}</span>
@@ -327,8 +327,8 @@ export class StudyView {
           <div class="card-controls-panel">
             <!-- Telemetry & Streak Strip -->
             <div class="card-telemetry-strip">
-              <span class="telemetry-item"><span class="telemetry-icon">⚡</span> ${session.streak} streak</span>
-              <span class="telemetry-item">${session.avgSpeed}s avg</span>
+              <span class="telemetry-item"><span class="telemetry-icon">⚡</span> ${session.streak} ${t('streak')}</span>
+              <span class="telemetry-item">${session.avgSpeed}s ${t('avg_speed')}</span>
               <button class="keyhint-btn btn-mini-audio" id="btn-audio" data-key="a" title="Keyboard: A">
                 <span class="micro-bracket">[A]</span> ${t('audio')}
               </button>
@@ -371,7 +371,7 @@ export class StudyView {
     this.container.querySelector('#btn-grade-2')?.addEventListener('click', () => { sound.playClick(); state.gradeCurrentCard(2); gistSync.scheduleAutoPush(); });
     this.container.querySelector('#btn-grade-3')?.addEventListener('click', () => { sound.playClick(); state.gradeCurrentCard(3); gistSync.scheduleAutoPush(); });
     this.container.querySelector('#btn-grade-4')?.addEventListener('click', () => { sound.playClick(); state.gradeCurrentCard(4); gistSync.scheduleAutoPush(); });
-    this.container.querySelector('#btn-audio')?.addEventListener('click', () => state.playAudio());
+    this.container.querySelector('#btn-audio')?.addEventListener('click', (e) => state.playAudio(null, e.currentTarget));
     this.container.querySelector('#btn-reset-card')?.addEventListener('click', () => state.resetCurrentCard());
 
     // Attach touch & swipe gesture listener

@@ -52,6 +52,11 @@ export function cycleInterfaceLanguage() {
   return currentLang;
 }
 
+const DEFAULT_FALLBACKS = {
+  page: 'Page',
+  of: 'of'
+};
+
 /**
  * Translates a key for current or specified language.
  * @param {string} key
@@ -68,5 +73,5 @@ export function t(key, lang = currentLang) {
   if (enDict[key] !== undefined) {
     return normalizeNFC(enDict[key]);
   }
-  return key;
+  return DEFAULT_FALLBACKS[key] || key;
 }

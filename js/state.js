@@ -19,6 +19,49 @@ import {
 import { getCardHint } from './hints.js';
 import { GeminiClient } from './gemini.js';
 import { sound } from './sound.js';
+import { toast } from './toast.js';
+
+let cachedVoices = [];
+if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+  const loadVoices = () => {
+    try {
+      cachedVoices = window.speechSynthesis.getVoices() || [];
+    } catch (e) {
+      cachedVoices = [];
+    }
+  };
+  loadVoices();
+  if (typeof window.speechSynthesis.addEventListener === 'function') {
+    window.speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  } else if ('onvoiceschanged' in window.speechSynthesis) {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }
+}
+
+export function cleanSpokenText(text) {
+  if (!text || typeof text !== 'string') return '';
+  let cleaned = text;
+  // Parenthetical notes: (...)
+  cleaned = cleaned.replace(/\([^)]*\)/g, ' ');
+  // Brackets: [...]
+  cleaned = cleaned.replace(/\[[^\]]*\]/g, ' ');
+  // Rektion / case governance annotations: e.g. + Akkusativ, + Dativ, + Akk, + Dat, etc. or +.*$
+  cleaned = cleaned.replace(/\+\s*(Akkusativ|Dativ|Genitiv|Nominativ|Akk\.?|Dat\.?|Gen\.?|Nom\.?|[A-Za-z]+)/gi, ' ');
+  cleaned = cleaned.replace(/\+.*$/g, ' ');
+  // Cloze blanks: ___
+  cleaned = cleaned.replace(/_+/g, ' ');
+  // Slashes and extraneous punctuation: / \ | ~ * ^ #
+  cleaned = cleaned.replace(/[/\\|~*^#]/g, ' ');
+  // Collapse whitespace
+  cleaned = cleaned.replace(/\s+/g, ' ').trim();
+
+  // If the cleaned string is empty, fallback to original word without cloze blanks or trimmed raw text
+  if (!cleaned) {
+    const rawFallback = text.replace(/_+/g, ' ').trim();
+    return rawFallback || text.trim();
+  }
+  return cleaned;
+}
 
 class AppState {
   constructor() {
@@ -404,27 +447,101 @@ class AppState {
     }
   }
 
-  playAudio(customWord = null) {
+  playAudio(customWord = null, buttonEl = null) {
     const card = this.getCurrentCard();
     const word = customWord || (card ? card.word : '');
     if (!word) return;
 
     this.stopAudio();
 
-    const textToSpeak = normalizeNFC(word);
-    const lang = this.targetLang === 'de' ? 'de-DE' : 'en-US';
+    const cleanedWord = cleanSpokenText(normalizeNFC(word));
+    if (!cleanedWord) return;
 
+    const lang = this.targetLang === 'de' ? 'de-DE' : 'en-US';
+    const langPrefix = this.targetLang === 'de' ? 'de' : 'en';
+
+    // Find button element
+    let btn = buttonEl;
+    if (!btn && typeof document !== 'undefined') {
+      btn = document.querySelector('#btn-audio') ||
+            document.querySelector('#btn-drill-audio') ||
+            document.querySelector('#btn-sprint-audio');
+    }
+
+    // Android WebView Native Bridge Support
     if (typeof window !== 'undefined' && window.AndroidBridge && typeof window.AndroidBridge.speak === 'function') {
-      window.AndroidBridge.speak(textToSpeak, lang);
+      if (btn && btn.classList) {
+        btn.classList.add('is-playing');
+        setTimeout(() => {
+          if (btn && btn.classList) btn.classList.remove('is-playing');
+        }, 1200);
+      }
+      window.AndroidBridge.speak(cleanedWord, lang);
       return;
     }
 
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      const utterance = new SpeechSynthesisUtterance(textToSpeak);
-      utterance.lang = lang;
-      utterance.rate = this.speechRate || 0.92;
-      window.speechSynthesis.speak(utterance);
+    if (typeof window === 'undefined' || !window.speechSynthesis) {
+      toast.info('Speech synthesis voice not available');
+      return;
     }
+
+    // Ensure voices are fetched
+    if (!cachedVoices.length && typeof window.speechSynthesis.getVoices === 'function') {
+      try {
+        cachedVoices = window.speechSynthesis.getVoices() || [];
+      } catch (e) {}
+    }
+
+    const utterance = new SpeechSynthesisUtterance(cleanedWord);
+    utterance.lang = lang;
+    utterance.rate = this.speechRate || 0.92;
+
+    if (cachedVoices.length > 0) {
+      const voice = cachedVoices.find(v => v.lang && (v.lang === lang || v.lang.toLowerCase().replace('_', '-').startsWith(langPrefix)));
+      if (voice) {
+        utterance.voice = voice;
+      }
+    }
+
+    let safetyTimeout = null;
+    const clearPlayingState = () => {
+      if (btn && btn.classList) {
+        btn.classList.remove('is-playing');
+      }
+      if (safetyTimeout) {
+        clearTimeout(safetyTimeout);
+        safetyTimeout = null;
+      }
+    };
+
+    utterance.onstart = () => {
+      if (btn && btn.classList) {
+        btn.classList.add('is-playing');
+      }
+      safetyTimeout = setTimeout(clearPlayingState, 6000);
+    };
+
+    utterance.onend = () => {
+      clearPlayingState();
+    };
+
+    utterance.onerror = (e) => {
+      clearPlayingState();
+      if (e && e.error === 'voice-unavailable') {
+        toast.info('Speech synthesis voice not available');
+      }
+    };
+
+    try {
+      window.speechSynthesis.speak(utterance);
+    } catch (err) {
+      clearPlayingState();
+      toast.info('Speech synthesis voice not available');
+    }
+  }
+
+  speakWord(word, btn = null) {
+    return this.playAudio(word, btn);
   }
 
   stopAudio() {
@@ -433,6 +550,9 @@ class AppState {
     }
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       window.speechSynthesis.cancel();
+    }
+    if (typeof document !== 'undefined') {
+      document.querySelectorAll('.is-playing').forEach(el => el.classList.remove('is-playing'));
     }
   }
 
@@ -611,3 +731,6 @@ class AppState {
 }
 
 export const state = new AppState();
+state.speakWord = function(word, btn = null) {
+  return this.playAudio(word, btn);
+};

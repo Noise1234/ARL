@@ -12,6 +12,7 @@
 import { gistSync } from '../sync.js';
 import { sound } from '../sound.js';
 import { toast } from '../toast.js';
+import { t } from '../i18n.js';
 
 export class SyncModalView {
   constructor(overlayEl, onClose) {
@@ -52,21 +53,21 @@ export class SyncModalView {
     const token = gistSync.getToken();
     const gistId = gistSync.getGistId();
     const lastSync = gistSync.getLastSync();
-    const lastSyncStr = lastSync ? new Date(lastSync).toLocaleString() : 'Never';
+    const lastSyncStr = lastSync ? new Date(lastSync).toLocaleString() : t('never');
     const isAutoSync = gistSync.isAutoSyncEnabled();
 
     // Determine status badge
-    let statusBadgeText = '[Not Connected]';
+    let statusBadgeText = t('not_connected');
     let statusBadgeClass = 'tag-idle';
 
     if (gistSync.status === 'invalid_token') {
-      statusBadgeText = '[Invalid Token]';
+      statusBadgeText = t('invalid_token');
       statusBadgeClass = 'tag-error';
     } else if (gistSync.status === 'rate_limited') {
-      statusBadgeText = '[Rate Limited]';
+      statusBadgeText = t('rate_limited');
       statusBadgeClass = 'tag-error';
     } else if (gistSync.status === 'syncing') {
-      statusBadgeText = '[Syncing...]';
+      statusBadgeText = t('syncing');
       statusBadgeClass = 'tag-syncing';
     } else if (gistSync.isConnected()) {
       statusBadgeText = `[Connected: ${gistId.slice(0, 7)}]`;
@@ -80,7 +81,7 @@ export class SyncModalView {
           <div class="modal-header">
             <div class="modal-title-group">
               <span class="modal-badge">[SYNC]</span>
-              <h3 class="modal-title" id="sync-modal-title">GitHub Gist Cloud Sync (v2)</h3>
+              <h3 class="modal-title" id="sync-modal-title">${t('sync_modal_title')}</h3>
             </div>
             <button class="modal-close-btn" id="btn-close-sync-modal" aria-label="Close modal">✕</button>
           </div>
@@ -95,7 +96,7 @@ export class SyncModalView {
                 </span>
               </div>
               <div class="banner-status-right">
-                <span class="last-synced-label">Last Synced:</span>
+                <span class="last-synced-label">${t('last_synced')}</span>
                 <span class="last-synced-val font-mono">${lastSyncStr}</span>
               </div>
             </div>
@@ -104,7 +105,7 @@ export class SyncModalView {
             <div class="sync-inputs-section">
               <div class="settings-field-group">
                 <label for="sync-token-input" class="field-label">
-                  GitHub Personal Access Token (classic with 'gist' scope):
+                  ${t('pat_label')}
                 </label>
                 <input
                   type="password"
@@ -115,12 +116,12 @@ export class SyncModalView {
                   autocomplete="off"
                   ${this.isOperating ? 'disabled' : ''}
                 />
-                <span class="field-help-text">Tokens are stored in local browser storage only; never leaked into payloads.</span>
+                <span class="field-help-text">${t('pat_help')}</span>
               </div>
 
               <div class="settings-field-group">
                 <label for="sync-gist-id-input" class="field-label">
-                  Gist ID or URL (leave blank to auto-detect or create secret Gist):
+                  ${t('gist_id_label')}
                 </label>
                 <input
                   type="text"
@@ -136,7 +137,7 @@ export class SyncModalView {
               <div class="sync-options-row">
                 <label class="sync-checkbox-label">
                   <input type="checkbox" id="sync-auto-session-check" ${isAutoSync ? 'checked' : ''} />
-                  <span>Auto-Sync on Session End (timestamp protected)</span>
+                  <span>${t('auto_sync_label')}</span>
                 </label>
               </div>
             </div>
@@ -148,14 +149,14 @@ export class SyncModalView {
                 class="settings-action-btn btn-test-conn touch-target"
                 id="btn-sync-test-connection"
                 ${this.isOperating ? 'disabled' : ''}>
-                <span class="micro-bracket">[🩺]</span> Validate PAT
+                <span class="micro-bracket">[🩺]</span> ${t('validate_pat')}
               </button>
               <button
                 type="button"
                 class="settings-action-btn btn-connect-sync touch-target"
                 id="btn-sync-save-connect"
                 ${this.isOperating ? 'disabled' : ''}>
-                <span class="micro-bracket">[Save]</span> Connect / Auto-Detect
+                <span class="micro-bracket">[Save]</span> ${t('connect_auto')}
               </button>
             </div>
 
@@ -176,21 +177,21 @@ export class SyncModalView {
                 class="btn-primary-action btn-sync-merge touch-target"
                 id="btn-sync-action-merge"
                 ${(!gistSync.isConnected() || this.isOperating) ? 'disabled' : ''}>
-                <span class="micro-bracket">[🔄]</span> Sync Now (Merge)
+                <span class="micro-bracket">[🔄]</span> ${t('sync_merge')}
               </button>
               <button
                 type="button"
                 class="settings-action-btn btn-push-sync touch-target"
                 id="btn-sync-action-push"
                 ${(!gistSync.isConnected() || this.isOperating) ? 'disabled' : ''}>
-                <span class="micro-bracket">[⬆️]</span> Push to Gist
+                <span class="micro-bracket">[⬆️]</span> ${t('push_cloud')}
               </button>
               <button
                 type="button"
                 class="settings-action-btn btn-pull-sync touch-target"
                 id="btn-sync-action-pull"
                 ${(!gistSync.isConnected() || this.isOperating) ? 'disabled' : ''}>
-                <span class="micro-bracket">[⬇️]</span> Pull from Gist
+                <span class="micro-bracket">[⬇️]</span> ${t('pull_cloud')}
               </button>
             </div>
 
@@ -199,10 +200,10 @@ export class SyncModalView {
               <div class="local-backup-title font-mono">[OFFLINE SAFETY NET] Local JSON Backup:</div>
               <div class="local-backup-btn-row">
                 <button type="button" class="settings-action-btn touch-target" id="btn-sync-export-local-json">
-                  <span class="micro-bracket">[Export]</span> Export Local JSON
+                  <span class="micro-bracket">[Export]</span> ${t('export_local_json')}
                 </button>
                 <button type="button" class="settings-action-btn touch-target" id="btn-sync-import-local-json">
-                  <span class="micro-bracket">[Import]</span> Import Local JSON
+                  <span class="micro-bracket">[Import]</span> ${t('import_local_json')}
                 </button>
                 <input type="file" id="sync-local-file-input" accept=".json,application/json" style="display:none" />
               </div>
@@ -213,11 +214,11 @@ export class SyncModalView {
           <div class="modal-footer">
             ${gistSync.isConnected() ? `
               <button type="button" class="btn-clear-key touch-target" id="btn-sync-action-disconnect">
-                Disconnect Account
+                ${t('disconnect')}
               </button>
             ` : ''}
             <button type="button" class="modal-close-text-btn touch-target" id="btn-close-sync-footer">
-              Close
+              ${t('close')}
             </button>
           </div>
 

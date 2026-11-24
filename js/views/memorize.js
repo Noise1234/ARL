@@ -8,6 +8,7 @@ import { state } from '../state.js';
 import { t } from '../i18n.js';
 import { sound } from '../sound.js';
 import { isCardMemorized } from '../srs.js';
+import { keyboard, KeyboardState } from '../keyboard.js';
 
 export class MemorizeView {
   constructor(containerEl, onNavigate) {
@@ -97,6 +98,7 @@ export class MemorizeView {
   }
 
   renderMatrix() {
+    keyboard.setState(KeyboardState.MEMORIZE);
     const stats = this.getMemoryStats();
     const cards = this.getFilteredCards();
     const tag = `[${state.targetLang.toUpperCase()}·${state.cefrLevel.toUpperCase()}]`;
@@ -168,17 +170,17 @@ export class MemorizeView {
           </div>
 
           <div class="memorize-filter-group">
-            <button class="mem-filter-chip ${this.activeFilter === 'all' ? 'active' : ''}" data-filter="all">All (${stats.total})</button>
+            <button class="mem-filter-chip ${this.activeFilter === 'all' ? 'active' : ''}" data-filter="all">${t('filter_all')} (${stats.total})</button>
             <button class="mem-filter-chip ${this.activeFilter === 'unseen' ? 'active' : ''}" data-filter="unseen">${t('unseen_badge') || 'Unseen'} (${stats.unseen})</button>
             <button class="mem-filter-chip ${this.activeFilter === 'learning' ? 'active' : ''}" data-filter="learning">${t('learning_badge') || 'Learning'} (${stats.learning})</button>
             <button class="mem-filter-chip ${this.activeFilter === 'memorized' ? 'active' : ''}" data-filter="memorized">${t('memorized_badge') || 'Memorized'} (${stats.memorized})</button>
           </div>
 
           <div class="memorize-pos-group">
-            <button class="mem-pos-chip ${this.posFilter === 'all' ? 'active' : ''}" data-pos="all">All POS</button>
-            <button class="mem-pos-chip ${this.posFilter === 'noun' ? 'active' : ''}" data-pos="noun">Nouns</button>
-            <button class="mem-pos-chip ${this.posFilter === 'verb' ? 'active' : ''}" data-pos="verb">Verbs</button>
-            <button class="mem-pos-chip ${this.posFilter === 'adj' ? 'active' : ''}" data-pos="adj">Adj</button>
+            <button class="mem-pos-chip ${this.posFilter === 'all' ? 'active' : ''}" data-pos="all">${t('all_pos')}</button>
+            <button class="mem-pos-chip ${this.posFilter === 'noun' ? 'active' : ''}" data-pos="noun">${t('nouns')}</button>
+            <button class="mem-pos-chip ${this.posFilter === 'verb' ? 'active' : ''}" data-pos="verb">${t('verbs')}</button>
+            <button class="mem-pos-chip ${this.posFilter === 'adj' ? 'active' : ''}" data-pos="adj">${t('adj')}</button>
           </div>
         </div>
 
@@ -187,8 +189,8 @@ export class MemorizeView {
           ${cards.length === 0 ? `
             <div class="memorize-empty-state">
               <p class="empty-icon">🔍</p>
-              <p class="empty-text">No words match the selected filters.</p>
-              <button class="btn-reset-filters" id="btn-reset-filters">Reset Filters</button>
+              <p class="empty-text">${t('no_words_found')}</p>
+              <button class="btn-reset-filters" id="btn-reset-filters">${t('reset_filters')}</button>
             </div>
           ` : cards.slice(0, 120).map(card => this.renderCardTile(card)).join('')}
         </div>
@@ -242,14 +244,14 @@ export class MemorizeView {
             </div>
 
             <div class="card-tile-footer">
-              <button class="tile-action-btn tile-audio-btn" data-audio-word="${card.word}" title="Listen [A]">
+              <button class="tile-action-btn tile-audio-btn" data-audio-word="${card.word}" title="${t('audio')} [A]">
                 🔊
               </button>
-              <button class="tile-action-btn tile-flip-btn" title="Inspect / Flip">
+              <button class="tile-action-btn tile-flip-btn" title="${t('inspect_flip')}">
                 ↺
               </button>
-              <button class="tile-imprint-btn ${isMem ? 'already-memorized' : ''}" data-id="${card.id}" title="Mark Memorized (+15 EXP)">
-                ${isMem ? '✓ Saved' : '+ Imprint'}
+              <button class="tile-imprint-btn ${isMem ? 'already-memorized' : ''}" data-id="${card.id}" title="${t('memorize_advance')}">
+                ${isMem ? `✓ ${t('saved_badge')}` : t('imprint_btn')}
               </button>
             </div>
           </div>
@@ -258,19 +260,19 @@ export class MemorizeView {
           <div class="card-tile-back">
             <div class="card-back-header">
               <span class="back-pos">${card.pos || ''}</span>
-              <button class="card-unflip-btn" title="Flip back">✕</button>
+              <button class="card-unflip-btn" title="${t('flip_back')}">✕</button>
             </div>
 
             <div class="card-back-body">
-              <div class="back-translation-title">Meaning:</div>
+              <div class="back-translation-title">${t('meaning_label')}</div>
               <div class="back-translation">${translation}</div>
               ${example ? `<div class="back-example">“${example}”</div>` : ''}
             </div>
 
             <div class="card-back-footer">
-              <button class="tile-action-btn tile-audio-btn" data-audio-word="${card.word}">🔊 Pronounce</button>
+              <button class="tile-action-btn tile-audio-btn" data-audio-word="${card.word}">🔊 ${t('audio_btn')}</button>
               <button class="tile-imprint-btn ${isMem ? 'already-memorized' : ''}" data-id="${card.id}">
-                ${isMem ? '✓ Memorized' : '★ Memorize (+15 EXP)'}
+                ${isMem ? `✓ ${t('saved_badge')}` : `★ ${t('memorize_advance')}`}
               </button>
             </div>
           </div>
@@ -357,12 +359,8 @@ export class MemorizeView {
       btn.addEventListener('click', (e) => {
         if (e && e.stopPropagation) e.stopPropagation();
         const word = btn.getAttribute('data-audio-word') || btn.dataset?.audioWord;
-        if (word && state.speakWord) {
-          state.speakWord(word);
-        } else if (word && typeof window !== 'undefined' && 'speechSynthesis' in window) {
-          const u = new SpeechSynthesisUtterance(word);
-          u.lang = state.targetLang === 'de' ? 'de-DE' : 'en-US';
-          window.speechSynthesis.speak(u);
+        if (word) {
+          state.playAudio(word, btn);
         }
       });
     });
@@ -420,6 +418,7 @@ export class MemorizeView {
     this.sprintIndex = 0;
     this.isSprintMode = true;
     this.sprintPaused = false;
+    keyboard.setState(KeyboardState.SPRINT);
 
     this.render();
     this.playSprintAudio();
@@ -445,14 +444,9 @@ export class MemorizeView {
 
   playSprintAudio() {
     const card = this.sprintCards[this.sprintIndex];
-    if (card && state.audioEnabled) {
-      if (state.speakWord) {
-        state.speakWord(card.word);
-      } else if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-        const u = new SpeechSynthesisUtterance(card.word);
-        u.lang = state.targetLang === 'de' ? 'de-DE' : 'en-US';
-        window.speechSynthesis.speak(u);
-      }
+    if (card && state.soundEnabled) {
+      const btn = this.container.querySelector('#btn-sprint-audio');
+      state.playAudio(card.word, btn);
     }
   }
 
@@ -499,6 +493,7 @@ export class MemorizeView {
   exitSprint() {
     this.clearSprintTimer();
     this.isSprintMode = false;
+    keyboard.setState(KeyboardState.MEMORIZE);
     sound.playSuccess();
     this.render();
   }
@@ -526,9 +521,9 @@ export class MemorizeView {
           </div>
           <div class="sprint-controls-right">
             <button class="sprint-pause-btn" id="btn-sprint-pause">
-              ${this.sprintPaused ? '▶ Resume [Space]' : '⏸ Pause [Space]'}
+              ${this.sprintPaused ? `▶ ${t('sprint_resume')}` : `⏸ ${t('sprint_pause')}`}
             </button>
-            <button class="sprint-exit-btn" id="btn-sprint-exit">✕ Exit [Esc]</button>
+            <button class="sprint-exit-btn" id="btn-sprint-exit">✕ ${t('exit_sprint')} [Esc]</button>
           </div>
         </div>
 
@@ -542,7 +537,7 @@ export class MemorizeView {
           <div class="sprint-card-header">
             ${card.pos ? `<span class="sprint-pos-pill">${card.pos}</span>` : ''}
             <span class="sprint-status-tag ${isMem ? 'tag-memorized' : 'tag-learning'}">
-              ${isMem ? 'Memorized' : 'Encoding'}
+              ${isMem ? t('memorized_badge') : t('encoding_badge')}
             </span>
           </div>
 
@@ -570,11 +565,11 @@ export class MemorizeView {
             <button class="sprint-action-btn btn-sprint-audio" id="btn-sprint-audio" title="Audio [A]">
               🔊 [A]
             </button>
-            <button class="sprint-memorize-cta" id="btn-sprint-memorize" title="Memorize & Advance [Enter / M]">
-              ★ Memorized (+15 EXP) [Enter]
+            <button class="sprint-memorize-cta" id="btn-sprint-memorize" title="${t('memorize_advance')} [Enter / M]">
+              ★ ${t('memorize_advance')} [Enter]
             </button>
-            <button class="sprint-action-btn btn-sprint-next" id="btn-sprint-next" title="Next [→ / Space]">
-              Next [→]
+            <button class="sprint-action-btn btn-sprint-next" id="btn-sprint-next" title="${t('next_card')} [→ / Space]">
+              ${t('next_card')} [→]
             </button>
           </div>
         </div>
@@ -592,5 +587,6 @@ export class MemorizeView {
 
   destroy() {
     this.clearSprintTimer();
+    this.isSprintMode = false;
   }
 }
